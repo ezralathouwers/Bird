@@ -20,7 +20,6 @@ struct SpeciesDetailView: View {
         Group {
             if tab != .overview {
                 VStack(spacing: 16) {
-                    heading.padding(.horizontal, 20).padding(.top, 4)
                     SpeciesTabStrip(selection: $tab).padding(.horizontal, 20)
                     if tab == .distribution {
                         SpeciesDistributionMap(species: species)
@@ -38,7 +37,6 @@ struct SpeciesDetailView: View {
             } else {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
-                        heading
                         KingfisherArtworkCarousel()
                         SpeciesTabStrip(selection: $tab)
                         SpeciesFacts()
@@ -51,21 +49,24 @@ struct SpeciesDetailView: View {
         }
         .background(FieldGuideTheme.ivory)
         .navigationTitle("")
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button { dismiss() } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 22, weight: .light))
-                        .frame(width: 44, height: 44)
+        .toolbar(.hidden, for: .navigationBar)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            VStack(alignment: .leading, spacing: 24) {
+                HStack(spacing: 0) {
+                    Button { dismiss() } label: {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 22, weight: .light))
+                            .frame(width: 44, height: 44)
+                    }.accessibilityLabel("Terug naar Ontdek")
+                    Spacer(minLength: 0)
+                    actions
                 }
-                .accessibilityLabel("Terug naar Ontdek")
-                .offset(y: 4)
+                heading
             }
-            ToolbarItem(placement: .topBarTrailing) { actions.offset(y: 4) }
+            .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 16)
+            .background(FieldGuideTheme.ivory)
         }
-        .toolbarBackground(FieldGuideTheme.ivory, for: .navigationBar)
         .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
         .sheet(isPresented: $showImages) {
             NavigationStack {

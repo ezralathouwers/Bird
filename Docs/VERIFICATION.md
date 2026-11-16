@@ -101,3 +101,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Icon-only logging badges
 
 `git diff --check` and source checks passed for 44-point circles, eye/X symbols, khaki/beige fills, retained accessible status labels and leading fact alignment. Status derivation is unchanged; no additional logic tests. Native symbol contrast, alignment and long names require Xcode verification.
+
+### Exact badge spacing
+
+`git diff --check` and source checks passed for one shared header, 24-point action/status gap, equal 44-point circles and common trailing inset. This removes dependency on native toolbar/body insets for their relative positions. Pixel rendering and safe-area behavior still require Xcode validation.

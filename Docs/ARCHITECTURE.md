@@ -117,3 +117,7 @@ All three species tabs now show a small check-circle and Gelogd beside the Engli
 ## Icon-only logging badges and fact alignment — 16 November 2026
 
 Logging badges now use 44-point filled circles matching top action-button diameter, without visible copy: dark X on beige for not logged; light eye on muted khaki #85836B for logged. A question mark on beige preserves the unknown/error state. VoiceOver retains full status wording. The English-name row centers the circle vertically; Dutch title still uses the full width below. Fact rows explicitly fill the available width with leading alignment, placing the unadorned wingspan value at the tabstrip's left outer edge.
+
+## Exact status/action alignment — 16 November 2026
+
+Species pages use a shared top safe-area header for their back/actions and heading, replacing independent native toolbar/body positioning. Both rightmost plus and logging badge are 44-point circles with the same trailing alignment. A 24-point VStack gap is measured edge-to-edge from action row to status row, rather than estimated across toolbar margins. English name shares the status row; Dutch name stays full width beneath. The header is fixed across all three tabs; bottom navigation, artwork-only overview and compact map/history bodies remain unchanged. Header controls retain 44-point targets and the prior 4-point top offset.
