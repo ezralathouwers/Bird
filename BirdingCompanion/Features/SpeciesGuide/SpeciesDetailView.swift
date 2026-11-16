@@ -4,6 +4,7 @@ import SafariServices
 struct SpeciesDetailView: View {
     let species: Species
     @EnvironmentObject private var store: ObservationStore
+    @Environment(\.dismiss) private var dismiss
     @State private var tab: SpeciesTab = .overview
     @State private var showObservation = false
     @State private var showImages = false
@@ -18,10 +19,7 @@ struct SpeciesDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                ViewThatFits(in: .horizontal) {
-                    HStack(alignment: .top, spacing: 12) { heading; Spacer(minLength: 0); actions }
-                    VStack(alignment: .leading, spacing: 16) { heading; actions }
-                }
+                heading
                 KingfisherArtworkCarousel()
                 SpeciesTabStrip(selection: $tab)
                 tabContent
@@ -33,6 +31,18 @@ struct SpeciesDetailView: View {
         .background(FieldGuideTheme.ivory)
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button { dismiss() } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 22, weight: .light))
+                        .frame(width: 44, height: 44)
+                }
+                .accessibilityLabel("Terug naar Ontdek")
+            }
+            ToolbarItem(placement: .topBarTrailing) { actions }
+        }
         .toolbarBackground(FieldGuideTheme.ivory, for: .navigationBar)
         .sheet(isPresented: $showObservation) { ObservationForm(species: species) }
         .sheet(isPresented: $showImages) {
@@ -49,10 +59,14 @@ struct SpeciesDetailView: View {
 
     private var heading: some View {
         VStack(alignment: .leading, spacing: 5) {
+            Text(species.englishName)
+                .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
+                .fixedSize(horizontal: false, vertical: true)
             Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
                 .fixedSize(horizontal: false, vertical: true)
-            Text(species.englishName).font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).fixedSize(horizontal: false, vertical: true)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .foregroundStyle(FieldGuideTheme.charcoal)
     }
 
     private var actions: some View {

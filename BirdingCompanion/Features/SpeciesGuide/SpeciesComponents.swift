@@ -58,7 +58,7 @@ struct SpeciesFacts: View {
                 }
                 if let habitat = facts.last { factRow(habitat) }
             }
-            Text("Voorbeeldgegevens · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(.secondary)
+            Text("Voorbeeldgegevens · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
     private func factRow(_ fact: SpeciesFact) -> some View {

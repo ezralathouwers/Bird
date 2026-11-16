@@ -25,3 +25,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Bottom navigation and Fraunces revision
 
 `git diff --check` passed. OpenStep parsing and resource-existence assertions passed after font replacement; fontTools confirmed Fraunces-9ptBlack and DMSans-9ptRegular PostScript metadata and plist registration paths. Xcode is still unavailable. Verify root bottom inset/home indicator and habitat adjacency in portrait, landscape and small devices, equal-width navigation slots and plus centering, regular variable-font rendering, and title/button top alignment. Verify that every main destination opens, plus saves to history, and detail tabs retain identical font size across selection states.
+
+### Header and text refinement
+
+`git diff --check` passed. Source checks confirm English-before-Dutch heading order, toolbar-based action placement, Logboek copy and ultra-light navigation symbols. This is a reversible UI-only change; no new logic tests were added. Native compilation remains unverified. Test toolbar fit on 320-point screens, back navigation, VoiceOver order and long Dutch names at accessibility text sizes in Xcode.

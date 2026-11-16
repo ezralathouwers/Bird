@@ -29,3 +29,9 @@ Replaced the native prototype TabView navigation with a root-level, zero-spacing
 Heading actions now use top alignment. Artwork and tabstrip share the full parent content width, with the extra artwork inset removed. All detail tabs share one 12-point font and tracking; selection changes background only.
 
 Replaced Castoro with the unmodified original Google Fonts Fraunces variable font and OFL notice. The source font's registered PostScript name is Fraunces-9ptBlack; the SwiftUI title explicitly requests regular weight on that variable font. Actual variable-axis/font rendering needs Mac/iOS verification. DM Sans is unchanged.
+
+## Header and text refinement — 16 November 2026
+
+Species actions move into the trailing native navigation toolbar, aligned on the same row as an explicit leading back button. Back dismisses to Ontdek. The heading is now English DM Sans first, Dutch Fraunces second, with the full content width available and wrapping retained. The three toolbar actions retain 44-point targets.
+
+App-owned primary text uses dark brown-grey #4F453D, including a tinted secondary-copy variant. System-managed Safari/alerts retain platform styling. Main navigation uses ultra-light SF Symbol strokes and a 0.5-point center-plus circle. Lijst is renamed Logboek in the item, destination heading and help copy.

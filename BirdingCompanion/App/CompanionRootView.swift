@@ -1,7 +1,7 @@
 import SwiftUI
 
 private enum MainSection: String {
-    case discover = "Ontdek", identify = "Identificeer", sessions = "Sessies", list = "Lijst"
+    case discover = "Ontdek", identify = "Identificeer", sessions = "Sessies", list = "Logboek"
 }
 
 struct CompanionRootView: View {
@@ -36,7 +36,7 @@ struct CompanionRootView: View {
             }
         case .sessions:
             NavigationStack {
-                Text("Vogelsessies volgen in een volgende fase. Je losse waarnemingen vind je onder Lijst.")
+                Text("Vogelsessies volgen in een volgende fase. Je losse waarnemingen vind je onder Logboek.")
                     .padding().navigationTitle("Sessies")
             }
         case .list:
@@ -48,7 +48,7 @@ struct CompanionRootView: View {
                         } else { Text("Nog geen bevestigde soorten op je lifelijst.") }
                         ObservationHistoryView(species: species, embedded: true)
                     }.padding(20)
-                }.navigationTitle("Lijst")
+                }.navigationTitle("Logboek")
             }
         }
     }
@@ -59,9 +59,9 @@ struct CompanionRootView: View {
             navigationItem(.identify, symbol: "viewfinder")
             Button { showObservation = true } label: {
                 Image(systemName: "plus")
-                    .font(.system(size: 30, weight: .light))
+                    .font(.system(size: 30, weight: .ultraLight))
                     .frame(width: 48, height: 48)
-                    .background(Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.75))
+                    .background(Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.5))
                     .frame(maxWidth: .infinity, minHeight: 56)
                     .contentShape(Rectangle())
             }
@@ -79,7 +79,7 @@ struct CompanionRootView: View {
     private func navigationItem(_ item: MainSection, symbol: String) -> some View {
         Button { section = item } label: {
             VStack(spacing: 3) {
-                Image(systemName: symbol).font(.system(size: 20, weight: .light))
+                Image(systemName: symbol).font(.system(size: 20, weight: .ultraLight))
                 Text(item.rawValue).font(FieldGuideTheme.sans(10, relativeTo: .caption2))
                     .fixedSize(horizontal: false, vertical: true)
             }
