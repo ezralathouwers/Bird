@@ -1,0 +1,15 @@
+# Verification — 16 November 2026
+
+Environment: Linux, Python 3.12.14. `command -v swift` and `command -v xcodebuild` returned no executable. No iOS build or XCTest execution took place.
+
+Executed:
+
+- `git diff --check`: passed (no whitespace errors).
+- `python3 -m pip install --quiet --target /workspace/work/validation-deps openstep-parser`: installed a validation-only parser outside the repository; not an application dependency.
+- Python `OpenStepDecoder.ParseFromFile` on `project.pbxproj`: passed; 46 project objects and two native targets parsed.
+- Python validation of project references, source membership and shared-scheme XML: passed. All 11 Swift files exist, belong to the project and the scheme references existing targets.
+- `rg -n 'design: .serif|IPHONEOS_DEPLOYMENT_TARGET|SWIFT_VERSION' BirdingCompanion BirdingCompanion.xcodeproj`: confirmed one explicit serif style, provisional iOS 17 and Swift 6 project settings. This is source inspection, not rendered UI verification.
+
+Six XCTest methods are supplied, not executed. Syntax parsing of the project does not prove Swift compilation, Xcode acceptance or correct runtime behavior. README contains the ordered Mac checklist for compilation, tests, accessibility, persistence and Safari offline behavior.
+
+Outstanding: original artwork and license metadata; screenshot file for color sampling; font choice; independent species-fact review; deployment support confirmation. The uploaded visual was inspected in chat but cannot be claimed as a locally saved or sampled asset.
