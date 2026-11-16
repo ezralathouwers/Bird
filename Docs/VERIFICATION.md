@@ -69,3 +69,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### History total and map spacing
 
 `git diff --check` and source checks passed for count derived from filtered records, singular/plural display, load-error guard and distribution-only 16-point extra map padding. No new tests for these small display changes; existing species-history logic tests remain unexecuted without Xcode. Check list total updates after save and 32-point map gap in Xcode.
+
+### Overview measurement simplification
+
+`git diff --check` and source assertions passed for absence of length/weight facts, one wingspan row and matching 20-point/title3 typography. This display-only change adds no tests; rendered layout and Dynamic Type still require Xcode.

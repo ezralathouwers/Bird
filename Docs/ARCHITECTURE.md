@@ -81,3 +81,7 @@ Observation now has an optional ISO region code that is absent for older records
 ## History total and map breathing room — 16 November 2026
 
 History now starts with the count of matching observation records (not legacy bird quantities), with singular/plural text and zero support. The count derives directly from the same array used for rows, updates with the observable store and is hidden on load failure rather than implying zero. Distribution gains 16 extra points above the map, giving 32 points between the tabstrip and map. Other tabs keep their spacing.
+
+## Overview measurement simplification — 16 November 2026
+
+Removed length and weight from overview facts. Wingspan is now the only measurement, set in scalable 20-point DM Sans relative to title3, matching observation location typography. Habitat remains a separate normal-size row; small pale icons and descriptive VoiceOver labels remain unchanged. Simplified the facts stack to avoid duplicated habitat rows after removing the measurement group.

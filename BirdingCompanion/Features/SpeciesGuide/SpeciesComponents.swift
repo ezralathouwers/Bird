@@ -37,27 +37,12 @@ struct SpeciesFact: Identifiable {
 struct SpeciesFacts: View {
     // Brief examples only; scientific values await independent source review.
     private let facts = [
-        SpeciesFact(id: "Lengte", symbol: "arrow.left.and.right", value: "16–17 cm"),
-        SpeciesFact(id: "Gewicht", symbol: "scalemass", value: "26–46 g"),
         SpeciesFact(id: "Spanwijdte", symbol: "spread-wings", value: "24–26 cm"),
         SpeciesFact(id: "Leefgebied", symbol: "water.waves", value: "Rivieren, beken en meren")
     ]
-    @Environment(\.dynamicTypeSize) private var typeSize
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            if typeSize.isAccessibilitySize {
-                ForEach(facts) { fact in factRow(fact) }
-            } else {
-                ViewThatFits(in: .horizontal) {
-                    HStack(alignment: .top, spacing: 20) {
-                        ForEach(Array(facts.prefix(3))) { fact in factRow(fact) }
-                    }
-                    VStack(alignment: .leading, spacing: 16) {
-                        ForEach(Array(facts.prefix(3))) { fact in factRow(fact) }
-                    }
-                }
-                if let habitat = facts.last { factRow(habitat) }
-            }
+            ForEach(facts) { fact in factRow(fact) }
             Text("Voorbeeldgegevens · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -71,7 +56,11 @@ struct SpeciesFacts: View {
                     Image(systemName: fact.symbol).font(.system(.body, weight: .regular))
                 }
             }.scaleEffect(0.8).foregroundStyle(FieldGuideTheme.taupe.opacity(0.5)).frame(width: 24)
-            Text(fact.value).font(FieldGuideTheme.sans(17, relativeTo: .body)).fixedSize(horizontal: false, vertical: true)
+            Text(fact.value)
+                .font(fact.id == "Spanwijdte"
+                      ? FieldGuideTheme.sans(20, relativeTo: .title3)
+                      : FieldGuideTheme.sans(17, relativeTo: .body))
+                .fixedSize(horizontal: false, vertical: true)
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(fact.id): \(fact.value)")
