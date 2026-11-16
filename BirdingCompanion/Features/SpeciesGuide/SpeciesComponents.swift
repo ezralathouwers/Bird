@@ -30,32 +30,33 @@ struct SpeciesTabStrip: View {
 
 struct SpeciesFact: Identifiable {
     let id: String
-    let symbol: String
+    let symbol: String?
     let value: String
 }
 
 struct SpeciesFacts: View {
     // Brief examples only; scientific values await independent source review.
     private let facts = [
-        SpeciesFact(id: "Spanwijdte", symbol: "spread-wings", value: "24–26 cm"),
+        SpeciesFact(id: "Spanwijdte", symbol: nil, value: "24–26 cm"),
         SpeciesFact(id: "Leefgebied", symbol: "water.waves", value: "Rivieren, beken en meren")
     ]
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            ForEach(facts) { fact in factRow(fact) }
+        VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(facts) { fact in factRow(fact) }
+            }
             Text("Voorbeeldgegevens · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
     private func factRow(_ fact: SpeciesFact) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
-            Group {
-                if fact.symbol == "spread-wings" {
-                    SpreadWingsIcon().stroke(style: StrokeStyle(lineWidth: 1.2, lineCap: .round, lineJoin: .round))
-                        .frame(width: 24, height: 18)
-                } else {
-                    Image(systemName: fact.symbol).font(.system(.body, weight: .regular))
-                }
-            }.scaleEffect(0.8).foregroundStyle(FieldGuideTheme.taupe.opacity(0.5)).frame(width: 24)
+            if let symbol = fact.symbol {
+                Image(systemName: symbol)
+                    .font(.system(.body, weight: .regular))
+                    .scaleEffect(0.8)
+                    .foregroundStyle(FieldGuideTheme.taupe.opacity(0.5))
+                    .frame(width: 24)
+            }
             Text(fact.value)
                 .font(fact.id == "Spanwijdte"
                       ? FieldGuideTheme.sans(20, relativeTo: .title3)
@@ -64,27 +65,6 @@ struct SpeciesFacts: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(fact.id): \(fact.value)")
-    }
-}
-
-// Original outline drawing, not a third-party icon asset.
-struct SpreadWingsIcon: Shape {
-    func path(in rect: CGRect) -> Path {
-        let points: [CGPoint] = [
-            .init(x: 0.50, y: 0.27), .init(x: 0.45, y: 0.20), .init(x: 0.44, y: 0.10),
-            .init(x: 0.50, y: 0.05), .init(x: 0.56, y: 0.10), .init(x: 0.55, y: 0.27),
-            .init(x: 0.74, y: 0.28), .init(x: 0.99, y: 0.08), .init(x: 0.91, y: 0.39),
-            .init(x: 0.83, y: 0.35), .init(x: 0.82, y: 0.49), .init(x: 0.73, y: 0.44),
-            .init(x: 0.70, y: 0.58), .init(x: 0.59, y: 0.51), .init(x: 0.55, y: 0.70),
-            .init(x: 0.60, y: 0.92), .init(x: 0.50, y: 0.83), .init(x: 0.40, y: 0.92),
-            .init(x: 0.45, y: 0.70), .init(x: 0.41, y: 0.51), .init(x: 0.30, y: 0.58),
-            .init(x: 0.27, y: 0.44), .init(x: 0.18, y: 0.49), .init(x: 0.17, y: 0.35),
-            .init(x: 0.09, y: 0.39), .init(x: 0.01, y: 0.08), .init(x: 0.26, y: 0.28)
-        ]
-        var path = Path()
-        path.addLines(points.map { CGPoint(x: rect.minX + $0.x * rect.width, y: rect.minY + $0.y * rect.height) })
-        path.closeSubpath()
-        return path
     }
 }
 

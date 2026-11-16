@@ -73,3 +73,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### Overview measurement simplification
 
 `git diff --check` and source assertions passed for absence of length/weight facts, one wingspan row and matching 20-point/title3 typography. This display-only change adds no tests; rendered layout and Dynamic Type still require Xcode.
+
+### Plain wingspan value
+
+`git diff --check` passed. Source checks confirm a nil wingspan symbol, unchanged 20-point value and 8-point fact spacing. Native layout remains unverified without Xcode.

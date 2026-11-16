@@ -85,3 +85,7 @@ History now starts with the count of matching observation records (not legacy bi
 ## Overview measurement simplification — 16 November 2026
 
 Removed length and weight from overview facts. Wingspan is now the only measurement, set in scalable 20-point DM Sans relative to title3, matching observation location typography. Habitat remains a separate normal-size row; small pale icons and descriptive VoiceOver labels remain unchanged. Simplified the facts stack to avoid duplicated habitat rows after removing the measurement group.
+
+## Plain wingspan value — 16 November 2026
+
+Removed the spanwijdte symbol and its reserved horizontal slot, retaining the 20-point value and descriptive VoiceOver label. Habitat follows after 8 points instead of 20; the source note stays a separate 16 points below. Removed the unused spread-wing shape.
