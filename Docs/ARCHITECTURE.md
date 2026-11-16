@@ -121,3 +121,11 @@ Logging badges now use 44-point filled circles matching top action-button diamet
 ## Exact status/action alignment — 16 November 2026
 
 Species pages use a shared top safe-area header for their back/actions and heading, replacing independent native toolbar/body positioning. Both rightmost plus and logging badge are 44-point circles with the same trailing alignment. A 24-point VStack gap is measured edge-to-edge from action row to status row, rather than estimated across toolbar margins. English name shares the status row; Dutch name stays full width beneath. The header is fixed across all three tabs; bottom navigation, artwork-only overview and compact map/history bodies remain unchanged. Header controls retain 44-point targets and the prior 4-point top offset.
+
+## Pupil-free unseen icon and habitat prose — 16 November 2026
+
+Not-logged uses an original stroked almond-eye outline with no pupil, replacing X. Logged retains the ivory eye on khaki. Status and action buttons now share one roundControlDiameter token (44 points), keeping their circles identical and preserving the 24-point vertical gap. Removed the habitat glyph/value row in favor of an original short paragraph about kingfisher feeding habitat and nesting banks. Intended length is about 3–4 lines at regular iPhone text sizes; it wraps freely at accessibility sizes rather than truncating.
+
+Ecological facts were checked against Vogelbescherming Nederland's IJsvogel guide on 16 November 2026:
+https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijsvogel
+Copy is written for this app, not reproduced from that source. The wingspan example still needs independent measurement validation and is labelled accordingly.

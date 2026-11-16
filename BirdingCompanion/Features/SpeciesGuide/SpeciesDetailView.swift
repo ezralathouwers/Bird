@@ -107,16 +107,22 @@ struct SpeciesDetailView: View {
             symbol = "eye"; label = "Gelogd"
             background = FieldGuideTheme.khaki; foreground = FieldGuideTheme.ivory
         case .notLogged:
-            symbol = "xmark"; label = "Nog niet gelogd"
+            symbol = "eye-outline"; label = "Nog niet gelogd"
             background = FieldGuideTheme.beige; foreground = FieldGuideTheme.charcoal
         case .unavailable:
             symbol = "questionmark"; label = "Status onbekend"
             background = FieldGuideTheme.beige; foreground = FieldGuideTheme.charcoal
         }
-        return Image(systemName: symbol)
-            .font(.system(size: 18, weight: .light))
+        return Group {
+            if status == .notLogged {
+                PupilFreeEye().stroke(style: StrokeStyle(lineWidth: 1, lineCap: .round, lineJoin: .round))
+                    .frame(width: 22, height: 14)
+            } else {
+                Image(systemName: symbol).font(.system(size: 18, weight: .light))
+            }
+        }
             .foregroundStyle(foreground)
-            .frame(width: 44, height: 44)
+            .frame(width: FieldGuideTheme.roundControlDiameter, height: FieldGuideTheme.roundControlDiameter)
             .background(background, in: Circle())
             .accessibilityLabel("\(species.dutchName): \(label)")
     }

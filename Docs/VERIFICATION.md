@@ -105,3 +105,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Exact badge spacing
 
 `git diff --check` and source checks passed for one shared header, 24-point action/status gap, equal 44-point circles and common trailing inset. This removes dependency on native toolbar/body insets for their relative positions. Pixel rendering and safe-area behavior still require Xcode validation.
+
+### Pupil-free eye and habitat paragraph
+
+`git diff --check` and source assertions passed for the shared 44-point diameter, pupil-free custom shape, removed habitat row and untruncated paragraph. Habitat facts were checked against Vogelbescherming's species guide. This visual change adds no tests; verify eye visibility, equal button sizes, 24-point spacing and paragraph line count in Xcode.

@@ -5,6 +5,7 @@ enum FieldGuideTheme {
     static func sans(_ size: CGFloat = 17, relativeTo style: Font.TextStyle = .body) -> Font {
         .custom("DMSans-9ptRegular", size: size, relativeTo: style)
     }
+    static let roundControlDiameter: CGFloat = 44
     static let speciesTitle = Font.custom("Fraunces-9ptBlack", size: 34, relativeTo: .largeTitle).weight(.regular)
     static let navigationWhite = Color.white
     static let ivory = Color(red: 0.96, green: 0.95, blue: 0.92)
@@ -24,7 +25,7 @@ struct RoundAction: View {
         Button(action: action) {
             Image(systemName: symbol)
                 .font(.system(.body, weight: .light))
-                .frame(width: 44, height: 44)
+                .frame(width: FieldGuideTheme.roundControlDiameter, height: FieldGuideTheme.roundControlDiameter)
                 .background(Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.75))
         }
         .accessibilityLabel(label)
