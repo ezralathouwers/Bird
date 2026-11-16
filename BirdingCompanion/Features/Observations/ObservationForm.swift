@@ -107,7 +107,7 @@ struct ObservationForm: View {
             .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 16))
             .accessibilityLabel("Primaire illustratie van \(species.dutchName)")
             VStack(alignment: .leading, spacing: 6) {
-                Text(species.englishName).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                Text(species.englishDisplayName).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
                 Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
                     .fixedSize(horizontal: false, vertical: true)
             }

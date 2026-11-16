@@ -82,6 +82,7 @@ struct KingfisherArtworkCarousel: View {
                 ForEach(descriptions.indices, id: \.self) { index in
                     ArtworkPlaceholder(hero: true,
                         accessibilityDescription: "Tijdelijke illustratieplaats: \(descriptions[index])")
+                        .padding(.vertical, 6)
                         .tag(index)
                 }
             }

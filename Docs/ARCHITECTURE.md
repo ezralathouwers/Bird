@@ -137,3 +137,7 @@ Status and action circles remain tied to the same 44-point diameter token; the g
 ## Overview tabstrip micro-spacing — 16 November 2026
 
 Overview spacing before the strip is now 20 instead of 24 points; spacing below is 28 instead of 24. Thus the strip moves up 4 points while the wingspan/facts keep their previous vertical position. Other tabs are untouched. Both log-status eyes now share the original eye-contour shape with a 0.75-point stroke; logged adds a small pupil. Circle sizes and fills remain unchanged.
+
+## Sentence-case names and illustration inset — 16 November 2026
+
+English display names capitalize only the initial character and lowercase the rest (e.g. Common kingfisher and Great spotted woodpecker). Underlying names and search stay unchanged. Species-detail and observation-form name labels share the display property. Carousel artwork gets 6-point vertical inset at both top and bottom inside its existing page area; habitat footer and map markers are unaffected. Wingspan values remain plain cm values, without ca.; the great-spotted-woodpecker example is a generated visual mockup, not a second bundled species.

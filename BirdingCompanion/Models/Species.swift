@@ -6,6 +6,10 @@ struct Species: Identifiable, Equatable, Sendable {
     let dutchName: String
     let englishName: String
     let scientificName: String
+
+    var englishDisplayName: String {
+        englishName.prefix(1).uppercased() + englishName.dropFirst().lowercased()
+    }
 }
 
 protocol SpeciesRepository {

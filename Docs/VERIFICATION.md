@@ -117,3 +117,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Overview tabstrip micro-spacing
 
 `git diff --check` and source assertions passed for 20/28-point overview gaps and shared 0.75-point eye strokes. No new tests for this UI-only change. Exact visual spacing and fine-line visibility remain unverified until Xcode/device review.
+
+### Name casing and artwork padding
+
+`git diff --check` and source checks passed for shared English display formatting, existing plain 24–26 cm value and vertical carousel inset. No tests added for this small presentation change. Native font/layout rendering remains unverified without Xcode.

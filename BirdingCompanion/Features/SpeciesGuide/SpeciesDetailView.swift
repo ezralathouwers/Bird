@@ -83,7 +83,7 @@ struct SpeciesDetailView: View {
     private var heading: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(alignment: .center, spacing: 12) {
-                Text(species.englishName)
+                Text(species.englishDisplayName)
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer(minLength: 0)
