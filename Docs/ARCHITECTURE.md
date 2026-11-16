@@ -97,3 +97,11 @@ The species Waarnemingen tab opts into a prominent count: the number is 40-point
 ## Refined metric and restrained map gap — 16 November 2026
 
 Reduced the distribution map gap to 24 points total (16-point stack spacing plus 8-point map padding). Previous generated mockup overstated the gap and is not a measured rendering. Species observation total now uses 60-point numeral (50% above 40) and 20-point noun matching row location type, both relative to title3 and at 35% opacity. Added 12-point vertical padding to the metric group.
+
+## Redesigned observation form and location defaults — 16 November 2026
+
+The form now has a selected-species image block, separate editable date/time pickers defaulting to Date() for new logs, a required location section (map first, editable name directly below), and a persistent bottom save button. Back arrow replaces Annuleren; removed the top save duplicate, notes UI, country picker, optional wording and map-location removal. Approved primary illustration is still absent; the image block uses a labelled placeholder. Hidden legacy notes are preserved on editing, not silently cleared.
+
+Opening a new form requests foreground location permission, documented in Info.plist, and then a one-shot current fix. No background tracking. Denied/unavailable/stale fixes explain manual map selection as fallback. Picking a map point supersedes outstanding GPS callbacks. Apple reverse geocoding suggests a nature-area/point-of-interest name first, then locality/place/region, and derives the ISO country. Actual nature-area names depend on Apple's coverage; no guarantee is made. The user can override the name. Debouncing, cancellation and request IDs prevent stale suggestions from replacing a later point; a manual name isn't overwritten by late results.
+
+Country is read-only and automatic, not a required manual field. Offline geocoding failures leave it unknown with an explicit message; a manually named valid point can still save offline. New form saves require both coordinates and a nonempty location name; storage continues to accept old name-only records. Coordinates/country/notes remain exportable. Location services use main-actor delegate callbacks with a preconcurrency conformance; Swift 6/SDK compatibility must be checked on Mac.

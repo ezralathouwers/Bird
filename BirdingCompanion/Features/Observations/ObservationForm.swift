@@ -6,109 +6,150 @@ struct ObservationForm: View {
     private let original: Observation?
     @EnvironmentObject private var store: ObservationStore
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var location: ObservationLocationModel
     @State private var observedAt: Date
-    @State private var locationName: String
-    @State private var latitude: Double?
-    @State private var longitude: Double?
-    @State private var countryCode: String
-    @State private var notes: String
     @State private var errorMessage: String?
 
     init(species: Species, observation: Observation? = nil) {
         self.species = species
         original = observation
         _observedAt = State(initialValue: observation?.observedAt ?? Date())
-        _locationName = State(initialValue: observation?.locationName ?? "")
-        _countryCode = State(initialValue: ObservationCountry.normalized(observation?.countryCode) ?? "")
-        _notes = State(initialValue: observation?.notes ?? "")
-        _latitude = State(initialValue: observation?.latitude)
-        _longitude = State(initialValue: observation?.longitude)
+        _location = StateObject(wrappedValue: ObservationLocationModel(observation: observation))
     }
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section(species.dutchName) {
-                    DatePicker("Datum en tijd", selection: $observedAt)
-                    TextField("Locatie (optioneel)", text: $locationName)
-                    Picker("Land (optioneel)", selection: $countryCode) {
-                        Text("Niet opgegeven").tag("")
-                        ForEach(ObservationCountry.codes.sorted {
-                            ObservationCountry.name(for: $0).localizedCompare(ObservationCountry.name(for: $1)) == .orderedAscending
-                        }, id: \.self) { code in
-                            Text(ObservationCountry.name(for: code)).tag(code)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    selectedBird
+                    VStack(spacing: 12) {
+                        DatePicker("Datum", selection: $observedAt, displayedComponents: .date)
+                        DatePicker("Tijd", selection: $observedAt, displayedComponents: .hourAndMinute)
+                    }
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Locatie").font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                            .accessibilityAddTraits(.isHeader)
+                        ObservationLocationPicker(location: location).frame(height: 240)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                        TextField("Naam van natuurgebied of plaats", text: Binding(
+                            get: { location.locationName }, set: { location.editName($0) }))
+                            .textFieldStyle(.roundedBorder)
+                            .accessibilityLabel("Locatienaam")
+                        if location.isLocating { ProgressView("Huidige locatie ophalen…") }
+                        if location.isNaming { ProgressView("Plaatsnaam en land ophalen…") }
+                        if let code = location.countryCode {
+                            Text(ObservationCountry.name(for: code))
+                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
                         }
+                        if let message = location.message {
+                            Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                .accessibilityAddTraits(.updatesFrequently)
+                        }
+                        Button { location.useCurrentLocation() } label: {
+                            Label("Gebruik huidige locatie", systemImage: "location")
+                                .frame(minHeight: 44)
+                        }.disabled(location.isLocating)
+                        Text("Tik op de kaart om de plek te wijzigen. Je kunt de voorgestelde naam aanpassen.")
+                            .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                            .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
                     }
-                    TextField("Notities", text: $notes, axis: .vertical).lineLimit(3...8)
+                    if let errorMessage { Text(errorMessage).foregroundStyle(.red) }
+                }.padding(20)
+            }
+            .background(FieldGuideTheme.ivory)
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                Button(action: save) {
+                    Text(original == nil ? "Waarneming opslaan" : "Wijzigingen opslaan")
+                        .frame(maxWidth: .infinity, minHeight: 52)
+                        .foregroundStyle(FieldGuideTheme.ivory)
+                        .background(FieldGuideTheme.charcoal, in: Capsule())
                 }
-                Section("Locatie op de kaart (optioneel)") {
-                    ObservationLocationPicker(latitude: $latitude, longitude: $longitude)
-                        .frame(height: 220)
-                    Text("Tik op de kaart om de exacte plek vast te leggen. Een locatienaam alleen plaatst geen marker.")
-                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                    if latitude != nil {
-                        Button("Verwijder kaartlocatie") { latitude = nil; longitude = nil }
-                    }
-                }
-                Section {
-                    Text("Lokaal opgeslagen op dit apparaat. Door op Opslaan te tikken leg je een persoonlijke waarneming vast.")
-                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                }
-                if let errorMessage { Text(errorMessage).foregroundStyle(.red).accessibilityLabel("Opslaan mislukt: \(errorMessage)") }
+                .disabled(store.loadError != nil || !location.canSave)
+                .opacity(store.loadError != nil || !location.canSave ? 0.4 : 1)
+                .padding(20).background(FieldGuideTheme.ivory)
             }
             .navigationTitle(original == nil ? "Waarneming toevoegen" : "Waarneming bewerken")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Annuleren") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Opslaan") { save() }.disabled(store.loadError != nil)
+                ToolbarItem(placement: .cancellationAction) {
+                    Button { dismiss() } label: {
+                        Image(systemName: "chevron.left").font(.system(size: 22, weight: .light))
+                            .frame(width: 44, height: 44)
+                    }.accessibilityLabel("Terug zonder opslaan")
                 }
+            }
+            .task { if original == nil { location.useCurrentLocation() } }
+            .onDisappear { location.stop() }
+        }
+    }
+
+    private var selectedBird: some View {
+        HStack(spacing: 20) {
+            Group {
+                if UIImage(named: species.id + "-primary") != nil {
+                    Image(species.id + "-primary").resizable().scaledToFit()
+                } else {
+                    VStack(spacing: 8) {
+                        Image(systemName: "bird").font(.largeTitle)
+                        Text("Illustratie volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                    }
+                }
+            }
+            .frame(width: 110, height: 130)
+            .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 16))
+            .accessibilityLabel("Primaire illustratie van \(species.dutchName)")
+            VStack(alignment: .leading, spacing: 6) {
+                Text(species.englishName).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
 
     private func save() {
+        guard location.canSave else { return }
         var record = original ?? Observation(speciesID: species.id, taxonomyVersion: species.taxonomyVersion,
-            observedAt: observedAt, locationName: locationName, count: 1, notes: notes,
-            status: .confirmed)
+            observedAt: observedAt, locationName: location.locationName, count: 1, notes: "", status: .confirmed)
         record.observedAt = observedAt
-        record.locationName = locationName
-        record.notes = notes
-        record.latitude = latitude
-        record.longitude = longitude
-        record.countryCode = ObservationCountry.normalized(countryCode)
+        record.locationName = location.locationName.trimmingCharacters(in: .whitespacesAndNewlines)
+        record.latitude = location.latitude
+        record.longitude = location.longitude
+        record.countryCode = location.countryCode
+        // Hidden legacy notes/count/status are preserved when editing.
         do { try store.save(record, editing: original != nil); dismiss() }
         catch { errorMessage = error.localizedDescription }
     }
 }
 
 private struct ObservationLocationPicker: View {
-    @Binding var latitude: Double?
-    @Binding var longitude: Double?
+    @ObservedObject var location: ObservationLocationModel
     @State private var camera: MapCameraPosition = .automatic
 
     var body: some View {
         MapReader { proxy in
             Map(position: $camera) {
-                if let latitude, let longitude {
+                if let latitude = location.latitude, let longitude = location.longitude {
                     Marker("Waarnemingsplek", coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                 }
             }
             .mapStyle(.standard(pointsOfInterest: .excludingAll))
             .onTapGesture { point in
                 if let coordinate = proxy.convert(point, from: .local) {
-                    latitude = coordinate.latitude
-                    longitude = coordinate.longitude
+                    location.select(latitude: coordinate.latitude, longitude: coordinate.longitude)
                 }
             }
         }
-        .accessibilityLabel("Kies de waarnemingsplek op de kaart")
-        .onAppear {
-            camera = .region(MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: latitude ?? 51, longitude: longitude ?? 5),
-                span: MKCoordinateSpan(latitudeDelta: latitude == nil ? 10 : 0.03,
-                                       longitudeDelta: longitude == nil ? 14 : 0.03)
-            ))
-        }
+        .accessibilityLabel("Kies de verplichte waarnemingsplek op de kaart")
+        .onAppear { centerMap() }
+        .onChange(of: location.latitude) { _, _ in centerMap() }
+        .onChange(of: location.longitude) { _, _ in centerMap() }
+    }
+
+    private func centerMap() {
+        camera = .region(MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: location.latitude ?? 51, longitude: location.longitude ?? 5),
+            span: MKCoordinateSpan(latitudeDelta: location.latitude == nil ? 10 : 0.03,
+                                   longitudeDelta: location.latitude == nil ? 14 : 0.03)))
     }
 }

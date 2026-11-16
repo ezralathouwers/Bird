@@ -85,3 +85,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### Refined metric and restrained map gap
 
 `git diff --check` and source assertions passed for 60/20-point total type, 12-point vertical padding, retained 35% opacity and 24-point total map gap. Visual verification still requires Xcode; generated images are illustrative and cannot establish exact spacing.
+
+### Redesigned observation form
+
+Added four XCTest methods covering place-name priority, required coordinates/name and automatic country, manual-name/latest-selection protection, and offline manual fallback. These were not executed without Xcode. `git diff --check`, project source-membership checks and plist permission-description validation passed. Xcode/device checks required: allow/deny/approximate location, current fix and map recentering, real reverse geocoding, changing map/name/country, separate date/time fields, no location-removal action, bottom save with keyboard and Dynamic Type, legacy notes preserved, offline save and cancellation. Primary species artwork is still a placeholder.

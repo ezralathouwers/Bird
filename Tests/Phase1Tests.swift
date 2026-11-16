@@ -166,3 +166,52 @@ final class SpeciesRangeTests: XCTestCase {
         }
     }
 }
+
+@MainActor
+final class ObservationLocationTests: XCTestCase {
+    func testPlaceNamePrefersNatureAreaThenTown() {
+        XCTAssertEqual(PlaceNameSuggestion.preferred(area: "Park", locality: "Stad", name: "Straat", region: "Regio"), "Park")
+        XCTAssertEqual(PlaceNameSuggestion.preferred(area: "  ", locality: "Stad", name: "Straat", region: nil), "Stad")
+    }
+
+    func testRequiredLocationAndAutomaticCountry() async {
+        let model = ObservationLocationModel(namingService: TestPlaceNamingService())
+        XCTAssertFalse(model.canSave)
+        await model.select(latitude: 0.5, longitude: 1.5)?.value
+        XCTAssertEqual(model.locationName, "Voorbeeldpark")
+        XCTAssertEqual(model.countryCode, "NL")
+        XCTAssertTrue(model.canSave)
+    }
+
+    func testManualNameSurvivesLateSuggestionAndLatestPointWins() async {
+        let model = ObservationLocationModel(namingService: TestPlaceNamingService())
+        let older = model.select(latitude: 1, longitude: 2)
+        let latest = model.select(latitude: 3, longitude: 4)
+        model.editName("Mijn plek")
+        await older?.value
+        await latest?.value
+        XCTAssertEqual(model.latitude, 3)
+        XCTAssertEqual(model.longitude, 4)
+        XCTAssertEqual(model.locationName, "Mijn plek")
+        XCTAssertEqual(model.countryCode, "NL")
+    }
+
+    func testNameLookupFailureAllowsManualOfflineFallback() async {
+        let model = ObservationLocationModel(namingService: TestPlaceNamingService(fails: true))
+        await model.select(latitude: 1, longitude: 2)?.value
+        XCTAssertNotNil(model.message)
+        XCTAssertFalse(model.canSave)
+        model.editName("Handmatig ingevoerde plek")
+        XCTAssertTrue(model.canSave)
+        XCTAssertNil(model.countryCode)
+    }
+}
+
+@MainActor
+private struct TestPlaceNamingService: PlaceNamingService {
+    var fails = false
+    func suggestion(latitude: Double, longitude: Double) async throws -> PlaceSuggestion {
+        if fails { throw CocoaError(.fileReadUnknown) }
+        return PlaceSuggestion(name: "Voorbeeldpark", countryCode: "nl")
+    }
+}
