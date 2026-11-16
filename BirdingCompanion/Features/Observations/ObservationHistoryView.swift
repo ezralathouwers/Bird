@@ -18,12 +18,29 @@ struct ObservationHistoryView: View {
             if records.isEmpty && store.loadError == nil { Text("Nog geen waarnemingen. Voeg er een toe met + op de soortpagina.") }
             ForEach(records) { record in
                 Button { navigation.selection = record } label: {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(record.observedAt.formatted(date: .abbreviated, time: .shortened))
-                        Label(record.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                              ? "Geen locatie opgegeven" : record.locationName, systemImage: "mappin")
-                            .fixedSize(horizontal: false, vertical: true)
-                    }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                    HStack(alignment: .center, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(record.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                                 ? "Geen locatie opgegeven" : record.locationName)
+                                .font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                                .foregroundStyle(FieldGuideTheme.charcoal)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Text(record.observedAt.formatted(date: .abbreviated, time: .shortened))
+                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
+                                .fixedSize(horizontal: false, vertical: true)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        if let flag = ObservationCountry.foreignFlag(for: record.countryCode),
+                           let code = ObservationCountry.normalized(record.countryCode) {
+                            Text(flag).font(.system(size: 22))
+                                .frame(width: 36, height: 36)
+                                .background(FieldGuideTheme.navigationWhite, in: Circle())
+                                .clipShape(Circle())
+                                .accessibilityLabel(ObservationCountry.name(for: code))
+                        }
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
+                    .contentShape(Rectangle())
                 }.accessibilityHint("Open de kaart van deze waarneming")
             }
             if showsExport {

@@ -18,6 +18,7 @@ struct Observation: Identifiable, Codable, Equatable, Sendable {
     var source = "personal-manual"
     var latitude: Double? = nil
     var longitude: Double? = nil
+    var countryCode: String? = nil
 
     func validate() throws {
         guard !speciesID.isEmpty, !taxonomyVersion.isEmpty, count > 0 else {
@@ -52,5 +53,28 @@ struct LifelistRules {
         Set(observations.filter {
             $0.status == .confirmed && (includeCaptive || !$0.isCaptive)
         }.map(\.speciesID))
+    }
+}
+
+struct ObservationCountry {
+    static let codes = Locale.Region.isoRegions.map(\.identifier).filter { code in
+        code.utf8.count == 2 && code.utf8.allSatisfy { (65...90).contains($0) }
+    }
+
+    static func normalized(_ value: String?) -> String? {
+        guard let code = value?.trimmingCharacters(in: .whitespacesAndNewlines).uppercased(),
+              codes.contains(code) else { return nil }
+        return code
+    }
+
+    static func name(for code: String) -> String {
+        Locale(identifier: "nl_BE").localizedString(forRegionCode: code) ?? code
+    }
+
+    static func foreignFlag(for value: String?) -> String? {
+        guard let code = normalized(value), code != "BE" else { return nil }
+        return String(String.UnicodeScalarView(code.unicodeScalars.compactMap {
+            UnicodeScalar(127397 + $0.value)
+        }))
     }
 }

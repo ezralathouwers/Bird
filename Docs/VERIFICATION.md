@@ -61,3 +61,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### Floating observation information
 
 `git diff --check` and source checks passed: map-root layout, top overlay with 16-point margins, species/date/location order and missing-location fallback. This UI-only refinement has no new logic tests. In Xcode check full-map drawing behind the panel, long names and Dynamic Type, edit tap target, and clear marker placement. Native compilation remains unverified.
+
+### Location-first history and foreign flags
+
+`git diff --check` and source assertions passed for location-before-date typography and circular foreign-country badge. Added XCTest for Belgian/unknown suppression, foreign flag generation, normalization and country persistence round trip; legacy test asserts missing country remains nil. Tests remain unexecuted without Xcode. Verify flag emoji rendering, country picker, long location wrapping, Dynamic Type, row → map → close, and VoiceOver country announcement.

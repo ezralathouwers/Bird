@@ -71,3 +71,9 @@ History row taps select a root-level observation overlay. The underlying guide/h
 ## Floating observation information — 16 November 2026
 
 The observation map now fills behind its top information panel rather than starting below a header. A rounded ivory overlay has 16-point outer margins and padding, showing Dutch species name first, date/time next and location name last. Long text wraps. Missing-location/offline messages stack below the information overlay rather than covering it. Editing stays in the panel with its 44-point target; bottom navigation and light close action remain unchanged. Automatic map chrome is hidden to avoid collision with the panel; native gestures remain available.
+
+## Location-first observation rows and country badges — 16 November 2026
+
+History rows lead with the location in scalable 20-point DM Sans and place date/time underneath in 13-point secondary text. Known countries outside Belgium show a right-aligned circular flag badge using native flag emoji; Belgian and unspecified/invalid countries show none. Country names are descriptive VoiceOver labels. No country is guessed from place names, device region or map center.
+
+Observation now has an optional ISO region code that is absent for older records. The form offers an explicit optional country picker; codes normalize to uppercase. Country values survive local persistence and JSON export. Emoji artwork uses platform rendering; precise circular flag appearance needs device review.

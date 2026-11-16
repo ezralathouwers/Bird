@@ -38,6 +38,7 @@ final class Phase1Tests: XCTestCase {
         let restored = try JSONDecoder().decode(Observation.self, from: JSONSerialization.data(withJSONObject: json))
         XCTAssertNil(restored.latitude)
         XCTAssertNil(restored.longitude)
+        XCTAssertNil(restored.countryCode)
         XCTAssertEqual(restored.status, .uncertain)
         XCTAssertTrue(restored.isCaptive)
         XCTAssertEqual(restored.count, old.count)
@@ -56,6 +57,19 @@ final class Phase1Tests: XCTestCase {
         observation.longitude = 1.5
         observation.latitude = .nan
         XCTAssertThrowsError(try observation.validate())
+    }
+
+    func testCountryFlagsOnlyForKnownForeignCountries() throws {
+        XCTAssertNil(ObservationCountry.foreignFlag(for: nil))
+        XCTAssertNil(ObservationCountry.foreignFlag(for: "BE"))
+        XCTAssertNil(ObservationCountry.foreignFlag(for: " be "))
+        XCTAssertNil(ObservationCountry.foreignFlag(for: "ZZ"))
+        XCTAssertEqual(ObservationCountry.foreignFlag(for: " nl "), "🇳🇱")
+        XCTAssertEqual(ObservationCountry.foreignFlag(for: "FR"), "🇫🇷")
+        var observation = record()
+        observation.countryCode = "NL"
+        let decoded = try JSONDecoder().decode(Observation.self, from: JSONEncoder().encode(observation))
+        XCTAssertEqual(decoded.countryCode, "NL")
     }
 
     func testSearchByDutchEnglishAndScientificName() {

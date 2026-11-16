@@ -10,6 +10,7 @@ struct ObservationForm: View {
     @State private var locationName: String
     @State private var latitude: Double?
     @State private var longitude: Double?
+    @State private var countryCode: String
     @State private var notes: String
     @State private var errorMessage: String?
 
@@ -18,6 +19,7 @@ struct ObservationForm: View {
         original = observation
         _observedAt = State(initialValue: observation?.observedAt ?? Date())
         _locationName = State(initialValue: observation?.locationName ?? "")
+        _countryCode = State(initialValue: ObservationCountry.normalized(observation?.countryCode) ?? "")
         _notes = State(initialValue: observation?.notes ?? "")
         _latitude = State(initialValue: observation?.latitude)
         _longitude = State(initialValue: observation?.longitude)
@@ -29,6 +31,14 @@ struct ObservationForm: View {
                 Section(species.dutchName) {
                     DatePicker("Datum en tijd", selection: $observedAt)
                     TextField("Locatie (optioneel)", text: $locationName)
+                    Picker("Land (optioneel)", selection: $countryCode) {
+                        Text("Niet opgegeven").tag("")
+                        ForEach(ObservationCountry.codes.sorted {
+                            ObservationCountry.name(for: $0).localizedCompare(ObservationCountry.name(for: $1)) == .orderedAscending
+                        }, id: \.self) { code in
+                            Text(ObservationCountry.name(for: code)).tag(code)
+                        }
+                    }
                     TextField("Notities", text: $notes, axis: .vertical).lineLimit(3...8)
                 }
                 Section("Locatie op de kaart (optioneel)") {
@@ -66,6 +76,7 @@ struct ObservationForm: View {
         record.notes = notes
         record.latitude = latitude
         record.longitude = longitude
+        record.countryCode = ObservationCountry.normalized(countryCode)
         do { try store.save(record, editing: original != nil); dismiss() }
         catch { errorMessage = error.localizedDescription }
     }
