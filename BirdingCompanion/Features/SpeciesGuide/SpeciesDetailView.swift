@@ -22,13 +22,13 @@ struct SpeciesDetailView: View {
                     HStack(alignment: .center, spacing: 12) { heading; Spacer(minLength: 0); actions }
                     VStack(alignment: .leading, spacing: 16) { heading; actions }
                 }
-                KingfisherArtworkComposition()
+                KingfisherArtworkCarousel()
                 SpeciesTabStrip(selection: $tab)
                 tabContent
-            }.padding(20)
+            }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
         }
         .background(FieldGuideTheme.ivory)
-        .navigationTitle("Vogels van de wereld")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(FieldGuideTheme.ivory, for: .navigationBar)
         .sheet(isPresented: $showObservation) { ObservationForm(species: species) }
@@ -46,9 +46,9 @@ struct SpeciesDetailView: View {
 
     private var heading: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text(species.dutchName).font(.system(.largeTitle, design: .serif, weight: .semibold))
+            Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
                 .fixedSize(horizontal: false, vertical: true)
-            Text(species.englishName).font(.subheadline).fixedSize(horizontal: false, vertical: true)
+            Text(species.englishName).font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).fixedSize(horizontal: false, vertical: true)
         }
     }
 
@@ -63,12 +63,8 @@ struct SpeciesDetailView: View {
     @ViewBuilder private var tabContent: some View {
         switch tab {
         case .overview: SpeciesFacts()
-        case .identification:
-            Text("Herkenningskenmerken worden toegevoegd na inhoudelijke broncontrole.").font(.body)
-        case .sound:
-            Text("Nog geen gelicentieerde geluidsopnamen beschikbaar. Deze functie werkt later ook met gedownloade opnamen.").font(.body)
         case .distribution:
-            Text("Verspreidingsinformatie volgt na broncontrole. De overzichtspagina bevat geen kaart.").font(.body)
+            Text("Verspreidingsinformatie volgt na broncontrole. De overzichtspagina bevat geen kaart.").font(FieldGuideTheme.sans(17, relativeTo: .body))
         case .observations: ObservationHistoryView(species: species, embedded: true)
         }
     }

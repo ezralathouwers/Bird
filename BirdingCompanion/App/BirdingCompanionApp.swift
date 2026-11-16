@@ -14,6 +14,7 @@ struct BirdingCompanionApp: App {
     var body: some Scene {
         WindowGroup {
             CompanionRootView().environmentObject(store)
+                .font(FieldGuideTheme.sans())
                 .tint(FieldGuideTheme.taupe)
                 .foregroundStyle(FieldGuideTheme.charcoal)
         }

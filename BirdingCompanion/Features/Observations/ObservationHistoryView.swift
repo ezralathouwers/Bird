@@ -20,7 +20,7 @@ struct ObservationHistoryView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(record.observedAt.formatted(date: .abbreviated, time: .shortened))
                         Text("\(record.count) · \(record.locationName.isEmpty ? "Geen locatie" : record.locationName)")
-                        Text(record.status == .confirmed ? "Bevestigd" : "Onzeker").font(.caption)
+                        Text(record.status == .confirmed ? "Bevestigd" : "Onzeker").font(FieldGuideTheme.sans(12, relativeTo: .caption))
                     }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
                 }.accessibilityHint("Bewerk deze waarneming")
             }

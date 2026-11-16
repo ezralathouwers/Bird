@@ -13,3 +13,7 @@ Executed:
 Six XCTest methods are supplied, not executed. Syntax parsing of the project does not prove Swift compilation, Xcode acceptance or correct runtime behavior. README contains the ordered Mac checklist for compilation, tests, accessibility, persistence and Safari offline behavior.
 
 Outstanding: original artwork and license metadata; screenshot file for color sampling; font choice; independent species-fact review; deployment support confirmation. The uploaded visual was inspected in chat but cannot be claimed as a locally saved or sampled asset.
+
+### Design revision
+
+`git diff --check` passed after the requested design revisions. Font metadata was inspected using fontTools; both original variable fonts and OFL notices are present. Python plist/OpenStep checks validated UIAppFonts, actual bundled resource files, and app resource memberships. These checks do not establish that iOS registered the custom fonts or rendered the carousel correctly. Native compilation remains unverified.

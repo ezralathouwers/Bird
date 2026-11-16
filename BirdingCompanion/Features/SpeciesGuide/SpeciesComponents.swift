@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum SpeciesTab: String, CaseIterable {
-    case overview = "Overzicht", identification = "Herkenning", sound = "Geluid"
+    case overview = "Overzicht"
     case distribution = "Verspreiding", observations = "Waarnemingen"
 }
 
@@ -12,7 +12,7 @@ struct SpeciesTabStrip: View {
             HStack(spacing: 4) {
                 ForEach(SpeciesTab.allCases, id: \.self) { tab in
                     Button { selection = tab } label: {
-                        Text(tab.rawValue).font(.system(.subheadline, weight: .medium))
+                        Text(tab.rawValue).font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                             .padding(.horizontal, 12).frame(minHeight: 44)
                             .background(selection == tab ? FieldGuideTheme.ivory : .clear, in: Capsule())
                     }
@@ -33,9 +33,9 @@ struct SpeciesFact: Identifiable {
 struct SpeciesFacts: View {
     // Brief examples only; scientific values await independent source review.
     private let facts = [
-        SpeciesFact(id: "Lengte", symbol: "ruler", value: "16–17 cm"),
+        SpeciesFact(id: "Lengte", symbol: "arrow.left.and.right", value: "16–17 cm"),
         SpeciesFact(id: "Gewicht", symbol: "scalemass", value: "26–46 g"),
-        SpeciesFact(id: "Spanwijdte", symbol: "arrow.left.and.right", value: "24–26 cm"),
+        SpeciesFact(id: "Spanwijdte", symbol: "spread-wings", value: "24–26 cm"),
         SpeciesFact(id: "Leefgebied", symbol: "water.waves", value: "Rivieren, beken, meren en waterrijke gebieden"),
         SpeciesFact(id: "Verspreiding", symbol: "globe.europe.africa", value: "Europa, Azië, Afrika")
     ]
@@ -62,39 +62,73 @@ struct SpeciesFacts: View {
                     }
                 }
             }
-            Text("Voorbeeldgegevens · broncontrole volgt").font(.caption).foregroundStyle(.secondary)
+            Text("Voorbeeldgegevens · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(.secondary)
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
     private func factRow(_ fact: SpeciesFact) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
-            Image(systemName: fact.symbol).font(.system(.body, weight: .regular))
-                .foregroundStyle(FieldGuideTheme.taupe).frame(width: 24)
-            Text(fact.value).font(.body).fixedSize(horizontal: false, vertical: true)
+            Group {
+                if fact.symbol == "spread-wings" {
+                    SpreadWingsIcon().stroke(style: StrokeStyle(lineWidth: 1.2, lineCap: .round, lineJoin: .round))
+                        .frame(width: 24, height: 18)
+                } else {
+                    Image(systemName: fact.symbol).font(.system(.body, weight: .regular))
+                }
+            }.foregroundStyle(FieldGuideTheme.taupe).frame(width: 24)
+            Text(fact.value).font(FieldGuideTheme.sans(17, relativeTo: .body)).fixedSize(horizontal: false, vertical: true)
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(fact.id): \(fact.value)")
     }
 }
 
-struct KingfisherArtworkComposition: View {
+// Original outline drawing, not a third-party icon asset.
+struct SpreadWingsIcon: Shape {
+    func path(in rect: CGRect) -> Path {
+        let points: [CGPoint] = [
+            .init(x: 0.50, y: 0.27), .init(x: 0.45, y: 0.20), .init(x: 0.44, y: 0.10),
+            .init(x: 0.50, y: 0.05), .init(x: 0.56, y: 0.10), .init(x: 0.55, y: 0.27),
+            .init(x: 0.74, y: 0.28), .init(x: 0.99, y: 0.08), .init(x: 0.91, y: 0.39),
+            .init(x: 0.83, y: 0.35), .init(x: 0.82, y: 0.49), .init(x: 0.73, y: 0.44),
+            .init(x: 0.70, y: 0.58), .init(x: 0.59, y: 0.51), .init(x: 0.55, y: 0.70),
+            .init(x: 0.60, y: 0.92), .init(x: 0.50, y: 0.83), .init(x: 0.40, y: 0.92),
+            .init(x: 0.45, y: 0.70), .init(x: 0.41, y: 0.51), .init(x: 0.30, y: 0.58),
+            .init(x: 0.27, y: 0.44), .init(x: 0.18, y: 0.49), .init(x: 0.17, y: 0.35),
+            .init(x: 0.09, y: 0.39), .init(x: 0.01, y: 0.08), .init(x: 0.26, y: 0.28)
+        ]
+        var path = Path()
+        path.addLines(points.map { CGPoint(x: rect.minX + $0.x * rect.width, y: rect.minY + $0.y * rect.height) })
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct KingfisherArtworkCarousel: View {
+    @State private var page = 0
+    private let descriptions = ["Hoofdillustratie", "In vlucht", "Vooraanzicht", "Achteraanzicht"]
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                ArtworkPlaceholder(hero: true, accessibilityDescription: "Tijdelijke plaatsaanduiding voor de hoofdillustratie van de ijsvogel")
-                    .frame(width: geometry.size.width * 0.64, height: geometry.size.height * 0.96)
-                    .position(x: geometry.size.width * 0.32, y: geometry.size.height * 0.50)
-                ArtworkPlaceholder(hero: false, accessibilityDescription: "Tijdelijke plaatsaanduiding voor ijsvogel in vlucht")
-                    .frame(width: geometry.size.width * 0.34, height: geometry.size.height * 0.32)
-                    .position(x: geometry.size.width * 0.83, y: geometry.size.height * 0.32)
-                ArtworkPlaceholder(hero: false, accessibilityDescription: "Tijdelijke plaatsaanduiding voor vooraanzicht")
-                    .frame(width: geometry.size.width * 0.17, height: geometry.size.height * 0.30)
-                    .position(x: geometry.size.width * 0.72, y: geometry.size.height * 0.77)
-                ArtworkPlaceholder(hero: false, accessibilityDescription: "Tijdelijke plaatsaanduiding voor achteraanzicht")
-                    .frame(width: geometry.size.width * 0.17, height: geometry.size.height * 0.30)
-                    .position(x: geometry.size.width * 0.92, y: geometry.size.height * 0.77)
+        VStack(spacing: 8) {
+            TabView(selection: $page) {
+                ForEach(descriptions.indices, id: \.self) { index in
+                    ArtworkPlaceholder(hero: true,
+                        accessibilityDescription: "Tijdelijke illustratieplaats: \(descriptions[index])")
+                        .padding(.horizontal, 2)
+                        .tag(index)
+                }
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(height: 330)
+            HStack(spacing: 0) {
+                ForEach(descriptions.indices, id: \.self) { index in
+                    Button { withAnimation { page = index } } label: {
+                        Circle().fill(page == index ? FieldGuideTheme.taupe : FieldGuideTheme.beige)
+                            .frame(width: 7, height: 7).frame(width: 44, height: 44)
+                    }
+                    .accessibilityLabel("\(descriptions[index]), afbeelding \(index + 1) van 4")
+                    .accessibilityAddTraits(page == index ? [.isSelected] : [])
+                }
             }
         }
-        .aspectRatio(1.12, contentMode: .fit)
     }
 }
 
@@ -107,7 +141,7 @@ struct ArtworkPlaceholder: View {
             .overlay {
                 VStack(spacing: 8) {
                     Image(systemName: "bird").font(hero ? .largeTitle : .title3)
-                    if hero { Text("Illustratie volgt").font(.footnote) }
+                    if hero { Text("Illustratie volgt").font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                 }.foregroundStyle(FieldGuideTheme.taupe)
             }
             .accessibilityLabel(accessibilityDescription)

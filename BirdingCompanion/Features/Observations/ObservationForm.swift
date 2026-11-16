@@ -37,7 +37,7 @@ struct ObservationForm: View {
                 }
                 Section {
                     Text("Lokaal opgeslagen op dit apparaat. Alleen bevestigde waarnemingen van vrije vogels tellen standaard mee voor je lifelijst.")
-                        .font(.footnote)
+                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                 }
                 if let errorMessage { Text(errorMessage).foregroundStyle(.red).accessibilityLabel("Opslaan mislukt: \(errorMessage)") }
             }
