@@ -17,13 +17,25 @@ struct SpeciesDetailView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                heading
-                KingfisherArtworkCarousel()
-                SpeciesTabStrip(selection: $tab)
-                tabContent
-            }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
+        Group {
+            if tab == .distribution {
+                VStack(spacing: 16) {
+                    heading.padding(.horizontal, 20).padding(.top, 4)
+                    SpeciesTabStrip(selection: $tab).padding(.horizontal, 20)
+                    SpeciesDistributionMap(species: species)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24) {
+                        heading
+                        KingfisherArtworkCarousel()
+                        SpeciesTabStrip(selection: $tab)
+                        tabContent
+                    }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
+                }
+            }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             if tab == .overview { HabitatFooter() }
@@ -81,8 +93,7 @@ struct SpeciesDetailView: View {
     @ViewBuilder private var tabContent: some View {
         switch tab {
         case .overview: SpeciesFacts()
-        case .distribution:
-            Text("Verspreidingsinformatie volgt na broncontrole. De overzichtspagina bevat geen kaart.").font(FieldGuideTheme.sans(17, relativeTo: .body))
+        case .distribution: EmptyView() // Full-height map uses a separate non-scrolling layout.
         case .observations: ObservationHistoryView(species: species, embedded: true)
         }
     }

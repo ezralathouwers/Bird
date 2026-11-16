@@ -74,3 +74,37 @@ private struct FailingPersistence: ObservationPersistence {
     func load() throws -> [Observation] { [] }
     func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
 }
+
+final class SpeciesRangeTests: XCTestCase {
+    // Fictional square, intentionally unrelated to kingfisher distribution.
+    private let fixture = """
+    {"type":"FeatureCollection","source":"Unit test fixture","license":"Project test data","version":"test-v1",
+    "features":[{"type":"Feature","properties":{},"geometry":{"type":"Polygon",
+    "coordinates":[[[0,0],[1,0],[1,1],[0,1],[0,0]]]}}]}
+    """
+
+    func testPolygonAndProvenanceDecode() throws {
+        let dataset = try BundledSpeciesRangeRepository.decode(Data(fixture.utf8))
+        XCTAssertEqual(dataset.polygons.count, 1)
+        XCTAssertEqual(dataset.polygons[0].pointCount, 5)
+        XCTAssertEqual(dataset.version, "test-v1")
+        XCTAssertTrue(dataset.attribution.contains("Unit test fixture"))
+    }
+
+    func testMissingLicenseAndEmptyGeometryAreRejected() {
+        let missingLicense = fixture.replacingOccurrences(of: "\"license\":\"Project test data\",", with: "")
+        XCTAssertThrowsError(try BundledSpeciesRangeRepository.decode(Data(missingLicense.utf8)))
+        let empty = """
+        {"type":"FeatureCollection","source":"Test","license":"Test","version":"1","features":[]}
+        """
+        XCTAssertThrowsError(try BundledSpeciesRangeRepository.decode(Data(empty.utf8)))
+    }
+
+    func testMissingBundledRangeIsExplicitlyUnavailable() {
+        XCTAssertThrowsError(try BundledSpeciesRangeRepository().load(speciesID: "missing-test-species")) {
+            guard case RangeDataError.unavailable = $0 else {
+                return XCTFail("Expected explicit unavailable data state")
+            }
+        }
+    }
+}

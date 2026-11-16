@@ -67,18 +67,18 @@ struct CompanionRootView: View {
                 navigationItem(.sessions, symbol: "clock")
                 navigationItem(.list, symbol: "bird")
             }
-            .foregroundStyle(FieldGuideTheme.ivory)
+            .foregroundStyle(FieldGuideTheme.charcoal)
             .padding(.top, 4)
-            .background(FieldGuideTheme.charcoal.ignoresSafeArea(edges: .bottom))
+            .background(FieldGuideTheme.navigationWhite.ignoresSafeArea(edges: .bottom))
             .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.charcoal).frame(height: 0.5) }
         }
         .overlay(alignment: .top) {
             Button { showObservation = true } label: {
                 FinePlusMark()
-                    .stroke(FieldGuideTheme.charcoal, style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
+                    .stroke(FieldGuideTheme.ivory, style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
                     .frame(width: 45, height: 45)
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
-                    .background(FieldGuideTheme.selectedBeige, in: Circle())
+                    .background(FieldGuideTheme.charcoal, in: Circle())
                     .contentShape(Circle())
             }
             .buttonStyle(.plain)

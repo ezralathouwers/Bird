@@ -51,3 +51,7 @@ Removed all visible bottom navigation captions; retained explicit Dutch VoiceOve
 ## Dark navigation surface — 16 November 2026
 
 Bottom navigation now uses the shared dark neutral charcoal surface, extending beneath the home-indicator safe area, with ivory destination symbols. The raised central observation button uses selectedBeige, the exact same token as the active species-tab pill, with a charcoal hairline plus for contrast. Geometry, borderless circle, raised overlap and icon-only VoiceOver labels are unchanged.
+
+## Interactive distribution tab — 16 November 2026
+
+White bottom navigation with dark symbols; raised add button uses dark text token and ivory hairline glyph. Distribution gets a separate non-scrolling layout: heading, tabstrip, flexible interactive MapKit map. Artwork and habitat footer are omitted in this state. GeoJSON polygon loading and attribution are protocol-based, fit the camera to actual supplied ranges and expose loading, unavailable, malformed and offline states. No verified range dataset exists in the repository, so no fabricated species extent is displayed. See DISTRIBUTION_DATA.md.
