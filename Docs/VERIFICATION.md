@@ -93,3 +93,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Form header and simplified date fields
 
 `git diff --check` and source assertions passed for both 4-point toolbar offsets, hidden date/time labels with accessibility names, removed helper paragraph and full-screen form entry points. No new logic tests for this display refinement. Compare actual toolbar coordinates across screens in Xcode, including status-bar safe area and Dynamic Type; exact rendered alignment is unverified.
+
+### Species logging badge
+
+`git diff --check` and source assertions passed for derived status and all three labels. Added a unit test for unseen → logged and other-species isolation; extended existing reload and corrupt-store tests for logged/unavailable status. XCTest remains unexecuted without Xcode. Check badge wrapping, first-save refresh, restart and VoiceOver on device.

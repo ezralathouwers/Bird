@@ -81,14 +81,34 @@ struct SpeciesDetailView: View {
 
     private var heading: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text(species.englishName)
-                .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
-                .fixedSize(horizontal: false, vertical: true)
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(species.englishName)
+                    .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
+                    .fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: 0)
+                logStatusBadge
+            }
             Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .foregroundStyle(FieldGuideTheme.charcoal)
+    }
+
+    private var logStatusBadge: some View {
+        let status = store.logStatus(for: species.id)
+        let symbol: String
+        let label: String
+        switch status {
+        case .logged: symbol = "checkmark.circle"; label = "Gelogd"
+        case .notLogged: symbol = "circle"; label = "Nog niet gelogd"
+        case .unavailable: symbol = "questionmark.circle"; label = "Status onbekend"
+        }
+        return Label(label, systemImage: symbol)
+            .font(FieldGuideTheme.sans(12, relativeTo: .caption))
+            .foregroundStyle(FieldGuideTheme.taupe)
+            .fixedSize(horizontal: false, vertical: true)
+            .accessibilityLabel("\(species.dutchName): \(label)")
     }
 
     private var actions: some View {

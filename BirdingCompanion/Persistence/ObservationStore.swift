@@ -18,6 +18,10 @@ struct JSONObservationPersistence: ObservationPersistence {
     }
 }
 
+enum SpeciesLogStatus {
+    case logged, notLogged, unavailable
+}
+
 @MainActor
 final class ObservationStore: ObservableObject {
     @Published private(set) var observations: [Observation] = []
@@ -53,6 +57,11 @@ final class ObservationStore: ObservableObject {
         }
         try persistence.save(updated)
         observations = updated
+    }
+
+    func logStatus(for speciesID: String) -> SpeciesLogStatus {
+        guard loadError == nil else { return .unavailable }
+        return observations.contains { $0.speciesID == speciesID } ? .logged : .notLogged
     }
 
     func observations(for speciesID: String) -> [Observation] {

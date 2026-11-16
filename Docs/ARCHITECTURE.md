@@ -109,3 +109,7 @@ Country is read-only and automatic, not a required manual field. Offline geocodi
 ## Form header and simplified date fields — 16 November 2026
 
 Form presentation is full screen from all three entry points, avoiding modal-sheet top inset differences. Back uses topBarLeading, the same 44-point target, 22-point light chevron and 4-point downward offset as species pages. The form title uses a principal toolbar item with the same downward offset. Date/time picker labels are visually hidden but keep explicit VoiceOver labels. Removed persistent map helper copy beneath the country; no divider is rendered there (the earlier generated preview introduced one). Lookup errors and the current-location action remain available.
+
+## Automatically derived species logging badge — 16 November 2026
+
+All three species tabs now show a small check-circle and Gelogd beside the English name if any saved observation matches the stable species ID. Otherwise an open circle and Nog niet gelogd appear. The full-width Dutch title remains below. State derives directly from published stored observations, so a successful save updates the badge without a separate flag that could drift. A load failure displays Status onbekend, never a false unseen state. Gelogd indicates a record exists (including legacy uncertain/captive records), distinct from confirmed lifelist eligibility. The badge has a descriptive VoiceOver label.

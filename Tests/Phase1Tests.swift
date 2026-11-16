@@ -14,6 +14,15 @@ final class Phase1Tests: XCTestCase {
     private func temporaryURL() -> URL {
         FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathComponent("observations.json")
     }
+    func testLoggedBadgeUsesPersistedSpeciesRecords() throws {
+        let store = ObservationStore(persistence: PreviewObservationPersistence())
+        let bird = MockSpeciesRepository.kingfisher
+        XCTAssertEqual(store.logStatus(for: bird.id), .notLogged)
+        try store.save(record(status: .uncertain))
+        XCTAssertEqual(store.logStatus(for: bird.id), .logged)
+        XCTAssertEqual(store.logStatus(for: "another-species"), .notLogged)
+    }
+
     func testSpeciesHistoryFiltersAndSortsNewestFirstWithoutDroppingUncertainRecords() throws {
         let store = ObservationStore(persistence: PreviewObservationPersistence())
         var earlier = record()
@@ -92,6 +101,7 @@ final class Phase1Tests: XCTestCase {
         let reloaded = ObservationStore(persistence: persistence)
         XCTAssertNil(reloaded.loadError)
         XCTAssertEqual(reloaded.observations, [observation])
+        XCTAssertEqual(reloaded.logStatus(for: observation.speciesID), .logged)
         let exported = try JSONDecoder().decode([Observation].self, from: reloaded.exportData())
         XCTAssertEqual(exported, [observation])
     }
@@ -117,6 +127,7 @@ final class Phase1Tests: XCTestCase {
         try corrupt.write(to: url)
         let store = ObservationStore(persistence: JSONObservationPersistence(url: url))
         XCTAssertNotNil(store.loadError)
+        XCTAssertEqual(store.logStatus(for: MockSpeciesRepository.kingfisher.id), .unavailable)
         XCTAssertThrowsError(try store.save(record()))
         XCTAssertThrowsError(try store.exportData())
         XCTAssertEqual(try Data(contentsOf: url), corrupt)
