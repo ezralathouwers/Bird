@@ -77,3 +77,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### Plain wingspan value
 
 `git diff --check` passed. Source checks confirm a nil wingspan symbol, unchanged 20-point value and 8-point fact spacing. Native layout remains unverified without Xcode.
+
+### Prominent count and larger map gap
+
+`git diff --check` and source assertions passed for 40/14-point count typography, shared 35% opacity, species-tab-only opt-in and 48-point total map spacing. No new logic tests for these display changes. Native text wrapping/contrast and map layout remain to check in Xcode.

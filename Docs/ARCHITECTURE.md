@@ -89,3 +89,7 @@ Removed length and weight from overview facts. Wingspan is now the only measurem
 ## Plain wingspan value — 16 November 2026
 
 Removed the spanwijdte symbol and its reserved horizontal slot, retaining the 20-point value and descriptive VoiceOver label. Habitat follows after 8 points instead of 20; the source note stays a separate 16 points below. Removed the unused spread-wing shape.
+
+## Observation metric and distribution spacing — 16 November 2026
+
+The species Waarnemingen tab opts into a prominent count: the number is 40-point DM Sans relative to title3 (twice the 20-point location title), with a smaller 14-point baseline-aligned noun. Both share charcoal at 35% opacity, as requested, and one combined VoiceOver heading. Singular/plural and derived-record count behavior are retained. Logboek keeps its previous total styling. Distribution adds 32 points above the map on top of the existing 16-point stack gap, for 48 points total.

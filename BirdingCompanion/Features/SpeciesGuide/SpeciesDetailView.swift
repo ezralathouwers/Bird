@@ -25,10 +25,10 @@ struct SpeciesDetailView: View {
                     if tab == .distribution {
                         SpeciesDistributionMap(species: species)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .padding(.top, 16)
+                            .padding(.top, 32)
                     } else {
                         ScrollView {
-                            ObservationHistoryView(species: species, embedded: true, showsExport: false)
+                            ObservationHistoryView(species: species, embedded: true, showsExport: false, prominentTotal: true)
                                 .padding(.horizontal, 20).padding(.bottom, 24)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

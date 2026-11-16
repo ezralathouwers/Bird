@@ -5,6 +5,7 @@ struct ObservationHistoryView: View {
     let species: Species
     var embedded = false
     var showsExport = true
+    var prominentTotal = false
     @EnvironmentObject private var store: ObservationStore
     @EnvironmentObject private var navigation: ObservationNavigation
     @State private var exporting = false
@@ -16,10 +17,22 @@ struct ObservationHistoryView: View {
             if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
             let records = store.observations(for: species.id)
             if store.loadError == nil {
-                Text(records.count == 1 ? "1 waarneming" : "\(records.count) waarnemingen")
-                    .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
-                    .foregroundStyle(FieldGuideTheme.charcoal)
+                if prominentTotal {
+                    HStack(alignment: .firstTextBaseline, spacing: 8) {
+                        Text("\(records.count)")
+                            .font(FieldGuideTheme.sans(40, relativeTo: .title3))
+                        Text(records.count == 1 ? "waarneming" : "waarnemingen")
+                            .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                    }
+                    .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.35))
+                    .accessibilityElement(children: .combine)
                     .accessibilityAddTraits(.isHeader)
+                } else {
+                    Text(records.count == 1 ? "1 waarneming" : "\(records.count) waarnemingen")
+                        .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                        .foregroundStyle(FieldGuideTheme.charcoal)
+                        .accessibilityAddTraits(.isHeader)
+                }
             }
             if records.isEmpty && store.loadError == nil { Text("Nog geen waarnemingen. Voeg er een toe met + op de soortpagina.") }
             ForEach(records) { record in
