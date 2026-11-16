@@ -113,3 +113,7 @@ Form presentation is full screen from all three entry points, avoiding modal-she
 ## Automatically derived species logging badge — 16 November 2026
 
 All three species tabs now show a small check-circle and Gelogd beside the English name if any saved observation matches the stable species ID. Otherwise an open circle and Nog niet gelogd appear. The full-width Dutch title remains below. State derives directly from published stored observations, so a successful save updates the badge without a separate flag that could drift. A load failure displays Status onbekend, never a false unseen state. Gelogd indicates a record exists (including legacy uncertain/captive records), distinct from confirmed lifelist eligibility. The badge has a descriptive VoiceOver label.
+
+## Icon-only logging badges and fact alignment — 16 November 2026
+
+Logging badges now use 44-point filled circles matching top action-button diameter, without visible copy: dark X on beige for not logged; light eye on muted khaki #85836B for logged. A question mark on beige preserves the unknown/error state. VoiceOver retains full status wording. The English-name row centers the circle vertically; Dutch title still uses the full width below. Fact rows explicitly fill the available width with leading alignment, placing the unadorned wingspan value at the tabstrip's left outer edge.

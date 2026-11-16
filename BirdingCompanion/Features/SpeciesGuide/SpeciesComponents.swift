@@ -63,6 +63,8 @@ struct SpeciesFacts: View {
                       : FieldGuideTheme.sans(17, relativeTo: .body))
                 .fixedSize(horizontal: false, vertical: true)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .multilineTextAlignment(.leading)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(fact.id): \(fact.value)")
     }

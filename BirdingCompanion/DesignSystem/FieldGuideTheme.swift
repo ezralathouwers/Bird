@@ -10,6 +10,7 @@ enum FieldGuideTheme {
     static let ivory = Color(red: 0.96, green: 0.95, blue: 0.92)
     static let beige = Color(red: 0.89, green: 0.86, blue: 0.82)
     static let selectedBeige = Color(red: 0.83, green: 0.79, blue: 0.73)
+    static let khaki = Color(red: 133.0 / 255, green: 131.0 / 255, blue: 107.0 / 255)
     static let taupe = Color(red: 107.0 / 255, green: 104.0 / 255, blue: 100.0 / 255)
     // Neutral warm grey text (#4B4946), shared with the observation button fill.
     static let charcoal = Color(red: 75.0 / 255, green: 73.0 / 255, blue: 70.0 / 255)

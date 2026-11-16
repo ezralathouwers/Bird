@@ -81,7 +81,7 @@ struct SpeciesDetailView: View {
 
     private var heading: some View {
         VStack(alignment: .leading, spacing: 5) {
-            HStack(alignment: .firstTextBaseline, spacing: 12) {
+            HStack(alignment: .center, spacing: 12) {
                 Text(species.englishName)
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                     .fixedSize(horizontal: false, vertical: true)
@@ -99,15 +99,24 @@ struct SpeciesDetailView: View {
         let status = store.logStatus(for: species.id)
         let symbol: String
         let label: String
+        let background: Color
+        let foreground: Color
         switch status {
-        case .logged: symbol = "checkmark.circle"; label = "Gelogd"
-        case .notLogged: symbol = "circle"; label = "Nog niet gelogd"
-        case .unavailable: symbol = "questionmark.circle"; label = "Status onbekend"
+        case .logged:
+            symbol = "eye"; label = "Gelogd"
+            background = FieldGuideTheme.khaki; foreground = FieldGuideTheme.ivory
+        case .notLogged:
+            symbol = "xmark"; label = "Nog niet gelogd"
+            background = FieldGuideTheme.beige; foreground = FieldGuideTheme.charcoal
+        case .unavailable:
+            symbol = "questionmark"; label = "Status onbekend"
+            background = FieldGuideTheme.beige; foreground = FieldGuideTheme.charcoal
         }
-        return Label(label, systemImage: symbol)
-            .font(FieldGuideTheme.sans(12, relativeTo: .caption))
-            .foregroundStyle(FieldGuideTheme.taupe)
-            .fixedSize(horizontal: false, vertical: true)
+        return Image(systemName: symbol)
+            .font(.system(size: 18, weight: .light))
+            .foregroundStyle(foreground)
+            .frame(width: 44, height: 44)
+            .background(background, in: Circle())
             .accessibilityLabel("\(species.dutchName): \(label)")
     }
 

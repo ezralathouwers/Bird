@@ -97,3 +97,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Species logging badge
 
 `git diff --check` and source assertions passed for derived status and all three labels. Added a unit test for unseen → logged and other-species isolation; extended existing reload and corrupt-store tests for logged/unavailable status. XCTest remains unexecuted without Xcode. Check badge wrapping, first-save refresh, restart and VoiceOver on device.
+
+### Icon-only logging badges
+
+`git diff --check` and source checks passed for 44-point circles, eye/X symbols, khaki/beige fills, retained accessible status labels and leading fact alignment. Status derivation is unchanged; no additional logic tests. Native symbol contrast, alignment and long names require Xcode verification.
