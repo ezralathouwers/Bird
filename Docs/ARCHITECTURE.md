@@ -141,3 +141,7 @@ Overview spacing before the strip is now 20 instead of 24 points; spacing below 
 ## Sentence-case names and illustration inset — 16 November 2026
 
 English display names capitalize only the initial character and lowercase the rest (e.g. Common kingfisher and Great spotted woodpecker). Underlying names and search stay unchanged. Species-detail and observation-form name labels share the display property. Carousel artwork gets 6-point vertical inset at both top and bottom inside its existing page area; habitat footer and map markers are unaffected. Wingspan values remain plain cm values, without ca.; the great-spotted-woodpecker example is a generated visual mockup, not a second bundled species.
+
+## Outer navigation icon sizing — 16 November 2026
+
+Only Ontdek (binoculars) and Logboek (bird) decrease from 24 to 21.6 points, exactly 10%. Their full-width/56-point-height tap targets remain unchanged. Identify/session symbols and the raised add button keep their sizes and offsets.

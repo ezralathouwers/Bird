@@ -105,7 +105,7 @@ struct CompanionRootView: View {
     private func navigationItem(_ item: MainSection, symbol: String) -> some View {
         Button { observationNavigation.selection = nil; section = item } label: {
             Image(systemName: symbol)
-                .font(.system(size: 24, weight: .ultraLight))
+                .font(.system(size: item == .discover || item == .list ? 21.6 : 24, weight: .ultraLight))
                 .offset(x: item == .identify ? -6 : (item == .sessions ? 6 : 0))
             .frame(maxWidth: .infinity, minHeight: 56)
             .contentShape(Rectangle())

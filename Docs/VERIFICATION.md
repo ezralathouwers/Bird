@@ -121,3 +121,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Name casing and artwork padding
 
 `git diff --check` and source checks passed for shared English display formatting, existing plain 24–26 cm value and vertical carousel inset. No tests added for this small presentation change. Native font/layout rendering remains unverified without Xcode.
+
+### Outer navigation icon sizing
+
+`git diff --check` and source assertions passed for 21.6-point outer symbols, unchanged 24-point inner symbols and 56-point minimum targets. Visual review still requires Xcode.
