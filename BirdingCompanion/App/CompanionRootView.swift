@@ -89,15 +89,13 @@ struct CompanionRootView: View {
 
     private func navigationItem(_ item: MainSection, symbol: String) -> some View {
         Button { section = item } label: {
-            VStack(spacing: 3) {
-                Image(systemName: symbol).font(.system(size: 20, weight: .ultraLight))
-                Text(item.rawValue.uppercased()).font(FieldGuideTheme.sans(10, relativeTo: .caption2))
-                    .tracking(0.8)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
+            Image(systemName: symbol)
+                .font(.system(size: 24, weight: .ultraLight))
+                .offset(x: item == .identify ? -6 : (item == .sessions ? 6 : 0))
             .frame(maxWidth: .infinity, minHeight: 56)
             .contentShape(Rectangle())
         }
+        .accessibilityLabel(item.rawValue)
         .accessibilityAddTraits(section == item ? [.isSelected] : [])
         .opacity(section == item ? 1 : 0.75)
     }

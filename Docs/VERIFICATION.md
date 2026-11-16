@@ -37,3 +37,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Neutral grey and navigation typography
 
 `git diff --check` passed. Source assertions verify neutral colour channel values, 0.8-point plus strokes, uppercase/tracking and a solid circle without a border. No iOS compilation or rendered UI test was possible. Check fine-line visibility, long IDENTIFICEER caption wrapping and contrast on device.
+
+### Icon-only navigation
+
+`git diff --check` and source assertions passed for 24-point destination symbols, ±6-point offsets, removed caption text and explicit accessibility labels. Native layout, VoiceOver focus and target separation still require Xcode/device checks.

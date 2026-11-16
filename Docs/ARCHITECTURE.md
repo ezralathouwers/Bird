@@ -43,3 +43,7 @@ Logboek now uses the bird SF Symbol. The central add circle grows from 48 to 72 
 ## Neutral grey and navigation typography — 16 November 2026
 
 Primary text and observation-button fill change from brown-grey to neutral warm grey #4B4946; taupe accents change to #6B6864. Beige surfaces and habitat art remain intentional separate colours. The center plus is now an original 0.8-point stroke drawing, replacing the lightest available SF Symbol. Its solid 72-point circle has no border. Navigation captions are uppercase DM Sans with 0.8-point tracking and retain wrapping at small widths/large text sizes.
+
+## Icon-only navigation — 16 November 2026
+
+Removed all visible bottom navigation captions; retained explicit Dutch VoiceOver labels and selected traits. The four destination icons increase from 20 to 24 points. Identificeer moves 6 points left and Sessies 6 points right within their original equal-width button targets; the central plus remains unchanged and centered. Targets retain 56-point minimum height.
