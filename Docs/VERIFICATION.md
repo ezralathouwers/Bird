@@ -81,3 +81,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### Prominent count and larger map gap
 
 `git diff --check` and source assertions passed for 40/14-point count typography, shared 35% opacity, species-tab-only opt-in and 48-point total map spacing. No new logic tests for these display changes. Native text wrapping/contrast and map layout remain to check in Xcode.
+
+### Refined metric and restrained map gap
+
+`git diff --check` and source assertions passed for 60/20-point total type, 12-point vertical padding, retained 35% opacity and 24-point total map gap. Visual verification still requires Xcode; generated images are illustrative and cannot establish exact spacing.

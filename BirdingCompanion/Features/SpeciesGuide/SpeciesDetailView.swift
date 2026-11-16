@@ -25,7 +25,7 @@ struct SpeciesDetailView: View {
                     if tab == .distribution {
                         SpeciesDistributionMap(species: species)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .padding(.top, 32)
+                            .padding(.top, 8)
                     } else {
                         ScrollView {
                             ObservationHistoryView(species: species, embedded: true, showsExport: false, prominentTotal: true)

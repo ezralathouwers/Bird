@@ -20,10 +20,11 @@ struct ObservationHistoryView: View {
                 if prominentTotal {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
                         Text("\(records.count)")
-                            .font(FieldGuideTheme.sans(40, relativeTo: .title3))
+                            .font(FieldGuideTheme.sans(60, relativeTo: .title3))
                         Text(records.count == 1 ? "waarneming" : "waarnemingen")
-                            .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                            .font(FieldGuideTheme.sans(20, relativeTo: .title3))
                     }
+                    .padding(.vertical, 12)
                     .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.35))
                     .accessibilityElement(children: .combine)
                     .accessibilityAddTraits(.isHeader)
