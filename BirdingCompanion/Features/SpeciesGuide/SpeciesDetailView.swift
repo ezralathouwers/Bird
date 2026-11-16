@@ -36,9 +36,9 @@ struct SpeciesDetailView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
-                        KingfisherArtworkCarousel()
-                        SpeciesTabStrip(selection: $tab)
+                    VStack(alignment: .leading, spacing: 0) {
+                        KingfisherArtworkCarousel().padding(.bottom, 20)
+                        SpeciesTabStrip(selection: $tab).padding(.bottom, 28)
                         SpeciesFacts()
                     }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
                 }
@@ -114,11 +114,13 @@ struct SpeciesDetailView: View {
             background = FieldGuideTheme.beige; foreground = FieldGuideTheme.charcoal
         }
         return Group {
-            if status == .notLogged {
-                PupilFreeEye().stroke(style: StrokeStyle(lineWidth: 1, lineCap: .round, lineJoin: .round))
-                    .frame(width: 22, height: 14)
+            if status == .notLogged || status == .logged {
+                ZStack {
+                    PupilFreeEye().stroke(style: StrokeStyle(lineWidth: 0.75, lineCap: .round, lineJoin: .round))
+                    if status == .logged { Circle().frame(width: 5, height: 5) }
+                }.frame(width: 22, height: 14)
             } else {
-                Image(systemName: symbol).font(.system(size: 18, weight: .light))
+                Image(systemName: symbol).font(.system(size: 18, weight: .ultraLight))
             }
         }
             .foregroundStyle(foreground)

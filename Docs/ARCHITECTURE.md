@@ -133,3 +133,7 @@ Copy is written for this app, not reproduced from that source. The wingspan exam
 ## Badge offset and lighter body copy — 16 November 2026
 
 Status and action circles remain tied to the same 44-point diameter token; the generated preview's larger status circle is not an intended size change. Added 6-point top padding to the status badge, increasing its edge gap below the plus from 24 to 30 points. No connecting line exists in the implementation. The habitat paragraph now uses scalable 16-point light DM Sans, with 6 additional points above it (14 points total after wingspan).
+
+## Overview tabstrip micro-spacing — 16 November 2026
+
+Overview spacing before the strip is now 20 instead of 24 points; spacing below is 28 instead of 24. Thus the strip moves up 4 points while the wingspan/facts keep their previous vertical position. Other tabs are untouched. Both log-status eyes now share the original eye-contour shape with a 0.75-point stroke; logged adds a small pupil. Circle sizes and fills remain unchanged.

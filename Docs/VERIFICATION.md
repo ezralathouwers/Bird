@@ -113,3 +113,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Badge offset and body copy
 
 `git diff --check` and source assertions passed for shared diameter, 6-point badge padding, 16-point light paragraph and 6-point additional paragraph margin. Native font-weight rendering and measured circle/spacing appearance remain unverified without Xcode. Generated mockups are not precise render tests.
+
+### Overview tabstrip micro-spacing
+
+`git diff --check` and source assertions passed for 20/28-point overview gaps and shared 0.75-point eye strokes. No new tests for this UI-only change. Exact visual spacing and fine-line visibility remain unverified until Xcode/device review.
