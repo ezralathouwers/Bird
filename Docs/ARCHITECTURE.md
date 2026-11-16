@@ -129,3 +129,7 @@ Not-logged uses an original stroked almond-eye outline with no pupil, replacing 
 Ecological facts were checked against Vogelbescherming Nederland's IJsvogel guide on 16 November 2026:
 https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijsvogel
 Copy is written for this app, not reproduced from that source. The wingspan example still needs independent measurement validation and is labelled accordingly.
+
+## Badge offset and lighter body copy — 16 November 2026
+
+Status and action circles remain tied to the same 44-point diameter token; the generated preview's larger status circle is not an intended size change. Added 6-point top padding to the status badge, increasing its edge gap below the plus from 24 to 30 points. No connecting line exists in the implementation. The habitat paragraph now uses scalable 16-point light DM Sans, with 6 additional points above it (14 points total after wingspan).

@@ -44,8 +44,9 @@ struct SpeciesFacts: View {
             VStack(alignment: .leading, spacing: 8) {
                 ForEach(facts) { fact in factRow(fact) }
                 Text("De ijsvogel leeft langs helder water, bij beken, rivieren en plassen. Vanaf een tak duikt hij naar kleine vissen. Steile oevers bieden plek voor zijn nest.")
-                    .font(FieldGuideTheme.sans(17, relativeTo: .body))
+                    .font(FieldGuideTheme.sans(16, relativeTo: .body).weight(.light))
                     .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, 6)
             }
             Text("Spanwijdte: voorbeeldwaarde · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
         }.frame(maxWidth: .infinity, alignment: .leading)

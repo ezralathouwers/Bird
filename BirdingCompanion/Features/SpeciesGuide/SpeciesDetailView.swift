@@ -87,7 +87,7 @@ struct SpeciesDetailView: View {
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer(minLength: 0)
-                logStatusBadge
+                logStatusBadge.padding(.top, 6)
             }
             Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
                 .fixedSize(horizontal: false, vertical: true)

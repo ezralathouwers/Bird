@@ -109,3 +109,7 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Pupil-free eye and habitat paragraph
 
 `git diff --check` and source assertions passed for the shared 44-point diameter, pupil-free custom shape, removed habitat row and untruncated paragraph. Habitat facts were checked against Vogelbescherming's species guide. This visual change adds no tests; verify eye visibility, equal button sizes, 24-point spacing and paragraph line count in Xcode.
+
+### Badge offset and body copy
+
+`git diff --check` and source assertions passed for shared diameter, 6-point badge padding, 16-point light paragraph and 6-point additional paragraph margin. Native font-weight rendering and measured circle/spacing appearance remain unverified without Xcode. Generated mockups are not precise render tests.
