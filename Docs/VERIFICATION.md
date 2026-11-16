@@ -65,3 +65,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### Location-first history and foreign flags
 
 `git diff --check` and source assertions passed for location-before-date typography and circular foreign-country badge. Added XCTest for Belgian/unknown suppression, foreign flag generation, normalization and country persistence round trip; legacy test asserts missing country remains nil. Tests remain unexecuted without Xcode. Verify flag emoji rendering, country picker, long location wrapping, Dynamic Type, row → map → close, and VoiceOver country announcement.
+
+### History total and map spacing
+
+`git diff --check` and source checks passed for count derived from filtered records, singular/plural display, load-error guard and distribution-only 16-point extra map padding. No new tests for these small display changes; existing species-history logic tests remain unexecuted without Xcode. Check list total updates after save and 32-point map gap in Xcode.

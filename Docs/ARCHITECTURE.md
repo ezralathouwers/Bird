@@ -77,3 +77,7 @@ The observation map now fills behind its top information panel rather than start
 History rows lead with the location in scalable 20-point DM Sans and place date/time underneath in 13-point secondary text. Known countries outside Belgium show a right-aligned circular flag badge using native flag emoji; Belgian and unspecified/invalid countries show none. Country names are descriptive VoiceOver labels. No country is guessed from place names, device region or map center.
 
 Observation now has an optional ISO region code that is absent for older records. The form offers an explicit optional country picker; codes normalize to uppercase. Country values survive local persistence and JSON export. Emoji artwork uses platform rendering; precise circular flag appearance needs device review.
+
+## History total and map breathing room — 16 November 2026
+
+History now starts with the count of matching observation records (not legacy bird quantities), with singular/plural text and zero support. The count derives directly from the same array used for rows, updates with the observable store and is hidden on load failure rather than implying zero. Distribution gains 16 extra points above the map, giving 32 points between the tabstrip and map. Other tabs keep their spacing.

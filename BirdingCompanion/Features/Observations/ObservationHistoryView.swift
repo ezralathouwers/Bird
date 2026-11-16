@@ -15,6 +15,12 @@ struct ObservationHistoryView: View {
         LazyVStack(alignment: .leading, spacing: 16) {
             if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
             let records = store.observations(for: species.id)
+            if store.loadError == nil {
+                Text(records.count == 1 ? "1 waarneming" : "\(records.count) waarnemingen")
+                    .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                    .foregroundStyle(FieldGuideTheme.charcoal)
+                    .accessibilityAddTraits(.isHeader)
+            }
             if records.isEmpty && store.loadError == nil { Text("Nog geen waarnemingen. Voeg er een toe met + op de soortpagina.") }
             ForEach(records) { record in
                 Button { navigation.selection = record } label: {
