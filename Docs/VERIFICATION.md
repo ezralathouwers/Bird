@@ -41,3 +41,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Icon-only navigation
 
 `git diff --check` and source assertions passed for 24-point destination symbols, ±6-point offsets, removed caption text and explicit accessibility labels. Native layout, VoiceOver focus and target separation still require Xcode/device checks.
+
+### Dark navigation surface
+
+`git diff --check` and source assertions passed for shared selectedBeige button fill, dark navigation surface and light destination icons. Native contrast, home-indicator appearance and safe-area rendering remain unverified without Xcode.

@@ -47,3 +47,7 @@ Primary text and observation-button fill change from brown-grey to neutral warm 
 ## Icon-only navigation — 16 November 2026
 
 Removed all visible bottom navigation captions; retained explicit Dutch VoiceOver labels and selected traits. The four destination icons increase from 20 to 24 points. Identificeer moves 6 points left and Sessies 6 points right within their original equal-width button targets; the central plus remains unchanged and centered. Targets retain 56-point minimum height.
+
+## Dark navigation surface — 16 November 2026
+
+Bottom navigation now uses the shared dark neutral charcoal surface, extending beneath the home-indicator safe area, with ivory destination symbols. The raised central observation button uses selectedBeige, the exact same token as the active species-tab pill, with a charcoal hairline plus for contrast. Geometry, borderless circle, raised overlap and icon-only VoiceOver labels are unchanged.
