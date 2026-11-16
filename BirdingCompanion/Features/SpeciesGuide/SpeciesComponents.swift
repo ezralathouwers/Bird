@@ -23,6 +23,7 @@ struct SpeciesTabStrip: View {
                 }
             }.padding(.horizontal, 4)
         }
+        .frame(maxWidth: .infinity)
         .background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 28))
     }
 }
@@ -107,7 +108,6 @@ struct KingfisherArtworkCarousel: View {
                 ForEach(descriptions.indices, id: \.self) { index in
                     ArtworkPlaceholder(hero: true,
                         accessibilityDescription: "Tijdelijke illustratieplaats: \(descriptions[index])")
-                        .padding(.horizontal, 2)
                         .tag(index)
                 }
             }

@@ -21,3 +21,11 @@ Castoro and DM Sans are bundled offline from google/fonts, with their SIL Open F
 Latest user instruction explicitly adds a shallow habitat illustration, superseding the earlier ban on overview habitat art. The decorative 84-point footer is placed in a zero-spacing bottom safe-area inset on the overview, full width above native bottom navigation; it is hidden from VoiceOver. Its real crop, native tab-bar separator and inset behavior await Xcode verification.
 
 Facts icons retain their semantic VoiceOver labels and now scale to 80%, with taupe at 50% opacity over ivory. Distribution is removed from overview facts, retained as its own tab. Habitat copy is shortened to “Rivieren, beken en meren” and gets the whole row; accessibility text sizes still wrap. Tabs use 12-point scalable uppercase DM Sans with 1.1-point tracking; the visible pill is shorter with a darker selected beige. Touch targets remain at least 44 points.
+
+## Bottom navigation and Fraunces revision — 16 November 2026
+
+Replaced the native prototype TabView navigation with a root-level, zero-spacing bottom safe-area inset. Its five equal-width slots are Ontdek, Identificeer, an unlabeled 30-point plus inside a 48-point circle, Sessies, and Lijst. The plus presents the existing observation form for the sole mock species; it is an action, not a selectable tab. Identification and sessions explicitly remain unavailable; Lijst contains history, export and lifelist. The habitat inset on species overview now sits directly above this root navigation inset, outside scrolling content. Bottom home-indicator safety is retained; no fixed device height or spacer positions the navigation.
+
+Heading actions now use top alignment. Artwork and tabstrip share the full parent content width, with the extra artwork inset removed. All detail tabs share one 12-point font and tracking; selection changes background only.
+
+Replaced Castoro with the unmodified original Google Fonts Fraunces variable font and OFL notice. The source font's registered PostScript name is Fraunces-9ptBlack; the SwiftUI title explicitly requests regular weight on that variable font. Actual variable-axis/font rendering needs Mac/iOS verification. DM Sans is unchanged.

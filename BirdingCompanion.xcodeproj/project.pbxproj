@@ -2,11 +2,11 @@
 { archiveVersion = 1; classes = {}; objectVersion = 60; objects = {
 F1C832A1A40AFC87298D6294 = { isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "BirdingCompanion/Resources/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 DD01D50B04A037EC8E83D152 = { isa = PBXBuildFile; fileRef = F1C832A1A40AFC87298D6294; };
-B71778D7FDE9D94C6F77D603 = { isa = PBXFileReference; path = "BirdingCompanion/Resources/Fonts/Castoro.ttf"; sourceTree = SOURCE_ROOT; };
+B71778D7FDE9D94C6F77D603 = { isa = PBXFileReference; path = "BirdingCompanion/Resources/Fonts/Fraunces.ttf"; sourceTree = SOURCE_ROOT; };
 F6FB5BE46AABB3BD56FA91F5 = { isa = PBXBuildFile; fileRef = B71778D7FDE9D94C6F77D603; };
 FB8183E7DC7808B7964F9DE1 = { isa = PBXFileReference; path = "BirdingCompanion/Resources/Fonts/DMSans.ttf"; sourceTree = SOURCE_ROOT; };
 D872456AC7F66AB230255A67 = { isa = PBXBuildFile; fileRef = FB8183E7DC7808B7964F9DE1; };
-7D1F6C2ABF2CD29D0C0F0353 = { isa = PBXFileReference; path = "BirdingCompanion/Resources/Fonts/Castoro-OFL.txt"; sourceTree = SOURCE_ROOT; };
+7D1F6C2ABF2CD29D0C0F0353 = { isa = PBXFileReference; path = "BirdingCompanion/Resources/Fonts/Fraunces-OFL.txt"; sourceTree = SOURCE_ROOT; };
 4068CEF2F6FB4E248B0AEBDF = { isa = PBXBuildFile; fileRef = 7D1F6C2ABF2CD29D0C0F0353; };
 4FE8524813D5792B77C023A3 = { isa = PBXFileReference; path = "BirdingCompanion/Resources/Fonts/DMSans-OFL.txt"; sourceTree = SOURCE_ROOT; };
 EEF3399521878EDE59FF2FE1 = { isa = PBXBuildFile; fileRef = 4FE8524813D5792B77C023A3; };

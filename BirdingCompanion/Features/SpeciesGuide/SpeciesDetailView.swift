@@ -19,7 +19,7 @@ struct SpeciesDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 ViewThatFits(in: .horizontal) {
-                    HStack(alignment: .center, spacing: 12) { heading; Spacer(minLength: 0); actions }
+                    HStack(alignment: .top, spacing: 12) { heading; Spacer(minLength: 0); actions }
                     VStack(alignment: .leading, spacing: 16) { heading; actions }
                 }
                 KingfisherArtworkCarousel()

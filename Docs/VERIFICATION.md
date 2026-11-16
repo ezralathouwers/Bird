@@ -21,3 +21,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Footer refinement
 
 `git diff --check` passed. Python OpenStep resource-membership validation, asset-catalog JSON parsing and Pillow PNG integrity validation passed. UI tests were not run; verify 80% icon sizing, 50%-opacity icon appearance, tab targets and no footer/tab-bar gap or overlap on short screens in Xcode. Habitat line can wrap at large Dynamic Type sizes.
+
+### Bottom navigation and Fraunces revision
+
+`git diff --check` passed. OpenStep parsing and resource-existence assertions passed after font replacement; fontTools confirmed Fraunces-9ptBlack and DMSans-9ptRegular PostScript metadata and plist registration paths. Xcode is still unavailable. Verify root bottom inset/home indicator and habitat adjacency in portrait, landscape and small devices, equal-width navigation slots and plus centering, regular variable-font rendering, and title/button top alignment. Verify that every main destination opens, plus saves to history, and detail tabs retain identical font size across selection states.

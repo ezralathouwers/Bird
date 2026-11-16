@@ -5,7 +5,7 @@ enum FieldGuideTheme {
     static func sans(_ size: CGFloat = 17, relativeTo style: Font.TextStyle = .body) -> Font {
         .custom("DMSans-9ptRegular", size: size, relativeTo: style)
     }
-    static let speciesTitle = Font.custom("Castoro-Regular", size: 34, relativeTo: .largeTitle)
+    static let speciesTitle = Font.custom("Fraunces-9ptBlack", size: 34, relativeTo: .largeTitle).weight(.regular)
     static let ivory = Color(red: 0.96, green: 0.95, blue: 0.92)
     static let beige = Color(red: 0.89, green: 0.86, blue: 0.82)
     static let selectedBeige = Color(red: 0.83, green: 0.79, blue: 0.73)
