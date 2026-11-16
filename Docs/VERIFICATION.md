@@ -57,3 +57,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Observation location detail
 
 Added two XCTest methods: legacy decoding/preservation without coordinates, and coordinate validation/round trip (including partial, out-of-range and NaN rejection). Tests were not executed: no Swift/Xcode toolchain. `git diff --check`, source assertions and OpenStep source-membership checks passed. In Xcode verify row → full map → close returns to the same list/tab/scroll; 30%-overlapping close target; date/edit strip; picker tap/save/relaunch; no-coordinate and offline messages; circular illustration/fallback marker; legacy metadata retained on edit. No personal observations or coordinates were added to source control.
+
+### Floating observation information
+
+`git diff --check` and source checks passed: map-root layout, top overlay with 16-point margins, species/date/location order and missing-location fallback. This UI-only refinement has no new logic tests. In Xcode check full-map drawing behind the panel, long names and Dynamic Type, edit tap target, and clear marker placement. Native compilation remains unverified.

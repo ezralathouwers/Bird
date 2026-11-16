@@ -23,44 +23,57 @@ struct ObservationMapView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 12) {
-                Text(current.observedAt.formatted(date: .abbreviated, time: .shortened))
-                    .font(FieldGuideTheme.sans())
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .fixedSize(horizontal: false, vertical: true)
-                Button { editing = true } label: {
-                    Image(systemName: "pencil").frame(width: 44, height: 44)
-                }.accessibilityLabel("Bewerk datum of locatie")
+        Map(position: $camera) {
+            if let coordinate {
+                Annotation(species.dutchName, coordinate: coordinate) {
+                    SpeciesObservationMarker(species: species)
+                }.annotationTitles(.hidden)
             }
-            .padding(.horizontal, 20).padding(.vertical, 4)
-            .background(FieldGuideTheme.ivory)
-            Map(position: $camera) {
-                if let coordinate {
-                    Annotation(species.dutchName, coordinate: coordinate) {
-                        SpeciesObservationMarker(species: species)
-                    }.annotationTitles(.hidden)
-                }
-            }
-            .mapStyle(.standard(pointsOfInterest: .excludingAll))
-            .mapControls { MapCompass(); MapScaleView() }
-            .overlay(alignment: .top) {
+        }
+        .mapStyle(.standard(pointsOfInterest: .excludingAll))
+        .mapControlVisibility(.hidden)
+        .accessibilityLabel("Locatie van je waarneming van \(species.dutchName)")
+        .overlay(alignment: .top) {
+            VStack(spacing: 12) {
+                observationInfo
                 if coordinate == nil || connectivity.isOffline {
                     Text(coordinate == nil
                          ? "Bij deze waarneming is geen kaartlocatie opgeslagen. Voeg een plek toe via Bewerken."
                          : "Offline: de basiskaart is mogelijk onvolledig. Je opgeslagen waarnemingsplek blijft beschikbaar.")
                         .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
-                        .padding(12).background(FieldGuideTheme.ivory, in: RoundedRectangle(cornerRadius: 12))
-                        .padding(16)
+                        .padding(12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(FieldGuideTheme.ivory, in: RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .accessibilityLabel("Locatie van je waarneming van \(species.dutchName)")
+            .padding(16)
         }
-        .background(FieldGuideTheme.ivory)
         .sheet(isPresented: $editing) { ObservationForm(species: species, observation: current) }
         .onAppear { centerMap() }
         .onChange(of: current.latitude) { _, _ in centerMap() }
         .onChange(of: current.longitude) { _, _ in centerMap() }
+    }
+
+    private var observationInfo: some View {
+        HStack(alignment: .top, spacing: 12) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(species.dutchName)
+                    .font(.custom("Fraunces-9ptBlack", size: 22, relativeTo: .title2).weight(.regular))
+                Text(current.observedAt.formatted(date: .abbreviated, time: .shortened))
+                    .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
+                Label(current.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                      ? "Geen locatie opgegeven" : current.locationName, systemImage: "mappin")
+                    .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
+            }
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Button { editing = true } label: {
+                Image(systemName: "pencil").frame(width: 44, height: 44)
+            }.accessibilityLabel("Bewerk datum of locatie")
+        }
+        .foregroundStyle(FieldGuideTheme.charcoal)
+        .padding(16)
+        .background(FieldGuideTheme.ivory, in: RoundedRectangle(cornerRadius: 16))
     }
 
     private func centerMap() {
