@@ -29,3 +29,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Header and text refinement
 
 `git diff --check` passed. Source checks confirm English-before-Dutch heading order, toolbar-based action placement, Logboek copy and ultra-light navigation symbols. This is a reversible UI-only change; no new logic tests were added. Native compilation remains unverified. Test toolbar fit on 320-point screens, back navigation, VoiceOver order and long Dutch names at accessibility text sizes in Xcode.
+
+### Raised observation button
+
+`git diff --check` and source assertions passed: 72-point diameter is 1.5×48, 45-point glyph is 1.5×30, overlap is 0.30×72 = 21.6 points; Logboek uses bird, both toolbar groups shift down 4 points. No new logic tests for this UI-only change. In Xcode verify bottom inset layout, habitat overlap, top portion of circle hit testing, 320-point navigation spacing, and toolbar touch targets. No native build was run.

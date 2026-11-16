@@ -9,13 +9,15 @@ struct CompanionRootView: View {
     @State private var section: MainSection = .discover
     @State private var speciesPath = ["kingfisher"]
     @State private var showObservation = false
+    private let addButtonDiameter: CGFloat = 72
+    private var addButtonOverlap: CGFloat { addButtonDiameter * 0.30 }
     private let species = MockSpeciesRepository.kingfisher
 
     var body: some View {
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(FieldGuideTheme.ivory)
-            .safeAreaInset(edge: .bottom, spacing: 0) { bottomNavigation }
+            .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
             .sheet(isPresented: $showObservation) { ObservationForm(species: species) }
     }
 
@@ -54,26 +56,35 @@ struct CompanionRootView: View {
     }
 
     private var bottomNavigation: some View {
-        HStack(alignment: .center, spacing: 0) {
-            navigationItem(.discover, symbol: "binoculars")
-            navigationItem(.identify, symbol: "viewfinder")
+        VStack(spacing: 0) {
+            // Negative inset spacing lets habitat extend behind this reserved hit area.
+            Color.clear.frame(height: addButtonOverlap).allowsHitTesting(false)
+            HStack(alignment: .center, spacing: 0) {
+                navigationItem(.discover, symbol: "binoculars")
+                navigationItem(.identify, symbol: "viewfinder")
+                Color.clear.frame(maxWidth: .infinity, minHeight: 56)
+                    .allowsHitTesting(false)
+                navigationItem(.sessions, symbol: "clock")
+                navigationItem(.list, symbol: "bird")
+            }
+            .foregroundStyle(FieldGuideTheme.taupe)
+            .padding(.top, 4)
+            .background(FieldGuideTheme.ivory.ignoresSafeArea(edges: .bottom))
+            .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.beige).frame(height: 0.5) }
+        }
+        .overlay(alignment: .top) {
             Button { showObservation = true } label: {
                 Image(systemName: "plus")
-                    .font(.system(size: 30, weight: .ultraLight))
-                    .frame(width: 48, height: 48)
-                    .background(Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.5))
-                    .frame(maxWidth: .infinity, minHeight: 56)
-                    .contentShape(Rectangle())
+                    .font(.system(size: 45, weight: .ultraLight))
+                    .foregroundStyle(FieldGuideTheme.ivory)
+                    .frame(width: addButtonDiameter, height: addButtonDiameter)
+                    .background(FieldGuideTheme.charcoal, in: Circle())
+                    .contentShape(Circle())
             }
+            .buttonStyle(.plain)
             .accessibilityLabel("Voeg een waarneming toe")
             .accessibilityHint("Opent het formulier voor de huidige voorbeeldsoort, ijsvogel")
-            navigationItem(.sessions, symbol: "clock")
-            navigationItem(.list, symbol: "list.bullet")
         }
-        .foregroundStyle(FieldGuideTheme.taupe)
-        .padding(.top, 4)
-        .background(FieldGuideTheme.ivory.ignoresSafeArea(edges: .bottom))
-        .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.beige).frame(height: 0.5) }
     }
 
     private func navigationItem(_ item: MainSection, symbol: String) -> some View {

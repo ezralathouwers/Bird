@@ -40,8 +40,9 @@ struct SpeciesDetailView: View {
                         .frame(width: 44, height: 44)
                 }
                 .accessibilityLabel("Terug naar Ontdek")
+                .offset(y: 4)
             }
-            ToolbarItem(placement: .topBarTrailing) { actions }
+            ToolbarItem(placement: .topBarTrailing) { actions.offset(y: 4) }
         }
         .toolbarBackground(FieldGuideTheme.ivory, for: .navigationBar)
         .sheet(isPresented: $showObservation) { ObservationForm(species: species) }

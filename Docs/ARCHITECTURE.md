@@ -35,3 +35,7 @@ Replaced Castoro with the unmodified original Google Fonts Fraunces variable fon
 Species actions move into the trailing native navigation toolbar, aligned on the same row as an explicit leading back button. Back dismisses to Ontdek. The heading is now English DM Sans first, Dutch Fraunces second, with the full content width available and wrapping retained. The three toolbar actions retain 44-point targets.
 
 App-owned primary text uses dark brown-grey #4F453D, including a tinted secondary-copy variant. System-managed Safari/alerts retain platform styling. Main navigation uses ultra-light SF Symbol strokes and a 0.5-point center-plus circle. Lijst is renamed Logboek in the item, destination heading and help copy.
+
+## Raised observation button — 16 November 2026
+
+Logboek now uses the bird SF Symbol. The central add circle grows from 48 to 72 points (50%) and its glyph from 30 to 45 points; dark text-colour fill with ivory glyph. A reserved 21.6-point top region and matching negative safe-area-inset spacing expose exactly 30% of its diameter above the navigation separator, over the habitat. The entire circle stays inside the navigation container's bounds for hit testing, with no clipped/offset button target. The five slots remain equally distributed; the add action is an overlay at the exact horizontal center. Toolbar back and actions receive the same 4-point downward offset.
