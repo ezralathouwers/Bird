@@ -15,3 +15,9 @@ No licensed media was bundled. The in-chat screenshot guides the artwork layout.
 The latest explicit user direction supersedes the earlier five-tab/four-simultaneous-views specification: three detail tabs (Overzicht, Verspreiding, Waarnemingen), lighter beige, light action-icon strokes, no centered species-page navigation title, and one illustration per swipeable page with four accessible dot buttons. The back action remains native. Length uses horizontal arrows; wingspan uses an original outlined spread-wing drawing.
 
 Castoro and DM Sans are bundled offline from google/fonts, with their SIL Open Font License files alongside. Original variable fonts are unmodified. PostScript names were inspected with fontTools: Castoro-Regular and DMSans-9ptRegular. UIAppFonts and resource build membership register both fonts. SwiftUI custom fonts scale relative to text styles. Native navigation/tab-bar chrome may retain platform fonts; font registration, rendering and any SwiftUI paging/bottom-tab interaction still require Xcode/device verification.
+
+## Footer refinement — 16 November 2026
+
+Latest user instruction explicitly adds a shallow habitat illustration, superseding the earlier ban on overview habitat art. The decorative 84-point footer is placed in a zero-spacing bottom safe-area inset on the overview, full width above native bottom navigation; it is hidden from VoiceOver. Its real crop, native tab-bar separator and inset behavior await Xcode verification.
+
+Facts icons retain their semantic VoiceOver labels and now scale to 80%, with taupe at 50% opacity over ivory. Distribution is removed from overview facts, retained as its own tab. Habitat copy is shortened to “Rivieren, beken en meren” and gets the whole row; accessibility text sizes still wrap. Tabs use 12-point scalable uppercase DM Sans with 1.1-point tracking; the visible pill is shorter with a darker selected beige. Touch targets remain at least 44 points.

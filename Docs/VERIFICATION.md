@@ -17,3 +17,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Design revision
 
 `git diff --check` passed after the requested design revisions. Font metadata was inspected using fontTools; both original variable fonts and OFL notices are present. Python plist/OpenStep checks validated UIAppFonts, actual bundled resource files, and app resource memberships. These checks do not establish that iOS registered the custom fonts or rendered the carousel correctly. Native compilation remains unverified.
+
+### Footer refinement
+
+`git diff --check` passed. Python OpenStep resource-membership validation, asset-catalog JSON parsing and Pillow PNG integrity validation passed. UI tests were not run; verify 80% icon sizing, 50%-opacity icon appearance, tab targets and no footer/tab-bar gap or overlap on short screens in Xcode. Habitat line can wrap at large Dynamic Type sizes.

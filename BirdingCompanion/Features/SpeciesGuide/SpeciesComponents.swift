@@ -12,13 +12,16 @@ struct SpeciesTabStrip: View {
             HStack(spacing: 4) {
                 ForEach(SpeciesTab.allCases, id: \.self) { tab in
                     Button { selection = tab } label: {
-                        Text(tab.rawValue).font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
-                            .padding(.horizontal, 12).frame(minHeight: 44)
-                            .background(selection == tab ? FieldGuideTheme.ivory : .clear, in: Capsule())
+                        Text(tab.rawValue.uppercased()).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                            .tracking(1.1)
+                            .padding(.horizontal, 12).padding(.vertical, 7)
+                            .background(selection == tab ? FieldGuideTheme.selectedBeige : .clear, in: Capsule())
+                            .frame(minHeight: 44)
+                            .contentShape(Rectangle())
                     }
                     .accessibilityAddTraits(selection == tab ? [.isSelected] : [])
                 }
-            }.padding(5)
+            }.padding(.horizontal, 4)
         }
         .background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 28))
     }
@@ -36,8 +39,7 @@ struct SpeciesFacts: View {
         SpeciesFact(id: "Lengte", symbol: "arrow.left.and.right", value: "16–17 cm"),
         SpeciesFact(id: "Gewicht", symbol: "scalemass", value: "26–46 g"),
         SpeciesFact(id: "Spanwijdte", symbol: "spread-wings", value: "24–26 cm"),
-        SpeciesFact(id: "Leefgebied", symbol: "water.waves", value: "Rivieren, beken, meren en waterrijke gebieden"),
-        SpeciesFact(id: "Verspreiding", symbol: "globe.europe.africa", value: "Europa, Azië, Afrika")
+        SpeciesFact(id: "Leefgebied", symbol: "water.waves", value: "Rivieren, beken en meren")
     ]
     @Environment(\.dynamicTypeSize) private var typeSize
     var body: some View {
@@ -53,14 +55,7 @@ struct SpeciesFacts: View {
                         ForEach(Array(facts.prefix(3))) { fact in factRow(fact) }
                     }
                 }
-                ViewThatFits(in: .horizontal) {
-                    HStack(alignment: .top, spacing: 24) {
-                        ForEach(Array(facts.suffix(2))) { fact in factRow(fact) }
-                    }
-                    VStack(alignment: .leading, spacing: 16) {
-                        ForEach(Array(facts.suffix(2))) { fact in factRow(fact) }
-                    }
-                }
+                if let habitat = facts.last { factRow(habitat) }
             }
             Text("Voorbeeldgegevens · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(.secondary)
         }.frame(maxWidth: .infinity, alignment: .leading)
@@ -74,7 +69,7 @@ struct SpeciesFacts: View {
                 } else {
                     Image(systemName: fact.symbol).font(.system(.body, weight: .regular))
                 }
-            }.foregroundStyle(FieldGuideTheme.taupe).frame(width: 24)
+            }.scaleEffect(0.8).foregroundStyle(FieldGuideTheme.taupe.opacity(0.5)).frame(width: 24)
             Text(fact.value).font(FieldGuideTheme.sans(17, relativeTo: .body)).fixedSize(horizontal: false, vertical: true)
         }
         .accessibilityElement(children: .ignore)
@@ -145,5 +140,16 @@ struct ArtworkPlaceholder: View {
                 }.foregroundStyle(FieldGuideTheme.taupe)
             }
             .accessibilityLabel(accessibilityDescription)
+    }
+}
+
+struct HabitatFooter: View {
+    var body: some View {
+        Image("KingfisherHabitat")
+            .resizable()
+            .scaledToFill()
+            .frame(height: 84, alignment: .bottom)
+            .clipped()
+            .accessibilityHidden(true)
     }
 }

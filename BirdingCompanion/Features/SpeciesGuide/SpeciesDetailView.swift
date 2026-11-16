@@ -27,6 +27,9 @@ struct SpeciesDetailView: View {
                 tabContent
             }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
         }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            if tab == .overview { HabitatFooter() }
+        }
         .background(FieldGuideTheme.ivory)
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
