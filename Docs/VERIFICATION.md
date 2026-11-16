@@ -33,3 +33,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Raised observation button
 
 `git diff --check` and source assertions passed: 72-point diameter is 1.5×48, 45-point glyph is 1.5×30, overlap is 0.30×72 = 21.6 points; Logboek uses bird, both toolbar groups shift down 4 points. No new logic tests for this UI-only change. In Xcode verify bottom inset layout, habitat overlap, top portion of circle hit testing, 320-point navigation spacing, and toolbar touch targets. No native build was run.
+
+### Neutral grey and navigation typography
+
+`git diff --check` passed. Source assertions verify neutral colour channel values, 0.8-point plus strokes, uppercase/tracking and a solid circle without a border. No iOS compilation or rendered UI test was possible. Check fine-line visibility, long IDENTIFICEER caption wrapping and contrast on device.

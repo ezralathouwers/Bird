@@ -39,3 +39,7 @@ App-owned primary text uses dark brown-grey #4F453D, including a tinted secondar
 ## Raised observation button — 16 November 2026
 
 Logboek now uses the bird SF Symbol. The central add circle grows from 48 to 72 points (50%) and its glyph from 30 to 45 points; dark text-colour fill with ivory glyph. A reserved 21.6-point top region and matching negative safe-area-inset spacing expose exactly 30% of its diameter above the navigation separator, over the habitat. The entire circle stays inside the navigation container's bounds for hit testing, with no clipped/offset button target. The five slots remain equally distributed; the add action is an overlay at the exact horizontal center. Toolbar back and actions receive the same 4-point downward offset.
+
+## Neutral grey and navigation typography — 16 November 2026
+
+Primary text and observation-button fill change from brown-grey to neutral warm grey #4B4946; taupe accents change to #6B6864. Beige surfaces and habitat art remain intentional separate colours. The center plus is now an original 0.8-point stroke drawing, replacing the lightest available SF Symbol. Its solid 72-point circle has no border. Navigation captions are uppercase DM Sans with 0.8-point tracking and retain wrapping at small widths/large text sizes.

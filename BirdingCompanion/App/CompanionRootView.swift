@@ -74,9 +74,9 @@ struct CompanionRootView: View {
         }
         .overlay(alignment: .top) {
             Button { showObservation = true } label: {
-                Image(systemName: "plus")
-                    .font(.system(size: 45, weight: .ultraLight))
-                    .foregroundStyle(FieldGuideTheme.ivory)
+                FinePlusMark()
+                    .stroke(FieldGuideTheme.ivory, style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
+                    .frame(width: 45, height: 45)
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
                     .background(FieldGuideTheme.charcoal, in: Circle())
                     .contentShape(Circle())
@@ -91,7 +91,8 @@ struct CompanionRootView: View {
         Button { section = item } label: {
             VStack(spacing: 3) {
                 Image(systemName: symbol).font(.system(size: 20, weight: .ultraLight))
-                Text(item.rawValue).font(FieldGuideTheme.sans(10, relativeTo: .caption2))
+                Text(item.rawValue.uppercased()).font(FieldGuideTheme.sans(10, relativeTo: .caption2))
+                    .tracking(0.8)
                     .fixedSize(horizontal: false, vertical: true)
             }
             .frame(maxWidth: .infinity, minHeight: 56)
@@ -99,5 +100,17 @@ struct CompanionRootView: View {
         }
         .accessibilityAddTraits(section == item ? [.isSelected] : [])
         .opacity(section == item ? 1 : 0.75)
+    }
+}
+
+// Explicit hairline glyph: the circle behind this mark intentionally has no stroke.
+private struct FinePlusMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+        return path
     }
 }
