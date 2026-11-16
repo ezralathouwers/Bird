@@ -24,7 +24,9 @@ struct ObservationForm: View {
                     selectedBird
                     VStack(spacing: 12) {
                         DatePicker("Datum", selection: $observedAt, displayedComponents: .date)
+                            .labelsHidden().accessibilityLabel("Datum")
                         DatePicker("Tijd", selection: $observedAt, displayedComponents: .hourAndMinute)
+                            .labelsHidden().accessibilityLabel("Tijd")
                     }
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Locatie").font(FieldGuideTheme.sans(20, relativeTo: .title3))
@@ -50,9 +52,6 @@ struct ObservationForm: View {
                             Label("Gebruik huidige locatie", systemImage: "location")
                                 .frame(minHeight: 44)
                         }.disabled(location.isLocating)
-                        Text("Tik op de kaart om de plek te wijzigen. Je kunt de voorgestelde naam aanpassen.")
-                            .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                            .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
                     }
                     if let errorMessage { Text(errorMessage).foregroundStyle(.red) }
                 }.padding(20)
@@ -69,16 +68,24 @@ struct ObservationForm: View {
                 .opacity(store.loadError != nil || !location.canSave ? 0.4 : 1)
                 .padding(20).background(FieldGuideTheme.ivory)
             }
-            .navigationTitle(original == nil ? "Waarneming toevoegen" : "Waarneming bewerken")
+            .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
+                ToolbarItem(placement: .principal) {
+                    Text(original == nil ? "Waarneming toevoegen" : "Waarneming bewerken")
+                        .font(FieldGuideTheme.sans())
+                        .foregroundStyle(FieldGuideTheme.charcoal)
+                        .offset(y: 4)
+                }
+                ToolbarItem(placement: .topBarLeading) {
                     Button { dismiss() } label: {
                         Image(systemName: "chevron.left").font(.system(size: 22, weight: .light))
                             .frame(width: 44, height: 44)
                     }.accessibilityLabel("Terug zonder opslaan")
+                        .offset(y: 4)
                 }
             }
+            .toolbarBackground(FieldGuideTheme.ivory, for: .navigationBar)
             .task { if original == nil { location.useCurrentLocation() } }
             .onDisappear { location.stop() }
         }

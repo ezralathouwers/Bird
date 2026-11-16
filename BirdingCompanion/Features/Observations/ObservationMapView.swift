@@ -48,7 +48,7 @@ struct ObservationMapView: View {
             }
             .padding(16)
         }
-        .sheet(isPresented: $editing) { ObservationForm(species: species, observation: current) }
+        .fullScreenCover(isPresented: $editing) { ObservationForm(species: species, observation: current) }
         .onAppear { centerMap() }
         .onChange(of: current.latitude) { _, _ in centerMap() }
         .onChange(of: current.longitude) { _, _ in centerMap() }

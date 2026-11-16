@@ -89,3 +89,7 @@ Added two XCTest methods: legacy decoding/preservation without coordinates, and 
 ### Redesigned observation form
 
 Added four XCTest methods covering place-name priority, required coordinates/name and automatic country, manual-name/latest-selection protection, and offline manual fallback. These were not executed without Xcode. `git diff --check`, project source-membership checks and plist permission-description validation passed. Xcode/device checks required: allow/deny/approximate location, current fix and map recentering, real reverse geocoding, changing map/name/country, separate date/time fields, no location-removal action, bottom save with keyboard and Dynamic Type, legacy notes preserved, offline save and cancellation. Primary species artwork is still a placeholder.
+
+### Form header and simplified date fields
+
+`git diff --check` and source assertions passed for both 4-point toolbar offsets, hidden date/time labels with accessibility names, removed helper paragraph and full-screen form entry points. No new logic tests for this display refinement. Compare actual toolbar coordinates across screens in Xcode, including status-bar safe area and Dynamic Type; exact rendered alignment is unverified.

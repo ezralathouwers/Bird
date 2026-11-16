@@ -28,7 +28,7 @@ struct CompanionRootView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(FieldGuideTheme.ivory)
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
-            .sheet(isPresented: $showObservation) { ObservationForm(species: species) }
+            .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
     }
 
     @ViewBuilder private var content: some View {

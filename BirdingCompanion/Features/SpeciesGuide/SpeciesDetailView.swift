@@ -66,7 +66,7 @@ struct SpeciesDetailView: View {
             ToolbarItem(placement: .topBarTrailing) { actions.offset(y: 4) }
         }
         .toolbarBackground(FieldGuideTheme.ivory, for: .navigationBar)
-        .sheet(isPresented: $showObservation) { ObservationForm(species: species) }
+        .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
         .sheet(isPresented: $showImages) {
             NavigationStack {
                 SafariSearchView(url: searchURL).ignoresSafeArea(edges: .bottom)
