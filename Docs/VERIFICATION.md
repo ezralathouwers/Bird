@@ -53,3 +53,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Species history tab
 
 `git diff --check` and source assertions passed for compact non-overview layout, scrollable lazy history, species filtering and date/location rows. Added XCTest covering mixed-species filtering, newest-first ordering, retained uncertain records and empty results. XCTest remains unexecuted without Xcode. Verify fixed tabs while history scrolls, long location wrapping, edit sheet refresh, empty history and switching back to overview on device.
+
+### Observation location detail
+
+Added two XCTest methods: legacy decoding/preservation without coordinates, and coordinate validation/round trip (including partial, out-of-range and NaN rejection). Tests were not executed: no Swift/Xcode toolchain. `git diff --check`, source assertions and OpenStep source-membership checks passed. In Xcode verify row → full map → close returns to the same list/tab/scroll; 30%-overlapping close target; date/edit strip; picker tap/save/relaunch; no-coordinate and offline messages; circular illustration/fallback marker; legacy metadata retained on edit. No personal observations or coordinates were added to source control.

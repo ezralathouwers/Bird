@@ -6,6 +6,7 @@ private enum MainSection: String {
 
 struct CompanionRootView: View {
     @EnvironmentObject private var store: ObservationStore
+    @StateObject private var observationNavigation = ObservationNavigation()
     @State private var section: MainSection = .discover
     @State private var speciesPath = ["kingfisher"]
     @State private var showObservation = false
@@ -14,7 +15,16 @@ struct CompanionRootView: View {
     private let species = MockSpeciesRepository.kingfisher
 
     var body: some View {
-        content
+        ZStack {
+            content
+                .opacity(observationNavigation.selection == nil ? 1 : 0)
+                .allowsHitTesting(observationNavigation.selection == nil)
+                .accessibilityHidden(observationNavigation.selection != nil)
+            if let observation = observationNavigation.selection {
+                ObservationMapView(observation: observation, species: species)
+            }
+        }
+            .environmentObject(observationNavigation)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(FieldGuideTheme.ivory)
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
@@ -73,22 +83,27 @@ struct CompanionRootView: View {
             .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.charcoal).frame(height: 0.5) }
         }
         .overlay(alignment: .top) {
-            Button { showObservation = true } label: {
+            Button {
+                if observationNavigation.selection != nil { observationNavigation.selection = nil }
+                else { showObservation = true }
+            } label: {
                 FinePlusMark()
-                    .stroke(FieldGuideTheme.ivory, style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
+                    .stroke(observationNavigation.selection == nil ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal,
+                            style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
+                    .rotationEffect(.degrees(observationNavigation.selection == nil ? 0 : 45))
                     .frame(width: 45, height: 45)
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
-                    .background(FieldGuideTheme.charcoal, in: Circle())
+                    .background(observationNavigation.selection == nil ? FieldGuideTheme.charcoal : FieldGuideTheme.selectedBeige, in: Circle())
                     .contentShape(Circle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Voeg een waarneming toe")
-            .accessibilityHint("Opent het formulier voor de huidige voorbeeldsoort, ijsvogel")
+            .accessibilityLabel(observationNavigation.selection == nil ? "Voeg een waarneming toe" : "Sluit waarneming")
+            .accessibilityHint(observationNavigation.selection == nil ? "Opent het formulier voor de huidige voorbeeldsoort, ijsvogel" : "Terug naar het overzicht van waarnemingen")
         }
     }
 
     private func navigationItem(_ item: MainSection, symbol: String) -> some View {
-        Button { section = item } label: {
+        Button { observationNavigation.selection = nil; section = item } label: {
             Image(systemName: symbol)
                 .font(.system(size: 24, weight: .ultraLight))
                 .offset(x: item == .identify ? -6 : (item == .sessions ? 6 : 0))

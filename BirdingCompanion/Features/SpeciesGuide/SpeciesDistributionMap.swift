@@ -56,7 +56,7 @@ struct BundledSpeciesRangeRepository: SpeciesRangeRepository {
 }
 
 @MainActor
-private final class MapConnectivity: ObservableObject {
+final class MapConnectivity: ObservableObject {
     @Published private(set) var isOffline = false
     private let monitor = NWPathMonitor()
     init() {

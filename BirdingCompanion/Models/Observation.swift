@@ -16,10 +16,21 @@ struct Observation: Identifiable, Codable, Equatable, Sendable {
     var status: IdentificationStatus
     var isCaptive = false
     var source = "personal-manual"
+    var latitude: Double? = nil
+    var longitude: Double? = nil
 
     func validate() throws {
         guard !speciesID.isEmpty, !taxonomyVersion.isEmpty, count > 0 else {
             throw ObservationError.invalidRecord
+        }
+        switch (latitude, longitude) {
+        case (nil, nil): break
+        case let (.some(latitude), .some(longitude)):
+            guard latitude.isFinite, longitude.isFinite,
+                  (-90...90).contains(latitude), (-180...180).contains(longitude) else {
+                throw ObservationError.invalidRecord
+            }
+        default: throw ObservationError.invalidRecord
         }
     }
 }

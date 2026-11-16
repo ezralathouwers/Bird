@@ -6,7 +6,7 @@ struct ObservationHistoryView: View {
     var embedded = false
     var showsExport = true
     @EnvironmentObject private var store: ObservationStore
-    @State private var editing: Observation?
+    @EnvironmentObject private var navigation: ObservationNavigation
     @State private var exporting = false
     @State private var exportDocument = ObservationExport(data: Data())
     @State private var errorMessage: String?
@@ -17,16 +17,14 @@ struct ObservationHistoryView: View {
             let records = store.observations(for: species.id)
             if records.isEmpty && store.loadError == nil { Text("Nog geen waarnemingen. Voeg er een toe met + op de soortpagina.") }
             ForEach(records) { record in
-                Button { editing = record } label: {
+                Button { navigation.selection = record } label: {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(record.observedAt.formatted(date: .abbreviated, time: .shortened))
                         Label(record.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                               ? "Geen locatie opgegeven" : record.locationName, systemImage: "mappin")
                             .fixedSize(horizontal: false, vertical: true)
-                        Text("Aantal: \(record.count)").font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                        Text(record.status == .confirmed ? "Bevestigd" : "Onzeker").font(FieldGuideTheme.sans(12, relativeTo: .caption))
                     }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
-                }.accessibilityHint("Bewerk deze waarneming")
+                }.accessibilityHint("Open de kaart van deze waarneming")
             }
             if showsExport {
                 Button("Exporteer alle waarnemingen (JSON)") {
@@ -38,7 +36,6 @@ struct ObservationHistoryView: View {
         }
         .padding(embedded ? 0 : 20)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .sheet(item: $editing) { record in ObservationForm(species: species, observation: record) }
         .fileExporter(isPresented: $exporting, document: exportDocument, contentType: .json,
                       defaultFilename: "birding-waarnemingen") { result in
             if case .failure(let error) = result { errorMessage = error.localizedDescription }

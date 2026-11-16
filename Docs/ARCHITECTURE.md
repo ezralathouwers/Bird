@@ -59,3 +59,11 @@ White bottom navigation with dark symbols; raised add button uses dark text toke
 ## Species observation history tab — 16 November 2026
 
 Waarnemingen now shares the compact fixed heading/tabstrip layout with Verspreiding. Only its history scrolls, with lazy rows showing date/time, location (or explicit missing-location text), count and confirmation state. Artwork, page dots and habitat footer are overview-only. Rows still open editing; changes update the observable store. All records for this stable species ID appear, including uncertain/captive entries; newest observations sort first, UUID breaks date ties. All-observation export stays in Logboek and is hidden from this species-specific view.
+
+## Observation location detail — 16 November 2026
+
+Removed count and status controls/labels from logging and history. Legacy fields remain in storage/export so older records are preserved: editing leaves their values intact; new explicit personal logs use the legacy defaults (count 1, confirmed, non-captive) without asking users to enter them. This also preserves existing lifelist behavior. These defaults are compatibility metadata, not a user-entered bird count.
+
+Observation gains optional latitude/longitude; old JSON decodes without them, and validation requires either both absent or a finite, geographically valid pair. An optional map picker in the observation form records coordinates by user tap, without GPS permission or implicit geocoding. Name-only locations do not fabricate coordinates. Existing records can acquire a point via the map detail's edit button.
+
+History row taps select a root-level observation overlay. The underlying guide/history stays mounted, preserving selected tab and scroll state. The overlay replaces species UI with an ivory date/time strip and full-space interactive map, retaining the root navigation. The central raised button becomes a light-beige close button with a fine dark X, restoring the previous list; choosing another navigation destination closes the overlay as well. The map marker is circular and uses the approved `<speciesID>-primary` image if available, otherwise an explicit generic bird placeholder because no primary illustration was supplied. Map tile offline limitations are shown via shared connectivity state. Editing remains available from the date strip.

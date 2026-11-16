@@ -29,6 +29,35 @@ final class Phase1Tests: XCTestCase {
         XCTAssertTrue(store.observations(for: "unseen-species").isEmpty)
     }
 
+    func testLegacyObservationDecodesWithoutCoordinates() throws {
+        let old = record(status: .uncertain, captive: true)
+        let data = try JSONEncoder().encode(old)
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        json.removeValue(forKey: "latitude")
+        json.removeValue(forKey: "longitude")
+        let restored = try JSONDecoder().decode(Observation.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertNil(restored.latitude)
+        XCTAssertNil(restored.longitude)
+        XCTAssertEqual(restored.status, .uncertain)
+        XCTAssertTrue(restored.isCaptive)
+        XCTAssertEqual(restored.count, old.count)
+    }
+
+    func testCoordinatesValidateAndRoundTrip() throws {
+        var observation = record()
+        observation.latitude = 0.5
+        observation.longitude = 1.5
+        try observation.validate()
+        XCTAssertEqual(try JSONDecoder().decode(Observation.self, from: JSONEncoder().encode(observation)), observation)
+        observation.longitude = nil
+        XCTAssertThrowsError(try observation.validate())
+        observation.longitude = 181
+        XCTAssertThrowsError(try observation.validate())
+        observation.longitude = 1.5
+        observation.latitude = .nan
+        XCTAssertThrowsError(try observation.validate())
+    }
+
     func testSearchByDutchEnglishAndScientificName() {
         let repository = MockSpeciesRepository()
         for query in ["ijsvogel", "KINGFISHER", "Alcedo", " ijsvogel "] {

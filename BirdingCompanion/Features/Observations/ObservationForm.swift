@@ -1,4 +1,5 @@
 import SwiftUI
+import MapKit
 
 struct ObservationForm: View {
     let species: Species
@@ -7,10 +8,9 @@ struct ObservationForm: View {
     @Environment(\.dismiss) private var dismiss
     @State private var observedAt: Date
     @State private var locationName: String
-    @State private var count: Int
+    @State private var latitude: Double?
+    @State private var longitude: Double?
     @State private var notes: String
-    @State private var confirmed: Bool
-    @State private var captive: Bool
     @State private var errorMessage: String?
 
     init(species: Species, observation: Observation? = nil) {
@@ -18,10 +18,9 @@ struct ObservationForm: View {
         original = observation
         _observedAt = State(initialValue: observation?.observedAt ?? Date())
         _locationName = State(initialValue: observation?.locationName ?? "")
-        _count = State(initialValue: observation?.count ?? 1)
         _notes = State(initialValue: observation?.notes ?? "")
-        _confirmed = State(initialValue: observation?.status != .uncertain)
-        _captive = State(initialValue: observation?.isCaptive ?? false)
+        _latitude = State(initialValue: observation?.latitude)
+        _longitude = State(initialValue: observation?.longitude)
     }
 
     var body: some View {
@@ -30,13 +29,19 @@ struct ObservationForm: View {
                 Section(species.dutchName) {
                     DatePicker("Datum en tijd", selection: $observedAt)
                     TextField("Locatie (optioneel)", text: $locationName)
-                    Stepper("Aantal: \(count)", value: $count, in: 1...99999)
-                    Toggle("Identificatie bevestigd", isOn: $confirmed)
-                    Toggle("In gevangenschap", isOn: $captive)
                     TextField("Notities", text: $notes, axis: .vertical).lineLimit(3...8)
                 }
+                Section("Locatie op de kaart (optioneel)") {
+                    ObservationLocationPicker(latitude: $latitude, longitude: $longitude)
+                        .frame(height: 220)
+                    Text("Tik op de kaart om de exacte plek vast te leggen. Een locatienaam alleen plaatst geen marker.")
+                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                    if latitude != nil {
+                        Button("Verwijder kaartlocatie") { latitude = nil; longitude = nil }
+                    }
+                }
                 Section {
-                    Text("Lokaal opgeslagen op dit apparaat. Alleen bevestigde waarnemingen van vrije vogels tellen standaard mee voor je lifelijst.")
+                    Text("Lokaal opgeslagen op dit apparaat. Door op Opslaan te tikken leg je een persoonlijke waarneming vast.")
                         .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                 }
                 if let errorMessage { Text(errorMessage).foregroundStyle(.red).accessibilityLabel("Opslaan mislukt: \(errorMessage)") }
@@ -54,15 +59,45 @@ struct ObservationForm: View {
 
     private func save() {
         var record = original ?? Observation(speciesID: species.id, taxonomyVersion: species.taxonomyVersion,
-            observedAt: observedAt, locationName: locationName, count: count, notes: notes,
-            status: confirmed ? .confirmed : .uncertain)
+            observedAt: observedAt, locationName: locationName, count: 1, notes: notes,
+            status: .confirmed)
         record.observedAt = observedAt
         record.locationName = locationName
-        record.count = count
         record.notes = notes
-        record.status = confirmed ? .confirmed : .uncertain
-        record.isCaptive = captive
+        record.latitude = latitude
+        record.longitude = longitude
         do { try store.save(record, editing: original != nil); dismiss() }
         catch { errorMessage = error.localizedDescription }
+    }
+}
+
+private struct ObservationLocationPicker: View {
+    @Binding var latitude: Double?
+    @Binding var longitude: Double?
+    @State private var camera: MapCameraPosition = .automatic
+
+    var body: some View {
+        MapReader { proxy in
+            Map(position: $camera) {
+                if let latitude, let longitude {
+                    Marker("Waarnemingsplek", coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                }
+            }
+            .mapStyle(.standard(pointsOfInterest: .excludingAll))
+            .onTapGesture { point in
+                if let coordinate = proxy.convert(point, from: .local) {
+                    latitude = coordinate.latitude
+                    longitude = coordinate.longitude
+                }
+            }
+        }
+        .accessibilityLabel("Kies de waarnemingsplek op de kaart")
+        .onAppear {
+            camera = .region(MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: latitude ?? 51, longitude: longitude ?? 5),
+                span: MKCoordinateSpan(latitudeDelta: latitude == nil ? 10 : 0.03,
+                                       longitudeDelta: longitude == nil ? 14 : 0.03)
+            ))
+        }
     }
 }

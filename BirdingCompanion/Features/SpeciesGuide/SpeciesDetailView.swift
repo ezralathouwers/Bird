@@ -112,6 +112,7 @@ private struct SafariSearchView: UIViewControllerRepresentable {
 #Preview {
     NavigationStack { SpeciesDetailView(species: MockSpeciesRepository.kingfisher) }
         .environmentObject(ObservationStore(persistence: PreviewObservationPersistence()))
+        .environmentObject(ObservationNavigation())
 }
 
 struct PreviewObservationPersistence: ObservationPersistence {
