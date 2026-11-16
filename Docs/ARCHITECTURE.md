@@ -55,3 +55,7 @@ Bottom navigation now uses the shared dark neutral charcoal surface, extending b
 ## Interactive distribution tab — 16 November 2026
 
 White bottom navigation with dark symbols; raised add button uses dark text token and ivory hairline glyph. Distribution gets a separate non-scrolling layout: heading, tabstrip, flexible interactive MapKit map. Artwork and habitat footer are omitted in this state. GeoJSON polygon loading and attribution are protocol-based, fit the camera to actual supplied ranges and expose loading, unavailable, malformed and offline states. No verified range dataset exists in the repository, so no fabricated species extent is displayed. See DISTRIBUTION_DATA.md.
+
+## Species observation history tab — 16 November 2026
+
+Waarnemingen now shares the compact fixed heading/tabstrip layout with Verspreiding. Only its history scrolls, with lazy rows showing date/time, location (or explicit missing-location text), count and confirmation state. Artwork, page dots and habitat footer are overview-only. Rows still open editing; changes update the observable store. All records for this stable species ID appear, including uncertain/captive entries; newest observations sort first, UUID breaks date ties. All-observation export stays in Logboek and is hidden from this species-specific view.

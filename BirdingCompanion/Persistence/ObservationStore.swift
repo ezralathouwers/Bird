@@ -55,6 +55,13 @@ final class ObservationStore: ObservableObject {
         observations = updated
     }
 
+    func observations(for speciesID: String) -> [Observation] {
+        observations.filter { $0.speciesID == speciesID }.sorted {
+            if $0.observedAt != $1.observedAt { return $0.observedAt > $1.observedAt }
+            return $0.id.uuidString < $1.id.uuidString
+        }
+    }
+
     func exportData() throws -> Data {
         guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
         let encoder = JSONEncoder()

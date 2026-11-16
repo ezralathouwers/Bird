@@ -18,12 +18,20 @@ struct SpeciesDetailView: View {
 
     var body: some View {
         Group {
-            if tab == .distribution {
+            if tab != .overview {
                 VStack(spacing: 16) {
                     heading.padding(.horizontal, 20).padding(.top, 4)
                     SpeciesTabStrip(selection: $tab).padding(.horizontal, 20)
-                    SpeciesDistributionMap(species: species)
+                    if tab == .distribution {
+                        SpeciesDistributionMap(species: species)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
+                        ScrollView {
+                            ObservationHistoryView(species: species, embedded: true, showsExport: false)
+                                .padding(.horizontal, 20).padding(.bottom, 24)
+                        }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
@@ -32,7 +40,7 @@ struct SpeciesDetailView: View {
                         heading
                         KingfisherArtworkCarousel()
                         SpeciesTabStrip(selection: $tab)
-                        tabContent
+                        SpeciesFacts()
                     }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
                 }
             }
@@ -90,13 +98,7 @@ struct SpeciesDetailView: View {
         }
     }
 
-    @ViewBuilder private var tabContent: some View {
-        switch tab {
-        case .overview: SpeciesFacts()
-        case .distribution: EmptyView() // Full-height map uses a separate non-scrolling layout.
-        case .observations: ObservationHistoryView(species: species, embedded: true)
-        }
-    }
+
 }
 
 private struct SafariSearchView: UIViewControllerRepresentable {

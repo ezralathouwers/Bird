@@ -49,3 +49,7 @@ Outstanding: original artwork and license metadata; screenshot file for color sa
 ### Interactive distribution tab
 
 `git diff --check` passed. Python OpenStep parsing confirmed the new map file's app source membership and valid project references. Added three XCTest methods for polygon/provenance decoding, rejection of missing-license/empty data, and explicit missing-file behavior. These tests were **not executed** because Swift/Xcode are unavailable. Native MapKit initialization, full-height layout, map interactions, connectivity reporting and GeoJSON rendering require Mac verification. Scientific range display remains pending a licensed, validated dataset.
+
+### Species history tab
+
+`git diff --check` and source assertions passed for compact non-overview layout, scrollable lazy history, species filtering and date/location rows. Added XCTest covering mixed-species filtering, newest-first ordering, retained uncertain records and empty results. XCTest remains unexecuted without Xcode. Verify fixed tabs while history scrolls, long location wrapping, edit sheet refresh, empty history and switching back to overview on device.

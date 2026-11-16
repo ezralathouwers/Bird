@@ -4,6 +4,7 @@ import UniformTypeIdentifiers
 struct ObservationHistoryView: View {
     let species: Species
     var embedded = false
+    var showsExport = true
     @EnvironmentObject private var store: ObservationStore
     @State private var editing: Observation?
     @State private var exporting = false
@@ -11,23 +12,28 @@ struct ObservationHistoryView: View {
     @State private var errorMessage: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        LazyVStack(alignment: .leading, spacing: 16) {
             if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
-            let records = store.observations.filter { $0.speciesID == species.id }.sorted { $0.observedAt > $1.observedAt }
+            let records = store.observations(for: species.id)
             if records.isEmpty && store.loadError == nil { Text("Nog geen waarnemingen. Voeg er een toe met + op de soortpagina.") }
             ForEach(records) { record in
                 Button { editing = record } label: {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(record.observedAt.formatted(date: .abbreviated, time: .shortened))
-                        Text("\(record.count) · \(record.locationName.isEmpty ? "Geen locatie" : record.locationName)")
+                        Label(record.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                              ? "Geen locatie opgegeven" : record.locationName, systemImage: "mappin")
+                            .fixedSize(horizontal: false, vertical: true)
+                        Text("Aantal: \(record.count)").font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                         Text(record.status == .confirmed ? "Bevestigd" : "Onzeker").font(FieldGuideTheme.sans(12, relativeTo: .caption))
                     }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
                 }.accessibilityHint("Bewerk deze waarneming")
             }
-            Button("Exporteer alle waarnemingen (JSON)") {
+            if showsExport {
+                Button("Exporteer alle waarnemingen (JSON)") {
                 do { exportDocument = ObservationExport(data: try store.exportData()); exporting = true }
                 catch { errorMessage = error.localizedDescription }
-            }.frame(minHeight: 44).disabled(store.loadError != nil)
+                }.frame(minHeight: 44).disabled(store.loadError != nil)
+            }
             if let errorMessage { Text(errorMessage).foregroundStyle(.red) }
         }
         .padding(embedded ? 0 : 20)

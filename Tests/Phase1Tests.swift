@@ -14,6 +14,21 @@ final class Phase1Tests: XCTestCase {
     private func temporaryURL() -> URL {
         FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathComponent("observations.json")
     }
+    func testSpeciesHistoryFiltersAndSortsNewestFirstWithoutDroppingUncertainRecords() throws {
+        let store = ObservationStore(persistence: PreviewObservationPersistence())
+        var earlier = record()
+        earlier.observedAt = Date(timeIntervalSince1970: 100)
+        var later = record(status: .uncertain)
+        later.observedAt = Date(timeIntervalSince1970: 200)
+        let otherSpecies = Observation(speciesID: "other-species", taxonomyVersion: "mock-v1",
+            observedAt: Date(timeIntervalSince1970: 300), locationName: "", count: 1, notes: "", status: .confirmed)
+        try store.save(later)
+        try store.save(otherSpecies)
+        try store.save(earlier)
+        XCTAssertEqual(store.observations(for: earlier.speciesID).map(\.id), [later.id, earlier.id])
+        XCTAssertTrue(store.observations(for: "unseen-species").isEmpty)
+    }
+
     func testSearchByDutchEnglishAndScientificName() {
         let repository = MockSpeciesRepository()
         for query in ["ijsvogel", "KINGFISHER", "Alcedo", " ijsvogel "] {
