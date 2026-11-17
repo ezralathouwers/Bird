@@ -463,6 +463,60 @@ final class SessionTests: XCTestCase {
         XCTAssertTrue(store.observations.isEmpty)
     }
 
+    func testFinishReviewPreservesLiveCoordinatesAndOtherObservations() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let live = session(live: true)
+        try store.startSession(live)
+        let point = SessionLogLocation(latitude: 52, longitude: 5, name: "Live plek", countryCode: "NL")
+        try store.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(100), location: point)
+        let standalone = Observation(speciesID: "other", taxonomyVersion: "test", observedAt: start,
+            locationName: "Los", count: 1, notes: "Bewaren", status: .confirmed)
+        try store.save(standalone)
+        let original = store.observations(in: live)
+        var review = live; review.locationName = "Nieuwe sessienaam"; review.endedAt = start.addingTimeInterval(300)
+        var revised = original; revised[0].observedAt = start.addingTimeInterval(110)
+        try store.completeSession(review, logs: revised, expectedLogs: original)
+        XCTAssertNil(store.activeSession)
+        XCTAssertEqual(store.completedSessions.first?.locationName, "Nieuwe sessienaam")
+        XCTAssertEqual(store.observations(in: review).first?.latitude, 52)
+        XCTAssertEqual(store.observations(in: review).first?.id, original[0].id)
+        XCTAssertTrue(store.observations.contains(standalone))
+    }
+
+    func testReviewRejectsConcurrentChangeAndInvalidIntervalWithoutLosingLogs() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let live = session(live: true); try store.startSession(live)
+        let point = SessionLogLocation(latitude: 51, longitude: 4, name: "Plek", countryCode: "BE")
+        try store.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(100), location: point)
+        let original = store.observations(in: live)
+        var review = live; review.endedAt = start.addingTimeInterval(50)
+        XCTAssertThrowsError(try store.completeSession(review, logs: original, expectedLogs: original))
+        var edited = original[0]; edited.locationName = "Gewijzigd"
+        try store.save(edited, editing: true)
+        review.endedAt = start.addingTimeInterval(300)
+        XCTAssertThrowsError(try store.completeSession(review, logs: original, expectedLogs: original))
+        XCTAssertEqual(store.observations(in: live), [edited])
+        XCTAssertNotNil(store.activeSession)
+    }
+
+    func testReviewCanRemoveAndAddLogsAsOneTransaction() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let live = session(live: true); try store.startSession(live)
+        let point = SessionLogLocation(latitude: 51, longitude: 4, name: "Plek", countryCode: "BE")
+        try store.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(100), location: point)
+        let original = store.observations(in: live)
+        var added = original[0]; added.id = UUID(); added.observedAt = start.addingTimeInterval(200)
+        var review = live; review.endedAt = start.addingTimeInterval(300)
+        try store.completeSession(review, logs: [added], expectedLogs: original)
+        XCTAssertEqual(store.observations(in: review), [added])
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertEqual(restored.observations, [added])
+        XCTAssertNil(restored.activeSession)
+    }
+
     func testInvalidTimesAndLocationsAreRejected() throws {
         let path = url(); defer { try? FileManager.default.removeItem(at: path) }
         let store = ObservationStore(persistence: JSONObservationPersistence(url: path))

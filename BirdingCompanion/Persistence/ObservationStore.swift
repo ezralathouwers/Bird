@@ -140,6 +140,19 @@ final class ObservationStore: ObservableObject {
         try commit(observations: observations, sessions: updated)
     }
 
+    // Final review replaces only this session's logs, preserving every other observation.
+    func completeSession(_ review: BirdSession, logs: [Observation], expectedLogs: [Observation]) throws {
+        guard let active = activeSession, active.id == review.id,
+              let index = sessions.firstIndex(where: { $0.id == review.id }) else { throw SessionError.noActiveSession }
+        let current = observations.filter { $0.sessionID == review.id }
+        guard current.count == expectedLogs.count,
+              current.allSatisfy({ expectedLogs.contains($0) }) else { throw SessionError.reviewChanged }
+        guard review.isLive, review.endedAt != nil,
+              logs.allSatisfy({ $0.sessionID == review.id }) else { throw SessionError.invalidSession }
+        var updated = sessions; updated[index] = review
+        try commit(observations: observations.filter { $0.sessionID != review.id } + logs, sessions: updated)
+    }
+
     private func commit(observations: [Observation], sessions: [BirdSession]) throws {
         guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
         try Self.validateArchive(observations: observations, sessions: sessions)
