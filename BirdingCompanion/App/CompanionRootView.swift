@@ -150,14 +150,14 @@ struct CompanionRootView: View {
             section = item
         } label: {
             Image(systemName: symbol)
-                .font(.system(size: item == .discover || item == .list ? 21.6 : 24, weight: .ultraLight))
+                .font(.system(size: item == .discover ? 22.032 : (item == .list ? 21.6 : 24), weight: .ultraLight))
                 .offset(x: item == .identify ? -6 : (item == .sessions ? 6 : 0))
             .frame(maxWidth: .infinity, minHeight: 56)
             .contentShape(Rectangle())
         }
         .accessibilityLabel(item.rawValue)
         .accessibilityAddTraits(section == item ? [.isSelected] : [])
-        .opacity(section == item ? 1 : 0.75)
+        .foregroundStyle(section == item ? FieldGuideTheme.khaki : FieldGuideTheme.charcoal)
     }
 }
 
