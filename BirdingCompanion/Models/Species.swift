@@ -1,6 +1,6 @@
 import Foundation
 
-struct Species: Identifiable, Equatable, Sendable {
+struct Species: Identifiable, Hashable, Sendable {
     let id: String
     let taxonomyVersion: String
     let dutchName: String

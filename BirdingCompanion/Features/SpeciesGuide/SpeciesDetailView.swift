@@ -37,15 +37,15 @@ struct SpeciesDetailView: View {
             } else {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        KingfisherArtworkCarousel().padding(.bottom, 20)
+                        SpeciesArtworkCarousel(species: species).padding(.bottom, 20)
                         SpeciesTabStrip(selection: $tab).padding(.bottom, 28)
-                        SpeciesFacts()
+                        SpeciesFacts(species: species)
                     }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
                 }
             }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            if tab == .overview { HabitatFooter() }
+            if tab == .overview && species.id == MockSpeciesRepository.kingfisher.id { HabitatFooter() }
         }
         .background(FieldGuideTheme.ivory)
         .navigationTitle("")
@@ -97,42 +97,13 @@ struct SpeciesDetailView: View {
     }
 
     private var logStatusBadge: some View {
-        let status = store.logStatus(for: species.id)
-        let symbol: String
-        let label: String
-        let background: Color
-        let foreground: Color
-        switch status {
-        case .logged:
-            symbol = "eye"; label = "Gelogd"
-            background = FieldGuideTheme.khaki; foreground = FieldGuideTheme.ivory
-        case .notLogged:
-            symbol = "eye-outline"; label = "Nog niet gelogd"
-            background = FieldGuideTheme.beige; foreground = FieldGuideTheme.charcoal
-        case .unavailable:
-            symbol = "questionmark"; label = "Status onbekend"
-            background = FieldGuideTheme.beige; foreground = FieldGuideTheme.charcoal
-        }
-        return Group {
-            if status == .notLogged || status == .logged {
-                ZStack {
-                    PupilFreeEye().stroke(style: StrokeStyle(lineWidth: 0.75, lineCap: .round, lineJoin: .round))
-                    if status == .logged { Circle().frame(width: 5, height: 5) }
-                }.frame(width: 22, height: 14)
-            } else {
-                Image(systemName: symbol).font(.system(size: 18, weight: .ultraLight))
-            }
-        }
-            .foregroundStyle(foreground)
-            .frame(width: FieldGuideTheme.roundControlDiameter, height: FieldGuideTheme.roundControlDiameter)
-            .background(background, in: Circle())
-            .accessibilityLabel("\(species.dutchName): \(label)")
+        SpeciesLogBadge(status: store.logStatus(for: species.id), speciesName: species.dutchName)
     }
 
     private var actions: some View {
         HStack(spacing: 8) {
-            RoundAction(symbol: "speaker.wave.2", label: "Beluister de ijsvogel") { showAudio = true }
-            RoundAction(symbol: "photo", label: "Zoek afbeeldingen van de ijsvogel op Google") { showImages = true }
+            RoundAction(symbol: "speaker.wave.2", label: "Beluister \(species.dutchName)") { showAudio = true }
+            RoundAction(symbol: "photo", label: "Zoek afbeeldingen van \(species.dutchName) op Google") { showImages = true }
             RoundAction(symbol: "plus", label: "Voeg een waarneming toe") { showObservation = true }
         }
     }

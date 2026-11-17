@@ -145,3 +145,9 @@ English display names capitalize only the initial character and lowercase the re
 ## Outer navigation icon sizing — 16 November 2026
 
 Only Ontdek (binoculars) and Logboek (bird) decrease from 24 to 21.6 points, exactly 10%. Their full-width/56-point-height tap targets remain unchanged. Identify/session symbols and the raised add button keep their sizes and offsets.
+
+## Discover homepage — 17 November 2026
+
+Added feature-owned query/report/ranking/filter types, an injectable asynchronous repository and view model, and the native Ontdek page. The initial navigation path is empty. Current location and reverse geocoding reuse the existing one-shot foreground location model. A fixed provisional 25-km radius and rolling 30-day query define scope. Primary-artwork and eye-badge components are shared with species detail. Six explicit demo species use stable mock IDs; other species never receive kingfisher facts or river habitat by mistake. Map selection now carries its Species alongside the record. Home plus prompts for a bird instead of silently logging an ijsvogel. Logboek groups the current demo catalog's recorded species.
+
+Frequency sorting deduplicates checklist/species pairs and rejects old/future/out-of-area reports. Filters use personal records and preserve order. A provider must declare complete-window coverage. Requests clear old rows and reject late results, preventing another area's rows from being shown under the current heading. No real location is recorded in fixtures. EBD/live frequency source is not yet configured; the explicit demonstration and its counts are fictional, never labelled eBird. See DISCOVER.md for the verified API constraint and next integration step.

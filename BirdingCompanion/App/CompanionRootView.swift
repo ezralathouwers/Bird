@@ -8,7 +8,9 @@ struct CompanionRootView: View {
     @EnvironmentObject private var store: ObservationStore
     @StateObject private var observationNavigation = ObservationNavigation()
     @State private var section: MainSection = .discover
-    @State private var speciesPath = ["kingfisher"]
+    @State private var speciesPath: [Species] = []
+    @StateObject private var discover = DiscoverViewModel()
+    @State private var birdToLog: Species?
     @State private var showObservation = false
     private let addButtonDiameter: CGFloat = 72
     private var addButtonOverlap: CGFloat { addButtonDiameter * 0.30 }
@@ -21,25 +23,25 @@ struct CompanionRootView: View {
                 .allowsHitTesting(observationNavigation.selection == nil)
                 .accessibilityHidden(observationNavigation.selection != nil)
             if let observation = observationNavigation.selection {
-                ObservationMapView(observation: observation, species: species)
+                ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
             }
         }
             .environmentObject(observationNavigation)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(FieldGuideTheme.ivory)
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
-            .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
+            .fullScreenCover(isPresented: $showObservation) {
+                if let birdToLog { ObservationForm(species: birdToLog) }
+                else { birdPicker }
+            }
     }
 
     @ViewBuilder private var content: some View {
         switch section {
         case .discover:
             NavigationStack(path: $speciesPath) {
-                List {
-                    NavigationLink(species.dutchName, value: "kingfisher")
-                }
-                .navigationTitle("Ontdek")
-                .navigationDestination(for: String.self) { _ in SpeciesDetailView(species: species) }
+                DiscoverView(model: discover)
+                    .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
             }
         case .identify:
             NavigationStack {
@@ -55,12 +57,36 @@ struct CompanionRootView: View {
             NavigationStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        if LifelistRules().speciesIDs(in: store.observations).contains(species.id) {
-                            Text("Lifelijst: \(species.dutchName)")
-                        } else { Text("Nog geen bevestigde soorten op je lifelijst.") }
-                        ObservationHistoryView(species: species, embedded: true)
+                        Text("\(LifelistRules().speciesIDs(in: store.observations).count) soorten op je lifelijst")
+                        ForEach(DiscoverFixtures.catalog.filter { !store.observations(for: $0.id).isEmpty }) { bird in
+                            Text(bird.dutchName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                            ObservationHistoryView(species: bird, embedded: true,
+                                showsExport: bird.id == DiscoverFixtures.catalog.first(where: { !store.observations(for: $0.id).isEmpty })?.id)
+                        }
+                        if store.observations.isEmpty {
+                            ObservationHistoryView(species: species, embedded: true)
+                        }
                     }.padding(20)
                 }.navigationTitle("Logboek")
+            }
+        }
+    }
+
+    private var birdPicker: some View {
+        NavigationStack {
+            List(DiscoverFixtures.catalog) { bird in
+                Button { birdToLog = bird } label: {
+                    HStack(spacing: 12) {
+                        PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
+                        Text(bird.dutchName)
+                    }
+                }
+            }
+            .navigationTitle("Kies een vogel")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Sluiten") { showObservation = false }
+                }
             }
         }
     }
@@ -85,7 +111,10 @@ struct CompanionRootView: View {
         .overlay(alignment: .top) {
             Button {
                 if observationNavigation.selection != nil { observationNavigation.selection = nil }
-                else { showObservation = true }
+                else {
+                    birdToLog = section == .discover ? speciesPath.last : nil
+                    showObservation = true
+                }
             } label: {
                 FinePlusMark()
                     .stroke(observationNavigation.selection == nil ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal,
@@ -98,12 +127,16 @@ struct CompanionRootView: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel(observationNavigation.selection == nil ? "Voeg een waarneming toe" : "Sluit waarneming")
-            .accessibilityHint(observationNavigation.selection == nil ? "Opent het formulier voor de huidige voorbeeldsoort, ijsvogel" : "Terug naar het overzicht van waarnemingen")
+            .accessibilityHint(observationNavigation.selection == nil ? "Kies een soort en voeg een waarneming toe" : "Terug naar het overzicht van waarnemingen")
         }
     }
 
     private func navigationItem(_ item: MainSection, symbol: String) -> some View {
-        Button { observationNavigation.selection = nil; section = item } label: {
+        Button {
+            observationNavigation.selection = nil
+            if item == .discover { speciesPath.removeAll() }
+            section = item
+        } label: {
             Image(systemName: symbol)
                 .font(.system(size: item == .discover || item == .list ? 21.6 : 24, weight: .ultraLight))
                 .offset(x: item == .identify ? -6 : (item == .sessions ? 6 : 0))

@@ -4,6 +4,12 @@ import MapKit
 @MainActor
 final class ObservationNavigation: ObservableObject {
     @Published var selection: Observation?
+    private(set) var species: Species?
+
+    func open(_ observation: Observation, species: Species) {
+        self.species = species
+        selection = observation
+    }
 }
 
 struct ObservationMapView: View {

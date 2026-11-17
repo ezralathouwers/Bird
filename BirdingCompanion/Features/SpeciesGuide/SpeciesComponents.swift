@@ -35,12 +35,14 @@ struct SpeciesFact: Identifiable {
 }
 
 struct SpeciesFacts: View {
+    let species: Species
     // Brief examples only; scientific values await independent source review.
     private let facts = [
         SpeciesFact(id: "Spanwijdte", symbol: nil, value: "24–26 cm")
     ]
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
+            if species.id == MockSpeciesRepository.kingfisher.id {
             VStack(alignment: .leading, spacing: 8) {
                 ForEach(facts) { fact in factRow(fact) }
                 Text("De ijsvogel leeft langs helder water, bij beken, rivieren en plassen. Vanaf een tak duikt hij naar kleine vissen. Steile oevers bieden plek voor zijn nest.")
@@ -49,6 +51,10 @@ struct SpeciesFacts: View {
                     .padding(.top, 6)
             }
             Text("Spanwijdte: voorbeeldwaarde · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
+            } else {
+                Text("Soortbeschrijving en spanwijdte volgen na broncontrole.")
+                    .font(FieldGuideTheme.sans(16, relativeTo: .body))
+            }
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
     private func factRow(_ fact: SpeciesFact) -> some View {
@@ -73,17 +79,24 @@ struct SpeciesFacts: View {
     }
 }
 
-struct KingfisherArtworkCarousel: View {
+struct SpeciesArtworkCarousel: View {
+    let species: Species
     @State private var page = 0
     private let descriptions = ["Hoofdillustratie", "In vlucht", "Vooraanzicht", "Achteraanzicht"]
     var body: some View {
         VStack(spacing: 8) {
             TabView(selection: $page) {
                 ForEach(descriptions.indices, id: \.self) { index in
-                    ArtworkPlaceholder(hero: true,
-                        accessibilityDescription: "Tijdelijke illustratieplaats: \(descriptions[index])")
-                        .padding(.vertical, 6)
-                        .tag(index)
+                    Group {
+                        if index == 0 {
+                            PrimaryBirdArtwork(species: species)
+                        } else {
+                            ArtworkPlaceholder(hero: true,
+                                accessibilityDescription: "Tijdelijke illustratieplaats: \(descriptions[index]) van \(species.dutchName)")
+                        }
+                    }
+                    .padding(.vertical, 6)
+                    .tag(index)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

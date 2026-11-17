@@ -125,3 +125,11 @@ Added four XCTest methods covering place-name priority, required coordinates/nam
 ### Outer navigation icon sizing
 
 `git diff --check` and source assertions passed for 21.6-point outer symbols, unchanged 24-point inner symbols and 56-point minimum targets. Visual review still requires Xcode.
+
+### Discover homepage — 17 November 2026
+
+Added five XCTest methods: checklist deduplication/time/geographic scope; 30-day boundary and tie order; stable-ID logged filters including unknown-store state; explicit demo/missing-provider behavior; rejection of incomplete feeds. These tests have not been executed: `command -v swift` and `command -v xcodebuild` found neither tool.
+
+Executed `git diff --check` (passed). Installed validation-only tree-sitter and tree-sitter-swift outside the repository, then parsed all Swift app/test source files: no ERROR or missing syntax nodes. Parsed the Xcode OpenStep project and checked source memberships/reference existence. Parsed six new asset-catalog JSON files and checked PNG integrity plus manifest/asset IDs. These are syntax/resource checks, not Swift typechecking or an iOS build.
+
+Official eBird API collection and data-product/frequency pages were reviewed. No actual eBird request with credentials was made. Real 30-day counts, source access/terms, geographic/taxonomic coverage, live service behavior and data freshness remain unverified. Six generated primary illustrations were viewed for layout; independent scientific/user approval remains pending. Native permissions, reverse geocoding, image rendering, navigation, filtering/scrolling and saved-state updates require the Mac checklist in DISCOVER.md.

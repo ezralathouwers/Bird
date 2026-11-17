@@ -226,3 +226,72 @@ private struct TestPlaceNamingService: PlaceNamingService {
         return PlaceSuggestion(name: "Voorbeeldpark", countryCode: "nl")
     }
 }
+
+final class DiscoverRankingTests: XCTestCase {
+    private let now = Date(timeIntervalSince1970: 2_000_000_000)
+    private var query: DiscoverQuery { DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: 25) }
+    private var first: Species { DiscoverFixtures.catalog[0] }
+    private var second: Species { DiscoverFixtures.catalog[1] }
+    private func report(_ bird: Species, checklist: String, daysAgo: Double = 1, latitude: Double = 0) -> NearbyReport {
+        NearbyReport(checklistID: checklist, species: bird, observedAt: now.addingTimeInterval(-daysAgo * 86400),
+                     latitude: latitude, longitude: 0)
+    }
+
+    func testRankingCountsDistinctChecklistsWithinAreaAndThirtyDays() {
+        let reports = [report(first, checklist: "A"), report(first, checklist: "A"),
+            report(first, checklist: "B"), report(second, checklist: "C"),
+            report(second, checklist: "old", daysAgo: 31), report(second, checklist: "future", daysAgo: -1),
+            report(second, checklist: "far", latitude: 10), report(second, checklist: "")]
+        let ranked = DiscoverRanking.ranked(reports, query: query)
+        XCTAssertEqual(ranked.map(\.id), [first.id, second.id])
+        XCTAssertEqual(ranked.map(\.reportCount), [2, 1])
+    }
+
+    func testBoundaryAndTieOrderAreDeterministic() {
+        let ranked = DiscoverRanking.ranked([report(first, checklist: "A", daysAgo: 30),
+                                            report(second, checklist: "B", daysAgo: 0)], query: query)
+        XCTAssertEqual(ranked.map(\.species.dutchName), ["Koolmees", "Merel"])
+    }
+
+    func testLoggedFiltersUseStableIDsAndPreserveRanking() {
+        let ranked = DiscoverRanking.ranked([report(first, checklist: "A"), report(second, checklist: "B")], query: query)
+        let record = Observation(speciesID: first.id, taxonomyVersion: first.taxonomyVersion,
+            observedAt: now, locationName: "Fictional fixture", count: 1, notes: "", status: .confirmed)
+        XCTAssertEqual(DiscoverRanking.filtered(ranked, filter: .logged, observations: [record]).map(\.id), [first.id])
+        XCTAssertEqual(DiscoverRanking.filtered(ranked, filter: .notLogged, observations: [record]).map(\.id), [second.id])
+        XCTAssertTrue(DiscoverRanking.filtered(ranked, filter: .notLogged, observations: [], statusAvailable: false).isEmpty)
+        XCTAssertEqual(DiscoverRanking.filtered(ranked, filter: .all, observations: []).count, 2)
+    }
+}
+
+@MainActor
+final class DiscoverViewModelTests: XCTestCase {
+    func testIncompleteProviderCannotProduceMisleadingFrequencyRanking() async {
+        let model = DiscoverViewModel(repository: IncompleteDiscoverFixture())
+        await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 25))
+        XCTAssertTrue(model.rows.isEmpty)
+        XCTAssertNotNil(model.message)
+        XCTAssertNil(model.loadedQuery)
+    }
+
+    func testDemoIsExplicitAndMissingProviderDoesNotInventLiveRows() async {
+        let model = DiscoverViewModel()
+        let query = DiscoverQuery(latitude: 0, longitude: 0,
+            now: Date(timeIntervalSince1970: 2_000_000_000), radiusKilometers: 25)
+        await model.load(query: query, demo: true)
+        XCTAssertTrue(model.isDemo)
+        XCTAssertEqual(model.rows.count, 6)
+        XCTAssertEqual(model.rows.map(\.reportCount), [12, 10, 8, 6, 4, 2])
+        await model.load(query: query)
+        XCTAssertFalse(model.isDemo)
+        XCTAssertTrue(model.rows.isEmpty)
+        XCTAssertNotNil(model.message)
+        XCTAssertNil(model.loadedQuery)
+    }
+}
+
+private struct IncompleteDiscoverFixture: DiscoverRepository {
+    func reports(for query: DiscoverQuery) async throws -> DiscoverDataset {
+        DiscoverDataset(reports: [], attribution: "Incomplete test feed", isDemo: false, coversRequestedWindow: false)
+    }
+}

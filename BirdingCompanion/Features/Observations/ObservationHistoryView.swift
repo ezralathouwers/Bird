@@ -37,7 +37,7 @@ struct ObservationHistoryView: View {
             }
             if records.isEmpty && store.loadError == nil { Text("Nog geen waarnemingen. Voeg er een toe met + op de soortpagina.") }
             ForEach(records) { record in
-                Button { navigation.selection = record } label: {
+                Button { navigation.open(record, species: species) } label: {
                     HStack(alignment: .center, spacing: 16) {
                         VStack(alignment: .leading, spacing: 6) {
                             Text(record.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
