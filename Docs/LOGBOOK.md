@@ -35,3 +35,7 @@ This enriches sample metadata without changing existing species IDs or selecting
 The header is the dynamic unique-species number only (VoiceOver retains its meaning), without a subtitle. Rows have 16-point padding above and below and fine 0.5-point separators within each family or the flat recent list. Family headings use a subtle beige fill at 28% opacity and gain 3 points of top margin (8 → 11).
 
 All six bundled primary illustrations were visually checked. Great tit, blue tit and kingfisher sources face left and are mirrored at rendering time by shared `PrimaryBirdImage`; woodpecker, robin and blackbird already face right. The guide, discovery, logbook, species picker, observation form and map marker all use that renderer. Original artwork files remain unchanged; the manifest records source and display orientations. Future primary assets must be reviewed for right-facing display before inclusion. Native rendering and accessibility still need Xcode verification.
+
+
+### Further visual refinement
+Family-band fill reduced from 28% to 14% beige, with top margin increased from 11 to 14 points. Separators gain 6 points above and below, retaining 16-point row padding. Primary thumbnails shrink 30% (104 → 72.8 points). Dutch names use Fraunces at 16 points and English names retain DM Sans at 11.2 points, both 20% smaller than before and scaled with Dynamic Type. These changes apply to both family and recent sorting. Native visual checks await Xcode.

@@ -47,8 +47,8 @@ struct LogbookView: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(FieldGuideTheme.beige.opacity(0.28), in: RoundedRectangle(cornerRadius: 8))
-                                .padding(.top, 11)
+                                .background(FieldGuideTheme.beige.opacity(0.14), in: RoundedRectangle(cornerRadius: 8))
+                                .padding(.top, 14)
                                 .accessibilityAddTraits(.isHeader)
                         }
                     }
@@ -79,7 +79,9 @@ struct LogbookView: View {
                 speciesRow(row)
                 if index < species.count - 1 {
                     Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10))
-                        .frame(height: 0.5).accessibilityHidden(true)
+                        .frame(height: 0.5)
+                        .padding(.vertical, 6)
+                        .accessibilityHidden(true)
                 }
             }
         }
@@ -88,11 +90,12 @@ struct LogbookView: View {
     private func speciesRow(_ row: LoggedSpecies) -> some View {
         NavigationLink(value: row.species) {
             HStack(spacing: 16) {
-                PrimaryBirdArtwork(species: row.species).frame(width: 104, height: 104)
+                PrimaryBirdArtwork(species: row.species).frame(width: 72.8, height: 72.8)
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(row.species.dutchName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                    Text(row.species.dutchName)
+                        .font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .title3).weight(.regular))
                     Text(row.species.englishDisplayName)
-                        .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                        .font(FieldGuideTheme.sans(11.2, relativeTo: .subheadline))
                         .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
                     if row.species.scientificName.isEmpty {
                         Text(row.id).font(FieldGuideTheme.sans(12, relativeTo: .caption))
@@ -101,7 +104,7 @@ struct LogbookView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, minHeight: 104, alignment: .leading)
+            .frame(maxWidth: .infinity, minHeight: 72.8, alignment: .leading)
             .padding(.vertical, 16)
             .contentShape(Rectangle())
         }
