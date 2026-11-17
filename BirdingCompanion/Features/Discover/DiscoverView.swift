@@ -13,7 +13,7 @@ struct DiscoverView: View {
     }
     private var query: DiscoverQuery? {
         guard let latitude = location.latitude, let longitude = location.longitude else { return nil }
-        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: 25)
+        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: 10)
     }
     private var locationTitle: String {
         if demo && location.latitude == nil { return "Voorbeeldlocatie" }
@@ -29,12 +29,11 @@ struct DiscoverView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
                 Text("Vandaag in \(locationTitle)")
-                    .font(FieldGuideTheme.sans(34, relativeTo: .largeTitle))
+                    .font(FieldGuideTheme.sans(44.2, relativeTo: .largeTitle))
                     .fixedSize(horizontal: false, vertical: true)
                     .accessibilityAddTraits(.isHeader)
-                Text("Gemeld in de afgelopen 30 dagen · binnen 25 km")
-                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                    .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
+                    .padding(.top, 60)
+                    .padding(.bottom, 6)
                 filters
                 if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
                 if location.isLocating { ProgressView("Je huidige locatie ophalen…") }
@@ -52,20 +51,21 @@ struct DiscoverView: View {
                     Text(model.rows.isEmpty ? "Geen meldingen gevonden in dit gebied en tijdvak."
                          : "Geen soorten voor dit filter.")
                 }
-                ForEach(rows) { row in
+                ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
                     NavigationLink(value: row.species) {
                         HStack(spacing: 16) {
-                            PrimaryBirdArtwork(species: row.species).frame(width: 104, height: 104)
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(row.species.dutchName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
-                                    .fixedSize(horizontal: false, vertical: true)
-                                Text("\(row.reportCount) meldingen")
-                                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                                    .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
-                            }.frame(maxWidth: .infinity, alignment: .leading)
-                            SpeciesLogBadge(status: store.logStatus(for: row.id), speciesName: row.species.dutchName)
-                        }.frame(maxWidth: .infinity, minHeight: 104, alignment: .leading)
+                            PrimaryBirdArtwork(species: row.species).frame(width: 72.8, height: 72.8)
+                            Text(row.species.dutchName)
+                                .font(.custom("Fraunces-9ptBlack", size: 20, relativeTo: .title3).weight(.regular))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            SpeciesLogBadge(status: store.logStatus(for: row.id), speciesName: row.species.dutchName, diameter: 22)
+                        }.frame(maxWidth: .infinity, minHeight: 72.8, alignment: .leading)
                     }.buttonStyle(.plain)
+                    if index < rows.count - 1 {
+                        Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
+                            .accessibilityHidden(true)
+                    }
                 }
                 if let attribution = model.attribution {
                     Text(attribution).font(FieldGuideTheme.sans(12, relativeTo: .caption))
@@ -89,7 +89,7 @@ struct DiscoverView: View {
         .task(id: demo) {
             if demo && location.latitude == nil {
                 // Explicit fictional coordinate at 0/0, never presented as current GPS.
-                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 25), demo: true)
+                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10), demo: true)
             }
         }
         .refreshable { if let query { await model.load(query: query, demo: demo) } }
@@ -145,18 +145,20 @@ struct PrimaryBirdArtwork: View {
 struct SpeciesLogBadge: View {
     let status: SpeciesLogStatus
     let speciesName: String
+    var diameter: CGFloat = FieldGuideTheme.roundControlDiameter
+    private var scale: CGFloat { diameter / FieldGuideTheme.roundControlDiameter }
     var body: some View {
         Group {
-            if status == .unavailable { Image(systemName: "questionmark") }
+            if status == .unavailable { Image(systemName: "questionmark").font(.system(size: 17 * scale)) }
             else {
                 ZStack {
-                    PupilFreeEye().stroke(lineWidth: 0.75)
-                    if status == .logged { Circle().frame(width: 5, height: 5) }
-                }.frame(width: 22, height: 14)
+                    PupilFreeEye().stroke(lineWidth: 0.75 * scale)
+                    if status == .logged { Circle().frame(width: 5 * scale, height: 5 * scale) }
+                }.frame(width: 22 * scale, height: 14 * scale)
             }
         }
         .foregroundStyle(status == .logged ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal)
-        .frame(width: FieldGuideTheme.roundControlDiameter, height: FieldGuideTheme.roundControlDiameter)
+        .frame(width: diameter, height: diameter)
         .background(status == .logged ? FieldGuideTheme.khaki : FieldGuideTheme.beige, in: Circle())
         .accessibilityLabel("\(speciesName): \(status == .logged ? "gelogd" : status == .notLogged ? "nog niet gelogd" : "status onbekend")")
     }

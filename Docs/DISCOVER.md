@@ -1,6 +1,6 @@
 # Ontdek homepage
 
-The app now starts on the binoculars page with “Vandaag in …”, the current-location name, three icon-only filters, and a lazy scrollable bird list. Returning through binoculars clears the guide navigation path and returns home. The default search radius is a provisional 25 km. Location permission is requested only on use; denial, loading and place-name failure are visible. No user GPS coordinates are persisted by this page.
+The app now starts on the binoculars page with “Vandaag in …”, the current-location name, three icon-only filters, and a lazy scrollable bird list. Returning through binoculars clears the guide navigation path and returns home. The default search radius is 10 km. Location permission is requested only on use; denial, loading and place-name failure are visible. No user GPS coordinates are persisted by this page.
 
 Rows show the Dutch name, the primary-illustration asset and a logged/not-logged eye. Filters are all (grid), logged (eye with pupil) and not logged (empty eye). They read published personal observations live; a record save changes the badge and current filter automatically. Store load failures produce unknown badges and disable the two status-specific filters rather than pretending records do not exist. Row taps open the selected species; logging/maps use its stable ID. New six-species illustrations are generated pilot assets pending anatomy/user approval.
 
@@ -33,3 +33,7 @@ Consequently the recent-observations API alone cannot provide the requested comp
 6. Open several species; ensure artwork, form ID, Google query, map and logs refer to that species, never reused kingfisher content. Unreviewed species text is explicitly unavailable.
 7. Test plus from the homepage: select a species first. From species detail it may use the current species. Verify saved records appear under Logboek.
 8. Run the new ranking/filter/view-model tests in Xcode, then integrate and test an authorized complete live feed before treating the ranking as real.
+
+
+## Discover layout refinement
+The heading moves down 60 points, grows from 34 to 44.2 points (+30%), and gains 6 points below. The time-window subtitle and per-species report counts are hidden; the existing 30-day ranking remains unchanged. Species names use Fraunces, illustrations shrink from 104 to 72.8 points, and subtle rules separate rows. Only discovery-row status badges shrink from 44 to 22 points; filter controls and species-page badges retain their sizes. Both GPS and explicit demo queries use a 10 km radius. Native layout, Dynamic Type and rendering still require Xcode verification.
