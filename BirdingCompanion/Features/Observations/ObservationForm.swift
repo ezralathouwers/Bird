@@ -18,6 +18,14 @@ struct ObservationForm: View {
     }
 
     var body: some View {
+        if original == nil, store.activeSession != nil {
+            LiveSessionAddBirdView(species: species)
+        } else {
+            standardForm
+        }
+    }
+
+    private var standardForm: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
@@ -129,7 +137,7 @@ struct ObservationForm: View {
     }
 }
 
-private struct ObservationLocationPicker: View {
+struct ObservationLocationPicker: View {
     @ObservedObject var location: ObservationLocationModel
     @State private var camera: MapCameraPosition = .automatic
 

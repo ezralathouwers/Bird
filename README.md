@@ -37,3 +37,6 @@ Native compilation, test execution, previews, simulator, signing and device beha
 The uploaded screenshot is a visual reference, not bundled artwork. Supply the original four bird illustrations, with rights/provenance, for an asset catalog; don't embed or crop the UI screenshot as the functioning screen. Colors are provisional, not claimed as sampled. Fraunces and DM Sans are bundled with their OFL notices. The English name and active tab intentionally use sans-serif according to the brief, even though the screenshot uses serif.
 
 Species IDs/taxonomy remain mock-only. No production taxonomy authority was chosen. Generated artwork requires independent anatomical review. True local 30-day report counts and licensed range polygons are still external-data dependencies. Recognition, targets, global catalog, sync, import, deletion and production migrations remain later-phase work. New logs require a map point and editable place name; country is derived automatically when available. Do not use this prototype as the sole repository of valuable records.
+
+
+Sessies: voltooide sessies toevoegen, live vogels loggen met GPS per waarneming, hervatten na herstart en gekoppelde individuele waarnemingen. Zie `Docs/SESSIONS.md` voor opslagmigratie en de nog uit te voeren Xcode-/GPS-controles.

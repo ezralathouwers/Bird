@@ -435,6 +435,34 @@ final class SessionTests: XCTestCase {
         XCTAssertTrue(store.observations.isEmpty)
     }
 
+    func testCompletedSessionsAreNewestFirstAndLiveSessionIsExcluded() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let first = session(live: false)
+        var second = session(live: false)
+        second.startedAt = start.addingTimeInterval(1000)
+        second.endedAt = start.addingTimeInterval(1500)
+        try store.addCompletedSession(first, species: [])
+        try store.addCompletedSession(second, species: [])
+        try store.startSession(session(live: true))
+        XCTAssertEqual(store.completedSessions.map(\.id), [second.id, first.id])
+    }
+
+    func testFailedLiveWritePreservesActiveSessionAndExistingLogs() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let persistence = JSONObservationPersistence(url: path)
+        let live = session(live: true)
+        try persistence.save([], sessions: [live])
+        // A loaded active session whose storage rejects every subsequent write.
+        let store = ObservationStore(persistence: ReadOnlySessionPersistence(session: live))
+        let point = SessionLogLocation(latitude: 51, longitude: 4, name: "Testplek", countryCode: "BE")
+        XCTAssertThrowsError(try store.logLive(DiscoverFixtures.catalog[0], sessionID: live.id,
+            at: start.addingTimeInterval(10), location: point))
+        XCTAssertThrowsError(try store.finishSession(at: start.addingTimeInterval(20)))
+        XCTAssertEqual(store.activeSession, live)
+        XCTAssertTrue(store.observations.isEmpty)
+    }
+
     func testInvalidTimesAndLocationsAreRejected() throws {
         let path = url(); defer { try? FileManager.default.removeItem(at: path) }
         let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
@@ -448,6 +476,14 @@ final class SessionTests: XCTestCase {
 
 private struct FailingSessionPersistence: ObservationPersistence {
     func load() throws -> [Observation] { [] }
+    func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
+    func save(_ observations: [Observation], sessions: [BirdSession]) throws { throw CocoaError(.fileWriteNoPermission) }
+}
+
+private struct ReadOnlySessionPersistence: ObservationPersistence {
+    let session: BirdSession
+    func load() throws -> [Observation] { [] }
+    func loadSessions() throws -> [BirdSession] { [session] }
     func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
     func save(_ observations: [Observation], sessions: [BirdSession]) throws { throw CocoaError(.fileWriteNoPermission) }
 }

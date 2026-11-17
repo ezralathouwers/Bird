@@ -6,6 +6,8 @@ private enum MainSection: String {
 
 struct CompanionRootView: View {
     @EnvironmentObject private var store: ObservationStore
+    @StateObject private var sessionLogger = SessionLiveLogger()
+    @State private var showLiveSession = false
     @StateObject private var observationNavigation = ObservationNavigation()
     @State private var section: MainSection = .discover
     @State private var speciesPath: [Species] = []
@@ -20,10 +22,12 @@ struct CompanionRootView: View {
     var body: some View {
         ZStack {
             content
-                .opacity(observationNavigation.selection == nil ? 1 : 0)
-                .allowsHitTesting(observationNavigation.selection == nil)
-                .accessibilityHidden(observationNavigation.selection != nil)
-            if let observation = observationNavigation.selection {
+                .opacity(observationNavigation.selection == nil && !showLiveSession ? 1 : 0)
+                .allowsHitTesting(observationNavigation.selection == nil && !showLiveSession)
+                .accessibilityHidden(observationNavigation.selection != nil || showLiveSession)
+            if showLiveSession {
+                LiveSessionView(isPresented: $showLiveSession)
+            } else if let observation = observationNavigation.selection {
                 ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
             }
         }
@@ -35,6 +39,7 @@ struct CompanionRootView: View {
                 if let birdToLog { ObservationForm(species: birdToLog) }
                 else { birdPicker }
             }
+            .environmentObject(sessionLogger)
     }
 
     @ViewBuilder private var content: some View {
@@ -51,8 +56,7 @@ struct CompanionRootView: View {
             }
         case .sessions:
             NavigationStack {
-                Text("Vogelsessies volgen in een volgende fase. Je losse waarnemingen vind je onder Logboek.")
-                    .padding().navigationTitle("Sessies")
+                SessionsView(showLive: $showLiveSession)
             }
         case .list:
             NavigationStack(path: $logbookPath) {
@@ -100,7 +104,10 @@ struct CompanionRootView: View {
         }
         .overlay(alignment: .top) {
             Button {
-                if observationNavigation.selection != nil { observationNavigation.selection = nil }
+                if store.activeSession != nil {
+                    observationNavigation.selection = nil
+                    showLiveSession = true
+                } else if observationNavigation.selection != nil { observationNavigation.selection = nil }
                 else {
                     switch section {
                     case .discover: birdToLog = speciesPath.last
@@ -110,24 +117,34 @@ struct CompanionRootView: View {
                     showObservation = true
                 }
             } label: {
-                FinePlusMark()
-                    .stroke(observationNavigation.selection == nil ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal,
-                            style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
-                    .rotationEffect(.degrees(observationNavigation.selection == nil ? 0 : 45))
-                    .frame(width: 45, height: 45)
+                Group {
+                    if store.activeSession != nil {
+                        Image(systemName: "play").font(.system(size: 32, weight: .ultraLight))
+                            .foregroundStyle(FieldGuideTheme.ivory)
+                            .frame(width: 45, height: 45)
+                    } else {
+                        FinePlusMark()
+                            .stroke(observationNavigation.selection == nil ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal,
+                                    style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
+                            .rotationEffect(.degrees(observationNavigation.selection == nil ? 0 : 45))
+                            .frame(width: 45, height: 45)
+                    }
+                }
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
-                    .background(observationNavigation.selection == nil ? FieldGuideTheme.charcoal : FieldGuideTheme.selectedBeige, in: Circle())
+                    .background(store.activeSession != nil ? FieldGuideTheme.khaki :
+                        (observationNavigation.selection == nil ? FieldGuideTheme.charcoal : FieldGuideTheme.selectedBeige), in: Circle())
                     .contentShape(Circle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(observationNavigation.selection == nil ? "Voeg een waarneming toe" : "Sluit waarneming")
-            .accessibilityHint(observationNavigation.selection == nil ? "Kies een soort en voeg een waarneming toe" : "Terug naar het overzicht van waarnemingen")
+            .accessibilityLabel(store.activeSession != nil ? "Open livesessie" : (observationNavigation.selection == nil ? "Voeg een waarneming toe" : "Sluit waarneming"))
+            .accessibilityHint(store.activeSession != nil ? "Terug naar de actieve vogelsessie" : (observationNavigation.selection == nil ? "Kies een soort en voeg een waarneming toe" : "Terug naar het overzicht van waarnemingen"))
         }
     }
 
     private func navigationItem(_ item: MainSection, symbol: String) -> some View {
         Button {
             observationNavigation.selection = nil
+            showLiveSession = false
             if item == .discover { speciesPath.removeAll() }
             if item == .list { logbookPath.removeAll() }
             section = item
