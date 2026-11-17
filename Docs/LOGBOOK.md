@@ -29,3 +29,9 @@ This enriches sample metadata without changing existing species IDs or selecting
 6. Open an unknown-catalog fixture: ensure the record remains accessible and export still preserves it.
 7. Check long names, Dynamic Type, VoiceOver, all row/filter targets and the fixed bottom navigation.
 8. Run the five new projection tests in Xcode. Native rendering and test execution remain unverified here.
+
+
+## Logbook spacing and primary-art direction
+The header is the dynamic unique-species number only (VoiceOver retains its meaning), without a subtitle. Rows have 16-point padding above and below and fine 0.5-point separators within each family or the flat recent list. Family headings use a subtle beige fill at 28% opacity and gain 3 points of top margin (8 → 11).
+
+All six bundled primary illustrations were visually checked. Great tit, blue tit and kingfisher sources face left and are mirrored at rendering time by shared `PrimaryBirdImage`; woodpecker, robin and blackbird already face right. The guide, discovery, logbook, species picker, observation form and map marker all use that renderer. Original artwork files remain unchanged; the manifest records source and display orientations. Future primary assets must be reviewed for right-facing display before inclusion. Native rendering and accessibility still need Xcode verification.

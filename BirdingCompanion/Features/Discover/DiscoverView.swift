@@ -123,12 +123,25 @@ struct DiscoverView: View {
     }
 }
 
+// Reviewed source orientation. New primary assets must face right or be listed here.
+// Keep this shared by the guide, lists, forms, picker and map markers.
+struct PrimaryBirdImage: View {
+    let species: Species
+    private var sourceFacesLeft: Bool {
+        ["sample-parus-major", "sample-cyanistes-caeruleus", "sample-alcedo-atthis"].contains(species.id)
+    }
+    var body: some View {
+        Image(species.id + "-primary").resizable().scaledToFit()
+            .scaleEffect(x: sourceFacesLeft ? -1 : 1, y: 1)
+    }
+}
+
 struct PrimaryBirdArtwork: View {
     let species: Species
     var body: some View {
         Group {
             if UIImage(named: species.id + "-primary") != nil {
-                Image(species.id + "-primary").resizable().scaledToFit()
+                PrimaryBirdImage(species: species)
             } else {
                 VStack(spacing: 6) {
                     Image(systemName: "bird").font(.title2)

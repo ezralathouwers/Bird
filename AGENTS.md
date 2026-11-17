@@ -21,6 +21,9 @@ You are working on a private, non-commercial, native iPhone birdwatching app. `P
 - Keep a 44-point minimum touch target and support Dynamic Type, safe areas, small screens, long Dutch names and VoiceOver.
 - Do not use the original mockup as a literal source of scientific truth. Validate content separately.
 
+## Latest approved artwork direction
+- All primary bird illustrations must face right throughout the app. Review each new asset and use the shared `PrimaryBirdImage` renderer for consistent orientation; retain original source files and record any display reflection in the artwork manifest.
+
 ## Implementation rules
 - SwiftUI first, with lightweight feature-oriented structure and protocol-based services. Use SwiftData for user-owned records if it meets sync/migration needs.
 - Keep species IDs stable and independent of translated names. Record taxonomy version.

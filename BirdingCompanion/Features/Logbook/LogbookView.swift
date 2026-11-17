@@ -16,11 +16,10 @@ struct LogbookView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
-                Text("Logboek").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle))
+                Text("\(rows.count)").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle))
+                    .accessibilityLabel("\(rows.count) gelogde vogelsoorten")
                     .accessibilityAddTraits(.isHeader)
                 HStack(spacing: 12) {
-                    Text(rows.count == 1 ? "1 soort" : "\(rows.count) soorten")
-                        .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
                     Spacer(minLength: 0)
                     Picker("Sortering", selection: $sort) {
                         ForEach(LogbookSort.allCases, id: \.self) { option in
@@ -39,18 +38,22 @@ struct LogbookView: View {
                 } else if sort == .family {
                     ForEach(LogbookProjection.families(from: rows)) { group in
                         Section {
-                            ForEach(group.species) { row in speciesRow(row) }
+                            speciesRows(group.species)
                         } header: {
                             Text(group.family.dutchName.uppercased())
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                                 .tracking(1)
                                 .foregroundStyle(FieldGuideTheme.taupe)
-                                .padding(.top, 8)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(FieldGuideTheme.beige.opacity(0.28), in: RoundedRectangle(cornerRadius: 8))
+                                .padding(.top, 11)
                                 .accessibilityAddTraits(.isHeader)
                         }
                     }
                 } else {
-                    ForEach(rows) { row in speciesRow(row) }
+                    speciesRows(rows)
                 }
                 Button("Exporteer alle waarnemingen (JSON)") {
                     do { exportDocument = ObservationExport(data: try store.exportData()); exporting = true }
@@ -67,6 +70,18 @@ struct LogbookView: View {
         .fileExporter(isPresented: $exporting, document: exportDocument, contentType: .json,
                       defaultFilename: "birding-waarnemingen") { result in
             if case .failure(let error) = result { errorMessage = error.localizedDescription }
+        }
+    }
+
+    private func speciesRows(_ species: [LoggedSpecies]) -> some View {
+        LazyVStack(spacing: 0) {
+            ForEach(Array(species.enumerated()), id: \.element.id) { index, row in
+                speciesRow(row)
+                if index < species.count - 1 {
+                    Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10))
+                        .frame(height: 0.5).accessibilityHidden(true)
+                }
+            }
         }
     }
 
@@ -87,6 +102,7 @@ struct LogbookView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxWidth: .infinity, minHeight: 104, alignment: .leading)
+            .padding(.vertical, 16)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)

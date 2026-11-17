@@ -95,7 +95,7 @@ struct ObservationForm: View {
         HStack(spacing: 20) {
             Group {
                 if UIImage(named: species.id + "-primary") != nil {
-                    Image(species.id + "-primary").resizable().scaledToFit()
+                    PrimaryBirdImage(species: species)
                 } else {
                     VStack(spacing: 8) {
                         Image(systemName: "bird").font(.largeTitle)

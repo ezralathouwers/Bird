@@ -8,7 +8,10 @@
     "source": "Original OpenAI-generated illustration for this project",
     "created": "2026-11-17",
     "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
-    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none"
   },
   {
     "speciesID": "sample-parus-major",
@@ -19,7 +22,10 @@
     "source": "Original OpenAI-generated illustration for this project",
     "created": "2026-11-17",
     "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
-    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "left",
+    "displayFacing": "right",
+    "displayTransform": "horizontal reflection in PrimaryBirdImage"
   },
   {
     "speciesID": "sample-erithacus-rubecula",
@@ -30,7 +36,10 @@
     "source": "Original OpenAI-generated illustration for this project",
     "created": "2026-11-17",
     "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
-    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none"
   },
   {
     "speciesID": "sample-cyanistes-caeruleus",
@@ -41,7 +50,10 @@
     "source": "Original OpenAI-generated illustration for this project",
     "created": "2026-11-17",
     "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
-    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "left",
+    "displayFacing": "right",
+    "displayTransform": "horizontal reflection in PrimaryBirdImage"
   },
   {
     "speciesID": "sample-dendrocopos-major",
@@ -52,7 +64,10 @@
     "source": "Original OpenAI-generated illustration for this project",
     "created": "2026-11-17",
     "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
-    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none"
   },
   {
     "speciesID": "sample-alcedo-atthis",
@@ -63,6 +78,9 @@
     "source": "Original OpenAI-generated illustration for this project",
     "created": "2026-11-17",
     "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
-    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "left",
+    "displayFacing": "right",
+    "displayTransform": "horizontal reflection in PrimaryBirdImage"
   }
 ]

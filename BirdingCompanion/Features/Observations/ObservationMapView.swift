@@ -95,7 +95,7 @@ private struct SpeciesObservationMarker: View {
         Group {
             // Hook for the approved primary illustration; never reuse the habitat artwork.
             if UIImage(named: species.id + "-primary") != nil {
-                Image(species.id + "-primary").resizable().scaledToFit()
+                PrimaryBirdImage(species: species)
             } else {
                 Image(systemName: "bird").font(.system(size: 28, weight: .light))
                     .foregroundStyle(FieldGuideTheme.charcoal)
