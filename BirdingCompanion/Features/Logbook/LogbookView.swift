@@ -28,7 +28,7 @@ struct LogbookView: View {
                     }
                     .pickerStyle(.menu)
                     .frame(minHeight: 44)
-                    .accessibilityHint("Per familie groepeert je soorten. Laatst gelogd toont een doorlopende lijst.")
+                    .accessibilityHint("Per familie groepeert je soorten. Laatst ontdekt toont een doorlopende lijst.")
                 }
                 if let loadError = store.loadError {
                     Text(loadError).foregroundStyle(.red)

@@ -312,7 +312,7 @@ final class LogbookProjectionTests: XCTestCase {
             catalog: catalog, sort: .family)
         XCTAssertEqual(rows.count, 1)
         XCTAssertEqual(rows.first?.id, bird.id)
-        XCTAssertEqual(rows.first?.lastLoggedAt, Date(timeIntervalSince1970: 2))
+        XCTAssertEqual(rows.first?.firstObservedAt, Date(timeIntervalSince1970: 0))
     }
 
     func testTwoTitSpeciesShareOneFamilyAndRowsAreAlphabetical() {
@@ -326,11 +326,25 @@ final class LogbookProjectionTests: XCTestCase {
         XCTAssertEqual(groups.first?.species.map(\.species.dutchName), ["Koolmees", "Pimpelmees"])
     }
 
-    func testRecentOrderUsesCreationTimeAndDoesNotGroup() {
-        let olderLog = record(catalog[0], created: 10, observed: 500)
-        let newerLog = record(catalog[1], created: 20, observed: 1)
-        let rows = LogbookProjection.species(observations: [olderLog, newerLog], catalog: catalog, sort: .lastLogged)
+    func testDiscoveryOrderUsesFirstObservedDateAndIgnoresRepeatSightings() {
+        let firstOldSpecies = record(catalog[0], created: 1000, observed: 10)
+        let repeatOldSpecies = record(catalog[0], created: 3000, observed: 900)
+        let firstNewSpecies = record(catalog[1], created: 500, observed: 20)
+        let records = [repeatOldSpecies, firstNewSpecies, firstOldSpecies]
+        for input in [records, Array(records.reversed())] {
+            let rows = LogbookProjection.species(observations: input, catalog: catalog, sort: .lastLogged)
+            XCTAssertEqual(rows.map(\.id), [catalog[1].id, catalog[0].id])
+            XCTAssertEqual(rows.last?.firstObservedAt, Date(timeIntervalSince1970: 10))
+        }
+    }
+
+    func testBackdatedFirstSightingReordersDiscoveryList() {
+        let initial = [record(catalog[0], created: 100, observed: 20),
+                       record(catalog[1], created: 200, observed: 10)]
+        let backdated = record(catalog[0], created: 300, observed: 1)
+        let rows = LogbookProjection.species(observations: initial + [backdated], catalog: catalog, sort: .lastLogged)
         XCTAssertEqual(rows.map(\.id), [catalog[1].id, catalog[0].id])
+        XCTAssertEqual(LogbookSort.lastLogged.label, "Laatst ontdekt")
     }
 
     func testUnknownSpeciesRemainsVisibleAndUnknownFamilySortsLast() {

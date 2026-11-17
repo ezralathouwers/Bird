@@ -14,12 +14,12 @@ struct BirdFamily: Identifiable, Hashable, Sendable {
 
 enum LogbookSort: String, CaseIterable {
     case family, lastLogged
-    var label: String { self == .family ? "Per familie" : "Laatst gelogd" }
+    var label: String { self == .family ? "Per familie" : "Laatst ontdekt" }
 }
 
 struct LoggedSpecies: Identifiable, Sendable {
     let species: Species
-    let lastLoggedAt: Date
+    let firstObservedAt: Date
     var id: String { species.id }
 }
 
@@ -31,18 +31,18 @@ struct LoggedFamily: Identifiable, Sendable {
 
 struct LogbookProjection {
     static func species(observations: [Observation], catalog: [Species], sort: LogbookSort) -> [LoggedSpecies] {
-        var latest: [String: Observation] = [:]
+        var earliest: [String: Observation] = [:]
         for observation in observations {
-            if let existing = latest[observation.speciesID], existing.createdAt >= observation.createdAt { continue }
-            latest[observation.speciesID] = observation
+            if let existing = earliest[observation.speciesID], existing.observedAt <= observation.observedAt { continue }
+            earliest[observation.speciesID] = observation
         }
         let known = catalog.reduce(into: [String: Species]()) { $0[$1.id] = $1 }
-        return latest.values.map { record in
+        return earliest.values.map { record in
             let bird = known[record.speciesID] ?? Species(id: record.speciesID, taxonomyVersion: record.taxonomyVersion,
                 dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "")
-            return LoggedSpecies(species: bird, lastLoggedAt: record.createdAt)
+            return LoggedSpecies(species: bird, firstObservedAt: record.observedAt)
         }.sorted {
-            if sort == .lastLogged, $0.lastLoggedAt != $1.lastLoggedAt { return $0.lastLoggedAt > $1.lastLoggedAt }
+            if sort == .lastLogged, $0.firstObservedAt != $1.firstObservedAt { return $0.firstObservedAt > $1.firstObservedAt }
             return nameComesBefore($0.species, $1.species)
         }
     }
