@@ -4,17 +4,43 @@ import Combine
 protocol ObservationPersistence {
     func load() throws -> [Observation]
     func save(_ observations: [Observation]) throws
+    func loadSessions() throws -> [BirdSession]
+    func save(_ observations: [Observation], sessions: [BirdSession]) throws
+}
+
+extension ObservationPersistence {
+    func loadSessions() throws -> [BirdSession] { [] }
+    func save(_ observations: [Observation], sessions: [BirdSession]) throws {
+        guard sessions.isEmpty else { throw SessionError.unsupportedPersistence }
+        try save(observations)
+    }
 }
 
 struct JSONObservationPersistence: ObservationPersistence {
     let url: URL
-    func load() throws -> [Observation] {
-        guard FileManager.default.fileExists(atPath: url.path) else { return [] }
-        return try JSONDecoder().decode([Observation].self, from: Data(contentsOf: url))
+    private func archive() throws -> BirdingArchive {
+        guard FileManager.default.fileExists(atPath: url.path) else {
+            return BirdingArchive(observations: [], sessions: [])
+        }
+        let data = try Data(contentsOf: url)
+        // Read the previous observation-array format without rewriting it on load.
+        if let legacy = try? JSONDecoder().decode([Observation].self, from: data) {
+            return BirdingArchive(observations: legacy, sessions: [])
+        }
+        let result = try JSONDecoder().decode(BirdingArchive.self, from: data)
+        guard result.version == 2 else { throw CocoaError(.fileReadCorruptFile) }
+        return result
     }
+    func load() throws -> [Observation] { try archive().observations }
+    func loadSessions() throws -> [BirdSession] { try archive().sessions }
     func save(_ observations: [Observation]) throws {
+        try save(observations, sessions: archive().sessions)
+    }
+    func save(_ observations: [Observation], sessions: [BirdSession]) throws {
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try JSONEncoder().encode(observations).write(to: url, options: .atomic)
+        // One atomic write: never publish a session without its individual observations.
+        try JSONEncoder().encode(BirdingArchive(observations: observations, sessions: sessions))
+            .write(to: url, options: .atomic)
     }
 }
 
@@ -25,6 +51,7 @@ enum SpeciesLogStatus {
 @MainActor
 final class ObservationStore: ObservableObject {
     @Published private(set) var observations: [Observation] = []
+    @Published private(set) var sessions: [BirdSession] = []
     @Published private(set) var loadError: String?
     private let persistence: any ObservationPersistence
 
@@ -34,7 +61,10 @@ final class ObservationStore: ObservableObject {
             let loaded = try persistence.load()
             for observation in loaded { try observation.validate() }
             guard Set(loaded.map(\.id)).count == loaded.count else { throw ObservationError.duplicateID }
+            let loadedSessions = try persistence.loadSessions()
+            try Self.validateArchive(observations: loaded, sessions: loadedSessions)
             observations = loaded
+            sessions = loadedSessions
         } catch {
             loadError = "Waarnemingen konden niet worden geladen. Het bestand blijft bewaard. \(error.localizedDescription)"
         }
@@ -55,8 +85,90 @@ final class ObservationStore: ObservableObject {
             guard !updated.contains(where: { $0.id == observation.id }) else { throw ObservationError.duplicateID }
             updated.append(observation)
         }
-        try persistence.save(updated)
+        try Self.validateArchive(observations: updated, sessions: sessions)
+        try persistence.save(updated, sessions: sessions)
         observations = updated
+    }
+
+    var activeSession: BirdSession? { sessions.first { $0.isLive && $0.endedAt == nil } }
+
+    var completedSessions: [BirdSession] {
+        sessions.filter { $0.endedAt != nil }.sorted {
+            $0.startedAt == $1.startedAt ? $0.id.uuidString < $1.id.uuidString : $0.startedAt > $1.startedAt
+        }
+    }
+
+    func observations(in session: BirdSession) -> [Observation] {
+        observations.filter { $0.sessionID == session.id }.sorted { $0.observedAt > $1.observedAt }
+    }
+
+    func startSession(_ session: BirdSession) throws {
+        guard activeSession == nil else { throw SessionError.alreadyActive }
+        guard session.isLive, session.endedAt == nil else { throw SessionError.invalidSession }
+        try commit(observations: observations, sessions: sessions + [session])
+    }
+
+    func addCompletedSession(_ session: BirdSession, species: [Species]) throws {
+        guard !session.isLive, session.endedAt != nil else { throw SessionError.invalidSession }
+        var seen = Set<String>()
+        let logs = species.filter { seen.insert($0.id).inserted }.map { bird in
+            var log = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion,
+                observedAt: session.startedAt, locationName: session.locationName, count: 1, notes: "", status: .confirmed)
+            log.latitude = session.latitude; log.longitude = session.longitude
+            log.countryCode = session.countryCode; log.sessionID = session.id
+            log.source = "session-retrospective"
+            return log
+        }
+        try commit(observations: observations + logs, sessions: sessions + [session])
+    }
+
+    func logLive(_ species: Species, sessionID: UUID, at date: Date, location: SessionLogLocation) throws {
+        guard let session = activeSession, session.id == sessionID else { throw SessionError.noActiveSession }
+        var log = Observation(speciesID: species.id, taxonomyVersion: species.taxonomyVersion,
+            observedAt: date, locationName: location.name, count: 1, notes: "", status: .confirmed)
+        log.latitude = location.latitude; log.longitude = location.longitude
+        log.countryCode = location.countryCode; log.sessionID = session.id; log.source = "session-live"
+        try commit(observations: observations + [log], sessions: sessions)
+    }
+
+    func finishSession(at date: Date = Date()) throws {
+        guard let active = activeSession, let index = sessions.firstIndex(where: { $0.id == active.id }) else {
+            throw SessionError.noActiveSession
+        }
+        var updated = sessions
+        updated[index].endedAt = date
+        try commit(observations: observations, sessions: updated)
+    }
+
+    private func commit(observations: [Observation], sessions: [BirdSession]) throws {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        try Self.validateArchive(observations: observations, sessions: sessions)
+        try persistence.save(observations, sessions: sessions)
+        self.observations = observations
+        self.sessions = sessions
+    }
+
+    private static func validateArchive(observations: [Observation], sessions: [BirdSession]) throws {
+        for session in sessions { try session.validate() }
+        guard Set(sessions.map(\.id)).count == sessions.count,
+              Set(observations.map(\.id)).count == observations.count,
+              sessions.filter({ $0.endedAt == nil }).count <= 1 else { throw SessionError.invalidSession }
+        let byID = Dictionary(uniqueKeysWithValues: sessions.map { ($0.id, $0) })
+        for log in observations {
+            try log.validate()
+            if let id = log.sessionID {
+                guard let session = byID[id], log.latitude != nil, log.longitude != nil,
+                      !log.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                      log.observedAt >= session.startedAt,
+                      session.endedAt.map({ log.observedAt <= $0 }) ?? true else { throw SessionError.invalidLog }
+            }
+        }
+    }
+
+    func exportArchiveData() throws -> Data {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        return try encoder.encode(BirdingArchive(observations: observations, sessions: sessions))
     }
 
     func logStatus(for speciesID: String) -> SpeciesLogStatus {

@@ -19,6 +19,7 @@ struct Observation: Identifiable, Codable, Equatable, Sendable {
     var latitude: Double? = nil
     var longitude: Double? = nil
     var countryCode: String? = nil
+    var sessionID: UUID? = nil
 
     func validate() throws {
         guard !speciesID.isEmpty, !taxonomyVersion.isEmpty, count > 0 else {
@@ -77,4 +78,52 @@ struct ObservationCountry {
             UnicodeScalar(127397 + $0.value)
         }))
     }
+}
+
+
+struct BirdSession: Identifiable, Codable, Equatable, Sendable {
+    var id = UUID()
+    var locationName: String
+    var latitude: Double
+    var longitude: Double
+    var countryCode: String?
+    var startedAt: Date
+    var endedAt: Date?
+    var isLive: Bool
+
+    func validate() throws {
+        guard !locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              latitude.isFinite, longitude.isFinite,
+              (-90...90).contains(latitude), (-180...180).contains(longitude),
+              startedAt.timeIntervalSince1970.isFinite,
+              endedAt.map({ $0.timeIntervalSince1970.isFinite && $0 >= startedAt }) ?? isLive else {
+            throw SessionError.invalidSession
+        }
+    }
+}
+
+enum SessionError: LocalizedError {
+    case invalidSession, alreadyActive, noActiveSession, invalidLog, unsupportedPersistence
+    var errorDescription: String? {
+        switch self {
+        case .invalidSession: "Kies een locatie en een geldige begin- en eindtijd."
+        case .alreadyActive: "Er loopt al een livesessie. Rond die eerst af."
+        case .noActiveSession: "Deze livesessie is niet meer actief."
+        case .invalidLog: "De waarneming moet binnen de sessie vallen en een geldige locatie hebben."
+        case .unsupportedPersistence: "Deze opslag ondersteunt nog geen sessies."
+        }
+    }
+}
+
+struct BirdingArchive: Codable {
+    var version = 2
+    var observations: [Observation]
+    var sessions: [BirdSession]
+}
+
+struct SessionLogLocation: Sendable {
+    let latitude: Double
+    let longitude: Double
+    let name: String
+    let countryCode: String?
 }

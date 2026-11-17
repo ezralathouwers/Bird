@@ -365,3 +365,89 @@ final class LogbookProjectionTests: XCTestCase {
         XCTAssertEqual(rows.map(\.species.dutchName), ["Koolmees", "Merel"])
     }
 }
+
+@MainActor
+final class SessionTests: XCTestCase {
+    private let start = Date(timeIntervalSince1970: 1000)
+    private func session(live: Bool) -> BirdSession {
+        BirdSession(locationName: "Testgebied", latitude: 51, longitude: 4, countryCode: "BE",
+            startedAt: start, endedAt: live ? nil : start.addingTimeInterval(600), isLive: live)
+    }
+    private func url() -> URL { FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".json") }
+
+    func testCompletedSessionWritesIndividualLogsAtomicallyAndReloads() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let completed = session(live: false)
+        let bird = DiscoverFixtures.catalog[0]
+        try store.addCompletedSession(completed, species: [bird, bird, DiscoverFixtures.catalog[1]])
+        XCTAssertEqual(store.observations.count, 2)
+        XCTAssertTrue(store.observations.allSatisfy { $0.sessionID == completed.id && $0.observedAt == start && $0.latitude == 51 })
+        XCTAssertEqual(store.logStatus(for: bird.id), .logged)
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertNil(restored.loadError)
+        XCTAssertEqual(restored.sessions, [completed])
+        XCTAssertEqual(restored.observations, store.observations)
+        let exported = try JSONDecoder().decode(BirdingArchive.self, from: restored.exportArchiveData())
+        XCTAssertEqual(exported.sessions, [completed])
+    }
+
+    func testActiveSessionSurvivesRestartAndLiveLogsKeepOwnTimeAndLocation() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let persistence = JSONObservationPersistence(url: path)
+        let store = ObservationStore(persistence: persistence)
+        let live = session(live: true)
+        try store.startSession(live)
+        XCTAssertThrowsError(try store.startSession(session(live: true)))
+        let restored = ObservationStore(persistence: persistence)
+        XCTAssertEqual(restored.activeSession?.id, live.id)
+        let point = SessionLogLocation(latitude: 52, longitude: 5, name: "Andere plek", countryCode: "NL")
+        try restored.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(100), location: point)
+        try restored.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(200), location: point)
+        XCTAssertEqual(restored.observations.count, 2)
+        XCTAssertEqual(restored.observations.first?.latitude, 52)
+        XCTAssertEqual(restored.observations.first?.observedAt, start.addingTimeInterval(100))
+        XCTAssertThrowsError(try restored.finishSession(at: start.addingTimeInterval(50)))
+        XCTAssertNotNil(restored.activeSession)
+        try restored.finishSession(at: start.addingTimeInterval(300))
+        XCTAssertNil(restored.activeSession)
+        XCTAssertThrowsError(try restored.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(400), location: point))
+    }
+
+    func testLegacyArrayMigrationPreservesRecords() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let bird = DiscoverFixtures.catalog[0]
+        let log = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion,
+            observedAt: start, locationName: "Oud", count: 1, notes: "Bewaard", status: .confirmed)
+        try JSONEncoder().encode([log]).write(to: path)
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertEqual(store.observations, [log])
+        try store.startSession(session(live: true))
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertEqual(restored.observations, [log])
+        XCTAssertNotNil(restored.activeSession)
+    }
+
+    func testSessionWriteFailurePublishesNeitherSessionsNorLogs() {
+        let store = ObservationStore(persistence: FailingSessionPersistence())
+        XCTAssertThrowsError(try store.addCompletedSession(session(live: false), species: DiscoverFixtures.catalog))
+        XCTAssertTrue(store.sessions.isEmpty)
+        XCTAssertTrue(store.observations.isEmpty)
+    }
+
+    func testInvalidTimesAndLocationsAreRejected() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        var invalid = session(live: false); invalid.endedAt = start.addingTimeInterval(-1)
+        XCTAssertThrowsError(try store.addCompletedSession(invalid, species: []))
+        invalid = session(live: true); invalid.latitude = 100
+        XCTAssertThrowsError(try store.startSession(invalid))
+        XCTAssertTrue(store.sessions.isEmpty)
+    }
+}
+
+private struct FailingSessionPersistence: ObservationPersistence {
+    func load() throws -> [Observation] { [] }
+    func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
+    func save(_ observations: [Observation], sessions: [BirdSession]) throws { throw CocoaError(.fileWriteNoPermission) }
+}
