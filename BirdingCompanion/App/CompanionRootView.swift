@@ -9,6 +9,7 @@ struct CompanionRootView: View {
     @StateObject private var observationNavigation = ObservationNavigation()
     @State private var section: MainSection = .discover
     @State private var speciesPath: [Species] = []
+    @State private var logbookPath: [Species] = []
     @StateObject private var discover = DiscoverViewModel()
     @State private var birdToLog: Species?
     @State private var showObservation = false
@@ -54,20 +55,9 @@ struct CompanionRootView: View {
                     .padding().navigationTitle("Sessies")
             }
         case .list:
-            NavigationStack {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text("\(LifelistRules().speciesIDs(in: store.observations).count) soorten op je lifelijst")
-                        ForEach(DiscoverFixtures.catalog.filter { !store.observations(for: $0.id).isEmpty }) { bird in
-                            Text(bird.dutchName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
-                            ObservationHistoryView(species: bird, embedded: true,
-                                showsExport: bird.id == DiscoverFixtures.catalog.first(where: { !store.observations(for: $0.id).isEmpty })?.id)
-                        }
-                        if store.observations.isEmpty {
-                            ObservationHistoryView(species: species, embedded: true)
-                        }
-                    }.padding(20)
-                }.navigationTitle("Logboek")
+            NavigationStack(path: $logbookPath) {
+                LogbookView()
+                    .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
             }
         }
     }
@@ -112,7 +102,11 @@ struct CompanionRootView: View {
             Button {
                 if observationNavigation.selection != nil { observationNavigation.selection = nil }
                 else {
-                    birdToLog = section == .discover ? speciesPath.last : nil
+                    switch section {
+                    case .discover: birdToLog = speciesPath.last
+                    case .list: birdToLog = logbookPath.last
+                    default: birdToLog = nil
+                    }
                     showObservation = true
                 }
             } label: {
@@ -135,6 +129,7 @@ struct CompanionRootView: View {
         Button {
             observationNavigation.selection = nil
             if item == .discover { speciesPath.removeAll() }
+            if item == .list { logbookPath.removeAll() }
             section = item
         } label: {
             Image(systemName: symbol)

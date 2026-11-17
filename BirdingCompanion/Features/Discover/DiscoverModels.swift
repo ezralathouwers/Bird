@@ -100,11 +100,11 @@ struct DiscoverRanking {
 // Explicitly fictional catalog and checklist counts; no production taxonomy chosen.
 enum DiscoverFixtures {
     static let catalog: [Species] = [
-        Species(id: "sample-turdus-merula", taxonomyVersion: "mock-v1", dutchName: "Merel", englishName: "Common blackbird", scientificName: "Turdus merula"),
-        Species(id: "sample-parus-major", taxonomyVersion: "mock-v1", dutchName: "Koolmees", englishName: "Great tit", scientificName: "Parus major"),
-        Species(id: "sample-erithacus-rubecula", taxonomyVersion: "mock-v1", dutchName: "Roodborst", englishName: "European robin", scientificName: "Erithacus rubecula"),
-        Species(id: "sample-cyanistes-caeruleus", taxonomyVersion: "mock-v1", dutchName: "Pimpelmees", englishName: "Eurasian blue tit", scientificName: "Cyanistes caeruleus"),
-        Species(id: "sample-dendrocopos-major", taxonomyVersion: "mock-v1", dutchName: "Grote bonte specht", englishName: "Great spotted woodpecker", scientificName: "Dendrocopos major"),
+        Species(id: "sample-turdus-merula", taxonomyVersion: "mock-v1", dutchName: "Merel", englishName: "Common blackbird", scientificName: "Turdus merula", family: .thrushes),
+        Species(id: "sample-parus-major", taxonomyVersion: "mock-v1", dutchName: "Koolmees", englishName: "Great tit", scientificName: "Parus major", family: .tits),
+        Species(id: "sample-erithacus-rubecula", taxonomyVersion: "mock-v1", dutchName: "Roodborst", englishName: "European robin", scientificName: "Erithacus rubecula", family: .flycatchers),
+        Species(id: "sample-cyanistes-caeruleus", taxonomyVersion: "mock-v1", dutchName: "Pimpelmees", englishName: "Eurasian blue tit", scientificName: "Cyanistes caeruleus", family: .tits),
+        Species(id: "sample-dendrocopos-major", taxonomyVersion: "mock-v1", dutchName: "Grote bonte specht", englishName: "Great spotted woodpecker", scientificName: "Dendrocopos major", family: .woodpeckers),
         MockSpeciesRepository.kingfisher
     ]
 }

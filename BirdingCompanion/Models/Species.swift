@@ -6,6 +6,7 @@ struct Species: Identifiable, Hashable, Sendable {
     let dutchName: String
     let englishName: String
     let scientificName: String
+    var family: BirdFamily? = nil
 
     var englishDisplayName: String {
         englishName.prefix(1).uppercased() + englishName.dropFirst().lowercased()
@@ -20,7 +21,7 @@ protocol SpeciesRepository {
 struct MockSpeciesRepository: SpeciesRepository {
     static let kingfisher = Species(
         id: "sample-alcedo-atthis", taxonomyVersion: "mock-v1-not-a-taxonomic-authority",
-        dutchName: "IJsvogel", englishName: "Common Kingfisher", scientificName: "Alcedo atthis"
+        dutchName: "IJsvogel", englishName: "Common Kingfisher", scientificName: "Alcedo atthis", family: .kingfishers
     )
     let species = [kingfisher]
     func search(_ query: String) -> [Species] {

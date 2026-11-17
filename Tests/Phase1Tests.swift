@@ -295,3 +295,59 @@ private struct IncompleteDiscoverFixture: DiscoverRepository {
         DiscoverDataset(reports: [], attribution: "Incomplete test feed", isDemo: false, coversRequestedWindow: false)
     }
 }
+
+final class LogbookProjectionTests: XCTestCase {
+    private var catalog: [Species] { DiscoverFixtures.catalog }
+    private func record(_ species: Species, created: Double, observed: Double = 0) -> Observation {
+        var value = Observation(speciesID: species.id, taxonomyVersion: species.taxonomyVersion,
+            observedAt: Date(timeIntervalSince1970: observed), locationName: "Testplek", count: 1,
+            notes: "", status: .confirmed)
+        value.createdAt = Date(timeIntervalSince1970: created)
+        return value
+    }
+
+    func testSpeciesAreUniqueAndUnloggedSpeciesAreAbsent() {
+        let bird = catalog[0]
+        let rows = LogbookProjection.species(observations: [record(bird, created: 1), record(bird, created: 2)],
+            catalog: catalog, sort: .family)
+        XCTAssertEqual(rows.count, 1)
+        XCTAssertEqual(rows.first?.id, bird.id)
+        XCTAssertEqual(rows.first?.lastLoggedAt, Date(timeIntervalSince1970: 2))
+    }
+
+    func testTwoTitSpeciesShareOneFamilyAndRowsAreAlphabetical() {
+        let greatTit = catalog.first { $0.scientificName == "Parus major" }!
+        let blueTit = catalog.first { $0.scientificName == "Cyanistes caeruleus" }!
+        let rows = LogbookProjection.species(observations: [record(blueTit, created: 2), record(greatTit, created: 1)],
+            catalog: catalog, sort: .family)
+        let groups = LogbookProjection.families(from: rows)
+        XCTAssertEqual(groups.count, 1)
+        XCTAssertEqual(groups.first?.family.id, "Paridae")
+        XCTAssertEqual(groups.first?.species.map(\.species.dutchName), ["Koolmees", "Pimpelmees"])
+    }
+
+    func testRecentOrderUsesCreationTimeAndDoesNotGroup() {
+        let olderLog = record(catalog[0], created: 10, observed: 500)
+        let newerLog = record(catalog[1], created: 20, observed: 1)
+        let rows = LogbookProjection.species(observations: [olderLog, newerLog], catalog: catalog, sort: .lastLogged)
+        XCTAssertEqual(rows.map(\.id), [catalog[1].id, catalog[0].id])
+    }
+
+    func testUnknownSpeciesRemainsVisibleAndUnknownFamilySortsLast() {
+        let unknown = Species(id: "unmapped-species", taxonomyVersion: "legacy-v1",
+            dutchName: "Test", englishName: "Test", scientificName: "")
+        let rows = LogbookProjection.species(observations: [record(unknown, created: 2), record(catalog[0], created: 1)],
+            catalog: catalog, sort: .family)
+        XCTAssertEqual(rows.count, 2)
+        let groups = LogbookProjection.families(from: rows)
+        XCTAssertEqual(groups.last?.family, BirdFamily.unknown)
+        XCTAssertEqual(groups.last?.species.first?.id, "unmapped-species")
+    }
+
+    func testEmptyAndTiedRecentOrderAreStable() {
+        XCTAssertTrue(LogbookProjection.species(observations: [], catalog: catalog, sort: .family).isEmpty)
+        let rows = LogbookProjection.species(observations: [record(catalog[0], created: 1), record(catalog[1], created: 1)],
+            catalog: catalog, sort: .lastLogged)
+        XCTAssertEqual(rows.map(\.species.dutchName), ["Koolmees", "Merel"])
+    }
+}

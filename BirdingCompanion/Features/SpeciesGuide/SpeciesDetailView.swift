@@ -58,7 +58,7 @@ struct SpeciesDetailView: View {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 22, weight: .light))
                             .frame(width: 44, height: 44)
-                    }.accessibilityLabel("Terug naar Ontdek")
+                    }.accessibilityLabel("Terug")
                     Spacer(minLength: 0)
                     actions
                 }
