@@ -1,0 +1,68 @@
+[
+  {
+    "speciesID": "sample-turdus-merula",
+    "asset": "sample-turdus-merula-primary",
+    "view": "primary",
+    "version": 1,
+    "sourceFile": "exec-7dd646be-56e0-4c6c-a61b-23a026ae5daf.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-17",
+    "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+  },
+  {
+    "speciesID": "sample-parus-major",
+    "asset": "sample-parus-major-primary",
+    "view": "primary",
+    "version": 1,
+    "sourceFile": "exec-dc9892bb-fe4c-47bd-857d-3714212d8a5f.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-17",
+    "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+  },
+  {
+    "speciesID": "sample-erithacus-rubecula",
+    "asset": "sample-erithacus-rubecula-primary",
+    "view": "primary",
+    "version": 1,
+    "sourceFile": "exec-c52d9af4-8d0e-4509-a331-3ee8c5b8b9d8.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-17",
+    "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+  },
+  {
+    "speciesID": "sample-cyanistes-caeruleus",
+    "asset": "sample-cyanistes-caeruleus-primary",
+    "view": "primary",
+    "version": 1,
+    "sourceFile": "exec-addb4bad-b79e-40a3-8597-4a575e933417.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-17",
+    "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+  },
+  {
+    "speciesID": "sample-dendrocopos-major",
+    "asset": "sample-dendrocopos-major-primary",
+    "view": "primary",
+    "version": 1,
+    "sourceFile": "exec-3e9515d0-c66a-408a-bca3-d4ed8fcb5ea4.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-17",
+    "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+  },
+  {
+    "speciesID": "sample-alcedo-atthis",
+    "asset": "sample-alcedo-atthis-primary",
+    "view": "primary",
+    "version": 1,
+    "sourceFile": "exec-2dd8f028-42ce-41bd-8285-2cca360edaab.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-17",
+    "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media"
+  }
+]
