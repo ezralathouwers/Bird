@@ -6,6 +6,11 @@ struct DiscoverView: View {
     @StateObject private var location = ObservationLocationModel()
     @State private var filter: DiscoverFilter = .all
     @State private var demo = false
+    @State private var showSearch = false
+    @State private var catalogQuery = ""
+    @FocusState private var searchFocused: Bool
+    var catalog: [Species] = DiscoverFixtures.catalog
+    var catalogIsComplete = false
 
     private var queryKey: String {
         guard let latitude = location.latitude, let longitude = location.longitude else { return "no-location" }
@@ -34,6 +39,36 @@ struct DiscoverView: View {
                     .accessibilityAddTraits(.isHeader)
                     .padding(.top, 60)
                     .padding(.bottom, 6)
+                if showSearch { catalogSearch } else { nearbyContent }
+            }.padding(20).padding(.bottom, 24)
+        }
+        .background(FieldGuideTheme.ivory)
+        .overlay(alignment: .topTrailing) {
+            Button { showSearch.toggle() } label: {
+                Image(systemName: showSearch ? "xmark" : "magnifyingglass")
+                    .font(.system(size: 22, weight: .light)).frame(width: 44, height: 44)
+                    .background(FieldGuideTheme.ivory, in: Circle())
+            }.accessibilityLabel(showSearch ? "Sluit soortenzoeker" : "Zoek alle vogelsoorten")
+                .padding(.trailing, 20).padding(.top, 8)
+        }
+        .onChange(of: showSearch) { _, shown in
+            searchFocused = shown
+            if !shown { catalogQuery = "" }
+        }
+        .toolbar(.hidden, for: .navigationBar)
+        .task { if location.latitude == nil && !demo { location.useCurrentLocation() } }
+        .task(id: queryKey) { if let query { await model.load(query: query, demo: demo) } }
+        .task(id: demo) {
+            if demo && location.latitude == nil {
+                // Explicit fictional coordinate at 0/0, never presented as current GPS.
+                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10), demo: true)
+            }
+        }
+        .refreshable { if let query { await model.load(query: query, demo: demo) } }
+        .onDisappear { location.stop() }
+    }
+
+    @ViewBuilder private var nearbyContent: some View {
                 filters
                 if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
                 if location.isLocating { ProgressView("Je huidige locatie ophalen…") }
@@ -80,20 +115,34 @@ struct DiscoverView: View {
                     Button("Bekijk voorbeeldpagina") { demo = true }
                         .frame(minHeight: 44)
                 }
-            }.padding(20).padding(.bottom, 24)
-        }
-        .background(FieldGuideTheme.ivory)
-        .toolbar(.hidden, for: .navigationBar)
-        .task { if location.latitude == nil && !demo { location.useCurrentLocation() } }
-        .task(id: queryKey) { if let query { await model.load(query: query, demo: demo) } }
-        .task(id: demo) {
-            if demo && location.latitude == nil {
-                // Explicit fictional coordinate at 0/0, never presented as current GPS.
-                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10), demo: true)
+    }
+
+    private var catalogSearch: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            TextField("Zoek een vogel", text: $catalogQuery)
+                .textFieldStyle(.roundedBorder).autocorrectionDisabled()
+                .focused($searchFocused)
+                .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
+            if !catalogIsComplete {
+                Text("De wereldcatalogus is nog niet aangesloten. Je doorzoekt nu alle voorbeeldsoorten, gelogd en niet gelogd.")
+                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote)).foregroundStyle(FieldGuideTheme.taupe)
+            }
+            let results = SpeciesCatalogSearch.results(for: catalogQuery, in: catalog)
+            if results.isEmpty { Text("Geen soorten gevonden.") }
+            ForEach(results) { bird in
+                NavigationLink(value: bird) {
+                    HStack(spacing: 16) {
+                        PrimaryBirdArtwork(species: bird).frame(width: 72.8, height: 72.8)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
+                            Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        SpeciesLogBadge(status: store.logStatus(for: bird.id), speciesName: bird.dutchName, diameter: 22)
+                    }.contentShape(Rectangle())
+                }.buttonStyle(.plain)
+                Divider()
             }
         }
-        .refreshable { if let query { await model.load(query: query, demo: demo) } }
-        .onDisappear { location.stop() }
     }
 
     private var filters: some View {

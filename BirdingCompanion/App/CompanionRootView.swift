@@ -13,8 +13,7 @@ struct CompanionRootView: View {
     @State private var speciesPath: [Species] = []
     @State private var logbookPath: [Species] = []
     @StateObject private var discover = DiscoverViewModel()
-    @State private var birdToLog: Species?
-    @State private var showObservation = false
+    @State private var showAddMenu = false
     private let addButtonDiameter: CGFloat = 72
     private var addButtonOverlap: CGFloat { addButtonDiameter * 0.30 }
     private let species = MockSpeciesRepository.kingfisher
@@ -22,10 +21,12 @@ struct CompanionRootView: View {
     var body: some View {
         ZStack {
             content
-                .opacity(observationNavigation.selection == nil && !showLiveSession ? 1 : 0)
-                .allowsHitTesting(observationNavigation.selection == nil && !showLiveSession)
-                .accessibilityHidden(observationNavigation.selection != nil || showLiveSession)
-            if showLiveSession {
+                .opacity(observationNavigation.selection == nil && !showLiveSession && !showAddMenu ? 1 : 0)
+                .allowsHitTesting(observationNavigation.selection == nil && !showLiveSession && !showAddMenu)
+                .accessibilityHidden(observationNavigation.selection != nil || showLiveSession || showAddMenu)
+            if showAddMenu {
+                AddEntryView(isPresented: $showAddMenu)
+            } else if showLiveSession {
                 LiveSessionView(isPresented: $showLiveSession)
             } else if let observation = observationNavigation.selection {
                 ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
@@ -35,10 +36,6 @@ struct CompanionRootView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(FieldGuideTheme.ivory)
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
-            .fullScreenCover(isPresented: $showObservation) {
-                if let birdToLog { ObservationForm(species: birdToLog) }
-                else { birdPicker }
-            }
             .environmentObject(sessionLogger)
     }
 
@@ -70,25 +67,6 @@ struct CompanionRootView: View {
         }
     }
 
-    private var birdPicker: some View {
-        NavigationStack {
-            List(DiscoverFixtures.catalog) { bird in
-                Button { birdToLog = bird } label: {
-                    HStack(spacing: 12) {
-                        PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
-                        Text(bird.dutchName)
-                    }
-                }
-            }
-            .navigationTitle("Kies een vogel")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Sluiten") { showObservation = false }
-                }
-            }
-        }
-    }
-
     private var bottomNavigation: some View {
         VStack(spacing: 0) {
             // Negative inset spacing lets habitat extend behind this reserved hit area.
@@ -112,15 +90,11 @@ struct CompanionRootView: View {
             Button {
                 if store.activeSession != nil {
                     observationNavigation.selection = nil
+                    showAddMenu = false
                     showLiveSession = true
                 } else if observationNavigation.selection != nil { observationNavigation.selection = nil }
                 else {
-                    switch section {
-                    case .discover: birdToLog = speciesPath.last
-                    case .list: birdToLog = logbookPath.last
-                    default: birdToLog = nil
-                    }
-                    showObservation = true
+                    showAddMenu.toggle()
                 }
             } label: {
                 Group {
@@ -142,8 +116,8 @@ struct CompanionRootView: View {
                     .contentShape(Circle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(store.activeSession != nil ? "Open livesessie" : (observationNavigation.selection == nil ? "Voeg een waarneming toe" : "Sluit waarneming"))
-            .accessibilityHint(store.activeSession != nil ? "Terug naar de actieve vogelsessie" : (observationNavigation.selection == nil ? "Kies een soort en voeg een waarneming toe" : "Terug naar het overzicht van waarnemingen"))
+            .accessibilityLabel(store.activeSession != nil ? "Open livesessie" : (observationNavigation.selection == nil ? (showAddMenu ? "Sluit toevoegopties" : "Open toevoegopties") : "Sluit waarneming"))
+            .accessibilityHint(store.activeSession != nil ? "Terug naar de actieve vogelsessie" : (observationNavigation.selection == nil ? "Voeg een waarneming, sessie of doelstelling toe" : "Terug naar het overzicht van waarnemingen"))
         }
     }
 
@@ -151,6 +125,7 @@ struct CompanionRootView: View {
         Button {
             observationNavigation.selection = nil
             showLiveSession = false
+            showAddMenu = false
             if item == .discover { speciesPath.removeAll() }
             if item == .list { logbookPath.removeAll() }
             section = item

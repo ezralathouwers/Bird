@@ -647,3 +647,24 @@ private struct FailingGoalPersistence: ObservationPersistence {
         throw CocoaError(.fileWriteNoPermission)
     }
 }
+
+final class SpeciesCatalogSearchTests: XCTestCase {
+    func testSearchMatchesDutchEnglishScientificAndWhitespace() {
+        let catalog = DiscoverFixtures.catalog
+        for term in ["ijsvogel", " COMMON KINGFISHER ", "Alcedo atthis"] {
+            XCTAssertEqual(SpeciesCatalogSearch.results(for: term, in: catalog).map(\.id), [MockSpeciesRepository.kingfisher.id])
+        }
+        XCTAssertEqual(SpeciesCatalogSearch.results(for: "great tit", in: catalog).first?.scientificName, "Parus major")
+    }
+    func testEmptySearchIncludesEntireCatalogAndUnknownQueryIsEmpty() {
+        let catalog = DiscoverFixtures.catalog
+        XCTAssertEqual(Set(SpeciesCatalogSearch.results(for: " ", in: catalog).map(\.id)), Set(catalog.map(\.id)))
+        XCTAssertTrue(SpeciesCatalogSearch.results(for: "geen-bestaande-soort", in: catalog).isEmpty)
+        XCTAssertTrue(SpeciesCatalogSearch.results(for: "", in: []).isEmpty)
+    }
+    func testDiacriticsAndNameTiesHaveStableOrdering() {
+        let a = Species(id: "a", taxonomyVersion: "test", dutchName: "Één vogel", englishName: "Test bird", scientificName: "Testus")
+        let b = Species(id: "b", taxonomyVersion: "test", dutchName: "Één vogel", englishName: "Test bird", scientificName: "Testus")
+        XCTAssertEqual(SpeciesCatalogSearch.results(for: "een", in: [b, a]).map(\.id), ["a", "b"])
+    }
+}

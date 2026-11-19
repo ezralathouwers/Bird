@@ -55,3 +55,18 @@ enum SpeciesMediaRole: String, CaseIterable, Sendable {
     }
     var missingMessage: String { "Illustratie volgt" }
 }
+
+
+enum SpeciesCatalogSearch {
+    static func results(for query: String, in catalog: [Species]) -> [Species] {
+        let term = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        return catalog.filter { bird in
+            term.isEmpty || [bird.dutchName, bird.englishName, bird.scientificName].contains {
+                $0.range(of: term, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE")) != nil
+            }
+        }.sorted {
+            let result = $0.dutchName.compare($1.dutchName, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
+            return result == .orderedSame ? $0.id < $1.id : result == .orderedAscending
+        }
+    }
+}

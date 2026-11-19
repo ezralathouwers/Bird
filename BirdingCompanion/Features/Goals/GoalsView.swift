@@ -94,7 +94,7 @@ private struct GoalDetailView: View {
     }
 }
 
-private struct GoalForm: View {
+struct GoalForm: View {
     @EnvironmentObject private var store: ObservationStore
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
