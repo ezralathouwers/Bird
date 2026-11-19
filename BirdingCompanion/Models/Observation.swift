@@ -117,9 +117,10 @@ enum SessionError: LocalizedError {
 }
 
 struct BirdingArchive: Codable {
-    var version = 2
+    var version = 3
     var observations: [Observation]
     var sessions: [BirdSession]
+    var goals: [BirdGoal]? = nil
 }
 
 struct SessionLogLocation: Sendable {

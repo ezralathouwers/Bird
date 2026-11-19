@@ -7,15 +7,25 @@ struct LogbookView: View {
     @State private var exporting = false
     @State private var exportDocument = ObservationExport(data: Data())
     @State private var errorMessage: String?
+    @Environment(\.dismiss) private var dismiss
+    var countryCode: String? = nil
     var catalog: [Species] = DiscoverFixtures.catalog
 
     private var rows: [LoggedSpecies] {
-        LogbookProjection.species(observations: store.observations, catalog: catalog, sort: sort)
+        LogbookProjection.species(observations: countryCode.map { CountryProjection.observations(in: $0, from: store.observations) } ?? store.observations, catalog: catalog, sort: sort)
     }
 
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
+                if let countryCode {
+                    HStack(spacing: 12) {
+                        Button { dismiss() } label: { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
+                            .accessibilityLabel("Terug naar landen")
+                        Text(ObservationCountry.name(for: countryCode)).font(FieldGuideTheme.sans(24, relativeTo: .title2))
+                            .accessibilityAddTraits(.isHeader)
+                    }
+                }
                 Text("\(rows.count)").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle))
                     .accessibilityLabel("\(rows.count) gelogde vogelsoorten")
                     .accessibilityAddTraits(.isHeader)

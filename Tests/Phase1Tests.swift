@@ -541,3 +541,109 @@ private struct ReadOnlySessionPersistence: ObservationPersistence {
     func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
     func save(_ observations: [Observation], sessions: [BirdSession]) throws { throw CocoaError(.fileWriteNoPermission) }
 }
+
+final class CountryProjectionTests: XCTestCase {
+    private func log(_ species: String, country: String?, at: Double) -> Observation {
+        var value = Observation(speciesID: species, taxonomyVersion: "test-v1", observedAt: Date(timeIntervalSince1970: at),
+            locationName: "Plek", count: 1, notes: "", status: .confirmed)
+        value.countryCode = country; return value
+    }
+    func testUniqueSpeciesPerCountryAndUnknownCountriesAreExcluded() {
+        let records = [log("a", country: " be ", at: 1), log("a", country: "BE", at: 2),
+            log("b", country: "BE", at: 3), log("a", country: "NL", at: 4),
+            log("c", country: nil, at: 5), log("d", country: "ZZ", at: 6)]
+        let rows = CountryProjection.countries(in: records)
+        XCTAssertEqual(rows.first { $0.code == "BE" }?.speciesCount, 2)
+        XCTAssertEqual(rows.first { $0.code == "NL" }?.speciesCount, 1)
+        XCTAssertEqual(rows.count, 2)
+        XCTAssertEqual(rows.first { $0.code == "BE" }?.flag, "🇧🇪")
+    }
+    func testCountryDetailAndDiscoveryOrderUseOnlyThatCountry() {
+        let catalog = DiscoverFixtures.catalog
+        let records = [log(catalog[0].id, country: "NL", at: 1), log(catalog[0].id, country: "BE", at: 30),
+            log(catalog[1].id, country: "BE", at: 20), log(catalog[2].id, country: "NL", at: 40)]
+        let filtered = CountryProjection.observations(in: "be", from: records)
+        let rows = LogbookProjection.species(observations: filtered, catalog: catalog, sort: .lastLogged)
+        XCTAssertEqual(rows.map(\.id), [catalog[0].id, catalog[1].id])
+        XCTAssertTrue(CountryProjection.observations(in: "ZZ", from: records).isEmpty)
+    }
+}
+
+@MainActor
+final class GoalTests: XCTestCase {
+    private func url() -> URL { FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".json") }
+    private func log(_ species: String) -> Observation {
+        Observation(speciesID: species, taxonomyVersion: "test-v1", observedAt: Date(),
+            locationName: "Test", count: 1, notes: "", status: .confirmed)
+    }
+    func testGoalProgressIncludesExistingAndNewLogsWithoutDuplicateCounts() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        try store.save(log("a"))
+        let goal = BirdGoal(name: "Mijn vogels", speciesIDs: ["a", "b"])
+        try store.addGoal(goal)
+        XCTAssertEqual(goal.completedIDs(in: store.observations), ["a"])
+        try store.save(log("a")); try store.save(log("b")); try store.save(log("outside"))
+        XCTAssertEqual(goal.completedIDs(in: store.observations), ["a", "b"])
+        XCTAssertTrue(goal.completedIDs(in: []).isEmpty)
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertEqual(restored.goals, [goal])
+        XCTAssertEqual(restored.observations, store.observations)
+        let archive = try JSONDecoder().decode(BirdingArchive.self, from: restored.exportArchiveData())
+        XCTAssertEqual(archive.goals, [goal])
+    }
+    func testGoalsSurviveSessionWritesAndSessionLogsCompleteGoals() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let bird = DiscoverFixtures.catalog[0]
+        let goal = BirdGoal(name: "Sessievogel", speciesIDs: [bird.id])
+        try store.addGoal(goal)
+        let now = Date()
+        let live = BirdSession(locationName: "Test", latitude: 51, longitude: 4, countryCode: "BE",
+            startedAt: now, endedAt: nil, isLive: true)
+        try store.startSession(live)
+        try store.logLive(bird, sessionID: live.id, at: now,
+            location: SessionLogLocation(latitude: 51, longitude: 4, name: "Test", countryCode: "BE"))
+        try store.finishSession(at: now.addingTimeInterval(10))
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertEqual(restored.goals, [goal])
+        XCTAssertEqual(goal.completedIDs(in: restored.observations), [bird.id])
+    }
+    func testVersionTwoWithoutGoalsMigratesWithoutDroppingRecords() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let record = log("legacy")
+        var archive = BirdingArchive(observations: [record], sessions: []); archive.version = 2
+        try JSONEncoder().encode(archive).write(to: path)
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertNil(store.loadError); XCTAssertTrue(store.goals.isEmpty)
+        try store.addGoal(BirdGoal(name: "Oude soort", speciesIDs: [record.speciesID]))
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertEqual(restored.observations, [record]); XCTAssertEqual(restored.goals.count, 1)
+    }
+    func testInvalidGoalsAndFailedWritesAreNotPublished() throws {
+        XCTAssertThrowsError(try BirdGoal(name: " ", speciesIDs: ["a"]).validate())
+        XCTAssertThrowsError(try BirdGoal(name: "Naam", speciesIDs: []).validate())
+        XCTAssertThrowsError(try BirdGoal(name: "Naam", speciesIDs: ["a", "a"]).validate())
+        let store = ObservationStore(persistence: FailingGoalPersistence())
+        XCTAssertThrowsError(try store.addGoal(BirdGoal(name: "Naam", speciesIDs: ["a"])))
+        XCTAssertTrue(store.goals.isEmpty)
+    }
+    func testCorruptGoalBlocksWritesAndPreservesArchive() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let data = try JSONEncoder().encode(BirdingArchive(observations: [log("a")], sessions: [],
+            goals: [BirdGoal(name: "", speciesIDs: ["a"])]))
+        try data.write(to: path)
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        XCTAssertNotNil(store.loadError)
+        XCTAssertThrowsError(try store.save(log("b")))
+        XCTAssertEqual(try Data(contentsOf: path), data)
+    }
+}
+
+private struct FailingGoalPersistence: ObservationPersistence {
+    func load() throws -> [Observation] { [] }
+    func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
+        throw CocoaError(.fileWriteNoPermission)
+    }
+}

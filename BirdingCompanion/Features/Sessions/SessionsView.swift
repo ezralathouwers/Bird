@@ -51,7 +51,7 @@ struct SessionsView: View {
                     }.buttonStyle(.plain)
                     Divider().overlay(FieldGuideTheme.beige)
                 }
-                Button("Exporteer sessies en waarnemingen (JSON)") {
+                Button("Exporteer alle gegevens (JSON)") {
                     do { exportDocument = ObservationExport(data: try store.exportArchiveData()); exporting = true }
                     catch { self.error = error.localizedDescription }
                 }.frame(minHeight: 44).disabled(store.loadError != nil)
@@ -64,7 +64,7 @@ struct SessionsView: View {
         }
         .sheet(item: $selected) { session in SessionDetailView(session: session) }
         .fileExporter(isPresented: $exporting, document: exportDocument, contentType: .json,
-            defaultFilename: "birding-sessies-en-waarnemingen") { result in
+            defaultFilename: "birding-alle-gegevens") { result in
                 if case .failure(let failure) = result { error = failure.localizedDescription }
             }
     }

@@ -40,3 +40,6 @@ Species IDs/taxonomy remain mock-only. No production taxonomy authority was chos
 
 
 Sessies: voltooide sessies toevoegen, live vogels loggen met GPS per waarneming, hervatten na herstart en gekoppelde individuele waarnemingen. Zie `Docs/SESSIONS.md` voor opslagmigratie en de nog uit te voeren Xcode-/GPS-controles.
+
+
+Landen toont unieke gelogde soorten per land met een gefilterd logboek. Doelstellingen bewaart checklists die automatisch afvinken op basis van alle logs. Zie `Docs/COUNTRIES_AND_GOALS.md` voor navigatie, archiefmigratie en Xcode-controles.

@@ -1,7 +1,7 @@
 import SwiftUI
 
 private enum MainSection: String {
-    case discover = "Ontdek", identify = "Identificeer", sessions = "Sessies", list = "Logboek"
+    case discover = "Ontdek", identify = "Identificeer", sessions = "Sessies", goals = "Doelstellingen", countries = "Landen", list = "Logboek"
 }
 
 struct CompanionRootView: View {
@@ -58,6 +58,10 @@ struct CompanionRootView: View {
             NavigationStack {
                 SessionsView(showLive: $showLiveSession)
             }
+        case .goals:
+            NavigationStack { GoalsView() }
+        case .countries:
+            NavigationStack { CountriesView() }
         case .list:
             NavigationStack(path: $logbookPath) {
                 LogbookView()
@@ -92,9 +96,11 @@ struct CompanionRootView: View {
             HStack(alignment: .center, spacing: 0) {
                 navigationItem(.discover, symbol: "binoculars")
                 navigationItem(.identify, symbol: "viewfinder")
-                Color.clear.frame(maxWidth: .infinity, minHeight: 56)
-                    .allowsHitTesting(false)
                 navigationItem(.sessions, symbol: "clock")
+                Color.clear.frame(minWidth: 44, maxWidth: .infinity, minHeight: 56)
+                    .allowsHitTesting(false)
+                navigationItem(.goals, symbol: "checklist")
+                navigationItem(.countries, symbol: "globe")
                 navigationItem(.list, symbol: "bird")
             }
             .foregroundStyle(FieldGuideTheme.charcoal)
@@ -151,8 +157,8 @@ struct CompanionRootView: View {
         } label: {
             Image(systemName: symbol)
                 .font(.system(size: item == .discover ? 22.032 : (item == .list ? 21.6 : 24), weight: .ultraLight))
-                .offset(x: item == .identify ? -6 : (item == .sessions ? 6 : 0))
-            .frame(maxWidth: .infinity, minHeight: 56)
+                .offset(x: item == .identify ? -6 : 0)
+            .frame(minWidth: 44, maxWidth: .infinity, minHeight: 56)
             .contentShape(Rectangle())
         }
         .accessibilityLabel(item.rawValue)

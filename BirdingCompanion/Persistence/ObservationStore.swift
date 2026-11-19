@@ -5,10 +5,17 @@ protocol ObservationPersistence {
     func load() throws -> [Observation]
     func save(_ observations: [Observation]) throws
     func loadSessions() throws -> [BirdSession]
+    func loadGoals() throws -> [BirdGoal]
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws
     func save(_ observations: [Observation], sessions: [BirdSession]) throws
 }
 
 extension ObservationPersistence {
+    func loadGoals() throws -> [BirdGoal] { [] }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
+        guard goals.isEmpty else { throw GoalError.unsupportedPersistence }
+        try save(observations, sessions: sessions)
+    }
     func loadSessions() throws -> [BirdSession] { [] }
     func save(_ observations: [Observation], sessions: [BirdSession]) throws {
         guard sessions.isEmpty else { throw SessionError.unsupportedPersistence }
@@ -28,18 +35,22 @@ struct JSONObservationPersistence: ObservationPersistence {
             return BirdingArchive(observations: legacy, sessions: [])
         }
         let result = try JSONDecoder().decode(BirdingArchive.self, from: data)
-        guard result.version == 2 else { throw CocoaError(.fileReadCorruptFile) }
+        guard result.version == 2 || result.version == 3 else { throw CocoaError(.fileReadCorruptFile) }
         return result
     }
     func load() throws -> [Observation] { try archive().observations }
     func loadSessions() throws -> [BirdSession] { try archive().sessions }
+    func loadGoals() throws -> [BirdGoal] { try archive().goals ?? [] }
     func save(_ observations: [Observation]) throws {
         try save(observations, sessions: archive().sessions)
     }
     func save(_ observations: [Observation], sessions: [BirdSession]) throws {
+        try save(observations, sessions: sessions, goals: archive().goals ?? [])
+    }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
         // One atomic write: never publish a session without its individual observations.
-        try JSONEncoder().encode(BirdingArchive(observations: observations, sessions: sessions))
+        try JSONEncoder().encode(BirdingArchive(observations: observations, sessions: sessions, goals: goals))
             .write(to: url, options: .atomic)
     }
 }
@@ -51,6 +62,7 @@ enum SpeciesLogStatus {
 @MainActor
 final class ObservationStore: ObservableObject {
     @Published private(set) var observations: [Observation] = []
+    @Published private(set) var goals: [BirdGoal] = []
     @Published private(set) var sessions: [BirdSession] = []
     @Published private(set) var loadError: String?
     private let persistence: any ObservationPersistence
@@ -63,8 +75,12 @@ final class ObservationStore: ObservableObject {
             guard Set(loaded.map(\.id)).count == loaded.count else { throw ObservationError.duplicateID }
             let loadedSessions = try persistence.loadSessions()
             try Self.validateArchive(observations: loaded, sessions: loadedSessions)
+            let loadedGoals = try persistence.loadGoals()
+            for goal in loadedGoals { try goal.validate() }
+            guard Set(loadedGoals.map(\.id)).count == loadedGoals.count else { throw GoalError.duplicateID }
             observations = loaded
             sessions = loadedSessions
+            goals = loadedGoals
         } catch {
             loadError = "Waarnemingen konden niet worden geladen. Het bestand blijft bewaard. \(error.localizedDescription)"
         }
@@ -86,7 +102,7 @@ final class ObservationStore: ObservableObject {
             updated.append(observation)
         }
         try Self.validateArchive(observations: updated, sessions: sessions)
-        try persistence.save(updated, sessions: sessions)
+        try persistence.save(updated, sessions: sessions, goals: goals)
         observations = updated
     }
 
@@ -156,7 +172,7 @@ final class ObservationStore: ObservableObject {
     private func commit(observations: [Observation], sessions: [BirdSession]) throws {
         guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
         try Self.validateArchive(observations: observations, sessions: sessions)
-        try persistence.save(observations, sessions: sessions)
+        try persistence.save(observations, sessions: sessions, goals: goals)
         self.observations = observations
         self.sessions = sessions
     }
@@ -181,7 +197,16 @@ final class ObservationStore: ObservableObject {
     func exportArchiveData() throws -> Data {
         guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
         let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        return try encoder.encode(BirdingArchive(observations: observations, sessions: sessions))
+        return try encoder.encode(BirdingArchive(observations: observations, sessions: sessions, goals: goals))
+    }
+
+    func addGoal(_ goal: BirdGoal) throws {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        try goal.validate()
+        guard !goals.contains(where: { $0.id == goal.id }) else { throw GoalError.duplicateID }
+        let updated = goals + [goal]
+        try persistence.save(observations, sessions: sessions, goals: updated)
+        goals = updated
     }
 
     func logStatus(for speciesID: String) -> SpeciesLogStatus {
