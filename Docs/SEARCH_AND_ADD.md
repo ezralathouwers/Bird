@@ -19,3 +19,5 @@ This visual-only update was checked with Swift syntax parsing and `git diff --ch
 
 ### Dark typographic add page
 The latest add-page direction replaces the circular icon choices with three full-width, equal-height text regions: lowercase “waarneming”, “sessie” and “doelstelling” in 32-point Dynamic-Type-aware Fraunces, horizontally centered. The page and safe areas use charcoal, text is beige, and two faint 0.5-point inset rules separate the choices. Available content height excludes the reserved central close-button area; each region receives one third, with a 96-point minimum and scrolling on short/large-text layouts. The existing 72-point close control is beige with a fine dark cross. Navigation icons/background/border remain hidden on this page. All destination actions and accessibility labels remain intact. Native layout still requires Xcode verification.
+
+The add-page titles now start with capitals: “Waarneming”, “Sessie”, “Doelstelling”. The two separator rules extend to both screen edges without horizontal insets.

@@ -12,13 +12,13 @@ struct AddEntryView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
-                    choice("waarneming", accessibilityLabel: "Waarneming toevoegen", destination: .observation,
+                    choice("Waarneming", accessibilityLabel: "Waarneming toevoegen", destination: .observation,
                            height: max(96, (geometry.size.height - 1) / 3))
                     separator
-                    choice("sessie", accessibilityLabel: "Sessie toevoegen", destination: .session,
+                    choice("Sessie", accessibilityLabel: "Sessie toevoegen", destination: .session,
                            height: max(96, (geometry.size.height - 1) / 3))
                     separator
-                    choice("doelstelling", accessibilityLabel: "Doelstelling toevoegen", destination: .goal,
+                    choice("Doelstelling", accessibilityLabel: "Doelstelling toevoegen", destination: .goal,
                            height: max(96, (geometry.size.height - 1) / 3))
                 }.frame(maxWidth: .infinity)
             }
@@ -35,7 +35,7 @@ struct AddEntryView: View {
 
     private var separator: some View {
         Rectangle().fill(FieldGuideTheme.beige.opacity(0.3)).frame(height: 0.5)
-            .padding(.horizontal, 24).accessibilityHidden(true)
+            .accessibilityHidden(true)
     }
 
     private func choice(_ title: String, accessibilityLabel: String, destination: AddDestination, height: CGFloat) -> some View {
