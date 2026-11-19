@@ -1,0 +1,135 @@
+[
+  {
+    "speciesID": "sample-alcedo-atthis",
+    "scientificName": "Alcedo atthis",
+    "primarySceneID": "rivers-streams",
+    "secondarySceneIDs": [
+      "lakes-ponds",
+      "reedbeds-marsh"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijsvogel"
+    ]
+  },
+  {
+    "speciesID": "sample-dendrocopos-major",
+    "scientificName": "Dendrocopos major",
+    "primarySceneID": "temperate-woodland",
+    "secondarySceneIDs": [
+      "gardens-parks",
+      "conifer-forest"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-bonte-specht"
+    ]
+  },
+  {
+    "speciesID": "sample-turdus-merula",
+    "scientificName": "Turdus merula",
+    "primarySceneID": "gardens-parks",
+    "secondarySceneIDs": [
+      "temperate-woodland"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/merel"
+    ]
+  },
+  {
+    "speciesID": "sample-parus-major",
+    "scientificName": "Parus major",
+    "primarySceneID": "temperate-woodland",
+    "secondarySceneIDs": [
+      "gardens-parks"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koolmees"
+    ]
+  },
+  {
+    "speciesID": "sample-cyanistes-caeruleus",
+    "scientificName": "Cyanistes caeruleus",
+    "primarySceneID": "temperate-woodland",
+    "secondarySceneIDs": [
+      "gardens-parks",
+      "reedbeds-marsh"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/pimpelmees"
+    ]
+  },
+  {
+    "speciesID": "sample-erithacus-rubecula",
+    "scientificName": "Erithacus rubecula",
+    "primarySceneID": "temperate-woodland",
+    "secondarySceneIDs": [
+      "gardens-parks"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roodborst"
+    ]
+  },
+  {
+    "speciesID": "birdnet-v3:BN03838",
+    "scientificName": "Falco tinnunculus",
+    "primarySceneID": "farmland",
+    "secondarySceneIDs": [
+      "heathland",
+      "urban"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/torenvalk"
+    ]
+  },
+  {
+    "speciesID": "birdnet-v3:BN05524",
+    "scientificName": "Luscinia svecica",
+    "primarySceneID": "reedbeds-marsh",
+    "secondarySceneIDs": [
+      "swamp-forest"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/blauwborst"
+    ]
+  },
+  {
+    "speciesID": "birdnet-v3:BN10603",
+    "scientificName": "Upupa epops",
+    "primarySceneID": "dry-open-woodland",
+    "secondarySceneIDs": [
+      "grassland-steppe",
+      "gardens-parks"
+    ],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/hop"
+    ]
+  },
+  {
+    "speciesID": "birdnet-v3:BN01274",
+    "scientificName": "Buceros bicornis",
+    "primarySceneID": "tropical-rainforest",
+    "secondarySceneIDs": [],
+    "reviewStatus": "source-checked",
+    "reviewedAt": "2026-11-19",
+    "sourceURLs": [
+      "https://animaldiversity.org/accounts/Buceros_bicornis/"
+    ]
+  }
+]

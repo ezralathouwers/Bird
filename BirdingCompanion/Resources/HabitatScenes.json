@@ -1,0 +1,170 @@
+[
+  {
+    "id": "rivers-streams",
+    "name": "Beken en rivieren",
+    "group": "Water",
+    "assetName": "KingfisherHabitat",
+    "illustrationBrief": "Heldere, rustig stromende beek met overhangende tak, begroeide oevers en een klein stukje steile zandwand."
+  },
+  {
+    "id": "lakes-ponds",
+    "name": "Meren en plassen",
+    "group": "Water",
+    "assetName": "habitat-lakes-ponds",
+    "illustrationBrief": "Open zoetwaterplas met lage oeverplanten en zachte rimpelingen; een rustige verre oever."
+  },
+  {
+    "id": "reedbeds-marsh",
+    "name": "Riet en moeras",
+    "group": "Water",
+    "assetName": "habitat-reedbeds-marsh",
+    "illustrationBrief": "Rietkragen, lisdodden, nat gras en kleine open watervlakken; enkele lage wilgen aan de rand."
+  },
+  {
+    "id": "swamp-forest",
+    "name": "Moerasbos",
+    "group": "Water",
+    "assetName": "habitat-swamp-forest",
+    "illustrationBrief": "Wilgen- en elzenstammen boven ondiep water, natte bodem en verspreide zegges."
+  },
+  {
+    "id": "mangrove",
+    "name": "Mangrove",
+    "group": "Water",
+    "assetName": "habitat-mangrove",
+    "illustrationBrief": "Mangrovewortels in warm ondiep getijdenwater, een lage slikkige oever en compacte tropische bladeren."
+  },
+  {
+    "id": "sandy-coast",
+    "name": "Strand en duinen",
+    "group": "Kust en zee",
+    "assetName": "habitat-sandy-coast",
+    "illustrationBrief": "Licht zand, lage duinen en helmgras met een smalle branding aan de horizon."
+  },
+  {
+    "id": "tidal-flat",
+    "name": "Wadden en slikken",
+    "group": "Kust en zee",
+    "assetName": "habitat-tidal-flat",
+    "illustrationBrief": "Slikplaten met geultjes, ondiep getijdenwater en een lage rand kweldervegetatie."
+  },
+  {
+    "id": "rocky-coast",
+    "name": "Rotskust en zeekliffen",
+    "group": "Kust en zee",
+    "assetName": "habitat-rocky-coast",
+    "illustrationBrief": "Gelaagde kustrotsen, lage klifranden, enkele zilte grassen en een smalle strook zee."
+  },
+  {
+    "id": "open-ocean",
+    "name": "Open zee",
+    "group": "Kust en zee",
+    "assetName": "habitat-open-ocean",
+    "illustrationBrief": "Weidse zee met subtiele golven en laag schuim; geen land of bomen."
+  },
+  {
+    "id": "temperate-woodland",
+    "name": "Loofbos en gemengd bos",
+    "group": "Bos",
+    "assetName": "habitat-temperate-woodland",
+    "illustrationBrief": "Een paar herkenbare loofboomstammen, gemengde bladerkronen, mos en rustige ondergroei; lichte open plek."
+  },
+  {
+    "id": "conifer-forest",
+    "name": "Naaldbos en taiga",
+    "group": "Bos",
+    "assetName": "habitat-conifer-forest",
+    "illustrationBrief": "Sparren- en dennenstammen, een gelaagde donkere naaldkroon, mos en een sobere bosbodem."
+  },
+  {
+    "id": "tropical-rainforest",
+    "name": "Tropisch regenwoud",
+    "group": "Bos",
+    "assetName": "habitat-tropical-rainforest",
+    "illustrationBrief": "Hoge tropische boomstammen, brede bladeren, lianen en gelaagde vochtige bosvegetatie."
+  },
+  {
+    "id": "dry-open-woodland",
+    "name": "Droog open bos",
+    "group": "Bos",
+    "assetName": "habitat-dry-open-woodland",
+    "illustrationBrief": "Ruim uiteenstaande bomen, droge bladeren en licht gras; veel open grond tussen de boomgroepen."
+  },
+  {
+    "id": "savanna",
+    "name": "Savanne",
+    "group": "Open landschap",
+    "assetName": "habitat-savanna",
+    "illustrationBrief": "Goudgroene grasvlakken en enkele schermvormige bomen, met een lage open horizon."
+  },
+  {
+    "id": "grassland-steppe",
+    "name": "Grasland en steppe",
+    "group": "Open landschap",
+    "assetName": "habitat-grassland-steppe",
+    "illustrationBrief": "Uitgestrekt natuurlijk grasland met lage kruiden, enkele kale grondplekjes en nauwelijks bomen."
+  },
+  {
+    "id": "heathland",
+    "name": "Heide en laag struweel",
+    "group": "Open landschap",
+    "assetName": "habitat-heathland",
+    "illustrationBrief": "Lage heidepollen, schrale grassen, zandige stukjes bodem en wat laag struikgewas."
+  },
+  {
+    "id": "mediterranean-scrub",
+    "name": "Mediterraan struweel",
+    "group": "Open landschap",
+    "assetName": "habitat-mediterranean-scrub",
+    "illustrationBrief": "Droog, compact groenblijvend struikgewas, lichte rotsen en kruiden; sober warm palet."
+  },
+  {
+    "id": "desert",
+    "name": "Woestijn en halfwoestijn",
+    "group": "Open landschap",
+    "assetName": "habitat-desert",
+    "illustrationBrief": "Zandige en stenige bodem met enkele droge struiken; veel rustige open ruimte."
+  },
+  {
+    "id": "alpine-rock",
+    "name": "Gebergte en rotsland",
+    "group": "Hooggebergte en poolgebied",
+    "assetName": "habitat-alpine-rock",
+    "illustrationBrief": "Alpiene rotsen, lage berggrassen en een verre bergkam; geen generieke hoge bosvegetatie."
+  },
+  {
+    "id": "tundra",
+    "name": "Toendra",
+    "group": "Hooggebergte en poolgebied",
+    "assetName": "habitat-tundra",
+    "illustrationBrief": "Boomloze lage mossen, korstmossen en dwergstruiken met enkele natte laagtes."
+  },
+  {
+    "id": "polar-coast",
+    "name": "IJs en poolkust",
+    "group": "Hooggebergte en poolgebied",
+    "assetName": "habitat-polar-coast",
+    "illustrationBrief": "Bleke ijsranden en een sobere donkere rotskust naast koud water; zachte blauwe accenten."
+  },
+  {
+    "id": "farmland",
+    "name": "Akkers en weilanden",
+    "group": "Cultuurlandschap",
+    "assetName": "habitat-farmland",
+    "illustrationBrief": "Een gevarieerde weide- en akkerrand met lage kruiden, gras, een haag en een verre solitaire boom."
+  },
+  {
+    "id": "gardens-parks",
+    "name": "Tuinen en parken",
+    "group": "Cultuurlandschap",
+    "assetName": "habitat-gardens-parks",
+    "illustrationBrief": "Een grasrand, bloeiende struiken en enkele volwassen bomen; subtiel tuinpad, geen opvallend gebouw."
+  },
+  {
+    "id": "urban",
+    "name": "Stad en bebouwing",
+    "group": "Cultuurlandschap",
+    "assetName": "habitat-urban",
+    "illustrationBrief": "Een rustige dakrand en geveldetail met wat stedelijk groen; geen tekst of plaatsgebonden herkenningspunten."
+  }
+]

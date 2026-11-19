@@ -1,0 +1,34 @@
+{
+  "sceneTypes": 24,
+  "sourceCheckedAssignments": 10,
+  "unassignedSpeciesRecords": 11163,
+  "assetReadyScenes": [
+    "rivers-streams"
+  ],
+  "primaryAssignmentsByScene": {
+    "rivers-streams": 1,
+    "lakes-ponds": 0,
+    "reedbeds-marsh": 1,
+    "swamp-forest": 0,
+    "mangrove": 0,
+    "sandy-coast": 0,
+    "tidal-flat": 0,
+    "rocky-coast": 0,
+    "open-ocean": 0,
+    "temperate-woodland": 4,
+    "conifer-forest": 0,
+    "tropical-rainforest": 1,
+    "dry-open-woodland": 1,
+    "savanna": 0,
+    "grassland-steppe": 0,
+    "heathland": 0,
+    "mediterranean-scrub": 0,
+    "desert": 0,
+    "alpine-rock": 0,
+    "tundra": 0,
+    "polar-coast": 0,
+    "farmland": 1,
+    "gardens-parks": 1,
+    "urban": 0
+  }
+}
