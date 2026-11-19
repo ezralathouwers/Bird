@@ -43,3 +43,6 @@ Sessies: voltooide sessies toevoegen, live vogels loggen met GPS per waarneming,
 
 
 Landen toont unieke gelogde soorten per land met een gefilterd logboek. Doelstellingen bewaart checklists die automatisch afvinken op basis van alle logs. Zie `Docs/COUNTRIES_AND_GOALS.md` voor navigatie, archiefmigratie en Xcode-controles.
+
+
+Identificatie heeft nu foto-/geluidkeuze, camera/fotokiezer en automatische lokale audio-opname met compact echt sonogram. Soortherkenning zelf is nog niet aangesloten; zie `Docs/IDENTIFICATION.md` voor modelintegratie en verplichte iPhone-tests.

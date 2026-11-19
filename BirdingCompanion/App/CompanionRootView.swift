@@ -48,8 +48,7 @@ struct CompanionRootView: View {
             }
         case .identify:
             NavigationStack {
-                Text("Foto- en geluidsherkenning volgen in een volgende fase.")
-                    .padding().navigationTitle("Identificeer")
+                IdentificationView(isVisible: section == .identify && !showAddMenu && !showLiveSession && observationNavigation.selection == nil)
             }
         case .sessions:
             NavigationStack {

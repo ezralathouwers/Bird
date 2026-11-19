@@ -668,3 +668,59 @@ final class SpeciesCatalogSearchTests: XCTestCase {
         XCTAssertEqual(SpeciesCatalogSearch.results(for: "een", in: [b, a]).map(\.id), ["a", "b"])
     }
 }
+
+final class IdentificationAnalysisTests: XCTestCase {
+    func testCandidatesRejectInvalidScoresAndKeepBestScorePerStableSpeciesID() {
+        let bird = DiscoverFixtures.catalog[0], other = DiscoverFixtures.catalog[1]
+        let rows = IdentificationCandidate.ranked([
+            IdentificationCandidate(species: bird, score: 0.3), IdentificationCandidate(species: bird, score: 0.8),
+            IdentificationCandidate(species: other, score: 0.6), IdentificationCandidate(species: other, score: .nan),
+            IdentificationCandidate(species: other, score: 1.2)])
+        XCTAssertEqual(rows.map(\.id), [bird.id, other.id])
+        XCTAssertEqual(rows.first?.score, 0.8)
+    }
+    func testSonogramSilenceAndInvalidInputsAreEmptyOrDark() {
+        XCTAssertTrue(SonogramAnalysis.column(samples: [], sampleRate: 32000).isEmpty)
+        XCTAssertTrue(SonogramAnalysis.column(samples: [1], sampleRate: 0).isEmpty)
+        XCTAssertTrue(SonogramAnalysis.column(samples: [1], sampleRate: 32000, bins: 1).isEmpty)
+        XCTAssertTrue(SonogramAnalysis.column(samples: Array(repeating: 0, count: 1024), sampleRate: 32000).allSatisfy { $0 == 0 })
+    }
+    func testSonogramFindsSyntheticToneAtExpectedFrequencyBin() {
+        let sampleRate = 32000.0
+        let bin = 16
+        let frequency = 250 * pow(10000.0 / 250, Double(bin) / 31)
+        let samples = (0..<2048).map { Float(0.5 * sin(2 * Double.pi * frequency * Double($0) / sampleRate)) }
+        let column = SonogramAnalysis.column(samples: samples, sampleRate: sampleRate)
+        let peak = column.enumerated().max { $0.element < $1.element }?.offset
+        XCTAssertEqual(peak, bin)
+        XCTAssertTrue(column.allSatisfy { $0.isFinite && (0...1).contains($0) })
+    }
+}
+
+@MainActor
+final class PhotoIdentificationTests: XCTestCase {
+    func testUnconfiguredProviderDoesNotInventResults() async {
+        let model = PhotoIdentificationModel()
+        await model.identify(Data([1]))
+        XCTAssertTrue(model.candidates.isEmpty)
+        XCTAssertNotNil(model.message)
+        XCTAssertFalse(model.isLoading)
+        XCTAssertEqual(model.photo, Data([1]))
+    }
+    func testProviderSuggestionsAreRankedAndClearDoesNotRetainResults() async {
+        let model = PhotoIdentificationModel(service: FixturePhotoIdentification())
+        await model.identify(Data([1]))
+        XCTAssertEqual(model.candidates.first?.id, DiscoverFixtures.catalog[1].id)
+        model.clear()
+        XCTAssertNil(model.photo); XCTAssertTrue(model.candidates.isEmpty); XCTAssertFalse(model.isLoading)
+        await model.identify(Data())
+        XCTAssertNotNil(model.message); XCTAssertNil(model.photo)
+    }
+}
+
+private struct FixturePhotoIdentification: PhotoIdentificationService {
+    func identify(photo: Data) async throws -> [IdentificationCandidate] {
+        [IdentificationCandidate(species: DiscoverFixtures.catalog[0], score: 0.3),
+         IdentificationCandidate(species: DiscoverFixtures.catalog[1], score: 0.7)]
+    }
+}

@@ -9,5 +9,9 @@
 		<string>Fraunces.ttf</string>
 		<string>DMSans.ttf</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Geluid opnemen om vogels te identificeren. Opnames blijven lokaal tenzij je ze zelf deelt.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Een vogelfoto maken voor identificatie. Je kunt ook een bestaande foto kiezen.</string>
 </dict>
 </plist>
