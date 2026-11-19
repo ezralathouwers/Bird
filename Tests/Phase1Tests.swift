@@ -755,3 +755,22 @@ final class SoundPinningTests: XCTestCase {
         XCTAssertEqual(rows.map(\.id), [birds[1].id, birds[0].id])
     }
 }
+
+final class SoundActivityTests: XCTestCase {
+    func testOnlyRecentDetectionsHighlightAndStopClearsHighlight() {
+        let now = Date(timeIntervalSince1970: 100)
+        var activity = SoundActivity()
+        activity.heard("a", at: now); activity.heard("b", at: now.addingTimeInterval(-5))
+        XCTAssertEqual(activity.activeIDs(at: now, recording: true), ["a"])
+        XCTAssertTrue(activity.activeIDs(at: now.addingTimeInterval(4), recording: true).isEmpty)
+        XCTAssertTrue(activity.activeIDs(at: now, recording: false).isEmpty)
+    }
+    func testRepeatedDetectionExtendsHighlightAndOlderResultCannotShortenIt() {
+        let now = Date(timeIntervalSince1970: 100)
+        var activity = SoundActivity()
+        activity.heard("a", at: now); activity.heard("a", at: now.addingTimeInterval(3))
+        activity.heard("a", at: now.addingTimeInterval(1))
+        XCTAssertEqual(activity.activeIDs(at: now.addingTimeInterval(5), recording: true), ["a"])
+        XCTAssertTrue(activity.activeIDs(at: now.addingTimeInterval(-1), recording: true).isEmpty)
+    }
+}

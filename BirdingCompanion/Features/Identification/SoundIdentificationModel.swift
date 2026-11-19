@@ -31,6 +31,7 @@ final class SoundIdentificationModel: ObservableObject {
     @Published private(set) var startedAt: Date?
     @Published private(set) var duration: TimeInterval = 0
     @Published private(set) var message: String?
+    @Published private(set) var activity = SoundActivity()
     @Published private(set) var candidates: [IdentificationCandidate] = []
     private var engine: AVAudioEngine?
     private var sink: AudioCaptureSink?
@@ -71,7 +72,7 @@ final class SoundIdentificationModel: ObservableObject {
                 }
             }
             engine.prepare(); try engine.start()
-            columns = []; candidates = []; duration = 0; startedAt = Date()
+            columns = []; candidates = []; activity = SoundActivity(); duration = 0; startedAt = Date()
             isRecording = true; isStarting = false
             message = "De opname loopt. Automatische soortherkenning is nog niet aangesloten."
         } catch {
@@ -84,8 +85,18 @@ final class SoundIdentificationModel: ObservableObject {
         if let engine { engine.stop(); engine.inputNode.removeTap(onBus: 0) }
         engine = nil; sink?.close(); sink = nil
         if isRecording, let startedAt { duration = max(0, Date().timeIntervalSince(startedAt)) }
-        isRecording = false; isStarting = false; isIdentifying = false
+        isRecording = false; isStarting = false; isIdentifying = false; activity = SoundActivity()
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+    }
+
+    // Streaming adapters call this with a thresholded, timestamped window result.
+    // A result from another recording can never light up the current session.
+    func receiveLiveDetections(_ results: [IdentificationCandidate], detectedAt: Date, recording: URL) {
+        guard isRecording, recordingURL == recording, let startedAt,
+              detectedAt >= startedAt, detectedAt <= Date() else { return }
+        let valid = IdentificationCandidate.ranked(results)
+        for candidate in valid { activity.heard(candidate.id, at: detectedAt) }
+        candidates = IdentificationCandidate.ranked(candidates + valid)
     }
 
     func finishAndIdentify() async {

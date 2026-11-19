@@ -70,7 +70,10 @@ private struct SoundIdentificationView: View {
                 Text("Mogelijke vogels").font(FieldGuideTheme.sans(24, relativeTo: .title2)).accessibilityAddTraits(.isHeader)
                 if let message = model.message { Text(message).font(FieldGuideTheme.sans(14, relativeTo: .subheadline)) }
                 if let message = pins.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
-                SoundIdentificationResults(candidates: model.candidates, pins: pins) { selectedSpecies = $0 }
+                TimelineView(.periodic(from: .now, by: 0.5)) { context in
+                    SoundIdentificationResults(candidates: model.candidates, pins: pins,
+                        activeIDs: model.activity.activeIDs(at: context.date, recording: model.isRecording)) { selectedSpecies = $0 }
+                }
             }.padding(20).padding(.bottom, 24)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .task { if isVisible { await model.start() } }
@@ -192,6 +195,7 @@ private struct CameraCapture: UIViewControllerRepresentable {
 private struct SoundIdentificationResults: View {
     let candidates: [IdentificationCandidate]
     @ObservedObject var pins: SoundResultPins
+    var activeIDs: Set<String> = []
     var open: (Species) -> Void
     var body: some View {
         ForEach(SoundResultOrdering.rows(candidates: candidates, pins: pins.species)) { row in
@@ -209,7 +213,11 @@ private struct SoundIdentificationResults: View {
                 }.frame(maxWidth: .infinity, alignment: .leading)
                 Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
             }
-            .frame(minHeight: 72).contentShape(Rectangle())
+            .frame(minHeight: 72).padding(.horizontal, 12).padding(.vertical, 4)
+            .background(activeIDs.contains(row.id) ? FieldGuideTheme.beige.opacity(0.4) : Color.clear,
+                        in: RoundedRectangle(cornerRadius: 12))
+            .animation(.easeOut(duration: 0.35), value: activeIDs.contains(row.id))
+            .contentShape(Rectangle())
             .gesture(TapGesture(count: 2).exclusively(before: TapGesture(count: 1)).onEnded { action in
                 switch action {
                 case .first: pins.toggle(row.species)
@@ -223,7 +231,7 @@ private struct SoundIdentificationResults: View {
                 Button("Bekijk soort", systemImage: "bird") { open(row.species) }
             }
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(row.species.dutchName), \(row.species.englishDisplayName)\(row.isPinned ? ", vastgezet" : "")")
+            .accessibilityLabel("\(row.species.dutchName), \(row.species.englishDisplayName)\(row.isPinned ? ", vastgezet" : "")\(activeIDs.contains(row.id) ? ", nu gehoord" : "")")
             .accessibilityAddTraits(.isButton)
             .accessibilityHint("Opent de soortpagina. Via Acties kun je deze vogel vastzetten of losmaken.")
             .accessibilityAction { open(row.species) }

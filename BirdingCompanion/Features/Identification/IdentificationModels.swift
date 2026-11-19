@@ -166,3 +166,14 @@ final class SoundResultPins: ObservableObject {
         } catch { message = "Deze vogel kon niet worden vastgezet. \(error.localizedDescription)" }
     }
 }
+
+struct SoundActivity {
+    var lastHeard: [String: Date] = [:]
+    mutating func heard(_ speciesID: String, at date: Date) {
+        lastHeard[speciesID] = max(lastHeard[speciesID] ?? date, date)
+    }
+    func activeIDs(at date: Date, recording: Bool, hold: TimeInterval = 4) -> Set<String> {
+        guard recording else { return [] }
+        return Set(lastHeard.filter { date.timeIntervalSince($0.value) >= 0 && date.timeIntervalSince($0.value) < hold }.keys)
+    }
+}
