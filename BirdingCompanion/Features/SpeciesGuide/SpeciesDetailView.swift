@@ -45,7 +45,7 @@ struct SpeciesDetailView: View {
             }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            if tab == .overview && species.id == MockSpeciesRepository.kingfisher.id { HabitatFooter() }
+            if tab == .overview { HabitatFooter(species: species) }
         }
         .background(FieldGuideTheme.ivory)
         .navigationTitle("")

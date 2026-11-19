@@ -197,3 +197,7 @@ Each species requires five distinct assets: (1) a classic right-facing illustrat
 
 ## Full world species foundation — 19 November 2026
 The user's expanded scope includes all species, regardless of Sound ID support. The guide now uses all 11,172 species in AviList v2026 (the authority underlying BirdNET), supplemented by licensed BirdNET Dutch names/aliases and sound mappings. A separate BirdNET compatibility concept is retained without rewriting existing IDs. Species pages are data-driven templates; missing illustrations and scientific fields remain explicit. See `Docs/WORLD_SPECIES_PAGES.md` for completeness, provenance, license distinctions, stable-ID rules and phased content rollout.
+
+
+## Shared habitat illustrations — 19 November 2026
+Species-detail footer landscapes are shared by habitat scene, not generated per species. The initial scene library contains 24 reusable landscape types with one source-checked primary selection and optional secondary habitats per species. Unassigned species do not inherit an arbitrary footer. See `Docs/HABITAT_ILLUSTRATIONS.md` for scene briefs, actual assignment coverage and the shared 84-point footer renderer.

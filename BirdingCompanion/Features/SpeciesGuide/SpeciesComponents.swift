@@ -140,13 +140,16 @@ struct ArtworkPlaceholder: View {
 }
 
 struct HabitatFooter: View {
+    let species: Species
     var body: some View {
-        Image("KingfisherHabitat")
-            .resizable()
-            .scaledToFill()
-            .frame(height: 84, alignment: .bottom)
-            .clipped()
-            .accessibilityHidden(true)
+        if let scene = HabitatSceneCatalog.primaryScene(for: species), UIImage(named: scene.assetName) != nil {
+            Image(scene.assetName)
+                .resizable()
+                .scaledToFill()
+                .frame(height: 84, alignment: .bottom)
+                .clipped()
+                .accessibilityHidden(true)
+        }
     }
 }
 

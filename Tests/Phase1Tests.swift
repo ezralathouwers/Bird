@@ -867,3 +867,37 @@ final class WorldSpeciesCatalogTests: XCTestCase {
         XCTAssertEqual(SpeciesMediaRole.detailSlides, [.dynamic, .front, .rear, .flight])
     }
 }
+
+final class HabitatSceneTests: XCTestCase {
+    private var scene: HabitatScene {
+        HabitatScene(id: "forest", name: "Bos", group: "Bos", assetName: "habitat-forest", illustrationBrief: "Stammen en ondergroei")
+    }
+    private func assignment(id: String = "bird", primary: String = "forest", status: String = "source-checked") -> SpeciesHabitatAssignment {
+        SpeciesHabitatAssignment(speciesID: id, scientificName: "Testus bird", primarySceneID: primary,
+            secondarySceneIDs: [], reviewStatus: status, reviewedAt: "2026-11-19", sourceURLs: [URL(string: "https://example.org/habitat")!])
+    }
+    func testSharedSceneResolvesForMultipleSpecies() throws {
+        let library = try HabitatSceneLibrary(scenes: [scene], assignments: [assignment(id: "a"), assignment(id: "b")])
+        XCTAssertEqual(library.primaryScene(for: "a")?.assetName, library.primaryScene(for: "b")?.assetName)
+    }
+    func testUnassignedAndDraftSpeciesHaveNoFooterScene() throws {
+        let library = try HabitatSceneLibrary(scenes: [scene], assignments: [assignment(status: "draft")])
+        XCTAssertNil(library.primaryScene(for: "bird"))
+        XCTAssertNil(library.primaryScene(for: "unknown"))
+    }
+    func testInvalidLinksAndDuplicateAssignmentsAreRejected() {
+        XCTAssertThrowsError(try HabitatSceneLibrary(scenes: [scene], assignments: [assignment(primary: "missing")]))
+        XCTAssertThrowsError(try HabitatSceneLibrary(scenes: [scene], assignments: [assignment(), assignment()]))
+        XCTAssertThrowsError(try HabitatSceneLibrary(scenes: [scene, scene], assignments: []))
+    }
+    func testBundledClassificationPreservesKingfisherSceneAndSharesWoodland() throws {
+        XCTAssertNil(HabitatSceneCatalog.loadError)
+        XCTAssertEqual(HabitatSceneCatalog.scenes.count, 24)
+        XCTAssertEqual(HabitatSceneCatalog.assignments.count, 10)
+        XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: MockSpeciesRepository.kingfisher)?.assetName, "KingfisherHabitat")
+        let tit = try XCTUnwrap(SpeciesGuideCatalog.species(id: "sample-parus-major"))
+        let woodpecker = try XCTUnwrap(SpeciesGuideCatalog.species(id: "sample-dendrocopos-major"))
+        XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: tit)?.id, "temperate-woodland")
+        XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: tit)?.id, HabitatSceneCatalog.primaryScene(for: woodpecker)?.id)
+    }
+}
