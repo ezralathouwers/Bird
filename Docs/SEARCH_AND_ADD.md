@@ -15,3 +15,7 @@ Search/close on Discover use the same 44-point circular target as species action
 The add page has no visible heading or back arrow. Its three actions are 144-point circles, with 46-point fine icons only (bird, clock, checklist); descriptive Dutch VoiceOver labels remain. It scrolls on short displays. Only while this page is open, the regular bottom navigation row, its white background and top border are omitted. The 72-point central action stays in its original position and rotates to a close mark. Closing restores the previous page and full navigation. Full-screen forms keep their existing back controls.
 
 This visual-only update was checked with Swift syntax parsing and `git diff --check`; actual circle sizing, focus and safe-area layout remain unverified without Xcode.
+
+
+### Dark typographic add page
+The latest add-page direction replaces the circular icon choices with three full-width, equal-height text regions: lowercase “waarneming”, “sessie” and “doelstelling” in 32-point Dynamic-Type-aware Fraunces, horizontally centered. The page and safe areas use charcoal, text is beige, and two faint 0.5-point inset rules separate the choices. Available content height excludes the reserved central close-button area; each region receives one third, with a 96-point minimum and scrolling on short/large-text layouts. The existing 72-point close control is beige with a fine dark cross. Navigation icons/background/border remain hidden on this page. All destination actions and accessibility labels remain intact. Native layout still requires Xcode verification.

@@ -9,14 +9,21 @@ struct AddEntryView: View {
     @Binding var isPresented: Bool
     @State private var destination: AddDestination?
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                card("Waarneming toevoegen", symbol: "bird", destination: .observation)
-                card("Sessie toevoegen", symbol: "clock", destination: .session)
-                card("Doelstelling toevoegen", symbol: "checklist", destination: .goal)
-            }.frame(maxWidth: .infinity).padding(.vertical, 40).padding(.horizontal, 20)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 0) {
+                    choice("waarneming", accessibilityLabel: "Waarneming toevoegen", destination: .observation,
+                           height: max(96, (geometry.size.height - 1) / 3))
+                    separator
+                    choice("sessie", accessibilityLabel: "Sessie toevoegen", destination: .session,
+                           height: max(96, (geometry.size.height - 1) / 3))
+                    separator
+                    choice("doelstelling", accessibilityLabel: "Doelstelling toevoegen", destination: .goal,
+                           height: max(96, (geometry.size.height - 1) / 3))
+                }.frame(maxWidth: .infinity)
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity).background(FieldGuideTheme.ivory)
+        .background(FieldGuideTheme.charcoal.ignoresSafeArea())
         .fullScreenCover(item: $destination) { selected in
             switch selected {
             case .observation: AddObservationPicker()
@@ -26,16 +33,23 @@ struct AddEntryView: View {
         }
     }
 
-    private func card(_ title: String, symbol: String, destination choice: AddDestination) -> some View {
-        Button { destination = choice } label: {
-            Image(systemName: symbol)
-                .font(.system(size: 46, weight: .ultraLight))
-                .frame(width: 144, height: 144)
-                .background(FieldGuideTheme.beige.opacity(0.22), in: Circle())
-                .overlay { Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.75) }
-                .contentShape(Circle())
+    private var separator: some View {
+        Rectangle().fill(FieldGuideTheme.beige.opacity(0.3)).frame(height: 0.5)
+            .padding(.horizontal, 24).accessibilityHidden(true)
+    }
+
+    private func choice(_ title: String, accessibilityLabel: String, destination: AddDestination, height: CGFloat) -> some View {
+        Button { self.destination = destination } label: {
+            Text(title)
+                .font(.custom("Fraunces-9ptBlack", size: 32, relativeTo: .title).weight(.regular))
+                .foregroundStyle(FieldGuideTheme.beige)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity, minHeight: height)
+                .contentShape(Rectangle())
         }.buttonStyle(.plain)
-            .accessibilityLabel(title)
+            .accessibilityLabel(accessibilityLabel)
     }
 }
 

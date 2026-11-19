@@ -34,7 +34,7 @@ struct CompanionRootView: View {
         }
             .environmentObject(observationNavigation)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(FieldGuideTheme.ivory)
+            .background((showAddMenu ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory).ignoresSafeArea())
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
             .environmentObject(sessionLogger)
     }
@@ -109,15 +109,16 @@ struct CompanionRootView: View {
                             .frame(width: 45, height: 45)
                     } else {
                         FinePlusMark()
-                            .stroke(observationNavigation.selection == nil ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal,
+                            .stroke(showAddMenu || observationNavigation.selection != nil ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory,
                                     style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
                             .rotationEffect(.degrees(showAddMenu || observationNavigation.selection != nil ? 45 : 0))
                             .frame(width: 45, height: 45)
                     }
                 }
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
-                    .background(store.activeSession != nil && !showAddMenu ? FieldGuideTheme.khaki :
-                        (observationNavigation.selection == nil ? FieldGuideTheme.charcoal : FieldGuideTheme.selectedBeige), in: Circle())
+                    .background(showAddMenu ? FieldGuideTheme.beige :
+                        (store.activeSession != nil ? FieldGuideTheme.khaki :
+                        (observationNavigation.selection == nil ? FieldGuideTheme.charcoal : FieldGuideTheme.selectedBeige)), in: Circle())
                     .contentShape(Circle())
             }
             .buttonStyle(.plain)
