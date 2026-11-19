@@ -1,0 +1,9 @@
+World bird species catalog
+AviList Core Team. 2026. AviList: The Global Avian Checklist, v2026.
+https://doi.org/10.2173/avilist.v2026 — CC BY 4.0.
+BirdNET+ Taxonomy v0.5-Nov2026, https://birdnet.cornell.edu/taxonomy — CC BY-SA 4.0.
+Derived WorldSpeciesCatalog.json and Docs/SpeciesContentInventory.csv are distributed under CC BY-SA 4.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+Changes: species-only selection; Dutch display-name sentence casing; merged identifiers/aliases; family/order fields; separate sound-model coverage; preserved six sample IDs; explicit retained BirdNET-only compatibility entry.
+Names/IDs additionally credit eBird/Clements, iNaturalist, Wikidata, GBIF, Catalogue of Life, Macaulay Library, Xeno-Canto and observation.org, as credited by the source data license.
+No images or descriptions from these sources are bundled in this derived catalog. Original app illustrations retain their own provenance.

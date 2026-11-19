@@ -1,0 +1,25 @@
+{
+  "version": "AviList-v2026_BirdNET-v0.5-Nov2026",
+  "checklistSpecies": 11172,
+  "records": 11173,
+  "soundSpecies": 9788,
+  "withoutSound": 1385,
+  "missingDutch": 158,
+  "catalogSHA256": "3741a3ba04f20b42205c8e2bf9eb99cdfd30f1510b683992ef64f3593a5f79a1",
+  "license": "CC BY-SA 4.0 (derived catalog); AviList source CC BY 4.0",
+  "sources": [
+    {
+      "url": "https://explore.avilist.org/data/avilist-2026.json",
+      "sha256": "0f00995c819903e35eaee65cf5313193868362f1a6383e05949fe3d3600a8b39"
+    },
+    {
+      "url": "https://zenodo.org/records/24362980",
+      "file": "BirdNET+_Taxonomy_v0.5-Nov2026.zip",
+      "sha256": "433f0d19aabdd5c67a26501d05b8826ad23af4c33149771b5d908c7efa7e4fd1"
+    }
+  ],
+  "changes": "Species-only AviList core; BirdNET Dutch names/aliases; sentence-case display; fixed existing app IDs; separate sound coverage. No images or descriptions imported.",
+  "compatibilityRecords": [
+    "Corvus cornix: retained BirdNET-specific concept, not counted as another AviList checklist species."
+  ]
+}
