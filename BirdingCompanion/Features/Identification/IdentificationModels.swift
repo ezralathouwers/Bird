@@ -94,3 +94,75 @@ enum SonogramAnalysis {
         }
     }
 }
+
+struct PinnedSoundSpecies: Codable, Equatable, Identifiable {
+    let id: String
+    let taxonomyVersion: String
+    let dutchName: String
+    let englishName: String
+    let scientificName: String
+    init(_ species: Species) {
+        id = species.id; taxonomyVersion = species.taxonomyVersion
+        dutchName = species.dutchName; englishName = species.englishName; scientificName = species.scientificName
+    }
+    var species: Species {
+        Species(id: id, taxonomyVersion: taxonomyVersion, dutchName: dutchName,
+            englishName: englishName, scientificName: scientificName)
+    }
+}
+
+struct SoundResultRow: Identifiable {
+    let species: Species
+    let isPinned: Bool
+    var id: String { species.id }
+}
+
+enum SoundResultOrdering {
+    static func rows(candidates: [IdentificationCandidate], pins: [PinnedSoundSpecies]) -> [SoundResultRow] {
+        let ranked = IdentificationCandidate.ranked(candidates)
+        let byID = Dictionary(uniqueKeysWithValues: ranked.map { ($0.id, $0.species) })
+        var seen = Set<String>()
+        var result: [SoundResultRow] = []
+        for pin in pins where seen.insert(pin.id).inserted {
+            result.append(SoundResultRow(species: byID[pin.id] ?? pin.species, isPinned: true))
+        }
+        for candidate in ranked where seen.insert(candidate.id).inserted {
+            result.append(SoundResultRow(species: candidate.species, isPinned: false))
+        }
+        return result
+    }
+}
+
+@MainActor
+final class SoundResultPins: ObservableObject {
+    @Published private(set) var species: [PinnedSoundSpecies] = []
+    @Published private(set) var message: String?
+    private let defaults: UserDefaults
+    private let key = "sound-id-pinned-species-v1"
+    private var loadFailed = false
+
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+        guard let data = defaults.data(forKey: key) else { return }
+        do {
+            let loaded = try JSONDecoder().decode([PinnedSoundSpecies].self, from: data)
+            guard Set(loaded.map(\.id)).count == loaded.count,
+                  loaded.allSatisfy({ !$0.id.isEmpty && !$0.taxonomyVersion.isEmpty }) else { throw CocoaError(.fileReadCorruptFile) }
+            species = loaded
+        } catch {
+            loadFailed = true
+            message = "Vastgezette vogels konden niet worden geladen. De bewaarde voorkeuren blijven behouden."
+        }
+    }
+    func toggle(_ bird: Species) {
+        guard !loadFailed else { return }
+        var updated = species
+        if updated.contains(where: { $0.id == bird.id }) { updated.removeAll { $0.id == bird.id } }
+        else { updated.append(PinnedSoundSpecies(bird)) }
+        do {
+            let data = try JSONEncoder().encode(updated)
+            defaults.set(data, forKey: key)
+            species = updated
+        } catch { message = "Deze vogel kon niet worden vastgezet. \(error.localizedDescription)" }
+    }
+}

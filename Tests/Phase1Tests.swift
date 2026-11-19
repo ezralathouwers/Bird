@@ -724,3 +724,34 @@ private struct FixturePhotoIdentification: PhotoIdentificationService {
          IdentificationCandidate(species: DiscoverFixtures.catalog[1], score: 0.7)]
     }
 }
+
+@MainActor
+final class SoundPinningTests: XCTestCase {
+    func testMultiplePinsSurviveReloadAndCanBeRemoved() throws {
+        let name = "SoundPinningTests-\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: name))
+        defer { defaults.removePersistentDomain(forName: name) }
+        let first = DiscoverFixtures.catalog[0], second = DiscoverFixtures.catalog[1]
+        let pins = SoundResultPins(defaults: defaults)
+        pins.toggle(first); pins.toggle(second)
+        let restored = SoundResultPins(defaults: defaults)
+        XCTAssertEqual(restored.species.map(\.id), [first.id, second.id])
+        restored.toggle(first)
+        XCTAssertEqual(SoundResultPins(defaults: defaults).species.map(\.id), [second.id])
+    }
+    func testPinsKeepOrderAndRemainVisibleWhenNoLongerDetected() {
+        let birds = DiscoverFixtures.catalog
+        let rows = SoundResultOrdering.rows(candidates: [IdentificationCandidate(species: birds[0], score: 0.99),
+            IdentificationCandidate(species: birds[1], score: 0.1)],
+            pins: [PinnedSoundSpecies(birds[2]), PinnedSoundSpecies(birds[1])])
+        XCTAssertEqual(rows.map(\.id), [birds[2].id, birds[1].id, birds[0].id])
+        XCTAssertEqual(rows.map(\.isPinned), [true, true, false])
+        XCTAssertEqual(SoundResultOrdering.rows(candidates: [], pins: [PinnedSoundSpecies(birds[2])]).first?.id, birds[2].id)
+    }
+    func testUnpinnedResultsRetainRankingAndAreNotDuplicated() {
+        let birds = DiscoverFixtures.catalog
+        let rows = SoundResultOrdering.rows(candidates: [IdentificationCandidate(species: birds[0], score: 0.2),
+            IdentificationCandidate(species: birds[1], score: 0.8), IdentificationCandidate(species: birds[0], score: 0.1)], pins: [])
+        XCTAssertEqual(rows.map(\.id), [birds[1].id, birds[0].id])
+    }
+}

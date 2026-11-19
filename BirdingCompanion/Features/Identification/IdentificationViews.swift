@@ -36,6 +36,8 @@ private struct SoundIdentificationView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var model = SoundIdentificationModel()
+    @StateObject private var pins = SoundResultPins()
+    @State private var selectedSpecies: Species?
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
@@ -67,7 +69,8 @@ private struct SoundIdentificationView: View {
                 if model.isIdentifying { ProgressView("Opname analyseren…") }
                 Text("Mogelijke vogels").font(FieldGuideTheme.sans(24, relativeTo: .title2)).accessibilityAddTraits(.isHeader)
                 if let message = model.message { Text(message).font(FieldGuideTheme.sans(14, relativeTo: .subheadline)) }
-                IdentificationResults(candidates: model.candidates)
+                if let message = pins.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
+                SoundIdentificationResults(candidates: model.candidates, pins: pins) { selectedSpecies = $0 }
             }.padding(20).padding(.bottom, 24)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .task { if isVisible { await model.start() } }
@@ -77,7 +80,7 @@ private struct SoundIdentificationView: View {
                 if phase == .background || (phase == .inactive && model.isRecording) { model.stop() }
             }
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in model.stop() }
-            .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
+            .navigationDestination(item: $selectedSpecies) { bird in SpeciesDetailView(species: bird) }
     }
     private static func elapsed(_ value: TimeInterval) -> String {
         let seconds = max(0, Int(value)); return String(format: "%02d:%02d", seconds / 60, seconds % 60)
@@ -182,6 +185,54 @@ private struct CameraCapture: UIViewControllerRepresentable {
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) { completion(nil) }
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             completion((info[.originalImage] as? UIImage)?.jpegData(compressionQuality: 0.9))
+        }
+    }
+}
+
+private struct SoundIdentificationResults: View {
+    let candidates: [IdentificationCandidate]
+    @ObservedObject var pins: SoundResultPins
+    var open: (Species) -> Void
+    var body: some View {
+        ForEach(SoundResultOrdering.rows(candidates: candidates, pins: pins.species)) { row in
+            HStack(spacing: 16) {
+                PrimaryBirdArtwork(species: row.species).frame(width: 64, height: 64)
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack(spacing: 6) {
+                        Text(row.species.dutchName)
+                            .font(.custom("Fraunces-9ptBlack", size: 18, relativeTo: .body).weight(.regular))
+                        if row.isPinned {
+                            Image(systemName: "star.fill").font(.system(size: 12)).foregroundStyle(FieldGuideTheme.khaki)
+                        }
+                    }
+                    Text(row.species.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                }.frame(maxWidth: .infinity, alignment: .leading)
+                Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
+            }
+            .frame(minHeight: 72).contentShape(Rectangle())
+            .gesture(TapGesture(count: 2).exclusively(before: TapGesture(count: 1)).onEnded { action in
+                switch action {
+                case .first: pins.toggle(row.species)
+                case .second: open(row.species)
+                }
+            })
+            .contextMenu {
+                Button(row.isPinned ? "Losmaken" : "Vastzetten", systemImage: row.isPinned ? "star.slash" : "star") {
+                    pins.toggle(row.species)
+                }
+                Button("Bekijk soort", systemImage: "bird") { open(row.species) }
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(row.species.dutchName), \(row.species.englishDisplayName)\(row.isPinned ? ", vastgezet" : "")")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityHint("Opent de soortpagina. Via Acties kun je deze vogel vastzetten of losmaken.")
+            .accessibilityAction { open(row.species) }
+            .accessibilityAction(named: Text(row.isPinned ? "Losmaken" : "Vastzetten")) { pins.toggle(row.species) }
+            Divider()
+        }
+        if !candidates.isEmpty {
+            Text("Herkenning is een suggestie. Controleer de soort voor je een waarneming toevoegt.")
+                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
         }
     }
 }

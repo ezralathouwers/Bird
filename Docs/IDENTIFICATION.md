@@ -35,3 +35,11 @@ Before integration: verify an appropriate model/code/media license, Apple-device
 The camera, microphone, sonogram performance, recorded files and all native flows remain unverified until these tests run. Actual live and photo species recognition remains pending model integration.
 
 Research update (19 November 2026): an official BirdNET+ 3.0.1 FP16 Core ML model and Apache-2.0 model/label license have now been found. See `SOUND_MODEL_RESEARCH.md` for verified source/version/checksum metadata, alternatives and the proposed streaming integration. This discovery does not enable recognition yet; no model/runtime has been installed.
+
+
+## Pinning sound results
+A double tap on a sound result toggles a small khaki star beside its Dutch name. Multiple pins stay above ordinary results in the order they were pinned; ordinary results retain score ranking. A single tap still opens the species page, using exclusive double/single tap recognition so the first tap cannot navigate before the pin gesture completes. Context-menu and VoiceOver actions provide equivalent pin/unpin controls. Photo results retain their existing behaviour.
+
+Pins are stored as local UserDefaults preferences by stable ID, with a small species-name snapshot so they can still be displayed without the original candidate. They survive page/app restarts and remain visible even when not currently detected. A star is a viewing preference, not evidence of a current detection; pinning never creates an observation or changes logbook/goals. Corrupt preferences are preserved and not silently overwritten. Live audio highlighting still requires the model/streaming integration and must be derived separately from pins.
+
+Three added tests cover persistent multiple pins/removal, stable pin ordering with missing detections, and deduplicated score order for ordinary results. Syntax checks and `git diff --check` pass; XCTest and single/double-tap interaction must still be checked in Xcode, including VoiceOver and rapid list updates.
