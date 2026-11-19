@@ -822,3 +822,48 @@ final class BirdNETWindowTests: XCTestCase {
         XCTAssertEqual(external.species.taxonomyVersion, "BirdNET+ labels v0.5-Nov2026")
     }
 }
+
+@MainActor
+final class WorldSpeciesCatalogTests: XCTestCase {
+    func testBundledCatalogIncludesFullChecklistAndIndependentSoundCoverage() {
+        XCTAssertNil(SpeciesGuideCatalog.loadError)
+        XCTAssertEqual(SpeciesGuideCatalog.metadata?.checklistSpecies, 11172)
+        XCTAssertEqual(SpeciesGuideCatalog.species.count, 11173)
+        XCTAssertEqual(Set(SpeciesGuideCatalog.species.map(\.id)).count, 11173)
+        XCTAssertEqual(SpeciesGuideCatalog.metadata?.soundSpecies, 9788)
+        XCTAssertEqual(SpeciesGuideCatalog.metadata?.withoutSound, 1385)
+        XCTAssertEqual(Set(SpeciesGuideCatalog.species.compactMap { $0.family?.id }).count, 250)
+    }
+    func testSpeciesOutsideSoundModelIsSearchableAndCanBeLogged() throws {
+        let bird = try XCTUnwrap(GuideSpeciesRepository().search("Raphus cucullatus").first)
+        XCTAssertNil(SpeciesGuideCatalog.record(id: bird.id)?.soundIndex)
+        let store = ObservationStore(persistence: PreviewObservationPersistence())
+        try store.save(Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion,
+            observedAt: Date(), locationName: "Test", count: 1, notes: "", status: .confirmed))
+        XCTAssertEqual(store.logStatus(for: bird.id), .logged)
+        let rows = LogbookProjection.species(observations: store.observations, catalog: [], sort: .family)
+        XCTAssertEqual(rows.first?.species.scientificName, "Raphus cucullatus")
+    }
+    func testExistingSampleAndSoundIDsRemainResolvable() throws {
+        for sample in DiscoverFixtures.catalog {
+            let stored = try XCTUnwrap(SpeciesGuideCatalog.species(id: sample.id))
+            XCTAssertEqual(stored.scientificName, sample.scientificName)
+            XCTAssertEqual(stored.taxonomyVersion, sample.taxonomyVersion)
+        }
+        let crow = try XCTUnwrap(GuideSpeciesRepository().search("Corvus cornix").first)
+        XCTAssertFalse(try XCTUnwrap(SpeciesGuideCatalog.record(id: crow.id)).checklistSpecies)
+        XCTAssertNotNil(SpeciesGuideCatalog.record(id: crow.id)?.soundIndex)
+    }
+    func testAliasesAreSearchableWithoutChangingTheSavedID() {
+        let bird = Species(id: "stable", taxonomyVersion: "test", dutchName: "Nieuwe naam", englishName: "New name",
+            scientificName: "Newus name", aliases: ["Oude vogelnaam", "Oldus name"])
+        XCTAssertEqual(SpeciesCatalogSearch.results(for: "oude vogelnaam", in: [bird]).map(\.id), ["stable"])
+        XCTAssertEqual(SpeciesCatalogSearch.results(for: "oldus", in: [bird]).map(\.id), ["stable"])
+    }
+    func testLongDutchNameAndFamilyResolveFromWorldCatalog() throws {
+        let hornbill = try XCTUnwrap(GuideSpeciesRepository().search("dubbelhoornige neushoornvogel").first)
+        XCTAssertEqual(hornbill.scientificName, "Buceros bicornis")
+        XCTAssertEqual(hornbill.family?.id, "Bucerotidae")
+        XCTAssertEqual(SpeciesMediaRole.detailSlides, [.dynamic, .front, .rear, .flight])
+    }
+}

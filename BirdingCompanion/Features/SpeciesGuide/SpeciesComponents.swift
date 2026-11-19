@@ -36,6 +36,7 @@ struct SpeciesFact: Identifiable {
 
 struct SpeciesFacts: View {
     let species: Species
+    @State private var showCatalogSources = false
     // Brief examples only; scientific values await independent source review.
     private let facts = [
         SpeciesFact(id: "Spanwijdte", symbol: nil, value: "24–26 cm")
@@ -55,7 +56,10 @@ struct SpeciesFacts: View {
                 Text("Soortbeschrijving en spanwijdte volgen na broncontrole.")
                     .font(FieldGuideTheme.sans(16, relativeTo: .body))
             }
+            Button("Bronnen soortenlijst") { showCatalogSources = true }
+                .font(FieldGuideTheme.sans(12, relativeTo: .caption)).frame(minHeight: 44)
         }.frame(maxWidth: .infinity, alignment: .leading)
+            .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
     }
     private func factRow(_ fact: SpeciesFact) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
@@ -157,5 +161,28 @@ struct PupilFreeEye: Shape {
                           control: CGPoint(x: rect.midX, y: rect.maxY + rect.height * 0.5))
         path.closeSubpath()
         return path
+    }
+}
+
+
+struct SpeciesCatalogSourcesView: View {
+    @Environment(\.dismiss) private var dismiss
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text(SpeciesGuideCatalog.coverageNote)
+                    Text("AviList Core Team. 2026. AviList: The Global Avian Checklist, v2026. CC BY 4.0.")
+                    Link("AviList en bronvermelding", destination: URL(string: "https://doi.org/10.2173/avilist.v2026")!)
+                    Text("BirdNET+ Taxonomy v0.5-Nov2026. CC BY-SA 4.0. Nederlandse namen, aliassen en externe soort-ID’s uit deze bron zijn gekoppeld aan de AviList-lijst.")
+                    Link("BirdNET+ Taxonomy en broncredits", destination: URL(string: "https://birdnet.cornell.edu/taxonomy/about")!)
+                    Text("Bewerkingen: selectie op soortniveau, hoofdletters aangepast, vaste app-ID’s behouden en geluidsherkenning apart gekoppeld. De afgeleide catalogus wordt gedeeld onder CC BY-SA 4.0.")
+                    Link("Licentie CC BY-SA 4.0", destination: URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!)
+                    Text("De lijst bevat ook uitgestorven soorten. Eén afwijkende BirdNET-vermelding blijft apart beschikbaar om bestaande detecties en logs te behouden. Ontbrekende Nederlandse namen gebruiken voorlopig de Engelse naam. Illustraties, beschrijvingen en verspreiding worden afzonderlijk aangevuld en gecontroleerd.")
+                }.font(FieldGuideTheme.sans(15)).padding(20)
+            }.background(FieldGuideTheme.ivory)
+                .navigationTitle("Bronnen soortenlijst").navigationBarTitleDisplayMode(.inline)
+                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Sluiten") { dismiss() } } }
+        }
     }
 }

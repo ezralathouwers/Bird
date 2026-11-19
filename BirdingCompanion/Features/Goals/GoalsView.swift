@@ -103,8 +103,8 @@ struct GoalForm: View {
     @State private var error: String?
     private var birds: [Species] {
         let term = search.trimmingCharacters(in: .whitespacesAndNewlines)
-        return DiscoverFixtures.catalog.filter { bird in
-            term.isEmpty || [bird.dutchName, bird.englishName, bird.scientificName].contains {
+        return SpeciesGuideCatalog.species.filter { bird in
+            term.isEmpty || ([bird.dutchName, bird.englishName, bird.scientificName] + bird.aliases).contains {
                 $0.range(of: term, options: [.caseInsensitive, .diacriticInsensitive]) != nil
             }
         }.sorted { $0.dutchName.localizedStandardCompare($1.dutchName) == .orderedAscending }
@@ -141,7 +141,7 @@ struct GoalForm: View {
             }.background(FieldGuideTheme.ivory)
                 .safeAreaInset(edge: .bottom) {
                     Button("Doelstelling opslaan") {
-                        let ids = DiscoverFixtures.catalog.filter { selected.contains($0.id) }.map(\.id)
+                        let ids = SpeciesGuideCatalog.species.filter { selected.contains($0.id) }.map(\.id)
                         do {
                             try store.addGoal(BirdGoal(name: name.trimmingCharacters(in: .whitespacesAndNewlines), speciesIDs: ids))
                             dismiss()

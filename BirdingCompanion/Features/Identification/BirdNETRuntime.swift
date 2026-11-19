@@ -12,20 +12,6 @@ struct BirdNETAssetConfiguration: Decodable {
     let labelsSHA256: String
     let classCount: Int
 }
-struct BirdNETLabel: Decodable {
-    let index: Int
-    let birdnetID: String
-    let scientificName: String
-    let dutchName: String
-    let englishName: String
-    var species: Species {
-        // Preserve existing internal IDs; other labels get an explicit external namespace.
-        DiscoverFixtures.catalog.first { $0.scientificName == scientificName } ?? Species(
-            id: "birdnet-v3:" + birdnetID, taxonomyVersion: "BirdNET+ labels v0.5-Nov2026",
-            dutchName: dutchName.isEmpty ? englishName : dutchName,
-            englishName: englishName, scientificName: scientificName)
-    }
-}
 
 enum BirdNETRuntimeError: LocalizedError {
     case missingAssets, checksum, download, invalidModel, invalidAudio
@@ -162,18 +148,4 @@ actor BirdNETCoreMLService: StreamingSoundIdentificationService {
         while let data = try file.read(upToCount: 1024 * 1024), !data.isEmpty { try Task.checkCancellation(); digest.update(data: data) }
         return digest.finalize().map { String(format: "%02x", $0) }.joined()
     }
-}
-
-
-// Supplementary recognition labels resolve saved external IDs without replacing the guide taxonomy.
-enum BirdNETSpeciesLookup {
-    private static let byID: [String: Species] = {
-        guard let url = Bundle.main.url(forResource: "BirdNETLabels", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let labels = try? JSONDecoder().decode([BirdNETLabel].self, from: data) else { return [:] }
-        return labels.reduce(into: [String: Species]()) { result, label in
-            let bird = label.species; result[bird.id] = bird
-        }
-    }()
-    static func species(id: String) -> Species? { byID[id] }
 }

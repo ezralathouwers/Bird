@@ -193,3 +193,7 @@ Read `PROJECT_BRIEF.md` and `AGENTS.md`. Set up a clean, compile-ready-in-princi
 
 ## Latest approved media direction — 19 November 2026
 Each species requires five distinct assets: (1) a classic right-facing illustration for compact list/form/map contexts, (2) a dynamic, compositionally distinctive illustration for the species-detail first slide, (3) a front illustration for slide 2, (4) a rear illustration for slide 3, and (5) a flight illustration for slide 4. Dynamic does not always mean movement: species-specific behaviour and composition can add interest. Examples: hovering kestrel, pecking great spotted woodpecker, kingfisher with fish. This replaces earlier hero/flight/front/rear slide ordering. Never silently use the classic portrait as a dynamic hero.
+
+
+## Full world species foundation — 19 November 2026
+The user's expanded scope includes all species, regardless of Sound ID support. The guide now uses all 11,172 species in AviList v2026 (the authority underlying BirdNET), supplemented by licensed BirdNET Dutch names/aliases and sound mappings. A separate BirdNET compatibility concept is retained without rewriting existing IDs. Species pages are data-driven templates; missing illustrations and scientific fields remain explicit. See `Docs/WORLD_SPECIES_PAGES.md` for completeness, provenance, license distinctions, stable-ID rules and phased content rollout.

@@ -235,7 +235,7 @@ struct SessionForm: View {
                 session.id = reviewing.id
                 try store.completeSession(session, logs: reviewLogs, expectedLogs: originalLogs)
             } else if live { try store.startSession(session) }
-            else { try store.addCompletedSession(session, species: DiscoverFixtures.catalog.filter { selected.contains($0.id) }) }
+            else { try store.addCompletedSession(session, species: SpeciesGuideCatalog.species.filter { selected.contains($0.id) }) }
             dismiss(); onSaved()
         } catch { self.error = error.localizedDescription }
     }
@@ -254,9 +254,9 @@ struct SessionSpeciesSearch: View {
     var choose: (Species) -> Void
     private var birds: [Species] {
         let term = search.trimmingCharacters(in: .whitespacesAndNewlines)
-        let source = term.isEmpty && !showCatalog ? nearby.rows.map(\.species) : DiscoverFixtures.catalog
+        let source = term.isEmpty && !showCatalog ? nearby.rows.map(\.species) : SpeciesGuideCatalog.species
         let matches = source.filter {
-            term.isEmpty || [$0.dutchName, $0.englishName, $0.scientificName].contains {
+            term.isEmpty || ([$0.dutchName, $0.englishName, $0.scientificName] + $0.aliases).contains {
                 $0.range(of: term, options: [.caseInsensitive, .diacriticInsensitive]) != nil
             }
         }
@@ -269,9 +269,9 @@ struct SessionSpeciesSearch: View {
             if search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 if nearby.isLoading { ProgressView("Vogels voor deze locatie ophalen…") }
                 if let message = nearby.message { Text(message).font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
-                if showCatalog { Text("Voorbeeldcatalogus · niet gerangschikt voor deze locatie").font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
+                if showCatalog { Text("Alle beschikbare soorten · niet gerangschikt voor deze locatie").font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
                 else if nearby.rows.isEmpty {
-                    Button("Toon de voorbeeldcatalogus") { showCatalog = true }.frame(minHeight: 44)
+                    Button("Toon alle beschikbare soorten") { showCatalog = true }.frame(minHeight: 44)
                 }
             }
             ScrollView {

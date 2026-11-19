@@ -7,9 +7,10 @@ struct DiscoverView: View {
     @State private var filter: DiscoverFilter = .all
     @State private var demo = false
     @State private var showSearch = false
+    @State private var showCatalogSources = false
     @State private var catalogQuery = ""
     @FocusState private var searchFocused: Bool
-    var catalog: [Species] = DiscoverFixtures.catalog
+    var catalog: [Species] = SpeciesGuideCatalog.species
     var catalogIsComplete = false
 
     private var queryKey: String {
@@ -55,6 +56,7 @@ struct DiscoverView: View {
             searchFocused = shown
             if !shown { catalogQuery = "" }
         }
+        .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
         .toolbar(.hidden, for: .navigationBar)
         .task { if location.latitude == nil && !demo { location.useCurrentLocation() } }
         .task(id: queryKey) { if let query { await model.load(query: query, demo: demo) } }
@@ -118,15 +120,17 @@ struct DiscoverView: View {
     }
 
     private var catalogSearch: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        LazyVStack(alignment: .leading, spacing: 20) {
             TextField("Zoek een vogel", text: $catalogQuery)
                 .textFieldStyle(.roundedBorder).autocorrectionDisabled()
                 .focused($searchFocused)
                 .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
             if !catalogIsComplete {
-                Text("De wereldcatalogus is nog niet aangesloten. Je doorzoekt nu alle voorbeeldsoorten, gelogd en niet gelogd.")
+                Text(SpeciesGuideCatalog.coverageNote)
                     .font(FieldGuideTheme.sans(13, relativeTo: .footnote)).foregroundStyle(FieldGuideTheme.taupe)
             }
+            Button("Bronnen en licenties") { showCatalogSources = true }
+                .font(FieldGuideTheme.sans(12, relativeTo: .caption)).frame(minHeight: 44)
             let results = SpeciesCatalogSearch.results(for: catalogQuery, in: catalog)
             if results.isEmpty { Text("Geen soorten gevonden.") }
             ForEach(results) { bird in

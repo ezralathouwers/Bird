@@ -7,6 +7,7 @@ struct Species: Identifiable, Hashable, Sendable {
     let englishName: String
     let scientificName: String
     var family: BirdFamily? = nil
+    var aliases: [String] = []
 
     var englishDisplayName: String {
         englishName.prefix(1).uppercased() + englishName.dropFirst().lowercased()
@@ -61,7 +62,7 @@ enum SpeciesCatalogSearch {
     static func results(for query: String, in catalog: [Species]) -> [Species] {
         let term = query.trimmingCharacters(in: .whitespacesAndNewlines)
         return catalog.filter { bird in
-            term.isEmpty || [bird.dutchName, bird.englishName, bird.scientificName].contains {
+            term.isEmpty || ([bird.dutchName, bird.englishName, bird.scientificName] + bird.aliases).contains {
                 $0.range(of: term, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE")) != nil
             }
         }.sorted {

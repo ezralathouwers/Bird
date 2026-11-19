@@ -1,0 +1,15 @@
+{
+  "records": 11173,
+  "checklistSpecies": 11172,
+  "withSound": 9788,
+  "withoutSound": 1385,
+  "illustrationsByRole": {
+    "primary": 6,
+    "dynamic": 2,
+    "front": 0,
+    "rear": 0,
+    "flight": 0
+  },
+  "fullyIllustrated": 0,
+  "note": "Pages exist through one shared SwiftUI template. Missing content is not generated scientific data. Artwork still requires anatomical/user review."
+}

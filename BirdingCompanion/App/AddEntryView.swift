@@ -62,7 +62,7 @@ private struct AddObservationPicker: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 16) {
                     TextField("Zoek een vogel", text: $search).textFieldStyle(.roundedBorder).autocorrectionDisabled()
-                    ForEach(SpeciesCatalogSearch.results(for: search, in: DiscoverFixtures.catalog)) { bird in
+                    ForEach(SpeciesCatalogSearch.results(for: search, in: SpeciesGuideCatalog.species)) { bird in
                         Button { selected = bird } label: {
                             HStack(spacing: 16) {
                                 PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
