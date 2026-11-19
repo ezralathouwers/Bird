@@ -10,15 +10,11 @@ struct AddEntryView: View {
     @State private var destination: AddDestination?
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                Button { isPresented = false } label: {
-                    Image(systemName: "chevron.left").font(.system(size: 22, weight: .light)).frame(width: 44, height: 44)
-                }.accessibilityLabel("Terug")
-                Text("Toevoegen").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle)).accessibilityAddTraits(.isHeader)
+            VStack(spacing: 24) {
                 card("Waarneming toevoegen", symbol: "bird", destination: .observation)
                 card("Sessie toevoegen", symbol: "clock", destination: .session)
                 card("Doelstelling toevoegen", symbol: "checklist", destination: .goal)
-            }.padding(20).padding(.bottom, 24)
+            }.frame(maxWidth: .infinity).padding(.vertical, 40).padding(.horizontal, 20)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(FieldGuideTheme.ivory)
         .fullScreenCover(item: $destination) { selected in
@@ -32,16 +28,14 @@ struct AddEntryView: View {
 
     private func card(_ title: String, symbol: String, destination choice: AddDestination) -> some View {
         Button { destination = choice } label: {
-            HStack(spacing: 20) {
-                Image(systemName: symbol).font(.system(size: 30, weight: .ultraLight)).frame(width: 40)
-                Text(title).font(FieldGuideTheme.sans(20, relativeTo: .title3))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
-            }.padding(24).frame(maxWidth: .infinity, minHeight: 116)
-                .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 18))
-                .overlay { RoundedRectangle(cornerRadius: 18).stroke(FieldGuideTheme.beige, lineWidth: 0.75) }
-                .contentShape(RoundedRectangle(cornerRadius: 18))
+            Image(systemName: symbol)
+                .font(.system(size: 46, weight: .ultraLight))
+                .frame(width: 144, height: 144)
+                .background(FieldGuideTheme.beige.opacity(0.22), in: Circle())
+                .overlay { Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.75) }
+                .contentShape(Circle())
         }.buttonStyle(.plain)
+            .accessibilityLabel(title)
     }
 }
 

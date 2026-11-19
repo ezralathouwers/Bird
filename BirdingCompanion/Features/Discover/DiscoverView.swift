@@ -33,7 +33,7 @@ struct DiscoverView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
-                Text("Vandaag in \(locationTitle)")
+                Text(showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
                     .font(FieldGuideTheme.sans(44.2, relativeTo: .largeTitle))
                     .fixedSize(horizontal: false, vertical: true)
                     .accessibilityAddTraits(.isHeader)
@@ -47,7 +47,7 @@ struct DiscoverView: View {
             Button { showSearch.toggle() } label: {
                 Image(systemName: showSearch ? "xmark" : "magnifyingglass")
                     .font(.system(size: 22, weight: .light)).frame(width: 44, height: 44)
-                    .background(FieldGuideTheme.ivory, in: Circle())
+                    .background(FieldGuideTheme.beige.opacity(0.4), in: Circle())
             }.accessibilityLabel(showSearch ? "Sluit soortenzoeker" : "Zoek alle vogelsoorten")
                 .padding(.trailing, 20).padding(.top, 8)
         }

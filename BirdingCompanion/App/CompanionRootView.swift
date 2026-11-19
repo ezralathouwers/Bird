@@ -71,24 +71,29 @@ struct CompanionRootView: View {
         VStack(spacing: 0) {
             // Negative inset spacing lets habitat extend behind this reserved hit area.
             Color.clear.frame(height: addButtonOverlap).allowsHitTesting(false)
-            HStack(alignment: .center, spacing: 0) {
-                navigationItem(.discover, symbol: "binoculars")
-                navigationItem(.identify, symbol: "viewfinder")
-                navigationItem(.sessions, symbol: "clock")
-                Color.clear.frame(minWidth: 44, maxWidth: .infinity, minHeight: 56)
-                    .allowsHitTesting(false)
-                navigationItem(.goals, symbol: "checklist")
-                navigationItem(.countries, symbol: "globe")
-                navigationItem(.list, symbol: "bird")
+            if showAddMenu {
+                Color.clear.frame(height: 60).allowsHitTesting(false)
+            } else {
+                HStack(alignment: .center, spacing: 0) {
+                    navigationItem(.discover, symbol: "binoculars")
+                    navigationItem(.identify, symbol: "viewfinder")
+                    navigationItem(.sessions, symbol: "clock")
+                    Color.clear.frame(minWidth: 44, maxWidth: .infinity, minHeight: 56)
+                        .allowsHitTesting(false)
+                    navigationItem(.goals, symbol: "checklist")
+                    navigationItem(.countries, symbol: "globe")
+                    navigationItem(.list, symbol: "bird")
+                }
+                .foregroundStyle(FieldGuideTheme.charcoal)
+                .padding(.top, 4)
+                .background(FieldGuideTheme.navigationWhite.ignoresSafeArea(edges: .bottom))
+                .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.charcoal).frame(height: 0.5) }
             }
-            .foregroundStyle(FieldGuideTheme.charcoal)
-            .padding(.top, 4)
-            .background(FieldGuideTheme.navigationWhite.ignoresSafeArea(edges: .bottom))
-            .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.charcoal).frame(height: 0.5) }
         }
         .overlay(alignment: .top) {
             Button {
-                if store.activeSession != nil {
+                if showAddMenu { showAddMenu = false }
+                else if store.activeSession != nil {
                     observationNavigation.selection = nil
                     showAddMenu = false
                     showLiveSession = true
@@ -98,7 +103,7 @@ struct CompanionRootView: View {
                 }
             } label: {
                 Group {
-                    if store.activeSession != nil {
+                    if store.activeSession != nil && !showAddMenu {
                         Image(systemName: "play").font(.system(size: 32, weight: .ultraLight))
                             .foregroundStyle(FieldGuideTheme.ivory)
                             .frame(width: 45, height: 45)
@@ -106,18 +111,18 @@ struct CompanionRootView: View {
                         FinePlusMark()
                             .stroke(observationNavigation.selection == nil ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal,
                                     style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
-                            .rotationEffect(.degrees(observationNavigation.selection == nil ? 0 : 45))
+                            .rotationEffect(.degrees(showAddMenu || observationNavigation.selection != nil ? 45 : 0))
                             .frame(width: 45, height: 45)
                     }
                 }
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
-                    .background(store.activeSession != nil ? FieldGuideTheme.khaki :
+                    .background(store.activeSession != nil && !showAddMenu ? FieldGuideTheme.khaki :
                         (observationNavigation.selection == nil ? FieldGuideTheme.charcoal : FieldGuideTheme.selectedBeige), in: Circle())
                     .contentShape(Circle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(store.activeSession != nil ? "Open livesessie" : (observationNavigation.selection == nil ? (showAddMenu ? "Sluit toevoegopties" : "Open toevoegopties") : "Sluit waarneming"))
-            .accessibilityHint(store.activeSession != nil ? "Terug naar de actieve vogelsessie" : (observationNavigation.selection == nil ? "Voeg een waarneming, sessie of doelstelling toe" : "Terug naar het overzicht van waarnemingen"))
+            .accessibilityLabel(showAddMenu ? "Sluit toevoegopties" : (store.activeSession != nil ? "Open livesessie" : (observationNavigation.selection == nil ? "Open toevoegopties" : "Sluit waarneming")))
+            .accessibilityHint(showAddMenu ? "Terug naar de vorige pagina" : (store.activeSession != nil ? "Terug naar de actieve vogelsessie" : (observationNavigation.selection == nil ? "Voeg een waarneming, sessie of doelstelling toe" : "Terug naar het overzicht van waarnemingen")))
         }
     }
 
