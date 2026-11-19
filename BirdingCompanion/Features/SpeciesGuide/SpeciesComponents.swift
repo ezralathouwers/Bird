@@ -175,6 +175,9 @@ struct SpeciesCatalogSourcesView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Text(SpeciesGuideCatalog.coverageNote)
+                    Text("Leefomgevingen: Şekercioğlu en collega's, BIRDBASE v2025.1 (2025), CC BY 4.0. Primaire habitats zijn vertaald naar gedeelde landschapstypen; brede categorieën blijven breed. Automatische bronkoppelingen zijn niet individueel beoordeeld.")
+                    Link("BIRDBASE en bronvermelding", destination: URL(string: "https://doi.org/10.6084/m9.figshare.27051040.v1")!)
+                    Link("Licentie CC BY 4.0", destination: URL(string: "https://creativecommons.org/licenses/by/4.0/")!)
                     Text("AviList Core Team. 2026. AviList: The Global Avian Checklist, v2026. CC BY 4.0.")
                     Link("AviList en bronvermelding", destination: URL(string: "https://doi.org/10.2173/avilist.v2026")!)
                     Text("BirdNET+ Taxonomy v0.5-Nov2026. CC BY-SA 4.0. Nederlandse namen, aliassen en externe soort-ID’s uit deze bron zijn gekoppeld aan de AviList-lijst.")

@@ -30,7 +30,7 @@ struct HabitatSceneLibrary: Sendable {
               Set(assignments.map(\.speciesID)).count == assignments.count else { throw HabitatSceneError.invalidData }
         for assignment in assignments {
             guard !assignment.speciesID.isEmpty, !assignment.scientificName.isEmpty,
-                  ["source-checked", "draft"].contains(assignment.reviewStatus), ids.contains(assignment.primarySceneID),
+                  ["source-checked", "source-derived", "draft"].contains(assignment.reviewStatus), ids.contains(assignment.primarySceneID),
                   assignment.secondarySceneIDs.allSatisfy({ ids.contains($0) && $0 != assignment.primarySceneID }),
                   Set(assignment.secondarySceneIDs).count == assignment.secondarySceneIDs.count,
                   !assignment.sourceURLs.isEmpty,
@@ -42,7 +42,7 @@ struct HabitatSceneLibrary: Sendable {
     }
 
     func primaryScene(for speciesID: String) -> HabitatScene? {
-        guard let assignment = assignmentsByID[speciesID], assignment.reviewStatus == "source-checked" else { return nil }
+        guard let assignment = assignmentsByID[speciesID], ["source-checked", "source-derived"].contains(assignment.reviewStatus) else { return nil }
         return scenesByID[assignment.primarySceneID]
     }
     func assignment(for speciesID: String) -> SpeciesHabitatAssignment? { assignmentsByID[speciesID] }

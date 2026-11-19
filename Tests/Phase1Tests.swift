@@ -880,6 +880,11 @@ final class HabitatSceneTests: XCTestCase {
         let library = try HabitatSceneLibrary(scenes: [scene], assignments: [assignment(id: "a"), assignment(id: "b")])
         XCTAssertEqual(library.primaryScene(for: "a")?.assetName, library.primaryScene(for: "b")?.assetName)
     }
+    func testSourceDerivedAssignmentsResolveWithoutClaimingIndividualReview() throws {
+        let library = try HabitatSceneLibrary(scenes: [scene], assignments: [assignment(status: "source-derived")])
+        XCTAssertEqual(library.primaryScene(for: "bird")?.id, "forest")
+        XCTAssertEqual(library.assignment(for: "bird")?.reviewStatus, "source-derived")
+    }
     func testUnassignedAndDraftSpeciesHaveNoFooterScene() throws {
         let library = try HabitatSceneLibrary(scenes: [scene], assignments: [assignment(status: "draft")])
         XCTAssertNil(library.primaryScene(for: "bird"))
@@ -892,8 +897,8 @@ final class HabitatSceneTests: XCTestCase {
     }
     func testBundledClassificationPreservesKingfisherSceneAndSharesWoodland() throws {
         XCTAssertNil(HabitatSceneCatalog.loadError)
-        XCTAssertEqual(HabitatSceneCatalog.scenes.count, 24)
-        XCTAssertEqual(HabitatSceneCatalog.assignments.count, 10)
+        XCTAssertEqual(HabitatSceneCatalog.scenes.count, 33)
+        XCTAssertEqual(HabitatSceneCatalog.assignments.count, 11130)
         XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: MockSpeciesRepository.kingfisher)?.assetName, "KingfisherHabitat")
         let tit = try XCTUnwrap(SpeciesGuideCatalog.species(id: "sample-parus-major"))
         let woodpecker = try XCTUnwrap(SpeciesGuideCatalog.species(id: "sample-dendrocopos-major"))
