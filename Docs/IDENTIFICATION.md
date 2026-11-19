@@ -33,3 +33,5 @@ Before integration: verify an appropriate model/code/media license, Apple-device
 7. Test long names, large text, VoiceOver and the compact result list on small phones.
 
 The camera, microphone, sonogram performance, recorded files and all native flows remain unverified until these tests run. Actual live and photo species recognition remains pending model integration.
+
+Research update (19 November 2026): an official BirdNET+ 3.0.1 FP16 Core ML model and Apache-2.0 model/label license have now been found. See `SOUND_MODEL_RESEARCH.md` for verified source/version/checksum metadata, alternatives and the proposed streaming integration. This discovery does not enable recognition yet; no model/runtime has been installed.
