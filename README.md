@@ -46,3 +46,6 @@ Landen toont unieke gelogde soorten per land met een gefilterd logboek. Doelstel
 
 
 Identificatie heeft nu foto-/geluidkeuze, camera/fotokiezer en automatische lokale audio-opname met compact echt sonogram. Soortherkenning zelf is nog niet aangesloten; zie `Docs/IDENTIFICATION.md` voor modelintegratie en verplichte iPhone-tests.
+
+
+Geluid-ID is nu in code gekoppeld aan BirdNET+ 3.0.1 Core ML: eenmalige modeldownload (~157 MB), daarna offline herkenning met overlappende audiovensters, highlights en vastgezette resultaten. Gewichten worden niet via Git meegeleverd. Zie `Docs/BIRDNET_INTEGRATION.md`; native build, modeluitvoering en iPhone-prestaties zijn nog niet geverifieerd. Fotoherkenning blijft niet aangesloten.

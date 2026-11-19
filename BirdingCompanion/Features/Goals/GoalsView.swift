@@ -58,7 +58,7 @@ private struct GoalDetailView: View {
     @Environment(\.dismiss) private var dismiss
     private var birds: [Species] {
         goal.speciesIDs.map { id in
-            DiscoverFixtures.catalog.first { $0.id == id } ?? Species(id: id, taxonomyVersion: "unknown",
+            DiscoverFixtures.catalog.first { $0.id == id } ?? BirdNETSpeciesLookup.species(id: id) ?? Species(id: id, taxonomyVersion: "unknown",
                 dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "")
         }
     }

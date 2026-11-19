@@ -46,3 +46,7 @@ Three added tests cover persistent multiple pins/removal, stable pin ordering wi
 
 ## Currently heard styling
 Sound rows use a light beige rounded background (beige at 40% opacity) only for recent live detections, independently of pinned stars. A four-second hold after the most recent detection and a 0.35-second fade avoid flicker; stopping clears activity. VoiceOver adds “nu gehoord”. The streaming-adapter input validates recording identity/time and retains earlier candidate rows, while activity expires separately. File-analysis results and pins never light up automatically. The real model/streaming adapter is still not connected, so no fabricated live highlights are produced. Two added tests cover expiry, stopping, repeated detections and out-of-order timestamps. Native rendering/timing and XCTest execution await Xcode.
+
+
+## Current sound integration status
+Superseding the earlier unconfigured-sound notes: BirdNET+ 3.0.1 is now connected in code, with a verified one-time model download, native Core ML adapter and bounded overlapping-window live pipeline. See `BIRDNET_INTEGRATION.md` for artifacts, licenses, label scope and verification limits. Photo recognition remains unconfigured. Native compilation and actual recognition still require Xcode/iPhone testing.

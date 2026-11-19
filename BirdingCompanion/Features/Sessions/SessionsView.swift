@@ -157,7 +157,7 @@ struct SessionForm: View {
                             ForEach($reviewLogs) { $log in
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text(DiscoverFixtures.catalog.first { $0.id == log.speciesID }?.dutchName ?? log.speciesID)
+                                        Text(DiscoverFixtures.catalog.first { $0.id == log.speciesID }?.dutchName ?? BirdNETSpeciesLookup.species(id: log.speciesID)?.dutchName ?? log.speciesID)
                                         Spacer()
                                         Button(role: .destructive) {
                                             let id = log.id
@@ -363,7 +363,7 @@ private struct SessionLogsList: View {
         LazyVStack(alignment: .leading, spacing: 16) {
             ForEach(logs) { log in
                 HStack(spacing: 12) {
-                    if let bird = DiscoverFixtures.catalog.first(where: { $0.id == log.speciesID }) {
+                    if let bird = DiscoverFixtures.catalog.first(where: { $0.id == log.speciesID }) ?? BirdNETSpeciesLookup.species(id: log.speciesID) {
                         PrimaryBirdArtwork(species: bird).frame(width: 52, height: 52)
                         Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
                     } else { Text("Onbekende soort (\(log.speciesID))") }

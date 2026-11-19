@@ -7,16 +7,22 @@ private final class AudioCaptureSink: @unchecked Sendable {
     private let lock = NSLock()
     private var file: AVAudioFile?
     private var frames = 0
+    private var windows = AudioWindowAccumulator()
     init(url: URL, format: AVAudioFormat) throws { file = try AVAudioFile(forWriting: url, settings: format.settings) }
-    func consume(_ buffer: AVAudioPCMBuffer) -> (column: [Float]?, error: String?) {
+    func consume(_ buffer: AVAudioPCMBuffer) -> (column: [Float]?, window: LiveAudioWindow?, error: String?) {
         lock.lock(); defer { lock.unlock() }
-        guard let file else { return (nil, nil) }
-        do { try file.write(from: buffer) }
-        catch { self.file = nil; return (nil, "Opname opslaan mislukt. \(error.localizedDescription)") }
-        frames += 1
-        guard frames % 4 == 0, let channel = buffer.floatChannelData?[0] else { return (nil, nil) }
-        let samples = Array(UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength)))
-        return (SonogramAnalysis.column(samples: samples, sampleRate: buffer.format.sampleRate), nil)
+        guard let file else { return (nil, nil, nil) }
+        do {
+            try file.write(from: buffer)
+            let mono = try BirdNETCoreMLService.mono(buffer)
+            let window = windows.append(mono, sampleRate: buffer.format.sampleRate, endedAt: Date())
+            frames += 1
+            let column = frames % 4 == 0 ? SonogramAnalysis.column(samples: mono, sampleRate: buffer.format.sampleRate) : nil
+            return (column, window, nil)
+        } catch {
+            self.file = nil
+            return (nil, nil, "Opname verwerken mislukt. \(error.localizedDescription)")
+        }
     }
     func close() { lock.lock(); file = nil; lock.unlock() }
 }
@@ -36,9 +42,11 @@ final class SoundIdentificationModel: ObservableObject {
     private var engine: AVAudioEngine?
     private var sink: AudioCaptureSink?
     private var generation = UUID()
+    private var preparationTask: Task<Void, Error>?
+    private var liveTask: Task<Void, Never>?
     private let service: any SoundIdentificationService
 
-    init(service: any SoundIdentificationService = UnconfiguredSoundIdentification()) { self.service = service }
+    init(service: any SoundIdentificationService = BirdNETCoreMLService()) { self.service = service }
 
     func start() async {
         guard !isRecording, !isStarting else { return }
@@ -47,6 +55,14 @@ final class SoundIdentificationModel: ObservableObject {
         guard generation == id, !Task.isCancelled else { return }
         guard granted else { isStarting = false; message = "Sta microfoontoegang toe in Instellingen om Geluid-ID te gebruiken."; return }
         do {
+            if let streaming = service as? any StreamingSoundIdentificationService {
+                message = "Herkenningsmodel voorbereiden. Eenmalig wordt ongeveer 157 MB opgehaald; daarna werkt Geluid-ID offline."
+                let preparation = Task { try await streaming.prepare() }
+                preparationTask = preparation
+                try await preparation.value
+                guard generation == id, !Task.isCancelled else { return }
+                preparationTask = nil
+            }
             let session = AVAudioSession.sharedInstance()
             try session.setCategory(.record, mode: .measurement)
             try session.setActive(true)
@@ -60,13 +76,16 @@ final class SoundIdentificationModel: ObservableObject {
             self.engine = engine; self.sink = sink; recordingURL = url
             engine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { [weak self] buffer, _ in
                 let update = sink.consume(buffer)
-                if update.column != nil || update.error != nil {
+                if update.column != nil || update.window != nil || update.error != nil {
                     Task { @MainActor [weak self] in
                         guard let self, self.generation == id, self.isRecording else { return }
                         if let error = update.error { self.stop(); self.message = error }
-                        else if let column = update.column {
-                            self.columns.append(column)
-                            if self.columns.count > 100 { self.columns.removeFirst(self.columns.count - 100) }
+                        else {
+                            if let column = update.column {
+                                self.columns.append(column)
+                                if self.columns.count > 100 { self.columns.removeFirst(self.columns.count - 100) }
+                            }
+                            if let window = update.window { self.submit(window, generation: id, recording: url) }
                         }
                     }
                 }
@@ -74,19 +93,39 @@ final class SoundIdentificationModel: ObservableObject {
             engine.prepare(); try engine.start()
             columns = []; candidates = []; activity = SoundActivity(); duration = 0; startedAt = Date()
             isRecording = true; isStarting = false
-            message = "De opname loopt. Automatische soortherkenning is nog niet aangesloten."
+            message = service is any StreamingSoundIdentificationService ? "Aan het luisteren naar vogels…" : "De opname loopt. Live herkenning is niet beschikbaar voor deze dienst."
         } catch {
-            stop(); message = "De microfoon kon niet worden gestart. \(error.localizedDescription)"
+            guard generation == id else { return }
+            stop(); message = "Geluid-ID kon niet worden gestart. \(error.localizedDescription)"
         }
     }
 
     func stop() {
         generation = UUID()
+        preparationTask?.cancel(); preparationTask = nil
+        liveTask?.cancel(); liveTask = nil
         if let engine { engine.stop(); engine.inputNode.removeTap(onBus: 0) }
         engine = nil; sink?.close(); sink = nil
         if isRecording, let startedAt { duration = max(0, Date().timeIntervalSince(startedAt)) }
         isRecording = false; isStarting = false; isIdentifying = false; activity = SoundActivity()
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+    }
+
+    private func submit(_ window: LiveAudioWindow, generation id: UUID, recording: URL) {
+        guard liveTask == nil, let streaming = service as? any StreamingSoundIdentificationService else { return }
+        // One inference at a time; skip windows rather than accumulate a delayed queue.
+        liveTask = Task { [weak self] in
+            do {
+                let results = try await streaming.identify(window: window)
+                guard let self, self.generation == id, !Task.isCancelled else { return }
+                self.receiveLiveDetections(results, detectedAt: window.endedAt, recording: recording)
+                self.message = nil
+            } catch {
+                guard let self, self.generation == id, !Task.isCancelled else { return }
+                self.message = "Herkenning tijdelijk niet beschikbaar. \(error.localizedDescription)"
+            }
+            if let self, self.generation == id { self.liveTask = nil }
+        }
     }
 
     // Streaming adapters call this with a thresholded, timestamped window result.
@@ -102,6 +141,10 @@ final class SoundIdentificationModel: ObservableObject {
     func finishAndIdentify() async {
         stop()
         guard let recordingURL else { return }
+        if service is any StreamingSoundIdentificationService {
+            message = candidates.isEmpty ? "Geen herkenningssuggesties uit de live analyse." : nil
+            return
+        }
         let id = UUID(); generation = id; isIdentifying = true
         defer { if generation == id { isIdentifying = false } }
         do {

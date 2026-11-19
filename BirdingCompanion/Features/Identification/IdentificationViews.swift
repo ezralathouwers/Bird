@@ -65,7 +65,7 @@ private struct SoundIdentificationView: View {
                             .accessibilityLabel("Exporteer deze opname")
                     }
                 }
-                if model.isStarting { ProgressView("Microfoon starten…") }
+                if model.isStarting { ProgressView("Geluid-ID voorbereiden…") }
                 if model.isIdentifying { ProgressView("Opname analyseren…") }
                 Text("Mogelijke vogels").font(FieldGuideTheme.sans(24, relativeTo: .title2)).accessibilityAddTraits(.isHeader)
                 if let message = model.message { Text(message).font(FieldGuideTheme.sans(14, relativeTo: .subheadline)) }

@@ -774,3 +774,51 @@ final class SoundActivityTests: XCTestCase {
         XCTAssertTrue(activity.activeIDs(at: now.addingTimeInterval(-1), recording: true).isEmpty)
     }
 }
+
+final class BirdNETWindowTests: XCTestCase {
+    func testThreeSecondWindowsHaveOneAndHalfSecondOverlap() {
+        var accumulator = AudioWindowAccumulator()
+        let now = Date(timeIntervalSince1970: 100)
+        XCTAssertNil(accumulator.append(Array(repeating: 0, count: 16000), sampleRate: 8000, endedAt: now))
+        let first = accumulator.append(Array(repeating: 1, count: 8000), sampleRate: 8000, endedAt: now)
+        XCTAssertEqual(first?.samples.count, 24000)
+        XCTAssertEqual(accumulator.bufferedCount, 12000)
+        let next = accumulator.append(Array(repeating: 2, count: 12000), sampleRate: 8000, endedAt: now)
+        XCTAssertEqual(next?.samples.prefix(4000).first, 0)
+        XCTAssertEqual(next?.samples.last, 2)
+        XCTAssertEqual(accumulator.bufferedCount, 12000)
+    }
+    func testRateChangesResetAndOversizedInputsRemainBounded() {
+        var accumulator = AudioWindowAccumulator()
+        _ = accumulator.append(Array(repeating: 1, count: 12000), sampleRate: 8000, endedAt: Date())
+        XCTAssertNil(accumulator.append(Array(repeating: 2, count: 16000), sampleRate: 16000, endedAt: Date()))
+        XCTAssertEqual(accumulator.bufferedCount, 16000)
+        let window = accumulator.append(Array(repeating: 3, count: 200000), sampleRate: 16000, endedAt: Date())
+        XCTAssertEqual(window?.samples.count, 48000)
+        XCTAssertLessThanOrEqual(accumulator.bufferedCount, 48000)
+        XCTAssertNil(accumulator.append([1], sampleRate: .nan, endedAt: Date()))
+    }
+    func testModelInputIsFixedLengthFiniteAndSilenceIsSkipped() throws {
+        let input = LiveAudioWindow(samples: [2, -2, 0.5], sampleRate: 32000, endedAt: Date())
+        let samples = try BirdNETAudio.resampled(input)
+        XCTAssertEqual(samples.count, 96000)
+        XCTAssertEqual(Array(samples.prefix(3)), [1, -1, 0.5])
+        XCTAssertTrue(BirdNETAudio.isSilent(Array(repeating: 0, count: 96000)))
+        XCTAssertFalse(BirdNETAudio.isSilent(Array(repeating: 0.1, count: 96000)))
+        XCTAssertThrowsError(try BirdNETAudio.resampled(LiveAudioWindow(samples: [.nan], sampleRate: 32000, endedAt: Date())))
+    }
+    func testNative48kAudioResamplesToThreeSecondsAt32k() throws {
+        let samples = (0..<144000).map { Float(0.25 * sin(2 * Double.pi * 1000 * Double($0) / 48000)) }
+        let converted = try BirdNETAudio.resampled(LiveAudioWindow(samples: samples, sampleRate: 48000, endedAt: Date()))
+        XCTAssertEqual(converted.count, 96000)
+        XCTAssertTrue(converted.allSatisfy(\.isFinite))
+        XCTAssertFalse(BirdNETAudio.isSilent(converted))
+    }
+    func testBirdNETLabelsPreserveExistingAppIDsAndKeepUnknownSpeciesExplicit() {
+        let known = BirdNETLabel(index: 0, birdnetID: "BN00268", scientificName: "Alcedo atthis", dutchName: "IJsvogel", englishName: "Common Kingfisher")
+        XCTAssertEqual(known.species.id, MockSpeciesRepository.kingfisher.id)
+        let external = BirdNETLabel(index: 1, birdnetID: "BN-example", scientificName: "Testus example", dutchName: "Testvogel", englishName: "Test bird")
+        XCTAssertEqual(external.species.id, "birdnet-v3:BN-example")
+        XCTAssertEqual(external.species.taxonomyVersion, "BirdNET+ labels v0.5-Nov2026")
+    }
+}

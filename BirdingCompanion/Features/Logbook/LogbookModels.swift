@@ -38,7 +38,7 @@ struct LogbookProjection {
         }
         let known = catalog.reduce(into: [String: Species]()) { $0[$1.id] = $1 }
         return earliest.values.map { record in
-            let bird = known[record.speciesID] ?? Species(id: record.speciesID, taxonomyVersion: record.taxonomyVersion,
+            let bird = known[record.speciesID] ?? BirdNETSpeciesLookup.species(id: record.speciesID) ?? Species(id: record.speciesID, taxonomyVersion: record.taxonomyVersion,
                 dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "")
             return LoggedSpecies(species: bird, firstObservedAt: record.observedAt)
         }.sorted {
