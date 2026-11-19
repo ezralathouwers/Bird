@@ -1,0 +1,5 @@
+BirdNET+ V3.0.1 model and labels, Copyright (c) 2026 The BirdNET Team.
+Source: https://doi.org/10.5281/zenodo.24362980
+Model weights and labels: Apache License 2.0.
+Modification: labels projected to JSON containing only Aves with output indices and Dutch/English names; no model weights modified.
+No official endorsement is implied.

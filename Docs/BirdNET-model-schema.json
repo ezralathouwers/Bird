@@ -1,0 +1,32 @@
+{
+  "specificationVersion": 7,
+  "modelType": "mlProgram",
+  "inputs": [
+    {
+      "name": "input",
+      "shape": [
+        1,
+        96000
+      ],
+      "dataType": 65568
+    }
+  ],
+  "outputs": [
+    {
+      "name": "predictions",
+      "shape": [
+        1,
+        11725
+      ],
+      "dataType": 65552
+    },
+    {
+      "name": "embeddings",
+      "shape": [
+        1,
+        1280
+      ],
+      "dataType": 65552
+    }
+  ]
+}

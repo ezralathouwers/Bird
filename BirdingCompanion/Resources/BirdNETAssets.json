@@ -1,0 +1,8 @@
+{
+  "version": "BirdNET-3.0.1-FP16",
+  "modelURL": "https://zenodo.org/api/records/24362980/files/BirdNET+_V3.0_Global_12K_FP16.mlpackage.zip/content",
+  "modelSHA256": "74791818c86f5073c4739b347d0307311d1db19c057a6337abefb6f45d8322d0",
+  "modelBytes": 156525393,
+  "labelsSHA256": "0256cddcf85ae3a38b3400571f720d8b7f96ce5e70998ab6b51710206b25af12",
+  "classCount": 11725
+}
