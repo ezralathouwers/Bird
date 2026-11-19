@@ -189,3 +189,7 @@ Use explicit migration strategies and unit tests for observation import, lifelis
 
 ## 11. Immediate Codex task
 Read `PROJECT_BRIEF.md` and `AGENTS.md`. Set up a clean, compile-ready-in-principle SwiftUI repository and implement Phase 1's kingfisher species-detail vertical slice using sample data. Do not add unverified copyrighted assets or API keys. Keep each change reviewable. Explain exactly what can be verified in the current environment and what must await Xcode on the user's MacBook Pro. Provide an ordered checklist for first Mac setup and simulator test.
+
+
+## Latest approved media direction — 19 November 2026
+Each species requires five distinct assets: (1) a classic right-facing illustration for compact list/form/map contexts, (2) a dynamic, compositionally distinctive illustration for the species-detail first slide, (3) a front illustration for slide 2, (4) a rear illustration for slide 3, and (5) a flight illustration for slide 4. Dynamic does not always mean movement: species-specific behaviour and composition can add interest. Examples: hovering kestrel, pecking great spotted woodpecker, kingfisher with fish. This replaces earlier hero/flight/front/rear slide ordering. Never silently use the classic portrait as a dynamic hero.

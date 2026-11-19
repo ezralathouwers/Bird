@@ -11,7 +11,9 @@
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "right",
     "displayFacing": "right",
-    "displayTransform": "none"
+    "displayTransform": "none",
+    "mediaType": "illustration",
+    "usage": "classic compact portrait; not the species-detail hero"
   },
   {
     "speciesID": "sample-parus-major",
@@ -25,7 +27,9 @@
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "left",
     "displayFacing": "right",
-    "displayTransform": "horizontal reflection in PrimaryBirdImage"
+    "displayTransform": "horizontal reflection in PrimaryBirdImage",
+    "mediaType": "illustration",
+    "usage": "classic compact portrait; not the species-detail hero"
   },
   {
     "speciesID": "sample-erithacus-rubecula",
@@ -39,7 +43,9 @@
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "right",
     "displayFacing": "right",
-    "displayTransform": "none"
+    "displayTransform": "none",
+    "mediaType": "illustration",
+    "usage": "classic compact portrait; not the species-detail hero"
   },
   {
     "speciesID": "sample-cyanistes-caeruleus",
@@ -53,7 +59,9 @@
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "left",
     "displayFacing": "right",
-    "displayTransform": "horizontal reflection in PrimaryBirdImage"
+    "displayTransform": "horizontal reflection in PrimaryBirdImage",
+    "mediaType": "illustration",
+    "usage": "classic compact portrait; not the species-detail hero"
   },
   {
     "speciesID": "sample-dendrocopos-major",
@@ -67,7 +75,9 @@
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "right",
     "displayFacing": "right",
-    "displayTransform": "none"
+    "displayTransform": "none",
+    "mediaType": "illustration",
+    "usage": "classic compact portrait; not the species-detail hero"
   },
   {
     "speciesID": "sample-alcedo-atthis",
@@ -81,6 +91,38 @@
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "left",
     "displayFacing": "right",
-    "displayTransform": "horizontal reflection in PrimaryBirdImage"
+    "displayTransform": "horizontal reflection in PrimaryBirdImage",
+    "mediaType": "illustration",
+    "usage": "classic compact portrait; not the species-detail hero"
+  },
+  {
+    "speciesID": "sample-alcedo-atthis",
+    "asset": "sample-alcedo-atthis-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-b07270c4-297f-427d-acde-dc3f4ef3e3bd.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-19",
+    "reviewStatus": "visual composition review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none"
+  },
+  {
+    "speciesID": "sample-dendrocopos-major",
+    "asset": "sample-dendrocopos-major-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-0e3ef07d-1790-44f8-a50f-5e1e2d286144.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-19",
+    "reviewStatus": "visual composition review only; independent anatomical and user approval pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none"
   }
 ]

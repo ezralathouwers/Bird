@@ -82,17 +82,20 @@ struct SpeciesFacts: View {
 struct SpeciesArtworkCarousel: View {
     let species: Species
     @State private var page = 0
-    private let descriptions = ["Hoofdillustratie", "In vlucht", "Vooraanzicht", "Achteraanzicht"]
+    private let slides = SpeciesMediaRole.detailSlides
     var body: some View {
         VStack(spacing: 8) {
             TabView(selection: $page) {
-                ForEach(descriptions.indices, id: \.self) { index in
+                ForEach(slides.indices, id: \.self) { index in
                     Group {
-                        if index == 0 {
-                            PrimaryBirdArtwork(species: species)
+                        let role = slides[index]
+                        if UIImage(named: role.assetName(for: species)) != nil {
+                            Image(role.assetName(for: species)).resizable().scaledToFit()
+                                .accessibilityLabel("\(role.label) van \(species.dutchName)")
                         } else {
                             ArtworkPlaceholder(hero: true,
-                                accessibilityDescription: "Tijdelijke illustratieplaats: \(descriptions[index]) van \(species.dutchName)")
+                                accessibilityDescription: "\(role.label) van \(species.dutchName) nog niet beschikbaar",
+                                message: role.missingMessage)
                         }
                     }
                     .padding(.vertical, 6)
@@ -102,12 +105,12 @@ struct SpeciesArtworkCarousel: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(height: 330)
             HStack(spacing: 0) {
-                ForEach(descriptions.indices, id: \.self) { index in
+                ForEach(slides.indices, id: \.self) { index in
                     Button { withAnimation { page = index } } label: {
                         Circle().fill(page == index ? FieldGuideTheme.taupe : FieldGuideTheme.beige)
                             .frame(width: 7, height: 7).frame(width: 44, height: 44)
                     }
-                    .accessibilityLabel("\(descriptions[index]), afbeelding \(index + 1) van 4")
+                    .accessibilityLabel("\(slides[index].label), afbeelding \(index + 1) van 4")
                     .accessibilityAddTraits(page == index ? [.isSelected] : [])
                 }
             }
@@ -118,13 +121,14 @@ struct SpeciesArtworkCarousel: View {
 struct ArtworkPlaceholder: View {
     let hero: Bool
     let accessibilityDescription: String
+    var message = "Illustratie volgt"
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .fill(FieldGuideTheme.beige.opacity(0.22))
             .overlay {
                 VStack(spacing: 8) {
                     Image(systemName: "bird").font(hero ? .largeTitle : .title3)
-                    if hero { Text("Illustratie volgt").font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
+                    if hero { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                 }.foregroundStyle(FieldGuideTheme.taupe)
             }
             .accessibilityLabel(accessibilityDescription)

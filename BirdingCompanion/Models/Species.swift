@@ -32,3 +32,26 @@ struct MockSpeciesRepository: SpeciesRepository {
         }
     }
 }
+
+
+// Five assets per species; the classic portrait is reserved for compact contexts.
+enum SpeciesMediaRole: String, CaseIterable, Sendable {
+    case classic = "primary"
+    case dynamic = "dynamic"
+    case front = "front"
+    case rear = "rear"
+    case flight = "flight"
+
+    static let detailSlides: [SpeciesMediaRole] = [.dynamic, .front, .rear, .flight]
+    func assetName(for species: Species) -> String { species.id + "-" + rawValue }
+    var label: String {
+        switch self {
+        case .classic: "Klassieke illustratie"
+        case .dynamic: "Dynamische illustratie"
+        case .front: "Vooraanzicht"
+        case .rear: "Achteraanzicht"
+        case .flight: "Illustratie in vlucht"
+        }
+    }
+    var missingMessage: String { "Illustratie volgt" }
+}
