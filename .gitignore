@@ -3,3 +3,6 @@
 DerivedData/
 *.xcuserstate
 xcuserdata/
+
+# Python maintenance scripts
+__pycache__/

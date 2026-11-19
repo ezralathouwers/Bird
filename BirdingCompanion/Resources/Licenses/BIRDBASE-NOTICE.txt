@@ -1,0 +1,17 @@
+Habitat attributes adapted from BIRDBASE v2025.1.
+Şekercioğlu, Çağan H.; Kittelberger, Kyle D.; Mota, Flavio M. M.; Buxton,
+Amy N.; Orton, Nikolas; DeNiro, Adara; Buechley, Evan R.; Horns, Joshua J.;
+Blount, Judson D.; Socci, Jason; Neate-Clegg, Montague H. C. (2025).
+BIRDBASE: A Global Database of Avian Biogeography, Conservation, Ecology
+and Life History Traits. Figshare. https://doi.org/10.6084/m9.figshare.27051040.v1
+Paper: https://doi.org/10.1038/s41597-025-05615-3
+Dataset license: Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+
+Changes: selected primary habitat attributes only, matched scientific names
+and existing scientific aliases to stable app IDs, translated habitat classes
+into reusable visual scene IDs. No source images or narrative descriptions
+are reproduced. No endorsement by the authors is implied.
+Source-derived entries are automatic exact-name/alias mappings, not individual
+expert reviews. Taxonomically unresolved species remain unassigned.
+The ten individually checked pilot assignments retain their separate sources.

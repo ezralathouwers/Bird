@@ -1,0 +1,243 @@
+{
+  "dataset": "BIRDBASE v2025.1",
+  "sourceURL": "https://doi.org/10.6084/m9.figshare.27051040.v1",
+  "downloadURL": "https://ndownloader.figshare.com/files/55634729",
+  "license": "CC BY 4.0",
+  "sourceMD5": "36d53d59af1e449db1fc4c30062d9d1f",
+  "sourceSHA256": "cccb01fe229c7b39156639e001098b29880fa1c91d294c17cb74a4a76381276b",
+  "mapping": {
+    "Forest": "forest-general",
+    "Woodland": "woodland-general",
+    "Shrub": "scrub-general",
+    "Grassland": "grassland-steppe",
+    "Wetland": "wetland-general",
+    "Coastal": "coast-general",
+    "Sea": "open-ocean",
+    "Savanna": "savanna",
+    "Riparian": "rivers-streams",
+    "Rocky": "rockland-general",
+    "Plains": "plains-general",
+    "Artificial": "cultivated-general",
+    "Desert": "desert",
+    "Bamboo": "bamboo"
+  },
+  "sourceDerivedAssignments": 11120,
+  "individuallyCheckedAssignments": 10,
+  "unresolved": [
+    {
+      "speciesID": "birdnet-v3:BN02843",
+      "scientificName": "Crypturellus resonans",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04642",
+      "scientificName": "Hierococcyx tiganada",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05571",
+      "scientificName": "Macropygia albicapilla",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08509",
+      "scientificName": "Ptilinopus holosericeus",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10327",
+      "scientificName": "Tringa inornata",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07206",
+      "scientificName": "Patagona peruviana",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01261",
+      "scientificName": "Bubo nigrescens",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01260",
+      "scientificName": "Bubo nacurutu",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04985",
+      "scientificName": "Ketupa doerriesi",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06085",
+      "scientificName": "Momotus castaneiceps",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09930",
+      "scientificName": "Tanysiptera obiensis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09932",
+      "scientificName": "Tanysiptera rosseliana",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09922",
+      "scientificName": "Tanysiptera doris",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09927",
+      "scientificName": "Tanysiptera nais",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09926",
+      "scientificName": "Tanysiptera margarethae",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09727",
+      "scientificName": "Syma ochracea",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01510",
+      "scientificName": "Camptostoma caucae",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01516",
+      "scientificName": "Camptostoma sclateri",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01515",
+      "scientificName": "Camptostoma pusillum",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01511",
+      "scientificName": "Camptostoma flaviventre",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01513",
+      "scientificName": "Camptostoma napaeum",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06231",
+      "scientificName": "Myiarchus flavidior",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06057",
+      "scientificName": "Mitrephanes aurantiiventris",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03888",
+      "scientificName": "Formicarius destructus",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06399",
+      "scientificName": "Myzomela annabellae",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06400",
+      "scientificName": "Myzomela babarensis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08566",
+      "scientificName": "Ptilorrhoa urrissia",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08565",
+      "scientificName": "Ptilorrhoa nigricrissus",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04760",
+      "scientificName": "Hylophilus moxensis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10752",
+      "scientificName": "Vireo swainsoni",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08863",
+      "scientificName": "Rhipidura laguceria",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08229",
+      "scientificName": "Psalidoprocne centralis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08628",
+      "scientificName": "Pycnonotus porphyreus",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04809",
+      "scientificName": "Hypsipetes flavicaudus",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06071",
+      "scientificName": "Mixornis woodi",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02317",
+      "scientificName": "Cistothorus paludicola",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10503",
+      "scientificName": "Turdus phaeopygus",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03603",
+      "scientificName": "Erithacus superbus",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03537",
+      "scientificName": "Enicurus sinensis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03530",
+      "scientificName": "Enicurus frontalis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06324",
+      "scientificName": "Myophonus flavirostris",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03957",
+      "scientificName": "Fringillaria capensis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03247",
+      "scientificName": "Diglossa melanopis",
+      "reason": "No unambiguous scientific-name match in BIRDBASE v2025.1"
+    }
+  ]
+}

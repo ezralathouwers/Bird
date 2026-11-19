@@ -166,5 +166,68 @@
     "group": "Cultuurlandschap",
     "assetName": "habitat-urban",
     "illustrationBrief": "Een rustige dakrand en geveldetail met wat stedelijk groen; geen tekst of plaatsgebonden herkenningspunten."
+  },
+  {
+    "id": "forest-general",
+    "name": "Bos",
+    "group": "Bos",
+    "assetName": "habitat-forest-general",
+    "illustrationBrief": "Gesloten bos met stammen, bladerkronen en ondergroei; geen klimaat- of regiospecifieke boomsoorten. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "woodland-general",
+    "name": "Open bos",
+    "group": "Bos",
+    "assetName": "habitat-woodland-general",
+    "illustrationBrief": "Verspreide bomen met open plekken en lage begroeiing; geen specifiek klimaat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "scrub-general",
+    "name": "Struweel",
+    "group": "Open landschap",
+    "assetName": "habitat-scrub-general",
+    "illustrationBrief": "Dicht laag struikgewas en open plekken, zonder een specifiek klimaat te suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "wetland-general",
+    "name": "Wetland",
+    "group": "Water",
+    "assetName": "habitat-wetland-general",
+    "illustrationBrief": "Ondiep water, oevervegetatie en moerassige plekken; geen keuze tussen meer en rietmoeras suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "coast-general",
+    "name": "Kust",
+    "group": "Kust en zee",
+    "assetName": "habitat-coast-general",
+    "illustrationBrief": "Zeehorizon en neutrale oever, zonder specifieke rots-, zand- of mangrovekust. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "rockland-general",
+    "name": "Rotsland",
+    "group": "Open landschap",
+    "assetName": "habitat-rockland-general",
+    "illustrationBrief": "Rotsblokken en steile steenwanden zonder sneeuw, hooggebergte of kust te suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "plains-general",
+    "name": "Open vlakte",
+    "group": "Open landschap",
+    "assetName": "habitat-plains-general",
+    "illustrationBrief": "Lage open vegetatie en verre horizon; geen specifiek klimaat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "cultivated-general",
+    "name": "Cultuurlandschap",
+    "group": "Cultuurlandschap",
+    "assetName": "habitat-cultivated-general",
+    "illustrationBrief": "Mozaïek van bewerkte grond en aangeplante begroeiing; geen stad of akker als enig habitat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+  },
+  {
+    "id": "bamboo",
+    "name": "Bamboe",
+    "group": "Bos",
+    "assetName": "habitat-bamboo",
+    "illustrationBrief": "Dichte bamboestengels met fijn blad en open bodem. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
   }
 ]

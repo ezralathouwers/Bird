@@ -77,3 +77,45 @@ Run `python Scripts/habitat_inventory.py` to validate mappings and rebuild `Habi
 ## Verification
 
 Available checks: Swift syntax parsing, OpenStep Xcode source/resource registration, JSON/reference/species-ID validation and `git diff --check`. Four tests cover shared-scene reuse, missing/draft handling, invalid/duplicate data and the bundled pilot/kingfisher mapping. Native build, XCTest and footer cropping/safe-area rendering still require Xcode. No new illustration was generated in this change.
+
+## World habitat import — 19 November 2026 (supersedes initial coverage)
+
+11,130 / 11,173 species records (99.62%) now have a habitat scene: the ten
+individually checked pilot assignments plus 11,120 automatic `source-derived`
+links to BIRDBASE v2025.1. These automatic links are not individual expert reviews.
+43 recently changed or unmatched taxa remain unassigned; the complete list and
+reason are in `BIRDBASEHabitatImport.json`. No family-based or split-parent
+habitats are inferred. Current scientific names take precedence; existing
+scientific aliases are used only when source records unanimously agree.
+Existing personal observations and species IDs are unchanged.
+
+Source: Şekercioğlu et al. (2025), BIRDBASE v2025.1,
+https://doi.org/10.6084/m9.figshare.27051040.v1; dataset CC BY 4.0 as verified in
+Figshare article API metadata. The dataset license is separate from the paper's
+license. Attribution is bundled and visible in the app's sources sheet.
+The importer pins the original XLSX MD5, records SHA-256, and copies only habitat
+classifications and match provenance, not source images or narrative text.
+
+The 24 specific scenes remain. Nine broad scenes are added (33 total): general
+forest, open woodland, scrub, wetland, coast, rockland, open plains, cultivated
+landscape and bamboo. These prevent false precision: `Forest` does not establish
+rainforest vs temperate forest; `Coastal` does not establish mangrove vs cliffs.
+Each new scene has an art brief in `HabitatScenes.json`. More specific scenes can
+replace broad selections after source checking. Secondary habitats are left
+empty for bulk imports rather than inferred. Migration/seasonal habitat changes
+are not modeled by this single representative footer assignment.
+
+Only the existing river illustration is available. New scene mappings do not
+create artwork; missing assets still hide the footer. The runtime now accepts
+both `source-checked` and `source-derived` assignments, but never `draft` ones.
+
+Reproduce with Python + openpyxl (maintenance tools only, no app dependency):
+
+```
+python Scripts/import_birdbase_habitats.py /path/to/birdbase.xlsx
+python Scripts/habitat_inventory.py
+python -m unittest discover -s Scripts -p 'test_habitat_import.py'
+```
+
+Swift syntax, project references, source checksum and catalog links can be
+checked on Linux. Native resource decoding and rendering still require Xcode.
