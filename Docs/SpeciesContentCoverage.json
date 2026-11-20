@@ -6,10 +6,10 @@
   "illustrationsByRole": {
     "primary": 9,
     "dynamic": 9,
-    "front": 7,
-    "rear": 7,
-    "flight": 7
+    "front": 9,
+    "rear": 9,
+    "flight": 9
   },
-  "fullyIllustrated": 7,
+  "fullyIllustrated": 9,
   "note": "Pages exist through one shared SwiftUI template. Missing content is not generated scientific data. Artwork still requires anatomical/user review."
 }

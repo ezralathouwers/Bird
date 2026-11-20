@@ -276,7 +276,7 @@ birdnet-v3:BN00264,Indische zandleeuwerik,Alaudala raytal,Alaudidae,True,True,Fa
 birdnet-v3:BN00265,Kleine kortteenleeuwerik,Alaudala rufescens,Alaudidae,True,True,False,False,False,False,False
 birdnet-v3:BN00266,Somalische kortteenleeuwerik,Alaudala somalica,Alaudidae,True,True,False,False,False,False,False
 birdnet-v3:BN00267,Alk,Alca torda,Alcidae,True,True,False,False,False,False,False
-sample-alcedo-atthis,IJsvogel,Alcedo atthis,Alcedinidae,True,True,True,True,False,False,False
+sample-alcedo-atthis,IJsvogel,Alcedo atthis,Alcedinidae,True,True,True,True,True,True,True
 birdnet-v3:BN00269,Turkooisijsvogel,Alcedo coerulescens,Alcedinidae,True,True,False,False,False,False,False
 birdnet-v3:BN00270,Javaanse blauwborstijsvogel,Alcedo euryzona,Alcedinidae,True,True,False,False,False,False,False
 birdnet-v3:BN00271,Herculesijsvogel,Alcedo hercules,Alcedinidae,True,True,False,False,False,False,False
@@ -3159,7 +3159,7 @@ birdnet-v3:BN03115,Bruinkeelspecht,Dendrocopos hyperythrus,Picidae,True,True,Fal
 birdnet-v3:BN03116,Witvleugelspecht,Dendrocopos leucopterus,Picidae,True,True,False,False,False,False,False
 birdnet-v3:BN03117,Witrugspecht,Dendrocopos leucotos,Picidae,True,True,False,False,False,False,False
 birdnet-v3:BN03118,Vaalborstspecht,Dendrocopos macei,Picidae,True,True,False,False,False,False,False
-sample-dendrocopos-major,Grote bonte specht,Dendrocopos major,Picidae,True,True,True,True,False,False,False
+sample-dendrocopos-major,Grote bonte specht,Dendrocopos major,Picidae,True,True,True,True,True,True,True
 birdnet-v3:BN03120,Okinawaspecht,Dendrocopos noguchii,Picidae,True,True,False,False,False,False,False
 birdnet-v3:BN03121,Syrische bonte specht,Dendrocopos syriacus,Picidae,True,True,False,False,False,False,False
 birdnet-v3:BN03122,Bruinvoorhoofdspecht,Dendrocoptes auriceps,Picidae,True,True,False,False,False,False,False

@@ -82,3 +82,29 @@ Verification: PNG decoding/alpha, source hashes, 15 unique asset names, all five
 roles per new species, current catalog identity and existing asset-catalog
 resource membership checked; inventory regenerated, Swift syntax parsed and
 `git diff --check` passed. No native build or simulator/device test was run.
+
+## Woodland/water completion 03 — 20 November 2026
+
+Six new transparent illustrations complete the existing kingfisher
+(`sample-alcedo-atthis`) and great spotted woodpecker (`sample-dendrocopos-major`)
+sets: front, rear and right-facing flight for each. Existing classic portraits
+and dynamic fish-carrying/pecking compositions are retained, including the shared
+right-facing correction for the kingfisher classic. Global coverage is now nine
+complete species, with nine assets in each of the five roles (45 bird assets).
+
+Visual review checked complete framing, correct requested view and main field
+marks: kingfisher's dark male bill, short tail, white throat, orange underside and
+blue dorsal stripe; adult male woodpecker's small red nape patch, black crown,
+large white scapular patches, spotted flight feathers and red undertail coverts.
+The source references are in the manifest. Images remain generated illustrations,
+not independently certified anatomical references; toe details and flight-feather
+patterns still need expert/user review. A broad halo in the initial kingfisher
+rear image was cleaned with image generation before installation; the original
+and cleaned source filenames are retained in provenance.
+
+No Swift or observation-data changes were needed. All six generated PNGs were
+copied unchanged into role-specific imagesets after review. Image decoding,
+transparency, unique role names, source SHA-256 equality, both completed sets and
+asset-catalog bundle membership checked; content inventory and `git diff --check`
+passed. Native image loading, ivory blending and carousel layout remain to be
+verified in Xcode. No native build or tests were run on Linux.
