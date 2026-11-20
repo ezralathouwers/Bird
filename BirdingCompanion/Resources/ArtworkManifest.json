@@ -884,5 +884,151 @@
     "referenceURLs": [
       "https://www.rspb.org.uk/birds-and-wildlife/wren"
     ]
+  },
+  {
+    "speciesID": "sample-alcedo-atthis",
+    "asset": "sample-alcedo-atthis-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-b5572f79-2e95-4037-8379-bd2d06a2a00d.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-20",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "248d59d75078f84f50c49c0a7be5d51ee8277caf9306773aaacf48cfbaf88bb8",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "woodland-water-03",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://www.rspb.org.uk/birds-and-wildlife/kingfisher"
+    ]
+  },
+  {
+    "speciesID": "sample-alcedo-atthis",
+    "asset": "sample-alcedo-atthis-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-fc812c03-cb05-4176-ae71-159812e536f1.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-20",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "5baacaadf694142973b7747c0aff8ba2316b6641b814bd3d13137ff890ef6024",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "woodland-water-03",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://www.rspb.org.uk/birds-and-wildlife/kingfisher"
+    ],
+    "parentSourceFile": "exec-31f804d4-fd26-4d60-8969-5e02a8a208fd.png",
+    "generationEdit": "Removed broad background halo with image generation; bird, rear viewpoint and perch retained."
+  },
+  {
+    "speciesID": "sample-alcedo-atthis",
+    "asset": "sample-alcedo-atthis-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-aa65da73-fe98-4239-8e00-7e89a833c541.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-20",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "cab7bc23af2794f4ff8f29eeb7212968af78c8f2c2270154c0a2364863359159",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "woodland-water-03",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://www.rspb.org.uk/birds-and-wildlife/kingfisher"
+    ]
+  },
+  {
+    "speciesID": "sample-dendrocopos-major",
+    "asset": "sample-dendrocopos-major-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-f15d4068-314a-4ab0-81e2-b63f6c4ba39d.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-20",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "904977b5560c3daaae17b213162e3316c77d5fe9169766a12d4d191b81feff8e",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "woodland-water-03",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://www.rspb.org.uk/birds-and-wildlife/great-spotted-woodpecker"
+    ]
+  },
+  {
+    "speciesID": "sample-dendrocopos-major",
+    "asset": "sample-dendrocopos-major-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-2a0e4fc9-f1dd-4a13-885a-ad9d15b161d7.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-20",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "75056bc0c6534e1a6552de59a5f9e038fc067ec7c7351b68d1619e717f924e96",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "woodland-water-03",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://www.rspb.org.uk/birds-and-wildlife/great-spotted-woodpecker"
+    ]
+  },
+  {
+    "speciesID": "sample-dendrocopos-major",
+    "asset": "sample-dendrocopos-major-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-ee597ed9-44f2-4579-afc1-70432d9d29ee.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-20",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "83b6d07d7f52c7367923c8dddf2ed491a3a92d72db3842bc65b8e7424ef3fd4f",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "woodland-water-03",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://www.rspb.org.uk/birds-and-wildlife/great-spotted-woodpecker"
+    ]
   }
 ]
