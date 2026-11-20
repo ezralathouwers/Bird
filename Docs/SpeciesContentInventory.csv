@@ -2940,7 +2940,7 @@ birdnet-v3:BN02898,Blauwe suikervogel,Cyanerpes cyaneus,Thraupidae,True,True,Fal
 birdnet-v3:BN02899,Geelpootsuikervogel,Cyanerpes lucidus,Thraupidae,True,True,False,False,False,False,False
 birdnet-v3:BN02900,Kortsnavelsuikervogel,Cyanerpes nitidus,Thraupidae,True,True,False,False,False,False,False
 birdnet-v3:BN02901,Siertangare,Cyanicterus cyanicterus,Thraupidae,True,True,False,False,False,False,False
-sample-cyanistes-caeruleus,Pimpelmees,Cyanistes caeruleus,Paridae,True,True,True,False,False,False,False
+sample-cyanistes-caeruleus,Pimpelmees,Cyanistes caeruleus,Paridae,True,True,True,True,True,True,True
 birdnet-v3:BN02903,Azuurmees,Cyanistes cyanus,Paridae,True,True,False,False,False,False,False
 birdnet-v3:BN02904,Afrikaanse pimpelmees,Cyanistes teneriffae,Paridae,True,True,False,False,False,False,False
 birdnet-v3:BN02905,Blauwvleugelgans,Cyanochen cyanoptera,Anatidae,True,True,False,False,False,False,False
@@ -3649,7 +3649,7 @@ birdnet-v3:BN03598,Witoorpluimbroekje,Eriocnemis mirabilis,Trochilidae,True,Fals
 birdnet-v3:BN03599,Goudbuikpluimbroekje,Eriocnemis mosquera,Trochilidae,True,False,False,False,False,False,False
 birdnet-v3:BN03600,Zwartborstpluimbroekje,Eriocnemis nigrivestis,Trochilidae,True,False,False,False,False,False,False
 birdnet-v3:BN03601,Groen pluimbroekje,Eriocnemis vestita,Trochilidae,True,True,False,False,False,False,False
-sample-erithacus-rubecula,Roodborst,Erithacus rubecula,Muscicapidae,True,True,True,False,False,False,False
+sample-erithacus-rubecula,Roodborst,Erithacus rubecula,Muscicapidae,True,True,True,True,True,True,True
 birdnet-v3:BN03603,Canarische roodborst,Erithacus superbus,Muscicapidae,True,False,False,False,False,False,False
 birdnet-v3:BN03604,Groene meestimalia,Erpornis zantholeuca,Vireonidae,True,True,False,False,False,False,False
 birdnet-v3:BN03605,Gele elfmonarch,Erythrocercus holochlorus,Erythrocercidae,True,True,False,False,False,False,False
@@ -7248,7 +7248,7 @@ birdnet-v3:BN07144,Lawesparotia,Parotia lawesii,Paradisaeidae,True,True,False,Fa
 birdnet-v3:BN07145,Arfakparotia,Parotia sefilata,Paradisaeidae,True,True,False,False,False,False,False
 birdnet-v3:BN07146,Huonparotia,Parotia wahnesi,Paradisaeidae,True,True,False,False,False,False,False
 birdnet-v3:BN07147,Grijze koolmees,Parus cinereus,Paridae,True,True,False,False,False,False,False
-sample-parus-major,Koolmees,Parus major,Paridae,True,True,True,False,False,False,False
+sample-parus-major,Koolmees,Parus major,Paridae,True,True,True,True,True,True,True
 birdnet-v3:BN07149,Bergkoolmees,Parus monticolus,Paridae,True,True,False,False,False,False,False
 birdnet-v3:BN07150,Saxaulmus,Passer ammodendri,Passeridae,True,True,False,False,False,False,False
 birdnet-v3:BN07151,Somalische mus,Passer castanopterus,Passeridae,True,False,False,False,False,False,False
@@ -10616,7 +10616,7 @@ birdnet-v3:BN10480,Chinese merel,Turdus mandarinus,Turdidae,True,True,False,Fals
 birdnet-v3:BN10481,Marañonlijster,Turdus maranonicus,Turdidae,True,True,False,False,False,False,False
 birdnet-v3:BN10482,Tibetaanse merel,Turdus maximus,Turdidae,True,True,False,False,False,False,False
 birdnet-v3:BN10483,Jemenitische lijster,Turdus menachensis,Turdidae,True,True,False,False,False,False,False
-sample-turdus-merula,Merel,Turdus merula,Turdidae,True,True,True,False,False,False,False
+sample-turdus-merula,Merel,Turdus merula,Turdidae,True,True,True,True,True,True,True
 birdnet-v3:BN10485,Roodborstlijster,Turdus migratorius,Turdidae,True,True,False,False,False,False,False
 birdnet-v3:BN10486,Mindoromerel,Turdus mindorensis,Turdidae,True,False,False,False,False,False,False
 birdnet-v3:BN10487,Mupinlijster,Turdus mupinensis,Turdidae,True,True,False,False,False,False,False
