@@ -139,16 +139,41 @@ struct ArtworkPlaceholder: View {
     }
 }
 
+// Keep source masters intact. Select only the habitat panel at runtime and
+// cache its full composition; layout never applies an extra aspect-fill crop.
+@MainActor
+enum HabitatArtworkCache {
+    private static let images = NSCache<NSString, UIImage>()
+    static func image(for scene: HabitatScene) -> UIImage? {
+        let regionKey = scene.artworkRegion.map { "\($0.x),\($0.y),\($0.width),\($0.height)" } ?? "full"
+        let key = "\(scene.assetName):\(regionKey)" as NSString
+        if let cached = images.object(forKey: key) { return cached }
+        guard let source = UIImage(named: scene.assetName) else { return nil }
+        let result: UIImage
+        if let region = scene.artworkRegion {
+            guard region.isValid, let cgImage = source.cgImage else { return nil }
+            let rect = CGRect(x: region.x * Double(cgImage.width), y: region.y * Double(cgImage.height),
+                width: region.width * Double(cgImage.width), height: region.height * Double(cgImage.height)).integral
+            guard CGRect(x: 0, y: 0, width: CGFloat(cgImage.width), height: CGFloat(cgImage.height)).contains(rect),
+                  let selected = cgImage.cropping(to: rect) else { return nil }
+            result = UIImage(cgImage: selected, scale: source.scale, orientation: .up)
+        } else { result = source }
+        images.setObject(result, forKey: key)
+        return result
+    }
+}
+
 struct HabitatFooter: View {
     let species: Species
     var body: some View {
-        if let scene = HabitatSceneCatalog.primaryScene(for: species), UIImage(named: scene.assetName) != nil {
-            Image(scene.assetName)
+        if let scene = HabitatSceneCatalog.primaryScene(for: species), let image = HabitatArtworkCache.image(for: scene) {
+            Image(uiImage: image)
                 .resizable()
-                .scaledToFill()
-                .frame(height: 84, alignment: .bottom)
-                .clipped()
+                .scaledToFit()
+                .frame(maxWidth: .infinity)
+                .frame(height: 160, alignment: .bottom)
                 .accessibilityHidden(true)
+                .allowsHitTesting(false)
         }
     }
 }

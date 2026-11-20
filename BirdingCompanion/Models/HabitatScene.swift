@@ -1,11 +1,29 @@
 import Foundation
 
+struct HabitatArtworkRegion: Codable, Sendable {
+    let x: Double
+    let y: Double
+    let width: Double
+    let height: Double
+    var isValid: Bool {
+        [x, y, width, height].allSatisfy(\.isFinite) && x >= 0 && y >= 0 && width > 0 && height > 0 &&
+            x + width <= 1 && y + height <= 1
+    }
+}
+
 struct HabitatScene: Identifiable, Codable, Sendable {
     let id: String
     let name: String
     let group: String
     let assetName: String
     let illustrationBrief: String
+    let artworkRegion: HabitatArtworkRegion?
+
+    init(id: String, name: String, group: String, assetName: String, illustrationBrief: String,
+         artworkRegion: HabitatArtworkRegion? = nil) {
+        self.id = id; self.name = name; self.group = group; self.assetName = assetName
+        self.illustrationBrief = illustrationBrief; self.artworkRegion = artworkRegion
+    }
 }
 
 struct SpeciesHabitatAssignment: Codable, Sendable {
@@ -26,7 +44,7 @@ struct HabitatSceneLibrary: Sendable {
 
     init(scenes: [HabitatScene], assignments: [SpeciesHabitatAssignment]) throws {
         let ids = Set(scenes.map(\.id))
-        guard ids.count == scenes.count, scenes.allSatisfy({ !$0.id.isEmpty && !$0.assetName.isEmpty }),
+        guard ids.count == scenes.count, scenes.allSatisfy({ !$0.id.isEmpty && !$0.assetName.isEmpty && ($0.artworkRegion?.isValid ?? true) }),
               Set(assignments.map(\.speciesID)).count == assignments.count else { throw HabitatSceneError.invalidData }
         for assignment in assignments {
             guard !assignment.speciesID.isEmpty, !assignment.scientificName.isEmpty,

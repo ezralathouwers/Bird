@@ -201,3 +201,13 @@ The user's expanded scope includes all species, regardless of Sound ID support. 
 
 ## Shared habitat illustrations — 19 November 2026
 Species-detail footer landscapes are shared by habitat scene, not generated per species. The initial scene library contains 24 reusable landscape types with one source-checked primary selection and optional secondary habitats per species. Unassigned species do not inherit an arbitrary footer. See `Docs/HABITAT_ILLUSTRATIONS.md` for scene briefs, actual assignment coverage and the shared 84-point footer renderer.
+
+
+## Provisional habitat footer assets — 20 November 2026
+All 33 shared habitat scenes now have provisional watercolor artwork approved
+for implementation. Compositions rise organically toward the left and right,
+with a lower open center and complete objects. The urban variant uses modern
+city buildings rather than a village. The shared renderer fits each complete
+scene into a 160-point footer above navigation, replacing earlier cropped
+84-point rendering. See Docs/HABITAT_ILLUSTRATIONS.md for provenance and native
+verification still required.

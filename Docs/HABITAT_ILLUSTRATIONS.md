@@ -119,3 +119,41 @@ python -m unittest discover -s Scripts -p 'test_habitat_import.py'
 
 Swift syntax, project references, source checksum and catalog links can be
 checked on Linux. Native resource decoding and rendering still require Xcode.
+
+## Provisional illustration rollout — 20 November 2026
+
+The user approved implementing all 33 proposed footer scenes with later refinement,
+and requested a more modern city. All 33 now have artwork. Three original,
+label-free generated image atlases preserve the natural-history watercolor style;
+the urban panel uses contemporary flat-roof apartments, glass offices, urban
+planting and an open central plaza rather than village houses. The original
+kingfisher-specific habitat file is retained but is no longer the river default.
+
+`HabitatScenes.json` assigns a distinct normalized `artworkRegion` to each scene.
+The full source PNGs are copied unmodified into the existing asset catalog; the
+renderer selects/caches the appropriate panel at runtime. Each selected region
+includes whole crowns, roofs and rocks, ivory breathing room and no labels or
+neighboring scenes. Out-of-bounds/zero/nonfinite rectangles are rejected. This
+keeps later art replacement local to one scene's asset/region metadata.
+`HabitatArtworkManifest.json` records source and parent concept filenames, hashes,
+rights, provisional approval and display transforms. No third-party media is used.
+
+The footer is now a 160-point bottom-aligned container with aspect-fit rendering,
+replacing the former 84-point aspect-fill crop. It remains in the species overview
+bottom safe-area inset above the persistent navigation. Irregular higher sides
+and lower centers are in the artwork itself, not a curved mask; no further
+aspect-fill clipping stretches or cuts them. Missing/unassigned species still
+have no fabricated footer. Scene artwork is available for all 11,130 assigned
+species records; 43 taxonomy-unresolved records remain unassigned.
+
+These are provisional assets with approximately 512-pixel-wide panels from the
+approved sheets. They can look softer on Retina displays than later dedicated
+high-resolution scene masters; scientific plant/landscape details remain stylized,
+not location-specific habitat claims. All 33 viewports and the modern urban
+composition were visually inspected. File hashes, nonempty panel bounds,
+distinct scene regions, JSON links, Swift syntax and Xcode resource references
+were checked on Linux; `python Scripts/habitat_inventory.py` and
+`git diff --check` passed. Two XCTest methods cover bundled panel rendering and
+invalid bounds; the existing kingfisher test now expects the shared atlas.
+**No XCTest or iOS build ran here.** Check safe areas, navigation adjacency,
+small screens, ivory blending, Retina sharpness and Dynamic Type in Xcode.

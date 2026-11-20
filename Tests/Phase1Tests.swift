@@ -900,7 +900,7 @@ final class HabitatSceneTests: XCTestCase {
         XCTAssertNil(HabitatSceneCatalog.loadError)
         XCTAssertEqual(HabitatSceneCatalog.scenes.count, 33)
         XCTAssertEqual(HabitatSceneCatalog.assignments.count, 11130)
-        XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: MockSpeciesRepository.kingfisher)?.assetName, "KingfisherHabitat")
+        XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: MockSpeciesRepository.kingfisher)?.assetName, "HabitatAtlas1")
         let tit = try XCTUnwrap(SpeciesGuideCatalog.species(id: "sample-parus-major"))
         let woodpecker = try XCTUnwrap(SpeciesGuideCatalog.species(id: "sample-dendrocopos-major"))
         XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: tit)?.id, "temperate-woodland")
@@ -998,5 +998,29 @@ final class PhotoPreprocessingTests: XCTestCase {
     }
     func testInvalidPhotoIsRejectedBeforeInference() {
         XCTAssertThrowsError(try BioCLIPPhotoService.pixels(Data("invalid".utf8)))
+    }
+}
+
+@MainActor
+final class HabitatArtworkTests: XCTestCase {
+    func testAllScenesHaveDistinctValidPanelsAndRenderableArtwork() throws {
+        let scenes = HabitatSceneCatalog.scenes
+        XCTAssertEqual(scenes.count, 33)
+        var regions = Set<String>()
+        for scene in scenes {
+            let region = try XCTUnwrap(scene.artworkRegion)
+            XCTAssertTrue(region.isValid, scene.id)
+            XCTAssertTrue(regions.insert("\(scene.assetName):\(region.x),\(region.y),\(region.width),\(region.height)").inserted)
+            let image = try XCTUnwrap(HabitatArtworkCache.image(for: scene), scene.id)
+            XCTAssertGreaterThan(image.size.width, image.size.height)
+        }
+        XCTAssertEqual(Set(scenes.map(\.assetName)).count, 3)
+    }
+    func testOutOfBoundsAndNonfiniteRegionsAreRejected() {
+        let invalid = [HabitatArtworkRegion(x: -0.1, y: 0, width: 0.5, height: 0.5),
+            HabitatArtworkRegion(x: 0.9, y: 0, width: 0.5, height: 0.5),
+            HabitatArtworkRegion(x: 0, y: 0, width: 0, height: 0.5),
+            HabitatArtworkRegion(x: .nan, y: 0, width: 0.5, height: 0.5)]
+        for region in invalid { XCTAssertFalse(region.isValid) }
     }
 }

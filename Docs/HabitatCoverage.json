@@ -5,7 +5,39 @@
   "assignedSpeciesRecords": 11130,
   "unassignedSpeciesRecords": 43,
   "assetReadyScenes": [
-    "rivers-streams"
+    "rivers-streams",
+    "lakes-ponds",
+    "reedbeds-marsh",
+    "swamp-forest",
+    "mangrove",
+    "sandy-coast",
+    "tidal-flat",
+    "rocky-coast",
+    "open-ocean",
+    "temperate-woodland",
+    "conifer-forest",
+    "tropical-rainforest",
+    "dry-open-woodland",
+    "savanna",
+    "grassland-steppe",
+    "heathland",
+    "mediterranean-scrub",
+    "desert",
+    "alpine-rock",
+    "tundra",
+    "polar-coast",
+    "farmland",
+    "gardens-parks",
+    "urban",
+    "forest-general",
+    "woodland-general",
+    "scrub-general",
+    "wetland-general",
+    "coast-general",
+    "rockland-general",
+    "plains-general",
+    "cultivated-general",
+    "bamboo"
   ],
   "primaryAssignmentsByScene": {
     "rivers-streams": 216,
@@ -41,5 +73,6 @@
     "plains-general": 118,
     "cultivated-general": 53,
     "bamboo": 6
-  }
+  },
+  "assetReadySpeciesRecords": 11130
 }
