@@ -37,29 +37,30 @@ struct SpeciesFact: Identifiable {
 struct SpeciesFacts: View {
     let species: Species
     @State private var showCatalogSources = false
-    // Brief examples only; scientific values await independent source review.
-    private let facts = [
-        SpeciesFact(id: "Spanwijdte", symbol: nil, value: "24–26 cm")
-    ]
+    private var detail: SpeciesDetails? { SpeciesDetailsCatalog.details(for: species.id) }
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            if species.id == MockSpeciesRepository.kingfisher.id {
-            VStack(alignment: .leading, spacing: 8) {
-                ForEach(facts) { fact in factRow(fact) }
-                Text("De ijsvogel leeft langs helder water, bij beken, rivieren en plassen. Vanaf een tak duikt hij naar kleine vissen. Steile oevers bieden plek voor zijn nest.")
-                    .font(FieldGuideTheme.sans(16, relativeTo: .body).weight(.light))
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.top, 6)
-            }
-            Text("Spanwijdte: voorbeeldwaarde · broncontrole volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption)).foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
+            if let error = SpeciesDetailsCatalog.loadError {
+                Text(error).font(FieldGuideTheme.sans(16, relativeTo: .body))
             } else {
-                Text("Soortbeschrijving en spanwijdte volgen na broncontrole.")
-                    .font(FieldGuideTheme.sans(16, relativeTo: .body))
+                VStack(alignment: .leading, spacing: 8) {
+                    if let span = detail?.wingspan {
+                        factRow(SpeciesFact(id: "Spanwijdte", symbol: nil, value: span.displayValue))
+                    } else {
+                        Text("Spanwijdte nog niet beschikbaar")
+                            .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                            .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.65))
+                    }
+                    Text(detail?.bio ?? "Een gecontroleerde soortbeschrijving is nog niet beschikbaar.")
+                        .font(FieldGuideTheme.sans(16, relativeTo: .body).weight(.light))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, 6)
+                }
             }
-            Button("Bronnen soortenlijst") { showCatalogSources = true }
+            Button("Bronnen soortgegevens") { showCatalogSources = true }
                 .font(FieldGuideTheme.sans(12, relativeTo: .caption)).frame(minHeight: 44)
         }.frame(maxWidth: .infinity, alignment: .leading)
-            .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
+            .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView(detail: detail) }
     }
     private func factRow(_ fact: SpeciesFact) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
@@ -194,11 +195,29 @@ struct PupilFreeEye: Shape {
 
 
 struct SpeciesCatalogSourcesView: View {
+    var detail: SpeciesDetails? = nil
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
+                    if let detail {
+                        if detail.bioMethod == "wikipedia-nl-excerpt" {
+                            Text("Beschrijving: kort, ongewijzigd fragment uit Nederlandstalige Wikipedia via BirdNET+ Taxonomy. Wikipedia-bijdragers, CC BY-SA 4.0. Alleen teksten met Wikipedia als bron zijn overgenomen; geen automatisch vertaalde of gegenereerde teksten uit die bron.")
+                        } else if detail.bioMethod == "birdbase-habitat-diet" {
+                            Text("Beschrijving: korte Nederlandse tekst samengesteld uit de primaire habitat- en voedselcategorieën van BIRDBASE v2025.1. Dit is een algemene ecologische beschrijving, geen individueel geschreven veldgidsartikel.")
+                        }
+                        ForEach(detail.bioSourceURLs, id: \.self) { url in
+                            Link(url.host ?? "Bron beschrijving", destination: url)
+                        }
+                        if let wiki = detail.bioSourceURLs.first(where: { $0.host == "nl.wikipedia.org" }) {
+                            Link("Wikipedia-bijdragers en bewerkingsgeschiedenis", destination: wiki.appending(queryItems: [URLQueryItem(name: "action", value: "history")]))
+                        }
+                        if let span = detail.wingspan {
+                            Text("Spanwijdte: \(span.method == "reported" ? "gerapporteerde meetgegevens, Fox en collega's (2026), CC BY 4.0" : "gecontroleerde vogelgidswaarde, Vogelbescherming Nederland"). Waarden kunnen per bron, populatie en meetmethode verschillen.")
+                            Link("Bron spanwijdte", destination: span.sourceURL)
+                        }
+                    }
                     Text(SpeciesGuideCatalog.coverageNote)
                     Text("Leefomgevingen: Şekercioğlu en collega's, BIRDBASE v2025.1 (2025), CC BY 4.0. Primaire habitats zijn vertaald naar gedeelde landschapstypen; brede categorieën blijven breed. Automatische bronkoppelingen zijn niet individueel beoordeeld.")
                     Link("BIRDBASE en bronvermelding", destination: URL(string: "https://doi.org/10.6084/m9.figshare.27051040.v1")!)

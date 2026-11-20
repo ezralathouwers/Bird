@@ -1024,3 +1024,29 @@ final class HabitatArtworkTests: XCTestCase {
         for region in invalid { XCTAssertFalse(region.isValid) }
     }
 }
+
+final class SpeciesDetailsTests: XCTestCase {
+    func testReportedWingspanFormatsWithoutApproximation() {
+        let range = SpeciesWingspan(minimumCM: 24, maximumCM: 26, method: "reported", sourceScientificName: "Alcedo atthis", sourceURL: URL(string: "https://example.org")!)
+        XCTAssertTrue(range.isValid)
+        XCTAssertEqual(range.displayValue, "24–26 cm")
+        let single = SpeciesWingspan(minimumCM: 25, maximumCM: 25, method: "reported", sourceScientificName: "Alcedo atthis", sourceURL: URL(string: "https://example.org")!)
+        XCTAssertEqual(single.displayValue, "25 cm")
+    }
+    func testPredictedAndInvalidWingspansAreRejected() {
+        for span in [SpeciesWingspan(minimumCM: 26, maximumCM: 24, method: "reported", sourceScientificName: "Test", sourceURL: URL(string: "https://example.org")!),
+                     SpeciesWingspan(minimumCM: 24, maximumCM: 26, method: "predicted", sourceScientificName: "Test", sourceURL: URL(string: "https://example.org")!)] {
+            XCTAssertFalse(span.isValid)
+        }
+    }
+    func testBundledCoveragePreservesMissingValuesAndKingfisherOverride() throws {
+        XCTAssertNil(SpeciesDetailsCatalog.loadError)
+        let rows = SpeciesGuideCatalog.species.compactMap { SpeciesDetailsCatalog.details(for: $0.id) }
+        XCTAssertEqual(rows.count, 11173)
+        XCTAssertEqual(rows.filter { $0.bio != nil }.count, 11130)
+        XCTAssertEqual(rows.filter { $0.wingspan != nil }.count, 1313)
+        XCTAssertTrue(rows.contains { $0.bio == nil })
+        XCTAssertEqual(SpeciesDetailsCatalog.details(for: "sample-alcedo-atthis")?.wingspan?.displayValue, "24–26 cm")
+        XCTAssertNil(SpeciesDetailsCatalog.details(for: "not-a-species"))
+    }
+}
