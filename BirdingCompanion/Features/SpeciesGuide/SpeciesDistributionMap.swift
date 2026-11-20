@@ -2,6 +2,57 @@ import SwiftUI
 import MapKit
 import Network
 
+// Provider configuration contains public metadata only, never credentials or GIS data.
+struct SpeciesRangeSource: Codable, Equatable {
+    enum Access: String, Codable { case awaitingPermission, licensed }
+    let providerID: String
+    let name: String
+    let homepage: URL
+    let requestURL: URL
+    let termsURL: URL
+    let access: Access
+    let datasetVersion: String?
+    let licenseNotice: String?
+    let citation: String?
+
+    static func decode(_ data: Data) throws -> Self {
+        let source = try JSONDecoder().decode(Self.self, from: data)
+        guard source.providerID == "birdlife-datazone", !source.name.isEmpty,
+              [source.homepage, source.requestURL, source.termsURL].allSatisfy({
+                  $0.scheme == "https" && $0.host == "datazone.birdlife.org"
+              }) else { throw RangeDataError.invalid }
+        if source.access == .licensed {
+            guard [source.datasetVersion, source.licenseNotice, source.citation].allSatisfy({
+                !($0 ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            }) else { throw RangeDataError.invalid }
+        }
+        return source
+    }
+
+    static func load(bundle: Bundle = .main) throws -> Self {
+        guard let url = bundle.url(forResource: "SpeciesRangeSource", withExtension: "json") else {
+            throw RangeDataError.invalid
+        }
+        return try decode(Data(contentsOf: url))
+    }
+}
+
+// Access is deliberately pending until the actual BirdLife grant and release
+// have been reviewed. DataZone's website is not used as a polygon API.
+struct ConfiguredSpeciesRangeRepository: SpeciesRangeRepository {
+    let bundle: Bundle
+    init(bundle: Bundle = .main) { self.bundle = bundle }
+
+    func load(speciesID: String) throws -> SpeciesRangeDataset {
+        let source = try SpeciesRangeSource.load(bundle: bundle)
+        guard source.access == .licensed else { throw RangeDataError.awaitingPermission }
+        let dataset = try BundledSpeciesRangeRepository(bundle: bundle).load(speciesID: speciesID)
+        guard let version = source.datasetVersion, dataset.version == version,
+              let citation = source.citation, let license = source.licenseNotice else { throw RangeDataError.invalid }
+        return SpeciesRangeDataset(polygons: dataset.polygons, attribution: "\(citation) · \(license)", version: version)
+    }
+}
+
 struct SpeciesRangeDataset {
     let polygons: [MKPolygon]
     let attribution: String
@@ -9,9 +60,10 @@ struct SpeciesRangeDataset {
 }
 
 enum RangeDataError: LocalizedError {
-    case unavailable, invalid
+    case unavailable, invalid, awaitingPermission
     var errorDescription: String? {
         switch self {
+        case .awaitingPermission: "BirdLife is ingesteld als bron. De verspreidingsgebieden zijn beschikbaar zodra toegang tot de gegevens is geregeld."
         case .unavailable: "Nog geen gecontroleerd verspreidingsbestand beschikbaar voor deze soort."
         case .invalid: "Het verspreidingsbestand kon niet worden gelezen."
         }
@@ -71,8 +123,9 @@ final class MapConnectivity: ObservableObject {
 
 struct SpeciesDistributionMap: View {
     let species: Species
-    var repository: any SpeciesRangeRepository = BundledSpeciesRangeRepository()
+    var repository: any SpeciesRangeRepository = ConfiguredSpeciesRangeRepository()
     @StateObject private var connectivity = MapConnectivity()
+    @State private var source: SpeciesRangeSource?
     @State private var dataset: SpeciesRangeDataset?
     @State private var loading = true
     @State private var message: String?
@@ -97,7 +150,13 @@ struct SpeciesDistributionMap: View {
             VStack(alignment: .leading, spacing: 8) {
                 if loading { ProgressView("Verspreiding laden…") }
                 if let message { Text(message) }
-                if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Gedownloade verspreidingsdata blijft beschikbaar.") }
+                if let source {
+                    Link("Bron: \(source.name)", destination: source.homepage)
+                    if source.access == .awaitingPermission {
+                        Link("Toegang aanvragen bij BirdLife", destination: source.requestURL)
+                    }
+                }
+                if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Lokaal beschikbare verspreidingsdata blijft beschikbaar.") }
                 if let dataset {
                     Text("Verspreidingsgebied · \(dataset.attribution) · \(dataset.version)")
                 }
@@ -116,6 +175,7 @@ struct SpeciesDistributionMap: View {
         loading = true
         dataset = nil
         message = nil
+        source = try? SpeciesRangeSource.load()
         defer { loading = false }
         do {
             let loaded = try repository.load(speciesID: species.id)

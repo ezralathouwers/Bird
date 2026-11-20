@@ -32,3 +32,40 @@ Could you provide access to the relevant dataset and confirm whether extraction 
 ### Next implementation after access
 
 Keep the original licensed archive and metadata private. Inspect actual layer/schema and species identifiers, select Alcedo atthis without losing seasonal/presence attributes, transform to WGS84, validate polygons/holes and provenance, and preserve originals. Add seasonality-specific rendering/legend before presenting combined seasonal polygons as one area. Bundle only as permitted, in a private local build; do not commit restricted files or archive download links. Test against the official reference map in Xcode.
+
+
+## Configured BirdLife source — 20 November 2026
+
+`Resources/SpeciesRangeSource.json` now selects BirdLife International DataZone
+as the distribution provider. It includes the official homepage, data-request
+and terms links. The actual release, license notice and citation remain null;
+access is explicitly `awaitingPermission`. The species map uses
+`ConfiguredSpeciesRangeRepository` by default and shows this pending state,
+source link and request link. The configuration is bundled in the Xcode target.
+No API endpoint, credentials, licensed dataset or granted rights are invented.
+
+The public dataset-information and request pages were checked again: worldwide
+ranges are supplied as a file geodatabase following BirdLife taxonomy, with some
+species omitted. Non-commercial access is requested through the form; commercial
+use is directed to IBAT. Birda's use of BirdLife does not provide rights for this
+app. No form was submitted on the user's behalf.
+
+After receiving access, inspect the actual grant and source metadata before
+activating the private build. Record the real release in `datasetVersion`, the
+required license notice and exact attribution in `licenseNotice` and `citation`,
+then set access to `licensed`. The loader rejects incomplete licensed metadata
+and a GeoJSON version differing from the configured release. This is a local
+configuration switch after review, not proof of legal permission.
+
+The configured loader currently delegates to the existing local bundled GeoJSON
+loader. It does not download or convert geodatabases. The earlier conversion,
+taxonomic crosswalk, seasonal rendering and scientific checks remain necessary.
+Keep licensed files in a private checkout/build location outside this public
+repository, and package them only if the grant permits it. Do not change app
+species IDs to BirdLife IDs. Missing per-species files remain explicitly unavailable.
+
+Validation here: JSON configuration and Xcode resource references checked;
+Swift syntax parsed; four XCTest methods added for pending access, metadata
+requirements and unknown access states. XCTest execution, compilation and MapKit
+layout/navigation still require Xcode. No actual distribution overlay can be
+validated until an authorized dataset is available.

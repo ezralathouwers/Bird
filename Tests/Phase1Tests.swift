@@ -906,3 +906,38 @@ final class HabitatSceneTests: XCTestCase {
         XCTAssertEqual(HabitatSceneCatalog.primaryScene(for: tit)?.id, HabitatSceneCatalog.primaryScene(for: woodpecker)?.id)
     }
 }
+
+final class SpeciesRangeSourceTests: XCTestCase {
+    private func configuration(access: String = "awaitingPermission", version: String? = nil,
+                               license: String? = nil, citation: String? = nil) throws -> Data {
+        var value: [String: Any] = [
+            "providerID": "birdlife-datazone", "name": "BirdLife International — DataZone",
+            "homepage": "https://datazone.birdlife.org/",
+            "requestURL": "https://datazone.birdlife.org/contact-us/request-our-data",
+            "termsURL": "https://datazone.birdlife.org/terms-and-conditions", "access": access
+        ]
+        value["datasetVersion"] = version; value["licenseNotice"] = license; value["citation"] = citation
+        return try JSONSerialization.data(withJSONObject: value)
+    }
+    func testPendingSourceDoesNotRequireInventedReleaseOrLicense() throws {
+        let source = try SpeciesRangeSource.decode(configuration())
+        XCTAssertEqual(source.access, .awaitingPermission)
+        XCTAssertNil(source.datasetVersion)
+    }
+    func testLicensedSourceRequiresReleaseLicenseAndCitation() throws {
+        XCTAssertThrowsError(try SpeciesRangeSource.decode(configuration(access: "licensed")))
+        XCTAssertThrowsError(try SpeciesRangeSource.decode(configuration(access: "licensed", version: "test", license: " ", citation: "test")))
+        let source = try SpeciesRangeSource.decode(configuration(access: "licensed", version: "test", license: "Test fixture only", citation: "Test citation"))
+        XCTAssertEqual(source.access, .licensed)
+    }
+    func testUnrecognizedAccessCannotEnableData() throws {
+        XCTAssertThrowsError(try SpeciesRangeSource.decode(configuration(access: "enabled")))
+    }
+    func testConfiguredRepositoryReportsPendingAccess() {
+        XCTAssertThrowsError(try ConfiguredSpeciesRangeRepository().load(speciesID: "sample-alcedo-atthis")) {
+            guard case RangeDataError.awaitingPermission = $0 else {
+                return XCTFail("Expected explicit pending BirdLife access, got \($0)")
+            }
+        }
+    }
+}
