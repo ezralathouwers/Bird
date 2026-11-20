@@ -43,3 +43,42 @@ illustrated species globally. `python Scripts/species_content_inventory.py` and
 logic was changed and no new unit tests are needed for the asset-only addition.
 Native rendering, slide sizing, alpha edges and bundled asset loading remain
 unverified until Xcode runs on Mac/iPhone.
+
+## Garden and park birds 02 — 20 November 2026
+
+Fifteen new images complete all five roles for:
+
+| Species ID | Species | Dynamic scene | Representative plumage |
+| --- | --- | --- | --- |
+| birdnet-v3:BN07155 | Huismus / Passer domesticus | Dust bathing | Adult male, breeding |
+| birdnet-v3:BN03948 | Vink / Fringilla coelebs | Stepping onto twig with seed | Adult male, breeding |
+| birdnet-v3:BN06452 | Winterkoning / Nannus troglodytes | Singing on mossy root | Adult, sex not distinguished |
+
+Classics, dynamic scenes and flight views face right; front/rear views face
+forward/away. All fifteen are separate transparent original PNGs. Visual checks
+covered framing, role and diagnostic features: sparrow grey cap/black bib and
+lack of a tree-sparrow cheek spot; chaffinch cap, wingbars and outer tail;
+wren's short cocked tail, brown barring and fine bill. RSPB factual references
+are recorded in the manifest; their media were not copied. The existing robin
+classic was the drawing-style reference, not the species identity reference.
+Independent expert anatomical review and user/native review are still pending.
+
+Global asset coverage is now seven complete species, nine classic portraits,
+nine dynamic illustrations and seven each of front/rear/flight. All original
+source images remain unchanged. `Scripts/install_artwork_batch.py` validates all
+batch records and image files before installation and refuses existing assets.
+Its mapping input uses `id`, `role`, `path` and optional `referenceURL` and
+`representativePlumage`; Pillow is a maintenance dependency, not an app package.
+
+These are the first illustrated species using namespaced world IDs. Asset keys
+now replace ':' with '-' independently of persistent IDs, avoiding platform
+filename restrictions while preserving every observation/taxonomy ID. Classic
+portrait checks and image rendering in lists, observation forms and map markers
+now use the same `SpeciesMediaRole.classic.assetName(for:)` function as detail
+slides. Sample keys are unchanged. All 11,173 current keys were checked unique.
+Two XCTest methods were added for this behavior, but were not run without Xcode.
+
+Verification: PNG decoding/alpha, source hashes, 15 unique asset names, all five
+roles per new species, current catalog identity and existing asset-catalog
+resource membership checked; inventory regenerated, Swift syntax parsed and
+`git diff --check` passed. No native build or simulator/device test was run.

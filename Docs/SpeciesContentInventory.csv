@@ -3998,7 +3998,7 @@ birdnet-v3:BN03945,Nieuw-zeelands stormvogeltje,Fregetta maoriana,Oceanitidae,Tr
 birdnet-v3:BN03946,Zwartbuikstormvogeltje,Fregetta tropica,Oceanitidae,True,True,False,False,False,False,False
 avilist:2af0bd16,Hoopoe Starling,Fregilupus varius,Sturnidae,True,False,False,False,False,False,False
 birdnet-v3:BN03947,Canarische vink,Fringilla canariensis,Fringillidae,True,True,False,False,False,False,False
-birdnet-v3:BN03948,Vink,Fringilla coelebs,Fringillidae,True,True,False,False,False,False,False
+birdnet-v3:BN03948,Vink,Fringilla coelebs,Fringillidae,True,True,True,True,True,True,True
 birdnet-v3:BN03949,Madeiravink,Fringilla maderensis,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN03950,Keep,Fringilla montifringilla,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN03951,Azorenvink,Fringilla moreletti,Fringillidae,True,True,False,False,False,False,False
@@ -6533,7 +6533,7 @@ birdnet-v3:BN06448,Bigua-aalscholver,Nannopterum brasilianum,Phalacrocoracidae,T
 birdnet-v3:BN06449,Galapagosaalscholver,Nannopterum harrisi,Phalacrocoracidae,True,True,False,False,False,False,False
 birdnet-v3:BN06450,Oost-amerikaanse winterkoning,Nannus hiemalis,Troglodytidae,True,True,False,False,False,False,False
 birdnet-v3:BN06451,Pacifische winterkoning,Nannus pacificus,Troglodytidae,True,True,False,False,False,False,False
-birdnet-v3:BN06452,Winterkoning,Nannus troglodytes,Troglodytidae,True,True,False,False,False,False,False
+birdnet-v3:BN06452,Winterkoning,Nannus troglodytes,Troglodytidae,True,True,True,True,True,True,True
 birdnet-v3:BN06453,Sumatraanse dwergkruiplijster,Napothera albostriata,Pellorneidae,True,True,False,False,False,False,False
 birdnet-v3:BN06454,Annamkruiplijster,Napothera danjoui,Pellorneidae,True,True,False,False,False,False,False
 birdnet-v3:BN06455,Streepborstsluiptimalia,Napothera epilepidota,Pellorneidae,True,True,False,False,False,False,False
@@ -7255,7 +7255,7 @@ birdnet-v3:BN07151,Somalische mus,Passer castanopterus,Passeridae,True,False,Fal
 birdnet-v3:BN07152,Roodkopmus,Passer cinnamomeus,Passeridae,True,True,False,False,False,False,False
 birdnet-v3:BN07153,Soedanese mus,Passer cordofanicus,Passeridae,True,False,False,False,False,False,False
 birdnet-v3:BN07154,Mozambikaanse mus,Passer diffusus,Passeridae,True,True,False,False,False,False,False
-birdnet-v3:BN07155,Huismus,Passer domesticus,Passeridae,True,True,False,False,False,False,False
+birdnet-v3:BN07155,Huismus,Passer domesticus,Passeridae,True,True,True,True,True,True,True
 birdnet-v3:BN07156,Kastanjemus,Passer eminibey,Passeridae,True,True,False,False,False,False,False
 birdnet-v3:BN07157,Arabische goudmus,Passer euchlorus,Passeridae,True,True,False,False,False,False,False
 birdnet-v3:BN07158,Geelbuikmus,Passer flaveolus,Passeridae,True,True,False,False,False,False,False
