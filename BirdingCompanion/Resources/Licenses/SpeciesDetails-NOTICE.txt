@@ -1,0 +1,33 @@
+SpeciesDetails.json: adapted catalog content, CC BY-SA 4.0.
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Dutch Wikipedia excerpts: Wikipedia contributors, CC BY-SA 4.0, distributed
+through BirdNET+ Taxonomy v0.5-Nov2026. Original article URLs are retained in
+every record and displayed in app with links to contributor/edit history.
+Text changes: first up to three complete sentences, whitespace normalization.
+LLM-sourced descriptions/translations are excluded. No images are copied.
+BirdNET+ dataset https://zenodo.org/records/24362980
+See WorldCatalog-NOTICE.txt for the adapted taxonomy and name attribution.
+
+Original short Dutch ecological summaries are composed from habitat and diet
+categories in BIRDBASE v2025.1, Şekercioğlu et al. (2025), CC BY 4.0.
+https://doi.org/10.6084/m9.figshare.27051040.v1
+See BIRDBASE-NOTICE.txt for full attribution.
+
+Reported wingspan data: Fox, M. R., Brunton, E. A., Shephard, J. M. (2026).
+Avian wingspan database: empirical and predicted wingspan for 10,618 flighted
+bird species. Figshare v1. https://doi.org/10.6084/m9.figshare.32089083.v1
+CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+The empirical columns compile BirdWingData (Shiomi et al., 2025), HANZAB
+(BirdLife Australia, 2023), and Birds of the World (Cornell Lab, 2026).
+Changes: only empirical rows imported; Avibase concept ID matching to app
+catalog; reported range or midpoint retained in centimetres; display rounded
+to at most one decimal. No predicted wingspans are imported.
+
+Kingfisher pilot value independently checked against Vogelbescherming Nederland:
+https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijsvogel
+Only the factual 24–26 cm value is used, not the guide's copyrighted prose.
+This overrides a conflicting Fox aggregate for the pilot species.
+
+No endorsement by any source author is implied. Source snapshots and the
+import report distinguish completeness from individual scientific review.

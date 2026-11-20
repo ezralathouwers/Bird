@@ -1,0 +1,26 @@
+{
+  "version": "species-details-2026-11-20",
+  "records": 11173,
+  "sha256": "b0afd7277af5081803f7fdfb2a6acdd6ca0f27f0af62674ed017627cd2f9e02b",
+  "license": "CC BY-SA 4.0 adapted catalog and Wikipedia excerpts; BIRDBASE and Fox source data CC BY 4.0",
+  "sources": [
+    {
+      "name": "BirdNET+ Taxonomy v0.5-Nov2026",
+      "sha256": "433f0d19aabdd5c67a26501d05b8826ad23af4c33149771b5d908c7efa7e4fd1",
+      "url": "https://zenodo.org/records/24362980",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "name": "BIRDBASE v2025.1",
+      "md5": "36d53d59af1e449db1fc4c30062d9d1f",
+      "url": "https://doi.org/10.6084/m9.figshare.27051040.v1",
+      "license": "CC BY 4.0"
+    },
+    {
+      "name": "Fox, Brunton and Shephard (2026), Avian wingspan database",
+      "sha256": "6b55747a5761c08356d92c7a0b524b4e586c28a25316b0a6c1de3738db1d8eda",
+      "url": "https://doi.org/10.6084/m9.figshare.32089083.v1",
+      "license": "CC BY 4.0"
+    }
+  ]
+}
