@@ -924,6 +924,13 @@ final class SpeciesRangeSourceTests: XCTestCase {
         XCTAssertEqual(source.access, .awaitingPermission)
         XCTAssertNil(source.datasetVersion)
     }
+    func testApprovedAccessDoesNotInventDatasetMetadata() throws {
+        let source = try SpeciesRangeSource.decode(configuration(access: "approvedAwaitingFiles"))
+        XCTAssertEqual(source.access, .approvedAwaitingFiles)
+        XCTAssertNil(source.datasetVersion)
+        XCTAssertNil(source.licenseNotice)
+        XCTAssertNil(source.citation)
+    }
     func testLicensedSourceRequiresReleaseLicenseAndCitation() throws {
         XCTAssertThrowsError(try SpeciesRangeSource.decode(configuration(access: "licensed")))
         XCTAssertThrowsError(try SpeciesRangeSource.decode(configuration(access: "licensed", version: "test", license: " ", citation: "test")))
@@ -933,10 +940,10 @@ final class SpeciesRangeSourceTests: XCTestCase {
     func testUnrecognizedAccessCannotEnableData() throws {
         XCTAssertThrowsError(try SpeciesRangeSource.decode(configuration(access: "enabled")))
     }
-    func testConfiguredRepositoryReportsPendingAccess() {
+    func testConfiguredRepositoryReportsApprovedAccessWithMissingFiles() {
         XCTAssertThrowsError(try ConfiguredSpeciesRangeRepository().load(speciesID: "sample-alcedo-atthis")) {
-            guard case RangeDataError.awaitingPermission = $0 else {
-                return XCTFail("Expected explicit pending BirdLife access, got \($0)")
+            guard case RangeDataError.awaitingFiles = $0 else {
+                return XCTFail("Expected approved BirdLife access with missing files, got \($0)")
             }
         }
     }

@@ -4,7 +4,7 @@
   "homepage": "https://datazone.birdlife.org/",
   "requestURL": "https://datazone.birdlife.org/contact-us/request-our-data",
   "termsURL": "https://datazone.birdlife.org/terms-and-conditions",
-  "access": "awaitingPermission",
+  "access": "approvedAwaitingFiles",
   "datasetVersion": null,
   "licenseNotice": null,
   "citation": null

@@ -4,7 +4,7 @@ import Network
 
 // Provider configuration contains public metadata only, never credentials or GIS data.
 struct SpeciesRangeSource: Codable, Equatable {
-    enum Access: String, Codable { case awaitingPermission, licensed }
+    enum Access: String, Codable { case awaitingPermission, approvedAwaitingFiles, licensed }
     let providerID: String
     let name: String
     let homepage: URL
@@ -37,15 +37,19 @@ struct SpeciesRangeSource: Codable, Equatable {
     }
 }
 
-// Access is deliberately pending until the actual BirdLife grant and release
-// have been reviewed. DataZone's website is not used as a polygon API.
+// Approved access and a validated local release are separate states.
+// DataZone's website is not used as a polygon API.
 struct ConfiguredSpeciesRangeRepository: SpeciesRangeRepository {
     let bundle: Bundle
     init(bundle: Bundle = .main) { self.bundle = bundle }
 
     func load(speciesID: String) throws -> SpeciesRangeDataset {
         let source = try SpeciesRangeSource.load(bundle: bundle)
-        guard source.access == .licensed else { throw RangeDataError.awaitingPermission }
+        switch source.access {
+        case .awaitingPermission: throw RangeDataError.awaitingPermission
+        case .approvedAwaitingFiles: throw RangeDataError.awaitingFiles
+        case .licensed: break
+        }
         let dataset = try BundledSpeciesRangeRepository(bundle: bundle).load(speciesID: speciesID)
         guard let version = source.datasetVersion, dataset.version == version,
               let citation = source.citation, let license = source.licenseNotice else { throw RangeDataError.invalid }
@@ -60,10 +64,11 @@ struct SpeciesRangeDataset {
 }
 
 enum RangeDataError: LocalizedError {
-    case unavailable, invalid, awaitingPermission
+    case unavailable, invalid, awaitingPermission, awaitingFiles
     var errorDescription: String? {
         switch self {
         case .awaitingPermission: "BirdLife is ingesteld als bron. De verspreidingsgebieden zijn beschikbaar zodra toegang tot de gegevens is geregeld."
+        case .awaitingFiles: "Toegang tot BirdLife is goedgekeurd. De verspreidingsbestanden zijn nog niet ingeladen."
         case .unavailable: "Nog geen gecontroleerd verspreidingsbestand beschikbaar voor deze soort."
         case .invalid: "Het verspreidingsbestand kon niet worden gelezen."
         }

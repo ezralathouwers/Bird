@@ -69,3 +69,26 @@ Swift syntax parsed; four XCTest methods added for pending access, metadata
 requirements and unknown access states. XCTest execution, compilation and MapKit
 layout/navigation still require Xcode. No actual distribution overlay can be
 validated until an authorized dataset is available.
+
+
+## Approved access, download blocked — 20 November 2026
+
+The user confirmed BirdLife approval and supplied a download link. The bundled
+configuration now records `approvedAwaitingFiles`; the map no longer prompts
+for an access request and distinguishes this from a licensed, validated local
+release. No dataset version, citation or license text has been invented.
+
+The execution environment's network proxy returned HTTP 403 at CONNECT when
+accessing the supplied Azure Blob host. Retrying after granted network access
+and an escalated shell request produced the same proxy refusal. This is not
+evidence that BirdLife rejected the user's approved request or that the download
+link is invalid. No archive bytes were received, so contents, metadata, terms,
+layer schema, taxonomy and seasonal coverage remain uninspected. The private
+access link has not been committed. No data files were added to the repository.
+
+Next step: obtain the archive as an uploaded file or in a workspace outside the
+Git checkout; inspect its original metadata and terms, retain the source,
+implement conversion and reviewed taxonomic mapping, and only then activate the
+local licensed dataset. An uploaded archive is needed here because the proxy
+prevents downloading directly. Native rendering and XCTest execution still
+require Xcode.
