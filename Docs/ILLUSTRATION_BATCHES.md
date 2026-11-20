@@ -108,3 +108,11 @@ transparency, unique role names, source SHA-256 equality, both completed sets an
 asset-catalog bundle membership checked; content inventory and `git diff --check`
 passed. Native image loading, ivory blending and carousel layout remain to be
 verified in Xcode. No native build or tests were run on Linux.
+
+## Flight pose replacement 04 — 20 November 2026
+
+The earlier flight-facing directions in batches 01–03 are superseded. All nine
+flight images now show a centered underside, head up, tail down and both wings
+extended left/right. The fourth slide and asset names remain unchanged. No other
+roles were replaced. See FLIGHT_ILLUSTRATION_STANDARD.md for the permanent future
+generation/import rule and retained prior-version provenance.

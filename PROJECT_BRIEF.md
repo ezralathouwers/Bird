@@ -211,3 +211,14 @@ city buildings rather than a village. The shared renderer fits each complete
 scene into a 160-point footer above navigation, replacing earlier cropped
 84-point rendering. See Docs/HABITAT_ILLUSTRATIONS.md for provenance and native
 verification still required.
+
+
+## Flight illustration standard — 20 November 2026
+All existing and future flight illustrations (fourth detail slide) use a
+centered underside view like the user's supplied overhead-flight photo: head
+and bill point upward, tail downward, fully extended left/right wings at roughly
+equal height, species-correct ventral body and underwing plumage. Natural subtle
+asymmetry is allowed; avoid banking side views and dorsal views. Keep the
+natural-history illustration style, complete feather tips and transparent
+background. This supersedes the previous rightward flight orientation only;
+classic thumbnails still face right and the slide order stays unchanged.

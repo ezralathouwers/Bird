@@ -44,6 +44,7 @@ enum SpeciesMediaRole: String, CaseIterable, Sendable {
     case dynamic = "dynamic"
     case front = "front"
     case rear = "rear"
+    // Centered ventral view: head up, tail down, wings spread left/right.
     case flight = "flight"
 
     static let detailSlides: [SpeciesMediaRole] = [.dynamic, .front, .rear, .flight]
@@ -54,7 +55,7 @@ enum SpeciesMediaRole: String, CaseIterable, Sendable {
         case .dynamic: "Dynamische illustratie"
         case .front: "Vooraanzicht"
         case .rear: "Achteraanzicht"
-        case .flight: "Illustratie in vlucht"
+        case .flight: "Onderaanzicht in vlucht"
         }
     }
     var missingMessage: String { "" }

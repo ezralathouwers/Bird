@@ -22,6 +22,7 @@ You are working on a private, non-commercial, native iPhone birdwatching app. `P
 - Do not use the original mockup as a literal source of scientific truth. Validate content separately.
 
 ## Latest approved artwork direction
+- Flight illustrations (slide 4) must ALWAYS use a centered ventral view directly from below: head/bill toward the top, tail toward the bottom, both wings spread left/right at approximately equal height. Show species-correct belly and underwing plumage. Keep the whole bird inside the canvas on transparent background. This replaces the former right-facing side/three-quarter flight pose for all existing and future species. Classic thumbnails still face right. Use `projection: centered-ventral-spread` in the artwork import/manifest.
 - Every species needs five separate media roles: classic right-facing illustration for compact contexts, dynamic species-detail hero, front illustration (slide 2), rear illustration (slide 3), and a flight illustration (slide 4). Detail slides must not reuse the classic thumbnail. Missing roles must use explicit placeholders. Dynamic compositions should be species-specific (for example fish-carrying kingfisher, pecking woodpecker, hovering kestrel); not every bird needs to be moving.
 - All classic primary bird illustrations must face right throughout the app. Review each new asset and use the shared `PrimaryBirdImage` renderer for consistent orientation; retain original source files and record any display reflection in the artwork manifest.
 
