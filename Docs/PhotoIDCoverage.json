@@ -1,0 +1,5428 @@
+{
+  "rows": 15331,
+  "mappedRows": 9954,
+  "mappedSpecies": 9818,
+  "unmappedCatalogSpecies": [
+    {
+      "id": "birdnet-v3:BN02843",
+      "scientificName": "Crypturellus resonans"
+    },
+    {
+      "id": "avilist:e4aa60c7",
+      "scientificName": "Alopochen mauritiana"
+    },
+    {
+      "id": "avilist:10d0ad82",
+      "scientificName": "Alopochen kervazoi"
+    },
+    {
+      "id": "avilist:80897d19",
+      "scientificName": "Camptorhynchus labradorius"
+    },
+    {
+      "id": "avilist:edda42ed",
+      "scientificName": "Mergus australis"
+    },
+    {
+      "id": "avilist:b52611c1",
+      "scientificName": "Mareca marecula"
+    },
+    {
+      "id": "avilist:08f2bbc6",
+      "scientificName": "Anas theodori"
+    },
+    {
+      "id": "birdnet-v3:BN07749",
+      "scientificName": "Pipile grayi"
+    },
+    {
+      "id": "birdnet-v3:BN04363",
+      "scientificName": "Guttera verreauxi"
+    },
+    {
+      "id": "birdnet-v3:BN04360",
+      "scientificName": "Guttera edouardi"
+    },
+    {
+      "id": "birdnet-v3:BN00804",
+      "scientificName": "Arborophila sumatrana"
+    },
+    {
+      "id": "birdnet-v3:BN08901",
+      "scientificName": "Rhizothera dulitensis"
+    },
+    {
+      "id": "birdnet-v3:BN05029",
+      "scientificName": "Lagopus scotica"
+    },
+    {
+      "id": "birdnet-v3:BN05478",
+      "scientificName": "Lophura pyronota"
+    },
+    {
+      "id": "birdnet-v3:BN05479",
+      "scientificName": "Lophura rufa"
+    },
+    {
+      "id": "birdnet-v3:BN08828",
+      "scientificName": "Rheinardia nigrescens"
+    },
+    {
+      "id": "birdnet-v3:BN10400",
+      "scientificName": "Tropicoperdix graydoni"
+    },
+    {
+      "id": "birdnet-v3:BN09119",
+      "scientificName": "Scleroptila elgonensis"
+    },
+    {
+      "id": "birdnet-v3:BN09126",
+      "scientificName": "Scleroptila whytei"
+    },
+    {
+      "id": "birdnet-v3:BN09797",
+      "scientificName": "Synoicus adansonii"
+    },
+    {
+      "id": "avilist:48e3a389",
+      "scientificName": "Coturnix novaezelandiae"
+    },
+    {
+      "id": "avilist:16e62dc4",
+      "scientificName": "Tachybaptus rufolavatus"
+    },
+    {
+      "id": "avilist:5b2c899d",
+      "scientificName": "Podilymbus gigas"
+    },
+    {
+      "id": "avilist:a62cbdd6",
+      "scientificName": "Podiceps andinus"
+    },
+    {
+      "id": "birdnet-v3:BN02756",
+      "scientificName": "Crinifer concolor"
+    },
+    {
+      "id": "birdnet-v3:BN02757",
+      "scientificName": "Crinifer leucogaster"
+    },
+    {
+      "id": "birdnet-v3:BN04059",
+      "scientificName": "Gallirex porphyreolophus"
+    },
+    {
+      "id": "birdnet-v3:BN04058",
+      "scientificName": "Gallirex johnstoni"
+    },
+    {
+      "id": "birdnet-v3:BN05899",
+      "scientificName": "Menelikornis ruspolii"
+    },
+    {
+      "id": "birdnet-v3:BN05898",
+      "scientificName": "Menelikornis leucotis"
+    },
+    {
+      "id": "birdnet-v3:BN09961",
+      "scientificName": "Tauraco violaceus"
+    },
+    {
+      "id": "birdnet-v3:BN09958",
+      "scientificName": "Tauraco rossae"
+    },
+    {
+      "id": "birdnet-v3:BN04626",
+      "scientificName": "Heterotetrax humilis"
+    },
+    {
+      "id": "birdnet-v3:BN02712",
+      "scientificName": "Coua olivaceiceps"
+    },
+    {
+      "id": "avilist:cbac0bbc",
+      "scientificName": "Coua delalandei"
+    },
+    {
+      "id": "birdnet-v3:BN01736",
+      "scientificName": "Centropus burchellii"
+    },
+    {
+      "id": "birdnet-v3:BN07360",
+      "scientificName": "Phaenicophaeus oeneicaudus"
+    },
+    {
+      "id": "birdnet-v3:BN07358",
+      "scientificName": "Phaenicophaeus curvirostris"
+    },
+    {
+      "id": "birdnet-v3:BN07362",
+      "scientificName": "Phaenicophaeus sumatranus"
+    },
+    {
+      "id": "birdnet-v3:BN07364",
+      "scientificName": "Phaenicophaeus viridirostris"
+    },
+    {
+      "id": "birdnet-v3:BN07363",
+      "scientificName": "Phaenicophaeus tristis"
+    },
+    {
+      "id": "birdnet-v3:BN07359",
+      "scientificName": "Phaenicophaeus diardi"
+    },
+    {
+      "id": "birdnet-v3:BN08818",
+      "scientificName": "Rhamphococcyx calyorhynchus"
+    },
+    {
+      "id": "birdnet-v3:BN03074",
+      "scientificName": "Dasylophus cumingi"
+    },
+    {
+      "id": "birdnet-v3:BN02369",
+      "scientificName": "Coccycua minuta"
+    },
+    {
+      "id": "birdnet-v3:BN02368",
+      "scientificName": "Coccycua cinerea"
+    },
+    {
+      "id": "birdnet-v3:BN02370",
+      "scientificName": "Coccycua pumila"
+    },
+    {
+      "id": "birdnet-v3:BN07669",
+      "scientificName": "Piaya mexicana"
+    },
+    {
+      "id": "birdnet-v3:BN02380",
+      "scientificName": "Coccyzus pluvialis"
+    },
+    {
+      "id": "birdnet-v3:BN02381",
+      "scientificName": "Coccyzus rufigularis"
+    },
+    {
+      "id": "birdnet-v3:BN02382",
+      "scientificName": "Coccyzus vetula"
+    },
+    {
+      "id": "birdnet-v3:BN02383",
+      "scientificName": "Coccyzus vieilloti"
+    },
+    {
+      "id": "birdnet-v3:BN02376",
+      "scientificName": "Coccyzus longirostris"
+    },
+    {
+      "id": "birdnet-v3:BN02378",
+      "scientificName": "Coccyzus merlini"
+    },
+    {
+      "id": "avilist:ad251783",
+      "scientificName": "Nannococcyx psix"
+    },
+    {
+      "id": "birdnet-v3:BN03669",
+      "scientificName": "Eudynamys melanorhynchus"
+    },
+    {
+      "id": "birdnet-v3:BN01867",
+      "scientificName": "Chalcites crassirostris"
+    },
+    {
+      "id": "birdnet-v3:BN04623",
+      "scientificName": "Heteroscenes pallidus"
+    },
+    {
+      "id": "birdnet-v3:BN01371",
+      "scientificName": "Cacomantis sepulcralis"
+    },
+    {
+      "id": "birdnet-v3:BN01374",
+      "scientificName": "Cacomantis virescens"
+    },
+    {
+      "id": "birdnet-v3:BN01364",
+      "scientificName": "Cacomantis addendus"
+    },
+    {
+      "id": "birdnet-v3:BN01366",
+      "scientificName": "Cacomantis blandus"
+    },
+    {
+      "id": "birdnet-v3:BN09690",
+      "scientificName": "Surniculus dicruroides"
+    },
+    {
+      "id": "birdnet-v3:BN04643",
+      "scientificName": "Hierococcyx vagans"
+    },
+    {
+      "id": "birdnet-v3:BN04636",
+      "scientificName": "Hierococcyx bocki"
+    },
+    {
+      "id": "birdnet-v3:BN04642",
+      "scientificName": "Hierococcyx tiganada"
+    },
+    {
+      "id": "birdnet-v3:BN04641",
+      "scientificName": "Hierococcyx sparverioides"
+    },
+    {
+      "id": "birdnet-v3:BN04644",
+      "scientificName": "Hierococcyx varius"
+    },
+    {
+      "id": "birdnet-v3:BN04638",
+      "scientificName": "Hierococcyx hyperythrus"
+    },
+    {
+      "id": "birdnet-v3:BN04640",
+      "scientificName": "Hierococcyx pectoralis"
+    },
+    {
+      "id": "birdnet-v3:BN04637",
+      "scientificName": "Hierococcyx fugax"
+    },
+    {
+      "id": "birdnet-v3:BN04639",
+      "scientificName": "Hierococcyx nisicolor"
+    },
+    {
+      "id": "birdnet-v3:BN07093",
+      "scientificName": "Paraclaravis geoffroyi"
+    },
+    {
+      "id": "birdnet-v3:BN07094",
+      "scientificName": "Paraclaravis mondetoura"
+    },
+    {
+      "id": "birdnet-v3:BN05571",
+      "scientificName": "Macropygia albicapilla"
+    },
+    {
+      "id": "avilist:d397fe25",
+      "scientificName": "Ectopistes migratorius"
+    },
+    {
+      "id": "avilist:2bb91092",
+      "scientificName": "Nesoenas rodericanus"
+    },
+    {
+      "id": "birdnet-v3:BN09625",
+      "scientificName": "Streptopelia dusumieri"
+    },
+    {
+      "id": "avilist:33d2620f",
+      "scientificName": "Columba jouyi"
+    },
+    {
+      "id": "avilist:0eff2ca3",
+      "scientificName": "Columba versicolor"
+    },
+    {
+      "id": "birdnet-v3:BN04016",
+      "scientificName": "Gallicolumba menagei"
+    },
+    {
+      "id": "birdnet-v3:BN04578",
+      "scientificName": "Henicophaps foersteri"
+    },
+    {
+      "id": "birdnet-v3:BN07080",
+      "scientificName": "Pampusana kubaryi"
+    },
+    {
+      "id": "birdnet-v3:BN07076",
+      "scientificName": "Pampusana canifrons"
+    },
+    {
+      "id": "avilist:8832822e",
+      "scientificName": "Pampusana ferruginea"
+    },
+    {
+      "id": "avilist:71be72fc",
+      "scientificName": "Pampusana salamonis"
+    },
+    {
+      "id": "avilist:8d0bb075",
+      "scientificName": "Pampusana norfolkensis"
+    },
+    {
+      "id": "avilist:75d098b5",
+      "scientificName": "Microgoura meeki"
+    },
+    {
+      "id": "avilist:def95927",
+      "scientificName": "Raphus cucullatus"
+    },
+    {
+      "id": "avilist:2fc54a50",
+      "scientificName": "Pezophaps solitaria"
+    },
+    {
+      "id": "avilist:6e8b492e",
+      "scientificName": "Caloenas maculata"
+    },
+    {
+      "id": "birdnet-v3:BN03348",
+      "scientificName": "Ducula cuprea"
+    },
+    {
+      "id": "birdnet-v3:BN03358",
+      "scientificName": "Ducula mindorensis"
+    },
+    {
+      "id": "birdnet-v3:BN03364",
+      "scientificName": "Ducula oenothorax"
+    },
+    {
+      "id": "birdnet-v3:BN08761",
+      "scientificName": "Ramphiculus gularis"
+    },
+    {
+      "id": "avilist:be8566b0",
+      "scientificName": "Alectroenas nitidissimus"
+    },
+    {
+      "id": "birdnet-v3:BN08509",
+      "scientificName": "Ptilinopus holosericeus"
+    },
+    {
+      "id": "avilist:b526d1ae",
+      "scientificName": "Ptilinopus mercierii"
+    },
+    {
+      "id": "birdnet-v3:BN05292",
+      "scientificName": "Leucogeranus leucogeranus"
+    },
+    {
+      "id": "birdnet-v3:BN00628",
+      "scientificName": "Antigone canadensis"
+    },
+    {
+      "id": "birdnet-v3:BN00630",
+      "scientificName": "Antigone vipio"
+    },
+    {
+      "id": "birdnet-v3:BN00629",
+      "scientificName": "Antigone rubicunda"
+    },
+    {
+      "id": "birdnet-v3:BN00627",
+      "scientificName": "Antigone antigone"
+    },
+    {
+      "id": "birdnet-v3:BN04347",
+      "scientificName": "Grus carunculata"
+    },
+    {
+      "id": "birdnet-v3:BN04353",
+      "scientificName": "Grus virgo"
+    },
+    {
+      "id": "birdnet-v3:BN04352",
+      "scientificName": "Grus paradisea"
+    },
+    {
+      "id": "birdnet-v3:BN08732",
+      "scientificName": "Rallicula rubra"
+    },
+    {
+      "id": "birdnet-v3:BN08730",
+      "scientificName": "Rallicula leucospila"
+    },
+    {
+      "id": "birdnet-v3:BN08729",
+      "scientificName": "Rallicula forbesi"
+    },
+    {
+      "id": "birdnet-v3:BN08731",
+      "scientificName": "Rallicula mayri"
+    },
+    {
+      "id": "birdnet-v3:BN06181",
+      "scientificName": "Mustelirallus albicollis"
+    },
+    {
+      "id": "birdnet-v3:BN06183",
+      "scientificName": "Mustelirallus colombianus"
+    },
+    {
+      "id": "birdnet-v3:BN00774",
+      "scientificName": "Aramides cajaneus"
+    },
+    {
+      "id": "birdnet-v3:BN02752",
+      "scientificName": "Crecopsis egregia"
+    },
+    {
+      "id": "avilist:7881edff",
+      "scientificName": "Dryolimnas augusti"
+    },
+    {
+      "id": "avilist:3dc77a87",
+      "scientificName": "Aphanapteryx bonasia"
+    },
+    {
+      "id": "avilist:eaa2fcbd",
+      "scientificName": "Erythromachus leguati"
+    },
+    {
+      "id": "avilist:fffac0e6",
+      "scientificName": "Diaphorapteryx hawkinsi"
+    },
+    {
+      "id": "avilist:11cbd603",
+      "scientificName": "Aphanocrex podarces"
+    },
+    {
+      "id": "avilist:350c5d1e",
+      "scientificName": "Mundia elpenor"
+    },
+    {
+      "id": "birdnet-v3:BN05321",
+      "scientificName": "Lewinia striata"
+    },
+    {
+      "id": "avilist:6872f033",
+      "scientificName": "Gallirallus pacificus"
+    },
+    {
+      "id": "avilist:cb21bcea",
+      "scientificName": "Gallirallus modestus"
+    },
+    {
+      "id": "avilist:f175515d",
+      "scientificName": "Gallirallus poecilopterus"
+    },
+    {
+      "id": "avilist:2215ebd4",
+      "scientificName": "Gallirallus dieffenbachii"
+    },
+    {
+      "id": "birdnet-v3:BN04057",
+      "scientificName": "Gallirallus woodfordi"
+    },
+    {
+      "id": "avilist:0c903b9a",
+      "scientificName": "Gallirallus wakensis"
+    },
+    {
+      "id": "birdnet-v3:BN04376",
+      "scientificName": "Gymnocrex talaudensis"
+    },
+    {
+      "id": "birdnet-v3:BN08118",
+      "scientificName": "Porphyriops melanops"
+    },
+    {
+      "id": "birdnet-v3:BN10287",
+      "scientificName": "Tribonyx ventralis"
+    },
+    {
+      "id": "birdnet-v3:BN10286",
+      "scientificName": "Tribonyx mortierii"
+    },
+    {
+      "id": "birdnet-v3:BN07114",
+      "scientificName": "Paragallinula angulata"
+    },
+    {
+      "id": "birdnet-v3:BN04043",
+      "scientificName": "Gallinula silvestris"
+    },
+    {
+      "id": "birdnet-v3:BN04041",
+      "scientificName": "Gallinula galeata"
+    },
+    {
+      "id": "avilist:75f40338",
+      "scientificName": "Gallinula nesiotis"
+    },
+    {
+      "id": "avilist:358af9d9",
+      "scientificName": "Fulica newtonii"
+    },
+    {
+      "id": "avilist:ffc0a02e",
+      "scientificName": "Porphyrio paepae"
+    },
+    {
+      "id": "avilist:027313b6",
+      "scientificName": "Porphyrio mantelli"
+    },
+    {
+      "id": "birdnet-v3:BN08980",
+      "scientificName": "Rufirallus fasciatus"
+    },
+    {
+      "id": "birdnet-v3:BN08983",
+      "scientificName": "Rufirallus viridis"
+    },
+    {
+      "id": "birdnet-v3:BN05187",
+      "scientificName": "Laterallus notatus"
+    },
+    {
+      "id": "birdnet-v3:BN05191",
+      "scientificName": "Laterallus spiloptera"
+    },
+    {
+      "id": "birdnet-v3:BN05188",
+      "scientificName": "Laterallus rogersi"
+    },
+    {
+      "id": "birdnet-v3:BN05190",
+      "scientificName": "Laterallus spilonota"
+    },
+    {
+      "id": "birdnet-v3:BN05183",
+      "scientificName": "Laterallus flaviventer"
+    },
+    {
+      "id": "birdnet-v3:BN00329",
+      "scientificName": "Amaurornis moluccana"
+    },
+    {
+      "id": "birdnet-v3:BN10843",
+      "scientificName": "Zapornia flavirostra"
+    },
+    {
+      "id": "birdnet-v3:BN10845",
+      "scientificName": "Zapornia olivieri"
+    },
+    {
+      "id": "birdnet-v3:BN10847",
+      "scientificName": "Zapornia paykullii"
+    },
+    {
+      "id": "birdnet-v3:BN10846",
+      "scientificName": "Zapornia parva"
+    },
+    {
+      "id": "avilist:b25d90d3",
+      "scientificName": "Zapornia astrictocarpus"
+    },
+    {
+      "id": "avilist:2699dcaf",
+      "scientificName": "Zapornia palmeri"
+    },
+    {
+      "id": "birdnet-v3:BN10848",
+      "scientificName": "Zapornia pusilla"
+    },
+    {
+      "id": "birdnet-v3:BN10842",
+      "scientificName": "Zapornia bicolor"
+    },
+    {
+      "id": "avilist:fc472eb7",
+      "scientificName": "Zapornia sandwichensis"
+    },
+    {
+      "id": "avilist:b60d85a9",
+      "scientificName": "Zapornia nigra"
+    },
+    {
+      "id": "birdnet-v3:BN10841",
+      "scientificName": "Zapornia atra"
+    },
+    {
+      "id": "birdnet-v3:BN10849",
+      "scientificName": "Zapornia tabuensis"
+    },
+    {
+      "id": "avilist:9dae5526",
+      "scientificName": "Zapornia monasa"
+    },
+    {
+      "id": "avilist:d74fdd2d",
+      "scientificName": "Haematopus meadewaldoi"
+    },
+    {
+      "id": "birdnet-v3:BN10095",
+      "scientificName": "Thinornis melanops"
+    },
+    {
+      "id": "birdnet-v3:BN00440",
+      "scientificName": "Anarhynchus atrifrons"
+    },
+    {
+      "id": "avilist:7a35de81",
+      "scientificName": "Numenius tenuirostris"
+    },
+    {
+      "id": "birdnet-v3:BN09135",
+      "scientificName": "Scolopax celebensis"
+    },
+    {
+      "id": "avilist:8de52990",
+      "scientificName": "Coenocorypha iredalei"
+    },
+    {
+      "id": "avilist:36d14881",
+      "scientificName": "Coenocorypha barrierensis"
+    },
+    {
+      "id": "birdnet-v3:BN10327",
+      "scientificName": "Tringa inornata"
+    },
+    {
+      "id": "avilist:f51dba0d",
+      "scientificName": "Prosobonia cancellata"
+    },
+    {
+      "id": "avilist:750808c3",
+      "scientificName": "Prosobonia leucoptera"
+    },
+    {
+      "id": "avilist:f1d2de72",
+      "scientificName": "Prosobonia ellisi"
+    },
+    {
+      "id": "birdnet-v3:BN10551",
+      "scientificName": "Turnix worcesteri"
+    },
+    {
+      "id": "birdnet-v3:BN10542",
+      "scientificName": "Turnix novaecaledoniae"
+    },
+    {
+      "id": "avilist:57d2f32e",
+      "scientificName": "Pinguinus impennis"
+    },
+    {
+      "id": "birdnet-v3:BN04366",
+      "scientificName": "Gygis candida"
+    },
+    {
+      "id": "birdnet-v3:BN04367",
+      "scientificName": "Gygis microrhyncha"
+    },
+    {
+      "id": "birdnet-v3:BN05167",
+      "scientificName": "Larus mongolicus"
+    },
+    {
+      "id": "birdnet-v3:BN03945",
+      "scientificName": "Fregetta maoriana"
+    },
+    {
+      "id": "birdnet-v3:BN04698",
+      "scientificName": "Hydrobates furcatus"
+    },
+    {
+      "id": "birdnet-v3:BN04701",
+      "scientificName": "Hydrobates jabejabe"
+    },
+    {
+      "id": "birdnet-v3:BN04696",
+      "scientificName": "Hydrobates castro"
+    },
+    {
+      "id": "birdnet-v3:BN04704",
+      "scientificName": "Hydrobates markhami"
+    },
+    {
+      "id": "birdnet-v3:BN04707",
+      "scientificName": "Hydrobates microsoma"
+    },
+    {
+      "id": "birdnet-v3:BN04712",
+      "scientificName": "Hydrobates tethys"
+    },
+    {
+      "id": "birdnet-v3:BN04700",
+      "scientificName": "Hydrobates hornbyi"
+    },
+    {
+      "id": "birdnet-v3:BN04713",
+      "scientificName": "Hydrobates tristrami"
+    },
+    {
+      "id": "birdnet-v3:BN04708",
+      "scientificName": "Hydrobates monorhis"
+    },
+    {
+      "id": "birdnet-v3:BN04705",
+      "scientificName": "Hydrobates matsudairae"
+    },
+    {
+      "id": "birdnet-v3:BN04703",
+      "scientificName": "Hydrobates macrodactylus"
+    },
+    {
+      "id": "birdnet-v3:BN04711",
+      "scientificName": "Hydrobates socorroensis"
+    },
+    {
+      "id": "birdnet-v3:BN04697",
+      "scientificName": "Hydrobates cheimomnestes"
+    },
+    {
+      "id": "avilist:ed16ea1f",
+      "scientificName": "Bulweria bifax"
+    },
+    {
+      "id": "birdnet-v3:BN08263",
+      "scientificName": "Pseudobulweria becki"
+    },
+    {
+      "id": "birdnet-v3:BN01450",
+      "scientificName": "Calonectris borealis"
+    },
+    {
+      "id": "birdnet-v3:BN00831",
+      "scientificName": "Ardenna pacifica"
+    },
+    {
+      "id": "birdnet-v3:BN00826",
+      "scientificName": "Ardenna bulleri"
+    },
+    {
+      "id": "birdnet-v3:BN00832",
+      "scientificName": "Ardenna tenuirostris"
+    },
+    {
+      "id": "birdnet-v3:BN00830",
+      "scientificName": "Ardenna grisea"
+    },
+    {
+      "id": "birdnet-v3:BN00829",
+      "scientificName": "Ardenna gravis"
+    },
+    {
+      "id": "birdnet-v3:BN00827",
+      "scientificName": "Ardenna carneipes"
+    },
+    {
+      "id": "birdnet-v3:BN08591",
+      "scientificName": "Puffinus heinrothi"
+    },
+    {
+      "id": "birdnet-v3:BN08589",
+      "scientificName": "Puffinus elegans"
+    },
+    {
+      "id": "birdnet-v3:BN08588",
+      "scientificName": "Puffinus bryani"
+    },
+    {
+      "id": "birdnet-v3:BN08594",
+      "scientificName": "Puffinus myrtae"
+    },
+    {
+      "id": "birdnet-v3:BN07041",
+      "scientificName": "Pachyptila macgillivrayi"
+    },
+    {
+      "id": "birdnet-v3:BN08428",
+      "scientificName": "Pterodroma gouldi"
+    },
+    {
+      "id": "avilist:dc04fcd9",
+      "scientificName": "Pterodroma rupinarum"
+    },
+    {
+      "id": "birdnet-v3:BN09682",
+      "scientificName": "Sula brewsteri"
+    },
+    {
+      "id": "birdnet-v3:BN08028",
+      "scientificName": "Poikilocarbo gaimardi"
+    },
+    {
+      "id": "birdnet-v3:BN04359",
+      "scientificName": "Gulosus aristotelis"
+    },
+    {
+      "id": "birdnet-v3:BN06449",
+      "scientificName": "Nannopterum harrisi"
+    },
+    {
+      "id": "birdnet-v3:BN05288",
+      "scientificName": "Leucocarbo magellanicus"
+    },
+    {
+      "id": "avilist:f7cfaa5d",
+      "scientificName": "Urile perspicillatus"
+    },
+    {
+      "id": "birdnet-v3:BN10614",
+      "scientificName": "Urile urile"
+    },
+    {
+      "id": "birdnet-v3:BN10612",
+      "scientificName": "Urile pelagicus"
+    },
+    {
+      "id": "birdnet-v3:BN10085",
+      "scientificName": "Theristicus branickii"
+    },
+    {
+      "id": "avilist:14762870",
+      "scientificName": "Threskiornis solitarius"
+    },
+    {
+      "id": "birdnet-v3:BN01192",
+      "scientificName": "Botaurus flavicollis"
+    },
+    {
+      "id": "avilist:051759b5",
+      "scientificName": "Botaurus novaezelandiae"
+    },
+    {
+      "id": "avilist:cefc0bd6",
+      "scientificName": "Nyctanassa carcinocatactes"
+    },
+    {
+      "id": "avilist:015572be",
+      "scientificName": "Nycticorax olsoni"
+    },
+    {
+      "id": "avilist:22de8cd0",
+      "scientificName": "Nycticorax duboisi"
+    },
+    {
+      "id": "avilist:9bf54783",
+      "scientificName": "Nycticorax megacephalus"
+    },
+    {
+      "id": "avilist:36f142bd",
+      "scientificName": "Nycticorax mauritianus"
+    },
+    {
+      "id": "birdnet-v3:BN01331",
+      "scientificName": "Butorides atricapilla"
+    },
+    {
+      "id": "birdnet-v3:BN00811",
+      "scientificName": "Ardea brachyrhyncha"
+    },
+    {
+      "id": "birdnet-v3:BN00823",
+      "scientificName": "Ardea plumifera"
+    },
+    {
+      "id": "birdnet-v3:BN03779",
+      "scientificName": "Eurostopodus exul"
+    },
+    {
+      "id": "birdnet-v3:BN09981",
+      "scientificName": "Tepuiornis whitelyi"
+    },
+    {
+      "id": "birdnet-v3:BN09247",
+      "scientificName": "Setopagis maculosa"
+    },
+    {
+      "id": "birdnet-v3:BN01605",
+      "scientificName": "Caprimulgus ritae"
+    },
+    {
+      "id": "birdnet-v3:BN01588",
+      "scientificName": "Caprimulgus griseatus"
+    },
+    {
+      "id": "birdnet-v3:BN00127",
+      "scientificName": "Aegotheles affinis"
+    },
+    {
+      "id": "birdnet-v3:BN00135",
+      "scientificName": "Aegotheles terborghi"
+    },
+    {
+      "id": "birdnet-v3:BN01855",
+      "scientificName": "Chaetura andrei"
+    },
+    {
+      "id": "birdnet-v3:BN09818",
+      "scientificName": "Tachornis furcata"
+    },
+    {
+      "id": "birdnet-v3:BN04714",
+      "scientificName": "Hydrochous gigas"
+    },
+    {
+      "id": "birdnet-v3:BN00163",
+      "scientificName": "Aerodramus vulcanorum"
+    },
+    {
+      "id": "birdnet-v3:BN00153",
+      "scientificName": "Aerodramus nuditarsus"
+    },
+    {
+      "id": "birdnet-v3:BN00155",
+      "scientificName": "Aerodramus papuensis"
+    },
+    {
+      "id": "birdnet-v3:BN00558",
+      "scientificName": "Anthracothorax aurulentus"
+    },
+    {
+      "id": "birdnet-v3:BN03596",
+      "scientificName": "Eriocnemis isabellae"
+    },
+    {
+      "id": "birdnet-v3:BN02395",
+      "scientificName": "Coeligena inca"
+    },
+    {
+      "id": "birdnet-v3:BN02391",
+      "scientificName": "Coeligena conradii"
+    },
+    {
+      "id": "birdnet-v3:BN02393",
+      "scientificName": "Coeligena eos"
+    },
+    {
+      "id": "birdnet-v3:BN07206",
+      "scientificName": "Patagona peruviana"
+    },
+    {
+      "id": "birdnet-v3:BN07479",
+      "scientificName": "Philodice bryantae"
+    },
+    {
+      "id": "avilist:10787a38",
+      "scientificName": "Riccordia bracei"
+    },
+    {
+      "id": "birdnet-v3:BN02993",
+      "scientificName": "Cynanthus lawrencei"
+    },
+    {
+      "id": "birdnet-v3:BN08752",
+      "scientificName": "Ramosomyia viridifrons"
+    },
+    {
+      "id": "birdnet-v3:BN06579",
+      "scientificName": "Ninox fusca"
+    },
+    {
+      "id": "birdnet-v3:BN06584",
+      "scientificName": "Ninox leucopsis"
+    },
+    {
+      "id": "avilist:1f14f0a8",
+      "scientificName": "Ninox albifacies"
+    },
+    {
+      "id": "birdnet-v3:BN06580",
+      "scientificName": "Ninox hantu"
+    },
+    {
+      "id": "birdnet-v3:BN09879",
+      "scientificName": "Taenioptynx brodiei"
+    },
+    {
+      "id": "birdnet-v3:BN09880",
+      "scientificName": "Taenioptynx sylvaticus"
+    },
+    {
+      "id": "avilist:e553a88e",
+      "scientificName": "Aegolius gradyi"
+    },
+    {
+      "id": "birdnet-v3:BN00983",
+      "scientificName": "Athene blewitti"
+    },
+    {
+      "id": "birdnet-v3:BN00991",
+      "scientificName": "Athene superciliaris"
+    },
+    {
+      "id": "birdnet-v3:BN00987",
+      "scientificName": "Athene jacquinoti"
+    },
+    {
+      "id": "birdnet-v3:BN00990",
+      "scientificName": "Athene roseoaxillaris"
+    },
+    {
+      "id": "birdnet-v3:BN04233",
+      "scientificName": "Glaucidium mooreorum"
+    },
+    {
+      "id": "birdnet-v3:BN06961",
+      "scientificName": "Otus tempestatis"
+    },
+    {
+      "id": "birdnet-v3:BN06955",
+      "scientificName": "Otus siaoensis"
+    },
+    {
+      "id": "birdnet-v3:BN06915",
+      "scientificName": "Otus bikegila"
+    },
+    {
+      "id": "avilist:42f88785",
+      "scientificName": "Otus grucheti"
+    },
+    {
+      "id": "avilist:180ed7cc",
+      "scientificName": "Otus murivorus"
+    },
+    {
+      "id": "avilist:653134cc",
+      "scientificName": "Otus sauzieri"
+    },
+    {
+      "id": "birdnet-v3:BN00929",
+      "scientificName": "Asio clamator"
+    },
+    {
+      "id": "birdnet-v3:BN01261",
+      "scientificName": "Bubo nigrescens"
+    },
+    {
+      "id": "birdnet-v3:BN01260",
+      "scientificName": "Bubo nacurutu"
+    },
+    {
+      "id": "birdnet-v3:BN01259",
+      "scientificName": "Bubo milesi"
+    },
+    {
+      "id": "birdnet-v3:BN04992",
+      "scientificName": "Ketupa poensis"
+    },
+    {
+      "id": "birdnet-v3:BN04985",
+      "scientificName": "Ketupa doerriesi"
+    },
+    {
+      "id": "birdnet-v3:BN04368",
+      "scientificName": "Gymnasio nudipes"
+    },
+    {
+      "id": "birdnet-v3:BN02051",
+      "scientificName": "Chondrohierax wilsonii"
+    },
+    {
+      "id": "birdnet-v3:BN04405",
+      "scientificName": "Gyps rueppelli"
+    },
+    {
+      "id": "birdnet-v3:BN04883",
+      "scientificName": "Ictinaetus malaiensis"
+    },
+    {
+      "id": "birdnet-v3:BN02329",
+      "scientificName": "Clanga hastata"
+    },
+    {
+      "id": "birdnet-v3:BN02328",
+      "scientificName": "Clanga clanga"
+    },
+    {
+      "id": "birdnet-v3:BN02330",
+      "scientificName": "Clanga pomarina"
+    },
+    {
+      "id": "birdnet-v3:BN00168",
+      "scientificName": "Aerospiza castanilius"
+    },
+    {
+      "id": "birdnet-v3:BN00169",
+      "scientificName": "Aerospiza tachiro"
+    },
+    {
+      "id": "birdnet-v3:BN09848",
+      "scientificName": "Tachyspiza brachyura"
+    },
+    {
+      "id": "birdnet-v3:BN09850",
+      "scientificName": "Tachyspiza butleri"
+    },
+    {
+      "id": "birdnet-v3:BN09860",
+      "scientificName": "Tachyspiza imitator"
+    },
+    {
+      "id": "birdnet-v3:BN09867",
+      "scientificName": "Tachyspiza princeps"
+    },
+    {
+      "id": "birdnet-v3:BN09861",
+      "scientificName": "Tachyspiza luteoschistacea"
+    },
+    {
+      "id": "birdnet-v3:BN09857",
+      "scientificName": "Tachyspiza haplochroa"
+    },
+    {
+      "id": "birdnet-v3:BN00971",
+      "scientificName": "Astur atricapillus"
+    },
+    {
+      "id": "birdnet-v3:BN02246",
+      "scientificName": "Circus hudsonius"
+    },
+    {
+      "id": "birdnet-v3:BN06014",
+      "scientificName": "Microspizias superciliosus"
+    },
+    {
+      "id": "birdnet-v3:BN06126",
+      "scientificName": "Morphnarchus princeps"
+    },
+    {
+      "id": "birdnet-v3:BN02816",
+      "scientificName": "Cryptoleucopteryx plumbea"
+    },
+    {
+      "id": "birdnet-v3:BN01327",
+      "scientificName": "Buteogallus schistaceus"
+    },
+    {
+      "id": "birdnet-v3:BN01325",
+      "scientificName": "Buteogallus lacernulatus"
+    },
+    {
+      "id": "birdnet-v3:BN01323",
+      "scientificName": "Buteogallus coronatus"
+    },
+    {
+      "id": "birdnet-v3:BN01328",
+      "scientificName": "Buteogallus solitarius"
+    },
+    {
+      "id": "birdnet-v3:BN07091",
+      "scientificName": "Parabuteo leucorrhous"
+    },
+    {
+      "id": "birdnet-v3:BN08254",
+      "scientificName": "Pseudastur occidentalis"
+    },
+    {
+      "id": "birdnet-v3:BN08255",
+      "scientificName": "Pseudastur polionotus"
+    },
+    {
+      "id": "birdnet-v3:BN08253",
+      "scientificName": "Pseudastur albicollis"
+    },
+    {
+      "id": "birdnet-v3:BN04184",
+      "scientificName": "Geranoaetus albicaudatus"
+    },
+    {
+      "id": "birdnet-v3:BN04186",
+      "scientificName": "Geranoaetus polyosoma"
+    },
+    {
+      "id": "avilist:99aeace1",
+      "scientificName": "Bermuteo avivorus"
+    },
+    {
+      "id": "birdnet-v3:BN01309",
+      "scientificName": "Buteo plagiatus"
+    },
+    {
+      "id": "birdnet-v3:BN10395",
+      "scientificName": "Trogon tenellus"
+    },
+    {
+      "id": "birdnet-v3:BN10383",
+      "scientificName": "Trogon cupreicauda"
+    },
+    {
+      "id": "birdnet-v3:BN10378",
+      "scientificName": "Trogon chrysochloros"
+    },
+    {
+      "id": "birdnet-v3:BN10374",
+      "scientificName": "Trogon ambiguus"
+    },
+    {
+      "id": "avilist:3ec85674",
+      "scientificName": "Upupa antaios"
+    },
+    {
+      "id": "birdnet-v3:BN05432",
+      "scientificName": "Lophoceros semifasciatus"
+    },
+    {
+      "id": "birdnet-v3:BN04681",
+      "scientificName": "Horizocerus granti"
+    },
+    {
+      "id": "birdnet-v3:BN04680",
+      "scientificName": "Horizocerus cassini"
+    },
+    {
+      "id": "birdnet-v3:BN06085",
+      "scientificName": "Momotus castaneiceps"
+    },
+    {
+      "id": "birdnet-v3:BN00273",
+      "scientificName": "Alcedo peninsulae"
+    },
+    {
+      "id": "birdnet-v3:BN01842",
+      "scientificName": "Ceyx sangirensis"
+    },
+    {
+      "id": "birdnet-v3:BN01840",
+      "scientificName": "Ceyx rufidorsa"
+    },
+    {
+      "id": "birdnet-v3:BN01837",
+      "scientificName": "Ceyx mulcatus"
+    },
+    {
+      "id": "birdnet-v3:BN01828",
+      "scientificName": "Ceyx dispar"
+    },
+    {
+      "id": "birdnet-v3:BN02322",
+      "scientificName": "Cittura sanghirensis"
+    },
+    {
+      "id": "birdnet-v3:BN09930",
+      "scientificName": "Tanysiptera obiensis"
+    },
+    {
+      "id": "birdnet-v3:BN09932",
+      "scientificName": "Tanysiptera rosseliana"
+    },
+    {
+      "id": "birdnet-v3:BN09922",
+      "scientificName": "Tanysiptera doris"
+    },
+    {
+      "id": "birdnet-v3:BN09927",
+      "scientificName": "Tanysiptera nais"
+    },
+    {
+      "id": "birdnet-v3:BN09926",
+      "scientificName": "Tanysiptera margarethae"
+    },
+    {
+      "id": "birdnet-v3:BN09727",
+      "scientificName": "Syma ochracea"
+    },
+    {
+      "id": "birdnet-v3:BN08304",
+      "scientificName": "Psilopogon cyanotis"
+    },
+    {
+      "id": "birdnet-v3:BN10247",
+      "scientificName": "Trachylaemus purpuratus"
+    },
+    {
+      "id": "birdnet-v3:BN10246",
+      "scientificName": "Trachylaemus goffinii"
+    },
+    {
+      "id": "birdnet-v3:BN08002",
+      "scientificName": "Pogoniulus uropygialis"
+    },
+    {
+      "id": "birdnet-v3:BN05732",
+      "scientificName": "Meiglyptes grammithorax"
+    },
+    {
+      "id": "birdnet-v3:BN02415",
+      "scientificName": "Colaptes mexicanoides"
+    },
+    {
+      "id": "avilist:d0951d61",
+      "scientificName": "Colaptes oceanicus"
+    },
+    {
+      "id": "birdnet-v3:BN01494",
+      "scientificName": "Campephilus splendens"
+    },
+    {
+      "id": "birdnet-v3:BN03317",
+      "scientificName": "Dryobates pernyii"
+    },
+    {
+      "id": "avilist:38df393d",
+      "scientificName": "Caracara lutosa"
+    },
+    {
+      "id": "avilist:f9a74dd9",
+      "scientificName": "Falco duboisi"
+    },
+    {
+      "id": "birdnet-v3:BN09642",
+      "scientificName": "Strigops habroptilus"
+    },
+    {
+      "id": "avilist:7328a120",
+      "scientificName": "Nestor productus"
+    },
+    {
+      "id": "birdnet-v3:BN01342",
+      "scientificName": "Cacatua citrinocristata"
+    },
+    {
+      "id": "birdnet-v3:BN08021",
+      "scientificName": "Poicephalus fuscicollis"
+    },
+    {
+      "id": "birdnet-v3:BN03904",
+      "scientificName": "Forpus crassirostris"
+    },
+    {
+      "id": "birdnet-v3:BN03908",
+      "scientificName": "Forpus spengeli"
+    },
+    {
+      "id": "birdnet-v3:BN06288",
+      "scientificName": "Myiopsitta luchsi"
+    },
+    {
+      "id": "birdnet-v3:BN08664",
+      "scientificName": "Pyrilia pulchra"
+    },
+    {
+      "id": "birdnet-v3:BN08663",
+      "scientificName": "Pyrilia haematotis"
+    },
+    {
+      "id": "birdnet-v3:BN08665",
+      "scientificName": "Pyrilia pyrilia"
+    },
+    {
+      "id": "birdnet-v3:BN08662",
+      "scientificName": "Pyrilia caica"
+    },
+    {
+      "id": "birdnet-v3:BN08661",
+      "scientificName": "Pyrilia barrabandi"
+    },
+    {
+      "id": "birdnet-v3:BN08666",
+      "scientificName": "Pyrilia vulturina"
+    },
+    {
+      "id": "birdnet-v3:BN08660",
+      "scientificName": "Pyrilia aurantiocephala"
+    },
+    {
+      "id": "birdnet-v3:BN00303",
+      "scientificName": "Alipiopsitta xanthops"
+    },
+    {
+      "id": "birdnet-v3:BN00351",
+      "scientificName": "Amazona diadema"
+    },
+    {
+      "id": "birdnet-v3:BN00360",
+      "scientificName": "Amazona lilacina"
+    },
+    {
+      "id": "birdnet-v3:BN00361",
+      "scientificName": "Amazona mercenarius"
+    },
+    {
+      "id": "birdnet-v3:BN08699",
+      "scientificName": "Pyrrhura lucianii"
+    },
+    {
+      "id": "birdnet-v3:BN08707",
+      "scientificName": "Pyrrhura roseifrons"
+    },
+    {
+      "id": "birdnet-v3:BN08692",
+      "scientificName": "Pyrrhura emma"
+    },
+    {
+      "id": "birdnet-v3:BN08687",
+      "scientificName": "Pyrrhura caeruleiceps"
+    },
+    {
+      "id": "birdnet-v3:BN08709",
+      "scientificName": "Pyrrhura subandina"
+    },
+    {
+      "id": "avilist:90002523",
+      "scientificName": "Conuropsis carolinensis"
+    },
+    {
+      "id": "birdnet-v3:BN00785",
+      "scientificName": "Aratinga nenday"
+    },
+    {
+      "id": "birdnet-v3:BN06887",
+      "scientificName": "Orthopsittaca manilatus"
+    },
+    {
+      "id": "avilist:a5504b38",
+      "scientificName": "Ara tricolor"
+    },
+    {
+      "id": "birdnet-v3:BN03764",
+      "scientificName": "Eupsittula cactorum"
+    },
+    {
+      "id": "birdnet-v3:BN03767",
+      "scientificName": "Eupsittula pertinax"
+    },
+    {
+      "id": "birdnet-v3:BN03763",
+      "scientificName": "Eupsittula aurea"
+    },
+    {
+      "id": "birdnet-v3:BN03765",
+      "scientificName": "Eupsittula canicularis"
+    },
+    {
+      "id": "birdnet-v3:BN03766",
+      "scientificName": "Eupsittula nana"
+    },
+    {
+      "id": "birdnet-v3:BN10084",
+      "scientificName": "Thectocercus acuticaudatus"
+    },
+    {
+      "id": "birdnet-v3:BN08340",
+      "scientificName": "Psittacara leucophthalmus"
+    },
+    {
+      "id": "birdnet-v3:BN08343",
+      "scientificName": "Psittacara wagleri"
+    },
+    {
+      "id": "birdnet-v3:BN08338",
+      "scientificName": "Psittacara frontatus"
+    },
+    {
+      "id": "birdnet-v3:BN08341",
+      "scientificName": "Psittacara mitratus"
+    },
+    {
+      "id": "birdnet-v3:BN08336",
+      "scientificName": "Psittacara euops"
+    },
+    {
+      "id": "birdnet-v3:BN08334",
+      "scientificName": "Psittacara chloropterus"
+    },
+    {
+      "id": "avilist:759ed874",
+      "scientificName": "Psittacara maugei"
+    },
+    {
+      "id": "birdnet-v3:BN08335",
+      "scientificName": "Psittacara erythrogenys"
+    },
+    {
+      "id": "birdnet-v3:BN08339",
+      "scientificName": "Psittacara holochlorus"
+    },
+    {
+      "id": "birdnet-v3:BN08333",
+      "scientificName": "Psittacara brevipes"
+    },
+    {
+      "id": "birdnet-v3:BN08342",
+      "scientificName": "Psittacara strenuus"
+    },
+    {
+      "id": "birdnet-v3:BN08337",
+      "scientificName": "Psittacara finschi"
+    },
+    {
+      "id": "birdnet-v3:BN08167",
+      "scientificName": "Prioniturus waterstradti"
+    },
+    {
+      "id": "birdnet-v3:BN08166",
+      "scientificName": "Prioniturus verticalis"
+    },
+    {
+      "id": "avilist:915fd1e2",
+      "scientificName": "Eclectus infectus"
+    },
+    {
+      "id": "birdnet-v3:BN03395",
+      "scientificName": "Eclectus polychloros"
+    },
+    {
+      "id": "birdnet-v3:BN03396",
+      "scientificName": "Eclectus riedeli"
+    },
+    {
+      "id": "avilist:441f544d",
+      "scientificName": "Mascarinus mascarinus"
+    },
+    {
+      "id": "avilist:8c3cd124",
+      "scientificName": "Lophopsittacus mauritianus"
+    },
+    {
+      "id": "avilist:fe2288f2",
+      "scientificName": "Necropsittacus rodricanus"
+    },
+    {
+      "id": "birdnet-v3:BN09915",
+      "scientificName": "Tanygnathus everetti"
+    },
+    {
+      "id": "avilist:20f87a8d",
+      "scientificName": "Psittacula bensoni"
+    },
+    {
+      "id": "avilist:c7b5b804",
+      "scientificName": "Psittacula exsul"
+    },
+    {
+      "id": "avilist:2c828882",
+      "scientificName": "Psittacula wardi"
+    },
+    {
+      "id": "birdnet-v3:BN03704",
+      "scientificName": "Eunymphicus uvaeensis"
+    },
+    {
+      "id": "avilist:0c4e73c1",
+      "scientificName": "Cyanoramphus ulietanus"
+    },
+    {
+      "id": "avilist:4aa6f2a7",
+      "scientificName": "Cyanoramphus zealandicus"
+    },
+    {
+      "id": "birdnet-v3:BN02967",
+      "scientificName": "Cyanoramphus hochstetteri"
+    },
+    {
+      "id": "birdnet-v3:BN06630",
+      "scientificName": "Northiella narethae"
+    },
+    {
+      "id": "avilist:ecbbd3d5",
+      "scientificName": "Psephotellus pulcherrimus"
+    },
+    {
+      "id": "birdnet-v3:BN05494",
+      "scientificName": "Loriculus tener"
+    },
+    {
+      "id": "birdnet-v3:BN06446",
+      "scientificName": "Nannopsittacus nigrifrons"
+    },
+    {
+      "id": "birdnet-v3:BN01922",
+      "scientificName": "Charmosynopsis toxopei"
+    },
+    {
+      "id": "birdnet-v3:BN01918",
+      "scientificName": "Charmosyna multistriata"
+    },
+    {
+      "id": "birdnet-v3:BN01889",
+      "scientificName": "Chalcopsitta scintillata"
+    },
+    {
+      "id": "birdnet-v3:BN10305",
+      "scientificName": "Trichoglossus rosenbergii"
+    },
+    {
+      "id": "birdnet-v3:BN10302",
+      "scientificName": "Trichoglossus moluccanus"
+    },
+    {
+      "id": "avilist:174e5bdb",
+      "scientificName": "Traversia lyalli"
+    },
+    {
+      "id": "avilist:9232f027",
+      "scientificName": "Xenicus longipes"
+    },
+    {
+      "id": "birdnet-v3:BN02986",
+      "scientificName": "Cymbirhynchus affinis"
+    },
+    {
+      "id": "birdnet-v3:BN09232",
+      "scientificName": "Serilophus rubropygius"
+    },
+    {
+      "id": "birdnet-v3:BN03616",
+      "scientificName": "Erythropitta arquata"
+    },
+    {
+      "id": "birdnet-v3:BN03628",
+      "scientificName": "Erythropitta venusta"
+    },
+    {
+      "id": "birdnet-v3:BN03620",
+      "scientificName": "Erythropitta granatina"
+    },
+    {
+      "id": "birdnet-v3:BN03621",
+      "scientificName": "Erythropitta kochi"
+    },
+    {
+      "id": "birdnet-v3:BN03619",
+      "scientificName": "Erythropitta erythrogaster"
+    },
+    {
+      "id": "birdnet-v3:BN03617",
+      "scientificName": "Erythropitta celebensis"
+    },
+    {
+      "id": "birdnet-v3:BN03626",
+      "scientificName": "Erythropitta rufiventris"
+    },
+    {
+      "id": "birdnet-v3:BN03625",
+      "scientificName": "Erythropitta rubrinucha"
+    },
+    {
+      "id": "birdnet-v3:BN03622",
+      "scientificName": "Erythropitta macklotii"
+    },
+    {
+      "id": "birdnet-v3:BN03624",
+      "scientificName": "Erythropitta novaehibernicae"
+    },
+    {
+      "id": "birdnet-v3:BN03623",
+      "scientificName": "Erythropitta meeki"
+    },
+    {
+      "id": "birdnet-v3:BN04731",
+      "scientificName": "Hydrornis phayrei"
+    },
+    {
+      "id": "birdnet-v3:BN04723",
+      "scientificName": "Hydrornis caeruleus"
+    },
+    {
+      "id": "birdnet-v3:BN04732",
+      "scientificName": "Hydrornis schneideri"
+    },
+    {
+      "id": "birdnet-v3:BN04734",
+      "scientificName": "Hydrornis soror"
+    },
+    {
+      "id": "birdnet-v3:BN04729",
+      "scientificName": "Hydrornis nipalensis"
+    },
+    {
+      "id": "birdnet-v3:BN04730",
+      "scientificName": "Hydrornis oatesi"
+    },
+    {
+      "id": "birdnet-v3:BN04724",
+      "scientificName": "Hydrornis cyaneus"
+    },
+    {
+      "id": "birdnet-v3:BN04725",
+      "scientificName": "Hydrornis elliotii"
+    },
+    {
+      "id": "birdnet-v3:BN04727",
+      "scientificName": "Hydrornis gurneyi"
+    },
+    {
+      "id": "birdnet-v3:BN04722",
+      "scientificName": "Hydrornis baudii"
+    },
+    {
+      "id": "birdnet-v3:BN04726",
+      "scientificName": "Hydrornis guajanus"
+    },
+    {
+      "id": "birdnet-v3:BN07791",
+      "scientificName": "Pitta abbotti"
+    },
+    {
+      "id": "birdnet-v3:BN07797",
+      "scientificName": "Pitta forsteni"
+    },
+    {
+      "id": "birdnet-v3:BN02012",
+      "scientificName": "Chloropipo flavicapilla"
+    },
+    {
+      "id": "birdnet-v3:BN02013",
+      "scientificName": "Chloropipo unicolor"
+    },
+    {
+      "id": "birdnet-v3:BN02821",
+      "scientificName": "Cryptopipo holochlora"
+    },
+    {
+      "id": "birdnet-v3:BN02822",
+      "scientificName": "Cryptopipo litae"
+    },
+    {
+      "id": "birdnet-v3:BN05234",
+      "scientificName": "Lepidothrix velutina"
+    },
+    {
+      "id": "birdnet-v3:BN08282",
+      "scientificName": "Pseudopipra pipra"
+    },
+    {
+      "id": "birdnet-v3:BN01769",
+      "scientificName": "Ceratopipra cornuta"
+    },
+    {
+      "id": "birdnet-v3:BN01771",
+      "scientificName": "Ceratopipra mentalis"
+    },
+    {
+      "id": "birdnet-v3:BN01772",
+      "scientificName": "Ceratopipra rubrocapilla"
+    },
+    {
+      "id": "birdnet-v3:BN01768",
+      "scientificName": "Ceratopipra chloromeros"
+    },
+    {
+      "id": "birdnet-v3:BN01770",
+      "scientificName": "Ceratopipra erythrocephala"
+    },
+    {
+      "id": "birdnet-v3:BN05358",
+      "scientificName": "Lipaugus conditus"
+    },
+    {
+      "id": "birdnet-v3:BN09077",
+      "scientificName": "Schiffornis olivacea"
+    },
+    {
+      "id": "birdnet-v3:BN09078",
+      "scientificName": "Schiffornis stenorhyncha"
+    },
+    {
+      "id": "birdnet-v3:BN09080",
+      "scientificName": "Schiffornis veraepacis"
+    },
+    {
+      "id": "birdnet-v3:BN10161",
+      "scientificName": "Tityra leucura"
+    },
+    {
+      "id": "birdnet-v3:BN06790",
+      "scientificName": "Onychorhynchus swainsoni"
+    },
+    {
+      "id": "birdnet-v3:BN06249",
+      "scientificName": "Myiobius sulphureipygius"
+    },
+    {
+      "id": "birdnet-v3:BN06047",
+      "scientificName": "Mionectes roraimae"
+    },
+    {
+      "id": "birdnet-v3:BN08011",
+      "scientificName": "Pogonotriccus eximius"
+    },
+    {
+      "id": "birdnet-v3:BN08012",
+      "scientificName": "Pogonotriccus lanyoni"
+    },
+    {
+      "id": "birdnet-v3:BN08013",
+      "scientificName": "Pogonotriccus ophthalmicus"
+    },
+    {
+      "id": "birdnet-v3:BN08016",
+      "scientificName": "Pogonotriccus poecilotis"
+    },
+    {
+      "id": "birdnet-v3:BN08017",
+      "scientificName": "Pogonotriccus venezuelanus"
+    },
+    {
+      "id": "birdnet-v3:BN08014",
+      "scientificName": "Pogonotriccus orbitalis"
+    },
+    {
+      "id": "birdnet-v3:BN08009",
+      "scientificName": "Pogonotriccus chapmani"
+    },
+    {
+      "id": "birdnet-v3:BN08919",
+      "scientificName": "Rhynchocyclus aequinoctialis"
+    },
+    {
+      "id": "birdnet-v3:BN10217",
+      "scientificName": "Tolmomyias flavotectus"
+    },
+    {
+      "id": "birdnet-v3:BN10221",
+      "scientificName": "Tolmomyias viridiceps"
+    },
+    {
+      "id": "birdnet-v3:BN07982",
+      "scientificName": "Poecilotriccus pulchellus"
+    },
+    {
+      "id": "birdnet-v3:BN06522",
+      "scientificName": "Nephelomyias pulcher"
+    },
+    {
+      "id": "birdnet-v3:BN06521",
+      "scientificName": "Nephelomyias ochraceiventris"
+    },
+    {
+      "id": "birdnet-v3:BN06520",
+      "scientificName": "Nephelomyias lintoni"
+    },
+    {
+      "id": "birdnet-v3:BN10878",
+      "scientificName": "Zimmerius petersi"
+    },
+    {
+      "id": "birdnet-v3:BN10876",
+      "scientificName": "Zimmerius improbus"
+    },
+    {
+      "id": "birdnet-v3:BN10869",
+      "scientificName": "Zimmerius acer"
+    },
+    {
+      "id": "birdnet-v3:BN10877",
+      "scientificName": "Zimmerius parvus"
+    },
+    {
+      "id": "birdnet-v3:BN10870",
+      "scientificName": "Zimmerius albigularis"
+    },
+    {
+      "id": "birdnet-v3:BN00085",
+      "scientificName": "Acrochordopus burmeisteri"
+    },
+    {
+      "id": "birdnet-v3:BN00086",
+      "scientificName": "Acrochordopus zeledoni"
+    },
+    {
+      "id": "birdnet-v3:BN01510",
+      "scientificName": "Camptostoma caucae"
+    },
+    {
+      "id": "birdnet-v3:BN01516",
+      "scientificName": "Camptostoma sclateri"
+    },
+    {
+      "id": "birdnet-v3:BN01515",
+      "scientificName": "Camptostoma pusillum"
+    },
+    {
+      "id": "birdnet-v3:BN01511",
+      "scientificName": "Camptostoma flaviventre"
+    },
+    {
+      "id": "birdnet-v3:BN01513",
+      "scientificName": "Camptostoma napaeum"
+    },
+    {
+      "id": "birdnet-v3:BN06277",
+      "scientificName": "Myiopagis parambae"
+    },
+    {
+      "id": "birdnet-v3:BN06272",
+      "scientificName": "Myiopagis cinerea"
+    },
+    {
+      "id": "birdnet-v3:BN03444",
+      "scientificName": "Elaenia cherriei"
+    },
+    {
+      "id": "birdnet-v3:BN06543",
+      "scientificName": "Nesotriccus maranonicus"
+    },
+    {
+      "id": "birdnet-v3:BN06546",
+      "scientificName": "Nesotriccus tumbezanus"
+    },
+    {
+      "id": "birdnet-v3:BN06544",
+      "scientificName": "Nesotriccus murinus"
+    },
+    {
+      "id": "birdnet-v3:BN10629",
+      "scientificName": "Uromyias agilis"
+    },
+    {
+      "id": "birdnet-v3:BN10630",
+      "scientificName": "Uromyias agraphia"
+    },
+    {
+      "id": "birdnet-v3:BN08785",
+      "scientificName": "Ramphotrigon flammulatum"
+    },
+    {
+      "id": "birdnet-v3:BN09329",
+      "scientificName": "Sirystes albogriseus"
+    },
+    {
+      "id": "birdnet-v3:BN06231",
+      "scientificName": "Myiarchus flavidior"
+    },
+    {
+      "id": "birdnet-v3:BN07481",
+      "scientificName": "Philohydor lictor"
+    },
+    {
+      "id": "birdnet-v3:BN02510",
+      "scientificName": "Conopias parvus"
+    },
+    {
+      "id": "birdnet-v3:BN06280",
+      "scientificName": "Myiophobus crypterythrus"
+    },
+    {
+      "id": "birdnet-v3:BN06287",
+      "scientificName": "Myiophobus rufescens"
+    },
+    {
+      "id": "birdnet-v3:BN09317",
+      "scientificName": "Silvicultrix frontalis"
+    },
+    {
+      "id": "birdnet-v3:BN09316",
+      "scientificName": "Silvicultrix diadema"
+    },
+    {
+      "id": "birdnet-v3:BN09318",
+      "scientificName": "Silvicultrix jelskii"
+    },
+    {
+      "id": "birdnet-v3:BN09319",
+      "scientificName": "Silvicultrix pulchella"
+    },
+    {
+      "id": "birdnet-v3:BN03883",
+      "scientificName": "Fluvicola albiventer"
+    },
+    {
+      "id": "birdnet-v3:BN08667",
+      "scientificName": "Pyrocephalus nanus"
+    },
+    {
+      "id": "birdnet-v3:BN06057",
+      "scientificName": "Mitrephanes aurantiiventris"
+    },
+    {
+      "id": "birdnet-v3:BN02528",
+      "scientificName": "Contopus bogotensis"
+    },
+    {
+      "id": "birdnet-v3:BN09815",
+      "scientificName": "Syrtidicola fluviatilis"
+    },
+    {
+      "id": "birdnet-v3:BN08670",
+      "scientificName": "Pyrope pyrope"
+    },
+    {
+      "id": "birdnet-v3:BN06516",
+      "scientificName": "Neoxolmis coronatus"
+    },
+    {
+      "id": "birdnet-v3:BN00236",
+      "scientificName": "Agriornis albicauda"
+    },
+    {
+      "id": "birdnet-v3:BN03661",
+      "scientificName": "Euchrepomis sharpei"
+    },
+    {
+      "id": "birdnet-v3:BN03659",
+      "scientificName": "Euchrepomis callinota"
+    },
+    {
+      "id": "birdnet-v3:BN03660",
+      "scientificName": "Euchrepomis humeralis"
+    },
+    {
+      "id": "birdnet-v3:BN03662",
+      "scientificName": "Euchrepomis spodioptila"
+    },
+    {
+      "id": "birdnet-v3:BN00715",
+      "scientificName": "Aprositornis disjuncta"
+    },
+    {
+      "id": "birdnet-v3:BN00391",
+      "scientificName": "Ammonastes pelzelni"
+    },
+    {
+      "id": "birdnet-v3:BN06360",
+      "scientificName": "Myrmophylax atrothorax"
+    },
+    {
+      "id": "birdnet-v3:BN03557",
+      "scientificName": "Epinecrophylla amazonica"
+    },
+    {
+      "id": "birdnet-v3:BN06375",
+      "scientificName": "Myrmotherula fluminensis"
+    },
+    {
+      "id": "birdnet-v3:BN03893",
+      "scientificName": "Formicivora acutirostris"
+    },
+    {
+      "id": "birdnet-v3:BN08997",
+      "scientificName": "Sakesphorus pulchellus"
+    },
+    {
+      "id": "birdnet-v3:BN10073",
+      "scientificName": "Thamnophilus shumbae"
+    },
+    {
+      "id": "birdnet-v3:BN06772",
+      "scientificName": "Oneillornis lunulatus"
+    },
+    {
+      "id": "birdnet-v3:BN06773",
+      "scientificName": "Oneillornis salvini"
+    },
+    {
+      "id": "birdnet-v3:BN04388",
+      "scientificName": "Gymnopithys bicolor"
+    },
+    {
+      "id": "birdnet-v3:BN01784",
+      "scientificName": "Cercomacroides fuscicauda"
+    },
+    {
+      "id": "birdnet-v3:BN01786",
+      "scientificName": "Cercomacroides nigrescens"
+    },
+    {
+      "id": "birdnet-v3:BN01785",
+      "scientificName": "Cercomacroides laeta"
+    },
+    {
+      "id": "birdnet-v3:BN01788",
+      "scientificName": "Cercomacroides serva"
+    },
+    {
+      "id": "birdnet-v3:BN01787",
+      "scientificName": "Cercomacroides parkeri"
+    },
+    {
+      "id": "birdnet-v3:BN01789",
+      "scientificName": "Cercomacroides tyrannina"
+    },
+    {
+      "id": "birdnet-v3:BN09115",
+      "scientificName": "Sciaphylax hemimelaena"
+    },
+    {
+      "id": "birdnet-v3:BN08033",
+      "scientificName": "Poliocrania exsul"
+    },
+    {
+      "id": "birdnet-v3:BN00402",
+      "scientificName": "Ampelornis griseiceps"
+    },
+    {
+      "id": "birdnet-v3:BN06356",
+      "scientificName": "Myrmoderus ferrugineus"
+    },
+    {
+      "id": "birdnet-v3:BN06358",
+      "scientificName": "Myrmoderus ruficauda"
+    },
+    {
+      "id": "birdnet-v3:BN06357",
+      "scientificName": "Myrmoderus loricatus"
+    },
+    {
+      "id": "birdnet-v3:BN06359",
+      "scientificName": "Myrmoderus squamosus"
+    },
+    {
+      "id": "birdnet-v3:BN06347",
+      "scientificName": "Myrmelastes schistaceus"
+    },
+    {
+      "id": "birdnet-v3:BN06346",
+      "scientificName": "Myrmelastes saturatus"
+    },
+    {
+      "id": "birdnet-v3:BN06341",
+      "scientificName": "Myrmelastes caurensis"
+    },
+    {
+      "id": "birdnet-v3:BN06343",
+      "scientificName": "Myrmelastes hyperythrus"
+    },
+    {
+      "id": "birdnet-v3:BN06345",
+      "scientificName": "Myrmelastes rufifacies"
+    },
+    {
+      "id": "birdnet-v3:BN06340",
+      "scientificName": "Myrmelastes brunneiceps"
+    },
+    {
+      "id": "birdnet-v3:BN06342",
+      "scientificName": "Myrmelastes humaythae"
+    },
+    {
+      "id": "birdnet-v3:BN06344",
+      "scientificName": "Myrmelastes leucostigma"
+    },
+    {
+      "id": "birdnet-v3:BN06350",
+      "scientificName": "Myrmoborus lophotes"
+    },
+    {
+      "id": "birdnet-v3:BN08658",
+      "scientificName": "Pyriglena maura"
+    },
+    {
+      "id": "birdnet-v3:BN00254",
+      "scientificName": "Akletos goeldii"
+    },
+    {
+      "id": "birdnet-v3:BN04430",
+      "scientificName": "Hafferia fortis"
+    },
+    {
+      "id": "birdnet-v3:BN04754",
+      "scientificName": "Hylopezus paraensis"
+    },
+    {
+      "id": "birdnet-v3:BN04287",
+      "scientificName": "Grallaria chthonia"
+    },
+    {
+      "id": "birdnet-v3:BN04283",
+      "scientificName": "Grallaria cajamarcae"
+    },
+    {
+      "id": "birdnet-v3:BN04305",
+      "scientificName": "Grallaria occabambae"
+    },
+    {
+      "id": "birdnet-v3:BN04318",
+      "scientificName": "Grallaria urraoensis"
+    },
+    {
+      "id": "birdnet-v3:BN03888",
+      "scientificName": "Formicarius destructus"
+    },
+    {
+      "id": "birdnet-v3:BN01806",
+      "scientificName": "Certhiasomus stictolaemus"
+    },
+    {
+      "id": "birdnet-v3:BN03081",
+      "scientificName": "Deconychura typica"
+    },
+    {
+      "id": "birdnet-v3:BN03080",
+      "scientificName": "Deconychura pallida"
+    },
+    {
+      "id": "birdnet-v3:BN03096",
+      "scientificName": "Dendrocincla turdina"
+    },
+    {
+      "id": "birdnet-v3:BN04739",
+      "scientificName": "Hylexetastes uniformis"
+    },
+    {
+      "id": "birdnet-v3:BN10807",
+      "scientificName": "Xiphorhynchus atlanticus"
+    },
+    {
+      "id": "birdnet-v3:BN03149",
+      "scientificName": "Dendroplex picus"
+    },
+    {
+      "id": "birdnet-v3:BN01529",
+      "scientificName": "Campylorhamphus probatus"
+    },
+    {
+      "id": "birdnet-v3:BN01528",
+      "scientificName": "Campylorhamphus multostriatus"
+    },
+    {
+      "id": "birdnet-v3:BN10788",
+      "scientificName": "Xenops mexicanus"
+    },
+    {
+      "id": "birdnet-v3:BN06023",
+      "scientificName": "Microxenops milleri"
+    },
+    {
+      "id": "birdnet-v3:BN06698",
+      "scientificName": "Ochetorhynchus melanurus"
+    },
+    {
+      "id": "birdnet-v3:BN06697",
+      "scientificName": "Ochetorhynchus andaecola"
+    },
+    {
+      "id": "birdnet-v3:BN06699",
+      "scientificName": "Ochetorhynchus phoenicurus"
+    },
+    {
+      "id": "birdnet-v3:BN06700",
+      "scientificName": "Ochetorhynchus ruficaudus"
+    },
+    {
+      "id": "avilist:ee612071",
+      "scientificName": "Cichlocolaptes mazarbarnetti"
+    },
+    {
+      "id": "avilist:6cccb10a",
+      "scientificName": "Philydor novaesi"
+    },
+    {
+      "id": "birdnet-v3:BN00420",
+      "scientificName": "Anabacerthia lichtensteini"
+    },
+    {
+      "id": "birdnet-v3:BN00421",
+      "scientificName": "Anabacerthia ruficaudata"
+    },
+    {
+      "id": "birdnet-v3:BN09791",
+      "scientificName": "Syndactyla roraimae"
+    },
+    {
+      "id": "birdnet-v3:BN02336",
+      "scientificName": "Clibanornis rectirostris"
+    },
+    {
+      "id": "birdnet-v3:BN02335",
+      "scientificName": "Clibanornis erythrocephalus"
+    },
+    {
+      "id": "birdnet-v3:BN02337",
+      "scientificName": "Clibanornis rubiginosus"
+    },
+    {
+      "id": "birdnet-v3:BN01062",
+      "scientificName": "Automolus subulatus"
+    },
+    {
+      "id": "birdnet-v3:BN01063",
+      "scientificName": "Automolus virgatus"
+    },
+    {
+      "id": "birdnet-v3:BN01053",
+      "scientificName": "Automolus cervinigularis"
+    },
+    {
+      "id": "birdnet-v3:BN09940",
+      "scientificName": "Tarphonomus harterti"
+    },
+    {
+      "id": "birdnet-v3:BN09939",
+      "scientificName": "Tarphonomus certhioides"
+    },
+    {
+      "id": "birdnet-v3:BN03986",
+      "scientificName": "Furnarius cinnamomeus"
+    },
+    {
+      "id": "birdnet-v3:BN04103",
+      "scientificName": "Geocerthia serrana"
+    },
+    {
+      "id": "birdnet-v3:BN02127",
+      "scientificName": "Cinclodes albiventris"
+    },
+    {
+      "id": "birdnet-v3:BN09724",
+      "scientificName": "Sylviorthorhynchus yanacensis"
+    },
+    {
+      "id": "birdnet-v3:BN07350",
+      "scientificName": "Phacellodomus ferrugineigula"
+    },
+    {
+      "id": "birdnet-v3:BN00938",
+      "scientificName": "Asthenes arequipae"
+    },
+    {
+      "id": "birdnet-v3:BN00956",
+      "scientificName": "Asthenes moreirae"
+    },
+    {
+      "id": "birdnet-v3:BN00946",
+      "scientificName": "Asthenes griseomurina"
+    },
+    {
+      "id": "birdnet-v3:BN00942",
+      "scientificName": "Asthenes coryi"
+    },
+    {
+      "id": "birdnet-v3:BN00945",
+      "scientificName": "Asthenes fuliginosa"
+    },
+    {
+      "id": "birdnet-v3:BN00948",
+      "scientificName": "Asthenes helleri"
+    },
+    {
+      "id": "birdnet-v3:BN00947",
+      "scientificName": "Asthenes harterti"
+    },
+    {
+      "id": "birdnet-v3:BN00958",
+      "scientificName": "Asthenes palpebralis"
+    },
+    {
+      "id": "birdnet-v3:BN00939",
+      "scientificName": "Asthenes ayacuchensis"
+    },
+    {
+      "id": "birdnet-v3:BN00963",
+      "scientificName": "Asthenes vilcabambae"
+    },
+    {
+      "id": "birdnet-v3:BN05334",
+      "scientificName": "Limnoctites rectirostris"
+    },
+    {
+      "id": "birdnet-v3:BN02742",
+      "scientificName": "Cranioleuca weskei"
+    },
+    {
+      "id": "birdnet-v3:BN02729",
+      "scientificName": "Cranioleuca dissita"
+    },
+    {
+      "id": "birdnet-v3:BN08250",
+      "scientificName": "Pseudasthenes humicola"
+    },
+    {
+      "id": "birdnet-v3:BN08251",
+      "scientificName": "Pseudasthenes patagonica"
+    },
+    {
+      "id": "birdnet-v3:BN08252",
+      "scientificName": "Pseudasthenes steinbachi"
+    },
+    {
+      "id": "birdnet-v3:BN08249",
+      "scientificName": "Pseudasthenes cactorum"
+    },
+    {
+      "id": "birdnet-v3:BN05673",
+      "scientificName": "Mazaria propinqua"
+    },
+    {
+      "id": "birdnet-v3:BN09772",
+      "scientificName": "Synallaxis hypochondriaca"
+    },
+    {
+      "id": "birdnet-v3:BN09782",
+      "scientificName": "Synallaxis simoni"
+    },
+    {
+      "id": "birdnet-v3:BN09771",
+      "scientificName": "Synallaxis hellmayri"
+    },
+    {
+      "id": "birdnet-v3:BN09756",
+      "scientificName": "Synallaxis beverlyae"
+    },
+    {
+      "id": "birdnet-v3:BN00411",
+      "scientificName": "Amytornis modestus"
+    },
+    {
+      "id": "birdnet-v3:BN00412",
+      "scientificName": "Amytornis oweni"
+    },
+    {
+      "id": "birdnet-v3:BN01933",
+      "scientificName": "Chenorhamphus grayi"
+    },
+    {
+      "id": "birdnet-v3:BN01932",
+      "scientificName": "Chenorhamphus campbelli"
+    },
+    {
+      "id": "avilist:d7a97007",
+      "scientificName": "Gerygone insularis"
+    },
+    {
+      "id": "birdnet-v3:BN00012",
+      "scientificName": "Acanthiza cinerea"
+    },
+    {
+      "id": "birdnet-v3:BN04736",
+      "scientificName": "Hylacola pyrrhopygia"
+    },
+    {
+      "id": "birdnet-v3:BN04735",
+      "scientificName": "Hylacola cauta"
+    },
+    {
+      "id": "birdnet-v3:BN06823",
+      "scientificName": "Origma robusta"
+    },
+    {
+      "id": "birdnet-v3:BN06822",
+      "scientificName": "Origma murina"
+    },
+    {
+      "id": "birdnet-v3:BN06510",
+      "scientificName": "Neosericornis citreogularis"
+    },
+    {
+      "id": "birdnet-v3:BN00175",
+      "scientificName": "Aethomyias nigrorufus"
+    },
+    {
+      "id": "birdnet-v3:BN00179",
+      "scientificName": "Aethomyias spilodera"
+    },
+    {
+      "id": "birdnet-v3:BN00178",
+      "scientificName": "Aethomyias rufescens"
+    },
+    {
+      "id": "birdnet-v3:BN00177",
+      "scientificName": "Aethomyias perspicillatus"
+    },
+    {
+      "id": "birdnet-v3:BN00174",
+      "scientificName": "Aethomyias arfakianus"
+    },
+    {
+      "id": "birdnet-v3:BN00176",
+      "scientificName": "Aethomyias papuensis"
+    },
+    {
+      "id": "birdnet-v3:BN08551",
+      "scientificName": "Ptiloprora mayri"
+    },
+    {
+      "id": "avilist:9aa8b692",
+      "scientificName": "Anthornis melanocephala"
+    },
+    {
+      "id": "birdnet-v3:BN06399",
+      "scientificName": "Myzomela annabellae"
+    },
+    {
+      "id": "birdnet-v3:BN06400",
+      "scientificName": "Myzomela babarensis"
+    },
+    {
+      "id": "birdnet-v3:BN06424",
+      "scientificName": "Myzomela nigriventris"
+    },
+    {
+      "id": "birdnet-v3:BN06428",
+      "scientificName": "Myzomela pulchella"
+    },
+    {
+      "id": "birdnet-v3:BN07458",
+      "scientificName": "Philemon brassi"
+    },
+    {
+      "id": "birdnet-v3:BN07464",
+      "scientificName": "Philemon eichhorni"
+    },
+    {
+      "id": "birdnet-v3:BN05330",
+      "scientificName": "Lichmera lombokia"
+    },
+    {
+      "id": "birdnet-v3:BN05859",
+      "scientificName": "Meliphaga reticulata"
+    },
+    {
+      "id": "birdnet-v3:BN05844",
+      "scientificName": "Meliphaga albilineata"
+    },
+    {
+      "id": "birdnet-v3:BN05851",
+      "scientificName": "Meliphaga fordiana"
+    },
+    {
+      "id": "birdnet-v3:BN05850",
+      "scientificName": "Meliphaga flavirictus"
+    },
+    {
+      "id": "birdnet-v3:BN05860",
+      "scientificName": "Meliphaga vicina"
+    },
+    {
+      "id": "birdnet-v3:BN05855",
+      "scientificName": "Meliphaga mimikae"
+    },
+    {
+      "id": "birdnet-v3:BN05856",
+      "scientificName": "Meliphaga montana"
+    },
+    {
+      "id": "birdnet-v3:BN05849",
+      "scientificName": "Meliphaga cinereifrons"
+    },
+    {
+      "id": "birdnet-v3:BN05846",
+      "scientificName": "Meliphaga analoga"
+    },
+    {
+      "id": "birdnet-v3:BN05858",
+      "scientificName": "Meliphaga orientalis"
+    },
+    {
+      "id": "birdnet-v3:BN05845",
+      "scientificName": "Meliphaga albonotata"
+    },
+    {
+      "id": "birdnet-v3:BN05852",
+      "scientificName": "Meliphaga gracilis"
+    },
+    {
+      "id": "birdnet-v3:BN08566",
+      "scientificName": "Ptilorrhoa urrissia"
+    },
+    {
+      "id": "birdnet-v3:BN08565",
+      "scientificName": "Ptilorrhoa nigricrissus"
+    },
+    {
+      "id": "birdnet-v3:BN01702",
+      "scientificName": "Ceblepyris cucullatus"
+    },
+    {
+      "id": "birdnet-v3:BN01701",
+      "scientificName": "Ceblepyris cinereus"
+    },
+    {
+      "id": "birdnet-v3:BN01703",
+      "scientificName": "Ceblepyris graueri"
+    },
+    {
+      "id": "birdnet-v3:BN01704",
+      "scientificName": "Ceblepyris pectoralis"
+    },
+    {
+      "id": "birdnet-v3:BN01700",
+      "scientificName": "Ceblepyris caesius"
+    },
+    {
+      "id": "birdnet-v3:BN02579",
+      "scientificName": "Coracina larutensis"
+    },
+    {
+      "id": "birdnet-v3:BN02586",
+      "scientificName": "Coracina mindorensis"
+    },
+    {
+      "id": "birdnet-v3:BN02588",
+      "scientificName": "Coracina panayensis"
+    },
+    {
+      "id": "birdnet-v3:BN02578",
+      "scientificName": "Coracina kochii"
+    },
+    {
+      "id": "birdnet-v3:BN02576",
+      "scientificName": "Coracina guillemardi"
+    },
+    {
+      "id": "birdnet-v3:BN05628",
+      "scientificName": "Malindangia mcgregori"
+    },
+    {
+      "id": "birdnet-v3:BN05032",
+      "scientificName": "Lalage conjuncta"
+    },
+    {
+      "id": "birdnet-v3:BN05035",
+      "scientificName": "Lalage leucoptera"
+    },
+    {
+      "id": "birdnet-v3:BN05049",
+      "scientificName": "Lalage typica"
+    },
+    {
+      "id": "birdnet-v3:BN05043",
+      "scientificName": "Lalage newtoni"
+    },
+    {
+      "id": "birdnet-v3:BN05040",
+      "scientificName": "Lalage melanoptera"
+    },
+    {
+      "id": "birdnet-v3:BN05041",
+      "scientificName": "Lalage melaschistos"
+    },
+    {
+      "id": "birdnet-v3:BN05045",
+      "scientificName": "Lalage polioptera"
+    },
+    {
+      "id": "birdnet-v3:BN05033",
+      "scientificName": "Lalage fimbriata"
+    },
+    {
+      "id": "birdnet-v3:BN02935",
+      "scientificName": "Cyanograucalus azureus"
+    },
+    {
+      "id": "birdnet-v3:BN01714",
+      "scientificName": "Celebesica abbotti"
+    },
+    {
+      "id": "birdnet-v3:BN03418",
+      "scientificName": "Edolisoma ostentum"
+    },
+    {
+      "id": "birdnet-v3:BN03402",
+      "scientificName": "Edolisoma coerulescens"
+    },
+    {
+      "id": "birdnet-v3:BN03414",
+      "scientificName": "Edolisoma montanum"
+    },
+    {
+      "id": "birdnet-v3:BN03424",
+      "scientificName": "Edolisoma schisticeps"
+    },
+    {
+      "id": "birdnet-v3:BN03404",
+      "scientificName": "Edolisoma dohertyi"
+    },
+    {
+      "id": "birdnet-v3:BN03403",
+      "scientificName": "Edolisoma dispar"
+    },
+    {
+      "id": "birdnet-v3:BN03427",
+      "scientificName": "Edolisoma timoriense"
+    },
+    {
+      "id": "birdnet-v3:BN03409",
+      "scientificName": "Edolisoma insperatum"
+    },
+    {
+      "id": "birdnet-v3:BN03410",
+      "scientificName": "Edolisoma melas"
+    },
+    {
+      "id": "birdnet-v3:BN03428",
+      "scientificName": "Edolisoma tricolor"
+    },
+    {
+      "id": "birdnet-v3:BN03407",
+      "scientificName": "Edolisoma holopolium"
+    },
+    {
+      "id": "birdnet-v3:BN03422",
+      "scientificName": "Edolisoma salomonis"
+    },
+    {
+      "id": "birdnet-v3:BN03398",
+      "scientificName": "Edolisoma admiralitatis"
+    },
+    {
+      "id": "birdnet-v3:BN03423",
+      "scientificName": "Edolisoma salvadorii"
+    },
+    {
+      "id": "birdnet-v3:BN03416",
+      "scientificName": "Edolisoma nesiotis"
+    },
+    {
+      "id": "birdnet-v3:BN03413",
+      "scientificName": "Edolisoma monacha"
+    },
+    {
+      "id": "birdnet-v3:BN03405",
+      "scientificName": "Edolisoma erythropygium"
+    },
+    {
+      "id": "birdnet-v3:BN03415",
+      "scientificName": "Edolisoma morio"
+    },
+    {
+      "id": "birdnet-v3:BN03411",
+      "scientificName": "Edolisoma meyerii"
+    },
+    {
+      "id": "birdnet-v3:BN03417",
+      "scientificName": "Edolisoma obiense"
+    },
+    {
+      "id": "birdnet-v3:BN03419",
+      "scientificName": "Edolisoma pelingi"
+    },
+    {
+      "id": "birdnet-v3:BN03425",
+      "scientificName": "Edolisoma sula"
+    },
+    {
+      "id": "birdnet-v3:BN03406",
+      "scientificName": "Edolisoma grayi"
+    },
+    {
+      "id": "birdnet-v3:BN03408",
+      "scientificName": "Edolisoma incertum"
+    },
+    {
+      "id": "birdnet-v3:BN03420",
+      "scientificName": "Edolisoma remotum"
+    },
+    {
+      "id": "birdnet-v3:BN03421",
+      "scientificName": "Edolisoma rostratum"
+    },
+    {
+      "id": "birdnet-v3:BN03399",
+      "scientificName": "Edolisoma amboinense"
+    },
+    {
+      "id": "birdnet-v3:BN06075",
+      "scientificName": "Mohoua novaeseelandiae"
+    },
+    {
+      "id": "birdnet-v3:BN00908",
+      "scientificName": "Artamus leucorynchus"
+    },
+    {
+      "id": "birdnet-v3:BN02717",
+      "scientificName": "Cracticus argenteus"
+    },
+    {
+      "id": "birdnet-v3:BN05095",
+      "scientificName": "Laniarius holomelas"
+    },
+    {
+      "id": "birdnet-v3:BN01126",
+      "scientificName": "Batis dimorpha"
+    },
+    {
+      "id": "birdnet-v3:BN01137",
+      "scientificName": "Batis occulta"
+    },
+    {
+      "id": "birdnet-v3:BN02936",
+      "scientificName": "Cyanolanius comorensis"
+    },
+    {
+      "id": "birdnet-v3:BN04760",
+      "scientificName": "Hylophilus moxensis"
+    },
+    {
+      "id": "birdnet-v3:BN10403",
+      "scientificName": "Tunchiornis luteifrons"
+    },
+    {
+      "id": "birdnet-v3:BN10405",
+      "scientificName": "Tunchiornis rubrifrons"
+    },
+    {
+      "id": "birdnet-v3:BN10402",
+      "scientificName": "Tunchiornis ferrugineifrons"
+    },
+    {
+      "id": "birdnet-v3:BN10404",
+      "scientificName": "Tunchiornis ochraceiceps"
+    },
+    {
+      "id": "birdnet-v3:BN07063",
+      "scientificName": "Pachysylvia decurtata"
+    },
+    {
+      "id": "birdnet-v3:BN07066",
+      "scientificName": "Pachysylvia semibrunnea"
+    },
+    {
+      "id": "birdnet-v3:BN07062",
+      "scientificName": "Pachysylvia aurantiifrons"
+    },
+    {
+      "id": "birdnet-v3:BN07065",
+      "scientificName": "Pachysylvia muscicapina"
+    },
+    {
+      "id": "birdnet-v3:BN07064",
+      "scientificName": "Pachysylvia hypoxantha"
+    },
+    {
+      "id": "birdnet-v3:BN10750",
+      "scientificName": "Vireo sclateri"
+    },
+    {
+      "id": "birdnet-v3:BN10752",
+      "scientificName": "Vireo swainsoni"
+    },
+    {
+      "id": "birdnet-v3:BN10728",
+      "scientificName": "Vireo chivi"
+    },
+    {
+      "id": "avilist:bf367578",
+      "scientificName": "Turnagra tanagra"
+    },
+    {
+      "id": "avilist:65fab387",
+      "scientificName": "Turnagra capensis"
+    },
+    {
+      "id": "birdnet-v3:BN06832",
+      "scientificName": "Oriolus consanguineus"
+    },
+    {
+      "id": "birdnet-v3:BN07009",
+      "scientificName": "Pachycephala ornata"
+    },
+    {
+      "id": "birdnet-v3:BN07024",
+      "scientificName": "Pachycephala utupuae"
+    },
+    {
+      "id": "birdnet-v3:BN06988",
+      "scientificName": "Pachycephala graeffii"
+    },
+    {
+      "id": "birdnet-v3:BN07023",
+      "scientificName": "Pachycephala teysmanni"
+    },
+    {
+      "id": "birdnet-v3:BN06981",
+      "scientificName": "Pachycephala calliope"
+    },
+    {
+      "id": "birdnet-v3:BN07018",
+      "scientificName": "Pachycephala sharpei"
+    },
+    {
+      "id": "birdnet-v3:BN07000",
+      "scientificName": "Pachycephala melanorhyncha"
+    },
+    {
+      "id": "birdnet-v3:BN08863",
+      "scientificName": "Rhipidura laguceria"
+    },
+    {
+      "id": "birdnet-v3:BN08849",
+      "scientificName": "Rhipidura coultasi"
+    },
+    {
+      "id": "birdnet-v3:BN08876",
+      "scientificName": "Rhipidura ocularis"
+    },
+    {
+      "id": "birdnet-v3:BN08891",
+      "scientificName": "Rhipidura spilodera"
+    },
+    {
+      "id": "birdnet-v3:BN08870",
+      "scientificName": "Rhipidura malaitae"
+    },
+    {
+      "id": "birdnet-v3:BN08889",
+      "scientificName": "Rhipidura semicollaris"
+    },
+    {
+      "id": "birdnet-v3:BN08898",
+      "scientificName": "Rhipidura torrida"
+    },
+    {
+      "id": "birdnet-v3:BN08868",
+      "scientificName": "Rhipidura louisiadensis"
+    },
+    {
+      "id": "birdnet-v3:BN08886",
+      "scientificName": "Rhipidura rufofronta"
+    },
+    {
+      "id": "birdnet-v3:BN08872",
+      "scientificName": "Rhipidura melanolaema"
+    },
+    {
+      "id": "birdnet-v3:BN08900",
+      "scientificName": "Rhipidura versicolor"
+    },
+    {
+      "id": "birdnet-v3:BN04800",
+      "scientificName": "Hypothymis puella"
+    },
+    {
+      "id": "birdnet-v3:BN09988",
+      "scientificName": "Terpsiphone affinis"
+    },
+    {
+      "id": "birdnet-v3:BN09998",
+      "scientificName": "Terpsiphone incei"
+    },
+    {
+      "id": "birdnet-v3:BN06212",
+      "scientificName": "Myiagra eichhorni"
+    },
+    {
+      "id": "avilist:20d6ae5b",
+      "scientificName": "Myiagra freycineti"
+    },
+    {
+      "id": "birdnet-v3:BN09747",
+      "scientificName": "Symposiachrus rubiensis"
+    },
+    {
+      "id": "birdnet-v3:BN09743",
+      "scientificName": "Symposiachrus melanopterus"
+    },
+    {
+      "id": "birdnet-v3:BN09744",
+      "scientificName": "Symposiachrus menckei"
+    },
+    {
+      "id": "birdnet-v3:BN09741",
+      "scientificName": "Symposiachrus malaitae"
+    },
+    {
+      "id": "birdnet-v3:BN09746",
+      "scientificName": "Symposiachrus nigrotectus"
+    },
+    {
+      "id": "birdnet-v3:BN01663",
+      "scientificName": "Carterornis castus"
+    },
+    {
+      "id": "avilist:57570d50",
+      "scientificName": "Pomarea maupitiensis"
+    },
+    {
+      "id": "avilist:20de8c44",
+      "scientificName": "Pomarea nukuhivae"
+    },
+    {
+      "id": "avilist:4e66cf41",
+      "scientificName": "Pomarea fluxa"
+    },
+    {
+      "id": "birdnet-v3:BN08078",
+      "scientificName": "Pomarea mira"
+    },
+    {
+      "id": "birdnet-v3:BN05672",
+      "scientificName": "Mayrornis versicolor"
+    },
+    {
+      "id": "birdnet-v3:BN02350",
+      "scientificName": "Clytorhynchus sanctaecrucis"
+    },
+    {
+      "id": "birdnet-v3:BN02606",
+      "scientificName": "Corcorax melanorhamphos"
+    },
+    {
+      "id": "birdnet-v3:BN07143",
+      "scientificName": "Parotia helenae"
+    },
+    {
+      "id": "birdnet-v3:BN05442",
+      "scientificName": "Lophorina latipennis"
+    },
+    {
+      "id": "birdnet-v3:BN06655",
+      "scientificName": "Nucifraga hemispila"
+    },
+    {
+      "id": "birdnet-v3:BN02643",
+      "scientificName": "Corvus philippinus"
+    },
+    {
+      "id": "birdnet-v3:BN02648",
+      "scientificName": "Corvus sierramadrensis"
+    },
+    {
+      "id": "birdnet-v3:BN02616",
+      "scientificName": "Corvus celebensis"
+    },
+    {
+      "id": "birdnet-v3:BN05792",
+      "scientificName": "Melanocharis piperata"
+    },
+    {
+      "id": "birdnet-v3:BN01435",
+      "scientificName": "Callaeas wilsoni"
+    },
+    {
+      "id": "avilist:7c2eb5ff",
+      "scientificName": "Heteralocha acutirostris"
+    },
+    {
+      "id": "birdnet-v3:BN07477",
+      "scientificName": "Philesturnus rufusater"
+    },
+    {
+      "id": "birdnet-v3:BN07324",
+      "scientificName": "Petroica longipes"
+    },
+    {
+      "id": "birdnet-v3:BN03158",
+      "scientificName": "Devioeca papuana"
+    },
+    {
+      "id": "birdnet-v3:BN04980",
+      "scientificName": "Kempiella flavovirescens"
+    },
+    {
+      "id": "birdnet-v3:BN04981",
+      "scientificName": "Kempiella griseoceps"
+    },
+    {
+      "id": "birdnet-v3:BN02818",
+      "scientificName": "Cryptomicroeca flaviventris"
+    },
+    {
+      "id": "birdnet-v3:BN07852",
+      "scientificName": "Plesiodryas albonotata"
+    },
+    {
+      "id": "birdnet-v3:BN03552",
+      "scientificName": "Eopsaltria placens"
+    },
+    {
+      "id": "birdnet-v3:BN05809",
+      "scientificName": "Melanodryas pulverulenta"
+    },
+    {
+      "id": "birdnet-v3:BN01930",
+      "scientificName": "Chelidorhynx hypoxanthus"
+    },
+    {
+      "id": "birdnet-v3:BN05551",
+      "scientificName": "Machlolophus nuchalis"
+    },
+    {
+      "id": "birdnet-v3:BN05550",
+      "scientificName": "Machlolophus holsti"
+    },
+    {
+      "id": "birdnet-v3:BN05552",
+      "scientificName": "Machlolophus spilonotus"
+    },
+    {
+      "id": "birdnet-v3:BN05553",
+      "scientificName": "Machlolophus xanthogenys"
+    },
+    {
+      "id": "birdnet-v3:BN05549",
+      "scientificName": "Machlolophus aplonotus"
+    },
+    {
+      "id": "birdnet-v3:BN05775",
+      "scientificName": "Melaniparus guineensis"
+    },
+    {
+      "id": "birdnet-v3:BN05776",
+      "scientificName": "Melaniparus leucomelas"
+    },
+    {
+      "id": "birdnet-v3:BN05779",
+      "scientificName": "Melaniparus rufiventris"
+    },
+    {
+      "id": "birdnet-v3:BN05768",
+      "scientificName": "Melaniparus albiventris"
+    },
+    {
+      "id": "birdnet-v3:BN05769",
+      "scientificName": "Melaniparus carpi"
+    },
+    {
+      "id": "birdnet-v3:BN05778",
+      "scientificName": "Melaniparus niger"
+    },
+    {
+      "id": "birdnet-v3:BN05773",
+      "scientificName": "Melaniparus funereus"
+    },
+    {
+      "id": "birdnet-v3:BN05774",
+      "scientificName": "Melaniparus griseiventris"
+    },
+    {
+      "id": "birdnet-v3:BN05771",
+      "scientificName": "Melaniparus fasciiventer"
+    },
+    {
+      "id": "birdnet-v3:BN05772",
+      "scientificName": "Melaniparus fringillinus"
+    },
+    {
+      "id": "birdnet-v3:BN05780",
+      "scientificName": "Melaniparus thruppi"
+    },
+    {
+      "id": "birdnet-v3:BN05777",
+      "scientificName": "Melaniparus leuconotus"
+    },
+    {
+      "id": "birdnet-v3:BN05767",
+      "scientificName": "Melaniparus afer"
+    },
+    {
+      "id": "birdnet-v3:BN05770",
+      "scientificName": "Melaniparus cinerascens"
+    },
+    {
+      "id": "birdnet-v3:BN09365",
+      "scientificName": "Sittiparus semilarvatus"
+    },
+    {
+      "id": "birdnet-v3:BN09362",
+      "scientificName": "Sittiparus castaneoventris"
+    },
+    {
+      "id": "birdnet-v3:BN09363",
+      "scientificName": "Sittiparus olivaceus"
+    },
+    {
+      "id": "birdnet-v3:BN09364",
+      "scientificName": "Sittiparus owstoni"
+    },
+    {
+      "id": "birdnet-v3:BN09366",
+      "scientificName": "Sittiparus varius"
+    },
+    {
+      "id": "birdnet-v3:BN03585",
+      "scientificName": "Eremopterix hova"
+    },
+    {
+      "id": "birdnet-v3:BN01400",
+      "scientificName": "Calendulauda rufa"
+    },
+    {
+      "id": "birdnet-v3:BN06052",
+      "scientificName": "Mirafra cordofanica"
+    },
+    {
+      "id": "birdnet-v3:BN02667",
+      "scientificName": "Corypha kurrae"
+    },
+    {
+      "id": "birdnet-v3:BN02665",
+      "scientificName": "Corypha kabalii"
+    },
+    {
+      "id": "birdnet-v3:BN02668",
+      "scientificName": "Corypha nigrescens"
+    },
+    {
+      "id": "birdnet-v3:BN02662",
+      "scientificName": "Corypha athi"
+    },
+    {
+      "id": "birdnet-v3:BN02669",
+      "scientificName": "Corypha sharpii"
+    },
+    {
+      "id": "birdnet-v3:BN02666",
+      "scientificName": "Corypha kidepoensis"
+    },
+    {
+      "id": "birdnet-v3:BN09470",
+      "scientificName": "Spizocorys fremantlii"
+    },
+    {
+      "id": "birdnet-v3:BN09472",
+      "scientificName": "Spizocorys obbiensis"
+    },
+    {
+      "id": "birdnet-v3:BN00260",
+      "scientificName": "Alauda leucoptera"
+    },
+    {
+      "id": "birdnet-v3:BN01390",
+      "scientificName": "Calandrella eremica"
+    },
+    {
+      "id": "birdnet-v3:BN01389",
+      "scientificName": "Calandrella dukhunensis"
+    },
+    {
+      "id": "birdnet-v3:BN03570",
+      "scientificName": "Eremalauda eremodites"
+    },
+    {
+      "id": "birdnet-v3:BN00266",
+      "scientificName": "Alaudala somalica"
+    },
+    {
+      "id": "birdnet-v3:BN00265",
+      "scientificName": "Alaudala rufescens"
+    },
+    {
+      "id": "birdnet-v3:BN00264",
+      "scientificName": "Alaudala raytal"
+    },
+    {
+      "id": "birdnet-v3:BN00263",
+      "scientificName": "Alaudala heinei"
+    },
+    {
+      "id": "birdnet-v3:BN00672",
+      "scientificName": "Apalis stronachi"
+    },
+    {
+      "id": "birdnet-v3:BN08144",
+      "scientificName": "Prinia khasiana"
+    },
+    {
+      "id": "birdnet-v3:BN08133",
+      "scientificName": "Prinia cooki"
+    },
+    {
+      "id": "birdnet-v3:BN08151",
+      "scientificName": "Prinia rufifrons"
+    },
+    {
+      "id": "birdnet-v3:BN08135",
+      "scientificName": "Prinia erythroptera"
+    },
+    {
+      "id": "birdnet-v3:BN02299",
+      "scientificName": "Cisticola melanurus"
+    },
+    {
+      "id": "birdnet-v3:BN02305",
+      "scientificName": "Cisticola restrictus"
+    },
+    {
+      "id": "avilist:63136dac",
+      "scientificName": "Nesillas aldabrana"
+    },
+    {
+      "id": "birdnet-v3:BN00921",
+      "scientificName": "Arundinax aedon"
+    },
+    {
+      "id": "avilist:ec92e596",
+      "scientificName": "Acrocephalus luscinius"
+    },
+    {
+      "id": "avilist:43b1d88c",
+      "scientificName": "Acrocephalus nijoi"
+    },
+    {
+      "id": "avilist:bbd2ac0c",
+      "scientificName": "Acrocephalus yamashinae"
+    },
+    {
+      "id": "avilist:05c1a470",
+      "scientificName": "Acrocephalus musae"
+    },
+    {
+      "id": "avilist:0605561f",
+      "scientificName": "Acrocephalus astrolabii"
+    },
+    {
+      "id": "birdnet-v3:BN04527",
+      "scientificName": "Helopsaltes amnicola"
+    },
+    {
+      "id": "birdnet-v3:BN04532",
+      "scientificName": "Helopsaltes pryeri"
+    },
+    {
+      "id": "birdnet-v3:BN04531",
+      "scientificName": "Helopsaltes pleskei"
+    },
+    {
+      "id": "birdnet-v3:BN04530",
+      "scientificName": "Helopsaltes ochotensis"
+    },
+    {
+      "id": "birdnet-v3:BN04528",
+      "scientificName": "Helopsaltes certhiola"
+    },
+    {
+      "id": "birdnet-v3:BN05373",
+      "scientificName": "Locustella alfredi"
+    },
+    {
+      "id": "birdnet-v3:BN05389",
+      "scientificName": "Locustella musculus"
+    },
+    {
+      "id": "birdnet-v3:BN05379",
+      "scientificName": "Locustella disturbans"
+    },
+    {
+      "id": "birdnet-v3:BN05381",
+      "scientificName": "Locustella idonea"
+    },
+    {
+      "id": "birdnet-v3:BN09104",
+      "scientificName": "Schoenicola striatus"
+    },
+    {
+      "id": "birdnet-v3:BN01699",
+      "scientificName": "Catriscus brevirostris"
+    },
+    {
+      "id": "birdnet-v3:BN01232",
+      "scientificName": "Bradypterus seebohmi"
+    },
+    {
+      "id": "birdnet-v3:BN08096",
+      "scientificName": "Poodytes albolimbatus"
+    },
+    {
+      "id": "birdnet-v3:BN08097",
+      "scientificName": "Poodytes carteri"
+    },
+    {
+      "id": "birdnet-v3:BN08098",
+      "scientificName": "Poodytes gramineus"
+    },
+    {
+      "id": "avilist:a0cf86e4",
+      "scientificName": "Poodytes rufescens"
+    },
+    {
+      "id": "birdnet-v3:BN02142",
+      "scientificName": "Cincloramphus cruralis"
+    },
+    {
+      "id": "birdnet-v3:BN02144",
+      "scientificName": "Cincloramphus llaneae"
+    },
+    {
+      "id": "birdnet-v3:BN02148",
+      "scientificName": "Cincloramphus rubiginosus"
+    },
+    {
+      "id": "birdnet-v3:BN02143",
+      "scientificName": "Cincloramphus grosvenori"
+    },
+    {
+      "id": "birdnet-v3:BN02141",
+      "scientificName": "Cincloramphus bivittatus"
+    },
+    {
+      "id": "birdnet-v3:BN02147",
+      "scientificName": "Cincloramphus mathewsi"
+    },
+    {
+      "id": "birdnet-v3:BN02145",
+      "scientificName": "Cincloramphus macrurus"
+    },
+    {
+      "id": "birdnet-v3:BN02150",
+      "scientificName": "Cincloramphus timoriensis"
+    },
+    {
+      "id": "birdnet-v3:BN02151",
+      "scientificName": "Cincloramphus turipavae"
+    },
+    {
+      "id": "birdnet-v3:BN02149",
+      "scientificName": "Cincloramphus rufus"
+    },
+    {
+      "id": "birdnet-v3:BN08229",
+      "scientificName": "Psalidoprocne centralis"
+    },
+    {
+      "id": "birdnet-v3:BN07433",
+      "scientificName": "Phedinopsis brazzae"
+    },
+    {
+      "id": "birdnet-v3:BN06496",
+      "scientificName": "Neophedina cincta"
+    },
+    {
+      "id": "birdnet-v3:BN08954",
+      "scientificName": "Riparia cowani"
+    },
+    {
+      "id": "birdnet-v3:BN01033",
+      "scientificName": "Atticora pileata"
+    },
+    {
+      "id": "birdnet-v3:BN01034",
+      "scientificName": "Atticora tibialis"
+    },
+    {
+      "id": "birdnet-v3:BN08644",
+      "scientificName": "Pygochelidon melanoleuca"
+    },
+    {
+      "id": "birdnet-v3:BN08643",
+      "scientificName": "Pygochelidon cyanoleuca"
+    },
+    {
+      "id": "birdnet-v3:BN06865",
+      "scientificName": "Orochelidon flavipes"
+    },
+    {
+      "id": "birdnet-v3:BN06864",
+      "scientificName": "Orochelidon andecola"
+    },
+    {
+      "id": "birdnet-v3:BN06866",
+      "scientificName": "Orochelidon murina"
+    },
+    {
+      "id": "birdnet-v3:BN08579",
+      "scientificName": "Ptyonoprogne rufigula"
+    },
+    {
+      "id": "birdnet-v3:BN03086",
+      "scientificName": "Delichon lagopodum"
+    },
+    {
+      "id": "birdnet-v3:BN01710",
+      "scientificName": "Cecropis melanocrissus"
+    },
+    {
+      "id": "birdnet-v3:BN01711",
+      "scientificName": "Cecropis rufula"
+    },
+    {
+      "id": "birdnet-v3:BN07313",
+      "scientificName": "Petrochelidon perdita"
+    },
+    {
+      "id": "birdnet-v3:BN00113",
+      "scientificName": "Aegithalos exilis"
+    },
+    {
+      "id": "birdnet-v3:BN07558",
+      "scientificName": "Phyllergates cucullatus"
+    },
+    {
+      "id": "birdnet-v3:BN04686",
+      "scientificName": "Horornis canturians"
+    },
+    {
+      "id": "birdnet-v3:BN07647",
+      "scientificName": "Phylloscopus sibilatrix"
+    },
+    {
+      "id": "birdnet-v3:BN07591",
+      "scientificName": "Phylloscopus burkii"
+    },
+    {
+      "id": "birdnet-v3:BN07653",
+      "scientificName": "Phylloscopus tephrocephalus"
+    },
+    {
+      "id": "birdnet-v3:BN07637",
+      "scientificName": "Phylloscopus poliogenys"
+    },
+    {
+      "id": "birdnet-v3:BN07616",
+      "scientificName": "Phylloscopus intermedius"
+    },
+    {
+      "id": "birdnet-v3:BN07633",
+      "scientificName": "Phylloscopus omeiensis"
+    },
+    {
+      "id": "birdnet-v3:BN07649",
+      "scientificName": "Phylloscopus soror"
+    },
+    {
+      "id": "birdnet-v3:BN07659",
+      "scientificName": "Phylloscopus valentini"
+    },
+    {
+      "id": "birdnet-v3:BN07660",
+      "scientificName": "Phylloscopus whistleri"
+    },
+    {
+      "id": "birdnet-v3:BN07595",
+      "scientificName": "Phylloscopus castaniceps"
+    },
+    {
+      "id": "birdnet-v3:BN07607",
+      "scientificName": "Phylloscopus grammiceps"
+    },
+    {
+      "id": "birdnet-v3:BN07625",
+      "scientificName": "Phylloscopus montis"
+    },
+    {
+      "id": "birdnet-v3:BN07627",
+      "scientificName": "Phylloscopus nesophilus"
+    },
+    {
+      "id": "birdnet-v3:BN07636",
+      "scientificName": "Phylloscopus poliocephalus"
+    },
+    {
+      "id": "birdnet-v3:BN00993",
+      "scientificName": "Atimastillas flavigula"
+    },
+    {
+      "id": "birdnet-v3:BN07556",
+      "scientificName": "Phyllastrephus viridiceps"
+    },
+    {
+      "id": "birdnet-v3:BN06016",
+      "scientificName": "Microtarsus eutilotus"
+    },
+    {
+      "id": "birdnet-v3:BN06019",
+      "scientificName": "Microtarsus melanoleucos"
+    },
+    {
+      "id": "birdnet-v3:BN06022",
+      "scientificName": "Microtarsus urostictus"
+    },
+    {
+      "id": "birdnet-v3:BN06021",
+      "scientificName": "Microtarsus priocephalus"
+    },
+    {
+      "id": "birdnet-v3:BN06020",
+      "scientificName": "Microtarsus nieuwenhuisii"
+    },
+    {
+      "id": "birdnet-v3:BN06017",
+      "scientificName": "Microtarsus fuscoflavescens"
+    },
+    {
+      "id": "birdnet-v3:BN06018",
+      "scientificName": "Microtarsus melanocephalos"
+    },
+    {
+      "id": "birdnet-v3:BN08979",
+      "scientificName": "Rubigula squamata"
+    },
+    {
+      "id": "birdnet-v3:BN08975",
+      "scientificName": "Rubigula flaviventris"
+    },
+    {
+      "id": "birdnet-v3:BN08977",
+      "scientificName": "Rubigula melanictera"
+    },
+    {
+      "id": "birdnet-v3:BN08976",
+      "scientificName": "Rubigula gularis"
+    },
+    {
+      "id": "birdnet-v3:BN08978",
+      "scientificName": "Rubigula montis"
+    },
+    {
+      "id": "birdnet-v3:BN08973",
+      "scientificName": "Rubigula dispar"
+    },
+    {
+      "id": "birdnet-v3:BN06621",
+      "scientificName": "Nok hualon"
+    },
+    {
+      "id": "birdnet-v3:BN08628",
+      "scientificName": "Pycnonotus porphyreus"
+    },
+    {
+      "id": "birdnet-v3:BN08615",
+      "scientificName": "Pycnonotus conradi"
+    },
+    {
+      "id": "birdnet-v3:BN08622",
+      "scientificName": "Pycnonotus leucops"
+    },
+    {
+      "id": "birdnet-v3:BN08632",
+      "scientificName": "Pycnonotus snouckaerti"
+    },
+    {
+      "id": "birdnet-v3:BN00316",
+      "scientificName": "Alophoixus tephrogenys"
+    },
+    {
+      "id": "birdnet-v3:BN00315",
+      "scientificName": "Alophoixus ruficrissus"
+    },
+    {
+      "id": "birdnet-v3:BN00286",
+      "scientificName": "Alcurus striatus"
+    },
+    {
+      "id": "birdnet-v3:BN04933",
+      "scientificName": "Iole finschii"
+    },
+    {
+      "id": "birdnet-v3:BN04931",
+      "scientificName": "Iole charlottae"
+    },
+    {
+      "id": "birdnet-v3:BN04930",
+      "scientificName": "Iole cacharensis"
+    },
+    {
+      "id": "birdnet-v3:BN04955",
+      "scientificName": "Ixos leucogrammicus"
+    },
+    {
+      "id": "birdnet-v3:BN04820",
+      "scientificName": "Hypsipetes nicobariensis"
+    },
+    {
+      "id": "birdnet-v3:BN04827",
+      "scientificName": "Hypsipetes thompsoni"
+    },
+    {
+      "id": "birdnet-v3:BN04801",
+      "scientificName": "Hypsipetes affinis"
+    },
+    {
+      "id": "birdnet-v3:BN04809",
+      "scientificName": "Hypsipetes flavicaudus"
+    },
+    {
+      "id": "birdnet-v3:BN04824",
+      "scientificName": "Hypsipetes platenae"
+    },
+    {
+      "id": "birdnet-v3:BN04803",
+      "scientificName": "Hypsipetes aureus"
+    },
+    {
+      "id": "birdnet-v3:BN04812",
+      "scientificName": "Hypsipetes harterti"
+    },
+    {
+      "id": "birdnet-v3:BN04814",
+      "scientificName": "Hypsipetes longirostris"
+    },
+    {
+      "id": "birdnet-v3:BN04806",
+      "scientificName": "Hypsipetes chloris"
+    },
+    {
+      "id": "birdnet-v3:BN04815",
+      "scientificName": "Hypsipetes lucasi"
+    },
+    {
+      "id": "birdnet-v3:BN04819",
+      "scientificName": "Hypsipetes mysticalis"
+    },
+    {
+      "id": "birdnet-v3:BN09711",
+      "scientificName": "Sylvia dohrni"
+    },
+    {
+      "id": "birdnet-v3:BN09712",
+      "scientificName": "Sylvia galinieri"
+    },
+    {
+      "id": "birdnet-v3:BN09713",
+      "scientificName": "Sylvia nigricapillus"
+    },
+    {
+      "id": "birdnet-v3:BN09709",
+      "scientificName": "Sylvia atriceps"
+    },
+    {
+      "id": "birdnet-v3:BN09707",
+      "scientificName": "Sylvia abyssinica"
+    },
+    {
+      "id": "birdnet-v3:BN02884",
+      "scientificName": "Curruca nisoria"
+    },
+    {
+      "id": "birdnet-v3:BN02877",
+      "scientificName": "Curruca layardi"
+    },
+    {
+      "id": "birdnet-v3:BN02866",
+      "scientificName": "Curruca boehmi"
+    },
+    {
+      "id": "birdnet-v3:BN02872",
+      "scientificName": "Curruca curruca"
+    },
+    {
+      "id": "birdnet-v3:BN02867",
+      "scientificName": "Curruca buryi"
+    },
+    {
+      "id": "birdnet-v3:BN02879",
+      "scientificName": "Curruca lugens"
+    },
+    {
+      "id": "birdnet-v3:BN02878",
+      "scientificName": "Curruca leucomelaena"
+    },
+    {
+      "id": "birdnet-v3:BN02875",
+      "scientificName": "Curruca hortensis"
+    },
+    {
+      "id": "birdnet-v3:BN02871",
+      "scientificName": "Curruca crassirostris"
+    },
+    {
+      "id": "birdnet-v3:BN02883",
+      "scientificName": "Curruca nana"
+    },
+    {
+      "id": "birdnet-v3:BN02873",
+      "scientificName": "Curruca deserti"
+    },
+    {
+      "id": "birdnet-v3:BN02874",
+      "scientificName": "Curruca deserticola"
+    },
+    {
+      "id": "birdnet-v3:BN02882",
+      "scientificName": "Curruca mystacea"
+    },
+    {
+      "id": "birdnet-v3:BN02869",
+      "scientificName": "Curruca communis"
+    },
+    {
+      "id": "birdnet-v3:BN02870",
+      "scientificName": "Curruca conspicillata"
+    },
+    {
+      "id": "birdnet-v3:BN02886",
+      "scientificName": "Curruca sarda"
+    },
+    {
+      "id": "birdnet-v3:BN02889",
+      "scientificName": "Curruca undata"
+    },
+    {
+      "id": "birdnet-v3:BN02885",
+      "scientificName": "Curruca ruppeli"
+    },
+    {
+      "id": "birdnet-v3:BN02881",
+      "scientificName": "Curruca melanothorax"
+    },
+    {
+      "id": "birdnet-v3:BN08912",
+      "scientificName": "Rhopophilus albosuperciliaris"
+    },
+    {
+      "id": "birdnet-v3:BN07109",
+      "scientificName": "Paradoxornis heudei"
+    },
+    {
+      "id": "birdnet-v3:BN07111",
+      "scientificName": "Paradoxornis paradoxus"
+    },
+    {
+      "id": "birdnet-v3:BN09702",
+      "scientificName": "Suthora ricketti"
+    },
+    {
+      "id": "birdnet-v3:BN09704",
+      "scientificName": "Suthora webbiana"
+    },
+    {
+      "id": "birdnet-v3:BN07117",
+      "scientificName": "Parayuhina diademata"
+    },
+    {
+      "id": "birdnet-v3:BN09543",
+      "scientificName": "Staphida torqueola"
+    },
+    {
+      "id": "birdnet-v3:BN09582",
+      "scientificName": "Sterrhoptilus affinis"
+    },
+    {
+      "id": "birdnet-v3:BN04489",
+      "scientificName": "Heleia pinaiae"
+    },
+    {
+      "id": "birdnet-v3:BN04487",
+      "scientificName": "Heleia javanica"
+    },
+    {
+      "id": "birdnet-v3:BN04491",
+      "scientificName": "Heleia squamifrons"
+    },
+    {
+      "id": "birdnet-v3:BN04486",
+      "scientificName": "Heleia goodfellowi"
+    },
+    {
+      "id": "birdnet-v3:BN04490",
+      "scientificName": "Heleia squamiceps"
+    },
+    {
+      "id": "birdnet-v3:BN04493",
+      "scientificName": "Heleia wallacei"
+    },
+    {
+      "id": "birdnet-v3:BN04485",
+      "scientificName": "Heleia dohertyi"
+    },
+    {
+      "id": "birdnet-v3:BN04492",
+      "scientificName": "Heleia superciliaris"
+    },
+    {
+      "id": "birdnet-v3:BN08986",
+      "scientificName": "Rukia ruki"
+    },
+    {
+      "id": "avilist:28a814f4",
+      "scientificName": "Zosterops semiflavus"
+    },
+    {
+      "id": "birdnet-v3:BN10953",
+      "scientificName": "Zosterops kaffensis"
+    },
+    {
+      "id": "birdnet-v3:BN10954",
+      "scientificName": "Zosterops kasaicus"
+    },
+    {
+      "id": "birdnet-v3:BN10949",
+      "scientificName": "Zosterops hypolais"
+    },
+    {
+      "id": "birdnet-v3:BN10931",
+      "scientificName": "Zosterops emiliae"
+    },
+    {
+      "id": "birdnet-v3:BN10929",
+      "scientificName": "Zosterops conspicillatus"
+    },
+    {
+      "id": "avilist:93d88f0a",
+      "scientificName": "Zosterops albogularis"
+    },
+    {
+      "id": "birdnet-v3:BN10990",
+      "scientificName": "Zosterops paruhbesar"
+    },
+    {
+      "id": "birdnet-v3:BN10993",
+      "scientificName": "Zosterops rendovae"
+    },
+    {
+      "id": "birdnet-v3:BN10959",
+      "scientificName": "Zosterops lacertosus"
+    },
+    {
+      "id": "birdnet-v3:BN11009",
+      "scientificName": "Zosterops superciliosus"
+    },
+    {
+      "id": "avilist:70452ab9",
+      "scientificName": "Zosterops strenuus"
+    },
+    {
+      "id": "birdnet-v3:BN03381",
+      "scientificName": "Dumetia atriceps"
+    },
+    {
+      "id": "birdnet-v3:BN06069",
+      "scientificName": "Mixornis kelleyi"
+    },
+    {
+      "id": "birdnet-v3:BN06067",
+      "scientificName": "Mixornis flavicollis"
+    },
+    {
+      "id": "birdnet-v3:BN06070",
+      "scientificName": "Mixornis prillwitzi"
+    },
+    {
+      "id": "birdnet-v3:BN06071",
+      "scientificName": "Mixornis woodi"
+    },
+    {
+      "id": "birdnet-v3:BN06066",
+      "scientificName": "Mixornis bornensis"
+    },
+    {
+      "id": "birdnet-v3:BN06068",
+      "scientificName": "Mixornis gularis"
+    },
+    {
+      "id": "birdnet-v3:BN02929",
+      "scientificName": "Cyanoderma chrysaeum"
+    },
+    {
+      "id": "birdnet-v3:BN02931",
+      "scientificName": "Cyanoderma melanothorax"
+    },
+    {
+      "id": "birdnet-v3:BN02928",
+      "scientificName": "Cyanoderma bicolor"
+    },
+    {
+      "id": "birdnet-v3:BN02930",
+      "scientificName": "Cyanoderma erythropterum"
+    },
+    {
+      "id": "birdnet-v3:BN02934",
+      "scientificName": "Cyanoderma rufifrons"
+    },
+    {
+      "id": "birdnet-v3:BN02932",
+      "scientificName": "Cyanoderma pyrrhops"
+    },
+    {
+      "id": "birdnet-v3:BN02933",
+      "scientificName": "Cyanoderma ruficeps"
+    },
+    {
+      "id": "birdnet-v3:BN03611",
+      "scientificName": "Erythrogenys hypoleucos"
+    },
+    {
+      "id": "birdnet-v3:BN03614",
+      "scientificName": "Erythrogenys swinhoei"
+    },
+    {
+      "id": "birdnet-v3:BN03608",
+      "scientificName": "Erythrogenys erythrocnemis"
+    },
+    {
+      "id": "birdnet-v3:BN03613",
+      "scientificName": "Erythrogenys mcclellandi"
+    },
+    {
+      "id": "birdnet-v3:BN03610",
+      "scientificName": "Erythrogenys gravivox"
+    },
+    {
+      "id": "birdnet-v3:BN03612",
+      "scientificName": "Erythrogenys imberbis"
+    },
+    {
+      "id": "birdnet-v3:BN03609",
+      "scientificName": "Erythrogenys erythrogenys"
+    },
+    {
+      "id": "birdnet-v3:BN09524",
+      "scientificName": "Stachyris humei"
+    },
+    {
+      "id": "birdnet-v3:BN09532",
+      "scientificName": "Stachyris roberti"
+    },
+    {
+      "id": "birdnet-v3:BN10410",
+      "scientificName": "Turdinus macrodactylus"
+    },
+    {
+      "id": "birdnet-v3:BN10411",
+      "scientificName": "Turdinus marmoratus"
+    },
+    {
+      "id": "birdnet-v3:BN10409",
+      "scientificName": "Turdinus atrigularis"
+    },
+    {
+      "id": "birdnet-v3:BN09111",
+      "scientificName": "Schoeniparus rufogularis"
+    },
+    {
+      "id": "birdnet-v3:BN09106",
+      "scientificName": "Schoeniparus brunneus"
+    },
+    {
+      "id": "birdnet-v3:BN09109",
+      "scientificName": "Schoeniparus dubius"
+    },
+    {
+      "id": "birdnet-v3:BN09108",
+      "scientificName": "Schoeniparus cinereus"
+    },
+    {
+      "id": "birdnet-v3:BN09112",
+      "scientificName": "Schoeniparus variegaticeps"
+    },
+    {
+      "id": "birdnet-v3:BN09110",
+      "scientificName": "Schoeniparus klossi"
+    },
+    {
+      "id": "birdnet-v3:BN09107",
+      "scientificName": "Schoeniparus castaneceps"
+    },
+    {
+      "id": "birdnet-v3:BN07233",
+      "scientificName": "Pellorneum capistratoides"
+    },
+    {
+      "id": "birdnet-v3:BN07239",
+      "scientificName": "Pellorneum nigrocapitatum"
+    },
+    {
+      "id": "birdnet-v3:BN07236",
+      "scientificName": "Pellorneum cinereiceps"
+    },
+    {
+      "id": "birdnet-v3:BN07231",
+      "scientificName": "Pellorneum bicolor"
+    },
+    {
+      "id": "birdnet-v3:BN07242",
+      "scientificName": "Pellorneum rostratum"
+    },
+    {
+      "id": "birdnet-v3:BN07235",
+      "scientificName": "Pellorneum celebense"
+    },
+    {
+      "id": "birdnet-v3:BN04900",
+      "scientificName": "Illadopsis distans"
+    },
+    {
+      "id": "birdnet-v3:BN04906",
+      "scientificName": "Illadopsis turdina"
+    },
+    {
+      "id": "birdnet-v3:BN06456",
+      "scientificName": "Napothera malacoptila"
+    },
+    {
+      "id": "birdnet-v3:BN06458",
+      "scientificName": "Napothera pasquieri"
+    },
+    {
+      "id": "birdnet-v3:BN06457",
+      "scientificName": "Napothera naungmungensis"
+    },
+    {
+      "id": "birdnet-v3:BN06453",
+      "scientificName": "Napothera albostriata"
+    },
+    {
+      "id": "birdnet-v3:BN06454",
+      "scientificName": "Napothera danjoui"
+    },
+    {
+      "id": "birdnet-v3:BN04412",
+      "scientificName": "Gypsophila rufipectus"
+    },
+    {
+      "id": "birdnet-v3:BN04410",
+      "scientificName": "Gypsophila crassa"
+    },
+    {
+      "id": "birdnet-v3:BN04408",
+      "scientificName": "Gypsophila brevicaudata"
+    },
+    {
+      "id": "birdnet-v3:BN04411",
+      "scientificName": "Gypsophila crispifrons"
+    },
+    {
+      "id": "birdnet-v3:BN04407",
+      "scientificName": "Gypsophila annamensis"
+    },
+    {
+      "id": "birdnet-v3:BN04409",
+      "scientificName": "Gypsophila calcicola"
+    },
+    {
+      "id": "birdnet-v3:BN04335",
+      "scientificName": "Grammatoptila striata"
+    },
+    {
+      "id": "birdnet-v3:BN05106",
+      "scientificName": "Laniellus albonotatus"
+    },
+    {
+      "id": "birdnet-v3:BN05107",
+      "scientificName": "Laniellus langbianis"
+    },
+    {
+      "id": "birdnet-v3:BN06104",
+      "scientificName": "Montecincla cachinnans"
+    },
+    {
+      "id": "birdnet-v3:BN06106",
+      "scientificName": "Montecincla jerdoni"
+    },
+    {
+      "id": "birdnet-v3:BN06105",
+      "scientificName": "Montecincla fairbanki"
+    },
+    {
+      "id": "birdnet-v3:BN06107",
+      "scientificName": "Montecincla meridionalis"
+    },
+    {
+      "id": "birdnet-v3:BN00095",
+      "scientificName": "Actinodura cyanouroptera"
+    },
+    {
+      "id": "birdnet-v3:BN05199",
+      "scientificName": "Leioptila annectens"
+    },
+    {
+      "id": "birdnet-v3:BN00856",
+      "scientificName": "Argya malcolmi"
+    },
+    {
+      "id": "birdnet-v3:BN00850",
+      "scientificName": "Argya cinereifrons"
+    },
+    {
+      "id": "birdnet-v3:BN00861",
+      "scientificName": "Argya subrufa"
+    },
+    {
+      "id": "birdnet-v3:BN00858",
+      "scientificName": "Argya rufescens"
+    },
+    {
+      "id": "birdnet-v3:BN00846",
+      "scientificName": "Argya affinis"
+    },
+    {
+      "id": "birdnet-v3:BN00860",
+      "scientificName": "Argya striata"
+    },
+    {
+      "id": "birdnet-v3:BN00857",
+      "scientificName": "Argya rubiginosa"
+    },
+    {
+      "id": "birdnet-v3:BN00848",
+      "scientificName": "Argya aylmeri"
+    },
+    {
+      "id": "birdnet-v3:BN00847",
+      "scientificName": "Argya altirostris"
+    },
+    {
+      "id": "birdnet-v3:BN00849",
+      "scientificName": "Argya caudata"
+    },
+    {
+      "id": "birdnet-v3:BN00854",
+      "scientificName": "Argya huttoni"
+    },
+    {
+      "id": "birdnet-v3:BN00853",
+      "scientificName": "Argya gularis"
+    },
+    {
+      "id": "birdnet-v3:BN00851",
+      "scientificName": "Argya earlei"
+    },
+    {
+      "id": "birdnet-v3:BN00859",
+      "scientificName": "Argya squamiceps"
+    },
+    {
+      "id": "birdnet-v3:BN00852",
+      "scientificName": "Argya fulva"
+    },
+    {
+      "id": "birdnet-v3:BN10412",
+      "scientificName": "Turdoides atripennis"
+    },
+    {
+      "id": "birdnet-v3:BN10415",
+      "scientificName": "Turdoides gilberti"
+    },
+    {
+      "id": "birdnet-v3:BN10414",
+      "scientificName": "Turdoides chapini"
+    },
+    {
+      "id": "birdnet-v3:BN04073",
+      "scientificName": "Garrulax bicolor"
+    },
+    {
+      "id": "birdnet-v3:BN04076",
+      "scientificName": "Garrulax ferrarius"
+    },
+    {
+      "id": "birdnet-v3:BN04835",
+      "scientificName": "Ianthocincla sukatschewi"
+    },
+    {
+      "id": "birdnet-v3:BN04829",
+      "scientificName": "Ianthocincla cineracea"
+    },
+    {
+      "id": "birdnet-v3:BN04830",
+      "scientificName": "Ianthocincla konkakinhensis"
+    },
+    {
+      "id": "birdnet-v3:BN04834",
+      "scientificName": "Ianthocincla rufogularis"
+    },
+    {
+      "id": "birdnet-v3:BN04832",
+      "scientificName": "Ianthocincla maxima"
+    },
+    {
+      "id": "birdnet-v3:BN04833",
+      "scientificName": "Ianthocincla ocellata"
+    },
+    {
+      "id": "birdnet-v3:BN04828",
+      "scientificName": "Ianthocincla bieti"
+    },
+    {
+      "id": "birdnet-v3:BN08471",
+      "scientificName": "Pterorhinus delesserti"
+    },
+    {
+      "id": "birdnet-v3:BN08473",
+      "scientificName": "Pterorhinus gularis"
+    },
+    {
+      "id": "birdnet-v3:BN08485",
+      "scientificName": "Pterorhinus vassali"
+    },
+    {
+      "id": "birdnet-v3:BN08472",
+      "scientificName": "Pterorhinus galbanus"
+    },
+    {
+      "id": "birdnet-v3:BN08469",
+      "scientificName": "Pterorhinus courtoisi"
+    },
+    {
+      "id": "birdnet-v3:BN08476",
+      "scientificName": "Pterorhinus mitratus"
+    },
+    {
+      "id": "birdnet-v3:BN08484",
+      "scientificName": "Pterorhinus treacheri"
+    },
+    {
+      "id": "birdnet-v3:BN08482",
+      "scientificName": "Pterorhinus ruficollis"
+    },
+    {
+      "id": "birdnet-v3:BN08477",
+      "scientificName": "Pterorhinus nuchalis"
+    },
+    {
+      "id": "birdnet-v3:BN08468",
+      "scientificName": "Pterorhinus chinensis"
+    },
+    {
+      "id": "birdnet-v3:BN08479",
+      "scientificName": "Pterorhinus perspicillatus"
+    },
+    {
+      "id": "birdnet-v3:BN08470",
+      "scientificName": "Pterorhinus davidi"
+    },
+    {
+      "id": "birdnet-v3:BN08478",
+      "scientificName": "Pterorhinus pectoralis"
+    },
+    {
+      "id": "birdnet-v3:BN08475",
+      "scientificName": "Pterorhinus lanceolatus"
+    },
+    {
+      "id": "birdnet-v3:BN08486",
+      "scientificName": "Pterorhinus waddelli"
+    },
+    {
+      "id": "birdnet-v3:BN08474",
+      "scientificName": "Pterorhinus koslowi"
+    },
+    {
+      "id": "birdnet-v3:BN08481",
+      "scientificName": "Pterorhinus ruficeps"
+    },
+    {
+      "id": "birdnet-v3:BN08465",
+      "scientificName": "Pterorhinus albogularis"
+    },
+    {
+      "id": "birdnet-v3:BN08467",
+      "scientificName": "Pterorhinus caerulatus"
+    },
+    {
+      "id": "birdnet-v3:BN08480",
+      "scientificName": "Pterorhinus poecilorhynchus"
+    },
+    {
+      "id": "birdnet-v3:BN08466",
+      "scientificName": "Pterorhinus berthemyi"
+    },
+    {
+      "id": "birdnet-v3:BN08541",
+      "scientificName": "Ptiliogonys caudatus"
+    },
+    {
+      "id": "birdnet-v3:BN08542",
+      "scientificName": "Ptiliogonys cinereus"
+    },
+    {
+      "id": "avilist:511f5af7",
+      "scientificName": "Chaetoptila angustipluma"
+    },
+    {
+      "id": "avilist:d4d46be5",
+      "scientificName": "Moho braccatus"
+    },
+    {
+      "id": "avilist:a9d4b4fa",
+      "scientificName": "Moho apicalis"
+    },
+    {
+      "id": "avilist:708dc3b5",
+      "scientificName": "Moho bishopi"
+    },
+    {
+      "id": "avilist:07958fe0",
+      "scientificName": "Moho nobilis"
+    },
+    {
+      "id": "birdnet-v3:BN02609",
+      "scientificName": "Corthylio calendula"
+    },
+    {
+      "id": "birdnet-v3:BN09000",
+      "scientificName": "Salpornis spilonota"
+    },
+    {
+      "id": "birdnet-v3:BN08046",
+      "scientificName": "Polioptila maior"
+    },
+    {
+      "id": "birdnet-v3:BN08038",
+      "scientificName": "Polioptila bilineata"
+    },
+    {
+      "id": "birdnet-v3:BN02317",
+      "scientificName": "Cistothorus paludicola"
+    },
+    {
+      "id": "birdnet-v3:BN02320",
+      "scientificName": "Cistothorus stellaris"
+    },
+    {
+      "id": "birdnet-v3:BN10364",
+      "scientificName": "Troglodytes mesoleucus"
+    },
+    {
+      "id": "birdnet-v3:BN10367",
+      "scientificName": "Troglodytes musicus"
+    },
+    {
+      "id": "birdnet-v3:BN10362",
+      "scientificName": "Troglodytes grenadensis"
+    },
+    {
+      "id": "birdnet-v3:BN10363",
+      "scientificName": "Troglodytes martinicensis"
+    },
+    {
+      "id": "birdnet-v3:BN10359",
+      "scientificName": "Troglodytes beani"
+    },
+    {
+      "id": "birdnet-v3:BN07452",
+      "scientificName": "Pheugopedius schulenbergi"
+    },
+    {
+      "id": "birdnet-v3:BN01561",
+      "scientificName": "Cantorchilus zeledoni"
+    },
+    {
+      "id": "birdnet-v3:BN01550",
+      "scientificName": "Cantorchilus elutus"
+    },
+    {
+      "id": "birdnet-v3:BN03027",
+      "scientificName": "Cyphorhinus dichrous"
+    },
+    {
+      "id": "birdnet-v3:BN01282",
+      "scientificName": "Buphagus erythroryncha"
+    },
+    {
+      "id": "birdnet-v3:BN08780",
+      "scientificName": "Ramphocinclus sanctaeluciae"
+    },
+    {
+      "id": "birdnet-v3:BN04258",
+      "scientificName": "Goodfellowia miranda"
+    },
+    {
+      "id": "birdnet-v3:BN04268",
+      "scientificName": "Gracula venerata"
+    },
+    {
+      "id": "avilist:21d04f26",
+      "scientificName": "Aplonis fusca"
+    },
+    {
+      "id": "birdnet-v3:BN00710",
+      "scientificName": "Aplonis santovestris"
+    },
+    {
+      "id": "avilist:98c34b37",
+      "scientificName": "Aplonis mavornata"
+    },
+    {
+      "id": "avilist:0a341459",
+      "scientificName": "Aplonis corvina"
+    },
+    {
+      "id": "birdnet-v3:BN04271",
+      "scientificName": "Gracupica jalla"
+    },
+    {
+      "id": "birdnet-v3:BN04270",
+      "scientificName": "Gracupica floweri"
+    },
+    {
+      "id": "avilist:c66353e1",
+      "scientificName": "Necropsar rodericanus"
+    },
+    {
+      "id": "avilist:2af0bd16",
+      "scientificName": "Fregilupus varius"
+    },
+    {
+      "id": "birdnet-v3:BN06652",
+      "scientificName": "Notopholia corusca"
+    },
+    {
+      "id": "avilist:2641f161",
+      "scientificName": "Myadestes myadestinus"
+    },
+    {
+      "id": "avilist:09cc6aea",
+      "scientificName": "Myadestes woahensis"
+    },
+    {
+      "id": "avilist:a183d8c2",
+      "scientificName": "Zoothera terrestris"
+    },
+    {
+      "id": "birdnet-v3:BN10898",
+      "scientificName": "Zoothera griseiceps"
+    },
+    {
+      "id": "birdnet-v3:BN10900",
+      "scientificName": "Zoothera heinrichi"
+    },
+    {
+      "id": "birdnet-v3:BN10903",
+      "scientificName": "Zoothera machiki"
+    },
+    {
+      "id": "birdnet-v3:BN10893",
+      "scientificName": "Zoothera atrigena"
+    },
+    {
+      "id": "birdnet-v3:BN01692",
+      "scientificName": "Catharus maculatus"
+    },
+    {
+      "id": "birdnet-v3:BN04123",
+      "scientificName": "Geokichla oberlaenderi"
+    },
+    {
+      "id": "birdnet-v3:BN04121",
+      "scientificName": "Geokichla leucolaema"
+    },
+    {
+      "id": "birdnet-v3:BN04115",
+      "scientificName": "Geokichla dumasi"
+    },
+    {
+      "id": "birdnet-v3:BN04120",
+      "scientificName": "Geokichla joiceyi"
+    },
+    {
+      "id": "birdnet-v3:BN10521",
+      "scientificName": "Turdus simensis"
+    },
+    {
+      "id": "birdnet-v3:BN10477",
+      "scientificName": "Turdus litsitsirupa"
+    },
+    {
+      "id": "birdnet-v3:BN10493",
+      "scientificName": "Turdus niveiceps"
+    },
+    {
+      "id": "birdnet-v3:BN10486",
+      "scientificName": "Turdus mindorensis"
+    },
+    {
+      "id": "birdnet-v3:BN10527",
+      "scientificName": "Turdus thomassoni"
+    },
+    {
+      "id": "birdnet-v3:BN10492",
+      "scientificName": "Turdus nigrorum"
+    },
+    {
+      "id": "birdnet-v3:BN10451",
+      "scientificName": "Turdus erythropleurus"
+    },
+    {
+      "id": "birdnet-v3:BN10519",
+      "scientificName": "Turdus schlegelii"
+    },
+    {
+      "id": "birdnet-v3:BN10469",
+      "scientificName": "Turdus javanicus"
+    },
+    {
+      "id": "birdnet-v3:BN10448",
+      "scientificName": "Turdus deningeri"
+    },
+    {
+      "id": "birdnet-v3:BN10501",
+      "scientificName": "Turdus papuensis"
+    },
+    {
+      "id": "birdnet-v3:BN10462",
+      "scientificName": "Turdus heinrothi"
+    },
+    {
+      "id": "birdnet-v3:BN10441",
+      "scientificName": "Turdus bougainvillei"
+    },
+    {
+      "id": "birdnet-v3:BN10471",
+      "scientificName": "Turdus kulambangrae"
+    },
+    {
+      "id": "birdnet-v3:BN10531",
+      "scientificName": "Turdus vanikorensis"
+    },
+    {
+      "id": "birdnet-v3:BN10508",
+      "scientificName": "Turdus pritzbueri"
+    },
+    {
+      "id": "birdnet-v3:BN10533",
+      "scientificName": "Turdus xanthopus"
+    },
+    {
+      "id": "birdnet-v3:BN10517",
+      "scientificName": "Turdus samoensis"
+    },
+    {
+      "id": "birdnet-v3:BN10512",
+      "scientificName": "Turdus ruficeps"
+    },
+    {
+      "id": "avilist:25d8b98b",
+      "scientificName": "Turdus ravidus"
+    },
+    {
+      "id": "birdnet-v3:BN10450",
+      "scientificName": "Turdus eremita"
+    },
+    {
+      "id": "birdnet-v3:BN10436",
+      "scientificName": "Turdus arthuri"
+    },
+    {
+      "id": "birdnet-v3:BN10503",
+      "scientificName": "Turdus phaeopygus"
+    },
+    {
+      "id": "birdnet-v3:BN10561",
+      "scientificName": "Tychaedon signata"
+    },
+    {
+      "id": "birdnet-v3:BN10559",
+      "scientificName": "Tychaedon leucosticta"
+    },
+    {
+      "id": "birdnet-v3:BN10557",
+      "scientificName": "Tychaedon barbata"
+    },
+    {
+      "id": "birdnet-v3:BN10560",
+      "scientificName": "Tychaedon quadrivirgata"
+    },
+    {
+      "id": "birdnet-v3:BN01790",
+      "scientificName": "Cercotrichas galactotes"
+    },
+    {
+      "id": "birdnet-v3:BN01793",
+      "scientificName": "Cercotrichas paena"
+    },
+    {
+      "id": "birdnet-v3:BN01791",
+      "scientificName": "Cercotrichas hartlaubi"
+    },
+    {
+      "id": "birdnet-v3:BN01792",
+      "scientificName": "Cercotrichas leucophrys"
+    },
+    {
+      "id": "birdnet-v3:BN02547",
+      "scientificName": "Copsychus fulicatus"
+    },
+    {
+      "id": "birdnet-v3:BN02555",
+      "scientificName": "Copsychus pyrropygus"
+    },
+    {
+      "id": "birdnet-v3:BN02559",
+      "scientificName": "Copsychus superciliaris"
+    },
+    {
+      "id": "birdnet-v3:BN02554",
+      "scientificName": "Copsychus omissus"
+    },
+    {
+      "id": "birdnet-v3:BN02545",
+      "scientificName": "Copsychus barbouri"
+    },
+    {
+      "id": "birdnet-v3:BN02553",
+      "scientificName": "Copsychus nigricauda"
+    },
+    {
+      "id": "birdnet-v3:BN02548",
+      "scientificName": "Copsychus leggei"
+    },
+    {
+      "id": "birdnet-v3:BN00234",
+      "scientificName": "Agricola infuscatus"
+    },
+    {
+      "id": "birdnet-v3:BN00235",
+      "scientificName": "Agricola pallidus"
+    },
+    {
+      "id": "birdnet-v3:BN05741",
+      "scientificName": "Melaenornis fischeri"
+    },
+    {
+      "id": "birdnet-v3:BN05739",
+      "scientificName": "Melaenornis chocolatinus"
+    },
+    {
+      "id": "birdnet-v3:BN05738",
+      "scientificName": "Melaenornis brunneus"
+    },
+    {
+      "id": "birdnet-v3:BN06152",
+      "scientificName": "Muscicapa dauurica"
+    },
+    {
+      "id": "birdnet-v3:BN09297",
+      "scientificName": "Sholicola major"
+    },
+    {
+      "id": "birdnet-v3:BN09296",
+      "scientificName": "Sholicola albiventris"
+    },
+    {
+      "id": "birdnet-v3:BN03696",
+      "scientificName": "Eumyias oscillans"
+    },
+    {
+      "id": "birdnet-v3:BN03700",
+      "scientificName": "Eumyias stresemanni"
+    },
+    {
+      "id": "birdnet-v3:BN03691",
+      "scientificName": "Eumyias additus"
+    },
+    {
+      "id": "birdnet-v3:BN03015",
+      "scientificName": "Cyornis ruckii"
+    },
+    {
+      "id": "birdnet-v3:BN02995",
+      "scientificName": "Cyornis brunneatus"
+    },
+    {
+      "id": "birdnet-v3:BN03007",
+      "scientificName": "Cyornis nicobaricus"
+    },
+    {
+      "id": "birdnet-v3:BN03023",
+      "scientificName": "Cyornis umbratilis"
+    },
+    {
+      "id": "birdnet-v3:BN02997",
+      "scientificName": "Cyornis camarinensis"
+    },
+    {
+      "id": "birdnet-v3:BN03017",
+      "scientificName": "Cyornis ruficrissa"
+    },
+    {
+      "id": "birdnet-v3:BN03016",
+      "scientificName": "Cyornis ruficauda"
+    },
+    {
+      "id": "birdnet-v3:BN03019",
+      "scientificName": "Cyornis sumatrensis"
+    },
+    {
+      "id": "birdnet-v3:BN03003",
+      "scientificName": "Cyornis kalaoensis"
+    },
+    {
+      "id": "birdnet-v3:BN03009",
+      "scientificName": "Cyornis olivaceus"
+    },
+    {
+      "id": "birdnet-v3:BN02998",
+      "scientificName": "Cyornis colonus"
+    },
+    {
+      "id": "birdnet-v3:BN03012",
+      "scientificName": "Cyornis pelingensis"
+    },
+    {
+      "id": "birdnet-v3:BN03603",
+      "scientificName": "Erithacus superbus"
+    },
+    {
+      "id": "birdnet-v3:BN09607",
+      "scientificName": "Stiphrornis pyrrholaemus"
+    },
+    {
+      "id": "birdnet-v3:BN09606",
+      "scientificName": "Stiphrornis mabirae"
+    },
+    {
+      "id": "birdnet-v3:BN01902",
+      "scientificName": "Chamaetylas fuelleborni"
+    },
+    {
+      "id": "birdnet-v3:BN09293",
+      "scientificName": "Sheppardia poensis"
+    },
+    {
+      "id": "birdnet-v3:BN05523",
+      "scientificName": "Luscinia phaenicuroides"
+    },
+    {
+      "id": "birdnet-v3:BN01438",
+      "scientificName": "Calliope pectardens"
+    },
+    {
+      "id": "birdnet-v3:BN01437",
+      "scientificName": "Calliope obscura"
+    },
+    {
+      "id": "birdnet-v3:BN01439",
+      "scientificName": "Calliope pectoralis"
+    },
+    {
+      "id": "birdnet-v3:BN06270",
+      "scientificName": "Myiomela sumatrana"
+    },
+    {
+      "id": "birdnet-v3:BN03537",
+      "scientificName": "Enicurus sinensis"
+    },
+    {
+      "id": "birdnet-v3:BN03530",
+      "scientificName": "Enicurus frontalis"
+    },
+    {
+      "id": "birdnet-v3:BN06324",
+      "scientificName": "Myophonus flavirostris"
+    },
+    {
+      "id": "birdnet-v3:BN10667",
+      "scientificName": "Vauriella goodfellowi"
+    },
+    {
+      "id": "birdnet-v3:BN10666",
+      "scientificName": "Vauriella albigularis"
+    },
+    {
+      "id": "birdnet-v3:BN10668",
+      "scientificName": "Vauriella gularis"
+    },
+    {
+      "id": "birdnet-v3:BN10669",
+      "scientificName": "Vauriella insignis"
+    },
+    {
+      "id": "birdnet-v3:BN05174",
+      "scientificName": "Larvivora brunnea"
+    },
+    {
+      "id": "birdnet-v3:BN05175",
+      "scientificName": "Larvivora cyane"
+    },
+    {
+      "id": "birdnet-v3:BN05173",
+      "scientificName": "Larvivora akahige"
+    },
+    {
+      "id": "birdnet-v3:BN05180",
+      "scientificName": "Larvivora tanensis"
+    },
+    {
+      "id": "birdnet-v3:BN05176",
+      "scientificName": "Larvivora komadori"
+    },
+    {
+      "id": "birdnet-v3:BN05177",
+      "scientificName": "Larvivora namiyei"
+    },
+    {
+      "id": "birdnet-v3:BN05178",
+      "scientificName": "Larvivora ruficeps"
+    },
+    {
+      "id": "birdnet-v3:BN01206",
+      "scientificName": "Brachypteryx cruralis"
+    },
+    {
+      "id": "birdnet-v3:BN03865",
+      "scientificName": "Ficedula owstoni"
+    },
+    {
+      "id": "birdnet-v3:BN03869",
+      "scientificName": "Ficedula ruficauda"
+    },
+    {
+      "id": "birdnet-v3:BN03861",
+      "scientificName": "Ficedula luzoniensis"
+    },
+    {
+      "id": "birdnet-v3:BN09941",
+      "scientificName": "Tarsiger albocoeruleus"
+    },
+    {
+      "id": "birdnet-v3:BN09944",
+      "scientificName": "Tarsiger formosanus"
+    },
+    {
+      "id": "birdnet-v3:BN07521",
+      "scientificName": "Phoenicurus leucocephalus"
+    },
+    {
+      "id": "birdnet-v3:BN07514",
+      "scientificName": "Phoenicurus bicolor"
+    },
+    {
+      "id": "birdnet-v3:BN06110",
+      "scientificName": "Monticola cinclorhyncha"
+    },
+    {
+      "id": "birdnet-v3:BN06334",
+      "scientificName": "Myrmecocichla arnotti"
+    },
+    {
+      "id": "birdnet-v3:BN06337",
+      "scientificName": "Myrmecocichla monticola"
+    },
+    {
+      "id": "birdnet-v3:BN06757",
+      "scientificName": "Oenanthe melanoleuca"
+    },
+    {
+      "id": "birdnet-v3:BN06767",
+      "scientificName": "Oenanthe seebohmi"
+    },
+    {
+      "id": "birdnet-v3:BN06746",
+      "scientificName": "Oenanthe frenata"
+    },
+    {
+      "id": "birdnet-v3:BN06737",
+      "scientificName": "Oenanthe albifrons"
+    },
+    {
+      "id": "birdnet-v3:BN06748",
+      "scientificName": "Oenanthe halophila"
+    },
+    {
+      "id": "birdnet-v3:BN07030",
+      "scientificName": "Pachyglossa agilis"
+    },
+    {
+      "id": "birdnet-v3:BN03202",
+      "scientificName": "Dicaeum wilhelminae"
+    },
+    {
+      "id": "birdnet-v3:BN03176",
+      "scientificName": "Dicaeum hanieli"
+    },
+    {
+      "id": "birdnet-v3:BN03194",
+      "scientificName": "Dicaeum rhodopygiale"
+    },
+    {
+      "id": "birdnet-v3:BN03164",
+      "scientificName": "Dicaeum beccarii"
+    },
+    {
+      "id": "birdnet-v3:BN03166",
+      "scientificName": "Dicaeum cambodianum"
+    },
+    {
+      "id": "birdnet-v3:BN03182",
+      "scientificName": "Dicaeum keiense"
+    },
+    {
+      "id": "birdnet-v3:BN05013",
+      "scientificName": "Kurochkinegramma hypogrammicum"
+    },
+    {
+      "id": "birdnet-v3:BN00580",
+      "scientificName": "Anthreptes tephrolaemus"
+    },
+    {
+      "id": "birdnet-v3:BN05245",
+      "scientificName": "Leptocoma aspasia"
+    },
+    {
+      "id": "birdnet-v3:BN02216",
+      "scientificName": "Cinnyris prigoginei"
+    },
+    {
+      "id": "birdnet-v3:BN02220",
+      "scientificName": "Cinnyris rockefelleri"
+    },
+    {
+      "id": "birdnet-v3:BN02206",
+      "scientificName": "Cinnyris melanogastrus"
+    },
+    {
+      "id": "birdnet-v3:BN02212",
+      "scientificName": "Cinnyris ornatus"
+    },
+    {
+      "id": "birdnet-v3:BN02197",
+      "scientificName": "Cinnyris infrenatus"
+    },
+    {
+      "id": "birdnet-v3:BN02189",
+      "scientificName": "Cinnyris frenatus"
+    },
+    {
+      "id": "birdnet-v3:BN02173",
+      "scientificName": "Cinnyris aurora"
+    },
+    {
+      "id": "birdnet-v3:BN02181",
+      "scientificName": "Cinnyris clementiae"
+    },
+    {
+      "id": "birdnet-v3:BN02228",
+      "scientificName": "Cinnyris teysmanni"
+    },
+    {
+      "id": "birdnet-v3:BN02196",
+      "scientificName": "Cinnyris idenburgi"
+    },
+    {
+      "id": "birdnet-v3:BN02021",
+      "scientificName": "Chloropsis media"
+    },
+    {
+      "id": "birdnet-v3:BN07870",
+      "scientificName": "Ploceus batesi"
+    },
+    {
+      "id": "birdnet-v3:BN07884",
+      "scientificName": "Ploceus flavipes"
+    },
+    {
+      "id": "birdnet-v3:BN07866",
+      "scientificName": "Ploceus aureonucha"
+    },
+    {
+      "id": "birdnet-v3:BN03755",
+      "scientificName": "Euplectes laticauda"
+    },
+    {
+      "id": "birdnet-v3:BN00435",
+      "scientificName": "Anaplectes jubaensis"
+    },
+    {
+      "id": "birdnet-v3:BN10699",
+      "scientificName": "Vidua nigeriae"
+    },
+    {
+      "id": "birdnet-v3:BN03506",
+      "scientificName": "Emblema modestum"
+    },
+    {
+      "id": "birdnet-v3:BN03508",
+      "scientificName": "Emblema ruficauda"
+    },
+    {
+      "id": "birdnet-v3:BN09401",
+      "scientificName": "Spermestes griseicapilla"
+    },
+    {
+      "id": "birdnet-v3:BN09399",
+      "scientificName": "Spermestes cucullata"
+    },
+    {
+      "id": "birdnet-v3:BN09400",
+      "scientificName": "Spermestes fringilloides"
+    },
+    {
+      "id": "birdnet-v3:BN09398",
+      "scientificName": "Spermestes bicolor"
+    },
+    {
+      "id": "birdnet-v3:BN05226",
+      "scientificName": "Lepidopygia nana"
+    },
+    {
+      "id": "birdnet-v3:BN07068",
+      "scientificName": "Padda oryzivora"
+    },
+    {
+      "id": "birdnet-v3:BN07067",
+      "scientificName": "Padda fuscata"
+    },
+    {
+      "id": "birdnet-v3:BN05413",
+      "scientificName": "Lonchura monticola"
+    },
+    {
+      "id": "birdnet-v3:BN05415",
+      "scientificName": "Lonchura nigerrima"
+    },
+    {
+      "id": "birdnet-v3:BN01961",
+      "scientificName": "Chloebia gouldiae"
+    },
+    {
+      "id": "birdnet-v3:BN03648",
+      "scientificName": "Estrilda nigriloris"
+    },
+    {
+      "id": "birdnet-v3:BN04340",
+      "scientificName": "Granatina granatina"
+    },
+    {
+      "id": "birdnet-v3:BN04341",
+      "scientificName": "Granatina ianthinogaster"
+    },
+    {
+      "id": "birdnet-v3:BN08654",
+      "scientificName": "Pyrgilauda theresae"
+    },
+    {
+      "id": "birdnet-v3:BN07153",
+      "scientificName": "Passer cordofanicus"
+    },
+    {
+      "id": "birdnet-v3:BN07177",
+      "scientificName": "Passer zarudnyi"
+    },
+    {
+      "id": "birdnet-v3:BN06133",
+      "scientificName": "Motacilla bocagii"
+    },
+    {
+      "id": "birdnet-v3:BN00618",
+      "scientificName": "Anthus ruficollis"
+    },
+    {
+      "id": "birdnet-v3:BN00602",
+      "scientificName": "Anthus japonicus"
+    },
+    {
+      "id": "birdnet-v3:BN02001",
+      "scientificName": "Chlorophonia cyanocephala"
+    },
+    {
+      "id": "birdnet-v3:BN02003",
+      "scientificName": "Chlorophonia flavifrons"
+    },
+    {
+      "id": "birdnet-v3:BN02005",
+      "scientificName": "Chlorophonia musica"
+    },
+    {
+      "id": "birdnet-v3:BN02008",
+      "scientificName": "Chlorophonia sclateri"
+    },
+    {
+      "id": "avilist:0dd36226",
+      "scientificName": "Carpodacus ferreorostris"
+    },
+    {
+      "id": "birdnet-v3:BN01647",
+      "scientificName": "Carpodacus sillemi"
+    },
+    {
+      "id": "avilist:9ac8aea8",
+      "scientificName": "Melamprosops phaeosoma"
+    },
+    {
+      "id": "avilist:3db0103d",
+      "scientificName": "Paroreomyza flammea"
+    },
+    {
+      "id": "avilist:16af165d",
+      "scientificName": "Chloridops kona"
+    },
+    {
+      "id": "avilist:58f9a637",
+      "scientificName": "Rhodacanthis palmeri"
+    },
+    {
+      "id": "avilist:8c3d2dca",
+      "scientificName": "Rhodacanthis flaviceps"
+    },
+    {
+      "id": "avilist:e35f8b09",
+      "scientificName": "Ciridops anna"
+    },
+    {
+      "id": "avilist:b50ddca2",
+      "scientificName": "Akialoa stejnegeri"
+    },
+    {
+      "id": "avilist:f131e02a",
+      "scientificName": "Akialoa ellisiana"
+    },
+    {
+      "id": "avilist:67049c23",
+      "scientificName": "Akialoa obscura"
+    },
+    {
+      "id": "avilist:ca33f844",
+      "scientificName": "Akialoa lanaiensis"
+    },
+    {
+      "id": "avilist:4309f417",
+      "scientificName": "Himatione fraithii"
+    },
+    {
+      "id": "birdnet-v3:BN03284",
+      "scientificName": "Drepanis coccinea"
+    },
+    {
+      "id": "avilist:d7d0a5f1",
+      "scientificName": "Drepanis pacifica"
+    },
+    {
+      "id": "avilist:97746c36",
+      "scientificName": "Drepanis funerea"
+    },
+    {
+      "id": "avilist:ac2edfee",
+      "scientificName": "Psittirostra psittacea"
+    },
+    {
+      "id": "avilist:544b1381",
+      "scientificName": "Dysmorodrepanis munroi"
+    },
+    {
+      "id": "avilist:2019d40e",
+      "scientificName": "Hemignathus lucidus"
+    },
+    {
+      "id": "avilist:fbe9861a",
+      "scientificName": "Hemignathus hanapepe"
+    },
+    {
+      "id": "avilist:43f17fd6",
+      "scientificName": "Hemignathus affinis"
+    },
+    {
+      "id": "avilist:8fe1196f",
+      "scientificName": "Viridonia sagittirostris"
+    },
+    {
+      "id": "avilist:af12bc31",
+      "scientificName": "Loxops wolstenholmei"
+    },
+    {
+      "id": "avilist:8904189e",
+      "scientificName": "Loxops ochraceus"
+    },
+    {
+      "id": "birdnet-v3:BN02795",
+      "scientificName": "Crithagra striatipectus"
+    },
+    {
+      "id": "birdnet-v3:BN05347",
+      "scientificName": "Linaria johannis"
+    },
+    {
+      "id": "birdnet-v3:BN02085",
+      "scientificName": "Chrysocorythus mindanensis"
+    },
+    {
+      "id": "birdnet-v3:BN03957",
+      "scientificName": "Fringillaria capensis"
+    },
+    {
+      "id": "birdnet-v3:BN00886",
+      "scientificName": "Arremon nigriceps"
+    },
+    {
+      "id": "birdnet-v3:BN00877",
+      "scientificName": "Arremon axillaris"
+    },
+    {
+      "id": "birdnet-v3:BN05897",
+      "scientificName": "Melozone occipitalis"
+    },
+    {
+      "id": "avilist:52a41b18",
+      "scientificName": "Pipilo naufragus"
+    },
+    {
+      "id": "birdnet-v3:BN01024",
+      "scientificName": "Atlapetes terborghi"
+    },
+    {
+      "id": "birdnet-v3:BN01023",
+      "scientificName": "Atlapetes taczanowskii"
+    },
+    {
+      "id": "birdnet-v3:BN05212",
+      "scientificName": "Leistes militaris"
+    },
+    {
+      "id": "birdnet-v3:BN05213",
+      "scientificName": "Leistes superciliaris"
+    },
+    {
+      "id": "birdnet-v3:BN05209",
+      "scientificName": "Leistes bellicosus"
+    },
+    {
+      "id": "birdnet-v3:BN05210",
+      "scientificName": "Leistes defilippii"
+    },
+    {
+      "id": "birdnet-v3:BN05211",
+      "scientificName": "Leistes loyca"
+    },
+    {
+      "id": "birdnet-v3:BN01671",
+      "scientificName": "Cassiculus melanicterus"
+    },
+    {
+      "id": "birdnet-v3:BN01359",
+      "scientificName": "Cacicus latirostris"
+    },
+    {
+      "id": "birdnet-v3:BN01360",
+      "scientificName": "Cacicus oseryi"
+    },
+    {
+      "id": "birdnet-v3:BN04860",
+      "scientificName": "Icterus jamacaii"
+    },
+    {
+      "id": "birdnet-v3:BN04852",
+      "scientificName": "Icterus croconotus"
+    },
+    {
+      "id": "birdnet-v3:BN04864",
+      "scientificName": "Icterus melanopsis"
+    },
+    {
+      "id": "birdnet-v3:BN04874",
+      "scientificName": "Icterus pyrrhopterus"
+    },
+    {
+      "id": "avilist:c19704c9",
+      "scientificName": "Quiscalus palustris"
+    },
+    {
+      "id": "birdnet-v3:BN00644",
+      "scientificName": "Anumara forbesi"
+    },
+    {
+      "id": "birdnet-v3:BN06806",
+      "scientificName": "Oreopsar bolivianus"
+    },
+    {
+      "id": "birdnet-v3:BN00215",
+      "scientificName": "Agelaioides fringillarius"
+    },
+    {
+      "id": "birdnet-v3:BN06298",
+      "scientificName": "Myiothlypis basilica"
+    },
+    {
+      "id": "birdnet-v3:BN01107",
+      "scientificName": "Basileuterus delattrii"
+    },
+    {
+      "id": "birdnet-v3:BN06254",
+      "scientificName": "Myioborus cardonai"
+    },
+    {
+      "id": "birdnet-v3:BN06251",
+      "scientificName": "Myioborus albifacies"
+    },
+    {
+      "id": "birdnet-v3:BN04336",
+      "scientificName": "Granatellus paraensis"
+    },
+    {
+      "id": "birdnet-v3:BN02940",
+      "scientificName": "Cyanoloxia cyanoides"
+    },
+    {
+      "id": "birdnet-v3:BN10778",
+      "scientificName": "Xenodacnis petersi"
+    },
+    {
+      "id": "birdnet-v3:BN03247",
+      "scientificName": "Diglossa melanopis"
+    },
+    {
+      "id": "birdnet-v3:BN08104",
+      "scientificName": "Poospiza goeringi"
+    },
+    {
+      "id": "birdnet-v3:BN02359",
+      "scientificName": "Cnemoscopus chrysogaster"
+    },
+    {
+      "id": "birdnet-v3:BN05884",
+      "scientificName": "Melopyrrha taylori"
+    },
+    {
+      "id": "birdnet-v3:BN03335",
+      "scientificName": "Dubusia stictocephala"
+    },
+    {
+      "id": "birdnet-v3:BN03333",
+      "scientificName": "Dubusia carrikeri"
+    },
+    {
+      "id": "birdnet-v3:BN09888",
+      "scientificName": "Tangara brasiliensis"
+    },
+    {
+      "id": "birdnet-v3:BN09604",
+      "scientificName": "Stilpnia whitelyi"
+    }
+  ],
+  "mapping": "Exact scientific names, otherwise unambiguous existing scientific aliases; unknown bird and non-bird rows remain rejection competitors."
+}

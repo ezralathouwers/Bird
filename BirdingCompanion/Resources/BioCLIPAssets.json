@@ -1,0 +1,7 @@
+{
+  "modelURL": "https://huggingface.co/fearnt/thicket-bioclip2/resolve/4834c808a722c7204a8c90d57aa32e37963c0462/bioclip2_image.mlpackage.zip",
+  "packURL": "https://huggingface.co/Valen-Peregrine/bioclip-2-tflite/resolve/3007eade814a9124e44389c59d0d56f4839654fb/bioclip-2_mammals-birds-world_v4.fpack",
+  "modelSHA256": "11f5f34e0b533c0d8cac74772d3a9f77a894bbdb461f2300201289c4127a56b1",
+  "packSHA256": "f12ad9a5c5cca37f00fe2a19a085df8b6e60882e1b8f113bcb947d7d36d3af43",
+  "labelsSHA256": "99007cfeaf5bd5c1f6cf16615c813da9f82b2cedb557df6fe9c3009013e06902"
+}

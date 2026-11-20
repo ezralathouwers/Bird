@@ -1,0 +1,30 @@
+BioCLIP 2, Imageomics Institute, Gu et al. (2025), MIT.
+https://huggingface.co/imageomics/bioclip-2
+https://doi.org/10.57967/hf/5765
+Paper: BioCLIP 2: Emergent Properties from Scaling Hierarchical Contrastive Learning (NeurIPS 2025).
+
+Unofficial 8-bit Core ML image tower conversion by fearnt (Thicket), MIT:
+https://huggingface.co/fearnt/thicket-bioclip2/tree/4834c808a722c7204a8c90d57aa32e37963c0462
+No endorsement or association is implied. Original model license accompanies this app.
+
+Text embedding reference pack assembled by Valen-Peregrine for FaunaPulse:
+https://huggingface.co/Valen-Peregrine/bioclip-2-tflite/tree/3007eade814a9124e44389c59d0d56f4839654fb
+bioclip-2_mammals-birds-world_v4.fpack, labels and embeddings CC0 1.0
+as specified in the pack and its repository README. Based on the TreeOfLife-200M
+compilation (CC0 1.0), https://huggingface.co/datasets/imageomics/TreeOfLife-200M
+Source image licenses are separate; no training images are redistributed.
+GBIF Backbone Taxonomy, CC BY 4.0, https://doi.org/10.15468/39omei
+Catalogue of Life, CC BY 4.0, https://www.catalogueoflife.org/
+Paleobiology Database (CC BY 4.0), https://paleobiodb.org/
+Mammal Diversity Database (CC BY 4.0), https://www.mammaldiversity.org/
+The latter sources contributed to the upstream pack's metadata/filtering.
+
+Changes by this app: exact scientific-name/alias crosswalk to existing app species
+IDs; unmapped classes retained as rejection competitors; normalization, local
+cosine ranking and experimental abstention thresholds. No source common names
+are copied to the app catalog. Photo-ID crosswalk is distributed under CC BY-SA
+4.0 as an adaptation of the existing world catalog. See WorldCatalog-NOTICE.txt.
+
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
