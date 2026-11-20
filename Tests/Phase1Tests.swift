@@ -1050,3 +1050,18 @@ final class SpeciesDetailsTests: XCTestCase {
         XCTAssertNil(SpeciesDetailsCatalog.details(for: "not-a-species"))
     }
 }
+
+final class SpeciesArtworkKeyTests: XCTestCase {
+    func testNamespacedArtworkKeysDoNotChangePersistentIDs() throws {
+        let bird = try XCTUnwrap(SpeciesGuideCatalog.species(id: "birdnet-v3:BN07155"))
+        XCTAssertEqual(bird.id, "birdnet-v3:BN07155")
+        XCTAssertEqual(SpeciesMediaRole.classic.assetName(for: bird), "birdnet-v3-BN07155-primary")
+        XCTAssertEqual(SpeciesMediaRole.flight.assetName(for: bird), "birdnet-v3-BN07155-flight")
+        XCTAssertEqual(SpeciesMediaRole.classic.assetName(for: MockSpeciesRepository.kingfisher), "sample-alcedo-atthis-primary")
+    }
+    func testCurrentCatalogArtworkKeysAreUnique() {
+        let keys = SpeciesGuideCatalog.species.map(\.artworkKey)
+        XCTAssertEqual(Set(keys).count, keys.count)
+        XCTAssertTrue(keys.allSatisfy { !$0.contains(":") })
+    }
+}

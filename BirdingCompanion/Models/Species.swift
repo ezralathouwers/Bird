@@ -9,6 +9,9 @@ struct Species: Identifiable, Hashable, Sendable {
     var family: BirdFamily? = nil
     var aliases: [String] = []
 
+    // Asset filenames are separate from persistent taxonomy/observation IDs.
+    var artworkKey: String { id.replacingOccurrences(of: ":", with: "-") }
+
     var englishDisplayName: String {
         englishName.prefix(1).uppercased() + englishName.dropFirst().lowercased()
     }
@@ -44,7 +47,7 @@ enum SpeciesMediaRole: String, CaseIterable, Sendable {
     case flight = "flight"
 
     static let detailSlides: [SpeciesMediaRole] = [.dynamic, .front, .rear, .flight]
-    func assetName(for species: Species) -> String { species.id + "-" + rawValue }
+    func assetName(for species: Species) -> String { species.artworkKey + "-" + rawValue }
     var label: String {
         switch self {
         case .classic: "Klassieke illustratie"

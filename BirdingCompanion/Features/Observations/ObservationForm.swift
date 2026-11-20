@@ -102,7 +102,7 @@ struct ObservationForm: View {
     private var selectedBird: some View {
         HStack(spacing: 20) {
             Group {
-                if UIImage(named: species.id + "-primary") != nil {
+                if UIImage(named: SpeciesMediaRole.classic.assetName(for: species)) != nil {
                     PrimaryBirdImage(species: species)
                 } else {
                     VStack(spacing: 8) {

@@ -94,7 +94,7 @@ private struct SpeciesObservationMarker: View {
     var body: some View {
         Group {
             // Hook for the approved primary illustration; never reuse the habitat artwork.
-            if UIImage(named: species.id + "-primary") != nil {
+            if UIImage(named: SpeciesMediaRole.classic.assetName(for: species)) != nil {
                 PrimaryBirdImage(species: species)
             } else {
                 Image(systemName: "bird").font(.system(size: 28, weight: .light))
@@ -106,6 +106,6 @@ private struct SpeciesObservationMarker: View {
         .clipShape(Circle())
         .overlay { Circle().stroke(FieldGuideTheme.taupe, lineWidth: 1) }
         .accessibilityLabel("\(species.dutchName), waarnemingsplek")
-        .accessibilityHint(UIImage(named: species.id + "-primary") == nil ? "Primaire vogelillustratie nog niet beschikbaar" : "")
+        .accessibilityHint(UIImage(named: SpeciesMediaRole.classic.assetName(for: species)) == nil ? "Primaire vogelillustratie nog niet beschikbaar" : "")
     }
 }

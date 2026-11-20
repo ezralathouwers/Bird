@@ -180,7 +180,7 @@ struct PrimaryBirdImage: View {
         ["sample-parus-major", "sample-cyanistes-caeruleus", "sample-alcedo-atthis"].contains(species.id)
     }
     var body: some View {
-        Image(species.id + "-primary").resizable().scaledToFit()
+        Image(SpeciesMediaRole.classic.assetName(for: species)).resizable().scaledToFit()
             .scaleEffect(x: sourceFacesLeft ? -1 : 1, y: 1)
     }
 }
@@ -189,7 +189,7 @@ struct PrimaryBirdArtwork: View {
     let species: Species
     var body: some View {
         Group {
-            if UIImage(named: species.id + "-primary") != nil {
+            if UIImage(named: SpeciesMediaRole.classic.assetName(for: species)) != nil {
                 PrimaryBirdImage(species: species)
             } else {
                 VStack(spacing: 6) {
