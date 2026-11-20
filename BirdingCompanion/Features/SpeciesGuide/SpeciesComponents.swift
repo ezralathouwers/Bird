@@ -36,7 +36,6 @@ struct SpeciesFact: Identifiable {
 
 struct SpeciesFacts: View {
     let species: Species
-    @State private var showCatalogSources = false
     private var detail: SpeciesDetails? { SpeciesDetailsCatalog.details(for: species.id) }
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -46,21 +45,16 @@ struct SpeciesFacts: View {
                 VStack(alignment: .leading, spacing: 8) {
                     if let span = detail?.wingspan {
                         factRow(SpeciesFact(id: "Spanwijdte", symbol: nil, value: span.displayValue))
-                    } else {
-                        Text("Spanwijdte nog niet beschikbaar")
-                            .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
-                            .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.65))
                     }
-                    Text(detail?.bio ?? "Een gecontroleerde soortbeschrijving is nog niet beschikbaar.")
+                    if let bio = detail?.bio {
+                    Text(bio)
                         .font(FieldGuideTheme.sans(16, relativeTo: .body).weight(.light))
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.top, 6)
+                    }
                 }
             }
-            Button("Bronnen soortgegevens") { showCatalogSources = true }
-                .font(FieldGuideTheme.sans(12, relativeTo: .caption)).frame(minHeight: 44)
         }.frame(maxWidth: .infinity, alignment: .leading)
-            .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView(detail: detail) }
     }
     private func factRow(_ fact: SpeciesFact) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
@@ -196,12 +190,29 @@ struct PupilFreeEye: Shape {
 
 struct SpeciesCatalogSourcesView: View {
     var detail: SpeciesDetails? = nil
+    @State private var sourceQuery = ""
+    @State private var selectedDetail: SpeciesDetails?
+    private var shownDetail: SpeciesDetails? { detail ?? selectedDetail }
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    if let detail {
+                    if detail == nil {
+                        Text("Bronnen en licenties").font(FieldGuideTheme.sans(24, relativeTo: .title2))
+                        TextField("Zoek soort voor brongegevens", text: $sourceQuery).textFieldStyle(.roundedBorder)
+                        if !sourceQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                            ForEach(Array(SpeciesCatalogSearch.results(for: sourceQuery, in: SpeciesGuideCatalog.species).prefix(20))) { species in
+                                Button(species.dutchName) {
+                                    selectedDetail = SpeciesDetailsCatalog.details(for: species.id)
+                                    sourceQuery = ""
+                                }.frame(minHeight: 44)
+                            }
+                        }
+                    }
+                    if let detail = shownDetail {
+                        Text(SpeciesGuideCatalog.species(id: detail.speciesID)?.dutchName ?? detail.scientificName)
+                            .font(FieldGuideTheme.sans(20, relativeTo: .title3))
                         if detail.bioMethod == "wikipedia-nl-excerpt" {
                             Text("Beschrijving: kort, ongewijzigd fragment uit Nederlandstalige Wikipedia via BirdNET+ Taxonomy. Wikipedia-bijdragers, CC BY-SA 4.0. Alleen teksten met Wikipedia als bron zijn overgenomen; geen automatisch vertaalde of gegenereerde teksten uit die bron.")
                         } else if detail.bioMethod == "birdbase-habitat-diet" {
@@ -218,7 +229,6 @@ struct SpeciesCatalogSourcesView: View {
                             Link("Bron spanwijdte", destination: span.sourceURL)
                         }
                     }
-                    Text(SpeciesGuideCatalog.coverageNote)
                     Text("Leefomgevingen: Şekercioğlu en collega's, BIRDBASE v2025.1 (2025), CC BY 4.0. Primaire habitats zijn vertaald naar gedeelde landschapstypen; brede categorieën blijven breed. Automatische bronkoppelingen zijn niet individueel beoordeeld.")
                     Link("BIRDBASE en bronvermelding", destination: URL(string: "https://doi.org/10.6084/m9.figshare.27051040.v1")!)
                     Link("Licentie CC BY 4.0", destination: URL(string: "https://creativecommons.org/licenses/by/4.0/")!)
@@ -228,10 +238,13 @@ struct SpeciesCatalogSourcesView: View {
                     Link("BirdNET+ Taxonomy en broncredits", destination: URL(string: "https://birdnet.cornell.edu/taxonomy/about")!)
                     Text("Bewerkingen: selectie op soortniveau, hoofdletters aangepast, vaste app-ID’s behouden en geluidsherkenning apart gekoppeld. De afgeleide catalogus wordt gedeeld onder CC BY-SA 4.0.")
                     Link("Licentie CC BY-SA 4.0", destination: URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!)
-                    Text("De lijst bevat ook uitgestorven soorten. Eén afwijkende BirdNET-vermelding blijft apart beschikbaar om bestaande detecties en logs te behouden. Ontbrekende Nederlandse namen gebruiken voorlopig de Engelse naam. Illustraties, beschrijvingen en verspreiding worden afzonderlijk aangevuld en gecontroleerd.")
+                    Text("Fotoherkenning: BioCLIP 2, Imageomics Institute (Gu en collega's, 2025), MIT. Core ML-conversie: fearnt/Thicket. Tekstreferenties: TreeOfLife-200M en Valen-Peregrine/FaunaPulse, CC0; GBIF en Catalogue of Life, CC BY 4.0.")
+                    Link("BioCLIP 2 en licentie", destination: URL(string: "https://huggingface.co/imageomics/bioclip-2")!)
+                    Text("Verspreidingsgegevens: BirdLife International DataZone. Gebruik volgens de verleende toestemming.")
+                    Link("BirdLife DataZone", destination: URL(string: "https://datazone.birdlife.org/")!)
                 }.font(FieldGuideTheme.sans(15)).padding(20)
             }.background(FieldGuideTheme.ivory)
-                .navigationTitle("Bronnen soortenlijst").navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Info").navigationBarTitleDisplayMode(.inline)
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Sluiten") { dismiss() } } }
         }
     }

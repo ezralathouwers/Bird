@@ -155,12 +155,6 @@ struct SpeciesDistributionMap: View {
             VStack(alignment: .leading, spacing: 8) {
                 if loading { ProgressView("Verspreiding laden…") }
                 if let message { Text(message) }
-                if let source {
-                    Link("Bron: \(source.name)", destination: source.homepage)
-                    if source.access == .awaitingPermission {
-                        Link("Toegang aanvragen bij BirdLife", destination: source.requestURL)
-                    }
-                }
                 if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Lokaal beschikbare verspreidingsdata blijft beschikbaar.") }
                 if let dataset {
                     Text("Verspreidingsgebied · \(dataset.attribution) · \(dataset.version)")
@@ -188,7 +182,10 @@ struct SpeciesDistributionMap: View {
             let rect = loaded.polygons.reduce(MKMapRect.null) { $0.union($1.boundingMapRect) }
             camera = .rect(rect.insetBy(dx: -rect.width * 0.08, dy: -rect.height * 0.08))
         } catch {
-            message = (error as? RangeDataError)?.errorDescription ?? "Verspreidingsdata kon niet worden geladen."
+            switch error as? RangeDataError {
+            case .awaitingFiles?, .awaitingPermission?, .unavailable?: message = nil
+            default: message = "De kaartgegevens konden niet worden geladen."
+            }
         }
     }
 }

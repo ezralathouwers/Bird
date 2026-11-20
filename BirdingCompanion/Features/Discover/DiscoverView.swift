@@ -44,6 +44,11 @@ struct DiscoverView: View {
             }.padding(20).padding(.bottom, 24)
         }
         .background(FieldGuideTheme.ivory)
+        .overlay(alignment: .topLeading) {
+            Button { showCatalogSources = true } label: {
+                Image(systemName: "info.circle").font(.system(size: 22, weight: .light)).frame(width: 44, height: 44)
+            }.accessibilityLabel("Info").padding(.leading, 20).padding(.top, 8)
+        }
         .overlay(alignment: .topTrailing) {
             Button { showSearch.toggle() } label: {
                 Image(systemName: showSearch ? "xmark" : "magnifyingglass")
@@ -107,9 +112,6 @@ struct DiscoverView: View {
                 if let attribution = model.attribution {
                     Text(attribution).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                 }
-                Text("Recente meldingen geven geen garantie dat je een soort vandaag ziet; ongemelde soorten kunnen ook aanwezig zijn.")
-                    .font(FieldGuideTheme.sans(12, relativeTo: .caption))
-                    .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
                 Button { demo = false; location.useCurrentLocation() } label: {
                     Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44)
                 }
@@ -125,12 +127,6 @@ struct DiscoverView: View {
                 .textFieldStyle(.roundedBorder).autocorrectionDisabled()
                 .focused($searchFocused)
                 .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
-            if !catalogIsComplete {
-                Text(SpeciesGuideCatalog.coverageNote)
-                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote)).foregroundStyle(FieldGuideTheme.taupe)
-            }
-            Button("Bronnen en licenties") { showCatalogSources = true }
-                .font(FieldGuideTheme.sans(12, relativeTo: .caption)).frame(minHeight: 44)
             let results = SpeciesCatalogSearch.results(for: catalogQuery, in: catalog)
             if results.isEmpty { Text("Geen soorten gevonden.") }
             ForEach(results) { bird in

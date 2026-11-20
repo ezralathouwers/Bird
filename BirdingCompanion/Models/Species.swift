@@ -54,7 +54,7 @@ enum SpeciesMediaRole: String, CaseIterable, Sendable {
         case .flight: "Illustratie in vlucht"
         }
     }
-    var missingMessage: String { "Illustratie volgt" }
+    var missingMessage: String { "" }
 }
 
 
