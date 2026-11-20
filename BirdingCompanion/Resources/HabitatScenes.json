@@ -3,231 +3,429 @@
     "id": "rivers-streams",
     "name": "Beken en rivieren",
     "group": "Water",
-    "assetName": "KingfisherHabitat",
-    "illustrationBrief": "Heldere, rustig stromende beek met overhangende tak, begroeide oevers en een klein stukje steile zandwand."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Heldere, rustig stromende beek met overhangende tak, begroeide oevers en een klein stukje steile zandwand.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.09765625,
+      "width": 0.3333333333333333,
+      "height": 0.2265625
+    }
   },
   {
     "id": "lakes-ponds",
     "name": "Meren en plassen",
     "group": "Water",
-    "assetName": "habitat-lakes-ponds",
-    "illustrationBrief": "Open zoetwaterplas met lage oeverplanten en zachte rimpelingen; een rustige verre oever."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Open zoetwaterplas met lage oeverplanten en zachte rimpelingen; een rustige verre oever.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.09765625,
+      "width": 0.3333333333333333,
+      "height": 0.2265625
+    }
   },
   {
     "id": "reedbeds-marsh",
     "name": "Riet en moeras",
     "group": "Water",
-    "assetName": "habitat-reedbeds-marsh",
-    "illustrationBrief": "Rietkragen, lisdodden, nat gras en kleine open watervlakken; enkele lage wilgen aan de rand."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Rietkragen, lisdodden, nat gras en kleine open watervlakken; enkele lage wilgen aan de rand.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.09765625,
+      "width": 0.3333333333333333,
+      "height": 0.2265625
+    }
   },
   {
     "id": "swamp-forest",
     "name": "Moerasbos",
     "group": "Water",
-    "assetName": "habitat-swamp-forest",
-    "illustrationBrief": "Wilgen- en elzenstammen boven ondiep water, natte bodem en verspreide zegges."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Wilgen- en elzenstammen boven ondiep water, natte bodem en verspreide zegges.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.33203125,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "mangrove",
     "name": "Mangrove",
     "group": "Water",
-    "assetName": "habitat-mangrove",
-    "illustrationBrief": "Mangrovewortels in warm ondiep getijdenwater, een lage slikkige oever en compacte tropische bladeren."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Mangrovewortels in warm ondiep getijdenwater, een lage slikkige oever en compacte tropische bladeren.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.33203125,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "sandy-coast",
     "name": "Strand en duinen",
     "group": "Kust en zee",
-    "assetName": "habitat-sandy-coast",
-    "illustrationBrief": "Licht zand, lage duinen en helmgras met een smalle branding aan de horizon."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Licht zand, lage duinen en helmgras met een smalle branding aan de horizon.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.33203125,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "tidal-flat",
     "name": "Wadden en slikken",
     "group": "Kust en zee",
-    "assetName": "habitat-tidal-flat",
-    "illustrationBrief": "Slikplaten met geultjes, ondiep getijdenwater en een lage rand kweldervegetatie."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Slikplaten met geultjes, ondiep getijdenwater en een lage rand kweldervegetatie.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.576171875,
+      "width": 0.3333333333333333,
+      "height": 0.169921875
+    }
   },
   {
     "id": "rocky-coast",
     "name": "Rotskust en zeekliffen",
     "group": "Kust en zee",
-    "assetName": "habitat-rocky-coast",
-    "illustrationBrief": "Gelaagde kustrotsen, lage klifranden, enkele zilte grassen en een smalle strook zee."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Gelaagde kustrotsen, lage klifranden, enkele zilte grassen en een smalle strook zee.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.576171875,
+      "width": 0.3333333333333333,
+      "height": 0.169921875
+    }
   },
   {
     "id": "open-ocean",
     "name": "Open zee",
     "group": "Kust en zee",
-    "assetName": "habitat-open-ocean",
-    "illustrationBrief": "Weidse zee met subtiele golven en laag schuim; geen land of bomen."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Weidse zee met subtiele golven en laag schuim; geen land of bomen.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.576171875,
+      "width": 0.3333333333333333,
+      "height": 0.169921875
+    }
   },
   {
     "id": "temperate-woodland",
     "name": "Loofbos en gemengd bos",
     "group": "Bos",
-    "assetName": "habitat-temperate-woodland",
-    "illustrationBrief": "Een paar herkenbare loofboomstammen, gemengde bladerkronen, mos en rustige ondergroei; lichte open plek."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Een paar herkenbare loofboomstammen, gemengde bladerkronen, mos en rustige ondergroei; lichte open plek.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.76953125,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "conifer-forest",
     "name": "Naaldbos en taiga",
     "group": "Bos",
-    "assetName": "habitat-conifer-forest",
-    "illustrationBrief": "Sparren- en dennenstammen, een gelaagde donkere naaldkroon, mos en een sobere bosbodem."
+    "assetName": "HabitatAtlas1",
+    "illustrationBrief": "Sparren- en dennenstammen, een gelaagde donkere naaldkroon, mos en een sobere bosbodem.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.76953125,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "tropical-rainforest",
     "name": "Tropisch regenwoud",
     "group": "Bos",
-    "assetName": "habitat-tropical-rainforest",
-    "illustrationBrief": "Hoge tropische boomstammen, brede bladeren, lianen en gelaagde vochtige bosvegetatie."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Hoge tropische boomstammen, brede bladeren, lianen en gelaagde vochtige bosvegetatie.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.046875,
+      "width": 0.3333333333333333,
+      "height": 0.22265625
+    }
   },
   {
     "id": "dry-open-woodland",
     "name": "Droog open bos",
     "group": "Bos",
-    "assetName": "habitat-dry-open-woodland",
-    "illustrationBrief": "Ruim uiteenstaande bomen, droge bladeren en licht gras; veel open grond tussen de boomgroepen."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Ruim uiteenstaande bomen, droge bladeren en licht gras; veel open grond tussen de boomgroepen.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.046875,
+      "width": 0.3333333333333333,
+      "height": 0.22265625
+    }
   },
   {
     "id": "savanna",
     "name": "Savanne",
     "group": "Open landschap",
-    "assetName": "habitat-savanna",
-    "illustrationBrief": "Goudgroene grasvlakken en enkele schermvormige bomen, met een lage open horizon."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Goudgroene grasvlakken en enkele schermvormige bomen, met een lage open horizon.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.046875,
+      "width": 0.3333333333333333,
+      "height": 0.22265625
+    }
   },
   {
     "id": "grassland-steppe",
     "name": "Grasland en steppe",
     "group": "Open landschap",
-    "assetName": "habitat-grassland-steppe",
-    "illustrationBrief": "Uitgestrekt natuurlijk grasland met lage kruiden, enkele kale grondplekjes en nauwelijks bomen."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Uitgestrekt natuurlijk grasland met lage kruiden, enkele kale grondplekjes en nauwelijks bomen.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.318359375,
+      "width": 0.3333333333333333,
+      "height": 0.181640625
+    }
   },
   {
     "id": "heathland",
     "name": "Heide en laag struweel",
     "group": "Open landschap",
-    "assetName": "habitat-heathland",
-    "illustrationBrief": "Lage heidepollen, schrale grassen, zandige stukjes bodem en wat laag struikgewas."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Lage heidepollen, schrale grassen, zandige stukjes bodem en wat laag struikgewas.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.318359375,
+      "width": 0.3333333333333333,
+      "height": 0.181640625
+    }
   },
   {
     "id": "mediterranean-scrub",
     "name": "Mediterraan struweel",
     "group": "Open landschap",
-    "assetName": "habitat-mediterranean-scrub",
-    "illustrationBrief": "Droog, compact groenblijvend struikgewas, lichte rotsen en kruiden; sober warm palet."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Droog, compact groenblijvend struikgewas, lichte rotsen en kruiden; sober warm palet.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.318359375,
+      "width": 0.3333333333333333,
+      "height": 0.181640625
+    }
   },
   {
     "id": "desert",
     "name": "Woestijn en halfwoestijn",
     "group": "Open landschap",
-    "assetName": "habitat-desert",
-    "illustrationBrief": "Zandige en stenige bodem met enkele droge struiken; veel rustige open ruimte."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Zandige en stenige bodem met enkele droge struiken; veel rustige open ruimte.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.552734375,
+      "width": 0.3333333333333333,
+      "height": 0.171875
+    }
   },
   {
     "id": "alpine-rock",
     "name": "Gebergte en rotsland",
     "group": "Hooggebergte en poolgebied",
-    "assetName": "habitat-alpine-rock",
-    "illustrationBrief": "Alpiene rotsen, lage berggrassen en een verre bergkam; geen generieke hoge bosvegetatie."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Alpiene rotsen, lage berggrassen en een verre bergkam; geen generieke hoge bosvegetatie.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.552734375,
+      "width": 0.3333333333333333,
+      "height": 0.171875
+    }
   },
   {
     "id": "tundra",
     "name": "Toendra",
     "group": "Hooggebergte en poolgebied",
-    "assetName": "habitat-tundra",
-    "illustrationBrief": "Boomloze lage mossen, korstmossen en dwergstruiken met enkele natte laagtes."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Boomloze lage mossen, korstmossen en dwergstruiken met enkele natte laagtes.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.552734375,
+      "width": 0.3333333333333333,
+      "height": 0.171875
+    }
   },
   {
     "id": "polar-coast",
     "name": "IJs en poolkust",
     "group": "Hooggebergte en poolgebied",
-    "assetName": "habitat-polar-coast",
-    "illustrationBrief": "Bleke ijsranden en een sobere donkere rotskust naast koud water; zachte blauwe accenten."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Bleke ijsranden en een sobere donkere rotskust naast koud water; zachte blauwe accenten.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.775390625,
+      "width": 0.3333333333333333,
+      "height": 0.18359375
+    }
   },
   {
     "id": "farmland",
     "name": "Akkers en weilanden",
     "group": "Cultuurlandschap",
-    "assetName": "habitat-farmland",
-    "illustrationBrief": "Een gevarieerde weide- en akkerrand met lage kruiden, gras, een haag en een verre solitaire boom."
+    "assetName": "HabitatAtlas2",
+    "illustrationBrief": "Een gevarieerde weide- en akkerrand met lage kruiden, gras, een haag en een verre solitaire boom.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.775390625,
+      "width": 0.3333333333333333,
+      "height": 0.18359375
+    }
   },
   {
     "id": "gardens-parks",
     "name": "Tuinen en parken",
     "group": "Cultuurlandschap",
-    "assetName": "habitat-gardens-parks",
-    "illustrationBrief": "Een grasrand, bloeiende struiken en enkele volwassen bomen; subtiel tuinpad, geen opvallend gebouw."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Een grasrand, bloeiende struiken en enkele volwassen bomen; subtiel tuinpad, geen opvallend gebouw.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.078125,
+      "width": 0.3333333333333333,
+      "height": 0.220703125
+    }
   },
   {
     "id": "urban",
     "name": "Stad en bebouwing",
     "group": "Cultuurlandschap",
-    "assetName": "habitat-urban",
-    "illustrationBrief": "Een rustige dakrand en geveldetail met wat stedelijk groen; geen tekst of plaatsgebonden herkenningspunten."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Moderne stedelijke bebouwing met platte daken, appartementsgebouwen, glazen kantoren, een lage open centrale pleinruimte en stedelijk groen. Volledige gebouwen links en rechts, geen dorpshuizen of afgesneden daken.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.078125,
+      "width": 0.3333333333333333,
+      "height": 0.220703125
+    }
   },
   {
     "id": "forest-general",
     "name": "Bos",
     "group": "Bos",
-    "assetName": "habitat-forest-general",
-    "illustrationBrief": "Gesloten bos met stammen, bladerkronen en ondergroei; geen klimaat- of regiospecifieke boomsoorten. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Gesloten bos met stammen, bladerkronen en ondergroei; geen klimaat- of regiospecifieke boomsoorten. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.078125,
+      "width": 0.3333333333333333,
+      "height": 0.220703125
+    }
   },
   {
     "id": "woodland-general",
     "name": "Open bos",
     "group": "Bos",
-    "assetName": "habitat-woodland-general",
-    "illustrationBrief": "Verspreide bomen met open plekken en lage begroeiing; geen specifiek klimaat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Verspreide bomen met open plekken en lage begroeiing; geen specifiek klimaat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.31640625,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "scrub-general",
     "name": "Struweel",
     "group": "Open landschap",
-    "assetName": "habitat-scrub-general",
-    "illustrationBrief": "Dicht laag struikgewas en open plekken, zonder een specifiek klimaat te suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Dicht laag struikgewas en open plekken, zonder een specifiek klimaat te suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.31640625,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "wetland-general",
     "name": "Wetland",
     "group": "Water",
-    "assetName": "habitat-wetland-general",
-    "illustrationBrief": "Ondiep water, oevervegetatie en moerassige plekken; geen keuze tussen meer en rietmoeras suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Ondiep water, oevervegetatie en moerassige plekken; geen keuze tussen meer en rietmoeras suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.31640625,
+      "width": 0.3333333333333333,
+      "height": 0.208984375
+    }
   },
   {
     "id": "coast-general",
     "name": "Kust",
     "group": "Kust en zee",
-    "assetName": "habitat-coast-general",
-    "illustrationBrief": "Zeehorizon en neutrale oever, zonder specifieke rots-, zand- of mangrovekust. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Zeehorizon en neutrale oever, zonder specifieke rots-, zand- of mangrovekust. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.548828125,
+      "width": 0.3333333333333333,
+      "height": 0.19140625
+    }
   },
   {
     "id": "rockland-general",
     "name": "Rotsland",
     "group": "Open landschap",
-    "assetName": "habitat-rockland-general",
-    "illustrationBrief": "Rotsblokken en steile steenwanden zonder sneeuw, hooggebergte of kust te suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Rotsblokken en steile steenwanden zonder sneeuw, hooggebergte of kust te suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.548828125,
+      "width": 0.3333333333333333,
+      "height": 0.19140625
+    }
   },
   {
     "id": "plains-general",
     "name": "Open vlakte",
     "group": "Open landschap",
-    "assetName": "habitat-plains-general",
-    "illustrationBrief": "Lage open vegetatie en verre horizon; geen specifiek klimaat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Lage open vegetatie en verre horizon; geen specifiek klimaat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.6666666666666666,
+      "y": 0.548828125,
+      "width": 0.3333333333333333,
+      "height": 0.19140625
+    }
   },
   {
     "id": "cultivated-general",
     "name": "Cultuurlandschap",
     "group": "Cultuurlandschap",
-    "assetName": "habitat-cultivated-general",
-    "illustrationBrief": "Mozaïek van bewerkte grond en aangeplante begroeiing; geen stad of akker als enig habitat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Mozaïek van bewerkte grond en aangeplante begroeiing; geen stad of akker als enig habitat suggereren. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.0,
+      "y": 0.765625,
+      "width": 0.3333333333333333,
+      "height": 0.212890625
+    }
   },
   {
     "id": "bamboo",
     "name": "Bamboe",
     "group": "Bos",
-    "assetName": "habitat-bamboo",
-    "illustrationBrief": "Dichte bamboestengels met fijn blad en open bodem. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst."
+    "assetName": "HabitatAtlas3",
+    "illustrationBrief": "Dichte bamboestengels met fijn blad en open bodem. Originele lage aquarelillustratie, ivoren uitloop bovenaan, geen vogels, dieren of tekst.",
+    "artworkRegion": {
+      "x": 0.3333333333333333,
+      "y": 0.765625,
+      "width": 0.3333333333333333,
+      "height": 0.212890625
+    }
   }
 ]

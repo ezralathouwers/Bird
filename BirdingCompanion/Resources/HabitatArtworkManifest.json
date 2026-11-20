@@ -1,0 +1,41 @@
+[
+  {
+    "asset": "HabitatAtlas1",
+    "sourceFile": "exec-bb475c8c-70f7-41d3-a776-fd34319c60c8.png",
+    "parentConceptFile": "exec-7442a953-a67f-4f29-9c87-67e424a274e2.png",
+    "sha256": "2826a8f4dc5caf8d0f89b8b4b4049ed89b49e8568ca56b16b89e219774864803",
+    "pixelWidth": 1536,
+    "pixelHeight": 1024,
+    "created": "2026-11-20",
+    "source": "Original OpenAI-generated habitat illustrations for this project; label-free edition of provisionally approved concepts",
+    "rights": "Generated output subject to applicable OpenAI terms; no copied third-party media",
+    "reviewStatus": "Provisional implementation approved by user; visual review performed, native Xcode review pending",
+    "displayTransform": "Per-scene normalized viewport from unmodified source atlas; aspect fit, no stretching or additional aspect-fill crop"
+  },
+  {
+    "asset": "HabitatAtlas2",
+    "sourceFile": "exec-556bb53e-bd16-4708-b085-4af8b5508555.png",
+    "parentConceptFile": "exec-52766599-ff2d-4c3d-8b04-dc0371779407.png",
+    "sha256": "15babc3a92108da9a4e41812eff4c37348bd380a92f09d04356d0a9d723eb441",
+    "pixelWidth": 1536,
+    "pixelHeight": 1024,
+    "created": "2026-11-20",
+    "source": "Original OpenAI-generated habitat illustrations for this project; label-free edition of provisionally approved concepts",
+    "rights": "Generated output subject to applicable OpenAI terms; no copied third-party media",
+    "reviewStatus": "Provisional implementation approved by user; visual review performed, native Xcode review pending",
+    "displayTransform": "Per-scene normalized viewport from unmodified source atlas; aspect fit, no stretching or additional aspect-fill crop"
+  },
+  {
+    "asset": "HabitatAtlas3",
+    "sourceFile": "exec-2423135f-2166-4f07-b2c4-eb691a9f90b4.png",
+    "parentConceptFile": "exec-45a808e3-815b-43ca-b288-1bda4b8267a7.png",
+    "sha256": "06c909862cf6dcabbce423a1a1861135e360d5f647061e006d8ba3a96f357008",
+    "pixelWidth": 1536,
+    "pixelHeight": 1024,
+    "created": "2026-11-20",
+    "source": "Original OpenAI-generated habitat illustrations for this project; label-free edition of provisionally approved concepts",
+    "rights": "Generated output subject to applicable OpenAI terms; no copied third-party media",
+    "reviewStatus": "Provisional implementation approved by user; visual review performed, native Xcode review pending",
+    "displayTransform": "Per-scene normalized viewport from unmodified source atlas; aspect fit, no stretching or additional aspect-fill crop"
+  }
+]
