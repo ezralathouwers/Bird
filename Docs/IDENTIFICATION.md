@@ -50,3 +50,11 @@ Sound rows use a light beige rounded background (beige at 40% opacity) only for 
 
 ## Current sound integration status
 Superseding the earlier unconfigured-sound notes: BirdNET+ 3.0.1 is now connected in code, with a verified one-time model download, native Core ML adapter and bounded overlapping-window live pipeline. See `BIRDNET_INTEGRATION.md` for artifacts, licenses, label scope and verification limits. Photo recognition remains unconfigured. Native compilation and actual recognition still require Xcode/iPhone testing.
+
+## Photo service update — 20 November 2026
+The former unconfigured default is superseded by the BioCLIP 2 integration.
+See BIOCLIP_INTEGRATION.md for pinned model/reference assets, 9,818-species label
+coverage, offline behavior, crop flow, licensing and unverified device tests.
+The runtime is connected in source; native inference has not run in this Linux
+environment. Earlier sound-placeholder statements are also superseded by
+BIRDNET_INTEGRATION.md.

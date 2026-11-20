@@ -67,6 +67,8 @@ private struct SoundIdentificationView: View {
                 }
                 if model.isStarting { ProgressView("Geluid-ID voorbereiden…") }
                 if model.isIdentifying { ProgressView("Opname analyseren…") }
+                Link("Fotoherkenning: BioCLIP 2 · MIT", destination: URL(string: "https://huggingface.co/imageomics/bioclip-2")!)
+                    .font(FieldGuideTheme.sans(12, relativeTo: .caption))
                 Text("Mogelijke vogels").font(FieldGuideTheme.sans(24, relativeTo: .title2)).accessibilityAddTraits(.isHeader)
                 if let message = model.message { Text(message).font(FieldGuideTheme.sans(14, relativeTo: .subheadline)) }
                 if let message = pins.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
@@ -116,6 +118,9 @@ private struct PhotoIdentificationView: View {
     @State private var showCamera = false
     @State private var importing = false
     @State private var error: String?
+    @State private var cameraPhoto: Data?
+    @State private var crop: PhotoCropSelection?
+    @State private var recognitionTask: Task<Void, Never>?
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
@@ -135,6 +140,12 @@ private struct PhotoIdentificationView: View {
                     RoundedRectangle(cornerRadius: 16).fill(FieldGuideTheme.beige.opacity(0.22)).frame(height: 240)
                         .overlay { Image(systemName: "photo").font(.system(size: 48, weight: .ultraLight)) }
                 }
+                Text("Analyse gebeurt op je iPhone. De eerste keer worden het model en de soortreferenties gedownload (ongeveer 297 MB). Niet alle soorten uit de gids worden ondersteund.")
+                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                if model.photo != nil {
+                    Text("Resultaten zijn gerangschikt op modelovereenkomst, niet op een betrouwbaarheidspercentage.")
+                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                }
                 if importing { ProgressView("Foto openen…") }
                 if model.isLoading { ProgressView("Foto analyseren…") }
                 if let error { Text(error).foregroundStyle(.red) }
@@ -153,17 +164,28 @@ private struct PhotoIdentificationView: View {
                     guard !Task.isCancelled else { return }
                     guard let data = loaded, data.count <= 20 * 1024 * 1024,
                           UIImage(data: data) != nil else { throw IdentificationError.invalidPhoto }
-                    await model.identify(data)
+                    crop = PhotoCropSelection(data: data)
                 } catch { if !Task.isCancelled { self.error = error.localizedDescription } }
             }
-            .sheet(isPresented: $showCamera) {
+            .sheet(isPresented: $showCamera, onDismiss: {
+                if let data = cameraPhoto { cameraPhoto = nil; crop = PhotoCropSelection(data: data) }
+            }) {
                 CameraCapture { data in
                     showCamera = false; selectedPhoto = nil
                     guard let data else { return }
                     error = nil
-                    Task { await model.identify(data) }
+                    cameraPhoto = data
                 }
             }
+            .fullScreenCover(item: $crop) { selection in
+                PhotoCropView(data: selection.data) { data in
+                    crop = nil
+                    guard let data else { return }
+                    recognitionTask?.cancel()
+                    recognitionTask = Task { await model.identify(data) }
+                }
+            }
+            .onDisappear { recognitionTask?.cancel(); model.cancel() }
             .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
     }
     private func openCamera() async {

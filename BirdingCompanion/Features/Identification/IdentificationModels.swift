@@ -50,7 +50,7 @@ final class PhotoIdentificationModel: ObservableObject {
     @Published private(set) var message: String?
     private let service: any PhotoIdentificationService
     private var requestID = UUID()
-    init(service: any PhotoIdentificationService = UnconfiguredPhotoIdentification()) { self.service = service }
+    init(service: any PhotoIdentificationService = BioCLIPPhotoService()) { self.service = service }
 
     func identify(_ data: Data) async {
         let id = UUID(); requestID = id
@@ -70,6 +70,7 @@ final class PhotoIdentificationModel: ObservableObject {
             message = error.localizedDescription
         }
     }
+    func cancel() { requestID = UUID(); isLoading = false }
     func clear() { requestID = UUID(); photo = nil; candidates = []; isLoading = false; message = nil }
 }
 

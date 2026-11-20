@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 @testable import BirdingCompanion
 
 @MainActor
@@ -946,5 +947,56 @@ final class SpeciesRangeSourceTests: XCTestCase {
                 return XCTFail("Expected approved BirdLife access with missing files, got \($0)")
             }
         }
+    }
+}
+
+final class PhotoSimilarityTests: XCTestCase {
+    func testUnknownOrNonBirdWinnerAbstains() {
+        XCTAssertTrue(PhotoSimilarity.accepted([("bird", 0.4), (nil, 0.6)]).isEmpty)
+        XCTAssertTrue(PhotoSimilarity.accepted([("bird", 0.005)]).isEmpty)
+        XCTAssertTrue(PhotoSimilarity.accepted([("bird", 0.5), (nil, 0.499)]).isEmpty)
+    }
+    func testDuplicateSpeciesDoNotOccupyMultipleResults() {
+        let ranked = PhotoSimilarity.accepted([("a", 0.7), ("a", 0.8), ("b", 0.6), (nil, 0.3)])
+        XCTAssertEqual(ranked.map(\.0), ["a", "b"])
+        XCTAssertEqual(ranked.first?.1, 0.8)
+    }
+    func testAtMostFiveFiniteSuggestions() {
+        let rows: [(String?, Float)] = (0..<10).map { ("bird-\($0)", Float(0.9 - Double($0) * 0.01)) }
+        XCTAssertEqual(PhotoSimilarity.accepted(rows + [("invalid", .nan)]).count, 5)
+    }
+    func testInvalidEmbeddingsAreRejected() {
+        XCTAssertNil(PhotoSimilarity.normalized([0, 0]))
+        XCTAssertNil(PhotoSimilarity.normalized([.infinity, 1]))
+        XCTAssertNil(PhotoSimilarity.normalized([.nan, 1]))
+        let normalized = PhotoSimilarity.normalized([3, 4])
+        XCTAssertEqual(normalized?.first ?? 0, 0.6, accuracy: 0.00001)
+    }
+    func testBundledPhotoLabelsResolveToCatalogAndKeepRejectionClasses() throws {
+        let url = try XCTUnwrap(Bundle.main.url(forResource: "BioCLIPLabels", withExtension: "json"))
+        let ids = try JSONDecoder().decode([String?].self, from: Data(contentsOf: url))
+        XCTAssertEqual(ids.count, 15331)
+        XCTAssertEqual(Set(ids.compactMap { $0 }).count, 9818)
+        XCTAssertTrue(ids.contains { $0 == nil })
+        XCTAssertTrue(ids.compactMap { $0 }.allSatisfy { SpeciesGuideCatalog.species(id: $0) != nil })
+    }
+}
+
+@MainActor
+final class PhotoPreprocessingTests: XCTestCase {
+    func testRGBNormalizationOfUniformRedPhoto() throws {
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 40, height: 80), format: format).image { context in
+            UIColor.red.setFill(); context.fill(CGRect(x: 0, y: 0, width: 40, height: 80))
+        }
+        let data = try XCTUnwrap(image.pngData())
+        let pixels = try BioCLIPPhotoService.pixels(data)
+        XCTAssertEqual(pixels.shape.map(\.intValue), [1, 3, 224, 224])
+        XCTAssertEqual(pixels[0].floatValue, (1 - 0.48145466) / 0.26862954, accuracy: 0.005)
+        XCTAssertEqual(pixels[224 * 224].floatValue, -0.4578275 / 0.26130258, accuracy: 0.005)
+        XCTAssertEqual(pixels[2 * 224 * 224].floatValue, -0.40821073 / 0.27577711, accuracy: 0.005)
+    }
+    func testInvalidPhotoIsRejectedBeforeInference() {
+        XCTAssertThrowsError(try BioCLIPPhotoService.pixels(Data("invalid".utf8)))
     }
 }
