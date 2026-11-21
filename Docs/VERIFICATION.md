@@ -1,5 +1,18 @@
 # Verification — 16 November 2026
 
+## Fixed nearby heading and filters — 21 November 2026
+
+The nearby Discover page now keeps its location heading and all three filters
+outside the results ScrollView, matching the fixed-header search layout.
+Nearby rows and status/retry content scroll beneath the header; pull-to-refresh
+remains attached to that scroll view. Filter button spacing decreases from
+12 to 8 points, with 44-point targets preserved. The goals icon row separation
+decreases slightly from 15 to 13 points, with the completion dot recentered.
+
+Checks: tree-sitter syntax parsing of all 36 Swift files and `git diff --check`
+passed. The native build, fixed-header scrolling, filter selection, refresh,
+and layout at larger text sizes still require Xcode verification.
+
 ## Fixed search header and add-menu spacing — 21 November 2026
 
 Discover search now places its heading and query field outside the results

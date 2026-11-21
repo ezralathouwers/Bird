@@ -172,7 +172,7 @@ struct CompanionRootView: View {
 private struct GoalListMark: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        for y in [4.5, 19.5] {
+        for y in [5.5, 18.5] {
             path.addEllipse(in: CGRect(x: 1.3, y: y - 3.1, width: 6.2, height: 6.2))
             path.move(to: CGPoint(x: 11, y: y))
             path.addLine(to: CGPoint(x: 23, y: y))
@@ -184,7 +184,7 @@ private struct GoalListMark: Shape {
 private struct GoalCompletionDot: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.addEllipse(in: CGRect(x: 3, y: 3.1, width: 2.8, height: 2.8))
+        path.addEllipse(in: CGRect(x: 3, y: 4.1, width: 2.8, height: 2.8))
         return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
 }

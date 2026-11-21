@@ -52,13 +52,21 @@ struct DiscoverView: View {
                     .scrollDismissesKeyboard(.interactively)
                 }
             } else {
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 20) {
+                VStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 20) {
                         heading
-                        nearbyContent
-                    }.padding(20).padding(.bottom, 24)
+                        filters
+                    }
+                    .padding(20)
+                    .background(FieldGuideTheme.ivory)
+                    .fixedSize(horizontal: false, vertical: true)
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: 20) {
+                            nearbyContent
+                        }.padding(.horizontal, 20).padding(.bottom, 24)
+                    }
+                    .refreshable { if let query { await model.load(query: query, demo: demo) } }
                 }
-                .refreshable { if let query { await model.load(query: query, demo: demo) } }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -105,7 +113,6 @@ struct DiscoverView: View {
     }
 
     @ViewBuilder private var nearbyContent: some View {
-                filters
                 if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
                 if location.isLocating { ProgressView("Je huidige locatie ophalen…") }
                 if location.isNaming { ProgressView("Locatienaam ophalen…") }
@@ -164,7 +171,7 @@ struct DiscoverView: View {
     }
 
     private var filters: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 8) {
             ForEach(DiscoverFilter.allCases, id: \.self) { choice in
                 Button { filter = choice } label: {
                     Group {
