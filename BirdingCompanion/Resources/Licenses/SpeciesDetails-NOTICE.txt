@@ -50,3 +50,20 @@ ranges converted to centimetres; no translated article prose is displayed.
 Original article URLs are retained in each record. Reviewed measurement phrases,
 short context excerpts and source languages are retained in the maintenance
 supplement ledger; see the article's contributor history for authorship.
+
+Full-article/Wikidata supplements, 21 November 2026:
+205 further numerical facts come from complete English Wikipedia revisions,
+Wikipedia contributors, CC BY-SA 4.0. Numeric unit conversions and conservative
+template normalization were applied; no new article prose is displayed in the
+species biography. Original article links, exact revision/permanent URLs and
+short review excerpts are retained in SpeciesDetailsSupplements.json. Article
+contributor histories are linked under Info.
+
+64 source-reported single wingspan quantities come from Wikidata P2050, CC0.
+https://www.wikidata.org/wiki/Property:P2050
+https://www.wikidata.org/wiki/Wikidata:Licensing
+Changes: supported length units converted to centimetres; source entity/Avibase
+concept matched; uncertainty bounds and qualified claims excluded. Original
+referenced statements, entity revisions and source publication references are
+preserved in the maintenance ledger. These are reported database facts, not a
+claim of independent measurement or validation of every cited publication.

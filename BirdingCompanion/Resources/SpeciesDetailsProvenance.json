@@ -1,8 +1,8 @@
 {
   "version": "species-details-2026-11-20",
   "records": 11173,
-  "sha256": "250051cc21f4509ae69c8bc7b2bac95c6bc782de6f784115f544e1c91f4decae",
-  "license": "CC BY-SA 4.0 adapted catalog and Wikipedia excerpts; BIRDBASE and Fox source data CC BY 4.0",
+  "sha256": "e6cf3dd8f9838b4b3baaf5c324f966e60f7d7fb9a726a2d5f11c085675c913f1",
+  "license": "CC BY-SA 4.0 adapted catalog and Wikipedia excerpts; BIRDBASE and Fox source data CC BY 4.0; Wikidata CC0",
   "sources": [
     {
       "name": "BirdNET+ Taxonomy v0.5-Nov2026",
@@ -21,7 +21,17 @@
       "sha256": "6b55747a5761c08356d92c7a0b524b4e586c28a25316b0a6c1de3738db1d8eda",
       "url": "https://doi.org/10.6084/m9.figshare.32089083.v1",
       "license": "CC BY 4.0"
+    },
+    {
+      "name": "Wikidata P2050 source-reported single quantities; revisions and original citations retained in supplement evidence",
+      "url": "https://www.wikidata.org/wiki/Property:P2050",
+      "license": "CC0"
+    },
+    {
+      "name": "English Wikipedia full article revisions; exact revisions retained in supplement evidence",
+      "url": "https://en.wikipedia.org/",
+      "license": "CC BY-SA 4.0"
     }
   ],
-  "supplementsSHA256": "b81d9015d23f2846eac09074f839c9678aac942f7945afdf941006d9e9588c68"
+  "supplementsSHA256": "3878bd1016c4fbe18cc7a38cc40f0630f773c5ec5258373affb1e87381531290"
 }

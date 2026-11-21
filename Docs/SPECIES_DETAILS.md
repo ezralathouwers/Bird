@@ -1,7 +1,7 @@
 # Short biographies and wingspans
 
 Imported 20 November 2026 for all 11,173 addressable catalog records. Coverage is
-**11,154 Dutch bios** and **1,533 reported wingspans**, not complete numeric data
+**11,154 Dutch bios** and **1,802 reported wingspans**, not complete numeric data
 for every bird. `SpeciesDetailsCoverage.json` records both missing-ID lists.
 
 ## Additions — 21 November 2026
@@ -43,8 +43,7 @@ are deferred. A strict parser prevents body length, tarsus, wing chord or weight
 from being picked up after a single-valued span or from the previous table row.
 The parser is a candidate collector: it does not establish source accuracy or
 automatically authorize an import. This is not a complete review of all
-Wikipedia articles. 9,640 records still lack a sourced wingspan; that does not
-mean the measurement is unavailable elsewhere. No existing content changed.
+Wikipedia articles. Coverage after this pass was 1,533 spans. No existing content changed.
 
 Collect new candidates without mutating bundled content:
 
@@ -66,6 +65,79 @@ import is byte-identical, 36 Swift syntax trees parse and git diff --check passe
 The bundled coverage XCTest expectation was updated to 1,533. Native resource
 decoding, Info links, compilation and XCTest still require Xcode.
 
+### Full English articles and referenced Wikidata — 21 November 2026
+
+269 additional empty fields were filled: 205 from full English Wikipedia
+article revisions, and 64 source-reported single quantities from Wikidata P2050
+(CC0). Total span coverage is 1,802 / 11,173 records (16.1%); 9,371 remain empty.
+This broad pass does not establish that the remaining measurements do not exist.
+It has not searched every language or regional/scientific source.
+
+The English plan covered 9,461 exact-scientific-name links in the pinned BirdNET+
+snapshot. All 9,461 full article revisions were downloaded in 190 serial
+batches, with request pacing and server Retry-After respected. 9,344 pages passed
+the taxobox/concept eligibility checks; 18 known Avibase-concept mismatches and
+99 pages without an exact eligible scientific taxobox were not used. Full text,
+not just introduction extracts, was scanned. The resulting 299 measurement
+phrases required manual context, scope and unit review; this is conservative
+pattern matching, not a complete semantic extraction of every article.
+
+The global Wikidata query found 1,690 taxon-name/quantity rows, of which 189
+distinct scientific names matched still-empty app records. Full entity revisions,
+qualifiers, citations, species rank and Avibase IDs were then inspected. 101
+entities were automatically deferred. In particular, quantity lower/upper bounds
+encode uncertainty and are never assumed to be a biological range. Unreferenced
+claims, qualified measurements, multiple active claims and concept mismatches
+were also deferred. The remaining candidates received context/outlier review;
+Wikipedia and Wikidata values were compared where both were available.
+
+`LiveWikimediaWingspanReview.json` retains 269 accepted decisions, 82 manually
+deferred decisions, the 101 automatic Wikidata deferrals, concept exclusions and
+metadata for the 16 cited works. The 64 installed Wikidata records use the new
+`source-reported-wikidata` method and remain single values. They are database
+reports, not an assertion that the original papers were independently audited or
+that the quantity describes every individual/population. Raw referenced P2050
+statements, entity revisions, exact stored Avibase matches and response hashes
+are retained in the supplement evidence. Wikipedia evidence retains the exact
+article revision, permanent URL, normalized measurement phrase and short context.
+Only numeric data are installed in the app; no new biography text was imported.
+
+An already published overall interval can take precedence over a mean or narrower
+interval contained within it. Separate male/female intervals are never merged
+into an invented range. Simple convert/cvt templates and common wing-span spelling
+variants are normalized; unsupported templates are left unparsed. Inconsistent
+units, wing-chord labels, isolated specimens, inferred morphometrics and unresolved
+source conflicts are left for review. All previously installed spans, biographies,
+species IDs and observation data are preserved.
+
+Reproduce candidate collection (standard-library Python; downloads stay outside
+the repository and do not change the app):
+
+```
+python Scripts/fetch_wikimedia_wingspan_sources.py /path/taxonomy.zip /path/cache --max-batches 10
+python Scripts/collect_wikimedia_live_spans.py /path/cache
+```
+
+Use the same cache to resume; omit max-batches for the entire remaining English
+plan. The cache retains its initial title plan, entity responses and query result;
+each Wikipedia response is keyed by request hash. The downloader uses full
+revisions because MediaWiki limits full-article extracts to one page per request.
+Source snapshots are cached for review, not committed in bulk. Candidate output
+defaults to `/tmp/live-wikimedia-span-candidates.json` and must be reviewed before
+adding evidence to the supplements. `Scripts/supplement_species_details.py`
+reapplies saved decisions, validates Wikidata quantity agreement, refreshes hashes
+and reinstates source licenses even after a base-data rebuild.
+
+Verification: 22 portable Python tests pass, including unit conversions, article
+identity, single-value/range confusion, uncertainty/qualifier rejection and
+statement/value agreement. All 269 additions were checked against cached source
+revisions and their stored evidence; 11,173 identities and every existing value
+were preserved, hashes matched and repeat import was byte-identical. All 36 Swift
+syntax trees parse; git diff --check passes. The native coverage expectation is
+1,802; a new XCTest guards Wikidata single-value/source validation. Native
+compilation, resource decoding, Info links and XCTest remain unverified without
+Xcode.
+
 Docs/SpeciesDetailsSupplements.json retains species IDs, evidence dates, source
 URLs, numerical captions/page hashes and the licensed English basis of adapted
 summaries. Scripts/supplement_species_details.py applies these records safely,
@@ -78,7 +150,7 @@ Run `python Scripts/collect_vogelbescherming_spans.py` to collect new candidate
 facts into /tmp/span_supplements.json without changing the app. Its parser skips
 failed pages, ambiguous names and non-range captions; this is not a complete
 audit of every source page. The 2026-11-21 pass checked all 345 guide links.
-Fifteen portable importer/supplement/parser safety tests pass with
+The current 22 portable importer/supplement/parser safety tests pass with
 `PYTHONPATH=/workspace/work/validation-deps python -m unittest discover -s Scripts -p 'test_species_details*.py'`.
 All 11,173 identities, preservation of existing values, bundled SHA-256 and
 repeat-import idempotence were checked; 36 Swift syntax trees parsed and
@@ -124,7 +196,8 @@ The previous kingfisher placeholder is replaced by an independently rechecked
 24–26 cm factual guide value from Vogelbescherming Nederland. It takes precedence
 over a differing Fox aggregate and retains its own source URL. No guide prose
 was copied. Other numeric source records are imported without claiming an
-individual expert audit. Missing spans remain 'Spanwijdte nog niet beschikbaar'.
+individual expert audit. Missing spans remain nil in the dataset; ordinary guide
+screens omit the measurement.
 
 ## Runtime and rights
 
