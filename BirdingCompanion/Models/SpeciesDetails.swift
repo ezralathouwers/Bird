@@ -31,7 +31,7 @@ struct SpeciesDetails: Codable, Sendable {
         guard !speciesID.isEmpty, !scientificName.isEmpty, wingspan?.isValid ?? true else { return false }
         if let bio {
             return !bio.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && bio.count <= 1000 &&
-                ["wikipedia-nl-excerpt", "birdbase-habitat-diet"].contains(bioMethod ?? "") &&
+                ["wikipedia-nl-excerpt", "birdbase-habitat-diet", "source-summary-nl"].contains(bioMethod ?? "") &&
                 !bioSourceURLs.isEmpty && bioSourceURLs.allSatisfy { $0.scheme == "https" }
         }
         return bioMethod == nil && bioSourceURLs.isEmpty

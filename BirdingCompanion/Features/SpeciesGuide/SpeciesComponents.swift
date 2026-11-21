@@ -217,15 +217,17 @@ struct SpeciesCatalogSourcesView: View {
                             Text("Beschrijving: kort, ongewijzigd fragment uit Nederlandstalige Wikipedia via BirdNET+ Taxonomy. Wikipedia-bijdragers, CC BY-SA 4.0. Alleen teksten met Wikipedia als bron zijn overgenomen; geen automatisch vertaalde of gegenereerde teksten uit die bron.")
                         } else if detail.bioMethod == "birdbase-habitat-diet" {
                             Text("Beschrijving: korte Nederlandse tekst samengesteld uit de primaire habitat- en voedselcategorieën van BIRDBASE v2025.1. Dit is een algemene ecologische beschrijving, geen individueel geschreven veldgidsartikel.")
+                        } else if detail.bioMethod == "source-summary-nl" {
+                            Text("Beschrijving: korte Nederlandse samenvatting op basis van de vermelde bronnen. Bewerkingen van Wikipedia vallen onder CC BY-SA 4.0, met naamsvermelding van Wikipedia-bijdragers.")
                         }
                         ForEach(detail.bioSourceURLs, id: \.self) { url in
                             Link(url.host ?? "Bron beschrijving", destination: url)
                         }
-                        if let wiki = detail.bioSourceURLs.first(where: { $0.host == "nl.wikipedia.org" }) {
+                        if let wiki = detail.bioSourceURLs.first(where: { $0.host?.hasSuffix(".wikipedia.org") == true }) {
                             Link("Wikipedia-bijdragers en bewerkingsgeschiedenis", destination: wiki.appending(queryItems: [URLQueryItem(name: "action", value: "history")]))
                         }
                         if let span = detail.wingspan {
-                            Text("Spanwijdte: \(span.method == "reported" ? "gerapporteerde meetgegevens, Fox en collega's (2026), CC BY 4.0" : "gecontroleerde vogelgidswaarde, Vogelbescherming Nederland"). Waarden kunnen per bron, populatie en meetmethode verschillen.")
+                            Text("Spanwijdte: \(span.method == "reported" ? "gerapporteerde meetgegevens, Fox en collega's (2026), CC BY 4.0" : "gecontroleerde vogelgidswaarde uit de vermelde bron"). Waarden kunnen per bron, populatie en meetmethode verschillen.")
                             Link("Bron spanwijdte", destination: span.sourceURL)
                         }
                     }

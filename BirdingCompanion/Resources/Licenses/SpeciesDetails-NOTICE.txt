@@ -31,3 +31,14 @@ This overrides a conflicting Fox aggregate for the pilot species.
 
 No endorsement by any source author is implied. Source snapshots and the
 import report distinguish completeness from individual scientific review.
+
+21 November 2026 supplements:
+22 original short Dutch adaptations of English Wikipedia descriptions in the
+pinned BirdNET+ snapshot, Wikipedia contributors, CC BY-SA 4.0. Original article
+links and contributor histories are available under Info; inspected source
+descriptions and adaptation evidence are retained in SpeciesDetailsSupplements.
+Two short original factual summaries use the cited scientific species accounts.
+43 guide wingspans use factual numerical measurements only, without copied
+guide prose or images: Vogelbescherming Nederland (40), Natural History Museum
+(European robin), The Wildlife Trusts (great tit), Animal Diversity Web,
+Spurthi Paruchuri (great hornbill). Exact source URLs are retained per record.

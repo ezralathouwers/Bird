@@ -1,8 +1,46 @@
 # Short biographies and wingspans
 
 Imported 20 November 2026 for all 11,173 addressable catalog records. Coverage is
-**11,130 Dutch bios** and **1,313 reported wingspans**, not complete numeric data
+**11,154 Dutch bios** and **1,356 reported wingspans**, not complete numeric data
 for every bird. `SpeciesDetailsCoverage.json` records both missing-ID lists.
+
+## Additions — 21 November 2026
+
+24 previously missing biographies now have short sourced Dutch summaries:
+22 adaptations of inspected English Wikipedia descriptions from the pinned
+BirdNET+ snapshot, plus two factual summaries from species-specific scientific
+accounts (Crypturellus resonans and Momotus castaneiceps). These use the explicit
+source-summary-nl method; existing source-provided LLM descriptions remain
+excluded. Nineteen biographies still lack sufficient exact-species evidence.
+Some new summaries describe distribution/taxonomy only: habitat is never
+inferred from a parent species when the source does not report it.
+
+43 missing wingspans were added: 40 factual ranges from the dedicated flight-size
+captions in Vogelbescherming's guide, with exact scientific identity from its
+structured alternateName field; robin 20–22 cm from Natural History Museum;
+great tit 24 cm (a single published value) from The Wildlife Trusts; great
+hornbill 151–178 cm from Animal Diversity Web. Existing measurements are
+preserved. The source dataset has only 1,424 empirical rows; matching names
+alone cannot resolve differing Avibase concepts. No prediction or wing-chord
+value is substituted. 9,817 catalog records still lack a sourced wingspan.
+
+Docs/SpeciesDetailsSupplements.json retains species IDs, evidence dates, source
+URLs, numerical captions/page hashes and the licensed English basis of adapted
+summaries. Scripts/supplement_species_details.py applies these records safely,
+refreshes the bundle hash and coverage, and rejects overwrites, duplicates,
+identity mismatches and invalid measurements. The base builder reapplies the
+supplements so a rebuild preserves this work. Rights/credits remain under Info;
+no technical or missing-data notices were added to ordinary guide screens.
+
+Run `python Scripts/collect_vogelbescherming_spans.py` to collect new candidate
+facts into /tmp/span_supplements.json without changing the app. Its parser skips
+failed pages, ambiguous names and non-range captions; this is not a complete
+audit of every source page. The 2026-11-21 pass checked all 345 guide links.
+Nine portable importer/supplement safety tests pass with
+`PYTHONPATH=/workspace/work/validation-deps python -m unittest discover -s Scripts -p 'test_species_details*.py'`.
+All 11,173 identities, preservation of existing values, bundled SHA-256 and
+repeat-import idempotence were checked; 36 Swift syntax trees parsed and
+git diff --check passed. Xcode decoding, layout and XCTest remain unverified.
 
 ## Biographies
 
@@ -15,7 +53,7 @@ for every bird. `SpeciesDetailsCoverage.json` records both missing-ID lists.
   where source records unanimously agree, primary diet. These are general
   ecological statements, not independently written species monographs. Species
   known extinct in the catalog use past tense in these summaries.
-- 43 taxonomy-unresolved species retain an explicit missing-bio message. No
+- 19 species remain without a sourced biography after the supplements. No
   habitat is copied from an unverified parent species or inferred from family.
 
 Exact existing IDs/scientific names or existing scientific aliases are required.

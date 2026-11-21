@@ -1,0 +1,1086 @@
+[
+  {
+    "speciesID": "birdnet-v3:BN04642",
+    "scientificName": "Hierococcyx tiganada",
+    "bio": "Deze koekoek komt voor op Borneo, in Indonesië, Maleisië en Brunei. De soort werd in 2025 beschreven.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Penan_hawk-cuckoo",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Penan hawk-cuckoo (Hierococcyx tiganada) is a species of bird in the family Cuculidae. It is found on the island of Borneo in Indonesia, Malaysia and Brunei. It was described by Frank Rheindt, Gabriel Teo, James Eaton and Elize Ng in 2025. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05571",
+    "scientificName": "Macropygia albicapilla",
+    "bio": "Deze duif komt voor op Sulawesi en nabijgelegen eilanden. Ze behoort tot het geslacht Macropygia.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Sulawesi_cuckoo-dove",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Sulawesi cuckoo-dove (Macropygia albicapilla) is a dove in the genus Macropygia found on the island of Sulawesi and other nearby islands. It was described by Charles Lucien Bonaparte in 1854. It has four recognised subspecies."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN08509",
+    "scientificName": "Ptilinopus holosericeus",
+    "bio": "Deze duif komt uitsluitend voor op Nieuw-Caledonië. Ze leeft daar in bossen en savannes met Melaleuca-bomen, tot ongeveer 1.000 meter hoogte.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Cloven-feathered_dove",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The cloven-feathered dove (Ptilinopus holosericeus) is a species of bird in the family Columbidae. The cloven-feathered dove is endemic to New Caledonia where it is found in forest and Melaleuca savanna at altitudes up to 1,000 m (3,300 ft). This species was formerly placed in the monotypic genus Drepanoptila. It is considered near-threatened by the IUCN due to habitat degradation and hunting."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07206",
+    "scientificName": "Patagona peruviana",
+    "bio": "De noordelijke reuzenkolibrie is de grootste kolibriesoort. Ze vormt samen met een tweede soort het geslacht Patagona.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Northern_giant_hummingbird",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The northern giant hummingbird (Patagona peruviana) is the largest species of hummingbird and one of two species of the genus Patagona."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01261",
+    "scientificName": "Bubo nigrescens",
+    "bio": "Deze grote uil komt voor in de hoge Andes van Colombia, Ecuador en het noordwesten van Peru. Vroeger werd hij als een ondersoort van de Amerikaanse oehoe beschouwd.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Paramo_horned_owl",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The paramo horned owl (Bubo nigrescens) is a large owl in the family Strigidae that is found in the high Andes of Colombia, Ecuador and northwestern Peru. It was formerly considered to be a subspecies of the great horned owl (Bubo virginianus)."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01260",
+    "scientificName": "Bubo nacurutu",
+    "bio": "Deze oehoe leeft in tropisch Zuid-Amerika. Hij verkiest relatief open gebieden en vermijdt dicht, vochtig regenwoud; zijn ogen zijn amberkleurig.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Tropical_horned_owl",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The tropical horned owl (Bubo nacurutu), also known as the Colombian great horned owl, Venezuelan great horned owl, or desert great horned owl, is a species of owl in the genus Bubo. It was formerly treated as a subspecies of the great horned owl (Bubo virginianus). It lives in tropical South America. It generally occurs in more open areas than the North American great horned owl, and avoids dense humid forest, e.g. the Amazon rainforest. Unlike other species of the great horned owl complex, the eyes of the South American horned owl are amber rather than yellow. Although the largest owl in its range, it is a relatively small horned owl."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09930",
+    "scientificName": "Tanysiptera obiensis",
+    "bio": "Deze ijsvogel komt voor op de Indonesische eilanden Obi, Obilatu en Bisa. Hij behoort tot het geslacht Tanysiptera, de vlagstaartijsvogels.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Obi_paradise_kingfisher",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Obi paradise kingfisher (Tanysiptera obiensis) is a species of bird in the family Alcedinidae. It is found on Obi, Obilatu and Bisa Islands in Indonesia. It was described by Tommaso Salvadori in 1877. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09932",
+    "scientificName": "Tanysiptera rosseliana",
+    "bio": "Deze ijsvogel komt uitsluitend voor op Rossel, een eiland in de Louisiaden van Papoea-Nieuw-Guinea. Hij behoort tot de vlagstaartijsvogels.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Rossel_paradise_kingfisher",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Rossel paradise kingfisher (Tanysiptera rosseliana) is a species of bird in the family Alcedinidae. It is found only on Rossel Island in the Louisiade Archipelago of Papua New Guinea. It was described by Henry Baker Tristram in 1889. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09922",
+    "scientificName": "Tanysiptera doris",
+    "bio": "Deze vlagstaartijsvogel komt voor op Morotai en Rao in Indonesië. De soort maakt nesten in termietennesten in bomen; er zijn ook groepen waargenomen waarin meerdere vogels voedsel naar één nest brachten.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Morotai_paradise_kingfisher",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Morotai paradise kingfisher (Tanysiptera doris) is a species of bird in the family Alcedinidae. It is found only on Morotai Island and Rao Island in Indonesia. It was described by Alfred Russel Wallace in 1862.\n\nSubspecies doris is differentiated from the members of the galatea complex because of its fully white upper back. Subspecies emiliae is similar to subspecies doris, but the crown is silvery green-blue and is more prominently crested, and it has a white tail base.\n\nThis species is the second paradise kingfisher species which has been recorded to exhibit cooperative breeding after the buff-breasted paradise kingfisher, as up to three birds were found to be visiting the nest with food in a span of 4 hours. This species builds its nests in arboreal termitaria about 7-8 m off the ground."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09927",
+    "scientificName": "Tanysiptera nais",
+    "bio": "Deze vlagstaartijsvogel komt voor op de zuidelijke Molukken in Indonesië. De soort werd in 1861 beschreven.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Amboyna_paradise_kingfisher",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Amboyna paradise kingfisher (Tanysiptera nais) is a species of bird in the family Alcedinidae. It is found in the southern Moluccas in Indonesia. It was described by George Robert Gray in 1861."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09926",
+    "scientificName": "Tanysiptera margarethae",
+    "bio": "Deze vlagstaartijsvogel komt voor op de noordelijke Molukken in Indonesië. De soort behoort tot de ijsvogelfamilie.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Halmahera_paradise_kingfisher",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Halmahera paradise kingfisher (Tanysiptera margarethae) is a species of bird in the family Alcedinidae. It is found in the northern Moluccas in Indonesia. It was described by Ferdinand Heine in 1860."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09727",
+    "scientificName": "Syma ochracea",
+    "bio": "Deze ijsvogel komt uitsluitend voor op de D’Entrecasteaux-eilanden, bij het oosten van Papoea-Nieuw-Guinea. Hij werd vroeger tot dezelfde soort als de geelsnavelijsvogel gerekend.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Ochre-bellied_kingfisher",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The ochre-bellied kingfisher (Syma ochracea) is a species of bird in the family Alcedinidae. It is endemic to the D'Entrecasteaux Islands off Milne Bay in eastern Papua New Guinea. Until recently, it was considered conspecific with the yellow-billed kingfisher. It was described by Lionel Walter Rothschild and Ernst Hartert in 1901. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN06231",
+    "scientificName": "Myiarchus flavidior",
+    "bio": "Deze vliegenvanger komt voor van het oosten van Oaxaca in Mexico tot het westen van Nicaragua. Hij behoort tot de tirannenfamilie.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Salvadoran_flycatcher",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "Salvadoran flycatcher (Myiarchus flavidior) is a passerine bird in the family Tyrannidae, the tyrant flycatchers. It is found from eastern Oaxaca in Mexico into western Nicaragua. It was formerly considered a subspecies of Nutting's flycatcher and prior to that, a subspecies of Ash-throated flycatcher before being split by the IOC and Clement's checklist in 2025."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN08566",
+    "scientificName": "Ptilorrhoa urrissia",
+    "bio": "Deze juweelbabbelaar leeft in bebost karstgebied in de Southern Fold Mountains van Papoea-Nieuw-Guinea. De soort is bekend van cameravalbeelden die tussen 2017 en 2024 werden gemaakt.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Hooded_jewel-babbler",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The hooded jewel-babbler (Ptilorrhoa urrissia) is a species of bird in the family Cinclosomatidae, endemic to the forested karst of the Southern Fold Mountains in Papua New Guinea. It is one of five named species in the genus Ptilorrhoa (jewel-babblers), currently known only from camera trap photograph sequences obtained between 2017 and 2024."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN08565",
+    "scientificName": "Ptilorrhoa nigricrissus",
+    "bio": "Deze juweelbabbelaar komt uitsluitend voor in de zuidelijke laaglanden van Nieuw-Guinea. Hij behoort tot het geslacht Ptilorrhoa.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Southern_blue_jewel-babbler",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The southern blue jewel-babbler (Ptilorrhoa nigricrissus) is a species of bird in the family Cinclosomatidae, endemic to the southern lowlands of New Guinea. It was described by Tommaso Salvadori in 1876. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN04760",
+    "scientificName": "Hylophilus moxensis",
+    "bio": "Deze vireo komt voor in Bolivia, vooral in het departement Beni. Hij leeft in struweel en lage bomen bij moerassen en ander water.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Beni_greenlet",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Beni greenlet (Hylophilus moxensis) is a species of bird in the family Vireonidae, the vireos, greenlets, and shrike-babblers. It is endemic to Bolivia.\n\nThe Beni greenlet is endemic to Bolivia, specifically in Beni Department. It is found in scrub near marshy areas and is always found in the vicinity of water. It prefers living in short-stature trees such as species in the Mimosaceae family and deciduous trees. The species has also been found in Guadua, but does not seem to depend on the genus as its main habitat. The species may also live in northern La Paz, north-eastern Cochabamba, and north-western Santa Cruz. It may also be found in Peru and Brazil but these are both unconfirmed.\n\nThe Beni greenlet looks very similar in size and shape to the grey-eyed greenlet, especially in the northern populations of that species. However, there are several visible differences. The species always has dark brown eyes, while the grey-eyed greenlet often has pale greyish eyes. The ear area (the feathers on the side of the head) is plain light grey and lacks the darker streaks commonly seen in the grey-eyed greenlet. Darker grey coloring in the Beni greenlet is usually limited to a small spot just behind the eye, which sometimes extends into a short line, and to a black area at the base of the lower bill. Many individuals also show dark grey coloring between the eye and the bill, along with faint stripes along the cheek and near the mouth. Like the grey-eyed greenlet, the Beni greenlet often has a light buff (yellow-brown) tint across the underside of the body, not just near the tail. While the grey-eyed greenlet often has a clearly defined reddish-brown patch on the ear area, the Beni greenlet usually shows only a very faint buff tint there, extending from the back of the neck or from the underparts. H. moxensis can be told apart from the rufous-crowned greenlet by the lack of a large grey patch on the forehead and by the absence of a distinct black patch on the ear area, even though some individuals share grey coloring between the eye and bill with that species."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN08863",
+    "scientificName": "Rhipidura laguceria",
+    "bio": "Deze waaierstaart komt uitsluitend voor op de Babar-eilanden in de Bandazee. De soort werd in 2026 beschreven.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Cheerful_fantail",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The cheerful fantail (Rhipidura laguceria) is a species of bird in the family Rhipiduridae. This species is one of 61 in the genus Rhipidura. It is endemic to the Babar Islands in the Banda Sea. It was described in 2026."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN08229",
+    "scientificName": "Psalidoprocne centralis",
+    "bio": "Deze zwaluw komt uitsluitend voor in de Democratische Republiek Congo. Ze behoort tot het geslacht Psalidoprocne, de kamzwaluwen.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Congo_saw-wing",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Congo saw-wing (Psalidoprocne centralis) is a species of bird in the family Hirundinidae. It is endemic to the Democratic Republic of the Congo. It was described by Oscar Rudolph Neumann in 1904. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN08628",
+    "scientificName": "Pycnonotus porphyreus",
+    "bio": "Deze buulbuul komt voor in het westen van Sumatra en op omliggende eilanden, waaronder Nias, Siberut en Sipura. Hij behoort tot de buulbuulfamilie.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Barusan_bulbul",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Barusan bulbul (Pycnonotus porphyreus) is a member of the family Pycnonotidae. It is found in western Sumatra and the islands of Nias, Siberut, Batu Islands, Banyak Islands and Sipura. It was described by Harry Church Oberholser in 1912. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN04809",
+    "scientificName": "Hypsipetes flavicaudus",
+    "bio": "Deze buulbuul komt uitsluitend voor op het Indonesische eiland Ambon. Hij werd vroeger tot dezelfde soort als de goudbuulbuul van Seram gerekend.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Ambon_golden_bulbul",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Ambon golden bulbul (Hypsipetes flavicaudus) is a species of bird in the family Pycnonotidae. It is endemic to the island of Ambon in Indonesia. Until recently, it was considered conspecific with the Seram golden bulbul. It was described by Charles Lucien Bonaparte in 1850. It is monotypic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN06071",
+    "scientificName": "Mixornis woodi",
+    "bio": "Deze timalia komt voor op Palawan en Balabac in de Filipijnen. Hij leeft in struiken en de ondergroei van altijdgroen loofbos, tot ongeveer 1.525 meter hoogte.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Palawan_tit-babbler",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Palawan tit-babbler (Mixornis woodi) is a species of bird in the family Timaliidae. It is found on the islands of Palawan and Balabac in the Philippines. It was described by Richard Bowdler Sharpe in 1877. It is monotypic.\n\nThis species is similar to the pin-striped tit-babbler, but it has a greyish face, back, mantle and scapulars, and has paler underparts. This species also has little to no streaking on the breast as compared to gularis.\n\nThis species has a bell-like song, consisting of 5-27 cho or chuh notes, repeated every 1-2 seconds, similar to that of the grey-cheeked tit-babbler and the grey-faced tit-babbler. This species makes its nests in June, although the birds are ready to breed in April and May. The clutch size is 2-3 eggs.\n\nThis species occurs in bushes and undergrowth with broadleaf evergreen forest, up to 1525 metres."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN03957",
+    "scientificName": "Fringillaria capensis",
+    "bio": "Deze gors komt voor in zuidelijk Afrika. Hij leeft op rotsachtige hellingen en in droog struweel; in het noorden van zijn verspreidingsgebied vooral in bergstreken.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://en.wikipedia.org/wiki/Cape_bunting",
+      "https://birdnet.cornell.edu/taxonomy/about"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Dutch adaptation of inspected English Wikipedia description in pinned BirdNET+ v0.5 snapshot; no unsupported habitat inference",
+      "sourceDescription": "The Cape bunting (Fringillaria capensis) is a passerine bird in the bunting family Emberizidae.\n\nThe Cape bunting is 16 cm long. The adult has a black crown, white supercilium and black-bordered white ear coverts. The upperparts are grey brown with some dark streaks, and the wing coverts are chestnut. The tail is darker chestnut, and the underparts are grey with a pale throat. The sexes are very similar, but females may have a buff tone to the white head markings. Young birds have duller chestnut wings, a less distinct head pattern, and heavier streaking extending on to the breast and flanks. The call is an ascending zzoo-zeh-zee-zee. The song is a loud chirping chup chup chup chup chee chhep chu. E. c. vincenti has a simple tre-re-ret tre-re-ret song.\n\nThe Cape bunting occurs in southern Africa from south-western Angola, eastern Zambia, Zimbabwe and southern Tanzania to the Cape. Its habitat is rocky slopes and dry weedy scrub, mainly in mountains in the north of its range. It previously utilized stony arid areas with some short grass, but much of this has been lost to ploughing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07929",
+    "scientificName": "Pluvialis dominica",
+    "wingspan": {
+      "minimumCM": 66.0,
+      "maximumCM": 72.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Pluvialis dominica",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/amerikaanse-goudplevier"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "24-28 cm, spanwijdte 66-72 cm",
+      "htmlSHA256": "b5499a962c298de3fd7059295b9f53bc6b9bbb3281a217f3d0567e0c11919854",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05654",
+    "scientificName": "Mareca americana",
+    "wingspan": {
+      "minimumCM": 76.0,
+      "maximumCM": 91.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Mareca americana",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/amerikaanse-smient"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "42–59 cm, spanwijdte 76–91 cm",
+      "htmlSHA256": "01aad4d3e6c8645ff722203ae0a2779e686b7ce5ea2cc9ea890e53462c33fd14",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09943",
+    "scientificName": "Tarsiger cyanurus",
+    "wingspan": {
+      "minimumCM": 22.0,
+      "maximumCM": 23.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Tarsiger cyanurus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/blauwstaart"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "13-14 cm, spanwijdte 22-23 cm",
+      "htmlSHA256": "dbf7a6efd6a477b9a1dc0a2dd2249154fca88847e01114269c628f95169e00c1",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09875",
+    "scientificName": "Tadorna ferruginea",
+    "wingspan": {
+      "minimumCM": 121.0,
+      "maximumCM": 145.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Tadorna ferruginea",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/casarca"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "61-67 cm, spanwijdte 121-145 cm",
+      "htmlSHA256": "6d1e91236c3e14fb43d5ba91a4113c123f1f1966544ae22edb689482462aedf2",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07505",
+    "scientificName": "Phoenicopterus chilensis",
+    "wingspan": {
+      "minimumCM": 120.0,
+      "maximumCM": 135.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Phoenicopterus chilensis",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/chileense-flamingo"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "105 cm, spanwijdte 120-135 cm",
+      "htmlSHA256": "6ec1c972dabbb5e5ded63783680bd7457aa044aef9c3f6526325a6e26c3db0db",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00530",
+    "scientificName": "Anser erythropus",
+    "wingspan": {
+      "minimumCM": 115.0,
+      "maximumCM": 135.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Anser erythropus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/dwerggans"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "53-66 cm, spanwijdte 115 - 135 cm",
+      "htmlSHA256": "6a35a92905b8e54ef05fe227a84fc8d4a24323218bda63985698dc99f88360a7",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07675",
+    "scientificName": "Pica pica",
+    "wingspan": {
+      "minimumCM": 52.0,
+      "maximumCM": 60.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Pica pica",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ekster"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "46-50 cm, spanwijdte 52-60 cm",
+      "htmlSHA256": "a8523b96b9c5ce9643c1f3939bd2a65a850e53a7a24bac84549fa7abcc51cfda",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07430",
+    "scientificName": "Phasianus colchicus",
+    "wingspan": {
+      "minimumCM": 70.0,
+      "maximumCM": 90.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Phasianus colchicus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/fazant"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "53-89 cm, spanwijdte 70-90 cm",
+      "htmlSHA256": "4eab96607febe1e54aef1153b0a80456fb85f324a162bf25d90e65829dfbc735",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN04086",
+    "scientificName": "Garrulus glandarius",
+    "wingspan": {
+      "minimumCM": 50.0,
+      "maximumCM": 60.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Garrulus glandarius",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/gaai"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "32-36 cm, spanwijdte 50-60 cm",
+      "htmlSHA256": "db903e5d772401af9b7d3ff3777a2d533e308f0555036eb18aa0a44e4558a76a",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07947",
+    "scientificName": "Podiceps nigricollis",
+    "wingspan": {
+      "minimumCM": 56.0,
+      "maximumCM": 60.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Podiceps nigricollis",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/geoorde-fuut"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "28–34 cm, spanwijdte 56–60 cm",
+      "htmlSHA256": "21b9b15fcebe45aedf200daf0f677e4a8d23e3769b11cb0be76bb827fed5072d",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05163",
+    "scientificName": "Larus hyperboreus",
+    "wingspan": {
+      "minimumCM": 132.0,
+      "maximumCM": 142.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Larus hyperboreus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-burgemeester"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "64-77 cm, spanwijdte 132-142 cm",
+      "htmlSHA256": "33ba7b15dc9f74967408959481184eb260fe64efb843aa9fd6240bad654c9c3e",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00975",
+    "scientificName": "Astur gentilis",
+    "wingspan": {
+      "minimumCM": 89.0,
+      "maximumCM": 122.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Astur gentilis",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/havik"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "46-63 cm, spanwijdte 89-122 cm",
+      "htmlSHA256": "2a2ca1d2b866c5145421de64a763e2363d35df4fba6da00205cd58346e4a2b25",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN10117",
+    "scientificName": "Threskiornis aethiopicus",
+    "wingspan": {
+      "minimumCM": 112.0,
+      "maximumCM": 124.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Threskiornis aethiopicus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "65-89 cm, spanwijdte 112-124 cm",
+      "htmlSHA256": "952100d79a20d11660548bb0065c2e6ed42b9206231ecb8da428ed92842dc5be",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN10586",
+    "scientificName": "Tyto alba",
+    "wingspan": {
+      "minimumCM": 82.0,
+      "maximumCM": 99.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Tyto alba",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kerkuil"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "33-39 cm, spanwijdte 82-99 cm",
+      "htmlSHA256": "68396a7047bda4759b59358b5b057121e5dfd248a797b5076fee256722201be2",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN03432",
+    "scientificName": "Egretta garzetta",
+    "wingspan": {
+      "minimumCM": 88.0,
+      "maximumCM": 106.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Egretta garzetta",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-zilverreiger"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "55-65 cm, spanwijdte 88-106 cm",
+      "htmlSHA256": "98647e9c69775cf7ac94764041b3d07b5904031a73716eaf55b751cf8966038a",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05380",
+    "scientificName": "Locustella fluviatilis",
+    "wingspan": {
+      "minimumCM": 21.0,
+      "maximumCM": 24.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Locustella fluviatilis",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/krekelzanger"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "14-16 cm, spanwijdte 21-24 cm",
+      "htmlSHA256": "9203c89c97fbf9e1c5d3f65c0a2fbdf1507a102abe49246ba1c58288deb1e10e",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02703",
+    "scientificName": "Coturnix coturnix",
+    "wingspan": {
+      "minimumCM": 32.0,
+      "maximumCM": 35.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Coturnix coturnix",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kwartel"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "16-18 cm, spanwijdte 32-35 cm",
+      "htmlSHA256": "13ec1d37b7b10ba7553db56de4d424660aa0265c8f1d48a9183b3e169d526406",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN04101",
+    "scientificName": "Gelochelidon nilotica",
+    "wingspan": {
+      "minimumCM": 85.0,
+      "maximumCM": 103.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Gelochelidon nilotica",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lachstern"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "33-43 cm, spanwijdte 85-103 cm",
+      "htmlSHA256": "463c293a03c7221186922825497529ad6baca561bbfe84d16158503ddfe1d0e4",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00252",
+    "scientificName": "Aix galericulata",
+    "wingspan": {
+      "minimumCM": 65.0,
+      "maximumCM": 75.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Aix galericulata",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "41-49 cm, spanwijdte 65-75 cm",
+      "htmlSHA256": "a3304709819e1cf5c3cb6144da2056ddaa835149d24793586b9984065794adab",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN03124",
+    "scientificName": "Dendrocoptes medius",
+    "wingspan": {
+      "minimumCM": 33.0,
+      "maximumCM": 34.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Dendrocoptes medius",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/middelste-bonte-specht"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "22-24 cm, spanwijdte 33-34 cm",
+      "htmlSHA256": "f9bac44f452525f8f9e8241b8620dd8c36d9e08aeca01ec6a19d862797ec9b8f",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01375",
+    "scientificName": "Cairina moschata",
+    "wingspan": {
+      "minimumCM": 137.0,
+      "maximumCM": 152.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Cairina moschata",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/muskuseend"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "66-86,5 cm, spanwijdte 137-152 cm",
+      "htmlSHA256": "e15fa28188152db2990f68f2a05cbd9700b0a13147162bbafe8e440b4353e615",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00318",
+    "scientificName": "Alopochen aegyptiaca",
+    "wingspan": {
+      "minimumCM": 134.0,
+      "maximumCM": 154.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Alopochen aegyptiaca",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/nijlgans"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "63-73 cm, spanwijdte 134-154 cm",
+      "htmlSHA256": "b6ffb3a27184d031e42229aee4bd3b753799eee4df56f4449294a0fc4148dd8a",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01414",
+    "scientificName": "Calidris maritima",
+    "wingspan": {
+      "minimumCM": 42.0,
+      "maximumCM": 46.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Calidris maritima",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/paarse-strandloper"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "20-22 cm, spanwijdte 42-46 cm",
+      "htmlSHA256": "73e41cd1ebb7747f968da31b4b69ecfb1c4d0487f94443a2b860d7eafab23e31",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07278",
+    "scientificName": "Perdix perdix",
+    "wingspan": {
+      "minimumCM": 45.0,
+      "maximumCM": 48.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Perdix perdix",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/patrijs"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "29-31 cm, spanwijdte 45-48 cm",
+      "htmlSHA256": "d5a1ce64f0b8f9455e8d730111c67cca4a3b6bf1a05f084ddbfa7bcdd9b854bc",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07646",
+    "scientificName": "Phylloscopus schwarzi",
+    "wingspan": {
+      "minimumCM": 15.5,
+      "maximumCM": 20.5,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Phylloscopus schwarzi",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/raddes-boszanger"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "12,5-13,5 cm, spanwijdte 15,5-20,5 cm",
+      "htmlSHA256": "2f54181399977d6cf4c25b2016ea57c0fe150ccacb71f671f449d76bc25884fd",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN06663",
+    "scientificName": "Numenius phaeopus",
+    "wingspan": {
+      "minimumCM": 76.0,
+      "maximumCM": 89.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Numenius phaeopus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/regenwulp"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "40–46 cm, spanwijdte 76–89 cm",
+      "htmlSHA256": "12bc6e38b27f58ce40e483e57090e61e1a860e4fbc134e3c58a27340fc00ba22",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01238",
+    "scientificName": "Branta ruficollis",
+    "wingspan": {
+      "minimumCM": 116.0,
+      "maximumCM": 135.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Branta ruficollis",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roodhalsgans"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "53-56 cm, spanwijdte 116–135 cm",
+      "htmlSHA256": "a276846e0e5bb4113152245506afaffe021d5e8db6b4c1452e0ae0c2f35e0eb7",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01708",
+    "scientificName": "Cecropis daurica",
+    "wingspan": {
+      "minimumCM": 32.0,
+      "maximumCM": 34.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Cecropis daurica",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roodstuitzwaluw"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "16-17 cm, waarvan 3-5 cm staartpennen, spanwijdte 32-34 cm",
+      "htmlSHA256": "6f6cebc3199e231ddfcd44be3b5475d25d1ebd173617f7d8e4a54ad48faf0266",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN06971",
+    "scientificName": "Oxyura jamaicensis",
+    "wingspan": {
+      "minimumCM": 53.0,
+      "maximumCM": 62.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Oxyura jamaicensis",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/rosse-stekelstaart"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "35-43 cm, spanwijdte 53-62 cm",
+      "htmlSHA256": "ab3352a7379912247081424c10d8ac51b2eefa29d1897228f3be82a1516f34d2",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00527",
+    "scientificName": "Anser caerulescens",
+    "wingspan": {
+      "minimumCM": 133.0,
+      "maximumCM": 156.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Anser caerulescens",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/sneeuwgans"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "65-75 cm, spanwijdte 133-156 cm",
+      "htmlSHA256": "fbccb043caae10237720c6a7a7fe4f7cef32a88999ab13f78d5533919b8145de",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN04645",
+    "scientificName": "Himantopus himantopus",
+    "wingspan": {
+      "minimumCM": 67.0,
+      "maximumCM": 83.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Himantopus himantopus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/steltkluut"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "33-36 cm (excl. poten van 14-17 cm), spanwijdte 67-83 cm",
+      "htmlSHA256": "506b5480ec745f3901863cdbd1456f2d084c46fbb09fc329c6c628778ae908fe",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05155",
+    "scientificName": "Larus canus",
+    "wingspan": {
+      "minimumCM": 110.0,
+      "maximumCM": 125.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Larus canus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/stormmeeuw"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "40-60 cm, spanwijdte 110-125 cm",
+      "htmlSHA256": "fdc1ea2d10bef7abe8e5323520beb44d3ba6886cea4c4bb89734713a664b4501",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00531",
+    "scientificName": "Anser fabalis",
+    "wingspan": {
+      "minimumCM": 142.0,
+      "maximumCM": 175.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Anser fabalis",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/taigarietgans"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "66-89 cm, spanwijdte 142–175 cm",
+      "htmlSHA256": "b8109c1568112c27e88ca18d5a38cfb5a91dbc0e18f4b729b280ecfbe9f2f0fb",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00534",
+    "scientificName": "Anser serrirostris",
+    "wingspan": {
+      "minimumCM": 142.0,
+      "maximumCM": 175.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Anser serrirostris",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/toendrarietgans"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "69-88 cm, spanwijdte 142–175 cm",
+      "htmlSHA256": "5ceecccd66e57c8100709475774325512ae00a9b75bdd0c5e324b0a9c56317d7",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN03838",
+    "scientificName": "Falco tinnunculus",
+    "wingspan": {
+      "minimumCM": 68.0,
+      "maximumCM": 78.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Falco tinnunculus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/torenvalk"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "31-37 cm, spanwijdte 68-78 cm",
+      "htmlSHA256": "676e20ce334d5c4e63e8eaf60b9a4249cf530790601adb4d26904c6375fff1bd",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN03948",
+    "scientificName": "Fringilla coelebs",
+    "wingspan": {
+      "minimumCM": 25.0,
+      "maximumCM": 28.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Fringilla coelebs",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/vink"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "14-16 cm, spanwijdte 25-28 cm",
+      "htmlSHA256": "ef6f4878f71dd2a2087f979dd22816fb95711784fe02654c3a21d1730d6faa09",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00470",
+    "scientificName": "Anas crecca",
+    "wingspan": {
+      "minimumCM": 58.0,
+      "maximumCM": 64.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Anas crecca",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wintertaling"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "34-38 cm, spanwijdte 58-64 cm",
+      "htmlSHA256": "f63a04dd1ab3eaddd5293959c0515aa994d8225568c40ff00d286c4a1aee4cdb",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01958",
+    "scientificName": "Chlidonias hybrida",
+    "wingspan": {
+      "minimumCM": 64.0,
+      "maximumCM": 70.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Chlidonias hybrida",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/witwangstern"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "23-29 cm, spanwijdte 64-70 cm",
+      "htmlSHA256": "67fc62c25442569c12250a3de03613f170508f1d6aa7d9b5ecc802abe610a1ef",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN06024",
+    "scientificName": "Milvus migrans",
+    "wingspan": {
+      "minimumCM": 120.0,
+      "maximumCM": 153.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Milvus migrans",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-wouw"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "44-66 cm, spanwijdte 120-153 cm",
+      "htmlSHA256": "4ed4be0f086fb4df57699a3279ec7faa33d57cfca237cdc232b5adead75f33d5",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN04842",
+    "scientificName": "Ichthyaetus melanocephalus",
+    "wingspan": {
+      "minimumCM": 94.0,
+      "maximumCM": 102.0,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Ichthyaetus melanocephalus",
+      "sourceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwartkopmeeuw"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "37-40 cm, spanwijdte 94-102 cm",
+      "htmlSHA256": "059c04221fd00ebcd9d31e03b1c8602498647d90a637af0eb67a3807bc9e45fe",
+      "identity": "exact structured alternateName scientific name"
+    }
+  },
+  {
+    "speciesID": "sample-erithacus-rubecula",
+    "scientificName": "Erithacus rubecula",
+    "wingspan": {
+      "minimumCM": 20,
+      "maximumCM": 22,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Erithacus rubecula",
+      "sourceURL": "https://www.nhm.ac.uk/discover/robin-erithacus-rubecula.html"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "Scientific name Erithacus rubecula; Wingspan 20-22cm",
+      "identity": "individual source species account inspected"
+    }
+  },
+  {
+    "speciesID": "sample-parus-major",
+    "scientificName": "Parus major",
+    "wingspan": {
+      "minimumCM": 24,
+      "maximumCM": 24,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Parus major",
+      "sourceURL": "https://www.wildlifetrusts.org/wildlife-explorer/birds/tits-crests-and-warblers/great-tit"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "Great tit: Wingspan 24cm",
+      "identity": "individual source species account inspected"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01274",
+    "scientificName": "Buceros bicornis",
+    "wingspan": {
+      "minimumCM": 151,
+      "maximumCM": 178,
+      "method": "source-checked-guide",
+      "sourceScientificName": "Buceros bicornis",
+      "sourceURL": "https://animaldiversity.org/accounts/Buceros_bicornis/"
+    },
+    "evidence": {
+      "checked": "2026-11-21",
+      "caption": "Buceros bicornis: Range wingspan 151 to 178 cm",
+      "identity": "individual source species account inspected"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02843",
+    "scientificName": "Crypturellus resonans",
+    "bio": "Deze tinamoe is beschreven uit het Serra do Divisor-gebergte in Acre, in het westen van het Braziliaanse Amazonegebied. Het is een grondvogel uit de tinamoefamilie.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://www.museum.lsu.edu/~Remsen/SACCprop1069.htm"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Original short Dutch factual summary of exact species account; no parent-species trait inheritance"
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN06085",
+    "scientificName": "Momotus castaneiceps",
+    "bio": "Deze motmot leeft in Guatemala, in en rond het dal van de Motagua. Hij komt voor in tropisch loofbos, bos langs rivieren en secundair bos, tot ongeveer 1.900 meter hoogte.",
+    "bioMethod": "source-summary-nl",
+    "bioSourceURLs": [
+      "https://doi.org/10.1093/ornithology/ukag037"
+    ],
+    "evidence": {
+      "checked": "2026-11-21",
+      "basis": "Original short Dutch factual summary of exact species account; no parent-species trait inheritance"
+    }
+  }
+]

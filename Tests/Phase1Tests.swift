@@ -1043,8 +1043,8 @@ final class SpeciesDetailsTests: XCTestCase {
         XCTAssertNil(SpeciesDetailsCatalog.loadError)
         let rows = SpeciesGuideCatalog.species.compactMap { SpeciesDetailsCatalog.details(for: $0.id) }
         XCTAssertEqual(rows.count, 11173)
-        XCTAssertEqual(rows.filter { $0.bio != nil }.count, 11130)
-        XCTAssertEqual(rows.filter { $0.wingspan != nil }.count, 1313)
+        XCTAssertEqual(rows.filter { $0.bio != nil }.count, 11154)
+        XCTAssertEqual(rows.filter { $0.wingspan != nil }.count, 1356)
         XCTAssertTrue(rows.contains { $0.bio == nil })
         XCTAssertEqual(SpeciesDetailsCatalog.details(for: "sample-alcedo-atthis")?.wingspan?.displayValue, "24–26 cm")
         XCTAssertNil(SpeciesDetailsCatalog.details(for: "not-a-species"))

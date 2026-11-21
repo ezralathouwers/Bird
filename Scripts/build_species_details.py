@@ -78,4 +78,8 @@ def main(birdbase,fox,taxonomy):
  provenance_path.write_text(json.dumps(provenance,indent=2)+'\n')
  summary={'records':len(output),'bios':sum(r['bio'] is not None for r in output),'bioMethods':dict(collections.Counter(r['bioMethod'] for r in output if r['bioMethod'])),'wingspans':sum(r['wingspan'] is not None for r in output),'predictedWingspansImported':0,'missingBios':[r['speciesID'] for r in output if r['bio'] is None],'missingWingspans':[r['speciesID'] for r in output if r['wingspan'] is None]}
  (ROOT/'Docs/SpeciesDetailsCoverage.json').write_text(json.dumps(summary,indent=2)+'\n');print({k:v for k,v in summary.items() if not k.startswith('missing')})
-if __name__=='__main__':main(*sys.argv[1:])
+if __name__=='__main__':
+ main(*sys.argv[1:])
+ if (ROOT/'Docs/SpeciesDetailsSupplements.json').exists():
+  from supplement_species_details import main as supplement
+  supplement()
