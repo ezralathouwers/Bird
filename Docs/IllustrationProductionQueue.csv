@@ -10204,7 +10204,7 @@ birdnet-v3:BN02983,Cygnus olor,Knobbelzwaan,wetland-general,Wetland,primary;dyna
 birdnet-v3:BN04615,Heteronetta atricapilla,Koekoekseend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00781,Aramus guarauna,Koerlan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05433,Lophodytes cucullatus,Kokardezaagbek,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN02066,Chroicocephalus ridibundus,Kokmeeuw,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN02066,Chroicocephalus ridibundus,Kokmeeuw,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN07819,Platalea regia,Koningslepelaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08742,Rallus elegans,Koningsral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04531,Helopsaltes pleskei,Koreaanse sprinkhaanzanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10757,7 +10757,7 @@ birdnet-v3:BN05809,Melanodryas pulverulenta,Tapuitvliegenvanger,coast-general,Ku
 birdnet-v3:BN09569,Sterna striata,Tarastern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10198,Todiramphus sordidus,Torresijsvogel,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08209,Prosobonia parvirostris,Tuamotustrandloper,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN10334,Tringa totanus,Tureluur,coast-general,Kust,primary;dynamic;rear,front;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN10334,Tringa totanus,Tureluur,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN02498,Conirostrum bicolor,Tweekleurige spitssnavel,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00448,Anarhynchus marginatus,Vale strandplevier,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05172,Larus vegae,Vegameeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

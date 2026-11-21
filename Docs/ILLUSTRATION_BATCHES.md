@@ -1,5 +1,23 @@
 # Illustration batches
 
+## Coast continuation 12A — 21 November 2026
+
+Seven new accepted originals complete the two missing tureluur roles (front
+and centered ventral flight) and all five kokmeeuw roles. Kokmeeuw uses adult
+breeding chocolate-brown hood plumage and a worm-foraging dynamic scene.
+Classic portraits remain bird-only and right-facing. Individual full-image
+reviews checked wing attachments, single head/bill, feet, framing and main
+markings. Several haze/matte attempts were rejected and corrected through
+image generation; only clean accepted cutouts are installed. Exact-image
+review hashes, reference-description snapshots and rejected attempt hashes
+are recorded in ArtworkContinuation12.json.
+
+Importer preflight, PNG decode/alpha/dimensions, original byte equality,
+SHA-256 and both inventory scripts pass. Coverage is 284 assets and 56 fully
+illustrated species. The original coast batch has 25 roles remaining. Native
+image loading, edge blending, small thumbnails and carousel sizing still need
+Xcode and user review; no native build or simulator test ran here.
+
 ## Great spotted woodpecker compact-pose revision — 21 November 2026
 
 Only the classic small-display illustration for Grote bonte specht is revised

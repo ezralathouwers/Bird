@@ -2094,7 +2094,7 @@ birdnet-v3:BN02062,Hartlaubmeeuw,Chroicocephalus hartlaubii,Laridae,True,True,Fa
 birdnet-v3:BN02063,Patagonische kokmeeuw,Chroicocephalus maculipennis,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN02064,Witkopmeeuw,Chroicocephalus novaehollandiae,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN02065,Kleine kokmeeuw,Chroicocephalus philadelphia,Laridae,True,True,False,False,False,False,False
-birdnet-v3:BN02066,Kokmeeuw,Chroicocephalus ridibundus,Laridae,True,True,False,False,False,False,False
+birdnet-v3:BN02066,Kokmeeuw,Chroicocephalus ridibundus,Laridae,True,True,True,True,True,True,True
 birdnet-v3:BN02067,Andesmeeuw,Chroicocephalus serranus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN02068,Diederikkoekoek,Chrysococcyx caprius,Cuculidae,True,True,False,False,False,False,False
 birdnet-v3:BN02069,Smaragdkoekoek,Chrysococcyx cupreus,Cuculidae,True,True,False,False,False,False,False
@@ -10466,7 +10466,7 @@ birdnet-v3:BN10330,Witgat,Tringa ochropus,Scolopacidae,True,True,False,False,Fal
 birdnet-v3:BN10331,Kwelderruiter,Tringa semipalmata,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN10332,Amerikaanse bosruiter,Tringa solitaria,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN10333,Poelruiter,Tringa stagnatilis,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN10334,Tureluur,Tringa totanus,Scolopacidae,True,True,True,True,False,True,False
+birdnet-v3:BN10334,Tureluur,Tringa totanus,Scolopacidae,True,True,True,True,True,True,True
 birdnet-v3:BN10335,Zwartmaskerlijstergaai,Trochalopteron affine,Leiothrichidae,True,True,False,False,False,False,False
 birdnet-v3:BN10336,Bruinkaplijstergaai,Trochalopteron austeni,Leiothrichidae,True,True,False,False,False,False,False
 birdnet-v3:BN10337,Assamlijstergaai,Trochalopteron chrysopterum,Leiothrichidae,True,True,False,False,False,False,False

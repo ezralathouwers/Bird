@@ -2,10 +2,10 @@
   "state": "partial-batch-no-job-running",
   "requestedSpecies": 20,
   "targetRoles": 100,
-  "generatedRoles": 68,
-  "acceptedRoles": 68,
+  "generatedRoles": 75,
+  "acceptedRoles": 75,
   "rejectedRoles": 0,
-  "pendingGeneration": 32,
+  "pendingGeneration": 25,
   "rows": [
     {
       "id": "birdnet-v3:BN10664",
@@ -184,7 +184,10 @@
       "name": "Tureluur",
       "scientificName": "Tringa totanus",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "8ba9e1a2fcd36ccf94f0d90475b34eda09d90e340bd9755e7244a125ff1a9361",
+      "sourceFile": "exec-c80a12b7-9a96-48c6-a39b-95da231d39b2.png",
+      "batch": "coast-12A"
     },
     {
       "id": "birdnet-v3:BN10334",
@@ -200,7 +203,10 @@
       "name": "Tureluur",
       "scientificName": "Tringa totanus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "422f18b10860f30cd6ed9f193562ffeba8a7f88ee43fc71748e09612e734c6ea",
+      "sourceFile": "exec-9652f4ef-10ad-4ad8-8e21-aa3647483cdf.png",
+      "batch": "coast-12A"
     },
     {
       "id": "birdnet-v3:BN06658",
@@ -707,35 +713,50 @@
       "name": "Kokmeeuw",
       "scientificName": "Chroicocephalus ridibundus",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "06a4c30e2a554f6f37354628dd8550b8096dfe9346afa49a80128400e5dc6d17",
+      "sourceFile": "exec-63823e4b-9c8c-46ed-9610-a301dae3ad71.png",
+      "batch": "coast-12A"
     },
     {
       "id": "birdnet-v3:BN02066",
       "name": "Kokmeeuw",
       "scientificName": "Chroicocephalus ridibundus",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "548aabecc1ddffc64866da0c1fb07ad4ee04804311a60148e80bcde02f3269b7",
+      "sourceFile": "exec-47ba7af1-64ec-4be0-a2cf-f6e324b6c9eb.png",
+      "batch": "coast-12A"
     },
     {
       "id": "birdnet-v3:BN02066",
       "name": "Kokmeeuw",
       "scientificName": "Chroicocephalus ridibundus",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "be70d427269d2148c3fd0b68415dec8ae7ad5a005b7b7442eb7058231af9f9b7",
+      "sourceFile": "exec-22164ef1-8272-4869-94ff-3f052f1e2371.png",
+      "batch": "coast-12A"
     },
     {
       "id": "birdnet-v3:BN02066",
       "name": "Kokmeeuw",
       "scientificName": "Chroicocephalus ridibundus",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "211329cc8f2d4102f864c5db8ca11b7e0523c02a4adc5e6a74aba60f46c92cd2",
+      "sourceFile": "exec-a47296fd-a593-476e-8750-66df7c0c9f50.png",
+      "batch": "coast-12A"
     },
     {
       "id": "birdnet-v3:BN02066",
       "name": "Kokmeeuw",
       "scientificName": "Chroicocephalus ridibundus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "c1bf1d83b0c857305eb84597bc2417de57cdcd4764108263135ef81c3a9aed73",
+      "sourceFile": "exec-825dc35d-e7f5-4b00-8cdc-4f22f6380ff6.png",
+      "batch": "coast-12A"
     },
     {
       "id": "birdnet-v3:BN05148",
