@@ -1,0 +1,512 @@
+{
+  "checked": "2026-11-21",
+  "discovery": "76 exact-scientific-name ADW account URLs cited in cached English Wikipedia revisions; 21 targeted Oiseaux.net species pages checked for remaining/deferred species. Retrieval plans only; dedicated measurement fields and source scope require separate review.",
+  "targets": [
+    {
+      "speciesID": "birdnet-v3:BN10546",
+      "scientificName": "Turnix suscitator",
+      "sourceURL": "https://animaldiversity.org/accounts/Turnix_suscitator/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08532",
+      "scientificName": "Ptilinopus rivoli",
+      "sourceURL": "https://animaldiversity.org/accounts/Ptilinopus_rivoli/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07182",
+      "scientificName": "Passerina ciris",
+      "sourceURL": "https://animaldiversity.org/accounts/Passerina_ciris/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00465",
+      "scientificName": "Anas bahamensis",
+      "sourceURL": "https://animaldiversity.org/accounts/Anas_bahamensis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08701",
+      "scientificName": "Pyrrhura molinae",
+      "sourceURL": "https://animaldiversity.org/accounts/Pyrrhura_molinae/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09685",
+      "scientificName": "Sula leucogaster",
+      "sourceURL": "https://animaldiversity.org/accounts/Sula_leucogaster/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05027",
+      "scientificName": "Lagopus leucura",
+      "sourceURL": "https://animaldiversity.org/accounts/Lagopus_leucura/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01354",
+      "scientificName": "Cacicus cela",
+      "sourceURL": "https://animaldiversity.org/accounts/Cacicus_cela/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04017",
+      "scientificName": "Gallicolumba platenae",
+      "sourceURL": "https://animaldiversity.org/accounts/Gallicolumba_platenae/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05026",
+      "scientificName": "Lagopus lagopus",
+      "sourceURL": "https://animaldiversity.org/accounts/Lagopus_lagopus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00754",
+      "scientificName": "Ara glaucogularis",
+      "sourceURL": "https://animaldiversity.org/accounts/Ara_glaucogularis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00752",
+      "scientificName": "Ara ararauna",
+      "sourceURL": "https://animaldiversity.org/accounts/Ara_ararauna/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04773",
+      "scientificName": "Hymenolaimus malacorhynchos",
+      "sourceURL": "https://animaldiversity.org/accounts/Hymenolaimus_malacorhynchos/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09752",
+      "scientificName": "Synallaxis albescens",
+      "sourceURL": "https://animaldiversity.org/accounts/Synallaxis_albescens/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04209",
+      "scientificName": "Glareola cinerea",
+      "sourceURL": "https://animaldiversity.org/accounts/Glareola_cinerea/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09411",
+      "scientificName": "Spheniscus mendiculus",
+      "sourceURL": "https://animaldiversity.org/accounts/Spheniscus_mendiculus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08647",
+      "scientificName": "Pygoscelis papua",
+      "sourceURL": "https://animaldiversity.org/accounts/Pygoscelis_papua/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03672",
+      "scientificName": "Eudyptes chrysocome",
+      "sourceURL": "https://animaldiversity.org/accounts/Eudyptes_chrysocome/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00204",
+      "scientificName": "Agamia agami",
+      "sourceURL": "https://animaldiversity.org/accounts/Agamia_agami/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09205",
+      "scientificName": "Selasphorus sasin",
+      "sourceURL": "https://animaldiversity.org/accounts/Selasphorus_sasin/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09662",
+      "scientificName": "Strix virgata",
+      "sourceURL": "https://animaldiversity.org/accounts/Strix_virgata/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02409",
+      "scientificName": "Colaptes auratus",
+      "sourceURL": "https://animaldiversity.org/accounts/Colaptes_auratus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09689",
+      "scientificName": "Surnia ulula",
+      "sourceURL": "https://animaldiversity.org/accounts/Surnia_ulula/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10358",
+      "scientificName": "Troglodytes aedon",
+      "sourceURL": "https://animaldiversity.org/accounts/Troglodytes_aedon/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04063",
+      "scientificName": "Gallus gallus",
+      "sourceURL": "https://animaldiversity.org/accounts/Gallus_gallus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01913",
+      "scientificName": "Charadrius semipalmatus",
+      "sourceURL": "https://animaldiversity.org/accounts/Charadrius_semipalmatus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10332",
+      "scientificName": "Tringa solitaria",
+      "sourceURL": "https://animaldiversity.org/accounts/Tringa_solitaria/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00718",
+      "scientificName": "Aptenodytes forsteri",
+      "sourceURL": "https://animaldiversity.org/accounts/Aptenodytes_forsteri/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02407",
+      "scientificName": "Coereba flaveola",
+      "sourceURL": "https://animaldiversity.org/accounts/Coereba_flaveola/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09935",
+      "scientificName": "Tapera naevia",
+      "sourceURL": "https://animaldiversity.org/accounts/Tapera_naevia/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01277",
+      "scientificName": "Bucorvus abyssinicus",
+      "sourceURL": "https://animaldiversity.org/accounts/Bucorvus_abyssinicus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02979",
+      "scientificName": "Cygnus buccinator",
+      "sourceURL": "https://animaldiversity.org/accounts/Cygnus_buccinator/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04346",
+      "scientificName": "Grus americana",
+      "sourceURL": "https://animaldiversity.org/accounts/Grus_americana/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07321",
+      "scientificName": "Petroica bivittata",
+      "sourceURL": "https://animaldiversity.org/accounts/Petroica_bivittata/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03680",
+      "scientificName": "Eudyptula minor",
+      "sourceURL": "https://animaldiversity.org/accounts/Eudyptula_minor/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00723",
+      "scientificName": "Apteryx owenii",
+      "sourceURL": "https://animaldiversity.org/accounts/Apteryx_owenii/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05873",
+      "scientificName": "Mellisuga helenae",
+      "sourceURL": "https://animaldiversity.org/accounts/Mellisuga_helenae/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01947",
+      "scientificName": "Chiroxiphia linearis",
+      "sourceURL": "https://animaldiversity.org/accounts/Chiroxiphia_linearis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00362",
+      "scientificName": "Amazona ochrocephala",
+      "sourceURL": "https://animaldiversity.org/accounts/Amazona_ochrocephala/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05688",
+      "scientificName": "Megadyptes antipodes",
+      "sourceURL": "https://animaldiversity.org/accounts/Megadyptes_antipodes/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00357",
+      "scientificName": "Amazona imperialis",
+      "sourceURL": "https://animaldiversity.org/accounts/Amazona_imperialis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10646",
+      "scientificName": "Vanellus coronatus",
+      "sourceURL": "https://animaldiversity.org/accounts/Vanellus_coronatus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02491",
+      "scientificName": "Columbina passerina",
+      "sourceURL": "https://animaldiversity.org/accounts/Columbina_passerina/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07219",
+      "scientificName": "Pelecanoides magellani",
+      "sourceURL": "https://animaldiversity.org/accounts/Pelecanoides_magellani/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09410",
+      "scientificName": "Spheniscus magellanicus",
+      "sourceURL": "https://animaldiversity.org/accounts/Spheniscus_magellanicus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03265",
+      "scientificName": "Diphyllodes magnificus",
+      "sourceURL": "https://animaldiversity.org/accounts/Diphyllodes_magnificus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08723",
+      "scientificName": "Quiscalus mexicanus",
+      "sourceURL": "https://animaldiversity.org/accounts/Quiscalus_mexicanus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07783",
+      "scientificName": "Pitangus sulphuratus",
+      "sourceURL": "https://animaldiversity.org/accounts/Pitangus_sulphuratus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05068",
+      "scientificName": "Lamprotornis chalybaeus",
+      "sourceURL": "https://animaldiversity.org/accounts/Lamprotornis_chalybaeus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04915",
+      "scientificName": "Indicator indicator",
+      "sourceURL": "https://animaldiversity.org/accounts/Indicator_indicator/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08821",
+      "scientificName": "Rhea americana",
+      "sourceURL": "https://animaldiversity.org/accounts/Rhea_americana/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01675",
+      "scientificName": "Casuarius unappendiculatus",
+      "sourceURL": "https://animaldiversity.org/accounts/Casuarius_unappendiculatus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08645",
+      "scientificName": "Pygoscelis adeliae",
+      "sourceURL": "https://animaldiversity.org/accounts/Pygoscelis_adeliae/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09408",
+      "scientificName": "Spheniscus demersus",
+      "sourceURL": "https://animaldiversity.org/accounts/Spheniscus_demersus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08376",
+      "scientificName": "Pteridophora alberti",
+      "sourceURL": "https://animaldiversity.org/accounts/Pteridophora_alberti/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00719",
+      "scientificName": "Aptenodytes patagonicus",
+      "sourceURL": "https://animaldiversity.org/accounts/Aptenodytes_patagonicus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00124",
+      "scientificName": "Aegolius funereus",
+      "sourceURL": "https://animaldiversity.org/accounts/Aegolius_funereus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01673",
+      "scientificName": "Casuarius bennetti",
+      "sourceURL": "https://animaldiversity.org/accounts/Casuarius_bennetti/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03676",
+      "scientificName": "Eudyptes pachyrhynchus",
+      "sourceURL": "https://animaldiversity.org/accounts/Eudyptes_pachyrhynchus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00206",
+      "scientificName": "Agapornis fischeri",
+      "sourceURL": "https://animaldiversity.org/accounts/Agapornis_fischeri/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04859",
+      "scientificName": "Icterus icterus",
+      "sourceURL": "https://animaldiversity.org/accounts/Icterus_icterus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01534",
+      "scientificName": "Campylorhynchus brunneicapillus",
+      "sourceURL": "https://animaldiversity.org/accounts/Campylorhynchus_brunneicapillus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07301",
+      "scientificName": "Perisoreus canadensis",
+      "sourceURL": "https://animaldiversity.org/accounts/Perisoreus_canadensis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08825",
+      "scientificName": "Rhegmatorhina gymnops",
+      "sourceURL": "https://animaldiversity.org/accounts/Rhegmatorhina_gymnops/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00786",
+      "scientificName": "Aratinga solstitialis",
+      "sourceURL": "https://animaldiversity.org/accounts/Aratinga_solstitialis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05197",
+      "scientificName": "Legatus leucophaius",
+      "sourceURL": "https://animaldiversity.org/accounts/Legatus_leucophaius/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00720",
+      "scientificName": "Apteryx australis",
+      "sourceURL": "https://animaldiversity.org/accounts/Apteryx_australis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01674",
+      "scientificName": "Casuarius casuarius",
+      "sourceURL": "https://animaldiversity.org/accounts/Casuarius_casuarius/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08757",
+      "scientificName": "Ramphastos toco",
+      "sourceURL": "https://animaldiversity.org/accounts/Ramphastos_toco/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02489",
+      "scientificName": "Columbina inca",
+      "sourceURL": "https://animaldiversity.org/accounts/Columbina_inca/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02702",
+      "scientificName": "Coturnix coromandelica",
+      "sourceURL": "https://animaldiversity.org/accounts/Coturnix_coromandelica/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05189",
+      "scientificName": "Laterallus ruber",
+      "sourceURL": "https://animaldiversity.org/accounts/Laterallus_ruber/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09409",
+      "scientificName": "Spheniscus humboldti",
+      "sourceURL": "https://animaldiversity.org/accounts/Spheniscus_humboldti/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06793",
+      "scientificName": "Opisthocomus hoazin",
+      "sourceURL": "https://animaldiversity.org/accounts/Opisthocomus_hoazin/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06548",
+      "scientificName": "Nestor notabilis",
+      "sourceURL": "https://animaldiversity.org/accounts/Nestor_notabilis/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08756",
+      "scientificName": "Ramphastos sulfuratus",
+      "sourceURL": "https://animaldiversity.org/accounts/Ramphastos_sulfuratus/"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04179",
+      "scientificName": "Geotrygon mystacea",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/colombe.a.croissants.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07203",
+      "scientificName": "Patagioenas squamosa",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/pigeon.a.cou.rouge.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10856",
+      "scientificName": "Zenaida aurita",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/tourterelle.a.queue.carree.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01816",
+      "scientificName": "Ceryle rudis",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/martin-pecheur.pie.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09271",
+      "scientificName": "Setophaga petechia",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/paruline.des.mangroves.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00517",
+      "scientificName": "Anorrhinus galeritus",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/calao.largup.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10374",
+      "scientificName": "Trogon ambiguus",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/trogon.elegant.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07426",
+      "scientificName": "Pharomachrus auriceps",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/quetzal.dore.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00553",
+      "scientificName": "Anthracoceros albirostris",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/calao.pie.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02938",
+      "scientificName": "Cyanoliseus patagonus",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/conure.de.patagonie.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06956",
+      "scientificName": "Otus silvicola",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/petit-duc.de.wallace.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09689",
+      "scientificName": "Surnia ulula",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/chouette.eperviere.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00740",
+      "scientificName": "Aquila adalberti",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/aigle.iberique.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01682",
+      "scientificName": "Cathartes burrovianus",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/urubu.a.tete.jaune.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01683",
+      "scientificName": "Cathartes melambrotus",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/grand.urubu.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01613",
+      "scientificName": "Caracara plancus",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/caracara.huppe.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10118",
+      "scientificName": "Threskiornis bernieri",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/ibis.malgache.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01071",
+      "scientificName": "Aythya americana",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/fuligule.a.tete.rouge.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02562",
+      "scientificName": "Coracias benghalensis",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/rollier.indien.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03068",
+      "scientificName": "Daptrius chimachima",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/caracara.a.tete.jaune.html",
+      "provider": "oiseaux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02618",
+      "scientificName": "Corvus cornix",
+      "sourceURL": "https://www.oiseaux.net/oiseaux/corneille.mantelee.html",
+      "provider": "oiseaux"
+    }
+  ]
+}

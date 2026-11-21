@@ -65,6 +65,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('snapshot', type=pathlib.Path)
     parser.add_argument('cache', type=pathlib.Path)
+    parser.add_argument('--language', choices=['en', 'it', 'de', 'fr', 'es', 'pt', 'nl'], default='en')
     parser.add_argument('--max-batches', type=int, default=0, help='Limit Wikipedia batches this run (0 = all remaining)')
     args = parser.parse_args()
     if args.max_batches < 0:
@@ -97,15 +98,15 @@ def main():
                 action='wbgetentities', ids=batch, props='claims|sitelinks|info', format='json'))
             write_json(path, download.get(url))
         entities.update(json.loads(path.read_text())['entities'])
-    target_path = args.cache / 'en-targets.json'
+    target_path = args.cache / f'{args.language}-targets.json'
     if not target_path.exists():
         targets = []
         for species in world:
             source = by_birdnet.get(species['birdnetID'])
             if species['scientificName'] not in missing or not source or source['scientific_name'] != species['scientificName']:
                 continue
-            url = source.get('wikipedia_urls', {}).get('en', '')
-            if url.startswith('https://en.wikipedia.org/wiki/'):
+            url = source.get('wikipedia_urls', {}).get(args.language, '')
+            if url.startswith(f'https://{args.language}.wikipedia.org/wiki/'):
                 targets.append(dict(speciesID=species['id'], scientificName=species['scientificName'], sourceURL=url,
                     title=urllib.parse.unquote(url.split('/wiki/')[1]).replace('_', ' ')))
         write_json(target_path, targets)
@@ -113,13 +114,13 @@ def main():
     wd_names = {name for entity in entities.values() for name in values(entity, 'P225')}
     priority = {r['title'] for r in targets if r['scientificName'] in wd_names}
     titles = sorted({r['title'] for r in targets}, key=lambda t: (t not in priority, t))
-    revisions = args.cache / 'revisions'
-    revisions.mkdir(exist_ok=True)
+    revisions = args.cache / 'revisions' if args.language == 'en' else args.cache / args.language / 'revisions'
+    revisions.mkdir(parents=True, exist_ok=True)
     count = 0
     for start in range(0, len(titles), 50):
         params = dict(action='query', titles='|'.join(titles[start:start + 50]), redirects=1,
             prop='revisions|info|pageprops', rvprop='ids|content', rvslots='main', inprop='url', format='json', maxlag=5)
-        url = 'https://en.wikipedia.org/w/api.php?' + urllib.parse.urlencode(params)
+        url = f'https://{args.language}.wikipedia.org/w/api.php?' + urllib.parse.urlencode(params)
         path = revisions / (hashlib.sha256(url.encode()).hexdigest() + '.json')
         if path.exists():
             continue
@@ -130,7 +131,7 @@ def main():
             raise ValueError('Incomplete content response; not caching as successful')
         write_json(path, dict(requestURL=url, retrieved=time.strftime('%Y-%m-%d', time.gmtime()), response=data))
         count += 1
-        print(f'Cached full revisions {start + 1}–{start + len(pages)} / {len(titles)}', flush=True)
+        print(f'{args.language}: cached full revisions {start + 1}–{start + len(pages)} / {len(titles)}', flush=True)
         if args.max_batches and count >= args.max_batches:
             break
 

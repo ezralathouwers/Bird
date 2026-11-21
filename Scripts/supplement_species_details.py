@@ -65,10 +65,13 @@ def main():
         if not any(s['url'] == 'https://www.wikidata.org/wiki/Property:P2050' for s in provenance['sources']):
             provenance['sources'].append(dict(name='Wikidata P2050 source-reported single quantities; revisions and original citations retained in supplement evidence',
                 url='https://www.wikidata.org/wiki/Property:P2050', license='CC0'))
-    if any('articleRevisionID' in r.get('evidence', {}) for r in supplements):
-        if not any(s['url'] == 'https://en.wikipedia.org/' for s in provenance['sources']):
-            provenance['sources'].append(dict(name='English Wikipedia full article revisions; exact revisions retained in supplement evidence',
-                url='https://en.wikipedia.org/', license='CC BY-SA 4.0'))
+    article_hosts = {urllib.parse.urlparse(r['wingspan']['sourceURL']).hostname for r in supplements
+                     if 'articleRevisionID' in r.get('evidence', {}) and r.get('wingspan')}
+    for host in sorted(h for h in article_hosts if h and re.fullmatch(r'[a-z]{2,3}\.wikipedia\.org', h)):
+        url = f'https://{host}/'
+        if not any(s['url'] == url for s in provenance['sources']):
+            provenance['sources'].append(dict(name=f'Wikipedia full article revisions ({host}); exact revisions retained in supplement evidence',
+                url=url, license='CC BY-SA 4.0'))
     provenance_path.write_text(json.dumps(provenance, indent=2) + '\n')
     summary = {'records': len(rows), 'bios': sum(r['bio'] is not None for r in rows), 'bioMethods': dict(collections.Counter(r['bioMethod'] for r in rows if r['bioMethod'])), 'wingspans': sum(r['wingspan'] is not None for r in rows), 'predictedWingspansImported': 0, 'missingBios': [r['speciesID'] for r in rows if r['bio'] is None], 'missingWingspans': [r['speciesID'] for r in rows if r['wingspan'] is None]}
     (ROOT / 'Docs/SpeciesDetailsCoverage.json').write_text(json.dumps(summary, indent=2) + '\n')
