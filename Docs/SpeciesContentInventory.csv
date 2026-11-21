@@ -829,7 +829,7 @@ birdnet-v3:BN00806,Buulbuullijster,Arcanator orostruthus,Modulatricidae,True,Tru
 birdnet-v3:BN00807,Archboldprieelvogel,Archboldia papuensis,Ptilonorhynchidae,True,True,False,False,False,False,False
 birdnet-v3:BN00808,Zwartkinkolibrie,Archilochus alexandri,Trochilidae,True,True,False,False,False,False,False
 birdnet-v3:BN00809,Robijnkeelkolibrie,Archilochus colubris,Trochilidae,True,True,False,False,False,False,False
-birdnet-v3:BN00810,Grote zilverreiger,Ardea alba,Ardeidae,True,True,False,False,False,False,False
+birdnet-v3:BN00810,Grote zilverreiger,Ardea alba,Ardeidae,True,True,True,True,True,True,True
 birdnet-v3:BN00811,Geelsnavelzilverreiger,Ardea brachyrhyncha,Ardeidae,True,False,False,False,False,False,False
 birdnet-v3:BN00812,Blauwe reiger,Ardea cinerea,Ardeidae,True,True,True,True,True,True,True
 birdnet-v3:BN00813,Sokoireiger,Ardea cocoi,Ardeidae,True,True,False,False,False,False,False
@@ -843,7 +843,7 @@ birdnet-v3:BN00820,Middelste zilverreiger,Ardea intermedia,Ardeidae,True,True,Fa
 birdnet-v3:BN00821,Zwartkopreiger,Ardea melanocephala,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN00822,Withalsreiger,Ardea pacifica,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN00823,Pluimzilverreiger,Ardea plumifera,Ardeidae,True,True,False,False,False,False,False
-birdnet-v3:BN00824,Purperreiger,Ardea purpurea,Ardeidae,True,True,False,False,False,False,False
+birdnet-v3:BN00824,Purperreiger,Ardea purpurea,Ardeidae,True,True,True,True,True,True,True
 birdnet-v3:BN00825,Sumatraanse reiger,Ardea sumatrana,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN00826,Bullerpijlstormvogel,Ardenna bulleri,Procellariidae,True,False,False,False,False,False,False
 birdnet-v3:BN00827,Australische grote pijlstormvogel,Ardenna carneipes,Procellariidae,True,True,False,False,False,False,False
@@ -3479,7 +3479,7 @@ birdnet-v3:BN03428,Malaitarupsvogel,Edolisoma tricolor,Campephagidae,True,False,
 birdnet-v3:BN03429,Zwarte reiger,Egretta ardesiaca,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN03430,Kleine blauwe reiger,Egretta caerulea,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN03431,Chinese zilverreiger,Egretta eulophotes,Ardeidae,True,True,False,False,False,False,False
-birdnet-v3:BN03432,Kleine zilverreiger,Egretta garzetta,Ardeidae,True,True,False,False,False,False,False
+birdnet-v3:BN03432,Kleine zilverreiger,Egretta garzetta,Ardeidae,True,True,True,True,True,True,True
 birdnet-v3:BN03433,Kustreiger,Egretta gularis,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN03434,Witwangreiger,Egretta novaehollandiae,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN03435,Bonte reiger,Egretta picata,Ardeidae,True,True,False,False,False,False,False

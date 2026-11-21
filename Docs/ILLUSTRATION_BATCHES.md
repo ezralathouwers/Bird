@@ -347,3 +347,29 @@ hashes, identity and review bindings, five roles each, unchanged existing assets
 and species data, inventories and `git diff --check`. Coverage: 262 role assets,
 51 complete species. No runtime code changed. Xcode loading, edge blending,
 carousel layout and device memory behavior remain untested.
+
+## Requested herons 11B
+
+Fifteen originals complete kleine zilverreiger (Egretta garzetta), grote
+zilverreiger (Ardea alba) and purperreiger (Ardea purpurea), each with all five
+distinct roles. Dynamic scenes show stirring shallow water with a yellow foot,
+poised hunting and stalking through reeds. Classic portraits show only the bird.
+Rear views face away with hidden bills; flight views show the centered underside
+with retracted S-necks, heads close to shoulders and two spread wings.
+
+The two white egrets differ in bill/foot colors; great egret uses nonbreeding
+yellow-billed plumage. Purple heron has rufous neck stripes and dark underparts.
+Full-image review checked one head/bill, two wings and legs, main plumage,
+framing and view. Five initial outputs were regenerated for matte, framing or
+head-axis defects; the rejected filenames/hashes/reasons are retained in
+CityHerons11Production.json, and none was installed. Exact-image review
+attestations and factual Vogelbescherming references are in the manifest.
+Subtle feather, foot and plumage details still require independent expert review.
+
+The six requested species now have 30 distinct installed originals. Overall
+coverage is 277 role assets and 54 complete species. PNG decoding, alpha,
+dimensions, original byte equality, SHA-256, review bindings, unique stable IDs,
+full role sets, app asset-catalog membership and unchanged existing data checked;
+both inventories and `git diff --check` pass. Native loading, ivory blending,
+carousel sizing and memory performance still need Xcode. No native build/test
+ran, and no background generation job remains running.

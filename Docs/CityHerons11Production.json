@@ -1,8 +1,8 @@
 {
-  "state": "partial-installed-no-job-running",
+  "state": "complete-no-job-running",
   "requestedSpecies": 6,
   "targetRoles": 30,
-  "installedRoles": 15,
+  "installedRoles": 30,
   "referenceSnapshots": [
     {
       "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/halsbandparkiet",
@@ -181,91 +181,161 @@
       "id": "birdnet-v3:BN03432",
       "name": "Kleine zilverreiger",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN03432-primary",
+      "sourceFile": "exec-7d2c9a4f-3620-45f4-bca1-584dff0c9536.png",
+      "sha256": "fb41d2729a78e25b268afc23abd58df094fa0fc16c8d86e10be2241bb11bd828"
     },
     {
       "id": "birdnet-v3:BN03432",
       "name": "Kleine zilverreiger",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN03432-dynamic",
+      "sourceFile": "exec-4f4b78af-d540-475d-962e-60e34d177a74.png",
+      "sha256": "2d169622e7acc158d86a2383f2fdf4a7b43e3b7b0b9e8fa6236fcfa50b5baeab"
     },
     {
       "id": "birdnet-v3:BN03432",
       "name": "Kleine zilverreiger",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN03432-front",
+      "sourceFile": "exec-4f9888f2-ba15-4c79-af73-9bf04bcd9e55.png",
+      "sha256": "b456fbc9fd5b93c314e92603b5350fd9b8f6f9e996b352cdf651469ef8fde47a",
+      "rejectedAttempt": {
+        "sourceFile": "exec-c05cc52f-ecac-45b3-a9e8-9f8b20063319.png",
+        "sha256": "0cc4b92804015c1ad94481fbea3922c4faff1f7a62a4b242d78a95ff5856c566",
+        "reason": "Broad matte around front-view silhouette."
+      }
     },
     {
       "id": "birdnet-v3:BN03432",
       "name": "Kleine zilverreiger",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN03432-rear",
+      "sourceFile": "exec-8ecd71ad-9401-4dab-ba55-f26b92b0a0c4.png",
+      "sha256": "239ec3a2c5d400c6158d3b68a07a303dec3884be220f61164e8b7c691223ae36"
     },
     {
       "id": "birdnet-v3:BN03432",
       "name": "Kleine zilverreiger",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN03432-flight",
+      "sourceFile": "exec-47d51d65-4355-4dab-af17-5a9f31396113.png",
+      "sha256": "289245f7ac901ff78b74ce9667a2aad55438971e38d5833c5087bfc9f21e18ed",
+      "rejectedAttempt": {
+        "sourceFile": "exec-a259705f-5237-41cd-9fbf-f9e06fbff114.png",
+        "sha256": "5f9cab248277a052a8d752b33db6251b8d693fd8bc3953dead690a1c8d34729a",
+        "reason": "Wingtips too close to/touching canvas sides."
+      }
     },
     {
       "id": "birdnet-v3:BN00810",
       "name": "Grote zilverreiger",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00810-primary",
+      "sourceFile": "exec-f71ab583-a9db-44af-bd84-407be47dca2a.png",
+      "sha256": "5afdeece0873281a59499f3b37b9e1a519857f86f3069a5cb42d553f269c3d03"
     },
     {
       "id": "birdnet-v3:BN00810",
       "name": "Grote zilverreiger",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00810-dynamic",
+      "sourceFile": "exec-f00979db-06e3-4f5d-95c6-340424ff7329.png",
+      "sha256": "5560779afb87b62ef230f070580ccb6df31fd1676b0e9c6fb92f25811d77a235",
+      "rejectedAttempt": {
+        "sourceFile": "exec-cd56bc55-4929-467b-a91b-622d69742274.png",
+        "sha256": "d32684fcdb420a7f8526a1e912855cf20ddb2d33052ae949440befb2bee0e947",
+        "reason": "Broad grey matte/glow around dynamic scene."
+      }
     },
     {
       "id": "birdnet-v3:BN00810",
       "name": "Grote zilverreiger",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00810-front",
+      "sourceFile": "exec-4bf956fe-c173-4126-ab8b-2093134c8ae1.png",
+      "sha256": "e640660ef368cefc897eec363902e5ab8156c933d087d8b70151fe2ff9e5f53d"
     },
     {
       "id": "birdnet-v3:BN00810",
       "name": "Grote zilverreiger",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00810-rear",
+      "sourceFile": "exec-866139e5-ea93-4558-88b4-e75ef0f65e63.png",
+      "sha256": "8d3e17523f2f9303c8e7be54593be8ebd8dc9086914ad0ce3eafffb9ef7a5ada"
     },
     {
       "id": "birdnet-v3:BN00810",
       "name": "Grote zilverreiger",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00810-flight",
+      "sourceFile": "exec-bef199d2-ac4d-4d6c-b19a-a838235c4c6b.png",
+      "sha256": "70975efe71478975186846208491d9d51d34c0883dbe32761137cb1409bc0f01"
     },
     {
       "id": "birdnet-v3:BN00824",
       "name": "Purperreiger",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00824-primary",
+      "sourceFile": "exec-bbfa678d-bfd4-4907-9da5-9f73bc42f113.png",
+      "sha256": "4ee22d14365820da9bbf079577a7e785786b781db9f0e9541225ecb94a8b7632"
     },
     {
       "id": "birdnet-v3:BN00824",
       "name": "Purperreiger",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00824-dynamic",
+      "sourceFile": "exec-f7300c73-404d-4423-8ed7-34544c3f02d5.png",
+      "sha256": "1dc0ef2766be74e1028a81ce89e50d6642570cb839bcf60098fc9860261bcb21"
     },
     {
       "id": "birdnet-v3:BN00824",
       "name": "Purperreiger",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00824-front",
+      "sourceFile": "exec-7ec2a553-4a78-40c5-83a9-478a7eb912da.png",
+      "sha256": "b90c2a530c35aff9587190aad0177fcf45cccd781559826e000f8e30e2a2e30d",
+      "rejectedAttempt": {
+        "sourceFile": "exec-c1a2bbba-8825-4bfe-a4ed-5080857a84d4.png",
+        "sha256": "442221af6b5c7f9eb856ded244d9f5fb4dc612ee999739f0786a32accff6d571",
+        "reason": "Too little space above crown/plume."
+      }
     },
     {
       "id": "birdnet-v3:BN00824",
       "name": "Purperreiger",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00824-rear",
+      "sourceFile": "exec-5df4efeb-5b25-4b7c-a022-9a696a9e0bb3.png",
+      "sha256": "6c79bbb9348e953d8c3e79d0b42d11508e35b4e0da8c6b5efb1a3d5f898efe79"
     },
     {
       "id": "birdnet-v3:BN00824",
       "name": "Purperreiger",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00824-flight",
+      "sourceFile": "exec-32a962ec-ef8c-4f6a-98bd-2dc896c537b3.png",
+      "sha256": "b78435aeea59093b1b159c88e1ed43b98e38751e7a262591350ab3d467e9a16f",
+      "rejectedAttempt": {
+        "sourceFile": "exec-0b3bba71-0a7f-49fa-9c20-c69d8ff6d6a4.png",
+        "sha256": "4dbb56c57a08cb23c2bdb47887b6116ea60fc6733c4d269b442063d9a91841e1",
+        "reason": "Head/bill angled sideways rather than along vertical flight axis."
+      }
     }
   ]
 }
