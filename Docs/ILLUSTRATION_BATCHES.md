@@ -1,5 +1,15 @@
 # Illustration batches
 
+## New waterbirds 13B — 21 November 2026
+
+Fifteen individually reviewed originals complete roodhalsfuut, brandgans and
+wintertaling. Each has bird-only right-facing classic, a distinct dynamic
+scene, front, rear and centered ventral flight. Full-image reviews checked
+wing attachments, single head/bill, rear bill hidden, feet, framing and main
+markings. Import preflight, original/hash equality, review bindings, unchanged
+previous records and both inventories pass: 335 roles, 67 complete species.
+Native asset loading and screen sizing remain unverified without Xcode.
+
 ## New waterbirds 13A — 21 November 2026
 
 Ten accepted originals complete dodaars and geoorde fuut, the first two of

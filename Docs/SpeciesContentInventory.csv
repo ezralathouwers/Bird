@@ -481,7 +481,7 @@ birdnet-v3:BN00466,Madagaskartaling,Anas bernieri,Anatidae,True,True,False,False
 birdnet-v3:BN00467,Kaapse taling,Anas capensis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00468,Kastanjetaling,Anas castanea,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00469,Bruine taling,Anas chlorotis,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN00470,Wintertaling,Anas crecca,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00470,Wintertaling,Anas crecca,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00471,Mexicaanse eend,Anas diazi,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00472,Kerguelenpijlstaart,Anas eatoni,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN00473,Roodsnavelpijlstaart,Anas erythrorhyncha,Anatidae,True,True,False,False,False,False,False
@@ -1258,7 +1258,7 @@ birdnet-v3:BN01233,Kaapse struikzanger,Bradypterus sylvaticus,Locustellidae,True
 birdnet-v3:BN01234,Rotgans,Branta bernicla,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01235,Grote canadese gans,Branta canadensis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01236,Kleine canadese gans,Branta hutchinsii,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01237,Brandgans,Branta leucopsis,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN01237,Brandgans,Branta leucopsis,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01238,Roodhalsgans,Branta ruficollis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01239,Hawaïgans,Branta sandvicensis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01240,Chiririparkiet,Brotogeris chiriri,Psittacidae,True,True,False,False,False,False,False
@@ -8050,7 +8050,7 @@ avilist:a62cbdd6,Colombian Grebe,Podiceps andinus,Podicipedidae,True,False,False
 birdnet-v3:BN07942,Kuifduiker,Podiceps auritus,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN07943,Fuut,Podiceps cristatus,Podicipedidae,True,True,True,True,True,True,True
 birdnet-v3:BN07944,Patagonische fuut,Podiceps gallardoi,Podicipedidae,True,True,False,False,False,False,False
-birdnet-v3:BN07945,Roodhalsfuut,Podiceps grisegena,Podicipedidae,True,True,False,False,False,False,False
+birdnet-v3:BN07945,Roodhalsfuut,Podiceps grisegena,Podicipedidae,True,True,True,True,True,True,True
 birdnet-v3:BN07946,Grote fuut,Podiceps major,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN07947,Geoorde fuut,Podiceps nigricollis,Podicipedidae,True,True,True,True,True,True,True
 birdnet-v3:BN07948,Zilverfuut,Podiceps occipitalis,Podicipedidae,True,True,False,False,False,False,False

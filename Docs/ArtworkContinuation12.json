@@ -1,6 +1,6 @@
 {
   "state": "partial-checkpoint",
-  "installedRoles": 43,
+  "installedRoles": 58,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -894,7 +894,7 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-24b7bd2e-cc21-4799-a249-692c614e0006.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN07945",
@@ -910,7 +910,7 @@
         "notes": "Right-facing floating red-necked grebe holding small fish in one bill, one near folded wing and occluded far wing, grey cheek and red neck, feet naturally submerged, bounded ripples and full framing."
       },
       "sourceFile": "exec-4a0ea1e7-d7ed-4aa7-9785-158ac6843b42.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN07945",
@@ -926,7 +926,7 @@
         "notes": "Front, single centered dark yellow-based bill and two eyes, grey cheeks black cap red neck, two folded wing flanks, pale belly and two lobed grey feet, full framing."
       },
       "sourceFile": "exec-5d7a24eb-4e22-4bd5-9041-d29a1228661e.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN09825",
@@ -977,6 +977,503 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-e9ceb0b7-bdc5-40a3-9679-e54972cd9722.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN07945",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roodhalsfuut",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "c6a7089030569ac9b8a668614f5d8b16648beeabc297c823a7830cc976df2d99",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear red-necked grebe, single head with bill and eyes hidden, black cap grey cheeks red neck, two folded wings and rounded short rump, two grey lobed feet, complete framing."
+      },
+      "sourceFile": "exec-039afea7-eb06-40fd-afb0-73fd45782239.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01237",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brandgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0dceeb380757f142f9f151852ce7510a1ba0e1291f517c24bdbe2ef9faa84eb0",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only barnacle goose, white face with dark loral stripe, black neck/chest, grey barred folded wings with far wing occluded, pale belly and black webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-b02ef280-e8e7-49e6-a088-f587356d0330.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01237",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brandgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6c12307e09abe5efd1e84b107b3ccee25595918efe9ac2f13911023a49093e9c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing grazing barnacle goose, one head and bill bent toward bounded grass tuft, two folded wing attachments with far wing occluded, two black webbed feet, complete framing."
+      },
+      "sourceFile": "exec-706af81a-b3bc-4944-8a6a-89038755ad81.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01237",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brandgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "29500c799779c313ee53f6bb9808f4f987c662b7368f0c1c882a780a64f3ad05",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front barnacle goose, single centered dark bill, white face black cap and neck, two folded wing flanks and grey barred sides, two black webbed feet, complete framing."
+      },
+      "sourceFile": "exec-a07df681-459c-4124-b148-51f6c2bf6cc5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01237",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brandgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e179051a8ddacb721a8874630293be713961b5762b2d22bb2df01fb8470f0fee",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear barnacle goose, bill and eyes hidden, black neck and cap with white cheek edges, two folded grey barred wings and short black tail, two black feet, complete framing."
+      },
+      "sourceFile": "exec-6a8ebc51-973d-4b84-b3b2-802bdee8a814.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01237",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brandgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "9340791c31e979893017cf5f06962832e03789a10bfdafeb4a563b889a087b83",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral barnacle goose, single upward head and bill, two open wing attachments without folded silhouettes, black neck white belly dark outer primaries, two trailing black webbed feet, complete framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-6eb905cd-c499-461c-9cf7-cf832bdf5963.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00470",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wintertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "af86fc0eeb7eaf76333d4b9f73b326e443a59eb2bb4267ae5b15c0b4645c014c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male Eurasian teal, one centered dark bill and two eyes, chestnut head green eye masks with pale borders, spotted buff breast pale belly, two folded wings and two grey webbed feet, full framing."
+      },
+      "sourceFile": "exec-3bae9c2f-a7cb-4219-b712-b6aed30beb40.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00470",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wintertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "90fb7b162de907f4a24954c1765d9efe2abbab6f3d5022217fbdd278a6373899",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male Eurasian teal, bill/eyes hidden, chestnut crown and green eye-mask edges, two folded wings and green specula, buff-yellow undertail side patches, two grey webbed feet, full framing."
+      },
+      "sourceFile": "exec-114db609-a174-447d-a59f-1c056594505c.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09384",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zomertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f0bb10e449597ba746196e63ea301c74ea996f5d0b63253bb5028a3002b9cde9",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male garganey, single dark bill and white eyebrow, brown speckled head/breast, blue-grey folded wing and vermiculated flanks, two grey webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-042b7a79-fe84-4fec-87fb-2dea2c6511f6.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09384",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zomertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "de0db5f2ee11c31e5621fa1506abf4fddaa3122c0e29540bf8ba0f1ff26f6a7d",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing calling male garganey, one head and one open bill with upper/lower mandibles, white eyebrow brown breast blue-grey folded wings, feet naturally submerged in bounded ripples, full framing."
+      },
+      "sourceFile": "exec-3c15151a-0d89-4f3a-b00f-1146a9f30a70.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09384",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zomertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "89963dc87362168f17766f27ca549a63226eacfa0894fd0cd257d2a2e8352a0e",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male garganey, single centered dark bill and two eyes, white brows and brown head/breast, blue-grey folded wing flanks and grey vermiculated sides, two webbed feet and complete framing."
+      },
+      "sourceFile": "exec-7f1125ab-2bd8-4462-bb3e-176a588695b2.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09384",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zomertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "38b3bb1abffd2accd105f14c1e2af736dd0f1808b044fdfbe3414fc4b5494273",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male garganey, eyes and bill hidden, brown crown with paired white eyebrow ends, two folded wings with long white-edged scapulars and blue-grey coverts, two grey-brown webbed feet, complete framing."
+      },
+      "sourceFile": "exec-96ec4fd9-5f2d-4dee-9198-058533f5af7f.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN05656",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/smient",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0e232c7977c6fa6e33f5c09db8d5a09bd398c371a55710effc87f8f3cb5065b4",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male Eurasian wigeon, single blue-grey black-tipped bill, chestnut head and pale forehead, pinkish breast grey vermiculated flanks white wing patch, two folded wing attachments and grey webbed feet, complete framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-5a5df088-c625-4a3b-a550-e58c0460e5b8.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN05656",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/smient",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f362b7ad14f2fed5286983e25fc045dc63646e6354dcec321e0c2225986418fe",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing male wigeon holding pondweed in one blue-grey bill, single head pale forehead chestnut head, two folded wing attachments with far wing occluded, two grey webbed feet on bounded grassy bank, complete framing."
+      },
+      "sourceFile": "exec-7ce634c4-8b7f-4063-a045-01ee980411d0.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN05656",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/smient",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "fc4f413c5c0bc10644c2ace3cd5695f4fe7765ac6a9f1dc03b04dc1c89f28a1c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male wigeon, single centered blue-grey black-tipped bill and two eyes, chestnut head pale forehead, rosy breast white belly and grey folded wing flanks, two grey webbed feet, whole framing."
+      },
+      "sourceFile": "exec-ad7edf41-82e3-49d4-a573-bb1140ae714e.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN00461",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/pijlstaart",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8a6557da10fcbeb4b38ce68c5a64e8d4fc89e400c658ffb8ec034664587a3a4e",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male northern pintail, one blue-grey bill and brown head, white neck stripe, long pointed tail, two folded wing attachments with far wing occluded, grey vermiculated sides and two grey webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-4b59b517-5170-4300-8278-0c8f11dcba59.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN00461",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/pijlstaart",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f86370f47894097e473a59f716732b5b3c20e926a5f8c735ca15767bf3f76b90",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male pintail, one centered blue-grey bill and two eyes, brown head with white neck and breast, two grey folded wing flanks, two grey webbed feet, complete framing."
+      },
+      "sourceFile": "exec-9a6444d1-3212-47e7-90d8-4814ba4c450e.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN00461",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/pijlstaart",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "46062eeb3742d583000fe48b858cbe1d2e776f771b371b285cc97167c3722b77",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male pintail with hidden eyes and bill, brown head white neck-side stripes, two folded grey wings and pale-edged scapulars, long single central pointed tail, two grey webbed feet, complete framing."
+      },
+      "sourceFile": "exec-c9fedd41-ab7f-4a6d-b992-0f96ff5b4d9d.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN01075",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/tafeleend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "7cfdeb671eb5a1d6c6c303ed5273044d6841e3662660c0ef2116846267e8b63e",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male common pochard, single grey-banded dark bill red eye and chestnut head, black breast pale grey body, two folded wing attachments with far wing occluded, two grey webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-06cc27d2-b6de-446a-8aaf-79042e551c9c.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN01075",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/tafeleend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "12b7e57d87411b0373426eddb513099172e10326e9e7d13b9a10eb71496a7632",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing floating male pochard, one head/bill and red eye, chestnut head black breast grey body, two folded wing attachments with far wing occluded, legs naturally submerged in bounded ripples, full framing."
+      },
+      "sourceFile": "exec-295dc88f-f45a-45fa-b41a-7da852236684.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN01075",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/tafeleend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "a7e7df7fcfb677cb04bbc7da769dd308934757f2fd6b857b545c9b120715a824",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male pochard, one centered grey-banded dark bill and two red eyes, chestnut head black breast pale grey body, two folded wing flanks and grey webbed feet, whole framing."
+      },
+      "sourceFile": "exec-9e51cd4a-9180-433f-bcf4-c4bd95ba4475.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN07945",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roodhalsfuut",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8731048c41cdccc8ec10022fcfafc7788e78106dd6f3c214c9f44aab16cfd5fc",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral red-necked grebe, single upward bill yellow gape, red neck pale belly, two spread grey-white underwings, two trailing lobed feet, full framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-8301670e-9bb9-42c0-a5ca-14e116d210fc.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09876",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/bergeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0ba5c60b61c5b6bf3b92c0a2b3902c974a2d0a1e2e2dc19a6fb37d74e9889135",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing male common shelduck, bird-only with red bill and basal knob, dark green head white body chestnut chest band, two folded wings with far side naturally occluded and two pink webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-843a6029-920a-4697-9f8e-0c034f8584e8.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09876",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/bergeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "7be6c52d7298c9080eef059429adc14607140ab007cf1e1a9af4331f6418482f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Preening male shelduck, one bent neck and red bill, two folded wing attachments, two pink webbed feet on bounded beach vignette, whole framing."
+      },
+      "sourceFile": "exec-2c1ab559-9e31-437b-b486-3f1f45900960.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09876",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/bergeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "d7727208a5e9ac237aeadeaff1c9689fbce51ef05641e740323518d7c8114077",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male shelduck, one centered red knobbed bill and two eyes, dark head white neck chestnut breast band, two folded wing flanks and pink webbed feet, whole framing."
+      },
+      "sourceFile": "exec-86df69de-ca27-45bb-8a36-7b7229aed2a6.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09876",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/bergeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "54cff6487ffb71b1fd3f29800057e21e3c8026452a7f3632fb35a4ef7ab34c75",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male shelduck, eyes and bill hidden, green-black head white/chestnut body, two folded wings and short tail, two pink feet, whole framing."
+      },
+      "sourceFile": "exec-7ef67215-c06e-4021-8266-55a2c53ff61e.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN00470",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wintertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "2ad74dd77fec1097b3f4456c86956bf60b7d5b1ac0d630cf3288b785a3b9d143",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male Eurasian teal, chestnut head green bordered eye mask, spotted breast grey flanks yellow undertail, one dark bill, two folded wing attachments and grey feet, complete framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-346f1a05-6bc4-4c58-835a-f11a654a51ba.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00470",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wintertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "bc735afe0dc428178b236902d2eb5436a250d1779bd672cf6c525523e2a5722f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Foraging male Eurasian teal, one head/bill reaching for seed, two folded wings with far wing occluded, two webbed feet one stepping over bounded reed stub, complete framing."
+      },
+      "sourceFile": "exec-de832236-5fb5-4ba9-8ff3-285165f834f9.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00470",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wintertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8ae5607c830ff7e1d60c7f436fba89188e75844d86ed526618521a1f7cf9c952",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male Eurasian teal, upward single dark bill, chestnut throat spotted breast pale belly, grey-white underwings without green dorsal specula, exactly two spread wings and two trailing grey webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-94d6a7c3-6829-4274-9931-d2fa117fedf3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01075",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/tafeleend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "d0bbb49f6af2bf383c63421ba4a936347bc4dd7511f4080355b119df120446f9",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male pochard, single chestnut head bill and eyes hidden, two silver-grey folded wings black rump short tail and two grey webbed feet, full framing."
+      },
+      "sourceFile": "exec-8e4d28d7-0699-4ec8-9c6c-8f466d68b297.png",
+      "state": "reviewed-not-installed"
     }
   ],
   "rejectedAttempts": [
@@ -1084,14 +1581,26 @@
       "dutchName": "Roodhalsfuut",
       "scientificName": "Podiceps grisegena",
       "englishName": "Red-necked Grebe",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01237",
       "dutchName": "Brandgans",
       "scientificName": "Branta leucopsis",
       "englishName": "Barnacle Goose",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN09876",
@@ -1105,7 +1614,13 @@
       "dutchName": "Wintertaling",
       "scientificName": "Anas crecca",
       "englishName": "Green-winged Teal",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN09384",

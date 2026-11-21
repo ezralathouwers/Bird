@@ -8107,7 +8107,7 @@ birdnet-v3:BN02266,Cisticola anonymus,Bosgraszanger,grassland-steppe,Grasland en
 birdnet-v3:BN09471,Spizocorys fringillaris,Bothaleeuwerik,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00203,Afrotis afraoides,Botswanatrap,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07337,Peucaea botterii,Botterigors,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01237,Branta leucopsis,Brandgans,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN01237,Branta leucopsis,Brandgans,grassland-steppe,Grasland en steppe,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN05956,Metriopelia aymara,Bronsvleugelpunaduif,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10360,Troglodytes browni,Brownwinterkoning,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10602,Upucerthia validirostris,Bruinborstaardkruiper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10356,7 +10356,7 @@ birdnet-v3:BN03969,Fulica armillata,Roodbandkoet,wetland-general,Wetland,,primar
 birdnet-v3:BN08981,Rufirallus leucopyrrhus,Roodbonte dwergral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09037,Sarothrura rufa,Roodborstral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00837,Ardeola rufiventris,Roodbuikreiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN07945,Podiceps grisegena,Roodhalsfuut,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN07945,Podiceps grisegena,Roodhalsfuut,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN04093,Gavia stellata,Roodkeelduiker,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00589,Anthus cervinus,Roodkeelpieper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03440,Egretta vinaceigula,Roodkeelreiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10442,7 +10442,7 @@ birdnet-v3:BN00487,Anas superciliosa,Wenkbrauweend,wetland-general,Wetland,,prim
 birdnet-v3:BN04450,Haliastur sphenurus,Wigstaartwouw,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00483,Anas platyrhynchos,Wilde eend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN02981,Cygnus cygnus,Wilde zwaan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN00470,Anas crecca,Wintertaling,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN00470,Anas crecca,Wintertaling,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN04447,Haliaeetus leucoryphus,Witbandzeearend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00331,Amaurornis phoenicurus,Witborstwaterhoen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03279,Donacospiza albifrons,Witbrauwgrasgors,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
