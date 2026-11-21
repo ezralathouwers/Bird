@@ -167,3 +167,25 @@ Both inventory scripts and git diff --check pass. Total: 129 role assets across
 26 species, of which 25 have all five roles. Xcode/native carousel rendering,
 ivory blending and memory performance remain untested on Linux. No Swift or
 observation IDs were changed; no background generation service was started.
+
+## Anatomy corrections — 21 November 2026
+
+The user identified duplicated folded wings in the putter and goudhaan dynamic
+images and mirrored bills in the blauwe reiger and aasgier rear views. Previous
+contact-sheet review missed these defects. Four image-generation edits replace
+these assets, with previous originals and metadata retained in version history.
+Putter now balances with folded wings; goudhaan retains two raised wings with
+body feathers replacing the false folded wing. Both rear heads face away with
+the bill hidden. Groenling was initially named in error and is unchanged.
+
+Future imports require anatomyReview containing the exact inspected PNG SHA-256
+and explicit twoWings, singleHeadAndBill, poseAndFraming attestations. AGENTS.md
+requires individual full-image inspection and anatomical prompt constraints.
+The importer rejects absent, stale or failed reviews before copying any asset.
+This records visual review, not automated anatomical detection or an accuracy
+guarantee. Earlier assets are not retroactively marked as passing this review.
+
+Verification: four replacement PNG originals, transparency, matching hashes and
+version history checked; importer review gate tested with valid, missing,
+changed-image and each failed-check case. Both inventories refreshed and
+git diff --check passed. Native iOS rendering remains untested without Xcode.
