@@ -28,6 +28,8 @@ def install(mapping,batch):
   assert asset not in seen and not folder.exists() and not any(m['asset']==asset for m in manifest),asset
   seen.add(asset);source=pathlib.Path(r['path']);blob=source.read_bytes()
   anatomy_review=validate_anatomy_review(r,blob)
+  if r['role']=='primary' and (r.get('composition')!='bird-only' or anatomy_review.get('noProps') is not True):
+   raise ValueError('Classic portraits must show only the bird: composition bird-only and visual noProps review required')
   with Image.open(source) as image:
    image.load();assert image.mode=='RGBA'
    # Accept both square originals and wide flight compositions without upscaling.
@@ -38,6 +40,7 @@ def install(mapping,batch):
   record={'speciesID':r['id'],'asset':asset,'view':r['role'],'mediaType':'illustration','version':1,'sourceFile':source.name,'source':'Original OpenAI-generated illustration for this project','created':r.get('created',datetime.date.today().isoformat()),'reviewStatus':'Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending','rights':'Generated output subject to applicable OpenAI terms; no third-party copied media','sourceFacing':facing,'displayFacing':facing,'displayTransform':'none','sha256':hashlib.sha256(blob).hexdigest(),'pixelWidth':size[0],'pixelHeight':size[1],'background':'transparent','batch':batch,'representativePlumage':r.get('representativePlumage','adult'),'referenceURLs':[r['referenceURL']] if r.get('referenceURL') else []}
   if r['role']=='flight':record['projection']='centered-ventral-spread'
   record['anatomyReview']=anatomy_review
+  if r['role']=='primary':record['composition']='bird-only'
   prepared.append((r,source,folder,record))
  for r,source,folder,record in prepared:
   folder.mkdir();filename=r['role']+'.png';shutil.copy2(source,folder/filename)
