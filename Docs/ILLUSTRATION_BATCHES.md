@@ -1,5 +1,17 @@
 # Illustration batches
 
+## New waterbirds 13C–13D — 21 November 2026
+
+Twenty-five individually reviewed originals complete bergeend, zomertaling,
+tafeleend, smient and pijlstaart. All five roles are distinct; classics remain
+bird-only and flights centered ventral. Duck underwing colors were corrected
+where dorsal specula had been copied underneath. The wigeon rear matte was
+removed, its flight chin corrected, and the drinking pintail reframed to keep
+the entire tail and water vignette inside the canvas. Rejected originals are
+excluded and recorded by hash. Original byte/hash equality, PNG import checks,
+review bindings, unchanged earlier assets and both inventories pass: 360 roles,
+72 complete species. Native loading/scaling and expert/user review are pending.
+
 ## New waterbirds 13B — 21 November 2026
 
 Fifteen individually reviewed originals complete roodhalsfuut, brandgans and

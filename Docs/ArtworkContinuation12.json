@@ -1,6 +1,6 @@
 {
   "state": "partial-checkpoint",
-  "installedRoles": 58,
+  "installedRoles": 83,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -1125,7 +1125,7 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-042b7a79-fe84-4fec-87fb-2dea2c6511f6.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN09384",
@@ -1141,7 +1141,7 @@
         "notes": "Right-facing calling male garganey, one head and one open bill with upper/lower mandibles, white eyebrow brown breast blue-grey folded wings, feet naturally submerged in bounded ripples, full framing."
       },
       "sourceFile": "exec-3c15151a-0d89-4f3a-b00f-1146a9f30a70.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN09384",
@@ -1157,7 +1157,7 @@
         "notes": "Front male garganey, single centered dark bill and two eyes, white brows and brown head/breast, blue-grey folded wing flanks and grey vermiculated sides, two webbed feet and complete framing."
       },
       "sourceFile": "exec-7f1125ab-2bd8-4462-bb3e-176a588695b2.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN09384",
@@ -1173,7 +1173,7 @@
         "notes": "Straight rear male garganey, eyes and bill hidden, brown crown with paired white eyebrow ends, two folded wings with long white-edged scapulars and blue-grey coverts, two grey-brown webbed feet, complete framing."
       },
       "sourceFile": "exec-96ec4fd9-5f2d-4dee-9198-058533f5af7f.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN05656",
@@ -1191,7 +1191,7 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-5a5df088-c625-4a3b-a550-e58c0460e5b8.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN05656",
@@ -1207,7 +1207,7 @@
         "notes": "Right-facing male wigeon holding pondweed in one blue-grey bill, single head pale forehead chestnut head, two folded wing attachments with far wing occluded, two grey webbed feet on bounded grassy bank, complete framing."
       },
       "sourceFile": "exec-7ce634c4-8b7f-4063-a045-01ee980411d0.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN05656",
@@ -1223,7 +1223,7 @@
         "notes": "Front male wigeon, single centered blue-grey black-tipped bill and two eyes, chestnut head pale forehead, rosy breast white belly and grey folded wing flanks, two grey webbed feet, whole framing."
       },
       "sourceFile": "exec-ad7edf41-82e3-49d4-a573-bb1140ae714e.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN00461",
@@ -1241,7 +1241,7 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-4b59b517-5170-4300-8278-0c8f11dcba59.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN00461",
@@ -1257,7 +1257,7 @@
         "notes": "Front male pintail, one centered blue-grey bill and two eyes, brown head with white neck and breast, two grey folded wing flanks, two grey webbed feet, complete framing."
       },
       "sourceFile": "exec-9a6444d1-3212-47e7-90d8-4814ba4c450e.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN00461",
@@ -1273,7 +1273,7 @@
         "notes": "Straight rear male pintail with hidden eyes and bill, brown head white neck-side stripes, two folded grey wings and pale-edged scapulars, long single central pointed tail, two grey webbed feet, complete framing."
       },
       "sourceFile": "exec-c9fedd41-ab7f-4a6d-b992-0f96ff5b4d9d.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN01075",
@@ -1291,7 +1291,7 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-06cc27d2-b6de-446a-8aaf-79042e551c9c.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN01075",
@@ -1307,7 +1307,7 @@
         "notes": "Right-facing floating male pochard, one head/bill and red eye, chestnut head black breast grey body, two folded wing attachments with far wing occluded, legs naturally submerged in bounded ripples, full framing."
       },
       "sourceFile": "exec-295dc88f-f45a-45fa-b41a-7da852236684.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN01075",
@@ -1323,7 +1323,7 @@
         "notes": "Front male pochard, one centered grey-banded dark bill and two red eyes, chestnut head black breast pale grey body, two folded wing flanks and grey webbed feet, whole framing."
       },
       "sourceFile": "exec-9e51cd4a-9180-433f-bcf4-c4bd95ba4475.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN07945",
@@ -1358,7 +1358,7 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-843a6029-920a-4697-9f8e-0c034f8584e8.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN09876",
@@ -1374,7 +1374,7 @@
         "notes": "Preening male shelduck, one bent neck and red bill, two folded wing attachments, two pink webbed feet on bounded beach vignette, whole framing."
       },
       "sourceFile": "exec-2c1ab559-9e31-437b-b486-3f1f45900960.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN09876",
@@ -1390,7 +1390,7 @@
         "notes": "Front male shelduck, one centered red knobbed bill and two eyes, dark head white neck chestnut breast band, two folded wing flanks and pink webbed feet, whole framing."
       },
       "sourceFile": "exec-86df69de-ca27-45bb-8a36-7b7229aed2a6.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN09876",
@@ -1406,7 +1406,7 @@
         "notes": "Straight rear male shelduck, eyes and bill hidden, green-black head white/chestnut body, two folded wings and short tail, two pink feet, whole framing."
       },
       "sourceFile": "exec-7ef67215-c06e-4021-8266-55a2c53ff61e.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN00470",
@@ -1473,7 +1473,124 @@
         "notes": "Straight rear male pochard, single chestnut head bill and eyes hidden, two silver-grey folded wings black rump short tail and two grey webbed feet, full framing."
       },
       "sourceFile": "exec-8e4d28d7-0699-4ec8-9c6c-8f466d68b297.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09876",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/bergeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "683038ba61a9ecf408f8ab621ac6c4d296e18867689d05a6cbd3a46b5470c5e4",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male shelduck, single red upward bill dark green throat white chestnut body, two spread wings with white coverts and charcoal flight feathers, no dorsal green speculum, two pink trailing feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-5dece9f3-a0cd-4092-a542-23e67690fe63.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09384",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zomertaling",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "47581145fad8d84abd058e8377113462ed299201d7750b3b258e62845b9d5ee5",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male garganey, single dark upward bill and brown head with white brow edges, spotted brown chest pale abdomen, two spread wings with pale grey-white coverts and darker grey flight feathers without dorsal blue/green panels, two grey feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-bc554cbc-5ef1-4ec8-8384-786427c64caf.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01075",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/tafeleend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e8d4b9a34799b8b42b169b526c964d5acffd432ea17e8091bb8764c4ae004781",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male pochard, one grey-banded dark upward bill and red eyes, chestnut throat black breast pale grey abdomen, exactly two spread pale grey underwings, two trailing grey webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-3ae73182-62a9-4c20-9c18-82d68678bb9e.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05656",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/smient",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "73ebd0f4f6884d6de070e9a4a110a7d6a0ce67463bcbc395b5e6004b64fd0638",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Rear male wigeon with bill/eyes hidden, two folded wings white panels grey back black rump, two grey feet, full framing and large diffuse halo removed."
+      },
+      "sourceFile": "exec-03ba2f1a-7fcf-42ce-bfd6-858afa68de04.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05656",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/smient",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "4f1b1e709535122125d67bdb6878ed62e6c48650944d2d678c4bc4a838d582e2",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male wigeon, single blue-grey upward bill chestnut chin without misplaced cream crown, rosy breast white belly, two grey-white open underwings without folded silhouettes and two trailing grey feet, complete framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-b33f51cd-8603-4dfe-9d56-cc3deb160de1.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00461",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/pijlstaart",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "350464d07f46049e2035199e3eb38af5a7f6321c0df5e10decb1f02628084721",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Drinking male pintail with one head and bill, brown head white neck long pointed tail, two folded wings and two grey feet, full bird and bounded ripple now entirely within canvas with clear margins."
+      },
+      "sourceFile": "exec-f9b024c5-8b7d-485f-92c3-c02e48ffd0a6.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00461",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/pijlstaart",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "50aa3b08b0381898314b30acac37b59dd83efdc46b61dbe1f82e39d340576470",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male pintail, one blue-grey upward bill brown throat white long neck and belly, two open wings with grey-white underwings and grey secondaries without dorsal green patches, two grey feet long pointed tail, full framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-7b9c2b8b-aa28-44bc-85c0-22b90c81eb05.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -1547,6 +1664,42 @@
       "sourceFile": "exec-db885a1c-0d14-41cd-aa5c-8b80bf943f42.png",
       "sha256": "168720c72148fa8aec48152084e5797f90bcf9e17f76815dca0387cd355b73c4",
       "reason": "Halo/matte in reframed front, replaced."
+    },
+    {
+      "sourceFile": "exec-dc565cc8-180f-4377-8643-06975aed6b51.png",
+      "sha256": "116ec29819587df12c658274031b301272896decabb3b58ab31b49e765cfb951",
+      "reason": "Dorsal green secondary patches on ventral wing; corrected before import.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-4549bd38-bcf1-4684-85cb-d2d4be98a222.png",
+      "sha256": "4ab9cfb88f8d9df8116377230ce5fe1c37005734e9f6e5411e8f374fc7826cc2",
+      "reason": "Possible dorsal blue covert panels transferred to underwing; verify/correct to pale grey-white ventral coverts before installation.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-ef4427c6-c13d-44d6-95a8-ada002c29fcf.png",
+      "sha256": "d467297366b351ef836ff9df27dd507c5cb52315a679045c5d1fc90025b4a10b",
+      "reason": "Large visible diffuse halo/matte around bird; remove entirely before installation.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-f3f941fb-ca08-4bec-b77e-df6d3ad7cea6.png",
+      "sha256": "c0d5dfa96371cd956687b5ca2e0f43830aadf28f7bdac62e89e769f3d3fc734e",
+      "reason": "Verify head perspective/cream crown visibility in ventral view before accepting; underwing/body geometry otherwise coherent.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-c0d43503-2e87-4b74-bfed-067e35ce4d70.png",
+      "sha256": "7bb3a6a47948d67a390c98f65705d3bb252ba9ad83241d07efbaaaa95b9841e3",
+      "reason": "Tail and water patch too close to/cut by canvas edges; reframe with generous transparent margins.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-20790d07-dc74-492f-a654-a114c8af3092.png",
+      "sha256": "15556594ab9f90497e0d218ce74f6836f2d472ac4ec2d5192b687f013afe0a01",
+      "reason": "Green iridescent dorsal speculum shown on underside; correct ventral secondaries to species-correct grey before installation.",
+      "state": "excluded-corrected-original-used"
     }
   ],
   "next20Species": [
@@ -1607,7 +1760,13 @@
       "dutchName": "Bergeend",
       "scientificName": "Tadorna tadorna",
       "englishName": "Common Shelduck",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN00470",
@@ -1627,28 +1786,52 @@
       "dutchName": "Zomertaling",
       "scientificName": "Spatula querquedula",
       "englishName": "Garganey",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN05656",
       "dutchName": "Smient",
       "scientificName": "Mareca penelope",
       "englishName": "Eurasian Wigeon",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN00461",
       "dutchName": "Pijlstaart",
       "scientificName": "Anas acuta",
       "englishName": "Northern Pintail",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01075",
       "dutchName": "Tafeleend",
       "scientificName": "Aythya ferina",
       "englishName": "Common Pochard",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01235",

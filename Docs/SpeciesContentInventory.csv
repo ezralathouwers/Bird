@@ -472,7 +472,7 @@ birdnet-v3:BN00457,Sint-helenaplevier,Anarhynchus sanctaehelenae,Charadriidae,Tr
 birdnet-v3:BN00458,Madagaskarplevier,Anarhynchus thoracicus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN00459,Steppeplevier,Anarhynchus veredus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN00460,Dikbekplevier,Anarhynchus wilsonia,Charadriidae,True,True,False,False,False,False,False
-birdnet-v3:BN00461,Pijlstaart,Anas acuta,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00461,Pijlstaart,Anas acuta,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00462,Andamanentaling,Anas albogularis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00463,Andestaling,Anas andium,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00464,Aucklandtaling,Anas aucklandica,Anatidae,True,False,False,False,False,False,False
@@ -1094,7 +1094,7 @@ birdnet-v3:BN01071,Amerikaanse tafeleend,Aythya americana,Anatidae,True,True,Fal
 birdnet-v3:BN01072,Australische witoogeend,Aythya australis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01073,Amoerwitoogeend,Aythya baeri,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN01074,Ringsnaveleend,Aythya collaris,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01075,Tafeleend,Aythya ferina,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN01075,Tafeleend,Aythya ferina,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01076,Kuifeend,Aythya fuligula,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01077,Madagaskarwitoogeend,Aythya innotata,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN01078,Topper,Aythya marila,Anatidae,True,True,False,False,False,False,False
@@ -5724,7 +5724,7 @@ birdnet-v3:BN05653,Jobiparadijskraai,Manucodia jobiensis,Paradisaeidae,True,Fals
 birdnet-v3:BN05654,Amerikaanse smient,Mareca americana,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05655,Bronskopeend,Mareca falcata,Anatidae,True,True,False,False,False,False,False
 avilist:b52611c1,Amsterdam Wigeon,Mareca marecula,Anatidae,True,False,False,False,False,False,False
-birdnet-v3:BN05656,Smient,Mareca penelope,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN05656,Smient,Mareca penelope,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05657,Chileense smient,Mareca sibilatrix,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05658,Krakeend,Mareca strepera,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05659,Cubaanse schreeuwuil,Margarobyas lawrencii,Strigidae,True,True,False,False,False,False,False
@@ -9513,7 +9513,7 @@ birdnet-v3:BN09380,Blauwvleugeltaling,Spatula discors,Anatidae,True,True,False,F
 birdnet-v3:BN09381,Gouden taling,Spatula hottentota,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09382,Argentijnse slobeend,Spatula platalea,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09383,Punataling,Spatula puna,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN09384,Zomertaling,Spatula querquedula,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN09384,Zomertaling,Spatula querquedula,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN09385,Australische slobeend,Spatula rhynchotis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09386,Kaapse slobeend,Spatula smithii,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09387,Zilvertaling,Spatula versicolor,Anatidae,True,True,False,False,False,False,False
@@ -10006,7 +10006,7 @@ birdnet-v3:BN09872,Besrasperwer,Tachyspiza virgata,Accipitridae,True,True,False,
 birdnet-v3:BN09873,Kaapse casarca,Tadorna cana,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09874,Kuifcasarca,Tadorna cristata,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN09875,Casarca,Tadorna ferruginea,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN09876,Bergeend,Tadorna tadorna,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN09876,Bergeend,Tadorna tadorna,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN09877,Australische bergeend,Tadorna tadornoides,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09878,Paradijscasarca,Tadorna variegata,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09879,Gekraagde dwerguil,Taenioptynx brodiei,Strigidae,True,True,False,False,False,False,False
