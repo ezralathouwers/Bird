@@ -1,7 +1,7 @@
 # Short biographies and wingspans
 
 Imported 20 November 2026 for all 11,173 addressable catalog records. Coverage is
-**11,154 Dutch bios** and **1,802 reported wingspans**, not complete numeric data
+**11,154 Dutch bios** and **1,881 reported wingspans**, not complete numeric data
 for every bird. `SpeciesDetailsCoverage.json` records both missing-ID lists.
 
 ## Additions — 21 November 2026
@@ -138,6 +138,80 @@ syntax trees parse; git diff --check passes. The native coverage expectation is
 compilation, resource decoding, Info links and XCTest remain unverified without
 Xcode.
 
+### Italian/German articles and dedicated guide fields — 21 November 2026
+
+79 further empty span fields were filled: 15 from Italian Wikipedia, 37 from
+German Wikipedia, 11 from Animal Diversity Web, 12 from Oiseaux.net, three from
+Cornell All About Birds, and one from Nicole Bouglouan's Oiseaux-Birds guide.
+Current coverage is 1,881 / 11,173 records (16.8%); 9,292 remain empty. All 11,154
+biographies and all pre-existing measurements are preserved.
+
+The completed article plans cover 2,932 Italian and 4,230 German revisions.
+Species identities are checked against binome/Taxon_WissName and species-level
+taxobox structure; known linked-entity concept mismatches are excluded. The
+eligible counts are 2,709 and 4,081 respectively, with 14/16 known concept
+exclusions. The 107 extracted phrases required further review; matching a word
+or a scientific name does not establish measurement accuracy. Locale decimal
+commas, metre/millimetre conversions and common unit words are supported. French
+taxobox/unité handling has portable fixture tests, but no French bulk pass was
+performed in this round.
+
+Regional checks cover 76 ADW accounts discovered in cached English article
+references and 21 targeted Oiseaux.net pages. All 97 HTML pages were retrieved;
+59 had no usable explicit primary span field/identity match. The remaining pages
+yielded 41 candidate fields, including erroneous single-wing/flipper values which
+were not installed. Four further primary-guide values were inspected manually:
+Cornell's Solitary Sandpiper, Red-breasted Nuthatch and Least Tern, with scientific
+identity verified on their corresponding overview pages, plus Maguari Stork on
+Oiseaux-Birds. A Cactus Wren Cornell check found no span field. The original HTML
+and identity-page hashes are retained in the evidence; no guide prose or images
+are bundled.
+
+Dedicated exact-species guide fields can now resolve earlier deferrals. For
+example, ADW explicitly reports an overall 55–62 cm range for Aegolius funereus;
+this is not a synthetic union of separate sex ranges. For some other species,
+the selected direct guide reports a different ordinary range from encyclopedic
+summaries. The app records that guide's published value, not an invented
+consensus or a promise of global individual extrema. Alternative values and
+rejection reasons remain in the supplement evidence and review report. Old
+deferral reports are historical snapshots; SpeciesDetailsCoverage.json is the
+current missing-field inventory.
+
+`MultilingualRegionalWingspanReview.json` records 79 accepted species and 41
+deferred species, source counts, completed-plan statistics, targeted checks and
+dataset-version checks. Source-version metadata still reports Fox v1 and
+BirdWingData v2; no new numerical export was imported from that check. Neither
+wing-chord values, unverified unit corrections, isolated type specimens nor
+uncertain broader pre-split concepts were substituted for missing full spans.
+
+Maintenance commands (downloads/candidate collection do not change app data):
+
+```
+python Scripts/fetch_wikimedia_wingspan_sources.py /path/taxonomy.zip /path/cache --language it
+python Scripts/fetch_wikimedia_wingspan_sources.py /path/taxonomy.zip /path/cache --language de
+python Scripts/collect_multilingual_wingspans.py /path/cache
+python Scripts/fetch_regional_wingspan_sources.py /path/cache
+python Scripts/collect_regional_wingspans.py /path/cache
+```
+
+The existing English cache layout remains compatible; other languages have
+separate revision directories. Regional targets are in
+`RegionalWingspanTargets.json`, not an acceptance list. ADW/Oiseaux pacing is
+at least 8/10 seconds, respectively, with robots rules checked by the downloader;
+rate/service errors stop the regional run. Cached successful pages and recorded
+404/410 responses are skipped on resume. Full Wikimedia requests remain serial
+and honor Retry-After. Install only reviewed records through the supplement
+ledger; source licenses and per-language article provenance survive rebuilding.
+
+Verification: 28 Python tests pass, covering foreign species-box identity,
+decimal/unit conversion, empty trinome fields, partial ranges, dedicated guide
+fields and rejection of AVONET/subspecies fallback cards. All 79 additions match
+their cached evidence and exact identities; all 11,173 catalog IDs and every
+old field were preserved. Hashes and repeat-import idempotence pass; all 36
+Swift syntax trees parse and git diff --check passes. The native coverage test
+expects 1,881. Native compilation, resource decoding, layout and XCTest still
+require Xcode.
+
 Docs/SpeciesDetailsSupplements.json retains species IDs, evidence dates, source
 URLs, numerical captions/page hashes and the licensed English basis of adapted
 summaries. Scripts/supplement_species_details.py applies these records safely,
@@ -150,7 +224,7 @@ Run `python Scripts/collect_vogelbescherming_spans.py` to collect new candidate
 facts into /tmp/span_supplements.json without changing the app. Its parser skips
 failed pages, ambiguous names and non-range captions; this is not a complete
 audit of every source page. The 2026-11-21 pass checked all 345 guide links.
-The current 22 portable importer/supplement/parser safety tests pass with
+The current 28 portable importer/supplement/parser safety tests pass with
 `PYTHONPATH=/workspace/work/validation-deps python -m unittest discover -s Scripts -p 'test_species_details*.py'`.
 All 11,173 identities, preservation of existing values, bundled SHA-256 and
 repeat-import idempotence were checked; 36 Swift syntax trees parsed and

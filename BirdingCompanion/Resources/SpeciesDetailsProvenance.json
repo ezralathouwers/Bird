@@ -1,7 +1,7 @@
 {
   "version": "species-details-2026-11-20",
   "records": 11173,
-  "sha256": "e6cf3dd8f9838b4b3baaf5c324f966e60f7d7fb9a726a2d5f11c085675c913f1",
+  "sha256": "a25abb188b28bb02d805a5ca666982672e180ad8879767d59bc040c4641d009a",
   "license": "CC BY-SA 4.0 adapted catalog and Wikipedia excerpts; BIRDBASE and Fox source data CC BY 4.0; Wikidata CC0",
   "sources": [
     {
@@ -31,7 +31,17 @@
       "name": "English Wikipedia full article revisions; exact revisions retained in supplement evidence",
       "url": "https://en.wikipedia.org/",
       "license": "CC BY-SA 4.0"
+    },
+    {
+      "name": "Wikipedia full article revisions (de.wikipedia.org); exact revisions retained in supplement evidence",
+      "url": "https://de.wikipedia.org/",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "name": "Wikipedia full article revisions (it.wikipedia.org); exact revisions retained in supplement evidence",
+      "url": "https://it.wikipedia.org/",
+      "license": "CC BY-SA 4.0"
     }
   ],
-  "supplementsSHA256": "3878bd1016c4fbe18cc7a38cc40f0630f773c5ec5258373affb1e87381531290"
+  "supplementsSHA256": "cd532c92f2041cc8d96b6c01eb5ce44cae78923787d83386f6e733e4cddd601e"
 }

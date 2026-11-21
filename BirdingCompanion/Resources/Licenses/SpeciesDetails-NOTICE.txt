@@ -67,3 +67,17 @@ concept matched; uncertainty bounds and qualified claims excluded. Original
 referenced statements, entity revisions and source publication references are
 preserved in the maintenance ledger. These are reported database facts, not a
 claim of independent measurement or validation of every cited publication.
+
+Italian/German and regional-guide supplements, 21 November 2026:
+52 further numerical facts come from complete Italian (15) and German (37)
+Wikipedia revisions, Wikipedia contributors, CC BY-SA 4.0. Changes: supported
+unit words/templates normalized and explicit measurements converted to cm.
+Exact revisions, original article links and short review excerpts are retained
+in the supplement evidence. No new biography prose is displayed.
+
+27 further numeric facts use dedicated species-guide fields: Animal Diversity
+Web (11), Oiseaux.net (12), Cornell Lab of Ornithology All About Birds (3), and
+Oiseaux-Birds, Nicole Bouglouan (1). Only factual measurements and scientific
+identities are used, without copied guide prose, photos or illustrations. URLs,
+HTML hashes and field captions are retained per record. Values remain specific
+to the cited publication and may differ from other population/sex measurements.
