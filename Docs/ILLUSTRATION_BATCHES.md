@@ -1,5 +1,19 @@
 # Illustration batches
 
+## Compact portraits 12C — 21 November 2026
+
+The user rejected the crouched woodpecker classic. Version 4 now uses a normal
+relaxed standing silhouette based on the existing blackbird pose, with visible
+short legs below the belly and a diagonally trailing tail. Prior versions and
+the reason for replacement are retained. Only its classic asset changes.
+
+A new bird-only right-facing classic completes the Great Hornbill's missing
+compact role, with an empty closed bill and no branch, leaves or fig. The
+existing fig-bearing dynamic hero and other detail slides are preserved.
+Individual full-image anatomy/framing reviews, exact PNG hashes and transparent
+originals are recorded in the manifest. User/native rendering review remains
+pending; no Xcode run took place.
+
 ## Coast continuation 12A — 21 November 2026
 
 Seven new accepted originals complete the two missing tureluur roles (front
