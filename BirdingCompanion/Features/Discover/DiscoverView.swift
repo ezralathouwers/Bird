@@ -33,16 +33,35 @@ struct DiscoverView: View {
     }
 
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 20) {
-                DiscoverHeading(text: showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .accessibilityAddTraits(.isHeader)
-                    .padding(.top, 60)
-                    .padding(.bottom, 6)
-                if showSearch { catalogSearch } else { nearbyContent }
-            }.padding(20).padding(.bottom, 24)
+        Group {
+            if showSearch {
+                VStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 20) {
+                        heading
+                        TextField("Zoek een vogel", text: $catalogQuery)
+                            .modifier(RoundedSearchField()).autocorrectionDisabled()
+                            .focused($searchFocused)
+                            .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
+                    }
+                    .padding(20)
+                    .background(FieldGuideTheme.ivory)
+                    .fixedSize(horizontal: false, vertical: true)
+                    ScrollView {
+                        catalogSearch.padding(.horizontal, 20).padding(.bottom, 24)
+                    }
+                    .scrollDismissesKeyboard(.interactively)
+                }
+            } else {
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 20) {
+                        heading
+                        nearbyContent
+                    }.padding(20).padding(.bottom, 24)
+                }
+                .refreshable { if let query { await model.load(query: query, demo: demo) } }
+            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(FieldGuideTheme.ivory)
         .overlay(alignment: .topLeading) {
             Button { showCatalogSources = true } label: {
@@ -56,7 +75,7 @@ struct DiscoverView: View {
             Button { showSearch.toggle() } label: {
                 Image(systemName: showSearch ? "xmark" : "magnifyingglass")
                     .font(.system(size: 22, weight: .ultraLight)).frame(width: 44, height: 44)
-                    .background(FieldGuideTheme.beige.opacity(0.4), in: Circle())
+                    .background(FieldGuideTheme.searchControlBackground, in: Circle())
             }.accessibilityLabel(showSearch ? "Sluit soortenzoeker" : "Zoek alle vogelsoorten")
                 .padding(.trailing, 20).padding(.top, 8)
         }
@@ -74,8 +93,15 @@ struct DiscoverView: View {
                 await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10), demo: true)
             }
         }
-        .refreshable { if let query { await model.load(query: query, demo: demo) } }
         .onDisappear { location.stop() }
+    }
+
+    private var heading: some View {
+        DiscoverHeading(text: showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .accessibilityAddTraits(.isHeader)
+            .padding(.top, 60)
+            .padding(.bottom, 6)
     }
 
     @ViewBuilder private var nearbyContent: some View {
@@ -120,11 +146,7 @@ struct DiscoverView: View {
     }
 
     private var catalogSearch: some View {
-        LazyVStack(alignment: .leading, spacing: 20) {
-            TextField("Zoek een vogel", text: $catalogQuery)
-                .modifier(RoundedSearchField()).autocorrectionDisabled()
-                .focused($searchFocused)
-                .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
+        LazyVStack(alignment: .leading, spacing: 0) {
             let results = SpeciesCatalogSearch.results(for: catalogQuery, in: catalog)
             if results.isEmpty { Text("Geen soorten gevonden.") }
             LazyVStack(spacing: 0) {

@@ -17,6 +17,7 @@ struct CompanionRootView: View {
     private let addButtonDiameter: CGFloat = 64
     // The button's center (and plus crossbar) sits on the navigation's top edge.
     private var addButtonOverlap: CGFloat { addButtonDiameter / 2 }
+    private var addSymbolDiameter: CGFloat { showAddMenu || observationNavigation.selection != nil ? 40 : 36 }
     private let species = MockSpeciesRepository.kingfisher
 
     var body: some View {
@@ -119,7 +120,7 @@ struct CompanionRootView: View {
                             .stroke(showAddMenu || observationNavigation.selection != nil ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory,
                                     style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
                             .rotationEffect(.degrees(showAddMenu || observationNavigation.selection != nil ? 45 : 0))
-                            .frame(width: 40, height: 40)
+                            .frame(width: addSymbolDiameter, height: addSymbolDiameter)
                     }
                 }
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
@@ -147,8 +148,7 @@ struct CompanionRootView: View {
                 if item == .goals {
                     ZStack {
                         GoalListMark().stroke(style: StrokeStyle(lineWidth: 0.85, lineCap: .round))
-                        GoalCheckMark().stroke(FieldGuideTheme.charcoal,
-                                               style: StrokeStyle(lineWidth: 0.85, lineCap: .round, lineJoin: .round))
+                        GoalCompletionDot().fill(FieldGuideTheme.charcoal)
                     }.frame(width: 24, height: 24)
                 } else if item == .countries {
                     SimpleGlobeMark().stroke(style: StrokeStyle(lineWidth: 0.85, lineCap: .round))
@@ -168,11 +168,11 @@ struct CompanionRootView: View {
     }
 }
 
-// Open circles, including the checked first item: no filled status dot.
+// Two spaced rows, with a small completion dot inside the first open circle.
 private struct GoalListMark: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        for y in [7.5, 16.5] {
+        for y in [4.5, 19.5] {
             path.addEllipse(in: CGRect(x: 1.3, y: y - 3.1, width: 6.2, height: 6.2))
             path.move(to: CGPoint(x: 11, y: y))
             path.addLine(to: CGPoint(x: 23, y: y))
@@ -181,12 +181,10 @@ private struct GoalListMark: Shape {
     }
 }
 
-private struct GoalCheckMark: Shape {
+private struct GoalCompletionDot: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: 2.3, y: 7.5))
-        path.addLine(to: CGPoint(x: 4.1, y: 9))
-        path.addLine(to: CGPoint(x: 6.6, y: 5.7))
+        path.addEllipse(in: CGRect(x: 3, y: 3.1, width: 2.8, height: 2.8))
         return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
 }

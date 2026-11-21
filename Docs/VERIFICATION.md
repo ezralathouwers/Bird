@@ -1,5 +1,27 @@
 # Verification — 16 November 2026
 
+## Fixed search header and add-menu spacing — 21 November 2026
+
+Discover search now places its heading and query field outside the results
+ScrollView. Only results scroll; the keyboard can dismiss interactively.
+The nearby page retains its original scrolling title and pull-to-refresh.
+The search/close control uses an opaque beige color equivalent to the former
+40%-beige-over-ivory blend, preserving its tone without showing content through.
+
+The goals navigation glyph's two rows are spaced 15 points apart (previously
+9), with a small charcoal completion dot in the upper circle. The central
+plus glyph is 36 points (previously 40); its 64-point circle, crossbar position,
+close glyph and hit target are preserved. Add-menu options share a slightly
+shorter available height with 36 points reserved beneath the final option,
+moving the labels upward and giving the close button more room.
+
+Checks: tree-sitter syntax parsing of all 36 Swift files and `git diff --check`
+passed; source diff reviewed for unchanged search bindings/destinations and
+navigation actions. Native build and interaction are unverified without Xcode.
+In the simulator, test long searches and empty results, scroll while the
+keyboard is shown/hidden, confirm the header stays fixed, close/reopen search,
+and check menu spacing and taps at standard and accessibility text sizes.
+
 ## Discover list and title refinement — 21 November 2026
 
 Nearby birds and global search now share DiscoverSpeciesRow: 16-point Dutch

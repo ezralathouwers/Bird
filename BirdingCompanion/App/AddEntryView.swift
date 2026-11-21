@@ -10,17 +10,19 @@ struct AddEntryView: View {
     @State private var destination: AddDestination?
     var body: some View {
         GeometryReader { geometry in
+            // Leave extra room above the floating close button.
+            let choiceHeight = max(96, (geometry.size.height - 37) / 3)
             ScrollView {
                 VStack(spacing: 0) {
                     choice("Waarneming", accessibilityLabel: "Waarneming toevoegen", destination: .observation,
-                           height: max(96, (geometry.size.height - 1) / 3))
+                           height: choiceHeight)
                     separator
                     choice("Sessie", accessibilityLabel: "Sessie toevoegen", destination: .session,
-                           height: max(96, (geometry.size.height - 1) / 3))
+                           height: choiceHeight)
                     separator
                     choice("Doelstelling", accessibilityLabel: "Doelstelling toevoegen", destination: .goal,
-                           height: max(96, (geometry.size.height - 1) / 3))
-                }.frame(maxWidth: .infinity)
+                           height: choiceHeight)
+                }.frame(maxWidth: .infinity).padding(.bottom, 36)
             }
         }
         .background(FieldGuideTheme.charcoal.ignoresSafeArea())

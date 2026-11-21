@@ -10,6 +10,8 @@ enum FieldGuideTheme {
     static let ivory = Color(red: 0.96, green: 0.95, blue: 0.92)
     static let beige = Color(red: 0.89, green: 0.86, blue: 0.82)
     static let selectedBeige = Color(red: 0.83, green: 0.79, blue: 0.73)
+    // Opaque equivalent of 40% beige over ivory, so scrolled content cannot show through.
+    static let searchControlBackground = Color(red: 0.932, green: 0.914, blue: 0.88)
     static let khaki = Color(red: 133.0 / 255, green: 131.0 / 255, blue: 107.0 / 255)
     static let navigationOlive = Color(red: 124.0 / 255, green: 135.0 / 255, blue: 48.0 / 255)
     static let mutedIcon = Color(red: 181.0 / 255, green: 165.0 / 255, blue: 142.0 / 255)
