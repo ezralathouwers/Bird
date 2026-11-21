@@ -9370,5 +9370,163 @@
       "poseAndFraming": true,
       "notes": "Right-facing foraging gull, single head/bill, one near folded wing and occluded far wing, two yellow webbed feet, bounded shore rock and weed, full framing."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05165",
+    "asset": "birdnet-v3-BN05165-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-d8e5906b-d97f-42d8-a047-7431bda5a69a.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "2b9f1b174267b41f42a6c3b05d40ce2edab301c9192cd31e6eaa2544f7f6a3b4",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12E",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "2b9f1b174267b41f42a6c3b05d40ce2edab301c9192cd31e6eaa2544f7f6a3b4",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing heavy gull with small fish, one head and bill, two folded wing attachments with far wing occluded, pink webbed feet on bounded driftwood stump, complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05165",
+    "asset": "birdnet-v3-BN05165-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-06cc6f93-ad20-4575-a427-edbc27ed0d4d.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "8f30d01f0453e779f601368cb7eec99ab32bf268535726f60a01db2bc9836b08",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12E",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "8f30d01f0453e779f601368cb7eec99ab32bf268535726f60a01db2bc9836b08",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only, one head and heavy yellow bill red gonys spot, two folded wing attachments with far wing occluded, almost black mantle and pink webbed feet, complete framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN05165",
+    "asset": "birdnet-v3-BN05165-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-11451e71-cb45-46c5-86e5-74af8c17b885.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "f8f1c3fa29de96d6c281e69225bc09caee60ea04819e01b53626697ff7abe1d8",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12E",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "f8f1c3fa29de96d6c281e69225bc09caee60ea04819e01b53626697ff7abe1d8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front view, single centered heavy yellow bill, two folded dark wing flanks, broad white breast, two pink webbed feet, head and toe margins."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05165",
+    "asset": "birdnet-v3-BN05165-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-740a7bac-668f-4cb9-9579-14acc66bcda3.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "3cc37983d7fec10c2c06d0089339a843811da29a7ba85394899bb49868490abd",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12E",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "3cc37983d7fec10c2c06d0089339a843811da29a7ba85394899bb49868490abd",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear, eyes and bill hidden, two folded black wings, white head and tail, two pink webbed feet, complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05165",
+    "asset": "birdnet-v3-BN05165-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-1123ab1c-37be-4f23-9bb5-965ca9a2d845.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "fd8c90bccfc9012bc47f986da229ab00cfa3d829b979567a6bd2e75dfa6ddbc3",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12E",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "fd8c90bccfc9012bc47f986da229ab00cfa3d829b979567a6bd2e75dfa6ddbc3",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral flight, single upward bill and head, exactly two shoulder-attached open wings without folded silhouettes, dark outer primaries with white mirrors, pink trailing webbed feet, full framing."
+    }
   }
 ]

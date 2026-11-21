@@ -1,6 +1,6 @@
 {
   "state": "partial-checkpoint",
-  "installedRoles": 18,
+  "installedRoles": 23,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -526,6 +526,139 @@
         "notes": "Right-facing heavy gull with small fish, one head and bill, two folded wing attachments with far wing occluded, pink webbed feet on bounded driftwood stump, complete framing."
       },
       "sourceFile": "exec-d8e5906b-d97f-42d8-a047-7431bda5a69a.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8f30d01f0453e779f601368cb7eec99ab32bf268535726f60a01db2bc9836b08",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only, one head and heavy yellow bill red gonys spot, two folded wing attachments with far wing occluded, almost black mantle and pink webbed feet, complete framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-06cc6f93-ad20-4575-a427-edbc27ed0d4d.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f8f1c3fa29de96d6c281e69225bc09caee60ea04819e01b53626697ff7abe1d8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front view, single centered heavy yellow bill, two folded dark wing flanks, broad white breast, two pink webbed feet, head and toe margins."
+      },
+      "sourceFile": "exec-11451e71-cb45-46c5-86e5-74af8c17b885.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "3cc37983d7fec10c2c06d0089339a843811da29a7ba85394899bb49868490abd",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear, eyes and bill hidden, two folded black wings, white head and tail, two pink webbed feet, complete framing."
+      },
+      "sourceFile": "exec-740a7bac-668f-4cb9-9579-14acc66bcda3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "fd8c90bccfc9012bc47f986da229ab00cfa3d829b979567a6bd2e75dfa6ddbc3",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral flight, single upward bill and head, exactly two shoulder-attached open wings without folded silhouettes, dark outer primaries with white mirrors, pink trailing webbed feet, full framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-1123ab1c-37be-4f23-9bb5-965ca9a2d845.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6930d9daa1f071b73e326b2d0f71eabd6267eb76a1e8056e051efca39e291cb5",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only classic, black cap, single red black-tipped bill, two folded wing attachments with far wing occluded, long forked white tail, two red webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-edb9f265-c9ef-418b-bfd3-8ff23412b568.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8b782c673c88b5b264e438ab710b6e321f2e27c6d53f40d6e86796461a7c6010",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Single right-facing head and red black-tipped bill carrying small fish, two folded wing attachments with far wing occluded, two red feet on bounded driftwood, long forked tail, whole framing."
+      },
+      "sourceFile": "exec-d85d48c6-16d7-44f9-8580-43ddff0da071.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "a3e9f3450357fb433b1c006fecc136cdeb19b10bedaa2e1dd155c69f9ab38943",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front, single centered red black-tipped bill and black cap, two folded wing flanks, pale breast, two red webbed feet, whole framing."
+      },
+      "sourceFile": "exec-94e9bb48-4cc8-4bd3-b4b1-ad53151d82c6.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "94e493b5b2c9886c09f5094ed07e1215c7ce183c1166401fa19169c86a1b27f8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear with hidden bill and eyes, two closed grey wings and dark primaries, complete white forked tail, red feet, one black-capped head."
+      },
+      "sourceFile": "exec-98fdab4c-b989-44b7-92d1-1ffab1ccb8ee.png",
       "state": "reviewed-not-installed"
     }
   ],
@@ -713,5 +846,5 @@
       "installedRoles": []
     }
   ],
-  "remainingCoastRoles": 15
+  "remainingCoastRoles": 10
 }

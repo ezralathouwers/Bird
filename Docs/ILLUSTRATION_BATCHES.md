@@ -1,5 +1,16 @@
 # Illustration batches
 
+## Coast continuation 12E — 21 November 2026
+
+Five reviewed originals complete grote mantelmeeuw, including a fish-bearing
+hero on driftwood and a centered ventral flight view. Its heavy bill, near-black
+mantle and pink feet differ from kleine mantelmeeuw's slimmer build and yellow
+feet. Full-image reviews checked two wing attachments, single head/bill, rear
+bill hidden, feet and complete framing. Importer preflight, PNG validation,
+original/hash equality and both inventories pass. Coverage: 300 role assets,
+60 complete species, ten original coast roles remaining. Native image loading,
+carousel sizes and user/expert review are still pending without Xcode.
+
 ## Coast continuation 12D — 21 November 2026
 
 Five reviewed originals complete kleine mantelmeeuw. Adult breeding plumage

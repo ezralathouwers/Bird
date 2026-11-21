@@ -2,10 +2,10 @@
   "state": "partial-batch-checkpoint",
   "requestedSpecies": 20,
   "targetRoles": 100,
-  "generatedRoles": 85,
-  "acceptedRoles": 85,
+  "generatedRoles": 90,
+  "acceptedRoles": 90,
   "rejectedRoles": 0,
-  "pendingGeneration": 15,
+  "pendingGeneration": 10,
   "rows": [
     {
       "id": "birdnet-v3:BN10664",
@@ -863,35 +863,50 @@
       "name": "Grote mantelmeeuw",
       "scientificName": "Larus marinus",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "8f30d01f0453e779f601368cb7eec99ab32bf268535726f60a01db2bc9836b08",
+      "sourceFile": "exec-06cc6f93-ad20-4575-a427-edbc27ed0d4d.png",
+      "batch": "coast-12E"
     },
     {
       "id": "birdnet-v3:BN05165",
       "name": "Grote mantelmeeuw",
       "scientificName": "Larus marinus",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "2b9f1b174267b41f42a6c3b05d40ce2edab301c9192cd31e6eaa2544f7f6a3b4",
+      "sourceFile": "exec-d8e5906b-d97f-42d8-a047-7431bda5a69a.png",
+      "batch": "coast-12E"
     },
     {
       "id": "birdnet-v3:BN05165",
       "name": "Grote mantelmeeuw",
       "scientificName": "Larus marinus",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "f8f1c3fa29de96d6c281e69225bc09caee60ea04819e01b53626697ff7abe1d8",
+      "sourceFile": "exec-11451e71-cb45-46c5-86e5-74af8c17b885.png",
+      "batch": "coast-12E"
     },
     {
       "id": "birdnet-v3:BN05165",
       "name": "Grote mantelmeeuw",
       "scientificName": "Larus marinus",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "3cc37983d7fec10c2c06d0089339a843811da29a7ba85394899bb49868490abd",
+      "sourceFile": "exec-740a7bac-668f-4cb9-9579-14acc66bcda3.png",
+      "batch": "coast-12E"
     },
     {
       "id": "birdnet-v3:BN05165",
       "name": "Grote mantelmeeuw",
       "scientificName": "Larus marinus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "fd8c90bccfc9012bc47f986da229ab00cfa3d829b979567a6bd2e75dfa6ddbc3",
+      "sourceFile": "exec-1123ab1c-37be-4f23-9bb5-965ca9a2d845.png",
+      "batch": "coast-12E"
     },
     {
       "id": "birdnet-v3:BN09566",

@@ -5229,7 +5229,7 @@ birdnet-v3:BN05161,Kleine burgemeester,Larus glaucoides,Laridae,True,True,False,
 birdnet-v3:BN05162,Heermannmeeuw,Larus heermanni,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05163,Grote burgemeester,Larus hyperboreus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05164,Mexicaanse meeuw,Larus livens,Laridae,True,True,False,False,False,False,False
-birdnet-v3:BN05165,Grote mantelmeeuw,Larus marinus,Laridae,True,True,False,False,False,False,False
+birdnet-v3:BN05165,Grote mantelmeeuw,Larus marinus,Laridae,True,True,True,True,True,True,True
 birdnet-v3:BN05166,Geelpootmeeuw,Larus michahellis,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05167,Mongoolse meeuw,Larus mongolicus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05168,Californische meeuw,Larus occidentalis,Laridae,True,True,False,False,False,False,False
