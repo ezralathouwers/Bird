@@ -37,5 +37,22 @@ class SupplementSafetyTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 merge(self.rows, [item])
 
+    def test_wikidata_cannot_invent_a_range_or_disagree_with_its_statement(self):
+        item = {k: copy.deepcopy(self.item[k]) for k in ['speciesID', 'scientificName', 'evidence']}
+        item['wingspan'] = dict(minimumCM=50, maximumCM=50, method='source-reported-wikidata',
+            sourceScientificName='Example bird', sourceURL='https://www.wikidata.org/wiki/Q123')
+        item['evidence']['wikidataStatement'] = {'rank': 'normal',
+            'mainsnak': {'property': 'P2050', 'datavalue': {'value': {'amount': '+0.5', 'unit': 'http://www.wikidata.org/entity/Q11573'}}},
+            'references': [{'snaks': {'P248': [{'snaktype': 'value', 'datavalue': {'value': {'id': 'Q456'}}}]}}]}
+        self.assertEqual(merge(self.rows, [item])[0]['wingspan']['minimumCM'], 50)
+        for change in ['range', 'bounds', 'tampered', 'scope']:
+            bad = copy.deepcopy(item)
+            if change == 'range': bad['wingspan']['maximumCM'] = 60
+            elif change == 'bounds': bad['evidence']['wikidataStatement']['mainsnak']['datavalue']['value']['lowerBound'] = '+0.4'
+            elif change == 'tampered': bad['wingspan'].update(minimumCM=60, maximumCM=60)
+            elif change == 'scope': bad['evidence']['wikidataStatement']['qualifiers'] = {'P21': []}
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                merge(self.rows, [bad])
+
 if __name__ == '__main__':
     unittest.main()

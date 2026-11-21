@@ -1039,6 +1039,12 @@ final class SpeciesDetailsTests: XCTestCase {
             XCTAssertFalse(span.isValid)
         }
     }
+    func testWikidataValuesRemainSingleAndRequireAnEntitySource() {
+        let source = URL(string: "https://www.wikidata.org/wiki/Q123")!
+        XCTAssertTrue(SpeciesWingspan(minimumCM: 50, maximumCM: 50, method: "source-reported-wikidata", sourceScientificName: "Test", sourceURL: source).isValid)
+        XCTAssertFalse(SpeciesWingspan(minimumCM: 40, maximumCM: 60, method: "source-reported-wikidata", sourceScientificName: "Test", sourceURL: source).isValid)
+        XCTAssertFalse(SpeciesWingspan(minimumCM: 50, maximumCM: 50, method: "source-reported-wikidata", sourceScientificName: "Test", sourceURL: URL(string: "https://example.org")!).isValid)
+    }
     func testBundledCoveragePreservesMissingValuesAndKingfisherOverride() throws {
         XCTAssertNil(SpeciesDetailsCatalog.loadError)
         let rows = SpeciesGuideCatalog.species.compactMap { SpeciesDetailsCatalog.details(for: $0.id) }

@@ -8,8 +8,13 @@ struct SpeciesWingspan: Codable, Sendable {
     let sourceScientificName: String
     let sourceURL: URL
     var isValid: Bool {
-        minimumCM.isFinite && maximumCM.isFinite && minimumCM > 0 && maximumCM >= minimumCM && maximumCM < 500 &&
-            ["reported", "source-checked-guide"].contains(method) && !sourceScientificName.isEmpty && sourceURL.scheme == "https"
+        guard minimumCM.isFinite && maximumCM.isFinite && minimumCM > 0 && maximumCM >= minimumCM && maximumCM < 500 &&
+            ["reported", "source-checked-guide", "source-reported-wikidata"].contains(method) && !sourceScientificName.isEmpty && sourceURL.scheme == "https" else { return false }
+        if method == "source-reported-wikidata" {
+            return minimumCM == maximumCM && sourceURL.host == "www.wikidata.org" &&
+                sourceURL.path.range(of: #"^/wiki/Q[0-9]+$"#, options: .regularExpression) != nil
+        }
+        return true
     }
     var displayValue: String {
         func number(_ value: Double) -> String {

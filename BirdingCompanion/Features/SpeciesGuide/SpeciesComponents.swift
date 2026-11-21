@@ -229,8 +229,11 @@ struct SpeciesCatalogSourcesView: View {
                         if let span = detail.wingspan {
                             Text("Spanwijdte: \(span.method == "reported" ? "gerapporteerde meetgegevens, Fox en collega's (2026), CC BY 4.0" : "gerapporteerde waarde uit de vermelde bron"). Waarden kunnen per bron, populatie en meetmethode verschillen.")
                             Link("Bron spanwijdte", destination: span.sourceURL)
+                            if span.method == "source-reported-wikidata" {
+                                Text("Wikidata, CC0. Afzonderlijke gerapporteerde waarde met bronverwijzing; geen afgeleid minimum of maximum.")
+                            }
                             if span.sourceURL.host?.hasSuffix(".wikipedia.org") == true {
-                                Text("Wikipedia-bijdragers, CC BY-SA 4.0. Numerieke waarde overgenomen via BirdNET+ Taxonomy en omgerekend naar centimeter.")
+                                Text("Wikipedia-bijdragers, CC BY-SA 4.0. Numerieke waarde overgenomen en omgerekend naar centimeter.")
                                 Link("Wikipedia-bijdragers spanwijdte", destination: span.sourceURL.appending(queryItems: [URLQueryItem(name: "action", value: "history")]))
                             }
                         }
