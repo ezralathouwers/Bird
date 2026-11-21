@@ -233,3 +233,34 @@ Verification: four replacement PNG originals, transparency, matching hashes and
 version history checked; importer review gate tested with valid, missing,
 changed-image and each failed-check case. Both inventories refreshed and
 git diff --check passed. Native iOS rendering remains untested without Xcode.
+
+## Coast/meadow 09 resumed — 21 November 2026
+
+Seven additional original PNGs complete five separate roles each for grutto
+(Limosa limosa), kievit (Vanellus vanellus) and scholekster (Haematopus
+ostralegus). Grutto receives a bird-only right-facing classic, probing/stepping
+dynamic scene and front view; its existing rear and ventral-flight images stay
+unchanged. Kievit receives a closed-wing courtship strut, straight rear view
+with hidden bill and centered ventral flight. Scholekster receives a bird-only
+right-facing classic. Existing accepted assets are preserved.
+
+Every new image was inspected individually at full-image resolution for wing
+attachments/count, one head and bill, role, main plumage, feet and visible
+framing. The manifest binds those visual reviews to the PNG hashes and retains
+generation filenames and RSPB factual references. Initial wide outputs with
+broad matte/glow and a tightly framed lapwing flight were rejected and
+regenerated; none is an app asset. Additional generated grutto rear/flight
+candidates were not installed because those roles were already present.
+Independent expert review of subtle plumage and foot details is still pending.
+
+The partial coast batch now has 18 accepted roles and 82 still to generate.
+The previously rejected kievit dynamic and scholekster classic remain in the
+pending archive with their original history; accepted replacements now fill
+their roles. Both inventories report 197 available role assets and 38 complete
+species. This batch does not start background generation.
+
+Validation: importer preflight, all seven PNG alpha/dimensions/decoding checks,
+unaltered source-to-asset bytes and SHA-256, hash-bound review attestations,
+three full five-role sets, unchanged existing artwork and species IDs, refreshed
+inventories and `git diff --check`. No runtime code changed. Native image
+loading, ivory blending, slide sizing and memory use still need Xcode.

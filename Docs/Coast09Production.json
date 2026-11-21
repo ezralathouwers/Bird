@@ -1,11 +1,11 @@
 {
-  "state": "blocked-image-generation-daily-quota",
+  "state": "partial-batch-no-job-running",
   "requestedSpecies": 20,
   "targetRoles": 100,
-  "generatedRoles": 13,
-  "acceptedRoles": 11,
-  "rejectedRoles": 2,
-  "pendingGeneration": 87,
+  "generatedRoles": 18,
+  "acceptedRoles": 18,
+  "rejectedRoles": 0,
+  "pendingGeneration": 82,
   "rows": [
     {
       "id": "birdnet-v3:BN10664",
@@ -21,10 +21,16 @@
       "name": "Kievit",
       "scientificName": "Vanellus vanellus",
       "role": "dynamic",
-      "status": "rejected-extra-folded-wing",
-      "sha256": "16ba841e821683a60312ecd4e4c918eceaefa0c9af51aa1cd1f49fa796f37b26",
-      "sourceFile": "exec-1fe45f8e-57a1-4f5f-adfb-4e6ca5273f70.png",
-      "retainedFile": "Design/ArtworkPending/coast-09/birdnet-v3-BN10664-dynamic.png"
+      "status": "reviewed-ready",
+      "sha256": "9dd0fac1c7a973a67bd195a3509be23bdcffb7aa4ec853dc52a3a2154353d5e2",
+      "sourceFile": "exec-4727783c-19d4-42e9-8f7e-3ada05ec9055.png",
+      "previousRejectedAttempt": {
+        "status": "rejected-extra-folded-wing",
+        "sha256": "16ba841e821683a60312ecd4e4c918eceaefa0c9af51aa1cd1f49fa796f37b26",
+        "sourceFile": "exec-1fe45f8e-57a1-4f5f-adfb-4e6ca5273f70.png",
+        "retainedFile": "Design/ArtworkPending/coast-09/birdnet-v3-BN10664-dynamic.png"
+      },
+      "batch": "coast-09-resume"
     },
     {
       "id": "birdnet-v3:BN10664",
@@ -40,24 +46,36 @@
       "name": "Kievit",
       "scientificName": "Vanellus vanellus",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "766ed9a64984d8c755ade0303337d2b9e3fa3402ede0a5674b92959cb5054456",
+      "sourceFile": "exec-b83d91da-9654-4d89-b48b-d694e7854e14.png",
+      "batch": "coast-09-resume"
     },
     {
       "id": "birdnet-v3:BN10664",
       "name": "Kievit",
       "scientificName": "Vanellus vanellus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "fafad436834a2efb9e74c72b4dc521cfbd04d409276bc5e47efa4e38052fda4d",
+      "sourceFile": "exec-f2473f96-556f-412c-91bc-fe9f501e9d8e.png",
+      "batch": "coast-09-resume"
     },
     {
       "id": "birdnet-v3:BN04423",
       "name": "Scholekster",
       "scientificName": "Haematopus ostralegus",
       "role": "primary",
-      "status": "rejected-halo",
-      "sha256": "34b96a8fe3f401c11c4309f50877dd5cf45bc46b9f1ac5a1723d94a9c693cd80",
-      "sourceFile": "exec-885353cf-f715-42a8-9d85-c8fb4f578a0c.png",
-      "retainedFile": "Design/ArtworkPending/coast-09/birdnet-v3-BN04423-primary.png"
+      "status": "reviewed-ready",
+      "sha256": "9b9f9efe2acaabdeb6d217b901e87126786a19cf2442e39950bfc46416fb2da7",
+      "sourceFile": "exec-1adf0a0d-32e4-4c58-bea6-499dd8352aa7.png",
+      "previousRejectedAttempt": {
+        "status": "rejected-halo",
+        "sha256": "34b96a8fe3f401c11c4309f50877dd5cf45bc46b9f1ac5a1723d94a9c693cd80",
+        "sourceFile": "exec-885353cf-f715-42a8-9d85-c8fb4f578a0c.png",
+        "retainedFile": "Design/ArtworkPending/coast-09/birdnet-v3-BN04423-primary.png"
+      },
+      "batch": "coast-09-resume"
     },
     {
       "id": "birdnet-v3:BN04423",
@@ -100,21 +118,30 @@
       "name": "Grutto",
       "scientificName": "Limosa limosa",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "e6b15a780c76806ee64e1686f8c04f24502ee01c2ec1f85fe0f29fbe5befb3b7",
+      "sourceFile": "exec-08d11572-7918-44f0-8e80-1610fe82c067.png",
+      "batch": "coast-09-resume"
     },
     {
       "id": "birdnet-v3:BN05344",
       "name": "Grutto",
       "scientificName": "Limosa limosa",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "cf523ece3644806140e3e58fa8739c32f856cadd760d5014b7b5db2fdf90d5b2",
+      "sourceFile": "exec-649000d4-99cc-407c-8e61-67d5ef0bbf56.png",
+      "batch": "coast-09-resume"
     },
     {
       "id": "birdnet-v3:BN05344",
       "name": "Grutto",
       "scientificName": "Limosa limosa",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "2ab22e24922286b7148934f16b76edec9eea714c858d8ef987ba417787cdc39f",
+      "sourceFile": "exec-50ab9f47-4a9b-42ce-90fb-01aea3b8b844.png",
+      "batch": "coast-09-resume"
     },
     {
       "id": "birdnet-v3:BN05344",
@@ -735,5 +762,6 @@
       "role": "flight",
       "status": "pending-generation"
     }
-  ]
+  ],
+  "latestResume": "2026-11-21: seven missing roles installed, completing grutto, kievit and scholekster; prior generated grutto rear/flight retained; unsuitable matte/framing candidates not installed. No jobs running."
 }

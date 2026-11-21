@@ -10127,7 +10127,7 @@ birdnet-v3:BN01081,Aythya valisineria,Grote tafeleend,wetland-general,Wetland,,p
 birdnet-v3:BN05906,Mergus merganser,Grote zaagbek,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05783,Melanitta fusca,Grote zee-eend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00810,Ardea alba,Grote zilverreiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN05344,Limosa limosa,Grutto,wetland-general,Wetland,rear;flight,primary;dynamic;front,queued,pending,centered-ventral-spread
+birdnet-v3:BN05344,Limosa limosa,Grutto,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN04056,Gallirallus wallacii,Halmaheraral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN06528,Nesocharis ansorgei,Halsbandastrild,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09142,Scopus umbretta,Hamerkop,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10177,7 +10177,7 @@ birdnet-v3:BN00819,Ardea insignis,Keizerreiger,wetland-general,Wetland,,primary;
 birdnet-v3:BN04025,Gallinago imperialis,Keizersnip,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01420,Calidris pugnax,Kemphaan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00472,Anas eatoni,Kerguelenpijlstaart,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN10664,Vanellus vanellus,Kievit,wetland-general,Wetland,primary;front,dynamic;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN10664,Vanellus vanellus,Kievit,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN02270,Cisticola bakerorum,Kilomberograszanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07876,Ploceus burnieri,Kilomberowever,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08741,Rallus crepitans,Klapperral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10743,7 +10743,7 @@ birdnet-v3:BN04880,Icthyophaga sanfordi,Salomonszeearend,coast-general,Kust,,pri
 birdnet-v3:BN09677,Sublegatus arenarum,Salvinvliegenpikker,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09580,Sternula saundersi,Saunders-dwergstern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09053,Saundersilarus saundersi,Saundersmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN04423,Haematopus ostralegus,Scholekster,coast-general,Kust,dynamic;front;rear;flight,primary,queued,pending,centered-ventral-spread
+birdnet-v3:BN04423,Haematopus ostralegus,Scholekster,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN10033,Thalasseus elegans,Sierlijke stern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05151,Larus belcheri,Simeonmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 avilist:f7cfaa5d,Urile perspicillatus,Spectacled Cormorant,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

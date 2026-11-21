@@ -4482,7 +4482,7 @@ birdnet-v3:BN04420,Magelhaenscholekster,Haematopus leucopodus,Haematopodidae,Tru
 birdnet-v3:BN04421,Australische bonte scholekster,Haematopus longirostris,Haematopodidae,True,True,False,False,False,False,False
 avilist:d74fdd2d,Canary Islands Oystercatcher,Haematopus meadewaldoi,Haematopodidae,True,False,False,False,False,False,False
 birdnet-v3:BN04422,Afrikaanse zwarte scholekster,Haematopus moquini,Haematopodidae,True,True,False,False,False,False,False
-birdnet-v3:BN04423,Scholekster,Haematopus ostralegus,Haematopodidae,True,True,False,True,True,True,True
+birdnet-v3:BN04423,Scholekster,Haematopus ostralegus,Haematopodidae,True,True,True,True,True,True,True
 birdnet-v3:BN04424,Amerikaanse bonte scholekster,Haematopus palliatus,Haematopodidae,True,True,False,False,False,False,False
 birdnet-v3:BN04425,Nieuw-zeelandse zwarte scholekster,Haematopus unicolor,Haematopodidae,True,True,False,False,False,False,False
 birdnet-v3:BN04426,Roodkopbospatrijs,Haematortyx sanguiniceps,Phasianidae,True,True,False,False,False,False,False
@@ -5408,7 +5408,7 @@ birdnet-v3:BN05340,Swainsonzanger,Limnothlypis swainsonii,Parulidae,True,True,Fa
 birdnet-v3:BN05341,Marmergrutto,Limosa fedoa,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN05342,Rode grutto,Limosa haemastica,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN05343,Rosse grutto,Limosa lapponica,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN05344,Grutto,Limosa limosa,Scolopacidae,True,True,False,False,False,True,True
+birdnet-v3:BN05344,Grutto,Limosa limosa,Scolopacidae,True,True,True,True,True,True,True
 birdnet-v3:BN05345,Kneu,Linaria cannabina,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN05346,Frater,Linaria flavirostris,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN05347,Somalische kneu,Linaria johannis,Fringillidae,True,False,False,False,False,False,False
@@ -10802,7 +10802,7 @@ birdnet-v3:BN10660,Sporenkievit,Vanellus spinosus,Charadriidae,True,True,False,F
 birdnet-v3:BN10661,Bruinborstkievit,Vanellus superciliosus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN10662,Zwartkopkievit,Vanellus tectus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN10663,Australische kievit,Vanellus tricolor,Charadriidae,True,True,False,False,False,False,False
-birdnet-v3:BN10664,Kievit,Vanellus vanellus,Charadriidae,True,True,True,False,True,False,False
+birdnet-v3:BN10664,Kievit,Vanellus vanellus,Charadriidae,True,True,True,True,True,True,True
 birdnet-v3:BN10665,Haaksnavelvanga,Vanga curvirostris,Vangidae,True,True,False,False,False,False,False
 birdnet-v3:BN10666,Negrosjunglevliegenvanger,Vauriella albigularis,Muscicapidae,True,True,False,False,False,False,False
 birdnet-v3:BN10667,Mindanaojunglevliegenvanger,Vauriella goodfellowi,Muscicapidae,True,False,False,False,False,False,False
