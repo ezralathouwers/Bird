@@ -185,6 +185,12 @@ The importer rejects absent, stale or failed reviews before copying any asset.
 This records visual review, not automated anatomical detection or an accuracy
 guarantee. Earlier assets are not retroactively marked as passing this review.
 
+The hornbill dynamic was subsequently replaced using the user's supplied
+approved simulation screenshot. Image generation removed the interface and
+background and reconstructed the bird with fig and diagonal leafy branch.
+This preserves the requested composition but is not recovery of a pixel-identical
+original. Previous asset provenance is retained; native rendering is untested.
+
 Verification: four replacement PNG originals, transparency, matching hashes and
 version history checked; importer review gate tested with valid, missing,
 changed-image and each failed-check case. Both inventories refreshed and
