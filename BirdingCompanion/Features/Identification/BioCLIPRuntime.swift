@@ -55,12 +55,18 @@ actor BioCLIPPhotoService: PhotoIdentificationService {
     private var labels: [String?] = []
     private var preparation: Task<Void, Error>?
 
+    // The synchronous scope selects Core ML's synchronous overload and keeps
+    // the non-Sendable model and feature provider on this service actor.
+    private func predict(model: MLModel, input: any MLFeatureProvider) throws -> any MLFeatureProvider {
+        try model.prediction(from: input)
+    }
+
     func identify(photo: Data) async throws -> [IdentificationCandidate] {
         try await prepare()
         try Task.checkCancellation()
         guard let model else { throw PhotoRuntimeError.schema }
         let pixels = try Self.pixels(photo)
-        let result = try await model.prediction(from: MLDictionaryFeatureProvider(dictionary: ["pixels": MLFeatureValue(multiArray: pixels)]))
+        let result = try predict(model: model, input: MLDictionaryFeatureProvider(dictionary: ["pixels": MLFeatureValue(multiArray: pixels)]))
         try Task.checkCancellation()
         guard let output = result.featureValue(for: "embedding")?.multiArrayValue, output.count == 768,
               let embedding = PhotoSimilarity.normalized((0..<768).map { output[$0].floatValue }) else { throw PhotoRuntimeError.schema }

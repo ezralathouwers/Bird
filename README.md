@@ -21,12 +21,15 @@ the app is compiling x86_64, select the blue project → PROJECT BirdingCompanio
 Build Settings → All, search `Build Active Architecture Only`, set Debug to Yes,
 clean the build folder and rebuild for the selected iPhone simulator.
 
-Core ML calls from the async identification services explicitly await model
-prediction and BioCLIP model compilation. This addresses the missing-`await`
-diagnostics reported with Xcode 27.2. Cancellation is checked after these calls;
-temporary compiled-model cleanup is registered before checking cancellation.
-These changes still require a native rebuild; Linux syntax checks do not
-verify SDK overloads, Swift concurrency diagnostics or model execution.
+Core ML prediction uses a private synchronous helper on each service actor.
+This selects the synchronous overload and keeps the non-Sendable model and
+feature providers inside that actor; awaiting Core ML's concurrent prediction
+overload produced a Swift 6 data-race diagnostic with Xcode 27.2. BioCLIP model
+compilation still uses `await` because its URL result can cross the boundary.
+Cancellation is checked after prediction/compilation; temporary compiled-model
+cleanup is registered before checking cancellation. No unchecked Sendable
+conformance or weaker concurrency setting is used. Native rebuilding remains
+required: Linux syntax checks do not verify SDK types or model execution.
 
 Terminal equivalents (replace the destination with one listed on your Mac):
 

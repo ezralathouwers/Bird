@@ -37,6 +37,12 @@ actor BirdNETCoreMLService: StreamingSoundIdentificationService {
     private var classCount = 0
     private let threshold = 0.5
 
+    // Select the synchronous overload without sending the actor-owned model
+    // to Core ML's concurrent async prediction method.
+    private func predict(model: MLModel, input: any MLFeatureProvider) throws -> any MLFeatureProvider {
+        try model.prediction(from: input)
+    }
+
     func prepare() async throws {
         if model != nil { return }
         guard let configURL = Bundle.main.url(forResource: "BirdNETAssets", withExtension: "json"),
@@ -104,7 +110,7 @@ actor BirdNETCoreMLService: StreamingSoundIdentificationService {
         let audio = try MLMultiArray(shape: inputShape, dataType: inputType)
         for (index, sample) in samples.enumerated() { audio[index] = NSNumber(value: sample) }
         let provider = try MLDictionaryFeatureProvider(dictionary: [inputName: MLFeatureValue(multiArray: audio)])
-        let result = try await model.prediction(from: provider)
+        let result = try predict(model: model, input: provider)
         try Task.checkCancellation()
         guard let scores = result.featureValue(for: outputName)?.multiArrayValue, scores.count == classCount else { throw BirdNETRuntimeError.invalidModel }
         return IdentificationCandidate.ranked(labels.compactMap { label in
