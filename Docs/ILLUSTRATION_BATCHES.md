@@ -1,5 +1,15 @@
 # Illustration batches
 
+## New waterbirds 13H–13J — 21 November 2026
+
+Fifteen full-image-reviewed originals complete toendrarietgans, kolgans and
+kleine zwaan (European bewickii). Reviews checked orange-banded bill versus
+pink/white-fronted bill, belly barring, Bewicks smaller yellow bill patch,
+two wing attachments, one head/bill, rear bill hidden and complete framing.
+Original byte/hash equality, transparent PNG import preflight, review bindings
+and both inventories pass: 390 roles and 78 complete species. Previous artwork
+remains unchanged. Xcode loading/scaling and expert/user review are pending.
+
 ## New waterbirds 13E–13G — 21 November 2026
 
 Fifteen reviewed originals complete grote Canadese gans, kleine Canadese gans

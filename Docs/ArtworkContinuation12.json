@@ -1,6 +1,6 @@
 {
   "state": "partial-checkpoint",
-  "installedRoles": 98,
+  "installedRoles": 113,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -1846,6 +1846,255 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-6097c2f3-ce33-40c7-8226-5fb65f47e406.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00534",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/toendrarietgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "36f0231e5013aee087324f9ef417ff2c15fb58cd59101de1aecee53c80f1cd84",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only tundra bean goose, one dark bill with orange band and brown head/neck, barred brown body white undertail, two folded wings far wing occluded, two orange webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-dbaa5901-a557-4037-90ae-447521e7a9ce.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00534",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/toendrarietgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ef2ee1e4b45dd4d134e4bd6c4000f61dab9dfca9c2c7aa21c27497fcfe91e7fa",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Alert tundra bean goose on bounded winter stubble vignette, one dark orange-banded bill and darker head, two folded wings and two orange webbed feet, all bird/scene inside canvas."
+      },
+      "sourceFile": "exec-27a52f1d-5b04-4b73-bc2c-afc35bc92569.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00534",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/toendrarietgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "da350f6345bd2c661d356c5341a7aac2cb94407a61828bc29c514051ff9fd6e3",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front tundra bean goose, one centered dark bill orange band and two eyes, brown neck pale barred breast two folded wings and orange webbed feet, whole framing."
+      },
+      "sourceFile": "exec-9c0bec24-e93b-4f05-bbee-372fec3f2194.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00534",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/toendrarietgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "5bbe4518dd41008400f17ac838f871cc0c0368631dc9c169f0ceea85896310cd",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Rear tundra bean goose, bill/eyes hidden one brown head and neck, two folded brown wings short white-edged tail white undertail, two orange feet, full framing."
+      },
+      "sourceFile": "exec-7b8c302c-fe4f-4abe-a721-f162d1f9a1fe.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00534",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/toendrarietgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "674d51dc64d72ea67e82e0190c85f8a5e296d108f20c86b6eae25615698e7947",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral tundra bean goose, one upward dark bill orange edge and brown neck pale grey-buff belly, exactly two grey-brown open underwings and two trailing orange webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-9711769a-2385-4997-9515-d569ab5381b1.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00524",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kolgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "c7a56f3dedb27b9f6d24927d0bdb8a94418e0c9f3ad6a19ceb388bb15aab5523",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only greater white-fronted goose, one pink bill with white forehead/base patch brown head and barred body with black belly marks, two folded wings far wing occluded, two orange webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-b770e676-147f-42e8-a48a-2c9855a5715f.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00524",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kolgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "dbbbf9a5671ab3b4c4f78323f37a4c67134460ad2bbbf84eee75f54c4927186a",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Walking white-fronted goose, single pink bill white facial base patch, black belly barring brown body, exactly two folded wings and two orange webbed feet stepping on bounded reed/grass vignette, full framing."
+      },
+      "sourceFile": "exec-c9a3ff55-e492-493e-8f36-6fff4ad659ea.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00524",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kolgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "5f7a8246975cc060cfacf28a64b93bacf23e36628b401ed803325add1b9f59c5",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front white-fronted goose, single centered pink bill white base patch two eyes, black bars on pale brown belly, two folded wings and two orange webbed feet, full framing."
+      },
+      "sourceFile": "exec-8ae5f677-ee7a-4af4-be62-ce9f2c82b5a6.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00524",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kolgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f0475068d353ff22454e9d08636c2ac4abcf48ba8cc87c24119b0a2aea9662c8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear white-fronted goose, one brown head bill/eyes hidden, two folded brown wings white-edged short tail and belly-side bars, two orange feet, whole framing."
+      },
+      "sourceFile": "exec-dee009cf-bb7f-408e-a808-3b9737158f33.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00524",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kolgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0a3cdcc02ffa3615849b78bd9f7e8fafeffe33c344dfe33bb5f34930c0fa37b8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral white-fronted goose, single upward pink bill brown neck black belly bars pale undertail, two grey-brown open underwings no duplicate folded wings, two orange trailing webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-c7c2fe10-406d-47cf-bb52-7afd05ec35bf.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02980",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8685578611d076054dca28bc9c5cc238b56f41348589f1fb21465dc5d680958a",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only adult Bewicks swan, one predominantly black bill small rounded yellow basal patch and compact head, white body two folded wings far wing occluded, two black webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-dea26faf-c20a-4514-a601-8cd7ca2f653f.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02980",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f1e51e62d55f94928f4e757cb8b4fae4f8bce47e2975470a080750c4b734205d",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating Bewicks swan with pondweed held in single black/yellow bill, white plumage two folded wings, feet naturally submerged, whole bird and bounded ripples inside canvas."
+      },
+      "sourceFile": "exec-5aaca69f-e1ad-4b1e-8dfd-e564a65e9a60.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02980",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6f1ecce9448c6382a52d60eb80ca5597290823144405ebad651212ba5c4d61de",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front Bewicks swan, one centered black bill small yellow basal patch two eyes, white neck/body two folded wing flanks, two black webbed feet, complete framing."
+      },
+      "sourceFile": "exec-74c74790-1a5c-4061-bae6-e502ad475321.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02980",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "1fe44552bd020413a541c8ab26d526b690967e6c2d0bbfe45d8144cf6663e49d",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear Bewicks swan, one head bill/eyes hidden, white neck/body two folded wings short rounded tail, two black feet, whole framing."
+      },
+      "sourceFile": "exec-cb591122-a26f-45a2-818c-192f7d174d35.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02980",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "fd7c59bab31383eb9f66966f7363a20c4a04912144e6dd47730487a99e30cfbe",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral Bewicks swan, one upward black bill yellow basal edges, white neck/belly two spread white underwings from shoulders, no folded wing silhouettes and two trailing black webbed feet, complete framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-23e651e9-b359-43aa-9090-8bbdbe11c62f.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -2132,21 +2381,39 @@
       "dutchName": "Toendrarietgans",
       "scientificName": "Anser serrirostris",
       "englishName": "Tundra Bean Goose",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN00524",
       "dutchName": "Kolgans",
       "scientificName": "Anser albifrons",
       "englishName": "Greater White-fronted Goose",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN02980",
       "dutchName": "Kleine zwaan",
       "scientificName": "Cygnus columbianus",
       "englishName": "Tundra Swan",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN02981",

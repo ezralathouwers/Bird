@@ -536,7 +536,7 @@ birdnet-v3:BN00520,Blauwe noddy,Anous ceruleus,Laridae,True,False,False,False,Fa
 birdnet-v3:BN00521,Witkruinnoddy,Anous minutus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN00522,Bruine noddy,Anous stolidus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN00523,Kleine noddy,Anous tenuirostris,Laridae,True,True,False,False,False,False,False
-birdnet-v3:BN00524,Kolgans,Anser albifrons,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00524,Kolgans,Anser albifrons,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00525,Grauwe gans,Anser anser,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00526,Kleine rietgans,Anser brachyrhynchus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00527,Sneeuwgans,Anser caerulescens,Anatidae,True,True,False,False,False,False,False
@@ -546,7 +546,7 @@ birdnet-v3:BN00530,Dwerggans,Anser erythropus,Anatidae,True,True,False,False,Fal
 birdnet-v3:BN00531,Taigarietgans,Anser fabalis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00532,Indische gans,Anser indicus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00533,Ross' gans,Anser rossii,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN00534,Toendrarietgans,Anser serrirostris,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00534,Toendrarietgans,Anser serrirostris,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00535,Ekstergans,Anseranas semipalmata,Anseranatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00536,Witbefvliegenvanger,Anthipes monileger,Muscicapidae,True,True,False,False,False,False,False
 birdnet-v3:BN00537,Roodteugelvliegenvanger,Anthipes solitaris,Muscicapidae,True,True,False,False,False,False,False
@@ -3020,7 +3020,7 @@ birdnet-v3:BN02976,Edwardsvijgpapegaai,Cyclopsitta edwardsii,Psittaculidae,True,
 birdnet-v3:BN02977,Salvadorivijgpapegaai,Cyclopsitta salvadorii,Psittaculidae,True,False,False,False,False,False,False
 birdnet-v3:BN02978,Zwarte zwaan,Cygnus atratus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02979,Trompetzwaan,Cygnus buccinator,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN02980,Kleine zwaan,Cygnus columbianus,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN02980,Kleine zwaan,Cygnus columbianus,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN02981,Wilde zwaan,Cygnus cygnus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02982,Zwarthalszwaan,Cygnus melancoryphus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02983,Knobbelzwaan,Cygnus olor,Anatidae,True,True,True,True,True,True,True

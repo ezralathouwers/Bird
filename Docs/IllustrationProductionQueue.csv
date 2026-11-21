@@ -8352,7 +8352,7 @@ birdnet-v3:BN00257,Alaemon hamertoni,Kleine witbandleeuwerik,grassland-steppe,Gr
 birdnet-v3:BN06169,Muscisaxicola albifrons,Klifgrondtiran,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00514,Anomalospiza imberbis,Koekoekswever,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04530,Helopsaltes ochotensis,Koerilensprinkhaanzanger,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN00524,Anser albifrons,Kolgans,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN00524,Anser albifrons,Kolgans,grassland-steppe,Grasland en steppe,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN06052,Mirafra cordofanica,Kordofanleeuwerik,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00841,Ardeotis kori,Koritrap,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00410,Amytornis merrotsyi,Kortstaartgrassluiper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10195,7 +10195,7 @@ birdnet-v3:BN10093,Thinornis dubius,Kleine plevier,wetland-general,Wetland,prima
 birdnet-v3:BN04877,Icthyophaga humilis,Kleine rivierarend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01070,Aythya affinis,Kleine topper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03432,Egretta garzetta,Kleine zilverreiger,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
-birdnet-v3:BN02980,Cygnus columbianus,Kleine zwaan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN02980,Cygnus columbianus,Kleine zwaan,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN10848,Zapornia pusilla,Kleinst waterhoen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01418,Calidris minutilla,Kleinste strandloper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08795,Recurvirostra avosetta,Kluut,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
@@ -10420,7 +10420,7 @@ birdnet-v3:BN04376,Gymnocrex talaudensis,Talaudnaaktoogral,wetland-general,Wetla
 birdnet-v3:BN10286,Tribonyx mortierii,Tasmaans waterhoen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07878,Ploceus castaneiceps,Tavetawever,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08963,Rollandia microptera,Titicacafuut,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN00534,Anser serrirostris,Toendrarietgans,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN00534,Anser serrirostris,Toendrarietgans,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN01078,Aythya marila,Topper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04346,Grus americana,Trompetkraanvogel,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02979,Cygnus buccinator,Trompetzwaan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
