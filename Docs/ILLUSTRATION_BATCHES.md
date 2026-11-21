@@ -191,6 +191,44 @@ background and reconstructed the bird with fig and diagonal leafy branch.
 This preserves the requested composition but is not recovery of a pixel-identical
 original. Previous asset provenance is retained; native rendering is untested.
 
+## Water 08 and bird-only classics — 21 November 2026
+
+Added all five roles (50 images) for meerkoet, waterhoen, fuut, knobbelzwaan,
+grauwe gans, nijlgans, kuifeend, krakeend, slobeend and aalscholver. Adult male
+plumage is used for the sexually dimorphic ducks. All images were inspected
+individually for framing, wing count, single head/bill and requested view.
+Three flight underwing patterns were corrected to remove misplaced dorsal
+colors; shoveler and swan matte/glow defects were corrected before installation.
+Fine plumage/foot anatomy still requires independent ornithological review.
+
+The user requested all neutral compact portraits show only the bird. Twenty-one
+existing originals were edited, retaining previous-version metadata; ten new
+water portraits also follow this standard. Four existing large-bird portraits
+already lacked props and are unchanged. All available classics now lack perches
+or other objects; hornbill's missing classic remains missing. Existing source
+orientation and shared renderer reflection rules are retained. Future primary
+imports require bird-only composition and a hash-bound noProps visual review.
+
+## Coast/meadow 09 — quota-limited partial batch, 21 November 2026
+
+The user authorized twenty additional species: kievit, scholekster, grutto,
+tureluur, wulp, regenwulp, kemphaan, kluut, steltkluut, bontbekplevier,
+kleine plevier, bonte strandloper, drieteenstrandloper, steenloper, kokmeeuw,
+zilvermeeuw, kleine mantelmeeuw, grote mantelmeeuw, visdief and grote stern.
+Generation hit the provider's daily usage limit (HTTP 429 usage_limit_reached).
+Thirteen completed outputs were recovered. Eleven passed visual review and
+were imported; kievit dynamic has an extra folded-wing silhouette and
+scholekster primary a glow/matte defect. These two are retained under
+Design/ArtworkPending/coast-09 and are NOT app assets. Eighty-seven roles remain
+ungenerated, plus two needing regeneration: 89 unfinished roles. See
+Docs/Coast09Production.json for all 100 role states and original source hashes.
+No job remains running and the queue will not resume automatically.
+
+Validation: both inventory scripts, PNG decode/alpha, original byte equality,
+SHA-256, review binding, ten full role sets, partial-batch counts, and
+git diff --check pass. Xcode/native rendering and device performance remain
+unverified; no Swift build or simulator test was performed.
+
 Verification: four replacement PNG originals, transparency, matching hashes and
 version history checked; importer review gate tested with valid, missing,
 changed-image and each failed-check case. Both inventories refreshed and

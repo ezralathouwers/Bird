@@ -327,7 +327,7 @@ birdnet-v3:BN00314,Grijskopbaardbuulbuul,Alophoixus phaeocephalus,Pycnonotidae,T
 birdnet-v3:BN00315,Penanbaardbuulbuul,Alophoixus ruficrissus,Pycnonotidae,True,True,False,False,False,False,False
 birdnet-v3:BN00316,Grijswangbaardbuulbuul,Alophoixus tephrogenys,Pycnonotidae,True,True,False,False,False,False,False
 birdnet-v3:BN00317,Bruinkopzwaluw,Alopochelidon fucata,Hirundinidae,True,True,False,False,False,False,False
-birdnet-v3:BN00318,Nijlgans,Alopochen aegyptiaca,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00318,Nijlgans,Alopochen aegyptiaca,Anatidae,True,True,True,True,True,True,True
 avilist:10d0ad82,Reunion Sheldgoose,Alopochen kervazoi,Anatidae,True,False,False,False,False,False,False
 avilist:e4aa60c7,Mauritius Sheldgoose,Alopochen mauritiana,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN00319,Roodkopamadine,Amadina erythrocephala,Estrildidae,True,True,False,False,False,False,False
@@ -537,7 +537,7 @@ birdnet-v3:BN00521,Witkruinnoddy,Anous minutus,Laridae,True,True,False,False,Fal
 birdnet-v3:BN00522,Bruine noddy,Anous stolidus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN00523,Kleine noddy,Anous tenuirostris,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN00524,Kolgans,Anser albifrons,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN00525,Grauwe gans,Anser anser,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00525,Grauwe gans,Anser anser,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00526,Kleine rietgans,Anser brachyrhynchus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00527,Sneeuwgans,Anser caerulescens,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00528,Keizergans,Anser canagicus,Anatidae,True,True,False,False,False,False,False
@@ -1095,7 +1095,7 @@ birdnet-v3:BN01072,Australische witoogeend,Aythya australis,Anatidae,True,True,F
 birdnet-v3:BN01073,Amoerwitoogeend,Aythya baeri,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN01074,Ringsnaveleend,Aythya collaris,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01075,Tafeleend,Aythya ferina,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01076,Kuifeend,Aythya fuligula,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN01076,Kuifeend,Aythya fuligula,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01077,Madagaskarwitoogeend,Aythya innotata,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN01078,Topper,Aythya marila,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01079,Nieuw-zeelandse topper,Aythya novaeseelandiae,Anatidae,True,True,False,False,False,False,False
@@ -3023,7 +3023,7 @@ birdnet-v3:BN02979,Trompetzwaan,Cygnus buccinator,Anatidae,True,True,False,False
 birdnet-v3:BN02980,Kleine zwaan,Cygnus columbianus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02981,Wilde zwaan,Cygnus cygnus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02982,Zwarthalszwaan,Cygnus melancoryphus,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN02983,Knobbelzwaan,Cygnus olor,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN02983,Knobbelzwaan,Cygnus olor,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN02984,Zebramierklauwier,Cymbilaimus lineatus,Thamnophilidae,True,True,False,False,False,False,False
 birdnet-v3:BN02985,Bamboemierklauwier,Cymbilaimus sanctaemariae,Thamnophilidae,True,True,False,False,False,False,False
 birdnet-v3:BN02986,Irrawaddyhapvogel,Cymbirhynchus affinis,Eurylaimidae,True,False,False,False,False,False,False
@@ -4020,7 +4020,7 @@ birdnet-v3:BN03966,Hawaïmeerkoet,Fulica alai,Rallidae,True,True,False,False,Fal
 birdnet-v3:BN03967,Amerikaanse meerkoet,Fulica americana,Rallidae,True,True,False,False,False,False,False
 birdnet-v3:BN03968,Punakoet,Fulica ardesiaca,Rallidae,True,True,False,False,False,False,False
 birdnet-v3:BN03969,Roodbandkoet,Fulica armillata,Rallidae,True,True,False,False,False,False,False
-birdnet-v3:BN03970,Meerkoet,Fulica atra,Rallidae,True,True,False,False,False,False,False
+birdnet-v3:BN03970,Meerkoet,Fulica atra,Rallidae,True,True,True,True,True,True,True
 birdnet-v3:BN03971,Hoornkoet,Fulica cornuta,Rallidae,True,True,False,False,False,False,False
 birdnet-v3:BN03972,Knobbelmeerkoet,Fulica cristata,Rallidae,True,True,False,False,False,False,False
 birdnet-v3:BN03973,Reuzenkoet,Fulica gigantea,Rallidae,True,True,False,False,False,False,False
@@ -4090,7 +4090,7 @@ birdnet-v3:BN04035,Bergsnip,Gallinago solitaria,Scolopacidae,True,True,False,Fal
 birdnet-v3:BN04036,Stekelstaartsnip,Gallinago stenura,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN04037,Vuurlandsnip,Gallinago stricklandii,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN04038,Reuzensnip,Gallinago undulata,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN04039,Waterhoen,Gallinula chloropus,Rallidae,True,True,False,False,False,False,False
+birdnet-v3:BN04039,Waterhoen,Gallinula chloropus,Rallidae,True,True,True,True,True,True,True
 birdnet-v3:BN04040,Goughwaterhoen,Gallinula comeri,Rallidae,True,True,False,False,False,False,False
 birdnet-v3:BN04041,Amerikaans waterhoen,Gallinula galeata,Rallidae,True,True,False,False,False,False,False
 avilist:75f40338,Tristan Moorhen,Gallinula nesiotis,Rallidae,True,False,False,False,False,False,False
@@ -4482,7 +4482,7 @@ birdnet-v3:BN04420,Magelhaenscholekster,Haematopus leucopodus,Haematopodidae,Tru
 birdnet-v3:BN04421,Australische bonte scholekster,Haematopus longirostris,Haematopodidae,True,True,False,False,False,False,False
 avilist:d74fdd2d,Canary Islands Oystercatcher,Haematopus meadewaldoi,Haematopodidae,True,False,False,False,False,False,False
 birdnet-v3:BN04422,Afrikaanse zwarte scholekster,Haematopus moquini,Haematopodidae,True,True,False,False,False,False,False
-birdnet-v3:BN04423,Scholekster,Haematopus ostralegus,Haematopodidae,True,True,False,False,False,False,False
+birdnet-v3:BN04423,Scholekster,Haematopus ostralegus,Haematopodidae,True,True,False,True,True,True,True
 birdnet-v3:BN04424,Amerikaanse bonte scholekster,Haematopus palliatus,Haematopodidae,True,True,False,False,False,False,False
 birdnet-v3:BN04425,Nieuw-zeelandse zwarte scholekster,Haematopus unicolor,Haematopodidae,True,True,False,False,False,False,False
 birdnet-v3:BN04426,Roodkopbospatrijs,Haematortyx sanguiniceps,Phasianidae,True,True,False,False,False,False,False
@@ -5408,7 +5408,7 @@ birdnet-v3:BN05340,Swainsonzanger,Limnothlypis swainsonii,Parulidae,True,True,Fa
 birdnet-v3:BN05341,Marmergrutto,Limosa fedoa,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN05342,Rode grutto,Limosa haemastica,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN05343,Rosse grutto,Limosa lapponica,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN05344,Grutto,Limosa limosa,Scolopacidae,True,True,False,False,False,False,False
+birdnet-v3:BN05344,Grutto,Limosa limosa,Scolopacidae,True,True,False,False,False,True,True
 birdnet-v3:BN05345,Kneu,Linaria cannabina,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN05346,Frater,Linaria flavirostris,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN05347,Somalische kneu,Linaria johannis,Fringillidae,True,False,False,False,False,False,False
@@ -5726,7 +5726,7 @@ birdnet-v3:BN05655,Bronskopeend,Mareca falcata,Anatidae,True,True,False,False,Fa
 avilist:b52611c1,Amsterdam Wigeon,Mareca marecula,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN05656,Smient,Mareca penelope,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05657,Chileense smient,Mareca sibilatrix,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN05658,Krakeend,Mareca strepera,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN05658,Krakeend,Mareca strepera,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05659,Cubaanse schreeuwuil,Margarobyas lawrencii,Strigidae,True,True,False,False,False,False,False
 birdnet-v3:BN05660,Madagaskarpatrijs,Margaroperdix madagarensis,Phasianidae,True,False,False,False,False,False,False
 birdnet-v3:BN05661,Witoogspotlijster,Margarops fuscatus,Mimidae,True,True,False,False,False,False,False
@@ -7506,7 +7506,7 @@ birdnet-v3:BN07401,Zwarte zijdevliegenvanger,Phainopepla nitens,Ptiliogonatidae,
 birdnet-v3:BN07402,Geelflankzijdevliegenvanger,Phainoptila melanoxantha,Ptiliogonatidae,True,True,False,False,False,False,False
 birdnet-v3:BN07403,Kaapse aalscholver,Phalacrocorax capensis,Phalacrocoracidae,True,False,False,False,False,False,False
 birdnet-v3:BN07404,Japanse aalscholver,Phalacrocorax capillatus,Phalacrocoracidae,True,False,False,False,False,False,False
-birdnet-v3:BN07405,Aalscholver,Phalacrocorax carbo,Phalacrocoracidae,True,True,False,False,False,False,False
+birdnet-v3:BN07405,Aalscholver,Phalacrocorax carbo,Phalacrocoracidae,True,True,True,True,True,True,True
 birdnet-v3:BN07406,Pittaalscholver,Phalacrocorax featherstoni,Phalacrocoracidae,True,False,False,False,False,False,False
 birdnet-v3:BN07407,Zwartmaskeraalscholver,Phalacrocorax fuscescens,Phalacrocoracidae,True,False,False,False,False,False,False
 birdnet-v3:BN07408,Indische aalscholver,Phalacrocorax fuscicollis,Phalacrocoracidae,True,True,False,False,False,False,False
@@ -8048,7 +8048,7 @@ birdnet-v3:BN07940,Uilnachtzwaluw,Podargus strigoides,Podargidae,True,True,False
 birdnet-v3:BN07941,Watertrapper,Podica senegalensis,Heliornithidae,True,True,False,False,False,False,False
 avilist:a62cbdd6,Colombian Grebe,Podiceps andinus,Podicipedidae,True,False,False,False,False,False,False
 birdnet-v3:BN07942,Kuifduiker,Podiceps auritus,Podicipedidae,True,True,False,False,False,False,False
-birdnet-v3:BN07943,Fuut,Podiceps cristatus,Podicipedidae,True,True,False,False,False,False,False
+birdnet-v3:BN07943,Fuut,Podiceps cristatus,Podicipedidae,True,True,True,True,True,True,True
 birdnet-v3:BN07944,Patagonische fuut,Podiceps gallardoi,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN07945,Roodhalsfuut,Podiceps grisegena,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN07946,Grote fuut,Podiceps major,Podicipedidae,True,True,False,False,False,False,False
@@ -9507,7 +9507,7 @@ birdnet-v3:BN09374,Brileider,Somateria fischeri,Anatidae,True,True,False,False,F
 birdnet-v3:BN09375,Eider,Somateria mollissima,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09376,Koningseider,Somateria spectabilis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09377,Dwergstekelstaart,Spartonoica maluroides,Furnariidae,True,True,False,False,False,False,False
-birdnet-v3:BN09378,Slobeend,Spatula clypeata,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN09378,Slobeend,Spatula clypeata,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN09379,Kaneeltaling,Spatula cyanoptera,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09380,Blauwvleugeltaling,Spatula discors,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09381,Gouden taling,Spatula hottentota,Anatidae,True,True,False,False,False,False,False
@@ -10466,7 +10466,7 @@ birdnet-v3:BN10330,Witgat,Tringa ochropus,Scolopacidae,True,True,False,False,Fal
 birdnet-v3:BN10331,Kwelderruiter,Tringa semipalmata,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN10332,Amerikaanse bosruiter,Tringa solitaria,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN10333,Poelruiter,Tringa stagnatilis,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN10334,Tureluur,Tringa totanus,Scolopacidae,True,True,False,False,False,False,False
+birdnet-v3:BN10334,Tureluur,Tringa totanus,Scolopacidae,True,True,True,True,False,True,False
 birdnet-v3:BN10335,Zwartmaskerlijstergaai,Trochalopteron affine,Leiothrichidae,True,True,False,False,False,False,False
 birdnet-v3:BN10336,Bruinkaplijstergaai,Trochalopteron austeni,Leiothrichidae,True,True,False,False,False,False,False
 birdnet-v3:BN10337,Assamlijstergaai,Trochalopteron chrysopterum,Leiothrichidae,True,True,False,False,False,False,False
@@ -10802,7 +10802,7 @@ birdnet-v3:BN10660,Sporenkievit,Vanellus spinosus,Charadriidae,True,True,False,F
 birdnet-v3:BN10661,Bruinborstkievit,Vanellus superciliosus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN10662,Zwartkopkievit,Vanellus tectus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN10663,Australische kievit,Vanellus tricolor,Charadriidae,True,True,False,False,False,False,False
-birdnet-v3:BN10664,Kievit,Vanellus vanellus,Charadriidae,True,True,False,False,False,False,False
+birdnet-v3:BN10664,Kievit,Vanellus vanellus,Charadriidae,True,True,True,False,True,False,False
 birdnet-v3:BN10665,Haaksnavelvanga,Vanga curvirostris,Vangidae,True,True,False,False,False,False,False
 birdnet-v3:BN10666,Negrosjunglevliegenvanger,Vauriella albigularis,Muscicapidae,True,True,False,False,False,False,False
 birdnet-v3:BN10667,Mindanaojunglevliegenvanger,Vauriella goodfellowi,Muscicapidae,True,False,False,False,False,False,False

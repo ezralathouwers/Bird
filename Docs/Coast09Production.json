@@ -1,0 +1,739 @@
+{
+  "state": "blocked-image-generation-daily-quota",
+  "requestedSpecies": 20,
+  "targetRoles": 100,
+  "generatedRoles": 13,
+  "acceptedRoles": 11,
+  "rejectedRoles": 2,
+  "pendingGeneration": 87,
+  "rows": [
+    {
+      "id": "birdnet-v3:BN10664",
+      "name": "Kievit",
+      "scientificName": "Vanellus vanellus",
+      "role": "primary",
+      "status": "reviewed-ready",
+      "sha256": "8318ee4369e45c31e2bd1249c76a2c2cf3bed250e54d8a8cf9958e0c9b3b6829",
+      "sourceFile": "exec-133a305a-1d6a-4851-9b56-b647f8a65cbb.png"
+    },
+    {
+      "id": "birdnet-v3:BN10664",
+      "name": "Kievit",
+      "scientificName": "Vanellus vanellus",
+      "role": "dynamic",
+      "status": "rejected-extra-folded-wing",
+      "sha256": "16ba841e821683a60312ecd4e4c918eceaefa0c9af51aa1cd1f49fa796f37b26",
+      "sourceFile": "exec-1fe45f8e-57a1-4f5f-adfb-4e6ca5273f70.png",
+      "retainedFile": "Design/ArtworkPending/coast-09/birdnet-v3-BN10664-dynamic.png"
+    },
+    {
+      "id": "birdnet-v3:BN10664",
+      "name": "Kievit",
+      "scientificName": "Vanellus vanellus",
+      "role": "front",
+      "status": "reviewed-ready",
+      "sha256": "e10f82be7e6228afb40e41fb9d74642bddaf45a227caa9599f1dd38154cc92d2",
+      "sourceFile": "exec-b7a0f20e-3159-435d-acfc-85e3961da3d7.png"
+    },
+    {
+      "id": "birdnet-v3:BN10664",
+      "name": "Kievit",
+      "scientificName": "Vanellus vanellus",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10664",
+      "name": "Kievit",
+      "scientificName": "Vanellus vanellus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN04423",
+      "name": "Scholekster",
+      "scientificName": "Haematopus ostralegus",
+      "role": "primary",
+      "status": "rejected-halo",
+      "sha256": "34b96a8fe3f401c11c4309f50877dd5cf45bc46b9f1ac5a1723d94a9c693cd80",
+      "sourceFile": "exec-885353cf-f715-42a8-9d85-c8fb4f578a0c.png",
+      "retainedFile": "Design/ArtworkPending/coast-09/birdnet-v3-BN04423-primary.png"
+    },
+    {
+      "id": "birdnet-v3:BN04423",
+      "name": "Scholekster",
+      "scientificName": "Haematopus ostralegus",
+      "role": "dynamic",
+      "status": "reviewed-ready",
+      "sha256": "96c28167794866d886c8d6042aa55097c9686d09cbe6709c40810321342cb9cf",
+      "sourceFile": "exec-3c19f075-ad80-4999-ab56-565a0816c554.png"
+    },
+    {
+      "id": "birdnet-v3:BN04423",
+      "name": "Scholekster",
+      "scientificName": "Haematopus ostralegus",
+      "role": "front",
+      "status": "reviewed-ready",
+      "sha256": "a35be6555bf1574d982d86d3eb1efaa1f2b396de2000a4e485a33143d34eef8d",
+      "sourceFile": "exec-6549d364-c5d7-4c7e-9138-af919ce06534.png"
+    },
+    {
+      "id": "birdnet-v3:BN04423",
+      "name": "Scholekster",
+      "scientificName": "Haematopus ostralegus",
+      "role": "rear",
+      "status": "reviewed-ready",
+      "sha256": "60fee0d2d8f90aec138dc01f22e8651ce9556684045fd49877b7a5c1315f04cf",
+      "sourceFile": "exec-b7fc46de-3d11-4028-8f81-168024f18a2b.png"
+    },
+    {
+      "id": "birdnet-v3:BN04423",
+      "name": "Scholekster",
+      "scientificName": "Haematopus ostralegus",
+      "role": "flight",
+      "status": "reviewed-ready",
+      "sha256": "aed71403f1b3f184d922984d4b9af7144d8bb1153fe626cb38cf122fbeac3147",
+      "sourceFile": "exec-456b54a5-ffe3-4f1a-8485-0a57d95d2a7b.png"
+    },
+    {
+      "id": "birdnet-v3:BN05344",
+      "name": "Grutto",
+      "scientificName": "Limosa limosa",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05344",
+      "name": "Grutto",
+      "scientificName": "Limosa limosa",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05344",
+      "name": "Grutto",
+      "scientificName": "Limosa limosa",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05344",
+      "name": "Grutto",
+      "scientificName": "Limosa limosa",
+      "role": "rear",
+      "status": "reviewed-ready",
+      "sha256": "306776d28a14c8794f46c2a60f49a5ae7493b248fb29dc7d24d06e448039de1c",
+      "sourceFile": "exec-c54d5d82-b174-4668-bf86-86c4b3767e92.png"
+    },
+    {
+      "id": "birdnet-v3:BN05344",
+      "name": "Grutto",
+      "scientificName": "Limosa limosa",
+      "role": "flight",
+      "status": "reviewed-ready",
+      "sha256": "e817b89170935825cb9479cd9d9eb464363fca2fb0dedf0063de322d0aac9321",
+      "sourceFile": "exec-ccd803e8-851d-43d9-85dd-bffdc2d712d6.png"
+    },
+    {
+      "id": "birdnet-v3:BN10334",
+      "name": "Tureluur",
+      "scientificName": "Tringa totanus",
+      "role": "primary",
+      "status": "reviewed-ready",
+      "sha256": "13a25071368b59c5601f3406e14651c0c3c5cdcd1d798e294c1799f6e12bfcb2",
+      "sourceFile": "exec-9f9e46a0-85cb-41a9-b616-dab397f77cf4.png"
+    },
+    {
+      "id": "birdnet-v3:BN10334",
+      "name": "Tureluur",
+      "scientificName": "Tringa totanus",
+      "role": "dynamic",
+      "status": "reviewed-ready",
+      "sha256": "c9d11301d6e85973930fcc267239e3d3588966aea463f0caa3af39614b0ff8e6",
+      "sourceFile": "exec-12827216-692e-4741-9cf6-34df4965be91.png"
+    },
+    {
+      "id": "birdnet-v3:BN10334",
+      "name": "Tureluur",
+      "scientificName": "Tringa totanus",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10334",
+      "name": "Tureluur",
+      "scientificName": "Tringa totanus",
+      "role": "rear",
+      "status": "reviewed-ready",
+      "sha256": "1122b60caf60869e4eda62dcb74ee48201fc672492b7d6ca9fa4dcecc735202c",
+      "sourceFile": "exec-3007082c-029a-4d5e-8be5-6f8d6a2a6513.png"
+    },
+    {
+      "id": "birdnet-v3:BN10334",
+      "name": "Tureluur",
+      "scientificName": "Tringa totanus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06658",
+      "name": "Wulp",
+      "scientificName": "Numenius arquata",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06658",
+      "name": "Wulp",
+      "scientificName": "Numenius arquata",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06658",
+      "name": "Wulp",
+      "scientificName": "Numenius arquata",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06658",
+      "name": "Wulp",
+      "scientificName": "Numenius arquata",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06658",
+      "name": "Wulp",
+      "scientificName": "Numenius arquata",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06663",
+      "name": "Regenwulp",
+      "scientificName": "Numenius phaeopus",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06663",
+      "name": "Regenwulp",
+      "scientificName": "Numenius phaeopus",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06663",
+      "name": "Regenwulp",
+      "scientificName": "Numenius phaeopus",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06663",
+      "name": "Regenwulp",
+      "scientificName": "Numenius phaeopus",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN06663",
+      "name": "Regenwulp",
+      "scientificName": "Numenius phaeopus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01420",
+      "name": "Kemphaan",
+      "scientificName": "Calidris pugnax",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01420",
+      "name": "Kemphaan",
+      "scientificName": "Calidris pugnax",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01420",
+      "name": "Kemphaan",
+      "scientificName": "Calidris pugnax",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01420",
+      "name": "Kemphaan",
+      "scientificName": "Calidris pugnax",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01420",
+      "name": "Kemphaan",
+      "scientificName": "Calidris pugnax",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN08795",
+      "name": "Kluut",
+      "scientificName": "Recurvirostra avosetta",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN08795",
+      "name": "Kluut",
+      "scientificName": "Recurvirostra avosetta",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN08795",
+      "name": "Kluut",
+      "scientificName": "Recurvirostra avosetta",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN08795",
+      "name": "Kluut",
+      "scientificName": "Recurvirostra avosetta",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN08795",
+      "name": "Kluut",
+      "scientificName": "Recurvirostra avosetta",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN04645",
+      "name": "Steltkluut",
+      "scientificName": "Himantopus himantopus",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN04645",
+      "name": "Steltkluut",
+      "scientificName": "Himantopus himantopus",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN04645",
+      "name": "Steltkluut",
+      "scientificName": "Himantopus himantopus",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN04645",
+      "name": "Steltkluut",
+      "scientificName": "Himantopus himantopus",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN04645",
+      "name": "Steltkluut",
+      "scientificName": "Himantopus himantopus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01911",
+      "name": "Bontbekplevier",
+      "scientificName": "Charadrius hiaticula",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01911",
+      "name": "Bontbekplevier",
+      "scientificName": "Charadrius hiaticula",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01911",
+      "name": "Bontbekplevier",
+      "scientificName": "Charadrius hiaticula",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01911",
+      "name": "Bontbekplevier",
+      "scientificName": "Charadrius hiaticula",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01911",
+      "name": "Bontbekplevier",
+      "scientificName": "Charadrius hiaticula",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10093",
+      "name": "Kleine plevier",
+      "scientificName": "Thinornis dubius",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10093",
+      "name": "Kleine plevier",
+      "scientificName": "Thinornis dubius",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10093",
+      "name": "Kleine plevier",
+      "scientificName": "Thinornis dubius",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10093",
+      "name": "Kleine plevier",
+      "scientificName": "Thinornis dubius",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10093",
+      "name": "Kleine plevier",
+      "scientificName": "Thinornis dubius",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01407",
+      "name": "Bonte strandloper",
+      "scientificName": "Calidris alpina",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01407",
+      "name": "Bonte strandloper",
+      "scientificName": "Calidris alpina",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01407",
+      "name": "Bonte strandloper",
+      "scientificName": "Calidris alpina",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01407",
+      "name": "Bonte strandloper",
+      "scientificName": "Calidris alpina",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01407",
+      "name": "Bonte strandloper",
+      "scientificName": "Calidris alpina",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01406",
+      "name": "Drieteenstrandloper",
+      "scientificName": "Calidris alba",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01406",
+      "name": "Drieteenstrandloper",
+      "scientificName": "Calidris alba",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01406",
+      "name": "Drieteenstrandloper",
+      "scientificName": "Calidris alba",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01406",
+      "name": "Drieteenstrandloper",
+      "scientificName": "Calidris alba",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN01406",
+      "name": "Drieteenstrandloper",
+      "scientificName": "Calidris alba",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN00843",
+      "name": "Steenloper",
+      "scientificName": "Arenaria interpres",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN00843",
+      "name": "Steenloper",
+      "scientificName": "Arenaria interpres",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN00843",
+      "name": "Steenloper",
+      "scientificName": "Arenaria interpres",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN00843",
+      "name": "Steenloper",
+      "scientificName": "Arenaria interpres",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN00843",
+      "name": "Steenloper",
+      "scientificName": "Arenaria interpres",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN02066",
+      "name": "Kokmeeuw",
+      "scientificName": "Chroicocephalus ridibundus",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN02066",
+      "name": "Kokmeeuw",
+      "scientificName": "Chroicocephalus ridibundus",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN02066",
+      "name": "Kokmeeuw",
+      "scientificName": "Chroicocephalus ridibundus",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN02066",
+      "name": "Kokmeeuw",
+      "scientificName": "Chroicocephalus ridibundus",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN02066",
+      "name": "Kokmeeuw",
+      "scientificName": "Chroicocephalus ridibundus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05148",
+      "name": "Zilvermeeuw",
+      "scientificName": "Larus argentatus",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05148",
+      "name": "Zilvermeeuw",
+      "scientificName": "Larus argentatus",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05148",
+      "name": "Zilvermeeuw",
+      "scientificName": "Larus argentatus",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05148",
+      "name": "Zilvermeeuw",
+      "scientificName": "Larus argentatus",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05148",
+      "name": "Zilvermeeuw",
+      "scientificName": "Larus argentatus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "name": "Kleine mantelmeeuw",
+      "scientificName": "Larus fuscus",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "name": "Kleine mantelmeeuw",
+      "scientificName": "Larus fuscus",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "name": "Kleine mantelmeeuw",
+      "scientificName": "Larus fuscus",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "name": "Kleine mantelmeeuw",
+      "scientificName": "Larus fuscus",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "name": "Kleine mantelmeeuw",
+      "scientificName": "Larus fuscus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "name": "Grote mantelmeeuw",
+      "scientificName": "Larus marinus",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "name": "Grote mantelmeeuw",
+      "scientificName": "Larus marinus",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "name": "Grote mantelmeeuw",
+      "scientificName": "Larus marinus",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "name": "Grote mantelmeeuw",
+      "scientificName": "Larus marinus",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "name": "Grote mantelmeeuw",
+      "scientificName": "Larus marinus",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "name": "Visdief",
+      "scientificName": "Sterna hirundo",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "name": "Visdief",
+      "scientificName": "Sterna hirundo",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "name": "Visdief",
+      "scientificName": "Sterna hirundo",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "name": "Visdief",
+      "scientificName": "Sterna hirundo",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN09566",
+      "name": "Visdief",
+      "scientificName": "Sterna hirundo",
+      "role": "flight",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10035",
+      "name": "Grote stern",
+      "scientificName": "Thalasseus sandvicensis",
+      "role": "primary",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10035",
+      "name": "Grote stern",
+      "scientificName": "Thalasseus sandvicensis",
+      "role": "dynamic",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10035",
+      "name": "Grote stern",
+      "scientificName": "Thalasseus sandvicensis",
+      "role": "front",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10035",
+      "name": "Grote stern",
+      "scientificName": "Thalasseus sandvicensis",
+      "role": "rear",
+      "status": "pending-generation"
+    },
+    {
+      "id": "birdnet-v3:BN10035",
+      "name": "Grote stern",
+      "scientificName": "Thalasseus sandvicensis",
+      "role": "flight",
+      "status": "pending-generation"
+    }
+  ]
+}
