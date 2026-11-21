@@ -77,7 +77,9 @@ struct CompanionRootView: View {
                     navigationItem(.discover, symbol: "binoculars")
                     navigationItem(.identify, symbol: "viewfinder")
                     navigationItem(.sessions, symbol: "clock")
-                    Color.clear.frame(minWidth: 44, maxWidth: .infinity, minHeight: 56)
+                    // Keep this clear slot bounded: a flexible height here can
+                    // make safeAreaInset consume the whole page's height.
+                    Color.clear.frame(minWidth: 44, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
                         .allowsHitTesting(false)
                     navigationItem(.goals, symbol: "checklist")
                     navigationItem(.countries, symbol: "globe")

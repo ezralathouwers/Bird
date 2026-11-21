@@ -1,5 +1,24 @@
 # Verification — 16 November 2026
 
+## Simulator launch follow-up — 21 November 2026
+
+The owner reported a successful Xcode 27.2 simulator build after the architecture
+and Core ML compiler fixes. Their launch screenshot showed missing page content,
+navigation icons at mid-screen and the add button at the top. The clear center
+slot in the bottom-navigation HStack had a minimum height but no upper bound;
+inside safeAreaInset it could consume the available screen height. Its minimum
+and maximum heights are now both 56 points. Horizontal flexibility, button hit
+areas and the existing floating-button overlap are preserved.
+
+Validation here: Swift syntax parsing and `git diff --check`; no native rendering
+was run. In Xcode, relaunch on the same iPhone simulator and check that Ontdek's
+heading/content appears, navigation is at the bottom, the add button is centered
+over the bar, the add menu closes correctly, and species habitats remain above
+the bar. Also check a smaller iPhone and larger text sizes. The owner's earlier
+successful build does not establish that this layout correction has passed.
+
+## Original cloud verification
+
 Environment: Linux, Python 3.12.14. `command -v swift` and `command -v xcodebuild` returned no executable. No iOS build or XCTest execution took place.
 
 Executed:
