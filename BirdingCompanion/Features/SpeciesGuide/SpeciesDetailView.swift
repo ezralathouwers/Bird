@@ -89,7 +89,7 @@ struct SpeciesDetailView: View {
                 Spacer(minLength: 0)
                 logStatusBadge.padding(.top, 6)
             }
-            Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
+            SerifText(species.dutchName, size: 34, relativeTo: .largeTitle)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

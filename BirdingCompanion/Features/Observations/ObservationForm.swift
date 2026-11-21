@@ -116,7 +116,7 @@ struct ObservationForm: View {
             .accessibilityLabel("Primaire illustratie van \(species.dutchName)")
             VStack(alignment: .leading, spacing: 6) {
                 Text(species.englishDisplayName).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
-                Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
+                SerifText(species.dutchName, size: 34, relativeTo: .largeTitle)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }

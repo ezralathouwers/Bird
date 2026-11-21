@@ -217,8 +217,7 @@ private struct SoundIdentificationResults: View {
                 PrimaryBirdArtwork(species: row.species).frame(width: 64, height: 64)
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 6) {
-                        Text(row.species.dutchName)
-                            .font(.custom("Fraunces-9ptBlack", size: 18, relativeTo: .body).weight(.regular))
+                        SerifText(row.species.dutchName, size: 18, relativeTo: .body)
                         if row.isPinned {
                             Image(systemName: "star.fill").font(.system(size: 12)).foregroundStyle(FieldGuideTheme.khaki)
                         }
@@ -267,7 +266,7 @@ private struct IdentificationResults: View {
                 HStack(spacing: 16) {
                     PrimaryBirdArtwork(species: candidate.species).frame(width: 64, height: 64)
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(candidate.species.dutchName).font(.custom("Fraunces-9ptBlack", size: 18, relativeTo: .body).weight(.regular))
+                        SerifText(candidate.species.dutchName, size: 18, relativeTo: .body)
                         Text(candidate.species.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                     }.frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))

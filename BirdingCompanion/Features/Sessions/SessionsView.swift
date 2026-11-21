@@ -282,7 +282,7 @@ struct SessionSpeciesSearch: View {
                     HStack(spacing: 12) {
                         PrimaryBirdArtwork(species: bird).frame(width: 56, height: 56)
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
+                            SerifText(bird.dutchName, size: 16, relativeTo: .body)
                             Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                         }
                         Spacer(minLength: 0)
@@ -365,7 +365,7 @@ private struct SessionLogsList: View {
                 HStack(spacing: 12) {
                     if let bird = DiscoverFixtures.catalog.first(where: { $0.id == log.speciesID }) ?? BirdNETSpeciesLookup.species(id: log.speciesID) {
                         PrimaryBirdArtwork(species: bird).frame(width: 52, height: 52)
-                        Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
+                        SerifText(bird.dutchName, size: 16, relativeTo: .body)
                     } else { Text("Onbekende soort (\(log.speciesID))") }
                     Spacer(minLength: 0)
                     VStack(alignment: .trailing, spacing: 4) {
@@ -408,7 +408,7 @@ struct LiveSessionAddBirdView: View {
         NavigationStack {
             VStack(spacing: 24) {
                 PrimaryBirdArtwork(species: species).frame(height: 220)
-                Text(species.dutchName).font(FieldGuideTheme.speciesTitle)
+                SerifText(species.dutchName, size: 34, relativeTo: .largeTitle)
                 Text("Deze vogel wordt in je livesessie opgeslagen met het huidige tijdstip en je actuele locatie.")
                 if logger.isLogging { ProgressView("Actuele locatie ophalen…") }
                 if let message = logger.message { Text(message) }

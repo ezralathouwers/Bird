@@ -6,7 +6,6 @@ enum FieldGuideTheme {
         .custom("DMSans-9ptRegular", size: size, relativeTo: style)
     }
     static let roundControlDiameter: CGFloat = 44
-    static let speciesTitle = Font.custom("Fraunces-9ptBlack", size: 34, relativeTo: .largeTitle).weight(.regular)
     static let navigationWhite = Color.white
     static let ivory = Color(red: 0.96, green: 0.95, blue: 0.92)
     static let beige = Color(red: 0.89, green: 0.86, blue: 0.82)
@@ -15,6 +14,28 @@ enum FieldGuideTheme {
     static let taupe = Color(red: 107.0 / 255, green: 104.0 / 255, blue: 100.0 / 255)
     // Neutral warm grey text (#4B4946), shared with the observation button fill.
     static let charcoal = Color(red: 75.0 / 255, green: 73.0 / 255, blue: 70.0 / 255)
+}
+
+// Tracking is expressed as -0.02 em and follows the same Dynamic Type scale
+// as the font, so headings and small species names use the same proportion.
+struct SerifText: View {
+    private let value: String
+    private let baseSize: CGFloat
+    private let style: Font.TextStyle
+    @ScaledMetric private var scaledSize: CGFloat
+
+    init(_ value: String, size: CGFloat, relativeTo style: Font.TextStyle) {
+        self.value = value
+        self.baseSize = size
+        self.style = style
+        _scaledSize = ScaledMetric(wrappedValue: size, relativeTo: style)
+    }
+
+    var body: some View {
+        Text(value)
+            .font(.custom("Fraunces-9ptBlack", size: baseSize, relativeTo: style).weight(.regular))
+            .tracking(-0.02 * scaledSize)
+    }
 }
 
 struct RoundAction: View {

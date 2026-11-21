@@ -63,8 +63,7 @@ struct ObservationMapView: View {
     private var observationInfo: some View {
         HStack(alignment: .top, spacing: 12) {
             VStack(alignment: .leading, spacing: 6) {
-                Text(species.dutchName)
-                    .font(.custom("Fraunces-9ptBlack", size: 22, relativeTo: .title2).weight(.regular))
+                SerifText(species.dutchName, size: 22, relativeTo: .title2)
                 Text(current.observedAt.formatted(date: .abbreviated, time: .shortened))
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                 Label(current.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty

@@ -40,8 +40,7 @@ struct AddEntryView: View {
 
     private func choice(_ title: String, accessibilityLabel: String, destination: AddDestination, height: CGFloat) -> some View {
         Button { self.destination = destination } label: {
-            Text(title)
-                .font(.custom("Fraunces-9ptBlack", size: 32, relativeTo: .title).weight(.regular))
+            SerifText(title, size: 32, relativeTo: .title)
                 .foregroundStyle(FieldGuideTheme.beige)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -66,7 +65,7 @@ private struct AddObservationPicker: View {
                         Button { selected = bird } label: {
                             HStack(spacing: 16) {
                                 PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
-                                Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
+                                SerifText(bird.dutchName, size: 16, relativeTo: .body)
                             }.frame(maxWidth: .infinity, minHeight: 64, alignment: .leading).contentShape(Rectangle())
                         }.buttonStyle(.plain)
                         Divider()

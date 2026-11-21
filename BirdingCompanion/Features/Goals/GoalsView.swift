@@ -77,7 +77,7 @@ private struct GoalDetailView: View {
                             HStack(spacing: 16) {
                                 PrimaryBirdArtwork(species: bird).frame(width: 72.8, height: 72.8)
                                 VStack(alignment: .leading, spacing: 6) {
-                                    Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
+                                    SerifText(bird.dutchName, size: 16, relativeTo: .body)
                                     Text(bird.englishDisplayName).font(FieldGuideTheme.sans(11.2, relativeTo: .caption))
                                     if bird.scientificName.isEmpty { Text(bird.id).font(FieldGuideTheme.sans(11, relativeTo: .caption)) }
                                 }.frame(maxWidth: .infinity, alignment: .leading)
@@ -125,7 +125,7 @@ struct GoalForm: View {
                             HStack(spacing: 16) {
                                 PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
                                 VStack(alignment: .leading, spacing: 6) {
-                                    Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
+                                    SerifText(bird.dutchName, size: 16, relativeTo: .body)
                                     Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                                 }.frame(maxWidth: .infinity, alignment: .leading)
                                 Image(systemName: selected.contains(bird.id) ? "checkmark.circle.fill" : "circle")

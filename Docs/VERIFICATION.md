@@ -1,5 +1,15 @@
 # Verification — 16 November 2026
 
+## Shared serif tracking
+
+All 15 existing Fraunces text uses now use SerifText, with tracking of -0.02
+times the Dynamic Type scaled font size. Font sizes/styles and the sans-serif
+text are preserved. The single font/tracking implementation is in the existing
+FieldGuideTheme.swift, so no new project source membership is required.
+Swift syntax parsing, complete call-site inventory and `git diff --check` pass.
+Native compilation, line wrapping, truncation and visual letter-spacing at
+standard/accessibility sizes remain to be checked in Xcode.
+
 ## Simulator launch follow-up — 21 November 2026
 
 The owner reported a successful Xcode 27.2 simulator build after the architecture

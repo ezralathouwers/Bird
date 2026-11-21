@@ -97,8 +97,7 @@ struct DiscoverView: View {
                     NavigationLink(value: row.species) {
                         HStack(spacing: 16) {
                             PrimaryBirdArtwork(species: row.species).frame(width: 72.8, height: 72.8)
-                            Text(row.species.dutchName)
-                                .font(.custom("Fraunces-9ptBlack", size: 20, relativeTo: .title3).weight(.regular))
+                            SerifText(row.species.dutchName, size: 20, relativeTo: .title3)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             SpeciesLogBadge(status: store.logStatus(for: row.id), speciesName: row.species.dutchName, diameter: 22)
@@ -134,7 +133,7 @@ struct DiscoverView: View {
                     HStack(spacing: 16) {
                         PrimaryBirdArtwork(species: bird).frame(width: 72.8, height: 72.8)
                         VStack(alignment: .leading, spacing: 6) {
-                            Text(bird.dutchName).font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .body).weight(.regular))
+                            SerifText(bird.dutchName, size: 16, relativeTo: .body)
                             Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         SpeciesLogBadge(status: store.logStatus(for: bird.id), speciesName: bird.dutchName, diameter: 22)

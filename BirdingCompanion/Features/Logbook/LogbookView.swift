@@ -102,8 +102,7 @@ struct LogbookView: View {
             HStack(spacing: 16) {
                 PrimaryBirdArtwork(species: row.species).frame(width: 72.8, height: 72.8)
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(row.species.dutchName)
-                        .font(.custom("Fraunces-9ptBlack", size: 16, relativeTo: .title3).weight(.regular))
+                    SerifText(row.species.dutchName, size: 16, relativeTo: .title3)
                     Text(row.species.englishDisplayName)
                         .font(FieldGuideTheme.sans(11.2, relativeTo: .subheadline))
                         .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
