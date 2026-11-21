@@ -46,7 +46,9 @@ struct DiscoverView: View {
         .background(FieldGuideTheme.ivory)
         .overlay(alignment: .topLeading) {
             Button { showCatalogSources = true } label: {
-                Image(systemName: "info.circle").font(.system(size: 22, weight: .light)).frame(width: 44, height: 44)
+                Image(systemName: "info.circle").font(.system(size: 22, weight: .light))
+                    .frame(width: 44, height: 44, alignment: .leading)
+                    .contentShape(Rectangle())
             }.accessibilityLabel("Info").padding(.leading, 20).padding(.top, 8)
         }
         .overlay(alignment: .topTrailing) {
@@ -93,19 +95,24 @@ struct DiscoverView: View {
                     Text(model.rows.isEmpty ? "Geen meldingen gevonden in dit gebied en tijdvak."
                          : "Geen soorten voor dit filter.")
                 }
-                ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
-                    NavigationLink(value: row.species) {
-                        HStack(spacing: 16) {
-                            PrimaryBirdArtwork(species: row.species).frame(width: 72.8, height: 72.8)
-                            SerifText(row.species.dutchName, size: 20, relativeTo: .title3)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            SpeciesLogBadge(status: store.logStatus(for: row.id), speciesName: row.species.dutchName, diameter: 22)
-                        }.frame(maxWidth: .infinity, minHeight: 72.8, alignment: .leading)
-                    }.buttonStyle(.plain)
-                    if index < rows.count - 1 {
-                        Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
-                            .accessibilityHidden(true)
+                LazyVStack(spacing: 0) {
+                    ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
+                        NavigationLink(value: row.species) {
+                            HStack(spacing: 12) {
+                                PrimaryBirdArtwork(species: row.species).frame(width: 64, height: 64)
+                                SerifText(row.species.dutchName, size: 20, relativeTo: .title3)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                SpeciesLogBadge(status: store.logStatus(for: row.id), speciesName: row.species.dutchName, diameter: 22)
+                            }
+                            .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+                            .padding(.vertical, 6)
+                            .contentShape(Rectangle())
+                        }.buttonStyle(.plain)
+                        if index < rows.count - 1 {
+                            Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
+                                .accessibilityHidden(true)
+                        }
                     }
                 }
                 if let attribution = model.attribution {
@@ -128,18 +135,26 @@ struct DiscoverView: View {
                 .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
             let results = SpeciesCatalogSearch.results(for: catalogQuery, in: catalog)
             if results.isEmpty { Text("Geen soorten gevonden.") }
-            ForEach(results) { bird in
-                NavigationLink(value: bird) {
-                    HStack(spacing: 16) {
-                        PrimaryBirdArtwork(species: bird).frame(width: 72.8, height: 72.8)
-                        VStack(alignment: .leading, spacing: 6) {
-                            SerifText(bird.dutchName, size: 16, relativeTo: .body)
-                            Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
-                        }.frame(maxWidth: .infinity, alignment: .leading)
-                        SpeciesLogBadge(status: store.logStatus(for: bird.id), speciesName: bird.dutchName, diameter: 22)
-                    }.contentShape(Rectangle())
-                }.buttonStyle(.plain)
-                Divider()
+            LazyVStack(spacing: 0) {
+                ForEach(Array(results.enumerated()), id: \.element.id) { index, bird in
+                    NavigationLink(value: bird) {
+                        HStack(spacing: 12) {
+                            PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
+                            VStack(alignment: .leading, spacing: 6) {
+                                SerifText(bird.dutchName, size: 16, relativeTo: .body)
+                                Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                            }.frame(maxWidth: .infinity, alignment: .leading)
+                            SpeciesLogBadge(status: store.logStatus(for: bird.id), speciesName: bird.dutchName, diameter: 22)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+                        .padding(.vertical, 6)
+                        .contentShape(Rectangle())
+                    }.buttonStyle(.plain)
+                    if index < results.count - 1 {
+                        Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
+                            .accessibilityHidden(true)
+                    }
+                }
             }
         }
     }
@@ -198,7 +213,6 @@ struct PrimaryBirdArtwork: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 16))
         .accessibilityLabel("Primaire illustratie van \(species.dutchName)")
     }
 }

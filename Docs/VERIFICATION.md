@@ -1,5 +1,27 @@
 # Verification — 16 November 2026
 
+## First simulator design refinements — 21 November 2026
+
+The floating navigation button is 64 points (previously 72), with its center
+on the navigation's top rule. Six navigation items use equal slots in two
+groups of three, separated by a 56–84-point center gap. The navigation reader
+has a fixed 56-point height; the inset must remain bounded. Active icons use
+olive. The goals glyph has open circles with a charcoal checkmark, and the
+globe omits the straight vertical meridian. All navigation targets remain at
+least 44 points wide on phone widths of 320 points or more.
+
+Discover's visible info glyph now aligns with its title. Nearby/search bird
+lists use 64-point illustrations, 12-point image-to-title spacing and 6-point
+row insets in a separate zero-spacing stack. Logbook/country rows are also
+more compact. Shared classic artwork no longer draws a beige background;
+live sound-result highlights remain intact.
+
+Validation: tree-sitter parsing of all 36 Swift files, navigation dimension
+calculations at 320/375/390/430-point widths, and `git diff --check` pass.
+This is source validation only. Xcode still needs to verify the new font wrapper,
+native rendering, exact crossbar/rule alignment, smaller screens, larger text,
+VoiceOver, scrolling/navigation and the add/close/live button states.
+
 ## Shared serif tracking
 
 All 15 existing Fraunces text uses now use SerifText, with tracking of -0.02

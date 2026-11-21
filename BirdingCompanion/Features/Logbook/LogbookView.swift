@@ -90,7 +90,7 @@ struct LogbookView: View {
                 if index < species.count - 1 {
                     Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10))
                         .frame(height: 0.5)
-                        .padding(.vertical, 6)
+                        .padding(.vertical, 3)
                         .accessibilityHidden(true)
                 }
             }
@@ -99,8 +99,8 @@ struct LogbookView: View {
 
     private func speciesRow(_ row: LoggedSpecies) -> some View {
         NavigationLink(value: row.species) {
-            HStack(spacing: 16) {
-                PrimaryBirdArtwork(species: row.species).frame(width: 72.8, height: 72.8)
+            HStack(spacing: 12) {
+                PrimaryBirdArtwork(species: row.species).frame(width: 64, height: 64)
                 VStack(alignment: .leading, spacing: 6) {
                     SerifText(row.species.dutchName, size: 16, relativeTo: .title3)
                     Text(row.species.englishDisplayName)
@@ -113,8 +113,8 @@ struct LogbookView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, minHeight: 72.8, alignment: .leading)
-            .padding(.vertical, 16)
+            .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+            .padding(.vertical, 6)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)

@@ -14,8 +14,9 @@ struct CompanionRootView: View {
     @State private var logbookPath: [Species] = []
     @StateObject private var discover = DiscoverViewModel()
     @State private var showAddMenu = false
-    private let addButtonDiameter: CGFloat = 72
-    private var addButtonOverlap: CGFloat { addButtonDiameter * 0.30 }
+    private let addButtonDiameter: CGFloat = 64
+    // The button's center (and plus crossbar) sits on the navigation's top rule.
+    private var addButtonOverlap: CGFloat { addButtonDiameter / 2 }
     private let species = MockSpeciesRepository.kingfisher
 
     var body: some View {
@@ -73,19 +74,25 @@ struct CompanionRootView: View {
             if showAddMenu {
                 Color.clear.frame(height: 60).allowsHitTesting(false)
             } else {
-                HStack(alignment: .center, spacing: 0) {
-                    navigationItem(.discover, symbol: "binoculars")
-                    navigationItem(.identify, symbol: "viewfinder")
-                    navigationItem(.sessions, symbol: "clock")
-                    // Keep this clear slot bounded: a flexible height here can
-                    // make safeAreaInset consume the whole page's height.
-                    Color.clear.frame(minWidth: 44, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
-                        .allowsHitTesting(false)
-                    navigationItem(.goals, symbol: "checklist")
-                    navigationItem(.countries, symbol: "globe")
-                    navigationItem(.list, symbol: "bird")
+                GeometryReader { geometry in
+                    // Equal slots within each group; keep 44-point targets on
+                    // small phones and reserve a wider gap around the plus.
+                    let centerGap = max(56, min(84, geometry.size.width - 6 * 44))
+                    HStack(spacing: centerGap) {
+                        HStack(spacing: 0) {
+                            navigationItem(.discover, symbol: "binoculars")
+                            navigationItem(.identify, symbol: "viewfinder")
+                            navigationItem(.sessions, symbol: "clock")
+                        }.frame(maxWidth: .infinity)
+                        HStack(spacing: 0) {
+                            navigationItem(.goals, symbol: "checklist")
+                            navigationItem(.countries, symbol: "globe")
+                            navigationItem(.list, symbol: "bird")
+                        }.frame(maxWidth: .infinity)
+                    }
                 }
-                .foregroundStyle(FieldGuideTheme.charcoal)
+                // Bound the reader so safeAreaInset cannot consume the page.
+                .frame(height: 56)
                 .padding(.top, 4)
                 .background(FieldGuideTheme.navigationWhite.ignoresSafeArea(edges: .bottom))
                 .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.charcoal).frame(height: 0.5) }
@@ -107,13 +114,13 @@ struct CompanionRootView: View {
                     if store.activeSession != nil && !showAddMenu {
                         Image(systemName: "play").font(.system(size: 32, weight: .ultraLight))
                             .foregroundStyle(FieldGuideTheme.ivory)
-                            .frame(width: 45, height: 45)
+                            .frame(width: 40, height: 40)
                     } else {
                         FinePlusMark()
                             .stroke(showAddMenu || observationNavigation.selection != nil ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory,
                                     style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
                             .rotationEffect(.degrees(showAddMenu || observationNavigation.selection != nil ? 45 : 0))
-                            .frame(width: 45, height: 45)
+                            .frame(width: 40, height: 40)
                     }
                 }
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
@@ -137,15 +144,67 @@ struct CompanionRootView: View {
             if item == .list { logbookPath.removeAll() }
             section = item
         } label: {
-            Image(systemName: symbol)
-                .font(.system(size: item == .discover ? 22.032 : (item == .list ? 21.6 : 24), weight: .ultraLight))
-                .offset(x: item == .identify ? -6 : 0)
-            .frame(minWidth: 44, maxWidth: .infinity, minHeight: 56)
+            Group {
+                if item == .goals {
+                    ZStack {
+                        GoalListMark().stroke(style: StrokeStyle(lineWidth: 0.85, lineCap: .round))
+                        GoalCheckMark().stroke(FieldGuideTheme.charcoal,
+                                               style: StrokeStyle(lineWidth: 0.85, lineCap: .round, lineJoin: .round))
+                    }.frame(width: 24, height: 24)
+                } else if item == .countries {
+                    SimpleGlobeMark().stroke(style: StrokeStyle(lineWidth: 0.85, lineCap: .round))
+                        .frame(width: 24, height: 24)
+                } else {
+                    Image(systemName: symbol)
+                        .font(.system(size: item == .discover ? 22.032 : (item == .list ? 21.6 : 24), weight: .ultraLight))
+                }
+            }
+            .frame(minWidth: 44, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
             .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .accessibilityLabel(item.rawValue)
         .accessibilityAddTraits(section == item ? [.isSelected] : [])
-        .foregroundStyle(section == item ? FieldGuideTheme.khaki : FieldGuideTheme.charcoal)
+        .foregroundStyle(section == item ? FieldGuideTheme.navigationOlive : FieldGuideTheme.charcoal)
+    }
+}
+
+// Open circles, including the checked first item: no filled status dot.
+private struct GoalListMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        for y in [4.5, 12.0, 19.5] {
+            path.addEllipse(in: CGRect(x: 1.3, y: y - 3.1, width: 6.2, height: 6.2))
+            path.move(to: CGPoint(x: 11, y: y))
+            path.addLine(to: CGPoint(x: 23, y: y))
+        }
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
+    }
+}
+
+private struct GoalCheckMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 2.3, y: 4.5))
+        path.addLine(to: CGPoint(x: 4.1, y: 6))
+        path.addLine(to: CGPoint(x: 6.6, y: 2.7))
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
+    }
+}
+
+// Curved meridians only; omit the straight vertical center line.
+private struct SimpleGlobeMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.addEllipse(in: CGRect(x: 1, y: 1, width: 22, height: 22))
+        path.addEllipse(in: CGRect(x: 6, y: 1, width: 12, height: 22))
+        path.move(to: CGPoint(x: 1, y: 12))
+        path.addLine(to: CGPoint(x: 23, y: 12))
+        path.move(to: CGPoint(x: 2.2, y: 7))
+        path.addQuadCurve(to: CGPoint(x: 21.8, y: 7), control: CGPoint(x: 12, y: 10))
+        path.move(to: CGPoint(x: 2.2, y: 17))
+        path.addQuadCurve(to: CGPoint(x: 21.8, y: 17), control: CGPoint(x: 12, y: 14))
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
 }
 
