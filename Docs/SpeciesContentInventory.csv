@@ -544,7 +544,7 @@ birdnet-v3:BN00528,Keizergans,Anser canagicus,Anatidae,True,True,False,False,Fal
 birdnet-v3:BN00529,Zwaangans,Anser cygnoides,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00530,Dwerggans,Anser erythropus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00531,Taigarietgans,Anser fabalis,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN00532,Indische gans,Anser indicus,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00532,Indische gans,Anser indicus,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00533,Ross' gans,Anser rossii,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00534,Toendrarietgans,Anser serrirostris,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00535,Ekstergans,Anseranas semipalmata,Anseranatidae,True,True,False,False,False,False,False
@@ -5979,7 +5979,7 @@ birdnet-v3:BN05905,Nonnetje,Mergellus albellus,Anatidae,True,True,True,True,True
 avilist:edda42ed,New Zealand Merganser,Mergus australis,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN05906,Grote zaagbek,Mergus merganser,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05907,Braziliaanse zaagbek,Mergus octosetaceus,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN05908,Middelste zaagbek,Mergus serrator,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN05908,Middelste zaagbek,Mergus serrator,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05909,Chinese zaagbek,Mergus squamatus,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN05910,Sulawesibijeneter,Meropogon forsteni,Meropidae,True,True,False,False,False,False,False
 birdnet-v3:BN05911,Witkeelbijeneter,Merops albicollis,Meropidae,True,True,False,False,False,False,False
@@ -10005,7 +10005,7 @@ birdnet-v3:BN09871,Vlekstaartsperwer,Tachyspiza trinotata,Accipitridae,True,True
 birdnet-v3:BN09872,Besrasperwer,Tachyspiza virgata,Accipitridae,True,True,False,False,False,False,False
 birdnet-v3:BN09873,Kaapse casarca,Tadorna cana,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09874,Kuifcasarca,Tadorna cristata,Anatidae,True,False,False,False,False,False,False
-birdnet-v3:BN09875,Casarca,Tadorna ferruginea,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN09875,Casarca,Tadorna ferruginea,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN09876,Bergeend,Tadorna tadorna,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN09877,Australische bergeend,Tadorna tadornoides,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09878,Paradijscasarca,Tadorna variegata,Anatidae,True,True,False,False,False,False,False

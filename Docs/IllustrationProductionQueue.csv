@@ -10024,7 +10024,7 @@ birdnet-v3:BN08747,Rallus obsoletus,Californische ral,wetland-general,Wetland,,p
 birdnet-v3:BN00628,Antigone canadensis,Canadese kraanvogel,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07507,Phoenicopterus ruber,Caribische flamingo,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00253,Aix sponsa,Carolinaeend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN09875,Tadorna ferruginea,Casarca,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN09875,Tadorna ferruginea,Casarca,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN04678,Hoploxypterus cayanus,Cayenneplevier,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01819,Cettia cetti,Cetti's zanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05657,Mareca sibilatrix,Chileense smient,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10146,7 +10146,7 @@ birdnet-v3:BN01273,Bucephala islandica,IJslandse brilduiker,wetland-general,Wetl
 birdnet-v3:BN07408,Phalacrocorax fuscicollis,Indische aalscholver,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05973,Microcarbo niger,Indische dwergaalscholver,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03131,Dendrocygna javanica,Indische fluiteend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN00532,Anser indicus,Indische gans,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN00532,Anser indicus,Indische gans,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN00492,Anastomus oscitans,Indische gaper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00080,Acrocephalus stentoreus,Indische karekiet,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10650,Vanellus indicus,Indische kievit,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10267,7 +10267,7 @@ birdnet-v3:BN03970,Fulica atra,Meerkoet,wetland-general,Wetland,primary;dynamic;
 birdnet-v3:BN00481,Anas melleri,Mellereend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00471,Anas diazi,Mexicaanse eend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08749,Rallus tenuirostris,Mexicaanse ral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN05908,Mergus serrator,Middelste zaagbek,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN05908,Mergus serrator,Middelste zaagbek,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN00820,Ardea intermedia,Middelste zilverreiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01289,Busarellus nigricollis,Moerasbuizerd,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN06902,Ortygornis gularis,Moerasfrankolijn,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

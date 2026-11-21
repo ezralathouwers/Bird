@@ -1,6 +1,6 @@
 {
-  "state": "next10-seaducks-in-progress-no-background-worker",
-  "installedRoles": 168,
+  "state": "coast-next20-and-seaducks10-complete",
+  "installedRoles": 183,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -3105,7 +3105,238 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-6a8184e6-c919-41bd-9ed0-f95237afd8ed.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05908",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/middelste-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "d0df152c2827a553056673e6eb66433380090ac1e2bd8eed0f6a13596824c9da",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Displaying floating male red-breasted merganser, single green shaggy crested head red eye one orange-red open bill upper/lower mandibles white collar rusty streaked breast grey flanks black back two folded wings and naturally submerged orange feet in bounded ripples, whole framing."
+      },
+      "sourceFile": "exec-9091c408-f0d5-4677-aeba-db6fcc89e51f.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05908",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/middelste-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "4082b00134794d3ed699e9e548e715917149d2c67f226ecc6d014d3ec39de80f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male red-breasted merganser, one centered narrow red-orange bill two red eyes green shaggy crest white neck collar rusty black-streaked breast pale belly, two folded wing flanks two orange webbed feet, full framing."
+      },
+      "sourceFile": "exec-3aa6dc22-4ee4-49d9-b29c-0fac39fb5d3c.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05908",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/middelste-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ed69417c324172bc3a270ed75edec77821e63aec85842aa9a66045c7f2ccd3f9",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male red-breasted merganser, one green shaggy crested head bill/eyes hidden white neck collar dark upper back corrected from misplaced rusty breast, exactly two folded black/white wings grey flanks/tail two orange-red feet, full framing."
+      },
+      "sourceFile": "exec-ad9686c2-c2ed-4fc5-85af-a509bc75b953.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05908",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/middelste-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0c01af8060c27b908281f00004fbae2eb3d97eeebfc7977ae1e6be32fcc952d4",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male red-breasted merganser, single narrow hooked orange-red upward bill green throat white collar rusty streaked breast white belly, exactly two grey-white underwings darker primary tips two trailing orange feet, both entire wing tips now framed with generous margins."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-20b3712c-36fb-4b38-be31-14c916397a48.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00532",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/indische-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "13b3c929988042dcc9eba3313504a57d1759c2fd779f2ed2f6e831d517b433dc",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only bar-headed goose, one orange bill white head with exactly two black crown bars darker nape white neck-side stripe pale grey barred body, two folded wings far wing occluded two orange webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-8e40ea9e-4088-46db-9f51-d9cbe79c2513.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00532",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/indische-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6ad281c322d3d4d6db337e0a560f40d0a26cb300fd73a18013d6b9571040a369",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Stepping bar-headed goose, one head/orange bill white crown with two black bars darker nape pale grey body two folded wings, two orange webbed feet one raised over bounded grass vignette, background matte removed and full framing."
+      },
+      "sourceFile": "exec-0fcbe16f-83c7-43ab-ab49-9dd288324053.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00532",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/indische-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "5be2a437bbbd2bfa3c4f0d6b5e42a4000eb37c81c357d523910ef618a55511c8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front bar-headed goose, one centered orange bill two dark eyes white head two black crown bars darker nape edges grey-buff body two folded wings two orange webbed feet, entire crown now framed with clear upper margin."
+      },
+      "sourceFile": "exec-af49e447-c019-4d3e-af19-daf1475011c3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00532",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/indische-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "3dca34250379278599457271e4da1050af5ba8d00552e1b9fb9ac4445d57ebde",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear bar-headed goose, one white head two black crown bars brown-grey hindneck white sides, bill/eyes hidden grey back two folded wings pale short tail and two orange webbed feet, whole framing."
+      },
+      "sourceFile": "exec-fe8983ae-f3d1-4d26-8f42-fa7a90213ad5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN00532",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/indische-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "9590988246024376cfb508996825ea32344a3c6365c7c8e8310da7d0fdfd7cc2",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral bar-headed goose, one upward orange bill white chin/head without misplaced dorsal crown bars grey-buff breast pale belly, two pale grey spread underwings darker grey outer primaries and two orange trailing feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-5060584d-00cc-4f67-8a2e-4fd508cb9b1a.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09875",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/casarca",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "469962330b245843c705fe067902d6cea3ad76c098670154786ad42582681a0f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only adult male ruddy shelduck, one black bill pale cream head black neck ring orange body white folded wing coverts dark flights and tail, two folded wing attachments far side occluded two dark webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-f493fd49-e976-41c7-83b4-bd59ec781b6e.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09875",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/casarca",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "01b1e0605df9eb0afc6724d5003a9ffabb458ea9158ec3ae47f66bba7f38be77",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Calling male ruddy shelduck, one pale head one open black bill upper/lower mandibles black neck ring orange body white coverts dark flights, two folded wings two dark webbed feet on bounded sandy vignette, full framing."
+      },
+      "sourceFile": "exec-2d3d26db-4ddc-4e75-b25c-934c868e45a4.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09875",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/casarca",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8567023283d0ae66f6ed97f23245ad7e1b6d94af5c78f1f73504fb3aa7681f2c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male ruddy shelduck, one centered black bill two dark eyes cream head black neck ring orange breast/belly, two folded white/dark wing flanks and dark webbed feet, whole framing."
+      },
+      "sourceFile": "exec-45ffce70-3291-4243-a6a2-c3713c9607be.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09875",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/casarca",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0f8546a5773896ff710ecdf974813e8b547c5b1d9bcbfec5b619b386abdf4fdc",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male ruddy shelduck, one cream head bill/eyes hidden black neck ring orange back two folded white/dark wings black tail and two dark webbed feet, whole framing."
+      },
+      "sourceFile": "exec-0e21fb87-a151-48c6-8e8d-6eca10466d20.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09875",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/casarca",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "9c1ab0a6e6092dd41a0c25b4beb1fa8de04b613612788ae011f49c114f00241f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male ruddy shelduck, single upward black bill cream head narrow black neck ring orange abdomen, two white underwings dark charcoal flight feathers no dorsal green specula, two dark trailing webbed feet black tail, both wing tips fully framed with transparent margins."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-591a779f-6245-457e-bf21-bbab4921a603.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -3268,6 +3499,36 @@
       "sourceFile": "exec-db44bb9a-60ca-42b4-bd44-79a923981707.png",
       "sha256": "6a56edbc68fff6e8f6bd9a4e981b0fc155913761b8fb557e7d446d76ec646bc1",
       "reason": "Diffuse halo and wide non-square canvas; regenerated transparent square cutout.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-e137bc51-1f44-4096-b457-fa34f17a33fb.png",
+      "sha256": "8c7a07eed40e028d3fca4d446f8fbadb5bf639409b23ab78b60299e2120adac0",
+      "reason": "Rusty frontal breast incorrectly copied onto upper back; corrected dark rear.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-b2aadb73-84a1-4cc9-bce1-8e787b7b0903.png",
+      "sha256": "abb862ab85fa2e9bd00d7617e7cf0b809a8a07cd9a3c39b5562ac70ca8fb7195",
+      "reason": "Wing tips touched/cropped canvas edges; reframed with clear margins.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-b819583e-71cf-476a-9c31-0132f073847e.png",
+      "sha256": "59d8bad735b1b62ae6861814562ae9eb7342c95e9854ad547a114973c6ccaed8",
+      "reason": "Large matte and unclear count of crown bars; regenerated transparent with two crown bars.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-53d4a796-1759-492f-bdae-8a6e0d2f7031.png",
+      "sha256": "2bbc97b8eadaeadc1ab3600f9184dc668f6e3820d8ff3b5fcfad04465f313255",
+      "reason": "Crown clipped by top edge; reframed with upper margin.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-1ead02a0-5793-4241-84ce-320942743d4e.png",
+      "sha256": "81a4eca7bb8920d65000384c8955bb4e5267bd5bc4ed8b27c8d8f7a4b8cefbff",
+      "reason": "Wing tips cropped/touching both canvas edges; reframed before import.",
       "state": "excluded-corrected-original-used"
     }
   ],
@@ -3615,17 +3876,35 @@
     {
       "id": "birdnet-v3:BN05908",
       "name": "Middelste zaagbek",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN00532",
       "name": "Indische gans",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN09875",
       "name": "Casarca",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     }
   ]
 }

@@ -1,5 +1,16 @@
 # Illustration batches
 
+## Waterbirds 14H–14J — 21 November 2026
+
+Fifteen individually reviewed originals complete middelste zaagbek, Indische
+gans and casarca. Rear upper-back color and flight framing were corrected for
+red-breasted merganser; bar-headed goose crown bars, front crop and dynamic
+matte were corrected; ruddy shelduck flight was reframed. Rejected originals
+remain excluded. Exact two-wing/single-head reviews, original/hash equality,
+PNG import preflight, preserved previous records and both inventories pass:
+460 roles, 92 complete species. All ten species in continuation 14 are complete.
+Native Xcode asset loading/scaling and independent expert/user review pending.
+
 ## Waterbirds 14E–14G — 21 November 2026
 
 Fifteen reviewed originals complete topper, witoogeend and grote zaagbek.
