@@ -15,7 +15,7 @@ struct CompanionRootView: View {
     @StateObject private var discover = DiscoverViewModel()
     @State private var showAddMenu = false
     private let addButtonDiameter: CGFloat = 64
-    // The button's center (and plus crossbar) sits on the navigation's top rule.
+    // The button's center (and plus crossbar) sits on the navigation's top edge.
     private var addButtonOverlap: CGFloat { addButtonDiameter / 2 }
     private let species = MockSpeciesRepository.kingfisher
 
@@ -95,7 +95,6 @@ struct CompanionRootView: View {
                 .frame(height: 56)
                 .padding(.top, 4)
                 .background(FieldGuideTheme.navigationWhite.ignoresSafeArea(edges: .bottom))
-                .overlay(alignment: .top) { Rectangle().fill(FieldGuideTheme.charcoal).frame(height: 0.5) }
             }
         }
         .overlay(alignment: .top) {
@@ -173,7 +172,7 @@ struct CompanionRootView: View {
 private struct GoalListMark: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        for y in [4.5, 12.0, 19.5] {
+        for y in [7.5, 16.5] {
             path.addEllipse(in: CGRect(x: 1.3, y: y - 3.1, width: 6.2, height: 6.2))
             path.move(to: CGPoint(x: 11, y: y))
             path.addLine(to: CGPoint(x: 23, y: y))
@@ -185,9 +184,9 @@ private struct GoalListMark: Shape {
 private struct GoalCheckMark: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: 2.3, y: 4.5))
-        path.addLine(to: CGPoint(x: 4.1, y: 6))
-        path.addLine(to: CGPoint(x: 6.6, y: 2.7))
+        path.move(to: CGPoint(x: 2.3, y: 7.5))
+        path.addLine(to: CGPoint(x: 4.1, y: 9))
+        path.addLine(to: CGPoint(x: 6.6, y: 5.7))
         return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
 }
@@ -197,7 +196,7 @@ private struct SimpleGlobeMark: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.addEllipse(in: CGRect(x: 1, y: 1, width: 22, height: 22))
-        path.addEllipse(in: CGRect(x: 6, y: 1, width: 12, height: 22))
+        path.addEllipse(in: CGRect(x: 8, y: 1, width: 8, height: 22))
         path.move(to: CGPoint(x: 1, y: 12))
         path.addLine(to: CGPoint(x: 23, y: 12))
         path.move(to: CGPoint(x: 2.2, y: 7))

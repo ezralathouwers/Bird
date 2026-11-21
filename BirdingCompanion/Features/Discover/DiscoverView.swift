@@ -35,8 +35,7 @@ struct DiscoverView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
                 Text(showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
-                    .font(FieldGuideTheme.sans(44.2, relativeTo: .largeTitle))
-                    .fixedSize(horizontal: false, vertical: true)
+                    .modifier(LargeHeadingStyle(size: 44.2))
                     .accessibilityAddTraits(.isHeader)
                     .padding(.top, 60)
                     .padding(.bottom, 6)
@@ -47,6 +46,7 @@ struct DiscoverView: View {
         .overlay(alignment: .topLeading) {
             Button { showCatalogSources = true } label: {
                 Image(systemName: "info.circle").font(.system(size: 22, weight: .light))
+                    .foregroundStyle(FieldGuideTheme.mutedIcon)
                     .frame(width: 44, height: 44, alignment: .leading)
                     .contentShape(Rectangle())
             }.accessibilityLabel("Info").padding(.leading, 20).padding(.top, 8)
@@ -130,7 +130,7 @@ struct DiscoverView: View {
     private var catalogSearch: some View {
         LazyVStack(alignment: .leading, spacing: 20) {
             TextField("Zoek een vogel", text: $catalogQuery)
-                .textFieldStyle(.roundedBorder).autocorrectionDisabled()
+                .modifier(RoundedSearchField()).autocorrectionDisabled()
                 .focused($searchFocused)
                 .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
             let results = SpeciesCatalogSearch.results(for: catalogQuery, in: catalog)

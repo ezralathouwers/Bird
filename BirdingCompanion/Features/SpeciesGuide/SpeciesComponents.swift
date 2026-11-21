@@ -200,7 +200,7 @@ struct SpeciesCatalogSourcesView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     if detail == nil {
                         Text("Bronnen en licenties").font(FieldGuideTheme.sans(24, relativeTo: .title2))
-                        TextField("Zoek soort voor brongegevens", text: $sourceQuery).textFieldStyle(.roundedBorder)
+                        TextField("Zoek soort voor brongegevens", text: $sourceQuery).modifier(RoundedSearchField())
                         if !sourceQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             ForEach(Array(SpeciesCatalogSearch.results(for: sourceQuery, in: SpeciesGuideCatalog.species).prefix(20))) { species in
                                 Button(species.dutchName) {

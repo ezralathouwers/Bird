@@ -11,7 +11,7 @@ struct GoalsView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HStack(alignment: .top) {
-                    Text("Doelstellingen").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle))
+                    Text("Doelstellingen").modifier(LargeHeadingStyle())
                         .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
                     RoundAction(symbol: "plus", label: "Doelstelling toevoegen") { showForm = true }
                         .disabled(store.loadError != nil)
@@ -116,7 +116,7 @@ struct GoalForm: View {
                     TextField("Naam van je doelstelling", text: $name)
                         .font(FieldGuideTheme.sans(22, relativeTo: .title2)).textFieldStyle(.roundedBorder)
                     Text("\(selected.count) soorten geselecteerd").font(FieldGuideTheme.sans(16))
-                    TextField("Zoek een vogel", text: $search).textFieldStyle(.roundedBorder).autocorrectionDisabled()
+                    TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled()
                     if birds.isEmpty { Text("Geen soorten gevonden.") }
                     ForEach(birds) { bird in
                         Button {

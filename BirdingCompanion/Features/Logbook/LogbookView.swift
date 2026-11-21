@@ -26,7 +26,7 @@ struct LogbookView: View {
                             .accessibilityAddTraits(.isHeader)
                     }
                 }
-                Text("\(rows.count)").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle))
+                Text("\(rows.count)").modifier(LargeHeadingStyle())
                     .accessibilityLabel("\(rows.count) gelogde vogelsoorten")
                     .accessibilityAddTraits(.isHeader)
                 HStack(spacing: 12) {

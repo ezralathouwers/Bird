@@ -7,7 +7,7 @@ struct IdentificationView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                Text("Identificeer").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle)).accessibilityAddTraits(.isHeader)
+                Text("Identificeer").modifier(LargeHeadingStyle()).accessibilityAddTraits(.isHeader)
                 NavigationLink {
                     PhotoIdentificationView()
                 } label: { option("Foto-ID", detail: "Maak of kies een foto", symbol: "camera") }

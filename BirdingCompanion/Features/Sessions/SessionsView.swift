@@ -15,7 +15,7 @@ struct SessionsView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HStack(alignment: .top, spacing: 6) {
-                    Text("Sessies").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle))
+                    Text("Sessies").modifier(LargeHeadingStyle())
                         .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
                     RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { creatingLive = false; showForm = true }
                         .foregroundStyle(FieldGuideTheme.charcoal)
@@ -264,7 +264,7 @@ struct SessionSpeciesSearch: View {
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            TextField("Zoek een vogel", text: $search).textFieldStyle(.roundedBorder)
+            TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField())
                 .autocorrectionDisabled().accessibilityLabel("Zoek op Nederlandse, Engelse of wetenschappelijke naam")
             if search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 if nearby.isLoading { ProgressView("Vogels voor deze locatie ophalen…") }

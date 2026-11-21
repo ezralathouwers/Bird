@@ -9,7 +9,7 @@ struct CountriesView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
-                Text("Landen").font(FieldGuideTheme.sans(34, relativeTo: .largeTitle)).accessibilityAddTraits(.isHeader)
+                Text("Landen").modifier(LargeHeadingStyle()).accessibilityAddTraits(.isHeader)
                 if let error = store.loadError { Text(error).foregroundStyle(.red) }
                 else if countries.isEmpty { Text("Nog geen landen met gelogde vogelsoorten.") }
                 ForEach(countries) { country in

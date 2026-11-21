@@ -1,5 +1,25 @@
 # Verification — 16 November 2026
 
+## Heading, search and navigation polish — 21 November 2026
+
+Large sans-serif page headings share LargeHeadingStyle: medium weight, tight
+font leading and +0.01 em tracking scaled with Dynamic Type. Discover uses
+44.2 points for both its location title and search title; other existing large
+page headings retain their 34-point sizes. Serif tracking remains -0.02 em.
+All five search fields share an 18-point continuous corner radius with a
+minimum 44-point height; their bindings, focus and search logic are unchanged.
+
+The Discover info glyph is lighter dark beige (#978974). Active navigation
+icons use a more saturated olive (#7C8730). The navigation's top rule is removed,
+the goals glyph has two open circles/lines, and the globe's curved meridians
+move inward. The floating-button position and navigation hit areas are preserved.
+
+Checks: tree-sitter Swift parsing of all 36 Swift files and `git diff --check`
+passed. Search/heading call sites and the source diff were reviewed. Xcode is
+unavailable here: native compilation, DM Sans leading/weight, title wrapping
+at larger text sizes, search-field focus/keyboard behavior, and the visual
+colors/icon geometry still require a simulator or device check.
+
 ## First simulator design refinements — 21 November 2026
 
 The floating navigation button is 64 points (previously 72), with its center
