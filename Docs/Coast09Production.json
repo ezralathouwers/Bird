@@ -2,10 +2,10 @@
   "state": "partial-batch-no-job-running",
   "requestedSpecies": 20,
   "targetRoles": 100,
-  "generatedRoles": 18,
-  "acceptedRoles": 18,
+  "generatedRoles": 43,
+  "acceptedRoles": 43,
   "rejectedRoles": 0,
-  "pendingGeneration": 82,
+  "pendingGeneration": 57,
   "rows": [
     {
       "id": "birdnet-v3:BN10664",
@@ -207,175 +207,250 @@
       "name": "Wulp",
       "scientificName": "Numenius arquata",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "0cfb75170dfe001286319350d46904ec4c575997fd344e05dbf027d06fd3309c",
+      "sourceFile": "exec-d5d6c448-ae58-4781-a169-6dfe8cce5ff3.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06658",
       "name": "Wulp",
       "scientificName": "Numenius arquata",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "a3dd99f8f4eb6844c1784ba35e80ab24eb97af4fd0bb3dbeb4d3dca848f9350c",
+      "sourceFile": "exec-de472acd-8c3a-443d-9def-04846b8fa165.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06658",
       "name": "Wulp",
       "scientificName": "Numenius arquata",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "bae62ade8e7e7ffda322d7d5068f3346604ad7feeaf00909ce9dbb8f0bdda435",
+      "sourceFile": "exec-7e326678-2cf7-4955-89d8-da12e1ed1f08.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06658",
       "name": "Wulp",
       "scientificName": "Numenius arquata",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "76019b99943718b5eea7938b3e9f9c5029bac07b5dece69b3b6c5675b6289eff",
+      "sourceFile": "exec-6078e933-c215-49e5-9595-d895d572fa08.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06658",
       "name": "Wulp",
       "scientificName": "Numenius arquata",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "908a782aa6ee5477914de1d9c0d31b347fc07e3f10c139409126c532f8dd3372",
+      "sourceFile": "exec-0f43f086-e104-491b-96eb-b853855c540c.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06663",
       "name": "Regenwulp",
       "scientificName": "Numenius phaeopus",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "327780ebdd6654b934f79a54e522a406031404e885e03a7000ec9ef132d9ef07",
+      "sourceFile": "exec-b481dd3e-7f18-4962-9d79-588bb5dd627e.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06663",
       "name": "Regenwulp",
       "scientificName": "Numenius phaeopus",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "d5a29dbd20cf931cff521bb2ef75a3578ca2df44ac5b5a2f5ace1257491968f7",
+      "sourceFile": "exec-0f69050e-48f4-4127-876f-0805a951d2d0.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06663",
       "name": "Regenwulp",
       "scientificName": "Numenius phaeopus",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "975420c9a3bc5e1ddc2ef048f42d88d0f774b8ced58e665f8afb4006d936f2d3",
+      "sourceFile": "exec-7c5ca3ef-8425-4fa5-9cc0-f227f72d2c10.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06663",
       "name": "Regenwulp",
       "scientificName": "Numenius phaeopus",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "d6773b55c70449a6ad7e05bd2b724afe0c4681ee17a336a9921be46b1fc739e0",
+      "sourceFile": "exec-372c1631-9bc6-4cd0-a82b-e2384e5e25b9.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN06663",
       "name": "Regenwulp",
       "scientificName": "Numenius phaeopus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "e9bd486c58b604e8b64bf2e2de64586c208798c4c7d7f401be0ff69cd93b535d",
+      "sourceFile": "exec-c8e95eae-d1bf-45a0-84af-a192924da4b9.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN01420",
       "name": "Kemphaan",
       "scientificName": "Calidris pugnax",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "2d39edb8fb0234ddee56085795c595be75e2d73bf98789313e2d998d108b0b5e",
+      "sourceFile": "exec-a56b5484-2bba-4f27-aa26-02812b01ef4a.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN01420",
       "name": "Kemphaan",
       "scientificName": "Calidris pugnax",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "a691ba8ca3e30f6867590850dc57b771091967f8e04f407b9f789d595cbd9415",
+      "sourceFile": "exec-1776dd52-c1ef-43b3-8d69-cc275f46ebd0.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN01420",
       "name": "Kemphaan",
       "scientificName": "Calidris pugnax",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "7654172e3d16a9ca76b7d1c58eb3aa2aa0808826c84e84889aff860e53759612",
+      "sourceFile": "exec-1b210ed0-bdd5-4183-91ae-31f51fb80090.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN01420",
       "name": "Kemphaan",
       "scientificName": "Calidris pugnax",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "c4ab1459045072d5b9045a4d63a3f33cd80e0843293416cf01c3db1568c54967",
+      "sourceFile": "exec-e087675c-9c45-4cb9-aaaf-7eeeb6eec0cf.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN01420",
       "name": "Kemphaan",
       "scientificName": "Calidris pugnax",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "18e3a9e28823b88e58c461c939962b228cd12132d813b376c180cc240e08c372",
+      "sourceFile": "exec-50b6f965-0996-4bb4-bc64-a82a62f1150f.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN08795",
       "name": "Kluut",
       "scientificName": "Recurvirostra avosetta",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "7ef2fdcc48983ba70952cf3d2d83596184a16db2d580de90c83e6eca75de6754",
+      "sourceFile": "exec-4d832813-a7b0-4c21-9ca2-3bce73634e78.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN08795",
       "name": "Kluut",
       "scientificName": "Recurvirostra avosetta",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "ca9d5930606605dfdcfa51d490fa0b1cefe13ba5ec7f16b2b9b748473a0ffe5c",
+      "sourceFile": "exec-609be925-a854-48a1-91a6-f8639ae4b508.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN08795",
       "name": "Kluut",
       "scientificName": "Recurvirostra avosetta",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "02f56c405096bc972249a0d7742f570c438606b251702b87e9190638084142fd",
+      "sourceFile": "exec-a9ddb617-242f-48ad-bede-bea0fd4855b0.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN08795",
       "name": "Kluut",
       "scientificName": "Recurvirostra avosetta",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "671ae05cd9cb275a1d4a6111102b66a3037793da203e46c79fe73f9607fa6a0c",
+      "sourceFile": "exec-492fc963-7c6e-402e-b58e-c7539658b6e6.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN08795",
       "name": "Kluut",
       "scientificName": "Recurvirostra avosetta",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "349aa9f29134c5a9e535a1322fb465dfc6dd2603caa44995ea464d33791f8e13",
+      "sourceFile": "exec-85dda6f7-2722-4db1-95cb-dc067502a90f.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN04645",
       "name": "Steltkluut",
       "scientificName": "Himantopus himantopus",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "318224d33a93b9b7e8ac1cf2074194021abf22abd71bc357ec0f624b42ec7fb9",
+      "sourceFile": "exec-759c3b71-883a-49b7-8744-0a371271511b.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN04645",
       "name": "Steltkluut",
       "scientificName": "Himantopus himantopus",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "9e10795eb093351fefcd476b0e6737322c7d1e4d2d7f459299644ea8d016b3fb",
+      "sourceFile": "exec-a2cd4ab8-8075-441d-90b9-5af36e89e424.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN04645",
       "name": "Steltkluut",
       "scientificName": "Himantopus himantopus",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "510839d3c10dcbd8a445f7d9098c8f002b9d94b6719925133d09123fe1757dc8",
+      "sourceFile": "exec-273fe93c-8534-4b7f-a6bf-f4ced55d4d8a.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN04645",
       "name": "Steltkluut",
       "scientificName": "Himantopus himantopus",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "085390a67ede2b226b119c7af00bd230dbd0e356e53a6408e9ea6235f6dbc4b3",
+      "sourceFile": "exec-63b4df72-4a61-41aa-9da9-3873e7166e1c.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN04645",
       "name": "Steltkluut",
       "scientificName": "Himantopus himantopus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "e0f856473f7cb52358781f5c7ba4bddb94a1553b0d446f1a60779b89498ea3b6",
+      "sourceFile": "exec-64fa029a-90da-4dc4-bab2-790315a5f909.png",
+      "batch": "coast-10"
     },
     {
       "id": "birdnet-v3:BN01911",
@@ -763,5 +838,5 @@
       "status": "pending-generation"
     }
   ],
-  "latestResume": "2026-11-21: seven missing roles installed, completing grutto, kievit and scholekster; prior generated grutto rear/flight retained; unsuitable matte/framing candidates not installed. No jobs running."
+  "latestResume": "2026-11-21: coast-10 adds 25 reviewed assets; no running job."
 }

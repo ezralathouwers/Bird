@@ -1442,7 +1442,7 @@ birdnet-v3:BN01416,Gestreepte strandloper,Calidris melanotos,Scolopacidae,True,T
 birdnet-v3:BN01417,Kleine strandloper,Calidris minuta,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN01418,Kleinste strandloper,Calidris minutilla,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN01419,Beringstrandloper,Calidris ptilocnemis,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN01420,Kemphaan,Calidris pugnax,Scolopacidae,True,True,False,False,False,False,False
+birdnet-v3:BN01420,Kemphaan,Calidris pugnax,Scolopacidae,True,True,True,True,True,True,True
 birdnet-v3:BN01421,Grijze strandloper,Calidris pusilla,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN01422,Lepelbekstrandloper,Calidris pygmaea,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN01423,Roodkeelstrandloper,Calidris ruficollis,Scolopacidae,True,True,False,False,False,False,False
@@ -4708,7 +4708,7 @@ birdnet-v3:BN04641,Grote sperwerkoekoek,Hierococcyx sparverioides,Cuculidae,True
 birdnet-v3:BN04642,Penansperwerkoekoek,Hierococcyx tiganada,Cuculidae,True,False,False,False,False,False,False
 birdnet-v3:BN04643,Kleine sperwerkoekoek,Hierococcyx vagans,Cuculidae,True,True,False,False,False,False,False
 birdnet-v3:BN04644,Indische sperwerkoekoek,Hierococcyx varius,Cuculidae,True,True,False,False,False,False,False
-birdnet-v3:BN04645,Steltkluut,Himantopus himantopus,Recurvirostridae,True,True,False,False,False,False,False
+birdnet-v3:BN04645,Steltkluut,Himantopus himantopus,Recurvirostridae,True,True,True,True,True,True,True
 birdnet-v3:BN04646,Australische steltkluut,Himantopus leucocephalus,Recurvirostridae,True,True,False,False,False,False,False
 birdnet-v3:BN04647,Amerikaanse steltkluut,Himantopus mexicanus,Recurvirostridae,True,True,False,False,False,False,False
 birdnet-v3:BN04648,Zwarte steltkluut,Himantopus novaezelandiae,Recurvirostridae,True,True,False,False,False,False,False
@@ -6745,12 +6745,12 @@ birdnet-v3:BN06654,Grijze notenkraker,Nucifraga columbiana,Corvidae,True,True,Fa
 birdnet-v3:BN06655,Chinese notenkraker,Nucifraga hemispila,Corvidae,True,True,False,False,False,False,False
 birdnet-v3:BN06656,Kasjmirnotenkraker,Nucifraga multipunctata,Corvidae,True,True,False,False,False,False,False
 birdnet-v3:BN06657,Amerikaanse wulp,Numenius americanus,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN06658,Wulp,Numenius arquata,Scolopacidae,True,True,False,False,False,False,False
+birdnet-v3:BN06658,Wulp,Numenius arquata,Scolopacidae,True,True,True,True,True,True,True
 birdnet-v3:BN06659,Eskimowulp,Numenius borealis,Scolopacidae,True,False,False,False,False,False,False
 birdnet-v3:BN06660,Amerikaanse regenwulp,Numenius hudsonicus,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN06661,Siberische wulp,Numenius madagascariensis,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN06662,Kleine regenwulp,Numenius minutus,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN06663,Regenwulp,Numenius phaeopus,Scolopacidae,True,True,False,False,False,False,False
+birdnet-v3:BN06663,Regenwulp,Numenius phaeopus,Scolopacidae,True,True,True,True,True,True,True
 birdnet-v3:BN06664,Zuidzeewulp,Numenius tahitiensis,Scolopacidae,True,True,False,False,False,False,False
 avilist:7a35de81,Slender-billed Curlew,Numenius tenuirostris,Scolopacidae,True,False,False,False,False,False,False
 birdnet-v3:BN06665,Helmparelhoen,Numida meleagris,Numididae,True,True,False,False,False,False,False
@@ -8921,7 +8921,7 @@ avilist:def95927,Dodo,Raphus cucullatus,Columbidae,True,False,False,False,False,
 birdnet-v3:BN08792,Blauw-gele tangare,Rauenia bonariensis,Thraupidae,True,True,False,False,False,False,False
 birdnet-v3:BN08793,Amerikaanse kluut,Recurvirostra americana,Recurvirostridae,True,True,False,False,False,False,False
 birdnet-v3:BN08794,Andeskluut,Recurvirostra andina,Recurvirostridae,True,True,False,False,False,False,False
-birdnet-v3:BN08795,Kluut,Recurvirostra avosetta,Recurvirostridae,True,True,False,False,False,False,False
+birdnet-v3:BN08795,Kluut,Recurvirostra avosetta,Recurvirostridae,True,True,True,True,True,True,True
 birdnet-v3:BN08796,Australische kluut,Recurvirostra novaehollandiae,Recurvirostridae,True,True,False,False,False,False,False
 birdnet-v3:BN08797,Taiwanese goudhaan,Regulus goodfellowi,Regulidae,True,True,False,False,False,False,False
 birdnet-v3:BN08798,Vuurgoudhaan,Regulus ignicapilla,Regulidae,True,True,False,False,False,False,False

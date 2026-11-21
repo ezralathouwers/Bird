@@ -264,3 +264,29 @@ unaltered source-to-asset bytes and SHA-256, hash-bound review attestations,
 three full five-role sets, unchanged existing artwork and species IDs, refreshed
 inventories and `git diff --check`. No runtime code changed. Native image
 loading, ivory blending, slide sizing and memory use still need Xcode.
+
+## Coast/meadow 10A — 21 November 2026
+
+Twenty-five original transparent PNGs add all five roles for wulp (Numenius
+arquata), regenwulp (Numenius phaeopus), kemphaan (Calidris pugnax), kluut
+(Recurvirostra avosetta) and steltkluut (Himantopus himantopus). Dynamic scenes
+show probing sand, standing on a seaweed-covered rock, a courtship strut,
+sweeping shallow water and a long-legged step respectively. Classic portraits
+are bird-only and face right. Front/rear views are separate; flights show the
+centered underside with two spread wings and no duplicate folded wings.
+
+Kemphaan uses one representative chestnut-black adult male breeding morph;
+steltkluut uses a white-headed adult male example. These images do not cover
+all sexes, ages or seasonal plumages. Individual full-image review checked wing
+attachments, a single head/bill, requested view, visible framing and main
+marks, including wulp/regenwulp bill and crown differences and the dark
+steltkluut underwings. Exact-image SHA-256 review attestations and factual
+RSPB/Vogelbescherming references are retained in the manifest. No third-party
+images or text were copied into the app. Independent expert review is pending.
+
+Validation: original-to-asset byte equality, PNG decoding/alpha/dimensions,
+hash-bound review checks, unique stable IDs/asset names and five distinct roles
+per species; existing assets and species data unchanged. Both inventories and
+`git diff --check` pass. Coverage is 222 role assets and 43 complete species.
+Xcode/native image loading, ivory blending, carousel layout and device memory
+use remain unverified. No background generation job is running.
