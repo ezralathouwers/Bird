@@ -1,6 +1,6 @@
 {
   "state": "partial-checkpoint",
-  "installedRoles": 83,
+  "installedRoles": 98,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -145,7 +145,7 @@
       "name": "Kleine canadese gans",
       "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-canadese-gans",
       "error": "HTTP Error 404: Not Found",
-      "usage": "Factual description review; no third-party media or prose copied into app."
+      "usage": "Fetch failed; not used for factual review."
     },
     {
       "id": "birdnet-v3:BN01234",
@@ -209,6 +209,12 @@
       "scientificName": "Mergellus albellus",
       "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/nonnetje",
       "sha256": "e2822ac4190ff880303365c807d8da7bdfc8d374f2a0c200577d00181d9d5fd3",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN01236",
+      "referenceURL": "https://www.allaboutbirds.org/guide/Cackling_Goose/id",
+      "sha256": "8da642d19c60a3ba568e304c604fdc1cd0421decac36035070cd0bca7f898ab7",
       "usage": "Factual description review; no third-party media or prose copied into app."
     }
   ],
@@ -1591,6 +1597,255 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-7b9c2b8b-aa28-44bc-85c0-22b90c81eb05.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01235",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-canadese-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "c0e320c35193cd890b5149aeba84bf39862b7baa882ad550c7e89c2ea8ed2de5",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only adult Canada goose, single black bill/head long black neck white cheek/chinstrap, brown barred body pale belly, two folded wing attachments with far wing occluded, two black webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-c2ae334b-3490-4cb3-a298-fb2daf27835d.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01235",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-canadese-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e231a362ed74d2ab6eb06c660b60fbe86e102e440a38a64d34f6067dde6f2811",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Grazing Canada goose, one bent head and bill with white cheek patch, two folded wing attachments and two black webbed feet, bounded grass vignette and complete framing."
+      },
+      "sourceFile": "exec-5b0d5144-4bef-4682-abb6-cb7eb96b7a2d.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01235",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-canadese-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e40d3fbb6caa8dc78b430bf0c165c9b67b6e4ff2f23cb898d7aa1eeebf67794e",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front Canada goose, one centered black bill two eyes and white cheek/chinstrap, long black neck brown barred folded wing flanks pale belly, two black webbed feet, full framing."
+      },
+      "sourceFile": "exec-b8416a01-86ff-4fb9-8a12-276b6bb87af9.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01235",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-canadese-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "82049d0f1b0f915a7cebcc01dc91adbb259857cd3bfa233ca8245672c101b4ca",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear Canada goose, one head with bill/eyes hidden, black long neck cheek edges brown back, two folded wings short dark tail and two black webbed feet, full framing."
+      },
+      "sourceFile": "exec-8d0773ae-3dee-4a70-ae46-4cc3ce1f0165.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01235",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-canadese-gans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "2fa23d65b3abf920ee30ab187b2f5c562ee6fdac4bfa9e33d2cb70b8e6885335",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral Canada goose, one upward bill black neck and white chinstrap, barred buff breast pale belly, two brown-grey open underwings with dark flights and two trailing black feet, full framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-cce7b9ca-bc87-4631-a1d6-4b7dbab31fee.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01236",
+      "role": "primary",
+      "referenceURL": "https://www.allaboutbirds.org/guide/Cackling_Goose/id",
+      "representativePlumage": "adult hutchinsii",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "a45b60ed01ef7110dbeafed04899ad18c904d978c36e2410112ddb8afe5174b3",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only Cackling goose, short stubby bill steep forehead and short black neck, white chinstrap brown barred body pale undertail, two folded wings with far wing occluded, two black webbed feet, complete framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-19c982c6-2180-4f1a-ade3-1dc0c20302d5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01236",
+      "role": "dynamic",
+      "referenceURL": "https://www.allaboutbirds.org/guide/Cackling_Goose/id",
+      "representativePlumage": "adult hutchinsii",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "406ffaa3826dbe469f50c5f89a934ee3f55b0b230e3e063781a3018390bcd4b8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Walking Cackling goose with one short bill/head and short black neck white chinstrap, brown barred body two folded wing attachments, two black webbed feet one raised over bounded tundra vignette, full framing."
+      },
+      "sourceFile": "exec-4f3f0339-5b46-4cb3-9d9c-4ae1cfa14ed7.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01236",
+      "role": "front",
+      "referenceURL": "https://www.allaboutbirds.org/guide/Cackling_Goose/id",
+      "representativePlumage": "adult hutchinsii",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ca5c11cec49a9faaf965f7483bee366cca2ff73448d446b69ac47d4e30e9f570",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front Cackling goose, one stubby centered black bill and two eyes, short neck white cheek/chinstrap brown barred breast, two folded wing flanks two black webbed feet, whole framing."
+      },
+      "sourceFile": "exec-7bbec2e8-d1c7-4efc-80f6-a20ecb87c496.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01236",
+      "role": "rear",
+      "referenceURL": "https://www.allaboutbirds.org/guide/Cackling_Goose/id",
+      "representativePlumage": "adult hutchinsii",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "eb2e4a03e5d55c8d052e70fa494917eb9edce1e00376f4ed8580671a1cd63377",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear Cackling goose, one rounded head bill/eyes hidden, short neck brown back two folded wings short dark tail white undertail sides, two black feet, full framing."
+      },
+      "sourceFile": "exec-1d4d80f3-4544-4893-83ec-e0d97421aaf4.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01236",
+      "role": "flight",
+      "referenceURL": "https://www.allaboutbirds.org/guide/Cackling_Goose/id",
+      "representativePlumage": "adult hutchinsii",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "c97e64a8f11ca912725cc78bbe438271b5a8c1a5598d806fbdc5b23db567ee88",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral Cackling goose, one short upward bill and short black neck white chinstrap, brown barred breast pale undertail, two open grey-brown wings and two trailing black webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-213cf944-b8e9-4f3e-a811-8c461c68b847.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01234",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/rotgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ed2ef368eb10e64486db3020ae551b95b36fe86fe343fd14cfc8f32a83f19974",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only dark-bellied brent goose, one small black bill and head, broken white neck-side patch dark grey breast/body white undertail, two folded wings and two black webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-9736bc50-1fb9-4cff-becb-b7e83f6d90a9.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01234",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/rotgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6416a0d60bd61fbd77985768f927084fc36e66204b4f43eced980e9c69682f87",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Brent goose holding eelgrass in single black bill, dark head with white neck-side marks, two folded wings and two black webbed feet on bounded mud vignette, complete framing."
+      },
+      "sourceFile": "exec-df126c69-6a43-4252-b519-caa589490cb3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01234",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/rotgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "1218015dbac4949ff5801cea5c3a411cfa9fc6f76f3813d0830ac31b4ccf6bb7",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front dark-bellied brent goose, one centered bill two eyes, broken white neck-side patches dark breast pale undertail, two folded wing flanks two black feet, whole framing."
+      },
+      "sourceFile": "exec-7ab4fe1e-36f7-4d44-a30b-c5f4093e9c34.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01234",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/rotgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e1e0bb34e84b8f886aa2fac5db54a233fdaa719cb4f511332cac717e26b3e324",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear brent goose, bill/eyes hidden, black neck with white patch edges, two dark folded wings short tail white undertail and two black feet, whole framing."
+      },
+      "sourceFile": "exec-ec731d3f-04fb-4641-ab28-3da8ddda675b.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01234",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/rotgans",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6f4daba32bdf2e98109a3c7d76358967354414bab29d7807a7cbc061d25b7b73",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral dark-bellied brent goose, one upward small black bill dark neck and breast pale undertail, exactly two dark grey spread underwings with no extra folded wings, two black trailing webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-6097c2f3-ce33-40c7-8226-5fb65f47e406.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -1838,21 +2093,39 @@
       "dutchName": "Grote canadese gans",
       "scientificName": "Branta canadensis",
       "englishName": "Canada Goose",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01236",
       "dutchName": "Kleine canadese gans",
       "scientificName": "Branta hutchinsii",
       "englishName": "Cackling Goose",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01234",
       "dutchName": "Rotgans",
       "scientificName": "Branta bernicla",
       "englishName": "Brant Goose",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN00534",

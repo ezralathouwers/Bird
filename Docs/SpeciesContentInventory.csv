@@ -1255,9 +1255,9 @@ birdnet-v3:BN01230,Grauerstruikzanger,Bradypterus graueri,Locustellidae,True,Tru
 birdnet-v3:BN01231,Woudstruikzanger,Bradypterus lopezi,Locustellidae,True,True,False,False,False,False,False
 birdnet-v3:BN01232,Madagaskargrasvogel,Bradypterus seebohmi,Locustellidae,True,True,False,False,False,False,False
 birdnet-v3:BN01233,Kaapse struikzanger,Bradypterus sylvaticus,Locustellidae,True,True,False,False,False,False,False
-birdnet-v3:BN01234,Rotgans,Branta bernicla,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01235,Grote canadese gans,Branta canadensis,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01236,Kleine canadese gans,Branta hutchinsii,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN01234,Rotgans,Branta bernicla,Anatidae,True,True,True,True,True,True,True
+birdnet-v3:BN01235,Grote canadese gans,Branta canadensis,Anatidae,True,True,True,True,True,True,True
+birdnet-v3:BN01236,Kleine canadese gans,Branta hutchinsii,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01237,Brandgans,Branta leucopsis,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01238,Roodhalsgans,Branta ruficollis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01239,Hawaïgans,Branta sandvicensis,Anatidae,True,True,False,False,False,False,False

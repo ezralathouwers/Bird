@@ -8335,7 +8335,7 @@ birdnet-v3:BN02126,Cinclodes albidiventris,Kastanjevleugelwipstaart,grassland-st
 birdnet-v3:BN01588,Caprimulgus griseatus,Kayumangginachtzwaluw,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10586,Tyto alba,Kerkuil,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10564,Tympanuchus pallidicinctus,Klein prairiehoen,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01236,Branta hutchinsii,Kleine canadese gans,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN01236,Branta hutchinsii,Kleine canadese gans,grassland-steppe,Grasland en steppe,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN01682,Cathartes burrovianus,Kleine geelkopgier,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03137,Dendropicos elachus,Kleine grijze specht,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09806,Sypheotides indicus,Kleine indische trap,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -8536,7 +8536,7 @@ birdnet-v3:BN02354,Cnemarchus rufipennis,Roodvleugelstruiktiran,grassland-steppe
 birdnet-v3:BN05343,Limosa lapponica,Rosse grutto,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00452,Anarhynchus obscurus,Rosse plevier,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02892,Cursorius rufus,Rosse renvogel,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01234,Branta bernicla,Rotgans,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN01234,Branta bernicla,Rotgans,grassland-steppe,Grasland en steppe,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN06171,Muscisaxicola alpinus,Rotsgrondtiran,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05019,Lagonosticta rhodopareia,Roze amarant,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05312,Leucosticte arctoa,Roze bergvink,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10116,7 +10116,7 @@ birdnet-v3:BN08745,Rallus longirostris,Grijze ral,wetland-general,Wetland,,prima
 birdnet-v3:BN06554,Nettapus pulchellus,Groene dwergeend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04170,Geothlypis semiflava,Groenkruinmaskerzanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09504,Sporophila maximiliani,Grootsnavelzaadkraker,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01235,Branta canadensis,Grote canadese gans,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN01235,Branta canadensis,Grote canadese gans,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN07417,Phalaropus tricolor,Grote franjepoot,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07946,Podiceps major,Grote fuut,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10328,Tringa melanoleuca,Grote geelpootruiter,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

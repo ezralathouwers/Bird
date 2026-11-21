@@ -1,5 +1,17 @@
 # Illustration batches
 
+## New waterbirds 13E–13G — 21 November 2026
+
+Fifteen reviewed originals complete grote Canadese gans, kleine Canadese gans
+and rotgans. The two Canadian goose species retain different head/bill/neck
+proportions. Cackling goose factual identification was checked against Cornell
+after the attempted Dutch guide URL returned 404; the failed fetch is not
+claimed as reviewed evidence. All five views passed individual full-image
+anatomy/framing review. Bird-only classics and centered ventral flights remain
+consistent. PNG/import, original/hash/review binding, previous-record checks
+and both inventories pass: 375 roles, 75 complete species. Xcode loading,
+thumbnail/slide sizing and independent expert/user review remain pending.
+
 ## New waterbirds 13C–13D — 21 November 2026
 
 Twenty-five individually reviewed originals complete bergeend, zomertaling,
