@@ -290,3 +290,38 @@ per species; existing assets and species data unchanged. Both inventories and
 `git diff --check` pass. Coverage is 222 role assets and 43 complete species.
 Xcode/native image loading, ivory blending, carousel layout and device memory
 use remain unverified. No background generation job is running.
+
+## Coast/meadow 10B — 21 November 2026
+
+Twenty-five additional originals complete bontbekplevier (Charadrius hiaticula),
+kleine plevier (Thinornis dubius), bonte strandloper (Calidris alpina),
+drieteenstrandloper (Calidris alba) and steenloper (Arenaria interpres). Each has
+five distinct roles. Dynamic scenes show running over pebbles, inspecting
+gravel, probing wet sand, running beside surf and levering a stone. Classics
+remain right-facing bird-only portraits; flight views are centered ventral
+spreads. The first sanderling flight touched the canvas sides and was rejected;
+a regenerated smaller composition is installed, with the rejected source hash
+and reason retained in Coast10Production.json.
+
+The plovers differ in bill, leg and eye-ring colors. Dunlin uses adult breeding
+plumage with the black belly patch; sanderling uses pale adult winter plumage
+and three forward toes without a visible hind toe. Turnstone uses adult male
+breeding plumage. Each full image was individually reviewed for wing count and
+attachments, one head/bill, pose, visible framing and main species markings.
+Review attestations are bound to exact PNG hashes. Reference pages were read
+for factual descriptions; their photos and prose are not app assets. Seasonal,
+age/sex variation and subtle feather/toe details still need independent expert
+and user review.
+
+The requested ten-species batch is complete: 50 original PNGs in two five-species
+commits. Overall coverage is 247 role assets and 48 complete species. The earlier
+twenty-species coast inventory now has 68 accepted roles and 32 pending roles;
+this request does not claim those remaining images are running in the background.
+
+Validation: all 50 originals match their installed files byte for byte and
+SHA-256; PNG decoding, transparency, dimensions, review bindings, stable species
+IDs, distinct five-role sets and Xcode asset-catalog resource membership checked.
+Existing artwork, taxonomy, biographies and wingspans are unchanged. Both
+inventory scripts and `git diff --check` pass. No runtime code changed; no native
+build or simulator test ran. Ivory-edge blending, carousel sizing, on-device
+image loading and memory use remain to be tested with Xcode.

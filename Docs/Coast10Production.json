@@ -1,8 +1,8 @@
 {
-  "state": "partial-installed-no-job-running",
+  "state": "complete-no-job-running",
   "requestedSpecies": 10,
   "targetRoles": 50,
-  "installedRoles": 25,
+  "installedRoles": 50,
   "rows": [
     {
       "id": "birdnet-v3:BN06658",
@@ -233,151 +233,303 @@
       "id": "birdnet-v3:BN01911",
       "name": "Bontbekplevier",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01911-primary",
+      "sourceFile": "exec-e130d2a1-0be9-447d-904e-311f7ff1d3c9.png",
+      "sha256": "9f2440015cd7a98ad2c163d24b8cfac37929621672448d3e84ab0b8862469ff1"
     },
     {
       "id": "birdnet-v3:BN01911",
       "name": "Bontbekplevier",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01911-dynamic",
+      "sourceFile": "exec-9b775736-fffe-494c-a390-7d725ff52587.png",
+      "sha256": "6be47955e9f2578931da48c2bbf6bf5217cebca791465a27568a347797a9f50f"
     },
     {
       "id": "birdnet-v3:BN01911",
       "name": "Bontbekplevier",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01911-front",
+      "sourceFile": "exec-da506750-883a-442b-b430-089b6adc2fcc.png",
+      "sha256": "51dc96fba73854294e86a45f32d533591e6ab8605a8ccf8a78afd4dc81f1c6ff"
     },
     {
       "id": "birdnet-v3:BN01911",
       "name": "Bontbekplevier",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01911-rear",
+      "sourceFile": "exec-d25d167c-8b15-4e14-84e2-bf853a6493fe.png",
+      "sha256": "ad36046619f2c0f3f4c7daa2a5a54be3cc8bba0fe15bb2626c158b64eb0f3968"
     },
     {
       "id": "birdnet-v3:BN01911",
       "name": "Bontbekplevier",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01911-flight",
+      "sourceFile": "exec-4dfe8c47-5f05-4cc0-91e8-7ada669781c2.png",
+      "sha256": "6ecff6e9aeafa29a09abe757bd8b4eb813684edb399afdeb354513876c08bc31"
     },
     {
       "id": "birdnet-v3:BN10093",
       "name": "Kleine plevier",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN10093-primary",
+      "sourceFile": "exec-24cea575-6d47-43f1-a707-b477cd2f6e78.png",
+      "sha256": "816cb9de28e6a0555b65df84156fbae2f8bd346a3a8ae625637e6b2b7ba3b204"
     },
     {
       "id": "birdnet-v3:BN10093",
       "name": "Kleine plevier",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN10093-dynamic",
+      "sourceFile": "exec-cd42b7fb-3fb0-4e64-a393-73d006939261.png",
+      "sha256": "b2a70f6e051acc50c9b6a28f4cff4a178a0eda6e47fe7452afb9f18fe8b1f7e3"
     },
     {
       "id": "birdnet-v3:BN10093",
       "name": "Kleine plevier",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN10093-front",
+      "sourceFile": "exec-47daf968-4133-4271-9917-ddc093cfec20.png",
+      "sha256": "21b2a372e25cffea6d6f495a99e8a1c21642937f4ca57c4d19efe909fd5e92f6"
     },
     {
       "id": "birdnet-v3:BN10093",
       "name": "Kleine plevier",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN10093-rear",
+      "sourceFile": "exec-363ca4f0-74c7-4101-9965-f349c30b7a44.png",
+      "sha256": "3648b8c4279c9b05d3faf91880908d823cc29c58fd9cb69263e9ff6ffb2978c4"
     },
     {
       "id": "birdnet-v3:BN10093",
       "name": "Kleine plevier",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN10093-flight",
+      "sourceFile": "exec-a41ef9b4-c9e7-4e21-8626-697b26a96541.png",
+      "sha256": "fa597743addceb386d34cf2e3f92e602a7b423702a81fd821ea93d6d40307169"
     },
     {
       "id": "birdnet-v3:BN01407",
       "name": "Bonte strandloper",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01407-primary",
+      "sourceFile": "exec-b7d64342-fe7c-4ea3-b06c-55dd8b779e74.png",
+      "sha256": "82570878069eb22911f13cd32f0d9e7761ef9d569c9dcf4c3cb12ec70e4ddc70"
     },
     {
       "id": "birdnet-v3:BN01407",
       "name": "Bonte strandloper",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01407-dynamic",
+      "sourceFile": "exec-67df8e17-1b7e-461d-8f2f-0beb80f57b6c.png",
+      "sha256": "ed08d7ac2dc063d2283606017cd4fb2bce69a1db0f959c87a865eecc83139986"
     },
     {
       "id": "birdnet-v3:BN01407",
       "name": "Bonte strandloper",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01407-front",
+      "sourceFile": "exec-560f7a32-435c-413e-be88-368b258c8fe5.png",
+      "sha256": "947dd878894e1ec959e1a6d8dcf610101fb3dd0d2eff687155309bd5f5d6caa7"
     },
     {
       "id": "birdnet-v3:BN01407",
       "name": "Bonte strandloper",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01407-rear",
+      "sourceFile": "exec-913cc43e-2796-4f1f-9abd-966916723f54.png",
+      "sha256": "d829f900ff2c25ac392d97563937fbeb4943891dfb834c8bab0ed76b5dae8fcc"
     },
     {
       "id": "birdnet-v3:BN01407",
       "name": "Bonte strandloper",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01407-flight",
+      "sourceFile": "exec-9b112167-d43f-43cd-a6e9-6186668242c3.png",
+      "sha256": "8a9c49d2313e8264de2764a19038767be6980213dacf01707deb1be12ee9fb47"
     },
     {
       "id": "birdnet-v3:BN01406",
       "name": "Drieteenstrandloper",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01406-primary",
+      "sourceFile": "exec-fbf6b5b8-cf6b-480c-b718-05c77138ca1a.png",
+      "sha256": "e266dcdfb3061695a2a3693b1f1d49e72825897e73d79debea281f098a4a7ab8"
     },
     {
       "id": "birdnet-v3:BN01406",
       "name": "Drieteenstrandloper",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01406-dynamic",
+      "sourceFile": "exec-440c05e9-e76a-4baa-a8d6-b609a88772f1.png",
+      "sha256": "892734fdb162f2edd271607f957c9dc2e54cb3f77be3df01b2b54eb71e5094ba"
     },
     {
       "id": "birdnet-v3:BN01406",
       "name": "Drieteenstrandloper",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01406-front",
+      "sourceFile": "exec-db03f135-a87b-4668-bcc5-0cebafd72aa1.png",
+      "sha256": "95584a09a63d060c688356905a2896cf000387b346d167e8900895acf4fbdc9b"
     },
     {
       "id": "birdnet-v3:BN01406",
       "name": "Drieteenstrandloper",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01406-rear",
+      "sourceFile": "exec-dc59c3e6-f5c4-48ad-af53-8392b821881c.png",
+      "sha256": "9c81ab48e27c3435c4b4c9fc94ffa154868f1220a36bcf043e961e6be73227d2"
     },
     {
       "id": "birdnet-v3:BN01406",
       "name": "Drieteenstrandloper",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN01406-flight",
+      "sourceFile": "exec-a3e3a0aa-81f7-4a0c-9c45-63d69d8b5422.png",
+      "sha256": "a9752226018518bf4954cf1a5f2316e949e8fb20a3df5a65d3d5b29a8e976ca9",
+      "rejectedAttempt": {
+        "sourceFile": "exec-6e3ace9e-143c-46c5-ba92-8b6e8b1a7750.png",
+        "sha256": "c76da38060e3c890765ea653b7ddcd14248e15ddc588a7b1a39674cc8d0109e2",
+        "reason": "Wingtips touched/crossed canvas edges; regenerated, not installed."
+      }
     },
     {
       "id": "birdnet-v3:BN00843",
       "name": "Steenloper",
       "role": "primary",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00843-primary",
+      "sourceFile": "exec-479325f2-a680-4eff-8b44-7f636f20e24f.png",
+      "sha256": "ad6f775e24663c362c52349a7748089025ccadcb56de6c2daad0d3f7f0c91a57"
     },
     {
       "id": "birdnet-v3:BN00843",
       "name": "Steenloper",
       "role": "dynamic",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00843-dynamic",
+      "sourceFile": "exec-c79556dc-f65e-4566-8480-7601e4592dc7.png",
+      "sha256": "30d2bae4df7c79d222bb1a34ac3a09d5534b76b1d94558002bcde10376715e4a"
     },
     {
       "id": "birdnet-v3:BN00843",
       "name": "Steenloper",
       "role": "front",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00843-front",
+      "sourceFile": "exec-2ad04d38-2149-43d3-845d-baa5f47ba7cc.png",
+      "sha256": "e7365a1bac39d456ece19daf96efa54d889982b3b1c521d820f336ff82cffddf"
     },
     {
       "id": "birdnet-v3:BN00843",
       "name": "Steenloper",
       "role": "rear",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00843-rear",
+      "sourceFile": "exec-64e9684f-8ebb-4bfe-9bd2-8e12e7cf9451.png",
+      "sha256": "c471d921eea02f1f074e40e0c4bd0a5321989eda9a59210e4c514d5cae2f6169"
     },
     {
       "id": "birdnet-v3:BN00843",
       "name": "Steenloper",
       "role": "flight",
-      "state": "pending-installation"
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN00843-flight",
+      "sourceFile": "exec-5ccd3551-69df-4716-aea5-510161b6ca00.png",
+      "sha256": "481fce7ec401822022364e2dc28289d6dda1ecd23d9424ca28def5a9e940dce4"
+    }
+  ],
+  "referenceSnapshots": [
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/curlew",
+      "sha256": "b4032df8f5ba4ce1d39191e6d5280d084ad10f7ec9ff2c2cc1cc60224d92f2ec",
+      "title": "Curlew Bird Facts | Numenius Arquata",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/whimbrel",
+      "sha256": "7c79e441265494b2e3633cf7331e593f6d0fd8a7b286386b6bf93a77d43f5863",
+      "title": "Whimbrel Bird Facts | Numenius Phaeopus",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/ruff",
+      "sha256": "13914c35657ffac64c08fa374aca7dda4d3a5f3edc7a755420cd47c9d63c6dbd",
+      "title": "Ruff",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/avocet",
+      "sha256": "db6eef453c75d7e4e1f6221597e8ff1710d9d4739c10869c368bf379b9aec00a",
+      "title": "Avocet Bird Facts | Recurvirostra Avosetta",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/ringed-plover",
+      "sha256": "1005d7599b63b567f26bbe2a1e3cf462ca54e02328c2dd7c92c618ef9b66596c",
+      "title": "Ringed Plover Facts | Charadrius Hiaticula",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/little-ringed-plover",
+      "sha256": "4f7be8de8390ce9d41a0bb93647b61278433a3fdee0068c18baa4d24108cefe6",
+      "title": "Little Ringed Plover Facts | Charadrius Dubius",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/dunlin",
+      "sha256": "827db6ed808a71dd10dc96a7453ef76c632022b3ae536c8161fe9fda3643c65c",
+      "title": "Dunlin Bird Facts | Calidris Alpina",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/sanderling",
+      "sha256": "902a83e0a2f6e797f386439b088cc2557b54e5fc10c81c92cf98e0b810801a2c",
+      "title": "Sanderling Bird Facts | Calidris Alba",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/turnstone",
+      "sha256": "651bb73fe1d045bf64278261c5c25681ea36ef63d1468b616313e0a6a50eca7b",
+      "title": "Turnstone Bird Facts | Arenaria Interpres",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
+    },
+    {
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/steltkluut",
+      "sha256": "d29f3be30aef3d5f001d14f2ec65425f808a35666696531a3747d49ee6b23e7a",
+      "title": "Steltkluut — Vogelbescherming Nederland",
+      "retrieved": "2026-11-21",
+      "usage": "Factual description review only; no copied media or prose bundled."
     }
   ]
 }

@@ -862,7 +862,7 @@ birdnet-v3:BN00839,Arabische trap,Ardeotis arabs,Otididae,True,False,False,False
 birdnet-v3:BN00840,Australische trap,Ardeotis australis,Otididae,True,False,False,False,False,False,False
 birdnet-v3:BN00841,Koritrap,Ardeotis kori,Otididae,True,True,False,False,False,False,False
 birdnet-v3:BN00842,Grote indische trap,Ardeotis nigriceps,Otididae,True,False,False,False,False,False,False
-birdnet-v3:BN00843,Steenloper,Arenaria interpres,Scolopacidae,True,True,False,False,False,False,False
+birdnet-v3:BN00843,Steenloper,Arenaria interpres,Scolopacidae,True,True,True,True,True,True,True
 birdnet-v3:BN00844,Zwarte steenloper,Arenaria melanocephala,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN00845,Argusfazant,Argusianus argus,Phasianidae,True,True,False,False,False,False,False
 birdnet-v3:BN00846,Geelsnavelbabbelaar,Argya affinis,Leiothrichidae,True,True,False,False,False,False,False
@@ -1428,8 +1428,8 @@ birdnet-v3:BN01402,Witrugkwak,Calherodius leuconotus,Ardeidae,True,True,False,Fa
 birdnet-v3:BN01403,Roodstaartvanga,Calicalicus madagascariensis,Vangidae,True,True,False,False,False,False,False
 birdnet-v3:BN01404,Roodschoudervanga,Calicalicus rufocarpalis,Vangidae,True,True,False,False,False,False,False
 birdnet-v3:BN01405,Siberische strandloper,Calidris acuminata,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN01406,Drieteenstrandloper,Calidris alba,Scolopacidae,True,True,False,False,False,False,False
-birdnet-v3:BN01407,Bonte strandloper,Calidris alpina,Scolopacidae,True,True,False,False,False,False,False
+birdnet-v3:BN01406,Drieteenstrandloper,Calidris alba,Scolopacidae,True,True,True,True,True,True,True
+birdnet-v3:BN01407,Bonte strandloper,Calidris alpina,Scolopacidae,True,True,True,True,True,True,True
 birdnet-v3:BN01408,Bairds strandloper,Calidris bairdii,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN01409,Kanoet,Calidris canutus,Scolopacidae,True,True,False,False,False,False,False
 birdnet-v3:BN01410,Breedbekstrandloper,Calidris falcinellus,Scolopacidae,True,True,False,False,False,False,False
@@ -1938,7 +1938,7 @@ birdnet-v3:BN01907,Gebandeerde mierlijster,Chamaeza mollissima,Formicariidae,Tru
 birdnet-v3:BN01908,Gestreepte mierlijster,Chamaeza nobilis,Formicariidae,True,True,False,False,False,False,False
 birdnet-v3:BN01909,Roodstaartmierlijster,Chamaeza ruficauda,Formicariidae,True,True,False,False,False,False,False
 birdnet-v3:BN01910,Geschubde mierlijster,Chamaeza turdina,Formicariidae,True,True,False,False,False,False,False
-birdnet-v3:BN01911,Bontbekplevier,Charadrius hiaticula,Charadriidae,True,True,False,False,False,False,False
+birdnet-v3:BN01911,Bontbekplevier,Charadrius hiaticula,Charadriidae,True,True,True,True,True,True,True
 birdnet-v3:BN01912,Dwergplevier,Charadrius melodus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN01913,Amerikaanse bontbekplevier,Charadrius semipalmatus,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN01914,Killdeerplevier,Charadrius vociferus,Charadriidae,True,True,False,False,False,False,False
@@ -10223,7 +10223,7 @@ birdnet-v3:BN10089,Moerasbuulbuul,Thescelocichla leucopleura,Pycnonotidae,True,T
 birdnet-v3:BN10090,Punakwartelsnip,Thinocorus orbignyianus,Thinocoridae,True,True,False,False,False,False,False
 birdnet-v3:BN10091,Patagonische kwartelsnip,Thinocorus rumicivorus,Thinocoridae,True,True,False,False,False,False,False
 birdnet-v3:BN10092,Zwartkopplevier,Thinornis cucullatus,Charadriidae,True,True,False,False,False,False,False
-birdnet-v3:BN10093,Kleine plevier,Thinornis dubius,Charadriidae,True,True,False,False,False,False,False
+birdnet-v3:BN10093,Kleine plevier,Thinornis dubius,Charadriidae,True,True,True,True,True,True,True
 birdnet-v3:BN10094,Forbesplevier,Thinornis forbesi,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN10095,Maskerplevier,Thinornis melanops,Charadriidae,True,True,False,False,False,False,False
 birdnet-v3:BN10096,Nieuw-zeelandse plevier,Thinornis novaeseelandiae,Charadriidae,True,True,False,False,False,False,False
