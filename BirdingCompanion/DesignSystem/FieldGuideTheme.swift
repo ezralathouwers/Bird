@@ -12,13 +12,13 @@ enum FieldGuideTheme {
     static let selectedBeige = Color(red: 0.83, green: 0.79, blue: 0.73)
     static let khaki = Color(red: 133.0 / 255, green: 131.0 / 255, blue: 107.0 / 255)
     static let navigationOlive = Color(red: 124.0 / 255, green: 135.0 / 255, blue: 48.0 / 255)
-    static let mutedIcon = Color(red: 151.0 / 255, green: 137.0 / 255, blue: 116.0 / 255)
+    static let mutedIcon = Color(red: 181.0 / 255, green: 165.0 / 255, blue: 142.0 / 255)
     static let taupe = Color(red: 107.0 / 255, green: 104.0 / 255, blue: 100.0 / 255)
     // Neutral warm grey text (#4B4946), shared with the observation button fill.
     static let charcoal = Color(red: 75.0 / 255, green: 73.0 / 255, blue: 70.0 / 255)
 }
 
-// Shared large sans-serif headings, including both Discover title states.
+// Shared large sans-serif headings; Discover sets its own explicit line height.
 struct LargeHeadingStyle: ViewModifier {
     private let size: CGFloat
     @ScaledMetric private var tracking: CGFloat

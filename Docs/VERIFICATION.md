@@ -1,5 +1,28 @@
 # Verification — 16 November 2026
 
+## Discover list and title refinement — 21 November 2026
+
+Nearby birds and global search now share DiscoverSpeciesRow: 16-point Dutch
+serif name, 12-point English name, identical artwork, spacing and log badge.
+Filters, ranking, search bindings and navigation destinations are preserved.
+The info color is lighter beige (#B5A58E), and info/search/close SF Symbols use
+ultra-light weight while preserving their 44-point hit areas.
+
+Both Discover heading states now use a locally scoped UILabel representable
+with an explicit 1.08-em paragraph line height and -0.005-em tracking, keeping
+the 44.2-point medium DM Sans font. This replaces the previous tight font
+leading, which did not specify a baseline distance for the custom font.
+ScaledMetric keeps the font, line height and tracking proportional at larger
+text sizes; sizeThatFits measures wrapped text at the proposed width. The
+label exposes the full title and header trait to VoiceOver. Other page
+heading styles and -2% serif tracking are unchanged.
+
+Checks: tree-sitter syntax parsing of all 36 Swift files and `git diff --check`
+passed. The shared row and both navigation call sites were reviewed. No Xcode
+build or native test ran here. Verify heading measurement/line wrapping
+(including long locations and accented letters), Dynamic Type, VoiceOver,
+the finer icons and both lists in the simulator before accepting the visuals.
+
 ## Heading, search and navigation polish — 21 November 2026
 
 Large sans-serif page headings share LargeHeadingStyle: medium weight, tight

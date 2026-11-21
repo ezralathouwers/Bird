@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct DiscoverView: View {
     @EnvironmentObject private var store: ObservationStore
@@ -34,8 +35,8 @@ struct DiscoverView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
-                Text(showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
-                    .modifier(LargeHeadingStyle(size: 44.2))
+                DiscoverHeading(text: showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .accessibilityAddTraits(.isHeader)
                     .padding(.top, 60)
                     .padding(.bottom, 6)
@@ -45,7 +46,7 @@ struct DiscoverView: View {
         .background(FieldGuideTheme.ivory)
         .overlay(alignment: .topLeading) {
             Button { showCatalogSources = true } label: {
-                Image(systemName: "info.circle").font(.system(size: 22, weight: .light))
+                Image(systemName: "info.circle").font(.system(size: 22, weight: .ultraLight))
                     .foregroundStyle(FieldGuideTheme.mutedIcon)
                     .frame(width: 44, height: 44, alignment: .leading)
                     .contentShape(Rectangle())
@@ -54,7 +55,7 @@ struct DiscoverView: View {
         .overlay(alignment: .topTrailing) {
             Button { showSearch.toggle() } label: {
                 Image(systemName: showSearch ? "xmark" : "magnifyingglass")
-                    .font(.system(size: 22, weight: .light)).frame(width: 44, height: 44)
+                    .font(.system(size: 22, weight: .ultraLight)).frame(width: 44, height: 44)
                     .background(FieldGuideTheme.beige.opacity(0.4), in: Circle())
             }.accessibilityLabel(showSearch ? "Sluit soortenzoeker" : "Zoek alle vogelsoorten")
                 .padding(.trailing, 20).padding(.top, 8)
@@ -98,16 +99,7 @@ struct DiscoverView: View {
                 LazyVStack(spacing: 0) {
                     ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
                         NavigationLink(value: row.species) {
-                            HStack(spacing: 12) {
-                                PrimaryBirdArtwork(species: row.species).frame(width: 64, height: 64)
-                                SerifText(row.species.dutchName, size: 20, relativeTo: .title3)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                SpeciesLogBadge(status: store.logStatus(for: row.id), speciesName: row.species.dutchName, diameter: 22)
-                            }
-                            .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
-                            .padding(.vertical, 6)
-                            .contentShape(Rectangle())
+                            DiscoverSpeciesRow(species: row.species, status: store.logStatus(for: row.id))
                         }.buttonStyle(.plain)
                         if index < rows.count - 1 {
                             Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
@@ -138,17 +130,7 @@ struct DiscoverView: View {
             LazyVStack(spacing: 0) {
                 ForEach(Array(results.enumerated()), id: \.element.id) { index, bird in
                     NavigationLink(value: bird) {
-                        HStack(spacing: 12) {
-                            PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
-                            VStack(alignment: .leading, spacing: 6) {
-                                SerifText(bird.dutchName, size: 16, relativeTo: .body)
-                                Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
-                            }.frame(maxWidth: .infinity, alignment: .leading)
-                            SpeciesLogBadge(status: store.logStatus(for: bird.id), speciesName: bird.dutchName, diameter: 22)
-                        }
-                        .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
-                        .padding(.vertical, 6)
-                        .contentShape(Rectangle())
+                        DiscoverSpeciesRow(species: bird, status: store.logStatus(for: bird.id))
                     }.buttonStyle(.plain)
                     if index < results.count - 1 {
                         Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
@@ -183,6 +165,67 @@ struct DiscoverView: View {
             }
             Spacer(minLength: 0)
         }
+    }
+}
+
+// One row layout for nearby species and worldwide search results.
+private struct DiscoverSpeciesRow: View {
+    let species: Species
+    let status: SpeciesLogStatus
+
+    var body: some View {
+        HStack(spacing: 12) {
+            PrimaryBirdArtwork(species: species).frame(width: 64, height: 64)
+            VStack(alignment: .leading, spacing: 6) {
+                SerifText(species.dutchName, size: 16, relativeTo: .body)
+                Text(species.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+            }
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            SpeciesLogBadge(status: status, speciesName: species.dutchName, diameter: 22)
+        }
+        .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+        .padding(.vertical, 6)
+        .contentShape(Rectangle())
+    }
+}
+
+// Explicit paragraph metrics reduce the custom font's native line height.
+// SwiftUI's tight font leading alone does not give an exact baseline distance.
+private struct DiscoverHeading: UIViewRepresentable {
+    let text: String
+    @ScaledMetric(relativeTo: .largeTitle) private var size: CGFloat = 44.2
+
+    func makeUIView(context: Context) -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.isAccessibilityElement = true
+        label.accessibilityTraits = [.staticText, .header]
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return label
+    }
+
+    func updateUIView(_ label: UILabel, context: Context) {
+        let baseFont = UIFont(name: "DMSans-9ptRegular", size: size) ?? .systemFont(ofSize: size)
+        let descriptor = baseFont.fontDescriptor.addingAttributes([
+            .traits: [UIFontDescriptor.TraitKey.weight: UIFont.Weight.medium]
+        ])
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.minimumLineHeight = size * 1.08
+        paragraph.maximumLineHeight = size * 1.08
+        paragraph.lineBreakMode = .byWordWrapping
+        label.attributedText = NSAttributedString(string: text, attributes: [
+            .font: UIFont(descriptor: descriptor, size: size),
+            .foregroundColor: UIColor(FieldGuideTheme.charcoal),
+            .kern: size * -0.005,
+            .paragraphStyle: paragraph
+        ])
+        label.accessibilityLabel = text
+    }
+
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UILabel, context: Context) -> CGSize? {
+        guard let width = proposal.width, width > 0 else { return nil }
+        return uiView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
     }
 }
 
