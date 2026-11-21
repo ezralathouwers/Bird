@@ -142,3 +142,28 @@ Verification: import preflight, PNG decoding/transparency, unmodified source
 hashes, unique catalog/asset IDs, five roles per new species, full queue coverage
 and git diff --check. Xcode is unavailable: native image loading, carousel
 layout, transparency against ivory and device performance remain unverified.
+
+## Garden/woodland 06 and requested mixed 07 — 21 November 2026
+
+Batch woodland-06 adds five roles each for gaai, ekster, houtduif, zanglijster,
+groenling, putter, heggenmus, staartmees, goudhaan and zwarte mees (50 originals).
+Batch mixed-07 adds five roles each for aasgier, blauwe reiger, wilde eend
+(adult male), saruskraanvogel, plus the four detail roles for dubbelhoornige
+neushoornvogel (adult male): 24 originals. The hornbill classic previously shown
+to the user could not be located in this checkout; it remains missing rather
+than silently substituting a dynamic image or inventing a recovered original.
+The original file must be supplied to restore that exact portrait.
+
+Visual contact-sheet review checked main markings, distinct roles, complete
+framing, right-facing classics and centered ventral flights. The heron flight
+was regenerated to correct its initially extended neck to a retracted S;
+previous-version provenance is retained. Feather detail, subtle species and
+sex-specific distinctions remain provisional pending independent expert/user
+review. These are generated illustrations, not verified identification plates.
+
+Validation: all 74 installed PNGs decode with transparency, match their retained
+originals byte for byte and SHA-256, have unique keys and the expected role sets.
+Both inventory scripts and git diff --check pass. Total: 129 role assets across
+26 species, of which 25 have all five roles. Xcode/native carousel rendering,
+ivory blending and memory performance remain untested on Linux. No Swift or
+observation IDs were changed; no background generation service was started.

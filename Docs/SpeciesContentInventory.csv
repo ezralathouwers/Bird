@@ -114,7 +114,7 @@ birdnet-v3:BN00107,Madagaskarjaçana,Actophilornis albinucha,Jacanidae,True,Fals
 birdnet-v3:BN00108,Zwartoorkolibrie,Adelomyia melanogenys,Trochilidae,True,True,False,False,False,False,False
 birdnet-v3:BN00109,Clarkfuut,Aechmophorus clarkii,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN00110,Zwanenhalsfuut,Aechmophorus occidentalis,Podicipedidae,True,True,False,False,False,False,False
-birdnet-v3:BN00111,Staartmees,Aegithalos caudatus,Aegithalidae,True,True,False,False,False,False,False
+birdnet-v3:BN00111,Staartmees,Aegithalos caudatus,Aegithalidae,True,True,True,True,True,True,True
 birdnet-v3:BN00112,Roodkruinstaartmees,Aegithalos concinnus,Aegithalidae,True,True,False,False,False,False,False
 birdnet-v3:BN00113,Dwergmees,Aegithalos exilis,Aegithalidae,True,True,False,False,False,False,False
 birdnet-v3:BN00114,Grijskopstaartmees,Aegithalos fuliginosus,Aegithalidae,True,True,False,False,False,False,False
@@ -494,7 +494,7 @@ birdnet-v3:BN00479,Laysaneend,Anas laysanensis,Anatidae,True,True,False,False,Fa
 birdnet-v3:BN00480,Filipijnse eend,Anas luzonica,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00481,Mellereend,Anas melleri,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00482,Campbelltaling,Anas nesiotis,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN00483,Wilde eend,Anas platyrhynchos,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN00483,Wilde eend,Anas platyrhynchos,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN00484,Indische vlekbekeend,Anas poecilorhyncha,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00485,Amerikaanse zwarte eend,Anas rubripes,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN00486,Afrikaanse zwarte eend,Anas sparsa,Anatidae,True,True,False,False,False,False,False
@@ -640,7 +640,7 @@ birdnet-v3:BN00623,Prairiepieper,Anthus spragueii,Motacillidae,True,True,False,F
 birdnet-v3:BN00624,Hooglandpieper,Anthus sylvanus,Motacillidae,True,True,False,False,False,False,False
 birdnet-v3:BN00625,Boompieper,Anthus trivialis,Motacillidae,True,True,False,False,False,False,False
 birdnet-v3:BN00626,Vaalrivierpieper,Anthus vaalensis,Motacillidae,True,False,False,False,False,False,False
-birdnet-v3:BN00627,Saruskraanvogel,Antigone antigone,Gruidae,True,True,False,False,False,False,False
+birdnet-v3:BN00627,Saruskraanvogel,Antigone antigone,Gruidae,True,True,True,True,True,True,True
 birdnet-v3:BN00628,Canadese kraanvogel,Antigone canadensis,Gruidae,True,True,False,False,False,False,False
 birdnet-v3:BN00629,Brolgakraanvogel,Antigone rubicunda,Gruidae,True,True,False,False,False,False,False
 birdnet-v3:BN00630,Witnekkraanvogel,Antigone vipio,Gruidae,True,True,False,False,False,False,False
@@ -831,7 +831,7 @@ birdnet-v3:BN00808,Zwartkinkolibrie,Archilochus alexandri,Trochilidae,True,True,
 birdnet-v3:BN00809,Robijnkeelkolibrie,Archilochus colubris,Trochilidae,True,True,False,False,False,False,False
 birdnet-v3:BN00810,Grote zilverreiger,Ardea alba,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN00811,Geelsnavelzilverreiger,Ardea brachyrhyncha,Ardeidae,True,False,False,False,False,False,False
-birdnet-v3:BN00812,Blauwe reiger,Ardea cinerea,Ardeidae,True,True,False,False,False,False,False
+birdnet-v3:BN00812,Blauwe reiger,Ardea cinerea,Ardeidae,True,True,True,True,True,True,True
 birdnet-v3:BN00813,Sokoireiger,Ardea cocoi,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN00814,Oostelijke koereiger,Ardea coromanda,Ardeidae,True,True,False,False,False,False,False
 birdnet-v3:BN00815,Reuzenreiger,Ardea goliath,Ardeidae,True,True,False,False,False,False,False
@@ -1295,7 +1295,7 @@ birdnet-v3:BN01270,Gevlekte baardkoekoek,Bucco tamatia,Bucconidae,True,True,Fals
 birdnet-v3:BN01271,Buffelkopeend,Bucephala albeola,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01272,Brilduiker,Bucephala clangula,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01273,IJslandse brilduiker,Bucephala islandica,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01274,Dubbelhoornige neushoornvogel,Buceros bicornis,Bucerotidae,True,True,False,False,False,False,False
+birdnet-v3:BN01274,Dubbelhoornige neushoornvogel,Buceros bicornis,Bucerotidae,True,True,False,True,True,True,True
 birdnet-v3:BN01275,Rosse neushoornvogel,Buceros hydrocorax,Bucerotidae,True,True,False,False,False,False,False
 birdnet-v3:BN01276,Gewone neushoornvogel,Buceros rhinoceros,Bucerotidae,True,True,False,False,False,False,False
 birdnet-v3:BN01277,Noordelijke hoornraaf,Bucorvus abyssinicus,Bucerotidae,True,True,False,False,False,False,False
@@ -1648,7 +1648,7 @@ birdnet-v3:BN01619,Rode kardinaal,Cardinalis cardinalis,Cardinalidae,True,True,F
 birdnet-v3:BN01620,Vermiljoenkardinaal,Cardinalis phoeniceus,Cardinalidae,True,True,False,False,False,False,False
 birdnet-v3:BN01621,Grijze kardinaal,Cardinalis sinuatus,Cardinalidae,True,True,False,False,False,False,False
 birdnet-v3:BN01622,Grijskopputter,Carduelis caniceps,Fringillidae,True,True,False,False,False,False,False
-birdnet-v3:BN01623,Putter,Carduelis carduelis,Fringillidae,True,True,False,False,False,False,False
+birdnet-v3:BN01623,Putter,Carduelis carduelis,Fringillidae,True,True,True,True,True,True,True
 birdnet-v3:BN01624,Citroensijs,Carduelis citrinella,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN01625,Corsicaanse citroensijs,Carduelis corsicana,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN01626,Kuifseriema,Cariama cristata,Cariamidae,True,True,False,False,False,False,False
@@ -2001,7 +2001,7 @@ birdnet-v3:BN01970,Paarsbuikkolibrie,Chlorestes julie,Trochilidae,True,True,Fals
 birdnet-v3:BN01971,Blauwkeelsaffierkolibrie,Chlorestes notata,Trochilidae,True,True,False,False,False,False,False
 avilist:16af165d,Kona Grosbeak,Chloridops kona,Fringillidae,True,False,False,False,False,False,False
 birdnet-v3:BN01972,Yunnangroenling,Chloris ambigua,Fringillidae,True,True,False,False,False,False,False
-birdnet-v3:BN01973,Groenling,Chloris chloris,Fringillidae,True,True,False,False,False,False,False
+birdnet-v3:BN01973,Groenling,Chloris chloris,Fringillidae,True,True,True,True,True,True,True
 birdnet-v3:BN01974,Vietnamese groenling,Chloris monguilloti,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN01975,Chinese groenling,Chloris sinica,Fringillidae,True,True,False,False,False,False,False
 birdnet-v3:BN01976,Himalayagroenling,Chloris spinoides,Fringillidae,True,True,False,False,False,False,False
@@ -2509,7 +2509,7 @@ birdnet-v3:BN02471,Holenduif,Columba oenas,Columbidae,True,True,False,False,Fals
 birdnet-v3:BN02472,Somalische holenduif,Columba oliviae,Columbidae,True,False,False,False,False,False,False
 birdnet-v3:BN02473,Geelpootduif,Columba pallidiceps,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN02474,Andamanenhoutduif,Columba palumboides,Columbidae,True,True,False,False,False,False,False
-birdnet-v3:BN02475,Houtduif,Columba palumbus,Columbidae,True,True,False,False,False,False,False
+birdnet-v3:BN02475,Houtduif,Columba palumbus,Columbidae,True,True,True,True,True,True,True
 birdnet-v3:BN02476,Comorenolijfduif,Columba pollenii,Columbidae,True,False,False,False,False,False,False
 birdnet-v3:BN02477,Leigrijze houtduif,Columba pulchricollis,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN02478,Bleekkopduif,Columba punicea,Columbidae,True,False,False,False,False,False,False
@@ -4143,7 +4143,7 @@ birdnet-v3:BN04082,Grijsbruine lijstergaai,Garrulax palliatus,Leiothrichidae,Tru
 birdnet-v3:BN04083,Javaanse lijstergaai,Garrulax rufifrons,Leiothrichidae,True,True,False,False,False,False,False
 birdnet-v3:BN04084,Witneklijstergaai,Garrulax strepitans,Leiothrichidae,True,True,False,False,False,False,False
 birdnet-v3:BN04085,Taiwanese lijstergaai,Garrulax taewanus,Leiothrichidae,True,True,False,False,False,False,False
-birdnet-v3:BN04086,Gaai,Garrulus glandarius,Corvidae,True,True,False,False,False,False,False
+birdnet-v3:BN04086,Gaai,Garrulus glandarius,Corvidae,True,True,True,True,True,True,True
 birdnet-v3:BN04087,Strepengaai,Garrulus lanceolatus,Corvidae,True,True,False,False,False,False,False
 birdnet-v3:BN04088,Lidthgaai,Garrulus lidthi,Corvidae,True,True,False,False,False,False,False
 birdnet-v3:BN04089,Geelsnavelduiker,Gavia adamsii,Gaviidae,True,True,False,False,False,False,False
@@ -6588,7 +6588,7 @@ birdnet-v3:BN06501,Turkooisparkiet,Neophema pulchella,Psittaculidae,True,True,Fa
 birdnet-v3:BN06502,Roodborstparkiet,Neophema splendida,Psittaculidae,True,True,False,False,False,False,False
 birdnet-v3:BN06503,Roodstuitbladspeurder,Neophilydor erythrocercum,Furnariidae,True,True,False,False,False,False,False
 birdnet-v3:BN06504,Donkervleugelbladspeurder,Neophilydor fuscipenne,Furnariidae,True,True,False,False,False,False,False
-birdnet-v3:BN06505,Aasgier,Neophron percnopterus,Accipitridae,True,True,False,False,False,False,False
+birdnet-v3:BN06505,Aasgier,Neophron percnopterus,Accipitridae,True,True,True,True,True,True,True
 birdnet-v3:BN06506,Kaneelmanakin,Neopipo cinnamomea,Tyrannidae,True,True,False,False,False,False,False
 birdnet-v3:BN06507,Bourkeparkiet,Neopsephotus bourkii,Psittaculidae,True,True,False,False,False,False,False
 birdnet-v3:BN06508,Musschenbroeklori,Neopsittacus musschenbroekii,Psittaculidae,True,True,False,False,False,False,False
@@ -7394,7 +7394,7 @@ birdnet-v3:BN07290,Roze menievogel,Pericrocotus roseus,Campephagidae,True,True,F
 birdnet-v3:BN07291,Grijskeelmenievogel,Pericrocotus solaris,Campephagidae,True,True,False,False,False,False,False
 birdnet-v3:BN07292,Ryukyumenievogel,Pericrocotus tegimae,Campephagidae,True,True,False,False,False,False,False
 birdnet-v3:BN07293,Palawanmees,Periparus amabilis,Paridae,True,True,False,False,False,False,False
-birdnet-v3:BN07294,Zwarte mees,Periparus ater,Paridae,True,True,False,False,False,False,False
+birdnet-v3:BN07294,Zwarte mees,Periparus ater,Paridae,True,True,True,True,True,True,True
 birdnet-v3:BN07295,Ornaatmees,Periparus elegans,Paridae,True,True,False,False,False,False,False
 birdnet-v3:BN07296,Roodbuikmees,Periparus rubidiventris,Paridae,True,True,False,False,False,False,False
 birdnet-v3:BN07297,Sparrenmees,Periparus rufonuchalis,Paridae,True,True,False,False,False,False,False
@@ -7777,7 +7777,7 @@ birdnet-v3:BN07671,Zwartrugekster,Pica bottanensis,Corvidae,True,True,False,Fals
 birdnet-v3:BN07672,Amerikaanse ekster,Pica hudsonia,Corvidae,True,True,False,False,False,False,False
 birdnet-v3:BN07673,Maghrebekster,Pica mauritanica,Corvidae,True,True,False,False,False,False,False
 birdnet-v3:BN07674,Geelsnavelekster,Pica nuttallii,Corvidae,True,True,False,False,False,False,False
-birdnet-v3:BN07675,Ekster,Pica pica,Corvidae,True,True,False,False,False,False,False
+birdnet-v3:BN07675,Ekster,Pica pica,Corvidae,True,True,True,True,True,True,True
 birdnet-v3:BN07676,Oosterse ekster,Pica serica,Corvidae,True,True,False,False,False,False,False
 birdnet-v3:BN07677,Witnekkaalkopkraai,Picathartes gymnocephalus,Picathartidae,True,True,False,False,False,False,False
 birdnet-v3:BN07678,Grijsnekkaalkopkraai,Picathartes oreas,Picathartidae,True,False,False,False,False,False,False
@@ -8338,7 +8338,7 @@ birdnet-v3:BN08218,Bruine heggenmus,Prunella fulvescens,Prunellidae,True,True,Fa
 birdnet-v3:BN08219,Himalayaheggenmus,Prunella himalayana,Prunellidae,True,True,False,False,False,False,False
 birdnet-v3:BN08220,Bruinrugheggenmus,Prunella immaculata,Prunellidae,True,True,False,False,False,False,False
 birdnet-v3:BN08221,Koslowheggenmus,Prunella koslowi,Prunellidae,True,True,False,False,False,False,False
-birdnet-v3:BN08222,Heggenmus,Prunella modularis,Prunellidae,True,True,False,False,False,False,False
+birdnet-v3:BN08222,Heggenmus,Prunella modularis,Prunellidae,True,True,True,True,True,True,True
 birdnet-v3:BN08223,Bergheggenmus,Prunella montanella,Prunellidae,True,True,False,False,False,False,False
 birdnet-v3:BN08224,Steenheggenmus,Prunella ocularis,Prunellidae,True,True,False,False,False,False,False
 birdnet-v3:BN08225,Roodborstheggenmus,Prunella rubeculoides,Prunellidae,True,True,False,False,False,False,False
@@ -8926,7 +8926,7 @@ birdnet-v3:BN08796,Australische kluut,Recurvirostra novaehollandiae,Recurvirostr
 birdnet-v3:BN08797,Taiwanese goudhaan,Regulus goodfellowi,Regulidae,True,True,False,False,False,False,False
 birdnet-v3:BN08798,Vuurgoudhaan,Regulus ignicapilla,Regulidae,True,True,False,False,False,False,False
 birdnet-v3:BN08799,Madeiragoudhaan,Regulus madeirensis,Regulidae,True,True,False,False,False,False,False
-birdnet-v3:BN08800,Goudhaan,Regulus regulus,Regulidae,True,True,False,False,False,False,False
+birdnet-v3:BN08800,Goudhaan,Regulus regulus,Regulidae,True,True,True,True,True,True,True
 birdnet-v3:BN08801,Amerikaanse goudhaan,Regulus satrapa,Regulidae,True,True,False,False,False,False,False
 birdnet-v3:BN08802,Bismarcklangstaartduif,Reinwardtoena browni,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN08803,Gekuifde langstaartduif,Reinwardtoena crassirostris,Columbidae,True,True,False,False,False,False,False
@@ -10636,7 +10636,7 @@ birdnet-v3:BN10500,Bleke lijster,Turdus pallidus,Turdidae,True,True,False,False,
 birdnet-v3:BN10501,Papoeamerel,Turdus papuensis,Turdidae,True,True,False,False,False,False,False
 birdnet-v3:BN10502,Pelioslijster,Turdus pelios,Turdidae,True,True,False,False,False,False,False
 birdnet-v3:BN10503,Grijsflanklijster,Turdus phaeopygus,Turdidae,True,False,False,False,False,False,False
-birdnet-v3:BN10504,Zanglijster,Turdus philomelos,Turdidae,True,True,False,False,False,False,False
+birdnet-v3:BN10504,Zanglijster,Turdus philomelos,Turdidae,True,True,True,True,True,True,True
 birdnet-v3:BN10505,Kramsvogel,Turdus pilaris,Turdidae,True,True,False,False,False,False,False
 birdnet-v3:BN10506,Cabanislijster,Turdus plebejus,Turdidae,True,True,False,False,False,False,False
 birdnet-v3:BN10507,Westelijke roodpootlijster,Turdus plumbeus,Turdidae,True,True,False,False,False,False,False
