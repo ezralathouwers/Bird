@@ -10002,7 +10002,7 @@ birdnet-v3:BN10324,Tringa glareola,Bosruiter,wetland-general,Wetland,,primary;dy
 birdnet-v3:BN05186,Laterallus melanophaius,Braziliaanse dwergral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05907,Mergus octosetaceus,Braziliaanse zaagbek,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01410,Calidris falcinellus,Breedbekstrandloper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01272,Bucephala clangula,Brilduiker,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN01272,Bucephala clangula,Brilduiker,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN04774,Hymenops perspicillatus,Briltiran,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05785,Melanitta perspicillata,Brilzee-eend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00629,Antigone rubicunda,Brolgakraanvogel,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10214,7 +10214,7 @@ birdnet-v3:BN05658,Mareca strepera,Krakeend,wetland-general,Wetland,primary;dyna
 birdnet-v3:BN06313,Myiothlypis rivularis,Kreekboszanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07222,Pelecanus crispus,Kroeskoppelikaan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05339,Limnornis curvirostris,Kromsnavelrietkruiper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN06551,Netta rufina,Krooneend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN06551,Netta rufina,Krooneend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN09874,Tadorna cristata,Kuifcasarca,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08276,Pseudocolopteryx sclateri,Kuifdoradito,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07942,Podiceps auritus,Kuifduiker,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10293,7 +10293,7 @@ birdnet-v3:BN08032,Poliocephalus rufopectus,Nieuw-zeelandse fuut,wetland-general
 birdnet-v3:BN01079,Aythya novaeseelandiae,Nieuw-zeelandse topper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 avilist:ec92e596,Acrocephalus luscinius,Nightingale Reed Warbler,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00318,Alopochen aegyptiaca,Nijlgans,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
-birdnet-v3:BN05905,Mergellus albellus,Nonnetje,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN05905,Mergellus albellus,Nonnetje,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN01194,Botaurus lentiginosus,Noord-amerikaanse roerdomp,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07129,Parkesia noveboracensis,Noordelijke waterlijster,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02298,Cisticola marginatus,Oevergraszanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10441,7 +10441,7 @@ birdnet-v3:BN04670,Hirundo neoxena,Welkomzwaluw,wetland-general,Wetland,,primary
 birdnet-v3:BN00487,Anas superciliosa,Wenkbrauweend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04450,Haliastur sphenurus,Wigstaartwouw,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00483,Anas platyrhynchos,Wilde eend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
-birdnet-v3:BN02981,Cygnus cygnus,Wilde zwaan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN02981,Cygnus cygnus,Wilde zwaan,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN00470,Anas crecca,Wintertaling,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN04447,Haliaeetus leucoryphus,Witbandzeearend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00331,Amaurornis phoenicurus,Witborstwaterhoen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

@@ -1293,7 +1293,7 @@ birdnet-v3:BN01268,Bruinkapbaardkoekoek,Bucco macrodactylus,Bucconidae,True,True
 birdnet-v3:BN01269,Roetkruinbaardkoekoek,Bucco noanamae,Bucconidae,True,True,False,False,False,False,False
 birdnet-v3:BN01270,Gevlekte baardkoekoek,Bucco tamatia,Bucconidae,True,True,False,False,False,False,False
 birdnet-v3:BN01271,Buffelkopeend,Bucephala albeola,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01272,Brilduiker,Bucephala clangula,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN01272,Brilduiker,Bucephala clangula,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01273,IJslandse brilduiker,Bucephala islandica,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01274,Dubbelhoornige neushoornvogel,Buceros bicornis,Bucerotidae,True,True,True,True,True,True,True
 birdnet-v3:BN01275,Rosse neushoornvogel,Buceros hydrocorax,Bucerotidae,True,True,False,False,False,False,False
@@ -3021,7 +3021,7 @@ birdnet-v3:BN02977,Salvadorivijgpapegaai,Cyclopsitta salvadorii,Psittaculidae,Tr
 birdnet-v3:BN02978,Zwarte zwaan,Cygnus atratus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02979,Trompetzwaan,Cygnus buccinator,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02980,Kleine zwaan,Cygnus columbianus,Anatidae,True,True,True,True,True,True,True
-birdnet-v3:BN02981,Wilde zwaan,Cygnus cygnus,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN02981,Wilde zwaan,Cygnus cygnus,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN02982,Zwarthalszwaan,Cygnus melancoryphus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN02983,Knobbelzwaan,Cygnus olor,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN02984,Zebramierklauwier,Cymbilaimus lineatus,Thamnophilidae,True,True,False,False,False,False,False
@@ -5975,7 +5975,7 @@ birdnet-v3:BN05901,Witkinral,Mentocrex kioloides,Sarothruridae,True,True,False,F
 birdnet-v3:BN05902,Albertliervogel,Menura alberti,Menuridae,True,True,False,False,False,False,False
 birdnet-v3:BN05903,Liervogel,Menura novaehollandiae,Menuridae,True,True,False,False,False,False,False
 birdnet-v3:BN05904,Bergbeekeend,Merganetta armata,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN05905,Nonnetje,Mergellus albellus,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN05905,Nonnetje,Mergellus albellus,Anatidae,True,True,True,True,True,True,True
 avilist:edda42ed,New Zealand Merganser,Mergus australis,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN05906,Grote zaagbek,Mergus merganser,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05907,Braziliaanse zaagbek,Mergus octosetaceus,Anatidae,True,True,False,False,False,False,False
@@ -6637,7 +6637,7 @@ birdnet-v3:BN06548,Kea,Nestor notabilis,Strigopidae,True,True,False,False,False,
 avilist:7328a120,Norfolk Kaka,Nestor productus,Strigopidae,True,False,False,False,False,False,False
 birdnet-v3:BN06549,Bruine krooneend,Netta erythrophthalma,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN06550,Peposakaeend,Netta peposaca,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN06551,Krooneend,Netta rufina,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN06551,Krooneend,Netta rufina,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN06552,Afrikaanse dwergeend,Nettapus auritus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN06553,Coromandeleend,Nettapus coromandelianus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN06554,Groene dwergeend,Nettapus pulchellus,Anatidae,True,True,False,False,False,False,False

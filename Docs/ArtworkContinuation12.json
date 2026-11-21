@@ -1,6 +1,6 @@
 {
-  "state": "partial-checkpoint",
-  "installedRoles": 113,
+  "state": "coast-and-next20-complete",
+  "installedRoles": 133,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -2095,6 +2095,338 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-23e651e9-b359-43aa-9090-8bbdbe11c62f.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02981",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wilde-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "afb89635b6bbf962eda5bcdfb3b5b852a49b734a55214a06106fd5418eb40bdf",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only whooper swan, single long yellow-based black-tipped bill wedge extending past nostril, white body long neck two folded wings far side occluded, two black webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-7d4dda64-2d79-460b-ad33-5bc6c19150f4.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02981",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wilde-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "34ba4057f9af994d6acaf2334ea5331add57fa788fd34e13bebfa572efb9a625",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front whooper swan, single centered yellow-based black-tipped bill two eyes long white neck white body two folded wings, two black webbed feet, complete framing."
+      },
+      "sourceFile": "exec-81e8883f-0e69-47b0-90dd-1aa43bb7ddf1.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02981",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wilde-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "b0bd64e22118b3e0392b1c0be0d8c72a9e38e8edc7cadca181f1213081ee4243",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear whooper swan, one head bill/eyes hidden, long white neck two folded wings rounded tail and two black webbed feet, whole framing."
+      },
+      "sourceFile": "exec-20aa3029-a907-4df8-9e19-5b9074991664.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02981",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wilde-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6425a1ff254dfbb402acecd3296096f4e1d8b8d969896b79df287dfdb1f52911",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral whooper swan, one upward yellow-based black-tipped bill white long neck/body two spread white underwings with no duplicate folded wings, two black trailing webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-6eb19845-cb32-4791-866b-a6766445a067.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02981",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/wilde-zwaan",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "43aa603ffede38b3042bd2197fd8429434e53e022d10c4565df03de8930a86ae",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Calling whooper swan with single head and one open yellow/black bill with upper/lower mandibles, long white neck two folded wings and two black feet, bounded ripples full scene framed, diffuse halo removed."
+      },
+      "sourceFile": "exec-1a5bab0e-b2b7-4c0e-98bb-62f1065344d5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06551",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/krooneend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6c6e0115d478826702ce1cb0bcd2672a0774e0f97adda22cebc33554c8c76d98",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male red-crested pochard, single red bill and red eye orange rounded crown black breast white flanks brown folded wings with far wing occluded, two grey-brown webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-90405884-ebe4-4989-989c-6995a9c17778.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06551",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/krooneend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "db60de05cf15e46545941335a5ffc686d40e5a639b85f1108ff527ef78b03ca6",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating male red-crested pochard holding pondweed in single red bill, orange crown red eye black breast white flanks brown folded wings, feet naturally submerged in bounded ripples, full framing."
+      },
+      "sourceFile": "exec-800f2105-22cc-4877-bb13-78a088e95fd3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06551",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/krooneend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6580079932ec999eac0736a4a4e595796fe6f8aca12ac40c7e951a4232e21f7f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male red-crested pochard, single centered red bill and two red eyes orange rounded crown black breast white sides, two folded wing flanks and two grey-brown feet, complete framing."
+      },
+      "sourceFile": "exec-bbeabad0-6d87-4d6f-9e72-38e0c501571d.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06551",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/krooneend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "128e3ef0f66fd3c560df1af2251d3665603a9da39b242595f6c520cec95a30af",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male red-crested pochard, single orange rounded head bill/eyes hidden, black neck brown back two folded wings and short tail, two grey-brown webbed feet, whole framing."
+      },
+      "sourceFile": "exec-a9d57da9-be1e-4f6b-98ec-80b2e3373c2b.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06551",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/krooneend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "b17072697492bfdfb8161578a3ee6b5b51bfc770aa1fe0107c851cba1fb5d78f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male red-crested pochard, single red upward bill orange throat black breast/central belly white flanks, two pale grey-white underwings darker grey flight feathers no dorsal panels, two trailing feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-56a1a3d8-3a5d-4d4d-a2d6-d0c8e75b5b57.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01272",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brilduiker",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "1d4ce81214ba6cd72d186f63d1e5552404e3907622b9be830912de7ff3923cb6",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male common goldeneye, one dark bill green triangular head golden eye round white loral spot, white body black back two folded wings far side occluded, two orange webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-9d272697-a483-4ed8-9e49-5aebd05815c1.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01272",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brilduiker",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "5238e3746756742ec2711f01731416dfefbc3a8e0686afe7311b973dc1989191",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Displaying floating male goldeneye, one upturned dark bill green head golden eye white loral spot, white breast black back two folded wings, feet naturally submerged in bounded ripples, whole framing."
+      },
+      "sourceFile": "exec-c06d5ecb-41a5-4556-af77-dd0fbb0b79de.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01272",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brilduiker",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "cec457b62580f406c56a97f5d1179f107c743bef235a4a2d7c75cd1623747ecb",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male goldeneye, one centered dark bill two yellow eyes round white loral patches, green head white chest black folded wing flanks, two orange webbed feet, complete framing."
+      },
+      "sourceFile": "exec-b55cfbbe-c842-4729-90d5-722f6059c6f9.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01272",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brilduiker",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "334abd7fe9f56bf1c89a1bf1530b1705f9cba8b2b615c5b724eb9f87b1b311fc",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male goldeneye, one upward dark bill green throat yellow eyes white loral edges, white belly two white underwings with dark outer primaries grey secondaries, no folded wing silhouettes, two trailing orange feet, complete framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-7719f8e6-a5fc-4cbc-b073-8f93d5c0bdd4.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05905",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/nonnetje",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "1b092e3fc08fd21a033bfeb410bbfd09e2104078e3d58daef8f7f33984591894",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male smew, one narrow grey bill and black eye mask white head crest with black nape stripe, white body black back fine grey flanks two folded wings far wing occluded, two grey webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-e6140a59-4d04-49a5-83f6-ba2b5071c3ae.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05905",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/nonnetje",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "47c3156f35ca22f6bd8e2f7edce98b8469a35d9f0371d159a7351fe5f05d72d1",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating male smew holding small fish in one narrow grey bill, white crest black eye mask white body black shoulder marks, two folded wings feet naturally submerged in bounded ripples, full framing."
+      },
+      "sourceFile": "exec-937cef11-7868-434f-9a6a-00b92eeb633f.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05905",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/nonnetje",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "820ea7643b9c83666db1228db9fcdb1dc53bd9f44c61e824c46bf97a16d7c515",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male smew, one centered narrow grey bill two eyes black eye masks white crest/breast black shoulder marks, two folded wings and two grey webbed feet, whole framing."
+      },
+      "sourceFile": "exec-2b6addab-5f40-471e-8aaa-4f9e2fd033bd.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01272",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/brilduiker",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "cd61dceffc46c8a52771b4616b50481370d230d1c6da349537df2ff6e574c339",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male goldeneye, one green-black head with bill eyes and front-only white loral spots hidden, black back two folded black/white wings short tail and two orange feet, full framing."
+      },
+      "sourceFile": "exec-1172c438-e7aa-4167-b376-a8395ba12c02.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05905",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/nonnetje",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "5b02bedbeb4d8ede3fb70224ea9a96f6c99fb0c90b9c5f3720911ecf42df1c9d",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male smew, one white crested head black nape markings bill/eyes hidden, two folded black/white wings grey tail and two grey webbed feet, complete framing."
+      },
+      "sourceFile": "exec-80d64e3d-82b8-45e4-ac1d-1f8239c50525.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05905",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/nonnetje",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "148bff564fe84d9938a813b199b046cd8567760ee85c592e67bfbf2a45376d21",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male smew, single upward narrow grey bill black eye-mask edges white chin neck and belly, two grey-white open underwings darker flight feathers, no copied dorsal black mantle, two trailing grey webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-2596108e-c98b-4c87-b11d-785c983e1b74.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -2203,6 +2535,18 @@
       "sourceFile": "exec-20790d07-dc74-492f-a654-a114c8af3092.png",
       "sha256": "15556594ab9f90497e0d218ce74f6836f2d472ac4ec2d5192b687f013afe0a01",
       "reason": "Green iridescent dorsal speculum shown on underside; correct ventral secondaries to species-correct grey before installation.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-c003ed28-75ae-4834-89d9-5779568d583e.png",
+      "sha256": "bd33d910d292dd13e62a49bdcd078d565cb5b551d3f7138c459e62e198952de0",
+      "reason": "Diffuse background halo; removed before installation.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-f84f3b9a-54d2-4bcb-ad87-26dd6eaf07c2.png",
+      "sha256": "8130fa3b652f1349a397efd37f2c0c05f66f9325aad38de22e7452fcd874a552",
+      "reason": "Front-only white loral spots incorrectly visible from rear; corrected before installation.",
       "state": "excluded-corrected-original-used"
     }
   ],
@@ -2420,28 +2764,52 @@
       "dutchName": "Wilde zwaan",
       "scientificName": "Cygnus cygnus",
       "englishName": "Whooper Swan",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN06551",
       "dutchName": "Krooneend",
       "scientificName": "Netta rufina",
       "englishName": "Red-crested Pochard",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01272",
       "dutchName": "Brilduiker",
       "scientificName": "Bucephala clangula",
       "englishName": "Common Goldeneye",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN05905",
       "dutchName": "Nonnetje",
       "scientificName": "Mergellus albellus",
       "englishName": "Smew",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     }
   ],
   "remainingCoastRoles": 0

@@ -1,5 +1,17 @@
 # Illustration batches
 
+## New waterbirds 13K–13M — 21 November 2026
+
+Twenty originals complete wilde zwaan, krooneend, brilduiker and nonnetje.
+Individual full-image reviews checked two wings, one head/bill, bill hidden
+in rear views, species markings and full framing. The whooper dynamic halo
+was removed; goldeneye rear head spots were corrected because its white
+loral spots belong at the front of the face. Rejected attempts remain excluded.
+PNG import preflight, exact-original/hash checks, review binding, preserved
+previous records and both inventories pass: 410 roles and 82 complete species.
+All twenty species in the new-waterbird continuation now have five roles.
+Native Xcode asset loading/scaling and independent expert/user review pending.
+
 ## New waterbirds 13H–13J — 21 November 2026
 
 Fifteen full-image-reviewed originals complete toendrarietgans, kolgans and
