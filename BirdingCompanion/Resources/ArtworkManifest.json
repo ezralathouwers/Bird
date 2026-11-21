@@ -191,18 +191,18 @@
     "speciesID": "sample-dendrocopos-major",
     "asset": "sample-dendrocopos-major-primary",
     "view": "primary",
-    "version": 2,
-    "sourceFile": "exec-1744499a-4306-4f7e-a820-315652cf0cbd.png",
+    "version": 3,
+    "sourceFile": "exec-9049f44e-5ca1-4999-873d-f0fb3f66aad4.png",
     "source": "Original OpenAI-generated illustration for this project",
     "created": "2026-11-17",
-    "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+    "reviewStatus": "Full-image visual review of two folded wing attachments, one head and bill, two feet, framing, right-facing seated pose and main markings; independent expert and native/user review pending",
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "right",
     "displayFacing": "right",
     "displayTransform": "none",
     "mediaType": "illustration",
     "usage": "classic compact portrait; not the species-detail hero",
-    "sha256": "eba37f2370053e2bb1118b0700f4e5d115d6aae6febe504ded791b80bc6eebaa",
+    "sha256": "7f520ed8b9be675e6b721f0454f35b64f391330cc2aed3ce055316b641a480ab",
     "pixelWidth": 1254,
     "pixelHeight": 1254,
     "previousVersions": [
@@ -221,18 +221,49 @@
         "displayTransform": "none",
         "mediaType": "illustration",
         "usage": "classic compact portrait; not the species-detail hero"
+      },
+      {
+        "speciesID": "sample-dendrocopos-major",
+        "asset": "sample-dendrocopos-major-primary",
+        "view": "primary",
+        "version": 2,
+        "sourceFile": "exec-1744499a-4306-4f7e-a820-315652cf0cbd.png",
+        "source": "Original OpenAI-generated illustration for this project",
+        "created": "2026-11-17",
+        "reviewStatus": "visual layout review only; independent anatomical and user approval pending",
+        "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+        "sourceFacing": "right",
+        "displayFacing": "right",
+        "displayTransform": "none",
+        "mediaType": "illustration",
+        "usage": "classic compact portrait; not the species-detail hero",
+        "sha256": "eba37f2370053e2bb1118b0700f4e5d115d6aae6febe504ded791b80bc6eebaa",
+        "pixelWidth": 1254,
+        "pixelHeight": 1254,
+        "anatomyReview": {
+          "sha256": "eba37f2370053e2bb1118b0700f4e5d115d6aae6febe504ded791b80bc6eebaa",
+          "twoWings": true,
+          "singleHeadAndBill": true,
+          "poseAndFraming": true,
+          "noProps": true
+        },
+        "composition": "bird-only",
+        "revisionReason": "Remove perch and props for neutral compact portrait",
+        "revised": "2026-11-21"
       }
     ],
     "anatomyReview": {
-      "sha256": "eba37f2370053e2bb1118b0700f4e5d115d6aae6febe504ded791b80bc6eebaa",
+      "sha256": "7f520ed8b9be675e6b721f0454f35b64f391330cc2aed3ce055316b641a480ab",
       "twoWings": true,
       "singleHeadAndBill": true,
       "poseAndFraming": true,
-      "noProps": true
+      "noProps": true,
+      "notes": "Low horizontal body, single near folded wing with far wing occluded, one bill, two natural feet, complete tail and bill, adult male nape and undertail red patches; no props."
     },
     "composition": "bird-only",
-    "revisionReason": "Remove perch and props for neutral compact portrait",
-    "revised": "2026-11-21"
+    "revisionReason": "User requested a relaxed low horizontal sitting pose for compact contexts; other four roles preserved.",
+    "revised": "2026-11-21",
+    "background": "transparent"
   },
   {
     "speciesID": "sample-alcedo-atthis",

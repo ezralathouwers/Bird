@@ -1,5 +1,18 @@
 # Illustration batches
 
+## Great spotted woodpecker compact-pose revision — 21 November 2026
+
+Only the classic small-display illustration for Grote bonte specht is revised
+to a relaxed, low horizontal sitting pose facing right, following the user's
+reference. The bird remains isolated without a perch or ground. The dynamic
+hero, front, rear and ventral-flight assets are unchanged. A first wide draft
+was reframed through image generation onto a square transparent canvas; the
+accepted original is installed byte for byte. Manifest version 3 retains the
+previous versions and exact-image anatomy review. Full-image review checked
+the folded-wing attachments, single head/bill, natural feet and framing.
+PNG decoding, alpha, size, SHA-256 and unchanged other manifest records pass.
+Compact rendering and visual approval still require Xcode/user review.
+
 ## Garden and park birds 01 — 20 November 2026
 
 The user authorized the first complete illustration batch and delegated ordering.
