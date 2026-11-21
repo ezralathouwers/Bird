@@ -12,6 +12,15 @@ Native iPhone SwiftUI prototype. Open `BirdingCompanion.xcodeproj` and select th
 6. Export JSON in history; inspect it in Files. Try offline logging, empty history, Google search online/offline, closing Safari, and the unavailable audio message.
 7. For a physical device, choose a unique bundle identifier and your signing team. Microphone permission is requested for Sound ID; camera permission only when taking a photo. Foreground location permission is requested when opening Ontdek or adding an observation.
 
+Debug builds use **Build Active Architecture Only = Yes** at project level,
+inherited by the app and tests. Release retains **No**. This keeps the Debug
+simulator architecture aligned with Swift package builds on either Apple Silicon
+or Intel, without hardcoding an architecture or excluding simulator support.
+If an older ZIP download reports an incompatible arm64 ZIPFoundation module while
+the app is compiling x86_64, select the blue project → PROJECT BirdingCompanion →
+Build Settings → All, search `Build Active Architecture Only`, set Debug to Yes,
+clean the build folder and rebuild for the selected iPhone simulator.
+
 Terminal equivalents (replace the destination with one listed on your Mac):
 
 ```sh
