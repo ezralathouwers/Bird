@@ -56,3 +56,12 @@ Build the kingfisher species-detail SwiftUI screen, reusable design tokens, tab 
 - Accessible labels and sensible layout at multiple text sizes.
 - Tests added for meaningful logic changes.
 - Honest verification notes; no invented test results.
+
+
+## Global artwork production scope
+The user authorized completing all five illustration roles for all catalog
+species, using habitat-grouped, reviewable batches, without asking approval for
+each batch. Keep existing species/observation IDs, the shared style and the
+centered ventral flight standard. Refresh Scripts/illustration_production_queue.py
+after each batch. The queue is an inventory, not a background execution service;
+never imply all remaining images are being generated after a turn ends.

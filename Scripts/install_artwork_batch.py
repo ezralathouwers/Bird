@@ -5,7 +5,7 @@ Flight rows require projection: centered-ventral-spread.
 Usage: install_artwork_batch.py mapping.json batch-id
 Requires Pillow for maintenance-time image inspection, never at app runtime.
 """
-import hashlib,json,pathlib,shutil,sys
+import datetime,hashlib,json,pathlib,shutil,sys
 from PIL import Image
 ROOT=pathlib.Path(__file__).resolve().parents[1];RES=ROOT/'BirdingCompanion/Resources'
 
@@ -20,11 +20,12 @@ def install(mapping,batch):
   seen.add(asset);source=pathlib.Path(r['path']);blob=source.read_bytes()
   with Image.open(source) as image:
    image.load();assert image.mode=='RGBA'
-   assert (image.width>=1536 and image.height>=768) if r['role']=='flight' else min(image.size)>=1024
+   # Accept both square originals and wide flight compositions without upscaling.
+   assert min(image.size)>=1024 or (r['role']=='flight' and image.width>=1536 and image.height>=768)
    low,high=image.getchannel('A').getextrema();assert low==0 and high>=220
    size=image.size
   facing={'front':'front','rear':'rear','flight':'up'}.get(r['role'],'right')
-  record={'speciesID':r['id'],'asset':asset,'view':r['role'],'mediaType':'illustration','version':1,'sourceFile':source.name,'source':'Original OpenAI-generated illustration for this project','created':'2026-11-20','reviewStatus':'Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending','rights':'Generated output subject to applicable OpenAI terms; no third-party copied media','sourceFacing':facing,'displayFacing':facing,'displayTransform':'none','sha256':hashlib.sha256(blob).hexdigest(),'pixelWidth':size[0],'pixelHeight':size[1],'background':'transparent','batch':batch,'representativePlumage':r.get('representativePlumage','adult'),'referenceURLs':[r['referenceURL']] if r.get('referenceURL') else []}
+  record={'speciesID':r['id'],'asset':asset,'view':r['role'],'mediaType':'illustration','version':1,'sourceFile':source.name,'source':'Original OpenAI-generated illustration for this project','created':r.get('created',datetime.date.today().isoformat()),'reviewStatus':'Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending','rights':'Generated output subject to applicable OpenAI terms; no third-party copied media','sourceFacing':facing,'displayFacing':facing,'displayTransform':'none','sha256':hashlib.sha256(blob).hexdigest(),'pixelWidth':size[0],'pixelHeight':size[1],'background':'transparent','batch':batch,'representativePlumage':r.get('representativePlumage','adult'),'referenceURLs':[r['referenceURL']] if r.get('referenceURL') else []}
   if r['role']=='flight':record['projection']='centered-ventral-spread'
   prepared.append((r,source,folder,record))
  for r,source,folder,record in prepared:

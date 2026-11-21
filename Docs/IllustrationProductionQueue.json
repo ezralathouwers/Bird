@@ -1,0 +1,30 @@
+{
+  "catalogRecords": 11173,
+  "targetImageRoles": 55865,
+  "availableImageRoles": 55,
+  "completeSpeciesAssets": 11,
+  "queuedSpecies": 11162,
+  "missingImageRoles": 55810,
+  "queuedByHabitat": {
+    "forest-general": 6376,
+    "woodland-general": 926,
+    "farmland": 1,
+    "rivers-streams": 215,
+    "reedbeds-marsh": 1,
+    "open-ocean": 242,
+    "tropical-rainforest": 1,
+    "dry-open-woodland": 1,
+    "savanna": 238,
+    "grassland-steppe": 722,
+    "desert": 55,
+    "scrub-general": 1114,
+    "wetland-general": 620,
+    "coast-general": 276,
+    "rockland-general": 155,
+    "plains-general": 118,
+    "cultivated-general": 52,
+    "bamboo": 6,
+    "unassigned": 43
+  },
+  "execution": "Inventory only. No autonomous background worker, scheduled job or image-generation service has been started by this script."
+}
