@@ -10897,7 +10897,7 @@ birdnet-v3:BN06778,Onychognathus morio,Roodvleugelspreeuw,rockland-general,Rotsl
 birdnet-v3:BN09238,Serinus pusillus,Roodvoorhoofdkanarie,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00417,Amytornis whitei,Rosse grassluiper,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05022,Lagonosticta sanguinodorsalis,Rotsamarant,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN02469,Columba livia,Rotsduif,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN02469,Columba livia,Rotsduif,rockland-general,Rotsland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN09350,Sitta neumayer,Rotsklever,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10142,Tichodroma muraria,Rotskruiper,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02449,Colluricincla woodwardi,Rotslijsterdikkop,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10985,7 +10985,7 @@ birdnet-v3:BN01286,Burhinus oedicnemus,Griel,plains-general,Open vlakte,,primary
 birdnet-v3:BN02280,Cisticola cinereolus,Grijze graszanger,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09476,Spodiopsar cineraceus,Grijze spreeuw,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00615,Anthus richardi,Grote pieper,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN08358,Psittacula krameri,Halsbandparkiet,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN08358,Psittacula krameri,Halsbandparkiet,plains-general,Open vlakte,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 avilist:fc472eb7,Zapornia sandwichensis,Hawaiian Rail,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04189,Geronticus eremita,Heremietibis,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN06749,Oenanthe heuglinii,Heuglins tapuit,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -11097,7 +11097,7 @@ birdnet-v3:BN07165,Passer italiae,Italiaanse mus,cultivated-general,Cultuurlands
 birdnet-v3:BN04024,Gallinago hardwickii,Japanse snip,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04437,Halcyon cyanoventris,Javaanse ijsvogel,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00042,Acridotheres javanicus,Javaanse maina,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN02451,Coloeus monedula,Kauw,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN02451,Coloeus monedula,Kauw,cultivated-general,Cultuurlandschap,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN08723,Quiscalus mexicanus,Langstaarttroepiaal,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10654,Vanellus malabaricus,Malabarkievit,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05319,Lewinia muelleri,Müllerral,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

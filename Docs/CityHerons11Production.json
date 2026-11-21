@@ -1,0 +1,271 @@
+{
+  "state": "partial-installed-no-job-running",
+  "requestedSpecies": 6,
+  "targetRoles": 30,
+  "installedRoles": 15,
+  "referenceSnapshots": [
+    {
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/halsbandparkiet",
+      "title": "Halsbandparkiet | Vogelbescherming",
+      "sha256": "dd134258d7310f25480f3452a70ad7da64e8cc7e7f96d6a0fbd7dd557bbd6d0b",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kauw",
+      "title": "Kauw | Vogelbescherming",
+      "sha256": "8edfc9a5987bb21a71c65fc5dd823d7553313229e8e842f432760af328c324ba",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-zilverreiger",
+      "title": "Kleine zilverreiger | Vogelbescherming",
+      "sha256": "07228ff7ed2bfb1a58113cbfdbe5329259b544731a721e73e898edf88f46e703",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zilverreiger",
+      "title": "Grote zilverreiger | Vogelbescherming",
+      "sha256": "22fd78017c1f9c67e93b3ecd1745e1ee04368ab7e4000a0ea7ab5f2a9e2f514d",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/purperreiger",
+      "title": "Purperreiger | Vogelbescherming",
+      "sha256": "2f2355040e1c17947b512e6557786a86252126a2b24dfb3a8efc3c3aa1496c2c",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "url": "https://www.allaboutbirds.org/guide/Rock_Pigeon/overview",
+      "title": "Rock Pigeon Overview, All About Birds, Cornell Lab of Ornithology",
+      "sha256": "47b342b8e51861873c03f682dc4f8117bf118a706d6be23a15a19c7438ce0015",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    }
+  ],
+  "rows": [
+    {
+      "id": "birdnet-v3:BN02469",
+      "name": "Rotsduif",
+      "role": "primary",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02469-primary",
+      "sourceFile": "exec-756c7bd8-1964-4ffe-9d9c-9db5f1133967.png",
+      "sha256": "43a6f863e7386fc3d8c7993362410b00ecd978cc56f7873e226a7c8bb800b173"
+    },
+    {
+      "id": "birdnet-v3:BN02469",
+      "name": "Rotsduif",
+      "role": "dynamic",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02469-dynamic",
+      "sourceFile": "exec-4448e9dc-bac4-42b6-8fe3-0d2b8b54e7a4.png",
+      "sha256": "65c14864f7913101415b03c5736e590c1e52a1c28c0fa1fd3861c35b9094f5cf"
+    },
+    {
+      "id": "birdnet-v3:BN02469",
+      "name": "Rotsduif",
+      "role": "front",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02469-front",
+      "sourceFile": "exec-54317db4-e6a3-449b-bd13-4843c2f16da6.png",
+      "sha256": "1386e0b442ce00e06f14c1a8d19c63983e6008125b2ff18d37b7b92afb188972"
+    },
+    {
+      "id": "birdnet-v3:BN02469",
+      "name": "Rotsduif",
+      "role": "rear",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02469-rear",
+      "sourceFile": "exec-47776a92-f051-4069-80fa-f615bfd7d12c.png",
+      "sha256": "aec9bf77d92a2882e006d0979d566f9ee9e255f7874bc49185044aecea19b6c5"
+    },
+    {
+      "id": "birdnet-v3:BN02469",
+      "name": "Rotsduif",
+      "role": "flight",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02469-flight",
+      "sourceFile": "exec-0ba23816-89eb-48a5-9879-c25350f1d31d.png",
+      "sha256": "c285d6edb91d52f86dd96d6838edf7dfe5444ed5c185d2688ba91b7eae378504"
+    },
+    {
+      "id": "birdnet-v3:BN08358",
+      "name": "Halsbandparkiet",
+      "role": "primary",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN08358-primary",
+      "sourceFile": "exec-975fd9b3-ee0a-4145-ac76-58e33735140c.png",
+      "sha256": "e4b6feccc4ac47896af0dd871eaabda3bf97c996185b83f6b29de031ab11a3eb"
+    },
+    {
+      "id": "birdnet-v3:BN08358",
+      "name": "Halsbandparkiet",
+      "role": "dynamic",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN08358-dynamic",
+      "sourceFile": "exec-01c5a399-b06b-4806-9613-56769af1bb62.png",
+      "sha256": "abb60efdf41619ca194ef5e3cff2a63c382955fa48f091dcd43d5e63a645d9e3"
+    },
+    {
+      "id": "birdnet-v3:BN08358",
+      "name": "Halsbandparkiet",
+      "role": "front",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN08358-front",
+      "sourceFile": "exec-aa497fe1-f88c-4432-b74b-50f4f052a2d6.png",
+      "sha256": "291abb382c15172153d0495b1c303eb02d6298df103ee3bffff2a74eab97bd9e"
+    },
+    {
+      "id": "birdnet-v3:BN08358",
+      "name": "Halsbandparkiet",
+      "role": "rear",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN08358-rear",
+      "sourceFile": "exec-c4cc5468-d300-4857-8893-122738e3b87a.png",
+      "sha256": "cc734ccb334d53a54726e2d3494f0e39c1eaefba43472401141d7769b607c836"
+    },
+    {
+      "id": "birdnet-v3:BN08358",
+      "name": "Halsbandparkiet",
+      "role": "flight",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN08358-flight",
+      "sourceFile": "exec-1b7953e5-b5db-4fa1-a707-5a670057de75.png",
+      "sha256": "e52a5f422388e2dec8668364ea7123a8b466138f9c0f430aa2fda4c20f76d93b"
+    },
+    {
+      "id": "birdnet-v3:BN02451",
+      "name": "Kauw",
+      "role": "primary",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02451-primary",
+      "sourceFile": "exec-334dcb0e-9c4b-4b78-86f8-8107d5357430.png",
+      "sha256": "8e42eb9cc917e4e8ec9ec57608a86f94b61fc42161fa229fc078ac61cbf3bd2e"
+    },
+    {
+      "id": "birdnet-v3:BN02451",
+      "name": "Kauw",
+      "role": "dynamic",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02451-dynamic",
+      "sourceFile": "exec-4a5df923-37ab-4b4c-ae2f-a552ef5b6b37.png",
+      "sha256": "ae930a9f481ddf19b5e15ce80728c0bf4f3cfc4a2affa087bcd56e7126302aca"
+    },
+    {
+      "id": "birdnet-v3:BN02451",
+      "name": "Kauw",
+      "role": "front",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02451-front",
+      "sourceFile": "exec-45765745-ef3c-40e1-895f-af175c26db5d.png",
+      "sha256": "937acccb6832dba1eb2c04850707d252d5afe095d12fb4a2b63127b06b4882f8"
+    },
+    {
+      "id": "birdnet-v3:BN02451",
+      "name": "Kauw",
+      "role": "rear",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02451-rear",
+      "sourceFile": "exec-3213fa8e-73cc-47d9-99df-c02cb9420388.png",
+      "sha256": "4fb5d42876849f4ee648dea2a143eb647edcde564244dd10488b3fbc7fc5aa01"
+    },
+    {
+      "id": "birdnet-v3:BN02451",
+      "name": "Kauw",
+      "role": "flight",
+      "state": "installed-reviewed",
+      "asset": "birdnet-v3-BN02451-flight",
+      "sourceFile": "exec-89e52dd8-acc6-4315-979d-f1e842ca9903.png",
+      "sha256": "c340dd5ca74a946ef413495debcb095668f3ee6a32538c246e40ca4e1909c857"
+    },
+    {
+      "id": "birdnet-v3:BN03432",
+      "name": "Kleine zilverreiger",
+      "role": "primary",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN03432",
+      "name": "Kleine zilverreiger",
+      "role": "dynamic",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN03432",
+      "name": "Kleine zilverreiger",
+      "role": "front",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN03432",
+      "name": "Kleine zilverreiger",
+      "role": "rear",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN03432",
+      "name": "Kleine zilverreiger",
+      "role": "flight",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00810",
+      "name": "Grote zilverreiger",
+      "role": "primary",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00810",
+      "name": "Grote zilverreiger",
+      "role": "dynamic",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00810",
+      "name": "Grote zilverreiger",
+      "role": "front",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00810",
+      "name": "Grote zilverreiger",
+      "role": "rear",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00810",
+      "name": "Grote zilverreiger",
+      "role": "flight",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00824",
+      "name": "Purperreiger",
+      "role": "primary",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00824",
+      "name": "Purperreiger",
+      "role": "dynamic",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00824",
+      "name": "Purperreiger",
+      "role": "front",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00824",
+      "name": "Purperreiger",
+      "role": "rear",
+      "state": "pending-installation"
+    },
+    {
+      "id": "birdnet-v3:BN00824",
+      "name": "Purperreiger",
+      "role": "flight",
+      "state": "pending-installation"
+    }
+  ]
+}

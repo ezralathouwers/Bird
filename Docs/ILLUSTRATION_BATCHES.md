@@ -325,3 +325,25 @@ Existing artwork, taxonomy, biographies and wingspans are unchanged. Both
 inventory scripts and `git diff --check` pass. No runtime code changed; no native
 build or simulator test ran. Ivory-edge blending, carousel sizing, on-device
 image loading and memory use remain to be tested with Xcode.
+
+## Requested city birds 11A
+
+Fifteen originals complete rotsduif (Columba livia), halsbandparkiet (Psittacula
+krameri) and kauw (Coloeus monedula). Each receives a right-facing bird-only
+classic, a distinct dynamic hero, front, rear and centered ventral flight.
+Rotsduif uses wild-type blue-grey plumage and picks up a seed; halsbandparkiet
+uses an adult male holding a seed pod on a twig; kauw carries nesting material
+on a masonry ledge. No perches or props occur in the classic thumbnails.
+
+Individual full-image review checked two wing attachments, one head and bill,
+pose, visible framing, main plumage, eyes, legs and feet. Sources for factual
+comparison are Cornell All About Birds (rotsduif) and Vogelbescherming (the
+other two); only reference URLs/hashes are retained, no copied media or prose.
+Review attestations are bound to each original PNG SHA-256. Parrot toe/feather
+detail, seasonal/sex variation and independent anatomical review remain pending.
+
+Validation: 15 unchanged originals, decoding/transparency/dimensions, source
+hashes, identity and review bindings, five roles each, unchanged existing assets
+and species data, inventories and `git diff --check`. Coverage: 262 role assets,
+51 complete species. No runtime code changed. Xcode loading, edge blending,
+carousel layout and device memory behavior remain untested.

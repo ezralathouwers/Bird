@@ -2484,7 +2484,7 @@ birdnet-v3:BN02447,Kleine lijsterdikkop,Colluricincla megarhyncha,Pachycephalida
 birdnet-v3:BN02448,Roetbruine lijsterdikkop,Colluricincla tenebrosa,Pachycephalidae,True,True,False,False,False,False,False
 birdnet-v3:BN02449,Rotslijsterdikkop,Colluricincla woodwardi,Pachycephalidae,True,True,False,False,False,False,False
 birdnet-v3:BN02450,Daurische kauw,Coloeus dauuricus,Corvidae,True,True,False,False,False,False,False
-birdnet-v3:BN02451,Kauw,Coloeus monedula,Corvidae,True,True,False,False,False,False,False
+birdnet-v3:BN02451,Kauw,Coloeus monedula,Corvidae,True,True,True,True,True,True,True
 birdnet-v3:BN02452,Langstaarttiran,Colonia colonus,Tyrannidae,True,True,False,False,False,False,False
 birdnet-v3:BN02453,Patagonische tapuittiran,Colorhamphus parvirostris,Tyrannidae,True,True,False,False,False,False,False
 birdnet-v3:BN02454,Witnekduif,Columba albinucha,Columbidae,True,False,False,False,False,False,False
@@ -2503,7 +2503,7 @@ avilist:33d2620f,Ryukyu Wood Pigeon,Columba jouyi,Columbidae,True,False,False,Fa
 birdnet-v3:BN02466,Laurierduif,Columba junoniae,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN02467,Witkopduif,Columba leucomela,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN02468,Sneeuwduif,Columba leuconota,Columbidae,True,True,False,False,False,False,False
-birdnet-v3:BN02469,Rotsduif,Columba livia,Columbidae,True,True,False,False,False,False,False
+birdnet-v3:BN02469,Rotsduif,Columba livia,Columbidae,True,True,True,True,True,True,True
 birdnet-v3:BN02470,Sao-tomébronsnekduif,Columba malherbii,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN02471,Holenduif,Columba oenas,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN02472,Somalische holenduif,Columba oliviae,Columbidae,True,False,False,False,False,False,False
@@ -8478,7 +8478,7 @@ birdnet-v3:BN08355,Grote alexanderparkiet,Psittacula eupatria,Psittaculidae,True
 avilist:c7b5b804,Newton's Parakeet,Psittacula exsul,Psittaculidae,True,False,False,False,False,False,False
 birdnet-v3:BN08356,Finschparkiet,Psittacula finschii,Psittaculidae,True,True,False,False,False,False,False
 birdnet-v3:BN08357,Himalayaparkiet,Psittacula himalayana,Psittaculidae,True,True,False,False,False,False,False
-birdnet-v3:BN08358,Halsbandparkiet,Psittacula krameri,Psittaculidae,True,True,False,False,False,False,False
+birdnet-v3:BN08358,Halsbandparkiet,Psittacula krameri,Psittaculidae,True,True,True,True,True,True,True
 birdnet-v3:BN08359,Langstaartparkiet,Psittacula longicauda,Psittaculidae,True,True,False,False,False,False,False
 birdnet-v3:BN08360,Bloesemkopparkiet,Psittacula roseata,Psittaculidae,True,True,False,False,False,False,False
 avilist:2c828882,Seychelles Parakeet,Psittacula wardi,Psittaculidae,True,False,False,False,False,False,False
