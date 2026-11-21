@@ -1,5 +1,18 @@
 # Illustration batches
 
+## Coast continuation 12D — 21 November 2026
+
+Five reviewed originals complete kleine mantelmeeuw. Adult breeding plumage
+uses dark slate upperparts and yellow legs, contrasting with the pink-legged
+zilvermeeuw/grote mantelmeeuw. The dynamic view shows shoreline foraging; rear
+bill and eyes are hidden; flight is a centered ventral spread. A tight-cropped
+front and an edit with haze were rejected before accepting a clean, more
+generously framed front. Full-image anatomy reviews and exact-image hashes
+are recorded for all five installed originals. Importer and byte/hash checks,
+inventory scripts and whitespace checks pass. Coverage is 295 role assets,
+59 complete species; 15 roles remain in the original coast batch. Native
+loading, thumbnails, carousel composition and user review remain unverified.
+
 ## Coast continuation 12B — 21 November 2026
 
 Five reviewed originals complete zilvermeeuw: classic, mussel-holding dynamic

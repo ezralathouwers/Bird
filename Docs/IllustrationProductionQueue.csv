@@ -10645,7 +10645,7 @@ birdnet-v3:BN01939,Chionis minor,Klein ijshoen,coast-general,Kust,,primary;dynam
 birdnet-v3:BN00776,Aramides mangle,Kleine bosral,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05161,Larus glaucoides,Kleine burgemeester,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02065,Chroicocephalus philadelphia,Kleine kokmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN05159,Larus fuscus,Kleine mantelmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN05159,Larus fuscus,Kleine mantelmeeuw,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN07865,Ploceus aurantius,Koningswever,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05247,Leptocoma calcostetha,Koperkeelhoningzuiger,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00442,Anarhynchus collaris,Kraagplevier,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

@@ -9212,5 +9212,163 @@
       "noProps": true
     },
     "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN05159",
+    "asset": "birdnet-v3-BN05159-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-084d032d-5707-4878-b14b-c17a698713d6.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "35fcc124a5ea52b1d30eb3dbf5afcd0902939d0830f93f2e1347b4ab0773c979",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12D",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "35fcc124a5ea52b1d30eb3dbf5afcd0902939d0830f93f2e1347b4ab0773c979",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full front view with adequate head and toe margins, single centered yellow bill, two folded wings, two yellow webbed feet, grey flanks and white breast."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05159",
+    "asset": "birdnet-v3-BN05159-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-b0721915-4609-4d12-8301-e52ed2b1a148.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "158d0582b90aec554847863263cbf5e2a4206216cc255a1d9a6cb741a1d81830",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12D",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "158d0582b90aec554847863263cbf5e2a4206216cc255a1d9a6cb741a1d81830",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird only, two folded wings with far wing occluded, dark slate mantle, yellow bill with red gonys spot and yellow legs, complete feet tail and head.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN05159",
+    "asset": "birdnet-v3-BN05159-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-42ca0b9d-f8ae-403a-b715-609eacc43017.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "79e9e0c915dfe256a77ea0189a6e746ccbb0830ce0c79d163b178c892061a9c0",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12D",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "79e9e0c915dfe256a77ea0189a6e746ccbb0830ce0c79d163b178c892061a9c0",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear, hidden bill and eyes, two folded dark slate wings, white tail and head, yellow feet, full framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05159",
+    "asset": "birdnet-v3-BN05159-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-15c34fab-9034-458a-b0f6-d28a778cf501.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "642b94ccbee0c718484e9fe1a5292078355fbdc4a0746a7810d7a5df6885784c",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12D",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "642b94ccbee0c718484e9fe1a5292078355fbdc4a0746a7810d7a5df6885784c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral spread, two shoulder-attached open wings only, upward single bill, white underparts and dark white-mirrored tips, yellow feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05159",
+    "asset": "birdnet-v3-BN05159-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-f5435f7a-9a7d-4aca-95b7-23141e3117c1.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "a3c40a602903fabd4ec3b989fcc1c103d2f95cea197cdff20cccbfe9661ebedb",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12D",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw"
+    ],
+    "anatomyReview": {
+      "sha256": "a3c40a602903fabd4ec3b989fcc1c103d2f95cea197cdff20cccbfe9661ebedb",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing foraging gull, single head/bill, one near folded wing and occluded far wing, two yellow webbed feet, bounded shore rock and weed, full framing."
+    }
   }
 ]

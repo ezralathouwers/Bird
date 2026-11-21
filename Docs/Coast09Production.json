@@ -1,11 +1,11 @@
 {
-  "state": "partial-batch-no-job-running",
+  "state": "partial-batch-checkpoint",
   "requestedSpecies": 20,
   "targetRoles": 100,
-  "generatedRoles": 80,
-  "acceptedRoles": 80,
+  "generatedRoles": 85,
+  "acceptedRoles": 85,
   "rejectedRoles": 0,
-  "pendingGeneration": 20,
+  "pendingGeneration": 15,
   "rows": [
     {
       "id": "birdnet-v3:BN10664",
@@ -813,35 +813,50 @@
       "name": "Kleine mantelmeeuw",
       "scientificName": "Larus fuscus",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "158d0582b90aec554847863263cbf5e2a4206216cc255a1d9a6cb741a1d81830",
+      "sourceFile": "exec-b0721915-4609-4d12-8301-e52ed2b1a148.png",
+      "batch": "coast-12D"
     },
     {
       "id": "birdnet-v3:BN05159",
       "name": "Kleine mantelmeeuw",
       "scientificName": "Larus fuscus",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "a3c40a602903fabd4ec3b989fcc1c103d2f95cea197cdff20cccbfe9661ebedb",
+      "sourceFile": "exec-f5435f7a-9a7d-4aca-95b7-23141e3117c1.png",
+      "batch": "coast-12D"
     },
     {
       "id": "birdnet-v3:BN05159",
       "name": "Kleine mantelmeeuw",
       "scientificName": "Larus fuscus",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "35fcc124a5ea52b1d30eb3dbf5afcd0902939d0830f93f2e1347b4ab0773c979",
+      "sourceFile": "exec-084d032d-5707-4878-b14b-c17a698713d6.png",
+      "batch": "coast-12D"
     },
     {
       "id": "birdnet-v3:BN05159",
       "name": "Kleine mantelmeeuw",
       "scientificName": "Larus fuscus",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "79e9e0c915dfe256a77ea0189a6e746ccbb0830ce0c79d163b178c892061a9c0",
+      "sourceFile": "exec-42ca0b9d-f8ae-403a-b715-609eacc43017.png",
+      "batch": "coast-12D"
     },
     {
       "id": "birdnet-v3:BN05159",
       "name": "Kleine mantelmeeuw",
       "scientificName": "Larus fuscus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "642b94ccbee0c718484e9fe1a5292078355fbdc4a0746a7810d7a5df6885784c",
+      "sourceFile": "exec-15c34fab-9034-458a-b0f6-d28a778cf501.png",
+      "batch": "coast-12D"
     },
     {
       "id": "birdnet-v3:BN05165",

@@ -5223,7 +5223,7 @@ birdnet-v3:BN05155,Stormmeeuw,Larus canus,Laridae,True,True,False,False,False,Fa
 birdnet-v3:BN05156,Japanse meeuw,Larus crassirostris,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05157,Ringsnavelmeeuw,Larus delawarensis,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05158,Kelpmeeuw,Larus dominicanus,Laridae,True,True,False,False,False,False,False
-birdnet-v3:BN05159,Kleine mantelmeeuw,Larus fuscus,Laridae,True,True,False,False,False,False,False
+birdnet-v3:BN05159,Kleine mantelmeeuw,Larus fuscus,Laridae,True,True,True,True,True,True,True
 birdnet-v3:BN05160,Beringmeeuw,Larus glaucescens,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05161,Kleine burgemeester,Larus glaucoides,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05162,Heermannmeeuw,Larus heermanni,Laridae,True,True,False,False,False,False,False

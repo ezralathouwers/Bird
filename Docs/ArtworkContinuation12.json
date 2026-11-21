@@ -1,6 +1,6 @@
 {
   "state": "partial-checkpoint",
-  "installedRoles": 13,
+  "installedRoles": 18,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -428,6 +428,105 @@
       "referenceNote": "Species markings compared with existing reviewed dynamic illustration; no new external source claimed.",
       "sourceFile": "exec-af41f5b3-c2b8-4c30-9c92-8f25f97bb467.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "35fcc124a5ea52b1d30eb3dbf5afcd0902939d0830f93f2e1347b4ab0773c979",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full front view with adequate head and toe margins, single centered yellow bill, two folded wings, two yellow webbed feet, grey flanks and white breast."
+      },
+      "sourceFile": "exec-084d032d-5707-4878-b14b-c17a698713d6.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "158d0582b90aec554847863263cbf5e2a4206216cc255a1d9a6cb741a1d81830",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird only, two folded wings with far wing occluded, dark slate mantle, yellow bill with red gonys spot and yellow legs, complete feet tail and head.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-b0721915-4609-4d12-8301-e52ed2b1a148.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "79e9e0c915dfe256a77ea0189a6e746ccbb0830ce0c79d163b178c892061a9c0",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear, hidden bill and eyes, two folded dark slate wings, white tail and head, yellow feet, full framing."
+      },
+      "sourceFile": "exec-42ca0b9d-f8ae-403a-b715-609eacc43017.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "642b94ccbee0c718484e9fe1a5292078355fbdc4a0746a7810d7a5df6885784c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral spread, two shoulder-attached open wings only, upward single bill, white underparts and dark white-mirrored tips, yellow feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-15c34fab-9034-458a-b0f6-d28a778cf501.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05159",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kleine-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "a3c40a602903fabd4ec3b989fcc1c103d2f95cea197cdff20cccbfe9661ebedb",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing foraging gull, single head/bill, one near folded wing and occluded far wing, two yellow webbed feet, bounded shore rock and weed, full framing."
+      },
+      "sourceFile": "exec-f5435f7a-9a7d-4aca-95b7-23141e3117c1.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05165",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-mantelmeeuw",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "2b9f1b174267b41f42a6c3b05d40ce2edab301c9192cd31e6eaa2544f7f6a3b4",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing heavy gull with small fish, one head and bill, two folded wing attachments with far wing occluded, pink webbed feet on bounded driftwood stump, complete framing."
+      },
+      "sourceFile": "exec-d8e5906b-d97f-42d8-a047-7431bda5a69a.png",
+      "state": "reviewed-not-installed"
     }
   ],
   "rejectedAttempts": [
@@ -477,121 +576,142 @@
       "id": "birdnet-v3:BN09825",
       "dutchName": "Dodaars",
       "scientificName": "Tachybaptus ruficollis",
-      "englishName": "Little Grebe"
+      "englishName": "Little Grebe",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN07947",
       "dutchName": "Geoorde fuut",
       "scientificName": "Podiceps nigricollis",
-      "englishName": "Black-necked Grebe"
+      "englishName": "Black-necked Grebe",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN07945",
       "dutchName": "Roodhalsfuut",
       "scientificName": "Podiceps grisegena",
-      "englishName": "Red-necked Grebe"
+      "englishName": "Red-necked Grebe",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN01237",
       "dutchName": "Brandgans",
       "scientificName": "Branta leucopsis",
-      "englishName": "Barnacle Goose"
+      "englishName": "Barnacle Goose",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN09876",
       "dutchName": "Bergeend",
       "scientificName": "Tadorna tadorna",
-      "englishName": "Common Shelduck"
+      "englishName": "Common Shelduck",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN00470",
       "dutchName": "Wintertaling",
       "scientificName": "Anas crecca",
-      "englishName": "Green-winged Teal"
+      "englishName": "Green-winged Teal",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN09384",
       "dutchName": "Zomertaling",
       "scientificName": "Spatula querquedula",
-      "englishName": "Garganey"
+      "englishName": "Garganey",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN05656",
       "dutchName": "Smient",
       "scientificName": "Mareca penelope",
-      "englishName": "Eurasian Wigeon"
+      "englishName": "Eurasian Wigeon",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN00461",
       "dutchName": "Pijlstaart",
       "scientificName": "Anas acuta",
-      "englishName": "Northern Pintail"
+      "englishName": "Northern Pintail",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN01075",
       "dutchName": "Tafeleend",
       "scientificName": "Aythya ferina",
-      "englishName": "Common Pochard"
+      "englishName": "Common Pochard",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN01235",
       "dutchName": "Grote canadese gans",
       "scientificName": "Branta canadensis",
-      "englishName": "Canada Goose"
+      "englishName": "Canada Goose",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN01236",
       "dutchName": "Kleine canadese gans",
       "scientificName": "Branta hutchinsii",
-      "englishName": "Cackling Goose"
+      "englishName": "Cackling Goose",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN01234",
       "dutchName": "Rotgans",
       "scientificName": "Branta bernicla",
-      "englishName": "Brant Goose"
+      "englishName": "Brant Goose",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN00534",
       "dutchName": "Toendrarietgans",
       "scientificName": "Anser serrirostris",
-      "englishName": "Tundra Bean Goose"
+      "englishName": "Tundra Bean Goose",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN00524",
       "dutchName": "Kolgans",
       "scientificName": "Anser albifrons",
-      "englishName": "Greater White-fronted Goose"
+      "englishName": "Greater White-fronted Goose",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN02980",
       "dutchName": "Kleine zwaan",
       "scientificName": "Cygnus columbianus",
-      "englishName": "Tundra Swan"
+      "englishName": "Tundra Swan",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN02981",
       "dutchName": "Wilde zwaan",
       "scientificName": "Cygnus cygnus",
-      "englishName": "Whooper Swan"
+      "englishName": "Whooper Swan",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN06551",
       "dutchName": "Krooneend",
       "scientificName": "Netta rufina",
-      "englishName": "Red-crested Pochard"
+      "englishName": "Red-crested Pochard",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN01272",
       "dutchName": "Brilduiker",
       "scientificName": "Bucephala clangula",
-      "englishName": "Common Goldeneye"
+      "englishName": "Common Goldeneye",
+      "installedRoles": []
     },
     {
       "id": "birdnet-v3:BN05905",
       "dutchName": "Nonnetje",
       "scientificName": "Mergellus albellus",
-      "englishName": "Smew"
+      "englishName": "Smew",
+      "installedRoles": []
     }
-  ]
+  ],
+  "remainingCoastRoles": 15
 }
