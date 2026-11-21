@@ -1,5 +1,13 @@
 # Illustration batches
 
+## Marsh birds 15B — 21 November 2026
+
+Five individually reviewed originals complete kwak: bird-only right-facing
+classic, fish-carrying dynamic, front, rear with hidden bill, and ventral
+flight. Two-wing/single-head review, PNG import preflight, original/hash
+binding, preserved previous records and both inventories pass: 475 roles,
+95 complete species. Native Xcode loading/scaling and expert review pending.
+
 ## Marsh birds 15A — 21 November 2026
 
 Ten individually reviewed originals complete roerdomp and woudaap. Each has

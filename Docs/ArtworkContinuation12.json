@@ -1,6 +1,6 @@
 {
   "state": "marshbirds15-in-progress-no-background-worker",
-  "installedRoles": 193,
+  "installedRoles": 198,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -3574,6 +3574,89 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-772573a2-0172-4e3a-b2f5-1bdc5e00f3c5.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06674",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kwak",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "a92ca483a24aa5afdfc7683710be6483c620fbee4421a62dc015e0345fafabf6",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: one red-eyed black-crowned head with one black bill and two thin white nape feathers; two folded grey wings traced with far wing occluded, two pink legs and separate toes, right-facing complete bird only on transparency.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-ae77d101-53eb-4723-9f9f-698215a6ba21.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06674",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kwak",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "eab879ef6defbc011349fa9b99be033f5e25e880335717711067620d5677d74f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: one night-heron holds one fish with single open bill; two closed grey wings no extra wing silhouettes, two legs and separate toes grip bounded root vignette; all scene and plumage inside canvas."
+      },
+      "sourceFile": "exec-d65fcdcf-cad9-4689-808d-721327c73bde.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06674",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kwak",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "1ebadef67f59db8d2faee25d824ea782f07e6ce85ec8ab37cccb565f7b35b492",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: one centered head with paired red eyes and single bill, white nape plumes sweep aside, two folded grey wings, pale breast, two legs and separate toes; full framing transparent."
+      },
+      "sourceFile": "exec-e5db269b-f572-4960-ad08-a58f067fd1dc.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06674",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kwak",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f88fcc003c1714b050ff6905e4e0b587a790a4440cd311987e0845f2e2450fd4",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: straight rear rounded single black head hides eyes and bill; two white nape plumes and black back over two closed grey wings, two separate-toed feet, entire bird inside canvas without matte."
+      },
+      "sourceFile": "exec-558e3fc7-c174-4b40-a952-d25ee05c9913.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN06674",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kwak",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "5365b9f7945e53cd718722097189c00e80b30c8d9dc460be942fcd9e2bb412e5",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: one head and upward bill, pale belly and grey underwings from two shoulder joints, no duplicate folded wing, short retracted neck, two trailing legs/separate toes and complete feather tips on transparency."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-b5d841fd-ad89-47c3-aad4-03426de3f364.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -4180,7 +4263,13 @@
     {
       "id": "birdnet-v3:BN06674",
       "name": "Kwak",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN07817",
