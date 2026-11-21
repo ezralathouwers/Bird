@@ -1,6 +1,6 @@
 {
-  "state": "coast-next20-and-seaducks10-complete",
-  "installedRoles": 183,
+  "state": "marshbirds15-in-progress-no-background-worker",
+  "installedRoles": 193,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -295,6 +295,77 @@
     {
       "url": "https://www.oiseaux-birds.com/card-velvet-scoter.html",
       "sha256": "9519d9d1adbc002780403b7da5ab5ff6ab047a4bfd837f27a20d035784672ef6",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN01199",
+      "name": "Roerdomp",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp",
+      "sha256": "b83d05f126db3437cc6e4a2efa19bb38b4988d10fc4940c5d888febd8b9d3a58",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN01195",
+      "name": "Woudaap",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap",
+      "sha256": "9c3e6deae5eeccd0b5decc31462aa1d0fc05c7a844c5fefccc83e1e454e2dfd0",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN06674",
+      "name": "Kwak",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/kwak",
+      "sha256": "b0df6751dfc8648faaa394d2e16ea078147aac42a880ea466a2847cda6b0728b",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN07817",
+      "name": "Lepelaar",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar",
+      "sha256": "e3237d75de31e58d8c225e5d34c29ac41bae2aa7e23a4d4357641261a573a17d",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis",
+      "sha256": "fb69c6561479ed93491c1954002571ad0097ab6066d4c931ef51fee32748ea45",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo",
+      "sha256": "3578403336a17e75f8c54a633aa75f1d6ba85133ac7d199d648998b3d5886d04",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis",
+      "sha256": "a9b8449a41a745b391fd3f126136a9774d448b1e62e6ad4192756df71f377ed1",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "url": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/",
+      "failedAttemptURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roze-pelikaan",
+      "sha256": "4af7d40e631fc2256f5d18a2075b126426cddfcff3e9b1af5e362c7cbcd072a4",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend",
+      "sha256": "a5bcc008113d1538ea33a1a78f336a9029d4f74537ab3cdc8137b597c6985baa",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger",
+      "sha256": "5436dfccf19add6173352aea8c98b8a5847c7fa6012fb42ecb71272a9d6ba788",
       "usage": "Factual description review; no third-party media or prose copied into app."
     }
   ],
@@ -3337,6 +3408,172 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-591a779f-6245-457e-bf21-bbab4921a603.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01199",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "22d81c234e35b51cde826ff744cd9abe755c86a3e66ca4f693d846a2456167ec",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only Eurasian bittern, single long green-yellow dagger bill yellow iris blackish cap buff plumage densely dark mottled streaked, two folded wings far side occluded two olive-green legs long separate toes, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-2566f543-c8bf-47da-9d36-df4df5274e52.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01199",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ae8ec3e313f5b7a0326c8d7dc7329a3cd5209b884271ec13b419b2d19ced5c64",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Stalking bittern with one head/bill reaching toward tiny frog, buff dark-mottled body two folded wings and two olive legs long separate toes stepping on bounded reed/marsh vignette, complete framing."
+      },
+      "sourceFile": "exec-13bd3554-cdde-403e-a303-86e494cc04f7.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01199",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "5a407a8dbe4b16dc7d02ad543f586f0334ea28dc9028884b791657a0f952b72c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front bittern in raised-bill camouflage posture, one centered long green-yellow bill two yellow eyes dark crown buff streaked breast two folded wing flanks and two olive separate-toed feet, whole framing."
+      },
+      "sourceFile": "exec-13ede078-bf41-473d-ba43-f09aec3c2b1f.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01199",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "9a7c2777d4f978478394e8a8a088198e88cfad87b2401408bf311ad022b52f7c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: single rounded head faces away, bill and eyes hidden; two closed wings trace to shoulders, short tail, two olive legs with separated toes, entire bird transparent with clear margins."
+      },
+      "sourceFile": "exec-607bf111-c750-4c05-a65e-8e3fe63b5057.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01195",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "9d89f535e5f19ff88e509468c9c746a1616c76c73cc59f7ad1eda1330d085090",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: right-facing adult male, one head and yellow bill, black crown/back and buff wing coverts, two folded wings with far side occluded, two legs and separate toes, whole bird only without props or matte.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-062fac83-67ce-470c-a39f-730dd9a581e5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01195",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "9cf0df44b82848b7833fdcc75a59a82e007a0b199916dc9d38b1614e2d3dfb8f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: one head and bill, two closed wings no duplicate flank, two legs each gripping one bounded reed stem, black cap and buff coverts, entire vignette clear of edges on transparency."
+      },
+      "sourceFile": "exec-7da21ed6-ccae-4c32-a4b7-2814fb7b1c45.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01199",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "d1f902f7a768d39b6c5deb73af2a2c48c48b5340df391853886311620043e3d8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: centered ventral bittern, one upward bill and head, compact neck, two broad spread mottled buff underwings traced from shoulders, no folded duplicates; all wing tips and separate trailing toes clear inside canvas."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-b3885200-617a-4f85-91f2-16ea074a3448.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01195",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "64266a386709826848dbec5d0d2b1f292c3655565aec2dd16030a3a7941c29c8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: one centered head and bill, paired eyes, black crown and buff streaked breast, two closed wings at flanks, two green legs with separate toes, complete bird transparent."
+      },
+      "sourceFile": "exec-a916678f-01d0-4cf0-a9c9-6b1ee994aa11.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01195",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "f14568f4ce952e51497b8608b1b94537bb075c9af7d9984fd1a58568fae3d028",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: rear male with black cap/back and buff folded wing coverts, one head looking away with bill hidden, two closed wings no extra silhouette, two separate-toed feet; entire bird visible on transparency."
+      },
+      "sourceFile": "exec-6b79ef84-7be7-465e-81df-28ddbbf5e4af.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01195",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "dc3d4d6b4e703e12be955ca30d14363b133a8c6ac3657501014d2a2fee3041b5",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: centered ventral flight, one upward bill/head, two wings directly from shoulders with buff underwing coverts and dark flights, buff belly, no folded duplicate wings, trailing separate toes, all tips within canvas."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-772573a2-0172-4e3a-b2f5-1bdc5e00f3c5.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -3530,6 +3767,16 @@
       "sha256": "81a4eca7bb8920d65000384c8955bb4e5267bd5bc4ed8b27c8d8f7a4b8cefbff",
       "reason": "Wing tips cropped/touching both canvas edges; reframed before import.",
       "state": "excluded-corrected-original-used"
+    },
+    {
+      "index": 167,
+      "sourceFile": "exec-044068e6-5f7a-4f8c-9abb-586e8a336955.png",
+      "reason": "Rear bill raised above crown; corrected head level away."
+    },
+    {
+      "index": 168,
+      "sourceFile": "exec-72af2a6a-211e-4903-a370-19eb2c33f6ad.png",
+      "reason": "Flight tips touching/cropped at side edges; reframed."
     }
   ],
   "next20Species": [
@@ -3905,6 +4152,70 @@
         "rear",
         "flight"
       ]
+    }
+  ],
+  "additionalSpecies15": [
+    {
+      "id": "birdnet-v3:BN01199",
+      "name": "Roerdomp",
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
+    },
+    {
+      "id": "birdnet-v3:BN01195",
+      "name": "Woudaap",
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
+    },
+    {
+      "id": "birdnet-v3:BN06674",
+      "name": "Kwak",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN07817",
+      "name": "Lepelaar",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "installedRoles": []
     }
   ]
 }

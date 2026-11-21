@@ -4,12 +4,12 @@
   "withSound": 9788,
   "withoutSound": 1385,
   "illustrationsByRole": {
-    "primary": 92,
-    "dynamic": 92,
-    "front": 92,
-    "rear": 92,
-    "flight": 92
+    "primary": 94,
+    "dynamic": 94,
+    "front": 94,
+    "rear": 94,
+    "flight": 94
   },
-  "fullyIllustrated": 92,
+  "fullyIllustrated": 94,
   "note": "Pages exist through one shared SwiftUI template. Missing content is not generated scientific data. Artwork still requires anatomical/user review."
 }

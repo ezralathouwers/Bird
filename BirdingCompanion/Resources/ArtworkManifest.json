@@ -14584,5 +14584,321 @@
       "poseAndFraming": true,
       "notes": "Centered ventral male ruddy shelduck, single upward black bill cream head narrow black neck ring orange abdomen, two white underwings dark charcoal flight feathers no dorsal green specula, two dark trailing webbed feet black tail, both wing tips fully framed with transparent margins."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01199",
+    "asset": "birdnet-v3-BN01199-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-2566f543-c8bf-47da-9d36-df4df5274e52.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "22d81c234e35b51cde826ff744cd9abe755c86a3e66ca4f693d846a2456167ec",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp"
+    ],
+    "anatomyReview": {
+      "sha256": "22d81c234e35b51cde826ff744cd9abe755c86a3e66ca4f693d846a2456167ec",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only Eurasian bittern, single long green-yellow dagger bill yellow iris blackish cap buff plumage densely dark mottled streaked, two folded wings far side occluded two olive-green legs long separate toes, whole framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN01199",
+    "asset": "birdnet-v3-BN01199-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-13bd3554-cdde-403e-a303-86e494cc04f7.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "ae8ec3e313f5b7a0326c8d7dc7329a3cd5209b884271ec13b419b2d19ced5c64",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp"
+    ],
+    "anatomyReview": {
+      "sha256": "ae8ec3e313f5b7a0326c8d7dc7329a3cd5209b884271ec13b419b2d19ced5c64",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Stalking bittern with one head/bill reaching toward tiny frog, buff dark-mottled body two folded wings and two olive legs long separate toes stepping on bounded reed/marsh vignette, complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01199",
+    "asset": "birdnet-v3-BN01199-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-13ede078-bf41-473d-ba43-f09aec3c2b1f.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "5a407a8dbe4b16dc7d02ad543f586f0334ea28dc9028884b791657a0f952b72c",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp"
+    ],
+    "anatomyReview": {
+      "sha256": "5a407a8dbe4b16dc7d02ad543f586f0334ea28dc9028884b791657a0f952b72c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front bittern in raised-bill camouflage posture, one centered long green-yellow bill two yellow eyes dark crown buff streaked breast two folded wing flanks and two olive separate-toed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01199",
+    "asset": "birdnet-v3-BN01199-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-607bf111-c750-4c05-a65e-8e3fe63b5057.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "9a7c2777d4f978478394e8a8a088198e88cfad87b2401408bf311ad022b52f7c",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp"
+    ],
+    "anatomyReview": {
+      "sha256": "9a7c2777d4f978478394e8a8a088198e88cfad87b2401408bf311ad022b52f7c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: single rounded head faces away, bill and eyes hidden; two closed wings trace to shoulders, short tail, two olive legs with separated toes, entire bird transparent with clear margins."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01195",
+    "asset": "birdnet-v3-BN01195-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-062fac83-67ce-470c-a39f-730dd9a581e5.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "9d89f535e5f19ff88e509468c9c746a1616c76c73cc59f7ad1eda1330d085090",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap"
+    ],
+    "anatomyReview": {
+      "sha256": "9d89f535e5f19ff88e509468c9c746a1616c76c73cc59f7ad1eda1330d085090",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: right-facing adult male, one head and yellow bill, black crown/back and buff wing coverts, two folded wings with far side occluded, two legs and separate toes, whole bird only without props or matte.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN01195",
+    "asset": "birdnet-v3-BN01195-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-7da21ed6-ccae-4c32-a4b7-2814fb7b1c45.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "9cf0df44b82848b7833fdcc75a59a82e007a0b199916dc9d38b1614e2d3dfb8f",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap"
+    ],
+    "anatomyReview": {
+      "sha256": "9cf0df44b82848b7833fdcc75a59a82e007a0b199916dc9d38b1614e2d3dfb8f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: one head and bill, two closed wings no duplicate flank, two legs each gripping one bounded reed stem, black cap and buff coverts, entire vignette clear of edges on transparency."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01199",
+    "asset": "birdnet-v3-BN01199-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-b3885200-617a-4f85-91f2-16ea074a3448.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "d1f902f7a768d39b6c5deb73af2a2c48c48b5340df391853886311620043e3d8",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/roerdomp"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "d1f902f7a768d39b6c5deb73af2a2c48c48b5340df391853886311620043e3d8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: centered ventral bittern, one upward bill and head, compact neck, two broad spread mottled buff underwings traced from shoulders, no folded duplicates; all wing tips and separate trailing toes clear inside canvas."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01195",
+    "asset": "birdnet-v3-BN01195-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-a916678f-01d0-4cf0-a9c9-6b1ee994aa11.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "64266a386709826848dbec5d0d2b1f292c3655565aec2dd16030a3a7941c29c8",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap"
+    ],
+    "anatomyReview": {
+      "sha256": "64266a386709826848dbec5d0d2b1f292c3655565aec2dd16030a3a7941c29c8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: one centered head and bill, paired eyes, black crown and buff streaked breast, two closed wings at flanks, two green legs with separate toes, complete bird transparent."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01195",
+    "asset": "birdnet-v3-BN01195-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-6b79ef84-7be7-465e-81df-28ddbbf5e4af.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "f14568f4ce952e51497b8608b1b94537bb075c9af7d9984fd1a58568fae3d028",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap"
+    ],
+    "anatomyReview": {
+      "sha256": "f14568f4ce952e51497b8608b1b94537bb075c9af7d9984fd1a58568fae3d028",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: rear male with black cap/back and buff folded wing coverts, one head looking away with bill hidden, two closed wings no extra silhouette, two separate-toed feet; entire bird visible on transparency."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01195",
+    "asset": "birdnet-v3-BN01195-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-772573a2-0172-4e3a-b2f5-1bdc5e00f3c5.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "dc3d4d6b4e703e12be955ca30d14363b133a8c6ac3657501014d2a2fee3041b5",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15a",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/woudaap"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "dc3d4d6b4e703e12be955ca30d14363b133a8c6ac3657501014d2a2fee3041b5",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: centered ventral flight, one upward bill/head, two wings directly from shoulders with buff underwing coverts and dark flights, buff belly, no folded duplicate wings, trailing separate toes, all tips within canvas."
+    }
   }
 ]

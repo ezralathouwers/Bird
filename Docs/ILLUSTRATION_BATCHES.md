@@ -1,5 +1,15 @@
 # Illustration batches
 
+## Marsh birds 15A — 21 November 2026
+
+Ten individually reviewed originals complete roerdomp and woudaap. Each has
+five distinct roles, bird-only right-facing classic and centered ventral flight.
+The bittern rear head posture and flight framing were corrected before import.
+Full-image two-wing, single-head/bill and framing reviews, PNG preflight,
+original/hash binding, preserved existing records and both inventories pass:
+470 roles, 94 complete species. Native Xcode loading/scaling and independent
+expert/user review remain pending.
+
 ## Waterbirds 14H–14J — 21 November 2026
 
 Fifteen individually reviewed originals complete middelste zaagbek, Indische

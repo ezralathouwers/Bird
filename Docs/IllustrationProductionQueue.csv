@@ -10349,7 +10349,7 @@ birdnet-v3:BN01447,Callonetta leucophrys,Ringtaling,wetland-general,Wetland,,pri
 birdnet-v3:BN05342,Limosa haemastica,Rode grutto,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07814,Platalea ajaja,Rode lepelaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 avilist:9bf54783,Nycticorax megacephalus,Rodrigues Night Heron,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01199,Botaurus stellaris,Roerdomp,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN01199,Botaurus stellaris,Roerdomp,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN05185,Laterallus levraudi,Roestflankdwergral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09244,Serpophaga nigricans,Roettachuri,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03969,Fulica armillata,Roodbandkoet,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10477,7 +10477,7 @@ birdnet-v3:BN00465,Anas bahamensis,Witwangpijlstaart,wetland-general,Wetland,,pr
 birdnet-v3:BN03434,Egretta novaehollandiae,Witwangreiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01958,Chlidonias hybrida,Witwangstern,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02120,Ciconia microscelis,Wolhalsooievaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01195,Botaurus minutus,Woudaap,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN01195,Botaurus minutus,Woudaap,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN06658,Numenius arquata,Wulp,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN03554,Ephippiorhynchus senegalensis,Zadelbekooievaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN06182,Mustelirallus cerverai,Zapataral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
