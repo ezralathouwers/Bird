@@ -13004,5 +13004,321 @@
       "poseAndFraming": true,
       "notes": "Centered ventral male smew, single upward narrow grey bill black eye-mask edges white chin neck and belly, two grey-white open underwings darker flight feathers, no copied dorsal black mantle, two trailing grey webbed feet, whole framing."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09375",
+    "asset": "birdnet-v3-BN09375-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-6557bb45-2fd9-458b-8d93-0919228e5b80.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "4616cd52cdf5cfa06e9adb160fc01a33b44b437ab9bfb9f35fad42afdd903cac",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider"
+    ],
+    "anatomyReview": {
+      "sha256": "4616cd52cdf5cfa06e9adb160fc01a33b44b437ab9bfb9f35fad42afdd903cac",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only adult male eider, single long olive wedge bill black crown green nape white back pink breast black belly, two folded wing attachments with far side occluded, two grey-green webbed feet, whole framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN09375",
+    "asset": "birdnet-v3-BN09375-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-61168a3e-25f3-4959-8212-04bd727e9666.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "bb4526ac9555cdc8ce5ead9891a49b8261e2811a6e9a25b6dc54ea6027fa79ba",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider"
+    ],
+    "anatomyReview": {
+      "sha256": "bb4526ac9555cdc8ce5ead9891a49b8261e2811a6e9a25b6dc54ea6027fa79ba",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Floating male eider holding one mussel in single olive bill, black crown green nape pink breast black belly white back, two folded wings one webbed foot visible others submerged, bounded sea ripples full framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09375",
+    "asset": "birdnet-v3-BN09375-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-346a19de-b1dd-4bb5-8545-18e1fbad0295.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "a778737f92326f86dd133ba729a7451aecafdd3f358b3a3d0cbdaea2556d9e47",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider"
+    ],
+    "anatomyReview": {
+      "sha256": "a778737f92326f86dd133ba729a7451aecafdd3f358b3a3d0cbdaea2556d9e47",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front male eider, one centered wedge bill two eyes black crown green nape edges pink breast black belly, two folded wing flanks and grey-green webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09375",
+    "asset": "birdnet-v3-BN09375-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-bee17db0-4e3d-469a-a1e0-ab4f2e47fdd4.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "8a09113773424ab8e1faaa74026bdba9d63c3ed75349db4ce9eb81df79635bc7",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider"
+    ],
+    "anatomyReview": {
+      "sha256": "8a09113773424ab8e1faaa74026bdba9d63c3ed75349db4ce9eb81df79635bc7",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear male eider, bill/eyes hidden black crown green nape white back, two folded white/black wings short black tail and two grey-green webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09375",
+    "asset": "birdnet-v3-BN09375-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-8e033a55-5964-46ec-886d-b34a50d11cf0.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "d79647bca70010de193fe21b9d8b584cc091243134cc10dc946ecd41d761ba74",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "d79647bca70010de193fe21b9d8b584cc091243134cc10dc946ecd41d761ba74",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral male eider, single upward olive bill white throat pink breast black belly, two spread predominantly dark grey-black underwings white basal edges, no folded wing silhouettes, two grey-green trailing feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05784",
+    "asset": "birdnet-v3-BN05784-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-22cf8a31-9323-44f6-87b8-9168084c0457.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "1463628b47c9d0c0dda7d113b34d84b18d6a703bda3e13e1c99fdda9caa374f3",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14B",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "1463628b47c9d0c0dda7d113b34d84b18d6a703bda3e13e1c99fdda9caa374f3",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only male common scoter, one black bill yellow patch at top basal knob dark eye entirely dark body and pointed tail, two folded wing attachments far side occluded, two dark webbed feet, full framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN05784",
+    "asset": "birdnet-v3-BN05784-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-4e45e528-30e6-4a08-a260-03657f6e0d33.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "4b6017f7c6051ac5b1a739c9d3438c800b88ba49828e0aba6d9a46e3663046d3",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14B",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "4b6017f7c6051ac5b1a739c9d3438c800b88ba49828e0aba6d9a46e3663046d3",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Floating common scoter preparing to dive, one black/yellow bill and dark eye, black body raised pointed tail two folded wings feet naturally submerged, bounded wavelets full framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05784",
+    "asset": "birdnet-v3-BN05784-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-433339e4-df8c-4037-9da1-94d3af2f7f7d.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "ee8d40b4c8e2a7d0341bc4f2f39bb6bbf9617f8810aca41ea4678ac8f7f3c674",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14B",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "ee8d40b4c8e2a7d0341bc4f2f39bb6bbf9617f8810aca41ea4678ac8f7f3c674",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front male common scoter, one centered black bill yellow upper basal patch two dark eyes, black body two folded wing flanks and dark webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05784",
+    "asset": "birdnet-v3-BN05784-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-9716e1a0-3b67-42e6-bae0-8b0da1e6f352.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "e3b8507b3fcd57cee353fb6d806425ece6e5298ead9bfcef7da58e4cccad93ca",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14B",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "e3b8507b3fcd57cee353fb6d806425ece6e5298ead9bfcef7da58e4cccad93ca",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear male common scoter, bill/eyes hidden one black head black body two folded wings pointed tail and two dark webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05784",
+    "asset": "birdnet-v3-BN05784-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-53a0455b-16e3-4be9-8023-f26bc50742b7.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "6f3e921f796b845fe28f9f8949e1ffadbf7787c1043d65991e5599320b0859cd",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14B",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "6f3e921f796b845fe28f9f8949e1ffadbf7787c1043d65991e5599320b0859cd",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral male common scoter, single upward dark bill with incorrect yellow tip removed, black neck/belly two dark underwings greyer primaries no white patches, two trailing dark feet pointed tail, whole framing."
+    }
   }
 ]

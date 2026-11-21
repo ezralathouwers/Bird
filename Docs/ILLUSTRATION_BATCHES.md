@@ -1,5 +1,16 @@
 # Illustration batches
 
+## Sea ducks 14A–14B — 21 November 2026
+
+Ten individually reviewed originals complete eider and zwarte zee-eend.
+Each has five distinct roles, bird-only classic and centered ventral flight.
+Eider black belly and dark underwing differ from its white dorsal plumage.
+Common scoter ventral bill was corrected to remove an incorrect yellow tip.
+Original/hash equality, PNG import preflight, review binding, preserved
+previous records and both inventories pass: 420 roles, 84 complete species.
+New ten-species continuation is partial; native Xcode loading/scaling and
+independent expert/user review remain pending.
+
 ## New waterbirds 13K–13M — 21 November 2026
 
 Twenty originals complete wilde zwaan, krooneend, brilduiker and nonnetje.

@@ -7589,7 +7589,7 @@ birdnet-v3:BN07038,Pachyptila belcheri,Dunbekprion,open-ocean,Open zee,,primary;
 birdnet-v3:BN00172,Aethia pusilla,Dwergalk,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03680,Eudyptula minor,Dwergpinguïn,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04707,Hydrobates microsoma,Dwergstormvogeltje,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN09375,Somateria mollissima,Eider,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN09375,Somateria mollissima,Eider,open-ocean,Open zee,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN08647,Pygoscelis papua,Ezelspinguïn,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08264,Pseudobulweria macgillivrayi,Fijistormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03676,Eudyptes pachyrhynchus,Fjordlandkuifpinguïn,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10503,7 +10503,7 @@ birdnet-v3:BN03429,Egretta ardesiaca,Zwarte reiger,wetland-general,Wetland,,prim
 birdnet-v3:BN01960,Chlidonias niger,Zwarte stern,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03710,Euphagus carolinus,Zwarte troepiaal,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01192,Botaurus flavicollis,Zwarte woudaap,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN05784,Melanitta nigra,Zwarte zee-eend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN05784,Melanitta nigra,Zwarte zee-eend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN02978,Cygnus atratus,Zwarte zwaan,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04351,Grus nigricollis,Zwarthalskraanvogel,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03553,Ephippiorhynchus asiaticus,Zwarthalsooievaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

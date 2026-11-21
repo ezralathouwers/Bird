@@ -5854,7 +5854,7 @@ birdnet-v3:BN05780,Somalische mees,Melaniparus thruppi,Paridae,True,True,False,F
 birdnet-v3:BN05781,Amerikaanse zee-eend,Melanitta americana,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05782,Amerikaanse grote zee-eend,Melanitta deglandi,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05783,Grote zee-eend,Melanitta fusca,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN05784,Zwarte zee-eend,Melanitta nigra,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN05784,Zwarte zee-eend,Melanitta nigra,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05785,Brilzee-eend,Melanitta perspicillata,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05786,Aziatische grote zee-eend,Melanitta stejnegeri,Anatidae,True,False,False,False,False,False,False
 birdnet-v3:BN05787,Arfakbessenpikker,Melanocharis arfakiana,Melanocharitidae,True,True,False,False,False,False,False
@@ -9504,7 +9504,7 @@ birdnet-v3:BN09371,Dubbelbandrenvogel,Smutsornis africanus,Glareolidae,True,True
 birdnet-v3:BN09372,Geelbuikpiha,Snowornis cryptolophus,Cotingidae,True,True,False,False,False,False,False
 birdnet-v3:BN09373,Grijsstaartpiha,Snowornis subalaris,Cotingidae,True,True,False,False,False,False,False
 birdnet-v3:BN09374,Brileider,Somateria fischeri,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN09375,Eider,Somateria mollissima,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN09375,Eider,Somateria mollissima,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN09376,Koningseider,Somateria spectabilis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN09377,Dwergstekelstaart,Spartonoica maluroides,Furnariidae,True,True,False,False,False,False,False
 birdnet-v3:BN09378,Slobeend,Spatula clypeata,Anatidae,True,True,True,True,True,True,True

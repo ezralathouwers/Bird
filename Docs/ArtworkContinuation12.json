@@ -1,6 +1,6 @@
 {
-  "state": "coast-and-next20-complete",
-  "installedRoles": 133,
+  "state": "next10-seaducks-in-progress-no-background-worker",
+  "installedRoles": 143,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -216,6 +216,84 @@
       "referenceURL": "https://www.allaboutbirds.org/guide/Cackling_Goose/id",
       "sha256": "8da642d19c60a3ba568e304c604fdc1cd0421decac36035070cd0bca7f898ab7",
       "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN09375",
+      "name": "Eider",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider",
+      "sha256": "00295a6f9dda2c9431467b6dd77d49c06b9cfcd3ff7086e2b465c13722bacbec",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN05784",
+      "name": "Zwarte zee-eend",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend",
+      "sha256": "db826620f80bb99f3c362c2c1e4bab02afe4fe389786b61852f884e0882137ab",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN05783",
+      "name": "Grote zee-eend",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend",
+      "sha256": "adf3b2606985d7596a67f9ef65a1a73d7b90c5fa9f3a8379bbe6a1fa0f4f7f24",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN02331",
+      "name": "IJseend",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend",
+      "sha256": "189bb27aa74d6c638365a1c09a6904cf3a15e60a411c2d2e464996a439773713",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN01078",
+      "name": "Topper",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/topper",
+      "sha256": "bd1c1157ba5350060d7fbfca099b6d55b483497455b55b7918d7ea955bfd58ec",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN01080",
+      "name": "Witoogeend",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/witoogeend",
+      "sha256": "41899978fa5f100b7195bad450a8e83b4d93540754a2100d6903f2cab9468146",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN05906",
+      "name": "Grote zaagbek",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zaagbek",
+      "sha256": "c4d29348cf5dac3e3940a0be5c32787f003cbc063f5de27f614f24a622653eb2",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN05908",
+      "name": "Middelste zaagbek",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/middelste-zaagbek",
+      "sha256": "cbc3c6bc2b9e35b57c302900f70938300a1880a3b55d901fc8cc9285e06c6227",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN00532",
+      "name": "Indische gans",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/indische-gans",
+      "sha256": "c44912be4a58cdd3a9bffccada31e88e521fc2a9d732bead3bc543d858338bfe",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "id": "birdnet-v3:BN09875",
+      "name": "Casarca",
+      "url": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/casarca",
+      "sha256": "6d875688e5a3b6f4921a68933589b11fff9624c1502c4e2d11d1c0847bcdfb0f",
+      "usage": "Factual description review; no third-party media or prose copied into app."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/velvet-scoter",
+      "sha256": "d52ad512dbf6ceccfe35d1a473be48cc349704328398f8a3c03ede40786893cf"
+    },
+    {
+      "url": "https://www.oiseaux-birds.com/card-velvet-scoter.html",
+      "sha256": "9519d9d1adbc002780403b7da5ab5ff6ab047a4bfd837f27a20d035784672ef6"
     }
   ],
   "rows": [
@@ -2427,6 +2505,172 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-2596108e-c98b-4c87-b11d-785c983e1b74.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09375",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "4616cd52cdf5cfa06e9adb160fc01a33b44b437ab9bfb9f35fad42afdd903cac",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only adult male eider, single long olive wedge bill black crown green nape white back pink breast black belly, two folded wing attachments with far side occluded, two grey-green webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-6557bb45-2fd9-458b-8d93-0919228e5b80.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09375",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "bb4526ac9555cdc8ce5ead9891a49b8261e2811a6e9a25b6dc54ea6027fa79ba",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating male eider holding one mussel in single olive bill, black crown green nape pink breast black belly white back, two folded wings one webbed foot visible others submerged, bounded sea ripples full framing."
+      },
+      "sourceFile": "exec-61168a3e-25f3-4959-8212-04bd727e9666.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09375",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "a778737f92326f86dd133ba729a7451aecafdd3f358b3a3d0cbdaea2556d9e47",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male eider, one centered wedge bill two eyes black crown green nape edges pink breast black belly, two folded wing flanks and grey-green webbed feet, whole framing."
+      },
+      "sourceFile": "exec-346a19de-b1dd-4bb5-8545-18e1fbad0295.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09375",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8a09113773424ab8e1faaa74026bdba9d63c3ed75349db4ce9eb81df79635bc7",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male eider, bill/eyes hidden black crown green nape white back, two folded white/black wings short black tail and two grey-green webbed feet, whole framing."
+      },
+      "sourceFile": "exec-bee17db0-4e3d-469a-a1e0-ab4f2e47fdd4.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN09375",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/eider",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "d79647bca70010de193fe21b9d8b584cc091243134cc10dc946ecd41d761ba74",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male eider, single upward olive bill white throat pink breast black belly, two spread predominantly dark grey-black underwings white basal edges, no folded wing silhouettes, two grey-green trailing feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-8e033a55-5964-46ec-886d-b34a50d11cf0.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05784",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "1463628b47c9d0c0dda7d113b34d84b18d6a703bda3e13e1c99fdda9caa374f3",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male common scoter, one black bill yellow patch at top basal knob dark eye entirely dark body and pointed tail, two folded wing attachments far side occluded, two dark webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-22cf8a31-9323-44f6-87b8-9168084c0457.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05784",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "4b6017f7c6051ac5b1a739c9d3438c800b88ba49828e0aba6d9a46e3663046d3",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating common scoter preparing to dive, one black/yellow bill and dark eye, black body raised pointed tail two folded wings feet naturally submerged, bounded wavelets full framing."
+      },
+      "sourceFile": "exec-4e45e528-30e6-4a08-a260-03657f6e0d33.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05784",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ee8d40b4c8e2a7d0341bc4f2f39bb6bbf9617f8810aca41ea4678ac8f7f3c674",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male common scoter, one centered black bill yellow upper basal patch two dark eyes, black body two folded wing flanks and dark webbed feet, whole framing."
+      },
+      "sourceFile": "exec-433339e4-df8c-4037-9da1-94d3af2f7f7d.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05784",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e3b8507b3fcd57cee353fb6d806425ece6e5298ead9bfcef7da58e4cccad93ca",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male common scoter, bill/eyes hidden one black head black body two folded wings pointed tail and two dark webbed feet, whole framing."
+      },
+      "sourceFile": "exec-9716e1a0-3b67-42e6-bae0-8b0da1e6f352.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05784",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "6f3e921f796b845fe28f9f8949e1ffadbf7787c1043d65991e5599320b0859cd",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male common scoter, single upward dark bill with incorrect yellow tip removed, black neck/belly two dark underwings greyer primaries no white patches, two trailing dark feet pointed tail, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-53a0455b-16e3-4be9-8023-f26bc50742b7.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -2547,6 +2791,12 @@
       "sourceFile": "exec-f84f3b9a-54d2-4bcb-ad87-26dd6eaf07c2.png",
       "sha256": "8130fa3b652f1349a397efd37f2c0c05f66f9325aad38de22e7452fcd874a552",
       "reason": "Front-only white loral spots incorrectly visible from rear; corrected before installation.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-a0ef529f-dc6a-4bfc-a5cd-a55114e7da0f.png",
+      "sha256": "b57dfd1c1601a238990bcbe22ae275aca1426d7c0cee6a4853f7b18e01666982",
+      "reason": "Yellow drawn at ventral bill tip instead of hidden dorsal basal patch; corrected.",
       "state": "excluded-corrected-original-used"
     }
   ],
@@ -2812,5 +3062,69 @@
       ]
     }
   ],
-  "remainingCoastRoles": 0
+  "remainingCoastRoles": 0,
+  "additionalSpecies14": [
+    {
+      "id": "birdnet-v3:BN09375",
+      "name": "Eider",
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
+    },
+    {
+      "id": "birdnet-v3:BN05784",
+      "name": "Zwarte zee-eend",
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
+    },
+    {
+      "id": "birdnet-v3:BN05783",
+      "name": "Grote zee-eend",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN02331",
+      "name": "IJseend",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN01078",
+      "name": "Topper",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN01080",
+      "name": "Witoogeend",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN05906",
+      "name": "Grote zaagbek",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN05908",
+      "name": "Middelste zaagbek",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN00532",
+      "name": "Indische gans",
+      "installedRoles": []
+    },
+    {
+      "id": "birdnet-v3:BN09875",
+      "name": "Casarca",
+      "installedRoles": []
+    }
+  ]
 }
