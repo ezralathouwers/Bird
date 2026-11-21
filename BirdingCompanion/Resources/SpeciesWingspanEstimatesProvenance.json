@@ -1,0 +1,27 @@
+{
+  "version": "wingspan-estimates-2026-11-21",
+  "authorized": "User explicitly allowed estimated wingspans on 21 November 2026",
+  "records": 7915,
+  "sha256": "a247b8b017bde1317d1cc4bfba31c70c55d8a2c0b6eb093baba13416ef3b9ff0",
+  "sources": [
+    {
+      "name": "Wingsearch numerical standard-card values",
+      "url": "https://navarog.github.io/wingsearch/",
+      "gitTreeSHA": "43e5036de9e68fa9c4fabaf4c760412a887adf05",
+      "sha256": "64f22ae0c2e69e07983e6580c7f9f400b7361f05c53c9a202412afc9f841c6b9",
+      "numericStandardCards": 695,
+      "snapshotURL": "https://raw.githubusercontent.com/navarog/wingsearch/43e5036de9e68fa9c4fabaf4c760412a887adf05/src/assets/data/master.json",
+      "standardCards": 707,
+      "miniatureHummingbirdCardsExcluded": 40,
+      "rules": "https://wingspan.rulepop.com/#wingspan",
+      "policy": "All game values treated as estimates. No game code, art, powers or flavor text are distributed."
+    },
+    {
+      "name": "Fox, Brunton & Shephard (2026), selected model point",
+      "url": "https://doi.org/10.6084/m9.figshare.32089083.v1",
+      "sha256": "6b55747a5761c08356d92c7a0b524b4e586c28a25316b0a6c1de3738db1d8eda",
+      "license": "CC BY 4.0",
+      "policy": "Exact unique Avibase concept; selected order/global midpoint only. No model min/max range used."
+    }
+  ]
+}

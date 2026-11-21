@@ -20,9 +20,9 @@ bird species. Figshare v1. https://doi.org/10.6084/m9.figshare.32089083.v1
 CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
 The empirical columns compile BirdWingData (Shiomi et al., 2025), HANZAB
 (BirdLife Australia, 2023), and Birds of the World (Cornell Lab, 2026).
-Changes: only empirical rows imported; Avibase concept ID matching to app
+Changes for SpeciesDetails.json: only empirical rows imported; Avibase concept ID matching to app
 catalog; reported range or midpoint retained in centimetres; display rounded
-to at most one decimal. No predicted wingspans are imported.
+to at most one decimal. Estimated fallbacks are separately described below.
 
 Kingfisher pilot value independently checked against Vogelbescherming Nederland:
 https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijsvogel
@@ -81,3 +81,26 @@ Oiseaux-Birds, Nicole Bouglouan (1). Only factual measurements and scientific
 identities are used, without copied guide prose, photos or illustrations. URLs,
 HTML hashes and field captions are retained per record. Values remain specific
 to the cited publication and may differ from other population/sex measurements.
+
+Estimated fallbacks, authorized 21 November 2026:
+SpeciesWingspanEstimates.json contains 225 numerical Wingspan game-card values
+and 7,690 Fox et al. model point estimates, used only where reported data is
+absent. Both are explicitly classified as estimates in the data/source sheet.
+Reported values retain priority. All estimates are single points, not measured
+minimum/maximum ranges.
+
+Wingspan: Elizabeth Hargrave / Stonemaier Games. Numerical card data digitized
+through navarog/wingsearch (original card spreadsheet compiled by tawnyfrogmouth).
+https://github.com/navarog/wingsearch
+https://wingspan.rulepop.com/#wingspan
+Only factual species names, numeric card values and IDs are used. No game
+software, powers, flavor text or artwork is bundled; game software is not an app
+dependency. The source does not label estimates per card, so all card values are
+treated as estimates. Non-numeric wildcards and hummingbird game zeroes are not
+biological measurements and are excluded.
+
+Fox model estimates use the existing Figshare v1 source, CC BY 4.0, exact unique
+Avibase concept IDs, and the selected order/global predicted midpoint column in
+centimetres. No model-derived bounds are presented as observed span ranges.
+Immutable source hashes, model selection, card IDs and original source names
+are retained in SpeciesWingspanEstimatesProvenance / WingspanEstimateEvidence.

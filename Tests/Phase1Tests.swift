@@ -1033,7 +1033,7 @@ final class SpeciesDetailsTests: XCTestCase {
         let single = SpeciesWingspan(minimumCM: 25, maximumCM: 25, method: "reported", sourceScientificName: "Alcedo atthis", sourceURL: URL(string: "https://example.org")!)
         XCTAssertEqual(single.displayValue, "25 cm")
     }
-    func testPredictedAndInvalidWingspansAreRejected() {
+    func testUnknownMethodAndInvalidWingspansAreRejected() {
         for span in [SpeciesWingspan(minimumCM: 26, maximumCM: 24, method: "reported", sourceScientificName: "Test", sourceURL: URL(string: "https://example.org")!),
                      SpeciesWingspan(minimumCM: 24, maximumCM: 26, method: "predicted", sourceScientificName: "Test", sourceURL: URL(string: "https://example.org")!)] {
             XCTAssertFalse(span.isValid)
@@ -1050,10 +1050,27 @@ final class SpeciesDetailsTests: XCTestCase {
         let rows = SpeciesGuideCatalog.species.compactMap { SpeciesDetailsCatalog.details(for: $0.id) }
         XCTAssertEqual(rows.count, 11173)
         XCTAssertEqual(rows.filter { $0.bio != nil }.count, 11154)
-        XCTAssertEqual(rows.filter { $0.wingspan != nil }.count, 1881)
+        XCTAssertNil(SpeciesWingspanEstimatesCatalog.loadError)
+        XCTAssertEqual(rows.filter { $0.wingspan != nil && $0.wingspan?.isEstimated == false }.count, 1881)
+        XCTAssertEqual(rows.filter { $0.wingspan?.isEstimated == true }.count, 7915)
+        XCTAssertEqual(rows.filter { $0.wingspan != nil }.count, 9796)
         XCTAssertTrue(rows.contains { $0.bio == nil })
         XCTAssertEqual(SpeciesDetailsCatalog.details(for: "sample-alcedo-atthis")?.wingspan?.displayValue, "24–26 cm")
         XCTAssertNil(SpeciesDetailsCatalog.details(for: "not-a-species"))
+    }
+    func testEstimatedFallbackKeepsReportedPrecedenceAndFormatting() {
+        let estimate = SpeciesWingspan(minimumCM: 42, maximumCM: 42, method: "estimated-wingspan-game", sourceScientificName: "Example bird", sourceURL: URL(string: "https://navarog.github.io/wingsearch/")!)
+        XCTAssertTrue(estimate.isValid)
+        XCTAssertTrue(estimate.isEstimated)
+        XCTAssertEqual(estimate.displayValue, "42 cm")
+        let reported = SpeciesWingspan(minimumCM: 24, maximumCM: 26, method: "reported", sourceScientificName: "Example bird", sourceURL: URL(string: "https://example.org")!)
+        let details = SpeciesDetails(speciesID: "id", scientificName: "Example bird", bio: nil, bioMethod: nil, bioSourceURLs: [], wingspan: reported)
+        XCTAssertEqual(details.addingFallbackWingspan(estimate).wingspan?.displayValue, "24–26 cm")
+        let empty = SpeciesDetails(speciesID: "id", scientificName: "Example bird", bio: nil, bioMethod: nil, bioSourceURLs: [], wingspan: nil)
+        XCTAssertEqual(empty.addingFallbackWingspan(estimate).wingspan?.displayValue, "42 cm")
+        let invalidRange = SpeciesWingspan(minimumCM: 40, maximumCM: 44, method: "estimated-fox-model", sourceScientificName: "Example bird", sourceURL: URL(string: "https://doi.org/10.6084/m9.figshare.32089083.v1")!)
+        XCTAssertFalse(invalidRange.isValid)
+        XCTAssertNil(empty.addingFallbackWingspan(invalidRange).wingspan)
     }
 }
 

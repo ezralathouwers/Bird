@@ -75,6 +75,14 @@ def main():
     provenance_path.write_text(json.dumps(provenance, indent=2) + '\n')
     summary = {'records': len(rows), 'bios': sum(r['bio'] is not None for r in rows), 'bioMethods': dict(collections.Counter(r['bioMethod'] for r in rows if r['bioMethod'])), 'wingspans': sum(r['wingspan'] is not None for r in rows), 'predictedWingspansImported': 0, 'missingBios': [r['speciesID'] for r in rows if r['bio'] is None], 'missingWingspans': [r['speciesID'] for r in rows if r['wingspan'] is None]}
     (ROOT / 'Docs/SpeciesDetailsCoverage.json').write_text(json.dumps(summary, indent=2) + '\n')
+    estimates_path = RES / 'SpeciesWingspanEstimates.json'
+    estimates_provenance = RES / 'SpeciesWingspanEstimatesProvenance.json'
+    if estimates_path.exists() and estimates_provenance.exists():
+        from build_wingspan_estimates import effective_coverage
+        if hashlib.sha256(estimates_path.read_bytes()).hexdigest() != json.loads(estimates_provenance.read_text())['sha256']:
+            raise ValueError('Estimate hash mismatch; reported data preserved, fallback coverage not refreshed')
+        coverage = effective_coverage(rows, json.loads(estimates_path.read_text()))
+        (ROOT / 'Docs/SpeciesWingspanCoverage.json').write_text(json.dumps(coverage, indent=2) + '\n')
     print({k: v for k, v in summary.items() if not k.startswith('missing')})
 
 if __name__ == '__main__':

@@ -4,6 +4,12 @@ Imported 20 November 2026 for all 11,173 addressable catalog records. Coverage i
 **11,154 Dutch bios** and **1,881 reported wingspans**, not complete numeric data
 for every bird. `SpeciesDetailsCoverage.json` records both missing-ID lists.
 
+After the user's authorization to use estimates, the app also has 7,915 separate
+estimated fallbacks. Combined display coverage is **9,796 / 11,173 (87.7%)**;
+1,377 remain missing. The reported dataset and its research inventory retain
+their meaning. See [WINGSPAN_ESTIMATES.md](WINGSPAN_ESTIMATES.md) for source
+priority, Wingspan card data, scientific model points and exact coverage.
+
 ## Additions — 21 November 2026
 
 24 previously missing biographies now have short sourced Dutch summaries:
@@ -224,7 +230,7 @@ Run `python Scripts/collect_vogelbescherming_spans.py` to collect new candidate
 facts into /tmp/span_supplements.json without changing the app. Its parser skips
 failed pages, ambiguous names and non-range captions; this is not a complete
 audit of every source page. The 2026-11-21 pass checked all 345 guide links.
-The current 28 portable importer/supplement/parser safety tests pass with
+The current 35 portable importer/supplement/parser safety tests pass with
 `PYTHONPATH=/workspace/work/validation-deps python -m unittest discover -s Scripts -p 'test_species_details*.py'`.
 All 11,173 identities, preservation of existing values, bundled SHA-256 and
 repeat-import idempotence were checked; 36 Swift syntax trees parsed and
