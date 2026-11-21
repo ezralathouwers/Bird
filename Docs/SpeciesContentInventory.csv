@@ -1824,7 +1824,7 @@ birdnet-v3:BN01794,Zwarte waaierstaart,Cercotrichas podobe,Muscicapidae,True,Tru
 birdnet-v3:BN01795,Hoendergans,Cereopsis novaehollandiae,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01796,Neushoornalk,Cerorhinca monocerata,Alcidae,True,True,False,False,False,False,False
 birdnet-v3:BN01797,Amerikaanse boomkruiper,Certhia americana,Certhiidae,True,True,False,False,False,False,False
-birdnet-v3:BN01798,Boomkruiper,Certhia brachydactyla,Certhiidae,True,True,False,False,False,False,False
+birdnet-v3:BN01798,Boomkruiper,Certhia brachydactyla,Certhiidae,True,True,True,True,True,True,True
 birdnet-v3:BN01799,Bruinkeelboomkruiper,Certhia discolor,Certhiidae,True,True,False,False,False,False,False
 birdnet-v3:BN01800,Taigaboomkruiper,Certhia familiaris,Certhiidae,True,True,False,False,False,False,False
 birdnet-v3:BN01801,Himalayaboomkruiper,Certhia himalayana,Certhiidae,True,True,False,False,False,False,False
@@ -9468,7 +9468,7 @@ birdnet-v3:BN09335,Witborstboomklever,Sitta carolinensis,Sittidae,True,True,Fals
 birdnet-v3:BN09336,Kasjmirboomklever,Sitta cashmirensis,Sittidae,True,True,False,False,False,False,False
 birdnet-v3:BN09337,Bruine boomklever,Sitta castanea,Sittidae,True,True,False,False,False,False,False
 birdnet-v3:BN09338,Kaneelbuikboomklever,Sitta cinnamoventris,Sittidae,True,True,False,False,False,False,False
-birdnet-v3:BN09339,Boomklever,Sitta europaea,Sittidae,True,True,False,False,False,False,False
+birdnet-v3:BN09339,Boomklever,Sitta europaea,Sittidae,True,True,True,True,True,True,True
 birdnet-v3:BN09340,Prachtboomklever,Sitta formosa,Sittidae,True,True,False,False,False,False,False
 birdnet-v3:BN09341,Pluchekapboomklever,Sitta frontalis,Sittidae,True,True,False,False,False,False,False
 birdnet-v3:BN09342,Witstaartboomklever,Sitta himalayensis,Sittidae,True,True,False,False,False,False,False

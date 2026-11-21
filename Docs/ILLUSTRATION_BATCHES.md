@@ -116,3 +116,29 @@ flight images now show a centered underside, head up, tail down and both wings
 extended left/right. The fourth slide and asset names remain unchanged. No other
 roles were replaced. See FLIGHT_ILLUSTRATION_STANDARD.md for the permanent future
 generation/import rule and retained prior-version provenance.
+
+## Woodland 05 — 21 November 2026
+
+Boomklever (Sitta europaea, birdnet-v3:BN09339) and boomkruiper
+(Certhia brachydactyla, birdnet-v3:BN01798) each receive all five roles.
+Classic portraits face right; dynamic compositions show headfirst descent and
+upward bark climbing respectively. Both flight illustrations use the centered
+ventral projection. Front/rear views remain separate originals. Main markings,
+framing and poses were visually reviewed against Vogelbescherming species
+descriptions; independent anatomical and native rendering review remain pending.
+
+Ten original transparent PNGs are copied unchanged, with source SHA-256 values
+and references recorded in ArtworkManifest.json. The importer accepts square
+originals of at least 1024 pixels per side as well as wide flight originals;
+it never upscales them. Coverage is now 11 complete species and 55 role assets.
+
+Scripts/illustration_production_queue.py inventories all 11,173 catalog records
+by habitat in Docs/IllustrationProductionQueue.csv and .json. It records missing
+roles and prioritizes habitat batches; it does not run generation in the
+background. Remaining work: 11,162 species and 55,810 illustrations. Refresh the
+queue and species content inventory after each batch.
+
+Verification: import preflight, PNG decoding/transparency, unmodified source
+hashes, unique catalog/asset IDs, five roles per new species, full queue coverage
+and git diff --check. Xcode is unavailable: native image loading, carousel
+layout, transparency against ivory and device performance remain unverified.
