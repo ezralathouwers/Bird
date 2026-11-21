@@ -104,7 +104,7 @@ actor BirdNETCoreMLService: StreamingSoundIdentificationService {
         let audio = try MLMultiArray(shape: inputShape, dataType: inputType)
         for (index, sample) in samples.enumerated() { audio[index] = NSNumber(value: sample) }
         let provider = try MLDictionaryFeatureProvider(dictionary: [inputName: MLFeatureValue(multiArray: audio)])
-        let result = try model.prediction(from: provider)
+        let result = try await model.prediction(from: provider)
         try Task.checkCancellation()
         guard let scores = result.featureValue(for: outputName)?.multiArrayValue, scores.count == classCount else { throw BirdNETRuntimeError.invalidModel }
         return IdentificationCandidate.ranked(labels.compactMap { label in

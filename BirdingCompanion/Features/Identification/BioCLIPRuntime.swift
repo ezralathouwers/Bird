@@ -60,7 +60,8 @@ actor BioCLIPPhotoService: PhotoIdentificationService {
         try Task.checkCancellation()
         guard let model else { throw PhotoRuntimeError.schema }
         let pixels = try Self.pixels(photo)
-        let result = try model.prediction(from: MLDictionaryFeatureProvider(dictionary: ["pixels": MLFeatureValue(multiArray: pixels)]))
+        let result = try await model.prediction(from: MLDictionaryFeatureProvider(dictionary: ["pixels": MLFeatureValue(multiArray: pixels)]))
+        try Task.checkCancellation()
         guard let output = result.featureValue(for: "embedding")?.multiArrayValue, output.count == 768,
               let embedding = PhotoSimilarity.normalized((0..<768).map { output[$0].floatValue }) else { throw PhotoRuntimeError.schema }
         var scores: [(String?, Float)] = []
@@ -112,8 +113,9 @@ actor BioCLIPPhotoService: PhotoIdentificationService {
             defer { try? FileManager.default.removeItem(at: scratch) }
             try FileManager.default.unzipItem(at: archive, to: scratch)
             let package = scratch.appendingPathComponent("bioclip2_image.mlpackage", isDirectory: true)
-            let temporary = try MLModel.compileModel(at: package)
+            let temporary = try await MLModel.compileModel(at: package)
             defer { try? FileManager.default.removeItem(at: temporary) }
+            try Task.checkCancellation()
             if FileManager.default.fileExists(atPath: compiled.path) { try FileManager.default.removeItem(at: compiled) }
             try FileManager.default.moveItem(at: temporary, to: compiled)
             try config.modelSHA256.write(to: marker, atomically: true, encoding: .utf8)
