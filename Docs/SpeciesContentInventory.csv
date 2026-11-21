@@ -8052,7 +8052,7 @@ birdnet-v3:BN07943,Fuut,Podiceps cristatus,Podicipedidae,True,True,True,True,Tru
 birdnet-v3:BN07944,Patagonische fuut,Podiceps gallardoi,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN07945,Roodhalsfuut,Podiceps grisegena,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN07946,Grote fuut,Podiceps major,Podicipedidae,True,True,False,False,False,False,False
-birdnet-v3:BN07947,Geoorde fuut,Podiceps nigricollis,Podicipedidae,True,True,False,False,False,False,False
+birdnet-v3:BN07947,Geoorde fuut,Podiceps nigricollis,Podicipedidae,True,True,True,True,True,True,True
 birdnet-v3:BN07948,Zilverfuut,Podiceps occipitalis,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN07949,Punafuut,Podiceps taczanowskii,Podicipedidae,True,True,False,False,False,False,False
 avilist:5b2c899d,Atitlan Grebe,Podilymbus gigas,Podicipedidae,True,False,False,False,False,False,False
@@ -9954,7 +9954,7 @@ birdnet-v3:BN09821,Ornaattachuri,Tachuris rubrigastra,Tyrannidae,True,True,False
 birdnet-v3:BN09822,Amerikaanse dodaars,Tachybaptus dominicus,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN09823,Australische dodaars,Tachybaptus novaehollandiae,Podicipedidae,True,True,False,False,False,False,False
 birdnet-v3:BN09824,Madagaskardodaars,Tachybaptus pelzelnii,Podicipedidae,True,True,False,False,False,False,False
-birdnet-v3:BN09825,Dodaars,Tachybaptus ruficollis,Podicipedidae,True,True,False,False,False,False,False
+birdnet-v3:BN09825,Dodaars,Tachybaptus ruficollis,Podicipedidae,True,True,True,True,True,True,True
 avilist:16e62dc4,Alaotra Grebe,Tachybaptus rufolavatus,Podicipedidae,True,False,False,False,False,False,False
 birdnet-v3:BN09826,Mangrovezwaluw,Tachycineta albilinea,Hirundinidae,True,True,False,False,False,False,False
 birdnet-v3:BN09827,Witbuikzwaluw,Tachycineta albiventer,Hirundinidae,True,True,False,False,False,False,False

@@ -10045,7 +10045,7 @@ birdnet-v3:BN06553,Nettapus coromandelianus,Coromandeleend,wetland-general,Wetla
 birdnet-v3:BN02682,Coscoroba coscoroba,Coscoroba,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07950,Podilymbus podiceps,Dikbekfuut,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09492,Sporophila crassirostris,Dikbekzaadkraker,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN09825,Tachybaptus ruficollis,Dodaars,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN09825,Tachybaptus ruficollis,Dodaars,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN08274,Pseudocolopteryx dinelliana,Driebanddoradito,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10098,Thinornis tricollaris,Driebandplevier,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05409,Lonchura malacca,Driekleurennon,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10091,7 +10091,7 @@ birdnet-v3:BN00811,Ardea brachyrhyncha,Geelsnavelzilverreiger,wetland-general,We
 birdnet-v3:BN08277,Pseudoleistes guirahuro,Geelstuitwatertroepiaal,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02701,Coturnicops noveboracensis,Gele ral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05400,Lonchura flaviprymna,Gele rietvink,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN07947,Podiceps nigricollis,Geoorde fuut,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN07947,Podiceps nigricollis,Geoorde fuut,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN00851,Argya earlei,Gestreepte babbelaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01332,Butorides striata,Gestreepte reiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01416,Calidris melanotos,Gestreepte strandloper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

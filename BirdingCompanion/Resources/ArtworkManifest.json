@@ -9844,5 +9844,321 @@
       "poseAndFraming": true,
       "notes": "Centered ventral flight, two shoulder-attached open wings only, single upward black yellow-tipped bill, pale underwings and white forked tail, black trailing feet, full framing."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09825",
+    "asset": "birdnet-v3-BN09825-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-f2a6b23e-f2e0-4d97-9d52-54de18120ccd.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "0a6958afc017c5a8f18a22af24ba651386392f2811f82976a52f4f521bd4c706",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/dodaars"
+    ],
+    "anatomyReview": {
+      "sha256": "0a6958afc017c5a8f18a22af24ba651386392f2811f82976a52f4f521bd4c706",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only grebe, single head and dark bill with yellow gape, chestnut neck and cheek, two folded wing attachments with far wing occluded, two grey legs and lobed toes, complete framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN09825",
+    "asset": "birdnet-v3-BN09825-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-e1d4f410-866a-4b70-ab01-9d69997f7053.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "775c86d0cc164082b8e351c083c7cd766535aabb2b21b84ee7a1beadc549b15d",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/dodaars"
+    ],
+    "anatomyReview": {
+      "sha256": "775c86d0cc164082b8e351c083c7cd766535aabb2b21b84ee7a1beadc549b15d",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front grebe, one centered bill, two eyes and paired gape patches, two folded wing flanks, two grey legs and individually lobed toes, full framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09825",
+    "asset": "birdnet-v3-BN09825-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-0ce5548e-3c30-4abc-8bf8-55918ebecfdf.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "507eebd4208b6ca6a5775c6dbbe0248bb99d0507ef86b50ecc378287da113566",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/dodaars"
+    ],
+    "anatomyReview": {
+      "sha256": "507eebd4208b6ca6a5775c6dbbe0248bb99d0507ef86b50ecc378287da113566",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear grebe, bill and eyes hidden, two brown folded wings, fluffy pale rump and short tail, two grey legs with lobed toes, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09825",
+    "asset": "birdnet-v3-BN09825-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-ec015e6f-64fd-4e8b-9163-3aee88c436ac.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "4e8da335ab6d98b17184771412fa83ba5de494e2ec3819a556d79a6fe63df721",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/dodaars"
+    ],
+    "anatomyReview": {
+      "sha256": "4e8da335ab6d98b17184771412fa83ba5de494e2ec3819a556d79a6fe63df721",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing floating grebe with one bill holding insect, two folded wing attachments with far wing occluded, yellow gape and chestnut neck, legs naturally submerged, bounded ripples and complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07947",
+    "asset": "birdnet-v3-BN07947-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-0efefa3f-155d-4938-ae13-2c6ebca851bf.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "9cdca4a80e0d70f3f25d1c6fc0cb6eb76321fd07ef1f503ab9913a00534d3650",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/geoorde-fuut"
+    ],
+    "anatomyReview": {
+      "sha256": "9cdca4a80e0d70f3f25d1c6fc0cb6eb76321fd07ef1f503ab9913a00534d3650",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only, single dark bill and red eye, golden ear fan black neck chestnut flanks white belly, near folded wing and occluded far wing, two grey feet with lobed toes, complete framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN07947",
+    "asset": "birdnet-v3-BN07947-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-9ab656ec-3ec6-4027-a592-f37f4292aa60.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "642e83fab604c15d787233eea520f384857281c8fd7a83c9a10f1c24f8ec3d9b",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/geoorde-fuut"
+    ],
+    "anatomyReview": {
+      "sha256": "642e83fab604c15d787233eea520f384857281c8fd7a83c9a10f1c24f8ec3d9b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing display posture, single head/bill and red eye, golden ear fan, two folded wing attachments with far wing occluded, feet naturally submerged, bounded ripples and whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07947",
+    "asset": "birdnet-v3-BN07947-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-461fe909-ce4c-4369-9a36-c7a43e48b2ac.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "a4c93b7e13ee2af4d1f3310d4cdad4bc83d58249059bbb42e4030693ecb491c2",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/geoorde-fuut"
+    ],
+    "anatomyReview": {
+      "sha256": "a4c93b7e13ee2af4d1f3310d4cdad4bc83d58249059bbb42e4030693ecb491c2",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front, one centered bill and two red eyes, paired golden ear plumes, two folded wing flanks, white belly chestnut flanks, two grey feet with lobed toes, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09825",
+    "asset": "birdnet-v3-BN09825-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-28bd1b2a-83fd-4b76-824e-f31d0d2a270a.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "476ef96daf633f354ff8bd75dd7d086dc31612931a7a53c3f1d411f026d2e938",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/dodaars"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "476ef96daf633f354ff8bd75dd7d086dc31612931a7a53c3f1d411f026d2e938",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Corrected centered ventral spread, pale silvery abdomen and brown-grey upper breast chestnut throat, one upward dark bill and yellow gape, two shoulder-attached open wings without folded silhouettes, two trailing lobed feet, full framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07947",
+    "asset": "birdnet-v3-BN07947-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-98b9c698-79f5-41ba-8ca5-3ce2551bebe5.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "fe5a208e842ffb2de1835f7ed926a8c32c0f913c0c37af98581042d2856c3b8d",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/geoorde-fuut"
+    ],
+    "anatomyReview": {
+      "sha256": "fe5a208e842ffb2de1835f7ed926a8c32c0f913c0c37af98581042d2856c3b8d",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Corrected straight rear, very short inconspicuous tail within rounded rump, two folded wings, bill and eyes hidden, golden ear plumes, two grey lobed feet, full framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07947",
+    "asset": "birdnet-v3-BN07947-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-e9ceb0b7-bdc5-40a3-9679-e54972cd9722.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "93f5f7b445d95030f76af672a3a8fc41c3f494f91bbccdc4d488c045b25e0001",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "waterbirds-13A",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/geoorde-fuut"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "93f5f7b445d95030f76af672a3a8fc41c3f494f91bbccdc4d488c045b25e0001",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Corrected centered ventral spread, two shoulder-attached open wings without folded silhouettes, single upward bill, black neck golden ear plumes red eyes, white belly and chestnut flanks, grey lobed feet and clean transparent framing."
+    }
   }
 ]

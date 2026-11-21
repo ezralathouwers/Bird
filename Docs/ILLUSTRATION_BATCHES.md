@@ -1,5 +1,23 @@
 # Illustration batches
 
+## New waterbirds 13A — 21 November 2026
+
+Ten accepted originals complete dodaars and geoorde fuut, the first two of
+this continuation's twenty new waterbirds. Classic portraits show only the
+right-facing bird, dynamic scenes show bounded pond ripples, and flight views
+are centered ventral spreads. Individual full-image checks include lobed grebe
+toes, two wing attachments, single head/bill and hidden bills in rear views.
+The little-grebe flight underside was corrected to a paler abdomen; the
+black-necked-grebe rear tail was shortened and flight haze removed. Rejected
+attempts remain excluded and their hashes/reasons are recorded.
+
+PNG decoding, transparency/dimensions, original byte/hash equality, review
+bindings, unchanged previous records and both inventories pass. Coverage is
+320 roles and 64 complete species. Source-description provenance retains URLs
+and hashes without copying third-party prose into the repository. Native
+loading, thumbnail/slide scaling and expert/user review still require Xcode.
+
+
 ## Coast continuation 12F — 21 November 2026
 
 Ten reviewed originals complete visdief and grote stern, including distinct
