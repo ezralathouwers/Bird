@@ -1,7 +1,7 @@
 {
   "version": "species-details-2026-11-20",
   "records": 11173,
-  "sha256": "ee1977474f22a14c5ed6debdd5b323ad88d576b7060bb9e37b9ce2692009969c",
+  "sha256": "250051cc21f4509ae69c8bc7b2bac95c6bc782de6f784115f544e1c91f4decae",
   "license": "CC BY-SA 4.0 adapted catalog and Wikipedia excerpts; BIRDBASE and Fox source data CC BY 4.0",
   "sources": [
     {
@@ -23,5 +23,5 @@
       "license": "CC BY 4.0"
     }
   ],
-  "supplementsSHA256": "54bea05b9b3a9e2f58d72dfc5bc3f2074c97053796f0399ecc35f9e604a14fff"
+  "supplementsSHA256": "b81d9015d23f2846eac09074f839c9678aac942f7945afdf941006d9e9588c68"
 }

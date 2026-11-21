@@ -1,0 +1,2395 @@
+{
+  "checked": "2026-11-21",
+  "snapshotSHA256": "433f0d19aabdd5c67a26501d05b8826ad23af4c33149771b5d908c7efa7e4fd1",
+  "accepted": 177,
+  "deferred": 55,
+  "note": "Manual review of source wording, dimensions, unit plausibility and competing language ranges. Accepted facts remain source-reported values, not independently measured or expert-validated. No LLM descriptions, estimated spans, wing-chord substitutions or existing-value overwrites.",
+  "species": [
+    {
+      "speciesID": "birdnet-v3:BN00049",
+      "scientificName": "Acrocephalus agricola",
+      "decision": "imported",
+      "minimumCM": 15.0,
+      "maximumCM": 17.5,
+      "sourceURL": "https://en.wikipedia.org/wiki/Paddyfield_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00067",
+      "scientificName": "Acrocephalus orientalis",
+      "decision": "imported",
+      "minimumCM": 23.0,
+      "maximumCM": 26.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Oriental_reed_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00128",
+      "scientificName": "Aegotheles albertisi",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN00144",
+      "scientificName": "Aerodramus elaphrus",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN00290",
+      "scientificName": "Alectoris graeca",
+      "decision": "imported",
+      "minimumCM": 50.0,
+      "maximumCM": 55.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Alectoris_graeca"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00294",
+      "scientificName": "Alectoris rufa",
+      "decision": "imported",
+      "minimumCM": 45.0,
+      "maximumCM": 50.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Perdrix_rouge"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00393",
+      "scientificName": "Ammoperdix heyi",
+      "decision": "imported",
+      "minimumCM": 39.0,
+      "maximumCM": 41.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Ammoperdix_heyi"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00397",
+      "scientificName": "Ammospiza nelsoni",
+      "decision": "imported",
+      "minimumCM": 16.5,
+      "maximumCM": 20.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Nelson's_sparrow"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00503",
+      "scientificName": "Anhinga melanogaster",
+      "decision": "imported",
+      "minimumCM": 116.0,
+      "maximumCM": 128.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Orient-Schlangenhalsvogel"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00613",
+      "scientificName": "Anthus petrosus",
+      "decision": "imported",
+      "minimumCM": 23.0,
+      "maximumCM": 28.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Strandpieper"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00628",
+      "scientificName": "Antigone canadensis",
+      "decision": "deferred",
+      "reason": "Other inconsistent morphology/units in context; require an independent check before importing.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN00628",
+          "scientificName": "Antigone canadensis",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Grue_du_Canada",
+          "minimumCM": 200.0,
+          "maximumCM": 250.0,
+          "measurementPhrase": "envergure de 2 à 2,5 m",
+          "context": "lure. Comme les autres hérons, il vole avec le cou rentré dans le corps. À l'âge adulte, elle a une envergure de 2 à 2,5 m ce qui en fait un oiseau capable de planer comme les faucons et les aigles. Utilisant les thermiques comme ascenseur, elles peuvent rester en l'air p"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN00682",
+      "scientificName": "Aphelocephala pectoralis",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN00726",
+      "scientificName": "Apus affinis",
+      "decision": "imported",
+      "minimumCM": 32.0,
+      "maximumCM": 34.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Apus_affinis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00740",
+      "scientificName": "Aquila adalberti",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN00740",
+          "scientificName": "Aquila adalberti",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Iberienadler",
+          "minimumCM": 190.0,
+          "maximumCM": 220.0,
+          "measurementPhrase": "spannweite von 1,9 bis 2,2 m",
+          "context": "kologisch und genetisch vom Kaiseradler unterscheidet. Er erreicht eine Länge von 80 cm, eine Flügelspannweite von 1,9 bis 2,2 m und ein Gewicht von 2,8 bis 3,5 kg. Damit ist er kleiner als sein östlicher Verwandter. Das Gefieder ist überwiegend dunkelbraun gefärbt. Nacken und "
+        },
+        {
+          "speciesID": "birdnet-v3:BN00740",
+          "scientificName": "Aquila adalberti",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Aquila_adalberti",
+          "minimumCM": 177.0,
+          "maximumCM": 220.0,
+          "measurementPhrase": "apertura alare è di 177–220 cm",
+          "context": "ffuso in Spagna, Portogallo e Marocco.\n\nMisura 74–85 cm di lunghezza, per un peso di 2500-3500 g; l'apertura alare è di 177–220 cm. Le femmine possono essere anche il 10% più grandi e il 40% più pesanti dei maschi.\n\nL'aquila imperiale iberica è uno dei più rari uccelli rapaci del"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN00818",
+      "scientificName": "Ardea ibis",
+      "decision": "deferred",
+      "reason": "Source may predate a split or use a broader species concept; resolve scope first.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN00818",
+          "scientificName": "Ardea ibis",
+          "language": "es",
+          "sourceURL": "https://es.wikipedia.org/wiki/Ardea_ibis",
+          "minimumCM": 88.0,
+          "maximumCM": 96.0,
+          "measurementPhrase": "envergadura alar va de 88-96 cm",
+          "context": "jadas en cabeza y cuello en temporada de cría. Mide de 46-56 cm de largo, pesa entre 270-512 g y su envergadura alar va de 88-96 cm. Pico, cuello y patas largas. Ojos y pico normalmente amarillos; patas generalmente grises. Esta garza ha protagonizado la expansión natural más ampl"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN00852",
+      "scientificName": "Argya fulva",
+      "decision": "imported",
+      "minimumCM": 27.0,
+      "maximumCM": 30.5,
+      "sourceURL": "https://en.wikipedia.org/wiki/Fulvous_babbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00859",
+      "scientificName": "Argya squamiceps",
+      "decision": "imported",
+      "minimumCM": 31.0,
+      "maximumCM": 33.5,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Crat%C3%A9rope_%C3%A9caill%C3%A9"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00934",
+      "scientificName": "Asio solomonensis",
+      "decision": "imported",
+      "minimumCM": 70.0,
+      "maximumCM": 75.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Salomoneneule"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00972",
+      "scientificName": "Astur bicolor",
+      "decision": "imported",
+      "minimumCM": 58.0,
+      "maximumCM": 83.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Astur_bicolor"
+    },
+    {
+      "speciesID": "birdnet-v3:BN00973",
+      "scientificName": "Astur chilensis",
+      "decision": "imported",
+      "minimumCM": 59.0,
+      "maximumCM": 85.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Astur_chilensis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01071",
+      "scientificName": "Aythya americana",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN01071",
+          "scientificName": "Aythya americana",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Redhead_(bird)",
+          "minimumCM": 74.0,
+          "maximumCM": 84.0,
+          "measurementPhrase": "74–84 cm (29–33 in) wingspan",
+          "context": "ius and Aristotle, and Latin americana, of America. The redhead is 40–56 cm (16–22 in) long with an 74–84 cm (29–33 in) wingspan; the weight ranges from 1,030–1,080 g (36–38 oz), with males weighing an average of 1,080 g (38 oz) and females an average of 1,030 g (36 oz). It bel"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01071",
+          "scientificName": "Aythya americana",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Fuligule_%C3%A0_t%C3%AAte_rouge",
+          "minimumCM": 78.0,
+          "maximumCM": 86.0,
+          "measurementPhrase": "Envergure: 78 à 86 cm",
+          "context": "ya americana) est une espèce de canards plongeurs de la famille des Anatidae.\n\nLongueur: 40 à 56 cm Envergure: 78 à 86 cm Poids : Mâle ± 1 080 g, Femelle ± 1 030 g\n\nDimorphisme sexuel net. Le mâle et la femelle sont différents aussi bien en plumage d’éclipse qu’en plumag"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN01081",
+      "scientificName": "Aythya valisineria",
+      "decision": "imported",
+      "minimumCM": 79.0,
+      "maximumCM": 89.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Canvasback"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01191",
+      "scientificName": "Botaurus exilis",
+      "decision": "imported",
+      "minimumCM": 41.0,
+      "maximumCM": 46.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Petit_Blongios"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01252",
+      "scientificName": "Bubo africanus",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN01252",
+          "scientificName": "Bubo africanus",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Spotted_eagle-owl",
+          "minimumCM": 100.0,
+          "maximumCM": 140.0,
+          "measurementPhrase": "100 to 140 cm (39 to 55 in) wingspan",
+          "context": "owls. Its length is 45 cm (18 in) and its weight is from 454 to 907 grams (1.0 to 2.0 lb). It has a 100 to 140 cm (39 to 55 in) wingspan. The facial disk is off-white to pale ochre and the eyes are yellow. It has prominent ear-tufts, and the upper body is dusky brown, the lower parts o"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01252",
+          "scientificName": "Bubo africanus",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Grand-duc_africain",
+          "minimumCM": 100.0,
+          "maximumCM": 140.0,
+          "measurementPhrase": "envergure de 100 - 140 cm",
+          "context": " petits grands-ducs. Sa longueur est de quarante-cinq cm et son poids varie de 480 à 850g. Il a une envergure de 100 - 140 cm. Le disque facial va du blanc cassé à l'ocre pâle et les yeux sont de couleur jaune. Il a des touffes sur les oreilles et le haut du corps est brun s"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01252",
+          "scientificName": "Bubo africanus",
+          "language": "es",
+          "sourceURL": "https://es.wikipedia.org/wiki/Bubo_africanus",
+          "minimumCM": 100.0,
+          "maximumCM": 113.0,
+          "measurementPhrase": "envergadura es de 100 a 113 cm",
+          "context": " pesa entre 490 y 620 los machos y las hembras que son más grandes pesan entre 640 y 890 gramos. Su envergadura es de 100 a 113 cm. El disco facial es blanquecino u ocre pálido con un borde negruzco y los ojos son amarillos. Tiene unos penachos de plumas prominentes semejantes a "
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN01263",
+      "scientificName": "Bubo virginianus",
+      "decision": "imported",
+      "minimumCM": 140.0,
+      "maximumCM": 170.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Bubo_virginianus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01273",
+      "scientificName": "Bucephala islandica",
+      "decision": "imported",
+      "minimumCM": 67.0,
+      "maximumCM": 84.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Garrot_d'Islande"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01298",
+      "scientificName": "Buteo brachypterus",
+      "decision": "imported",
+      "minimumCM": 93.0,
+      "maximumCM": 111.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Madagaskarbussard"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01331",
+      "scientificName": "Butorides atricapilla",
+      "decision": "imported",
+      "minimumCM": 60.0,
+      "maximumCM": 70.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/H%C3%A9ron_des_mangroves"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01376",
+      "scientificName": "Calamanthus campestris",
+      "decision": "imported",
+      "minimumCM": 15.5,
+      "maximumCM": 19.5,
+      "sourceURL": "https://en.wikipedia.org/wiki/Rufous_fieldwren"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01384",
+      "scientificName": "Calamospiza melanocorys",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 28.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Lark_bunting"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01392",
+      "scientificName": "Calcarius ornatus",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 27.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Calcarius_ornatus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01613",
+      "scientificName": "Caracara plancus",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN01613",
+          "scientificName": "Caracara plancus",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Schopfkarakara",
+          "minimumCM": 107.0,
+          "maximumCM": 133.0,
+          "measurementPhrase": "spannweite von 107 bis 133 Zentimetern",
+          "context": "t eine Körperlänge (Schnabelspitze bis Ende Schwanzfedern) von 55 bis 60 Zentimetern und eine Flügelspannweite von 107 bis 133 Zentimetern. Die Schwanzlänge beträgt 23 bis 28 cm. Männchen bleiben kleiner, sie erreichen etwa 91 % der Größe der Weibchen (errechnet aus den Mittelwerten der "
+        },
+        {
+          "speciesID": "birdnet-v3:BN01613",
+          "scientificName": "Caracara plancus",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Caracara_plancus",
+          "minimumCM": 120.0,
+          "maximumCM": 133.0,
+          "measurementPhrase": "apertura alare di 120–133 cm",
+          "context": "merica, dove è noto come carcarà o carancho.\n\nÈ un rapace di grande taglia, lungo 50–64 cm e con un'apertura alare di 120–133 cm.\n\nÈ un predatore opportunista, che si nutre di una ampia varietà di specie (piccoli mammiferi, uccelli, rettili, rane, insetti), nonché di carogne o "
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN01614",
+      "scientificName": "Cardellina canadensis",
+      "decision": "imported",
+      "minimumCM": 17.0,
+      "maximumCM": 22.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Canada_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01622",
+      "scientificName": "Carduelis caniceps",
+      "decision": "imported",
+      "minimumCM": 21.5,
+      "maximumCM": 25.5,
+      "sourceURL": "https://en.wikipedia.org/wiki/Grey-crowned_goldfinch"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01682",
+      "scientificName": "Cathartes burrovianus",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN01682",
+          "scientificName": "Cathartes burrovianus",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Lesser_yellow-headed_vulture",
+          "minimumCM": 150.0,
+          "maximumCM": 165.0,
+          "measurementPhrase": "wingspan of 150–165 cm",
+          "context": "r flooded lowland grassland, swamps, and heavily degraded former forest. It is a large bird, with a wingspan of 150–165 cm (59–65 in). The body plumage is black, and the head and neck, which are featherless, are pale orange with red or blue areas. It lacks a syrinx, so th"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01682",
+          "scientificName": "Cathartes burrovianus",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Savannen-Gelbkopfgeier",
+          "minimumCM": 150.0,
+          "maximumCM": 165.0,
+          "measurementPhrase": "spannweite von 1,5 bis 1,65 Metern",
+          "context": "Savannen-Gelbkopfgeier wird 53 bis 65 cm lang und 950 bis 1550 Gramm schwer. Er erreicht eine Flügelspannweite von 1,5 bis 1,65 Metern, sein Schwanz ist kurz und 19 bis 24 cm lang. Männchen sind nur wenig kleiner als die Weibchen. Das Gefieder ist dunkel, oben schwarz, unten mehr dun"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01682",
+          "scientificName": "Cathartes burrovianus",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Urubu_%C3%A0_t%C3%AAte_jaune",
+          "minimumCM": 150.0,
+          "maximumCM": 165.0,
+          "measurementPhrase": "envergure de 150 à 165 cm",
+          "context": "s distingué du Grand Urubu (C. melambrotus) jusqu'en 1964. Il est plus petit que celui-ci, avec une envergure de 150 à 165 cm, une longueur de corps de 53 à 66 cm et un poids allant de 0,95 à 1,55 kg. Le plumage est noir, et la tête et le cou, qui sont sans plumes, sont jaun"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01682",
+          "scientificName": "Cathartes burrovianus",
+          "language": "es",
+          "sourceURL": "https://es.wikipedia.org/wiki/Cathartes_burrovianus",
+          "minimumCM": 150.0,
+          "maximumCM": 165.0,
+          "measurementPhrase": "envergadura de 150 a 165 cm",
+          "context": "nalmente inundados, pastizales de tierras bajas y bosques muy degradados. Es un ave grande, con una envergadura de 150 a 165 cm. El plumaje del cuerpo es de color negro, mientras que la cabeza, que no tiene plumas, es de color naranja pálido con áreas de color rojo o azul. Com"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01682",
+          "scientificName": "Cathartes burrovianus",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Cathartes_burrovianus",
+          "minimumCM": 150.0,
+          "maximumCM": 165.0,
+          "measurementPhrase": "apertura alare di 150–165 cm",
+          "context": "e foreste pesantemente degradate. Si tratta di un uccello dalle dimensioni piuttosto grandi, con un'apertura alare di 150–165 cm. Il piumaggio del corpo è nero, mentre testa e collo, privi di piume, hanno una colorazione arancio chiaro con aree rosse o azzurre. È privo di sirin"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN01683",
+      "scientificName": "Cathartes melambrotus",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN01683",
+          "scientificName": "Cathartes melambrotus",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Greater_yellow-headed_vulture",
+          "minimumCM": 166.0,
+          "maximumCM": 178.0,
+          "measurementPhrase": "wingspan of 166–178 cm",
+          "context": ". It is found in South America in tropical moist lowland forests. It is a fairly large bird, with a wingspan of 166–178 cm (65–70 in), a weight of 1.65 kilograms (3.6 lb) and a body length of 64–75 cm (25–30 in). The body plumage is black, and the head and neck, which are"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01683",
+          "scientificName": "Cathartes melambrotus",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Grand_Urubu",
+          "minimumCM": 166.0,
+          "maximumCM": 178.0,
+          "measurementPhrase": "envergure de 166 à 178 cm",
+          "context": "ué de l'Urubu à tête jaune (C. burrovianus) jusqu'en 1964. Il est plus grand que celui-ci, avec une envergure de 166 à 178 cm, une longueur de corps de 64-75 cm et un poids moyen de 1,65 kg. Le plumage est noir, et la tête et le cou, qui sont sans plumes, peuvent aller du ja"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01683",
+          "scientificName": "Cathartes melambrotus",
+          "language": "es",
+          "sourceURL": "https://es.wikipedia.org/wiki/Cathartes_melambrotus",
+          "minimumCM": 165.0,
+          "maximumCM": 210.0,
+          "measurementPhrase": "envergadura de 165 a 210 cm",
+          "context": "edos de tierras bajas en Sudamérica y el sur de América Central. Es un ave bastante grande, con una envergadura de 165 a 210 cm, un peso de 1,2 a 3,2 kg y un tamaño de 70-84 cm de largo. El plumaje del cuerpo es negro y la cabeza y el cuello, que no tienen plumas, varían en co"
+        },
+        {
+          "speciesID": "birdnet-v3:BN01683",
+          "scientificName": "Cathartes melambrotus",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Cathartes_melambrotus",
+          "minimumCM": 166.0,
+          "maximumCM": 178.0,
+          "measurementPhrase": "apertura alare di 166–178 cm",
+          "context": "reste umide tropicali di pianura. Si tratta di un uccello dalle dimensioni piuttosto grandi, con un'apertura alare di 166–178 cm, un peso di 1,65 kg e una lunghezza di 64–75 cm. Il piumaggio del corpo è nero, mentre testa e collo, privi di piume, hanno una colorazione che varia"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN01730",
+      "scientificName": "Centronyx henslowii",
+      "decision": "imported",
+      "minimumCM": 16.0,
+      "maximumCM": 20.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Henslow's_sparrow"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01790",
+      "scientificName": "Cercotrichas galactotes",
+      "decision": "imported",
+      "minimumCM": 22.0,
+      "maximumCM": 27.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Agrobate_roux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01797",
+      "scientificName": "Certhia americana",
+      "decision": "imported",
+      "minimumCM": 17.0,
+      "maximumCM": 20.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Brown_creeper"
+    },
+    {
+      "speciesID": "birdnet-v3:BN01832",
+      "scientificName": "Ceyx gentianus",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN01832",
+          "scientificName": "Ceyx gentianus",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Makira-Zwergeisvogel",
+          "minimumCM": 5.0,
+          "maximumCM": 7.5,
+          "measurementPhrase": "spannweite liegt im Bereich von 50 bis 75 mm",
+          "context": "sch auf der Salomonen-Insel Makira.\n\nCeyx gentianus zählt zu den kleinen Eisvogelarten. Seine Flügelspannweite liegt im Bereich von 50 bis 75 mm, sein Schwanz ist im Verhältnis zur Körpergröße kurz und hat eine Länge zwischen 15 und 23 mm; typisch für die kompakte Körperform der Gattung. Das G"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN01982",
+      "scientificName": "Chlorochrysa nitidissima",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source."
+    },
+    {
+      "speciesID": "birdnet-v3:BN02058",
+      "scientificName": "Chroicocephalus brunnicephalus",
+      "decision": "imported",
+      "minimumCM": 105.0,
+      "maximumCM": 115.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Mouette_du_Tibet"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02060",
+      "scientificName": "Chroicocephalus cirrocephalus",
+      "decision": "imported",
+      "minimumCM": 100.0,
+      "maximumCM": 115.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Graukopfm%C3%B6we"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02062",
+      "scientificName": "Chroicocephalus hartlaubii",
+      "decision": "imported",
+      "minimumCM": 89.0,
+      "maximumCM": 92.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Mouette_de_Hartlaub"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02065",
+      "scientificName": "Chroicocephalus philadelphia",
+      "decision": "imported",
+      "minimumCM": 78.0,
+      "maximumCM": 84.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Mouette_de_Bonaparte"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02215",
+      "scientificName": "Cinnyris pembae",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN02215",
+          "scientificName": "Cinnyris pembae",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Pemba_sunbird",
+          "minimumCM": 5.15,
+          "maximumCM": 5.3,
+          "measurementPhrase": "wingspan of 51.5-53 mm",
+          "context": " is a species of bird in the sunbird family. It is endemic to Pemba Island, Tanzania.\n\nMales have a wingspan of 51.5-53 mm, while females have a wingspan of 47.5-50 mm. Adult males display iridescent blue-green coloration on their head and throat with bluish violet colora"
+        },
+        {
+          "speciesID": "birdnet-v3:BN02215",
+          "scientificName": "Cinnyris pembae",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Pemba_sunbird",
+          "minimumCM": 4.75,
+          "maximumCM": 5.0,
+          "measurementPhrase": "wingspan of 47.5-50 mm",
+          "context": "It is endemic to Pemba Island, Tanzania.\n\nMales have a wingspan of 51.5-53 mm, while females have a wingspan of 47.5-50 mm. Adult males display iridescent blue-green coloration on their head and throat with bluish violet coloration on their wings and across their breast. "
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN02239",
+      "scientificName": "Circaetus spectabilis",
+      "decision": "imported",
+      "minimumCM": 94.0,
+      "maximumCM": 106.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Kongoschlangenadler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02429",
+      "scientificName": "Colinus virginianus",
+      "decision": "imported",
+      "minimumCM": 36.0,
+      "maximumCM": 41.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Virginiawachtel"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02542",
+      "scientificName": "Contopus virens",
+      "decision": "imported",
+      "minimumCM": 23.0,
+      "maximumCM": 26.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Piui-verdadeiro"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02562",
+      "scientificName": "Coracias benghalensis",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN02562",
+          "scientificName": "Coracias benghalensis",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Indian_roller",
+          "minimumCM": 65.0,
+          "maximumCM": 74.0,
+          "measurementPhrase": "wingspan of 65–74 cm",
+          "context": "r (Coracias benghalensis) is a bird of the family Coraciidae. It is 30–34 cm (12–13 in) long with a wingspan of 65–74 cm (26–29 in) and weighs 166–176 g (5.9–6.2 oz). The face and throat are pinkish, the head and back are brown, with blue on the rump and contrasting lig"
+        },
+        {
+          "speciesID": "birdnet-v3:BN02562",
+          "scientificName": "Coracias benghalensis",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Rollier_indien",
+          "minimumCM": 65.0,
+          "maximumCM": 75.0,
+          "measurementPhrase": "envergure de 65 à 75 cm",
+          "context": "nnu sous le nom de « geai bleu ».\n\nCet oiseau trapu mesure 30 à 34 centimètres de longueur et a une envergure de 65 à 75 cm. Il pèse environ 170g. Le dos est beige, la face et la poitrine lilas, le sommet de la tête, les ailes, la queue et le ventre sont bleus. La sous-esp"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN02611",
+      "scientificName": "Corvus albicollis",
+      "decision": "imported",
+      "minimumCM": 75.2,
+      "maximumCM": 86.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/White-necked_raven"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02614",
+      "scientificName": "Corvus brachyrhynchos",
+      "decision": "imported",
+      "minimumCM": 85.0,
+      "maximumCM": 100.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Corvo-americano"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02618",
+      "scientificName": "Corvus cornix",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN02618",
+          "scientificName": "Corvus cornix",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Corvus_cornix",
+          "minimumCM": 92.0,
+          "maximumCM": 100.0,
+          "measurementPhrase": "apertura alare di 92-100 cm",
+          "context": "e appartenente alla famiglia Corvidae.\n\nMisura 43-52 cm di lunghezza, per 360 - 370 g di peso ed un'apertura alare di 92-100 cm.\n\nSi tratta di uccelli dall'aspetto robusto e massiccio, muniti di testa dalla forma arrotondata con fronte sfuggente, becco conico, forte e dalla pu"
+        },
+        {
+          "speciesID": "birdnet-v3:BN02618",
+          "scientificName": "Corvus cornix",
+          "language": "pt",
+          "sourceURL": "https://pt.wikipedia.org/wiki/Gralha-cinzenta",
+          "minimumCM": 84.0,
+          "maximumCM": 100.0,
+          "measurementPhrase": "Envergadura: 84 a 100 cm",
+          "context": "Gralha-cinzenta (Corvus cornix) é uma ave da família Corvidae (corvos)\n\nComprimento: 47 cm Envergadura: 84 a 100 cm Peso: 450 a 600 g Longevidade:\n\nPode ser encontrada no Norte da Europa e na zona oriental do continente europeu bem como na parte ocidental do contin"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN02629",
+      "scientificName": "Corvus imparatus",
+      "decision": "imported",
+      "minimumCM": 64.0,
+      "maximumCM": 71.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Corvus_imparatus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02634",
+      "scientificName": "Corvus macrorhynchos",
+      "decision": "deferred",
+      "reason": "Source may predate a split or use a broader species concept; resolve scope first.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN02634",
+          "scientificName": "Corvus macrorhynchos",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Corvus_macrorhynchos",
+          "minimumCM": 100.0,
+          "maximumCM": 130.0,
+          "measurementPhrase": "apertura alare di 100-130 cm",
+          "context": "ona in zona, oscillando tra i 46 e i 59 cm di lunghezza, per un peso che va dai 450 g al chilo e un'apertura alare di 100-130 cm: è presente un gradiente decrescente nelle dimensioni in direttrice N-S, con gli esemplari della Manciuria più grossi e quelli dell'Insulindia più pi"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN02705",
+      "scientificName": "Coturnix japonica",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 33.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Coturnix_japonica"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02706",
+      "scientificName": "Coturnix pectoralis",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 33.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Coturnix_pectoralis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02752",
+      "scientificName": "Crecopsis egregia",
+      "decision": "imported",
+      "minimumCM": 40.0,
+      "maximumCM": 42.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Savannenralle"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02876",
+      "scientificName": "Curruca iberiae",
+      "decision": "deferred",
+      "reason": "Source may predate a split or use a broader species concept; resolve scope first.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN02876",
+          "scientificName": "Curruca iberiae",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Fauvette_passerinette",
+          "minimumCM": 16.0,
+          "maximumCM": 20.0,
+          "measurementPhrase": "envergure de 16 à 20 cm",
+          "context": " rouge lui-même, le bec est orange et gris, les pattes sont rouges.\n\nLa Fauvette passerinette a une envergure de 16 à 20 cm, une taille de 12 à 13 cm et pèse environ 9 à 13 g.\n\nElle niche à travers l'ouest du bassin méditerranéen. Elle hiverne au Sahel et de manière plus m"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN02886",
+      "scientificName": "Curruca sarda",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 30.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Sardengrasm%C3%BCcke"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02906",
+      "scientificName": "Cyanocitta cristata",
+      "decision": "imported",
+      "minimumCM": 34.0,
+      "maximumCM": 43.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Geai_bleu"
+    },
+    {
+      "speciesID": "birdnet-v3:BN02979",
+      "scientificName": "Cygnus buccinator",
+      "decision": "deferred",
+      "reason": "Very wide upper bound requires independent verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN02979",
+          "scientificName": "Cygnus buccinator",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Trumpeter_swan",
+          "minimumCM": 185.0,
+          "maximumCM": 304.8,
+          "measurementPhrase": "wingspan of 185 to 304.8 cm",
+          "context": "est living bird native to North America, it is also the largest extant species of waterfowl, with a wingspan of 185 to 304.8 cm (6 ft 2 in to 10 ft 2 in). It is the American counterpart and a close relative of the whooper swan (Cygnus cygnus) of Eurasia and has even been consi"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN02982",
+      "scientificName": "Cygnus melancoryphus",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN03068",
+      "scientificName": "Daptrius chimachima",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN03068",
+          "scientificName": "Daptrius chimachima",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Yellow-headed_caracara",
+          "minimumCM": 74.0,
+          "maximumCM": 95.0,
+          "measurementPhrase": "wingspan is 74 to 95 cm",
+          "context": " 18 in) long. Males weigh 277 to 335 g (9.8 to 12 oz) and females 307 to 364 g (11 to 13 oz). Their wingspan is 74 to 95 cm (29 to 37 in). The sexes' plumages are alike. Adults of the nominate subspecies have buff to creamy yellowish white heads, necks, and underparts with"
+        },
+        {
+          "speciesID": "birdnet-v3:BN03068",
+          "scientificName": "Daptrius chimachima",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Gelbkopfkarakara",
+          "minimumCM": 81.0,
+          "maximumCM": 95.0,
+          "measurementPhrase": "Spannweite von 81 bis 95 cm",
+          "context": "inter dem Auge. Sein Schwanz ist leicht gebändert. Er erreicht eine Größe von 40 bis 46 cm und eine Spannweite von 81 bis 95 cm. Wie bei den meisten Falkenartigen und Greifvögeln ist das Männchen etwas kleiner als das Weibchen. Die männlichen Exemplare wiegen um 300 g (235 bis"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN03128",
+      "scientificName": "Dendrocygna bicolor",
+      "decision": "imported",
+      "minimumCM": 85.0,
+      "maximumCM": 95.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Dendrocygne_fauve"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03316",
+      "scientificName": "Dryobates nuttallii",
+      "decision": "imported",
+      "minimumCM": 38.0,
+      "maximumCM": 43.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Nuttall's_woodpecker"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03318",
+      "scientificName": "Dryobates pubescens",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 31.0,
+      "sourceURL": "https://es.wikipedia.org/wiki/Dryobates_pubescens"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03429",
+      "scientificName": "Egretta ardesiaca",
+      "decision": "imported",
+      "minimumCM": 90.0,
+      "maximumCM": 95.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Egretta_ardesiaca"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03433",
+      "scientificName": "Egretta gularis",
+      "decision": "imported",
+      "minimumCM": 88.0,
+      "maximumCM": 112.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Egretta_gularis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03436",
+      "scientificName": "Egretta rufescens",
+      "decision": "imported",
+      "minimumCM": 116.0,
+      "maximumCM": 124.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Egretta_rufescens"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03438",
+      "scientificName": "Egretta thula",
+      "decision": "imported",
+      "minimumCM": 90.0,
+      "maximumCM": 105.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Aigrette_neigeuse"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03464",
+      "scientificName": "Elanoides forficatus",
+      "decision": "imported",
+      "minimumCM": 112.0,
+      "maximumCM": 136.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Elanoides_forficatus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03467",
+      "scientificName": "Elanus leucurus",
+      "decision": "imported",
+      "minimumCM": 88.0,
+      "maximumCM": 102.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Elanus_leucurus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03508",
+      "scientificName": "Emblema ruficauda",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN03508",
+          "scientificName": "Emblema ruficauda",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Star_finch",
+          "minimumCM": 4.9,
+          "maximumCM": 5.6,
+          "measurementPhrase": "wingspan of between 49 and 56 mm",
+          "context": "ad. The broad white spots under its chin and down its flanks give rise to its common name. It has a wingspan of between 49 and 56 mm, a bill length between 11 and 13 mm, and weighs between 10 and 12 grams.\n\nThe IUCN Red List of Threatened Species rates this species as Least Concern"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN03512",
+      "scientificName": "Empidonax alnorum",
+      "decision": "imported",
+      "minimumCM": 21.0,
+      "maximumCM": 24.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Alder_flycatcher"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03516",
+      "scientificName": "Empidonax flaviventris",
+      "decision": "imported",
+      "minimumCM": 18.0,
+      "maximumCM": 20.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Yellow-bellied_flycatcher"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03519",
+      "scientificName": "Empidonax minimus",
+      "decision": "imported",
+      "minimumCM": 19.0,
+      "maximumCM": 22.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Least_flycatcher"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03522",
+      "scientificName": "Empidonax virescens",
+      "decision": "imported",
+      "minimumCM": 22.0,
+      "maximumCM": 23.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Acadian_flycatcher"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03545",
+      "scientificName": "Eophona migratoria",
+      "decision": "imported",
+      "minimumCM": 23.0,
+      "maximumCM": 24.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Chinese_grosbeak"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03546",
+      "scientificName": "Eophona personata",
+      "decision": "imported",
+      "minimumCM": 24.0,
+      "maximumCM": 25.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Eophona_personata"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03569",
+      "scientificName": "Eremalauda dunni",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 30.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Dunn's_lark"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03582",
+      "scientificName": "Eremophila bilopha",
+      "decision": "imported",
+      "minimumCM": 26.0,
+      "maximumCM": 31.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Alouette_bilophe"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03644",
+      "scientificName": "Estrilda astrild",
+      "decision": "imported",
+      "minimumCM": 12.0,
+      "maximumCM": 14.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Estrilda_astrild"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03815",
+      "scientificName": "Falco deiroleucus",
+      "decision": "imported",
+      "minimumCM": 69.0,
+      "maximumCM": 85.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Faucon_orang%C3%A9"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03819",
+      "scientificName": "Falco femoralis",
+      "decision": "imported",
+      "minimumCM": 78.0,
+      "maximumCM": 102.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Aplomadofalke"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03860",
+      "scientificName": "Ficedula hypoleuca",
+      "decision": "imported",
+      "minimumCM": 21.0,
+      "maximumCM": 24.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Gobemouche_noir"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03921",
+      "scientificName": "Francolinus francolinus",
+      "decision": "imported",
+      "minimumCM": 50.0,
+      "maximumCM": 55.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Francolinus_francolinus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN03972",
+      "scientificName": "Fulica cristata",
+      "decision": "imported",
+      "minimumCM": 75.0,
+      "maximumCM": 85.0,
+      "sourceURL": "https://es.wikipedia.org/wiki/Fulica_cristata"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04022",
+      "scientificName": "Gallinago delicata",
+      "decision": "imported",
+      "minimumCM": 39.0,
+      "maximumCM": 45.0,
+      "sourceURL": "https://es.wikipedia.org/wiki/Gallinago_delicata"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04044",
+      "scientificName": "Gallinula tenebrosa",
+      "decision": "imported",
+      "minimumCM": 55.0,
+      "maximumCM": 65.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Gallinula_tenebrosa"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04045",
+      "scientificName": "Gallirallus australis",
+      "decision": "deferred",
+      "reason": "Source gives a maximum interval, not an explicit overall observed range."
+    },
+    {
+      "speciesID": "birdnet-v3:BN04089",
+      "scientificName": "Gavia adamsii",
+      "decision": "imported",
+      "minimumCM": 140.0,
+      "maximumCM": 150.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Gavia_adamsii"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04092",
+      "scientificName": "Gavia pacifica",
+      "decision": "imported",
+      "minimumCM": 110.0,
+      "maximumCM": 128.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Pacific_loon"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04165",
+      "scientificName": "Geothlypis formosa",
+      "decision": "imported",
+      "minimumCM": 20.0,
+      "maximumCM": 22.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Kentucky_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04184",
+      "scientificName": "Geranoaetus albicaudatus",
+      "decision": "imported",
+      "minimumCM": 118.0,
+      "maximumCM": 143.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/White-tailed_hawk"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04427",
+      "scientificName": "Haemorhous cassinii",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 27.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Cassin's_finch"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04428",
+      "scientificName": "Haemorhous mexicanus",
+      "decision": "imported",
+      "minimumCM": 20.0,
+      "maximumCM": 25.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Haemorhous_mexicanus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04584",
+      "scientificName": "Herpetotheres cachinnans",
+      "decision": "imported",
+      "minimumCM": 75.0,
+      "maximumCM": 91.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Macagua_rieur"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04602",
+      "scientificName": "Hesperiphona abeillei",
+      "decision": "imported",
+      "minimumCM": 20.0,
+      "maximumCM": 25.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Hesperiphona_abeillei"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04652",
+      "scientificName": "Hippolais languida",
+      "decision": "deferred",
+      "reason": "Other inconsistent morphology/units in context; require an independent check before importing.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN04652",
+          "scientificName": "Hippolais languida",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Hypola%C3%AFs_d'Upcher",
+          "minimumCM": 20.0,
+          "maximumCM": 23.0,
+          "measurementPhrase": "envergure de 20 à 23 cm",
+          "context": "espèce d'oiseaux de la famille des Acrocephalidae.\n\nCet oiseau atteint une taille de 15 cm pour une envergure de 20 à 23 cm et un poids de 12 à 13 cm, mâles et femelles étant semblables à la fois en plumage et en morphologie. Il est de couleur gris brunâtre avec quelques z"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN04656",
+      "scientificName": "Hirundapus celebensis",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN04676",
+      "scientificName": "Histrionicus histrionicus",
+      "decision": "imported",
+      "minimumCM": 56.0,
+      "maximumCM": 66.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Arlequin_plongeur"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04706",
+      "scientificName": "Hydrobates melania",
+      "decision": "imported",
+      "minimumCM": 46.0,
+      "maximumCM": 51.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Black_storm_petrel"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04713",
+      "scientificName": "Hydrobates tristrami",
+      "decision": "imported",
+      "minimumCM": 54.0,
+      "maximumCM": 57.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Tristram's_storm_petrel"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04853",
+      "scientificName": "Icterus cucullatus",
+      "decision": "imported",
+      "minimumCM": 23.0,
+      "maximumCM": 28.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Icterus_cucullatus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04869",
+      "scientificName": "Icterus parisorum",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 34.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Oriole_jaune-verd%C3%A2tre"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04873",
+      "scientificName": "Icterus pustulatus",
+      "decision": "imported",
+      "minimumCM": 30.0,
+      "maximumCM": 34.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Piroltrupial"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04884",
+      "scientificName": "Ictinia mississippiensis",
+      "decision": "imported",
+      "minimumCM": 75.0,
+      "maximumCM": 83.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Ictinia_mississippiensis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN04983",
+      "scientificName": "Ketupa blakistoni",
+      "decision": "deferred",
+      "reason": "Source may predate a split or use a broader species concept; resolve scope first.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN04983",
+          "scientificName": "Ketupa blakistoni",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Bubo_blakistoni",
+          "minimumCM": 180.0,
+          "maximumCM": 190.0,
+          "measurementPhrase": "apertura alare di 180-190 cm",
+          "context": ") è un uccello strigiforme della famiglia degli Strigidi.\n\nMisura circa 72 cm di lunghezza ed ha un'apertura alare di 180-190 cm. Pesa tra i 3000 e i 3700 g.\n\nNegli adulti il disco facciale è di colore marrone-fulvo con sottili strisce nere, e non è contornato da nessun tipo di"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN04995",
+      "scientificName": "Ketupa zeylonensis",
+      "decision": "imported",
+      "minimumCM": 125.0,
+      "maximumCM": 140.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Fischuhu"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05157",
+      "scientificName": "Larus delawarensis",
+      "decision": "imported",
+      "minimumCM": 112.0,
+      "maximumCM": 124.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Ringschnabelm%C3%B6we"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05184",
+      "scientificName": "Laterallus jamaicensis",
+      "decision": "imported",
+      "minimumCM": 22.0,
+      "maximumCM": 28.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Black_rail"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05298",
+      "scientificName": "Leuconotopicus villosus",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN05320",
+      "scientificName": "Lewinia pectoralis",
+      "decision": "imported",
+      "minimumCM": 31.0,
+      "maximumCM": 35.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Lewinia_pectoralis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05337",
+      "scientificName": "Limnodromus scolopaceus",
+      "decision": "imported",
+      "minimumCM": 46.0,
+      "maximumCM": 52.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/B%C3%A9cassin_%C3%A0_long_bec"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05341",
+      "scientificName": "Limosa fedoa",
+      "decision": "imported",
+      "minimumCM": 70.0,
+      "maximumCM": 88.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Marbled_godwit"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05433",
+      "scientificName": "Lophodytes cucullatus",
+      "decision": "deferred",
+      "reason": "Measurement sentence is scoped to males; do not present as an overall species range.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN05433",
+          "scientificName": "Lophodytes cucullatus",
+          "language": "fr",
+          "sourceURL": "https://fr.wikipedia.org/wiki/Harle_couronn%C3%A9",
+          "minimumCM": 56.0,
+          "maximumCM": 70.0,
+          "measurementPhrase": "envergure de 56 à 70 cm",
+          "context": "it appelé Bec-scie couronné.\n\nLes mâles ont une longueur comprise entre 43 à 58 cm de long pour une envergure de 56 à 70 cm, bien que leur poids n'ai pas été spécifiquement étudié, ils pèsent en moyenne 540 g pour les femelles et 680 g pour les mâles. Ils disposent d'un be"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN05526",
+      "scientificName": "Lybius guifsobalito",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN05526",
+          "scientificName": "Lybius guifsobalito",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Black-billed_barbet",
+          "minimumCM": 7.9,
+          "maximumCM": 9.4,
+          "measurementPhrase": "wingspan of 7.9–9.4 cm",
+          "context": "ah, scrubs, gardens and cultivated areas with fruit-bearing trees.\n\nLybius guifsobalito can reach a wingspan of 7.9–9.4 cm (3.1–3.7 in) in males. The tail length is between 4.5 and 5.4 centimeters. The beak reaches a length between 1.9 and 2.2 centimeters. Females have si"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN05538",
+      "scientificName": "Lyrurus tetrix",
+      "decision": "imported",
+      "minimumCM": 65.0,
+      "maximumCM": 80.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/T%C3%A9tras_lyre"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05753",
+      "scientificName": "Melanerpes formicivorus",
+      "decision": "imported",
+      "minimumCM": 35.0,
+      "maximumCM": 43.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Pica-pau-das-bolotas"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05785",
+      "scientificName": "Melanitta perspicillata",
+      "decision": "imported",
+      "minimumCM": 78.0,
+      "maximumCM": 92.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Macreuse_%C3%A0_front_blanc"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05823",
+      "scientificName": "Meleagris gallopavo",
+      "decision": "imported",
+      "minimumCM": 125.0,
+      "maximumCM": 144.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Peru-selvagem"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05886",
+      "scientificName": "Melospiza georgiana",
+      "decision": "imported",
+      "minimumCM": 18.0,
+      "maximumCM": 19.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Swamp_sparrow"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05888",
+      "scientificName": "Melospiza melodia",
+      "decision": "imported",
+      "minimumCM": 18.0,
+      "maximumCM": 25.4,
+      "sourceURL": "https://en.wikipedia.org/wiki/Song_sparrow"
+    },
+    {
+      "speciesID": "birdnet-v3:BN05916",
+      "scientificName": "Merops bullockoides",
+      "decision": "imported",
+      "minimumCM": 30.0,
+      "maximumCM": 35.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Wei%C3%9Fstirnspint"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06014",
+      "scientificName": "Microspizias superciliosus",
+      "decision": "imported",
+      "minimumCM": 38.0,
+      "maximumCM": 48.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Microspizias_superciliosus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06127",
+      "scientificName": "Morphnus guianensis",
+      "decision": "imported",
+      "minimumCM": 138.0,
+      "maximumCM": 176.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Uira%C3%A7u-falso"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06197",
+      "scientificName": "Mycerobas carnipes",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 30.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Mycerobas_carnipes"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06198",
+      "scientificName": "Mycerobas icterioides",
+      "decision": "deferred",
+      "reason": "Apparent numerical/unit error in the source; do not silently correct."
+    },
+    {
+      "speciesID": "birdnet-v3:BN06201",
+      "scientificName": "Mycteria cinerea",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN06201",
+          "scientificName": "Mycteria cinerea",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Milky_stork",
+          "minimumCM": 43.5,
+          "maximumCM": 50.0,
+          "measurementPhrase": "wingspan of 43.5–50 cm",
+          "context": "donesia. It is currently included in the genus Mycteria, is around 91–97 cm (36–38 in) tall, with a wingspan of 43.5–50 cm (17.1–19.7 in) and a tail around 14.5–17 cm (5.7–6.7 in). Its plumage is white apart from a few feathers at the wings and tail. Since the 1980's, the"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN06203",
+      "scientificName": "Mycteria leucocephala",
+      "decision": "imported",
+      "minimumCM": 150.0,
+      "maximumCM": 160.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Mycteria_leucocephala"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06618",
+      "scientificName": "Nisaetus nipalensis",
+      "decision": "imported",
+      "minimumCM": 134.0,
+      "maximumCM": 175.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Nisaetus_nipalensis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06619",
+      "scientificName": "Nisaetus philippensis",
+      "decision": "imported",
+      "minimumCM": 105.0,
+      "maximumCM": 125.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Nisaetus_philippensis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06657",
+      "scientificName": "Numenius americanus",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN06660",
+      "scientificName": "Numenius hudsonicus",
+      "decision": "imported",
+      "minimumCM": 75.0,
+      "maximumCM": 90.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Hudsonian_whimbrel"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06736",
+      "scientificName": "Oena capensis",
+      "decision": "imported",
+      "minimumCM": 28.0,
+      "maximumCM": 33.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Namaqua_dove"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06745",
+      "scientificName": "Oenanthe finschii",
+      "decision": "imported",
+      "minimumCM": 25.0,
+      "maximumCM": 27.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Finsch's_wheatear"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06751",
+      "scientificName": "Oenanthe isabellina",
+      "decision": "imported",
+      "minimumCM": 27.0,
+      "maximumCM": 31.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Traquet_isabelle"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06758",
+      "scientificName": "Oenanthe melanura",
+      "decision": "imported",
+      "minimumCM": 23.0,
+      "maximumCM": 27.0,
+      "sourceURL": "https://es.wikipedia.org/wiki/Oenanthe_melanura"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06760",
+      "scientificName": "Oenanthe monacha",
+      "decision": "imported",
+      "minimumCM": 29.0,
+      "maximumCM": 30.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Hooded_wheatear"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06795",
+      "scientificName": "Oporornis agilis",
+      "decision": "imported",
+      "minimumCM": 22.0,
+      "maximumCM": 23.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Connecticut_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN06808",
+      "scientificName": "Oreortyx pictus",
+      "decision": "imported",
+      "minimumCM": 35.0,
+      "maximumCM": 40.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Bergwachtel"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07070",
+      "scientificName": "Pagophila eburnea",
+      "decision": "imported",
+      "minimumCM": 108.0,
+      "maximumCM": 120.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Ivory_gull"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07166",
+      "scientificName": "Passer luteus",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN07166",
+          "scientificName": "Passer luteus",
+          "language": "es",
+          "sourceURL": "https://es.wikipedia.org/wiki/Passer_luteus",
+          "minimumCM": 5.7,
+          "maximumCM": 7.0,
+          "measurementPhrase": "envergadura alar de 5,7–7 cm",
+          "context": "l gorrión árabe.\n\nEl gorrión dorado es un pájaro pequeño, que mide entre 12–13 cm de largo, con una envergadura alar de 5,7–7 cm. Los machos presentan un característico plumaje amarillo en la cabeza, partes inferiores y flancos. Su espalda y alas son de color castaño y presenta"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN07179",
+      "scientificName": "Passerella iliaca",
+      "decision": "imported",
+      "minimumCM": 26.7,
+      "maximumCM": 29.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Fox_sparrow"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07417",
+      "scientificName": "Phalaropus tricolor",
+      "decision": "imported",
+      "minimumCM": 35.0,
+      "maximumCM": 43.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Phalarope_de_Wilson"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07424",
+      "scientificName": "Phaps histrionica",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN07424",
+          "scientificName": "Phaps histrionica",
+          "language": "es",
+          "sourceURL": "https://es.wikipedia.org/wiki/Phaps_histrionica",
+          "minimumCM": 18.9,
+          "maximumCM": 21.6,
+          "measurementPhrase": "envergadura alar de 189–216 mm",
+          "context": "e confundir con otras especies australianas. Los adultos miden entre 28 y 30,5 cm de largo, con una envergadura alar de 189–216 mm. Su peso oscila entre los 260–320 gramos. El macho adulto tiene la mayor parte de la cabeza negra, salvo un mancha blanca que ocupa de la frente a la"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN07599",
+      "scientificName": "Phylloscopus collybita",
+      "decision": "imported",
+      "minimumCM": 15.0,
+      "maximumCM": 21.0,
+      "sourceURL": "https://es.wikipedia.org/wiki/Phylloscopus_collybita"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07605",
+      "scientificName": "Phylloscopus fuscatus",
+      "decision": "imported",
+      "minimumCM": 15.0,
+      "maximumCM": 20.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Pouillot_brun"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07634",
+      "scientificName": "Phylloscopus orientalis",
+      "decision": "imported",
+      "minimumCM": 18.0,
+      "maximumCM": 19.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Pouillot_oriental"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07679",
+      "scientificName": "Picoides arcticus",
+      "decision": "imported",
+      "minimumCM": 40.0,
+      "maximumCM": 42.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Black-backed_woodpecker"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07680",
+      "scientificName": "Picoides dorsalis",
+      "decision": "imported",
+      "minimumCM": 37.0,
+      "maximumCM": 39.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/American_three-toed_woodpecker"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07707",
+      "scientificName": "Picumnus sclateri",
+      "decision": "deferred",
+      "reason": "Apparent numerical/unit error in the source; do not silently correct.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN07707",
+          "scientificName": "Picumnus sclateri",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Braunohr-Zwergspecht",
+          "minimumCM": 49.0,
+          "maximumCM": 52.0,
+          "measurementPhrase": "spannweite beträgt 49–52 cm",
+          "context": "ht sich auf Philip Lutley Sclater.\n\nDie Art ist 9–10 cm groß, wiegt zwischen 10 und 12 g, die Flügelspannweite beträgt 49–52 cm. Die Oberseite ist bräunlich-grau, Unterseite kräftig schwarz und weiß gebändert. Der Kopf hat eine schwarze Haube mit weißen Punkten, das Männchen h"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN07715",
+      "scientificName": "Picus canus",
+      "decision": "imported",
+      "minimumCM": 38.0,
+      "maximumCM": 40.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Pic_cendr%C3%A9"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07722",
+      "scientificName": "Picus vaillantii",
+      "decision": "imported",
+      "minimumCM": 45.0,
+      "maximumCM": 51.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Levaillant's_woodpecker"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07781",
+      "scientificName": "Piranga rubra",
+      "decision": "imported",
+      "minimumCM": 28.0,
+      "maximumCM": 30.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Sommerkardinal"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07956",
+      "scientificName": "Poecile carolinensis",
+      "decision": "imported",
+      "minimumCM": 15.0,
+      "maximumCM": 20.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Carolina_chickadee"
+    },
+    {
+      "speciesID": "birdnet-v3:BN07959",
+      "scientificName": "Poecile gambeli",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN07967",
+      "scientificName": "Poecile sclateri",
+      "decision": "imported",
+      "minimumCM": 18.0,
+      "maximumCM": 21.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Chapim-mexicano"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08121",
+      "scientificName": "Porzana fluminea",
+      "decision": "imported",
+      "minimumCM": 27.0,
+      "maximumCM": 33.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Australian_crake"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08183",
+      "scientificName": "Priotelus temnurus",
+      "decision": "imported",
+      "minimumCM": 39.0,
+      "maximumCM": 39.5,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Trogon_de_Cuba"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08212",
+      "scientificName": "Prosopeia tabuensis",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source."
+    },
+    {
+      "speciesID": "birdnet-v3:BN08217",
+      "scientificName": "Prunella collaris",
+      "decision": "imported",
+      "minimumCM": 30.0,
+      "maximumCM": 32.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Accenteur_alpin"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08253",
+      "scientificName": "Pseudastur albicollis",
+      "decision": "imported",
+      "minimumCM": 98.0,
+      "maximumCM": 117.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Pseudastur_albicollis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08380",
+      "scientificName": "Pternistis bicalcaratus",
+      "decision": "imported",
+      "minimumCM": 45.0,
+      "maximumCM": 50.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Pternistis_bicalcaratus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08400",
+      "scientificName": "Pterocles alchata",
+      "decision": "imported",
+      "minimumCM": 54.0,
+      "maximumCM": 65.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Pterocles_alchata"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08405",
+      "scientificName": "Pterocles exustus",
+      "decision": "imported",
+      "minimumCM": 48.0,
+      "maximumCM": 51.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Pterocles_exustus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08413",
+      "scientificName": "Pterocles senegallus",
+      "decision": "imported",
+      "minimumCM": 53.0,
+      "maximumCM": 65.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Pterocles_senegallus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08415",
+      "scientificName": "Pterodroma arminjoniana",
+      "decision": "imported",
+      "minimumCM": 88.0,
+      "maximumCM": 102.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Trindade_petrel"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08429",
+      "scientificName": "Pterodroma hasitata",
+      "decision": "imported",
+      "minimumCM": 98.0,
+      "maximumCM": 105.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Pterodroma_hasitata"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08526",
+      "scientificName": "Ptilinopus porphyreus",
+      "decision": "deferred",
+      "reason": "Source infers a value from other pigeons, rather than reporting this species."
+    },
+    {
+      "speciesID": "birdnet-v3:BN08555",
+      "scientificName": "Ptilopsis granti",
+      "decision": "imported",
+      "minimumCM": 60.0,
+      "maximumCM": 66.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/S%C3%BCdb%C3%BCscheleule"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08597",
+      "scientificName": "Puffinus opisthomelas",
+      "decision": "imported",
+      "minimumCM": 76.0,
+      "maximumCM": 89.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Black-vented_shearwater"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08601",
+      "scientificName": "Puffinus yelkouan",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN08601",
+          "scientificName": "Puffinus yelkouan",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Yelkouan_shearwater",
+          "minimumCM": 70.0,
+          "maximumCM": 84.0,
+          "measurementPhrase": "wingspan of 70–84 cm",
+          "context": "hearwater (Puffinus puffinus).\n\nThe yelkouan shearwaters is 30–35 cm (12–14 in) in length and has a wingspan of 70–84 cm (28–33 in). It has the typically \"shearing\" flight of the genus, dipping from side to side on stiff wings with few wingbeats, the wingtips almost tou"
+        },
+        {
+          "speciesID": "birdnet-v3:BN08601",
+          "scientificName": "Puffinus yelkouan",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Mittelmeer-Sturmtaucher",
+          "minimumCM": 78.0,
+          "maximumCM": 90.0,
+          "measurementPhrase": "spannweite 78–90 cm",
+          "context": "\nMittelmeer-Sturmtaucher sind mittelgroße Sturmtaucher. Die Körperlänge beträgt 34–39 cm, die Flügelspannweite 78–90 cm. Die gesamte Oberseite ist schwärzlich braun, der Handflügel ist noch etwas dunkler als die übrige Flügeloberseite. Die Unterseite ist scharf abgeset"
+        },
+        {
+          "speciesID": "birdnet-v3:BN08601",
+          "scientificName": "Puffinus yelkouan",
+          "language": "es",
+          "sourceURL": "https://es.wikipedia.org/wiki/Puffinus_yelkouan",
+          "minimumCM": 78.0,
+          "maximumCM": 90.0,
+          "measurementPhrase": "envergadura alar de 78 a 90 cm",
+          "context": "La pardela mediterránea es una pardela de tamaño medio, que mide de 34 a 39 cm de largo y tiene una envergadura alar de 78 a 90 cm. Tiene el plumaje de las partes superiores negruzco y blanco el de las inferiores, siendo muy parecida a la pardela pichoneta, de la que es muy difíc"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN08621",
+      "scientificName": "Pycnonotus leucogenys",
+      "decision": "imported",
+      "minimumCM": 25.5,
+      "maximumCM": 28.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Himalayan_bulbul"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08636",
+      "scientificName": "Pycnonotus xanthopygos",
+      "decision": "deferred",
+      "reason": "Other inconsistent morphology/units in context; require an independent check before importing.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN08636",
+          "scientificName": "Pycnonotus xanthopygos",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/White-spectacled_bulbul",
+          "minimumCM": 20.0,
+          "maximumCM": 25.0,
+          "measurementPhrase": "wingspan of 20–25 cm",
+          "context": "nonotus xanthopygos) is a member of the bulbul family. It is 20–25 cm (7.9–9.8 in) in length with a wingspan of 20–25 cm (7.9–9.8 in). These birds live in fruit plantations, gardens, and cities. It is the most common member of the bulbul family in Israel and Lebanon. In"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN08722",
+      "scientificName": "Quiscalus major",
+      "decision": "imported",
+      "minimumCM": 39.0,
+      "maximumCM": 50.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Boat-tailed_grackle"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08736",
+      "scientificName": "Rallina tricolor",
+      "decision": "imported",
+      "minimumCM": 37.0,
+      "maximumCM": 45.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Rallina_tricolor"
+    },
+    {
+      "speciesID": "birdnet-v3:BN08790",
+      "scientificName": "Ramsayornis modestus",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN08790",
+          "scientificName": "Ramsayornis modestus",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Brown-backed_honeyeater",
+          "minimumCM": 6.2,
+          "maximumCM": 7.0,
+          "measurementPhrase": "wingspan is 6.2–7 cm",
+          "context": "neyeater is small in size, measuring around 11–12cm in length with a weight of 11–14 g. The average wingspan is 6.2–7 cm (2.4 to 2.7 in), and the bill is 1.5–1.8 cm in length. Like the name suggests, it has a brown back with brown streaks across an otherwise white chest"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN08793",
+      "scientificName": "Recurvirostra americana",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN08801",
+      "scientificName": "Regulus satrapa",
+      "decision": "imported",
+      "minimumCM": 14.0,
+      "maximumCM": 18.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Golden-crowned_kinglet"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09030",
+      "scientificName": "Sarothrura affinis",
+      "decision": "imported",
+      "minimumCM": 23.0,
+      "maximumCM": 24.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Striped_flufftail"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09068",
+      "scientificName": "Sayornis phoebe",
+      "decision": "imported",
+      "minimumCM": 26.0,
+      "maximumCM": 28.0,
+      "sourceURL": "https://de.wikipedia.org/wiki/Wei%C3%9Fbauch-Phoebetyrann"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09088",
+      "scientificName": "Schoeniclus aureolus",
+      "decision": "imported",
+      "minimumCM": 22.0,
+      "maximumCM": 24.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Bruant_aur%C3%A9ole"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09250",
+      "scientificName": "Setophaga aestiva",
+      "decision": "imported",
+      "minimumCM": 16.0,
+      "maximumCM": 22.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/American_yellow_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09260",
+      "scientificName": "Setophaga discolor",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source."
+    },
+    {
+      "speciesID": "birdnet-v3:BN09269",
+      "scientificName": "Setophaga palmarum",
+      "decision": "imported",
+      "minimumCM": 20.0,
+      "maximumCM": 21.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Palm_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09282",
+      "scientificName": "Setophaga virens",
+      "decision": "imported",
+      "minimumCM": 17.0,
+      "maximumCM": 20.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Black-throated_green_warbler"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09298",
+      "scientificName": "Sialia currucoides",
+      "decision": "imported",
+      "minimumCM": 28.0,
+      "maximumCM": 36.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Azulino-da-montanha"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09300",
+      "scientificName": "Sialia sialis",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN09301",
+      "scientificName": "Sibirionetta formosa",
+      "decision": "imported",
+      "minimumCM": 65.0,
+      "maximumCM": 75.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Sarcelle_%C3%A9l%C3%A9gante"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09353",
+      "scientificName": "Sitta pusilla",
+      "decision": "imported",
+      "minimumCM": 16.0,
+      "maximumCM": 18.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Brown-headed_nuthatch"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09421",
+      "scientificName": "Spilopelia chinensis",
+      "decision": "imported",
+      "minimumCM": 43.0,
+      "maximumCM": 48.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Spilopelia_chinensis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09444",
+      "scientificName": "Spinus pinus",
+      "decision": "imported",
+      "minimumCM": 18.0,
+      "maximumCM": 22.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Pine_siskin"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09450",
+      "scientificName": "Spinus tristis",
+      "decision": "imported",
+      "minimumCM": 19.0,
+      "maximumCM": 22.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Spinus_tristis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09460",
+      "scientificName": "Spizella breweri",
+      "decision": "imported",
+      "minimumCM": 18.0,
+      "maximumCM": 20.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Brewer's_sparrow"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09548",
+      "scientificName": "Stelgidopteryx serripennis",
+      "decision": "imported",
+      "minimumCM": 27.0,
+      "maximumCM": 30.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Northern_rough-winged_swallow"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09576",
+      "scientificName": "Sternula antillarum",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN09651",
+      "scientificName": "Strix leptogrammica",
+      "decision": "imported",
+      "minimumCM": 95.0,
+      "maximumCM": 135.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Strix_leptogrammica"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09659",
+      "scientificName": "Strix seloputo",
+      "decision": "imported",
+      "minimumCM": 100.0,
+      "maximumCM": 110.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Chouette_des_pagodes"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09661",
+      "scientificName": "Strix varia",
+      "decision": "imported",
+      "minimumCM": 96.0,
+      "maximumCM": 125.0,
+      "sourceURL": "https://es.wikipedia.org/wiki/Strix_varia"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09689",
+      "scientificName": "Surnia ulula",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN09689",
+          "scientificName": "Surnia ulula",
+          "language": "pt",
+          "sourceURL": "https://pt.wikipedia.org/wiki/Coruja-gavi%C3%A3o",
+          "minimumCM": 69.0,
+          "maximumCM": 83.0,
+          "measurementPhrase": "envergadura de 69-83 cm",
+          "context": "écie de ave estrigiforme pertencente à família Strigidae. Tem entre 35 e 43 cm de comprimento e uma envergadura de 69-83 cm. Tem como habitat florestas boreais (florestas de coníferas mistas e bétulas), na proximidade de terrenos pantanosos, prados ou clareiras. Alimenta-s"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN09800",
+      "scientificName": "Synoicus ypsilophorus",
+      "decision": "imported",
+      "minimumCM": 26.0,
+      "maximumCM": 36.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Synoicus_ypsilophorus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09813",
+      "scientificName": "Syrrhaptes paradoxus",
+      "decision": "imported",
+      "minimumCM": 60.0,
+      "maximumCM": 78.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Syrrhaptes_paradoxus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09851",
+      "scientificName": "Tachyspiza cirrocephala",
+      "decision": "imported",
+      "minimumCM": 55.0,
+      "maximumCM": 80.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/%C3%89pervier_%C3%A0_collier_roux"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09854",
+      "scientificName": "Tachyspiza fasciata",
+      "decision": "imported",
+      "minimumCM": 75.0,
+      "maximumCM": 95.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Brown_goshawk"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09857",
+      "scientificName": "Tachyspiza haplochroa",
+      "decision": "imported",
+      "minimumCM": 58.0,
+      "maximumCM": 74.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Tachyspiza_haplochrous"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09859",
+      "scientificName": "Tachyspiza hiogaster",
+      "decision": "imported",
+      "minimumCM": 55.0,
+      "maximumCM": 80.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Tachyspiza_hiogaster"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09870",
+      "scientificName": "Tachyspiza soloensis",
+      "decision": "imported",
+      "minimumCM": 52.0,
+      "maximumCM": 62.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Tachyspiza_soloensis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN09890",
+      "scientificName": "Tangara chilensis",
+      "decision": "imported",
+      "minimumCM": 28.0,
+      "maximumCM": 30.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Calliste_septicolore"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10012",
+      "scientificName": "Tetraogallus caspius",
+      "decision": "imported",
+      "minimumCM": 95.0,
+      "maximumCM": 105.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Tetraogallus_caspius"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10013",
+      "scientificName": "Tetraogallus caucasicus",
+      "decision": "imported",
+      "minimumCM": 80.0,
+      "maximumCM": 95.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Tetraogallus_caucasicus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10018",
+      "scientificName": "Tetrastes bonasia",
+      "decision": "imported",
+      "minimumCM": 48.0,
+      "maximumCM": 54.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Tetrastes_bonasia"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10023",
+      "scientificName": "Thalassarche cauta",
+      "decision": "imported",
+      "minimumCM": 198.0,
+      "maximumCM": 260.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Albatros_%C3%A0_cape_blanche"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10026",
+      "scientificName": "Thalassarche eremita",
+      "decision": "imported",
+      "minimumCM": 210.0,
+      "maximumCM": 260.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Albatros_des_Chatham"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10027",
+      "scientificName": "Thalassarche melanophris",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN10027",
+          "scientificName": "Thalassarche melanophris",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Black-browed_albatross",
+          "minimumCM": 200.0,
+          "maximumCM": 240.0,
+          "measurementPhrase": "200 to 240 cm (79–94 in) wingspan",
+          "context": "ily.\n\nThe black-browed albatross is a medium-sized albatross, at 80 to 95 cm (31–37 in) long with a 200 to 240 cm (79–94 in) wingspan and an average weight of 2.9 to 4.7 kg (6.4–10.4 lb). It can have a natural lifespan of over 70 years. It has a dark grey saddle and upperwings that "
+        },
+        {
+          "speciesID": "birdnet-v3:BN10027",
+          "scientificName": "Thalassarche melanophris",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Thalassarche_melanophris",
+          "minimumCM": 200.0,
+          "maximumCM": 235.0,
+          "measurementPhrase": "apertura alare di 200–235 cm",
+          "context": "uso e comune.\n\nL'albatro sopracciglio nero è un albatro di medie dimensioni, lungo 80–95 cm, con un'apertura alare di 200–235 cm ed un peso medio di 3,7 kg. Come le altre specie di albatro note come mollymawk, si può distinguere dall'albatro urlatore per le ali completamente sc"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN10029",
+      "scientificName": "Thalasseus albididorsalis",
+      "decision": "imported",
+      "minimumCM": 125.0,
+      "maximumCM": 135.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/West_African_crested_tern"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10034",
+      "scientificName": "Thalasseus maximus",
+      "decision": "imported",
+      "minimumCM": 125.0,
+      "maximumCM": 135.0,
+      "sourceURL": "https://es.wikipedia.org/wiki/Thalasseus_maximus"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10118",
+      "scientificName": "Threskiornis bernieri",
+      "decision": "deferred",
+      "reason": "Different explicit ranges in the licensed language descriptions. Do not choose or combine them without further verification.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN10118",
+          "scientificName": "Threskiornis bernieri",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Malagasy_sacred_ibis",
+          "minimumCM": 112.0,
+          "maximumCM": 124.0,
+          "measurementPhrase": "wingspan of 112–124 cm",
+          "context": "st of Madagascar, and Aldabra on the Seychelles.\n\nThe adult stands 65–89 cm (26–35 in) tall, with a wingspan of 112–124 cm (44–49 in). The plumage is predominantly white, often with brownish-yellow staining. There are also black ornamental plumes on the back with a blue o"
+        },
+        {
+          "speciesID": "birdnet-v3:BN10118",
+          "scientificName": "Threskiornis bernieri",
+          "language": "de",
+          "sourceURL": "https://de.wikipedia.org/wiki/Hellaugenibis",
+          "minimumCM": 112.0,
+          "maximumCM": 114.0,
+          "measurementPhrase": "spannweite von 112 bis 114 cm",
+          "context": "rk dem des verwandten Pharaonenibis. Sie erreichen eine Körpergröße von 65 bis 89 cm und eine Flügelspannweite von 112 bis 114 cm. Kopf, Hals, Beine und Schnabel sind schwarz gefärbt und unbefiedert. Der Schnabel ist schmal und nach unten gebogen. Das Federkleid ist überwiegend "
+        },
+        {
+          "speciesID": "birdnet-v3:BN10118",
+          "scientificName": "Threskiornis bernieri",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Threskiornis_bernieri",
+          "minimumCM": 112.0,
+          "maximumCM": 124.0,
+          "measurementPhrase": "apertura alare di 112-124 cm",
+          "context": " Madagascar e dell'isola di Aldabra, nelle Seychelles.\n\nL'adulto misura 65-89 cm di altezza e ha un'apertura alare di 112-124 cm. Il piumaggio è prevalentemente bianco, spesso con zone giallo-brunastre. Sul dorso si trovano anche ciuffi ornamentali di piume nere dai riflessi bl"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN10156",
+      "scientificName": "Tinamus osgoodi",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN10156",
+          "scientificName": "Tinamus osgoodi",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Black_tinamou",
+          "minimumCM": 23.4,
+          "maximumCM": 24.8,
+          "measurementPhrase": "wingspan of about 234 to 248 mm",
+          "context": "(16–18 in) long, with females being a little larger than males. A male black tinamou has an average wingspan of about 234 to 248 mm (9.2–9.8 in), and a female black tinamou has an average wingspan of 239 to 256 mm (9.4–10.1 in). While there is no record of the average mass of a bl"
+        },
+        {
+          "speciesID": "birdnet-v3:BN10156",
+          "scientificName": "Tinamus osgoodi",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Black_tinamou",
+          "minimumCM": 23.9,
+          "maximumCM": 25.6,
+          "measurementPhrase": "wingspan of 239 to 256 mm",
+          "context": " an average wingspan of about 234 to 248 mm (9.2–9.8 in), and a female black tinamou has an average wingspan of 239 to 256 mm (9.4–10.1 in). While there is no record of the average mass of a black tinamou, a male specimen weighing 1,285 g (45.3 oz) has been examined at the F"
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN10287",
+      "scientificName": "Tribonyx ventralis",
+      "decision": "imported",
+      "minimumCM": 55.0,
+      "maximumCM": 66.0,
+      "sourceURL": "https://it.wikipedia.org/wiki/Tribonyx_ventralis"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10323",
+      "scientificName": "Tringa flavipes",
+      "decision": "imported",
+      "minimumCM": 59.0,
+      "maximumCM": 64.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Lesser_yellowlegs"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10578",
+      "scientificName": "Tyrannus dominicensis",
+      "decision": "imported",
+      "minimumCM": 37.0,
+      "maximumCM": 40.0,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Tyran_gris"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10585",
+      "scientificName": "Tyrannus vociferans",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN10592",
+      "scientificName": "Tyto inexspectata",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN10592",
+          "scientificName": "Tyto inexspectata",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Minahasa_masked_owl",
+          "minimumCM": 24.0,
+          "maximumCM": 25.0,
+          "measurementPhrase": "wingspan of 240–250 mm",
+          "context": "it is also known to live in north-central Sulawesi.\n\nThe Minahasa masked owl has short wings with a wingspan of 240–250 mm (9.4–9.8 in), well suited to its habitat in deep forests. It appears to prefer undisturbed or lightly disturbed rainforest at altitudes of 100–1,600 "
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN10597",
+      "scientificName": "Tyto soumagnei",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN10597",
+          "scientificName": "Tyto soumagnei",
+          "language": "it",
+          "sourceURL": "https://it.wikipedia.org/wiki/Tyto_soumagnei",
+          "minimumCM": 19.0,
+          "maximumCM": 22.0,
+          "measurementPhrase": "apertura alare di 190 - 220 mm",
+          "context": "ini neri. Gli artigli sono possenti.\n\nComplessivamente raggiunge un'altezza di circa 27,5 cm, ha un'apertura alare di 190 - 220 mm e la coda è lunga 93 – 120 mm. Il maschio è più piccolo della femmina, difatti il primo ha un peso di circa 320 g e la seconda di 430 g."
+        }
+      ]
+    },
+    {
+      "speciesID": "birdnet-v3:BN10732",
+      "scientificName": "Vireo gilvus",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN10764",
+      "scientificName": "Xanthocephalus xanthocephalus",
+      "decision": "imported",
+      "minimumCM": 42.0,
+      "maximumCM": 44.0,
+      "sourceURL": "https://en.wikipedia.org/wiki/Yellow-headed_blackbird"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10848",
+      "scientificName": "Zapornia pusilla",
+      "decision": "imported",
+      "minimumCM": 33.0,
+      "maximumCM": 37.0,
+      "sourceURL": "https://pt.wikipedia.org/wiki/Franga-de-%C3%A1gua-pequena"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10885",
+      "scientificName": "Zonotrichia atricapilla",
+      "decision": "deferred",
+      "reason": "Exploratory match is not a metric range immediately attached to the span term; may be a single span, another body measurement, or an unsupported grammatical connector."
+    },
+    {
+      "speciesID": "birdnet-v3:BN10894",
+      "scientificName": "Zoothera aurea",
+      "decision": "imported",
+      "minimumCM": 44.0,
+      "maximumCM": 47.5,
+      "sourceURL": "https://fr.wikipedia.org/wiki/Grive_dor%C3%A9e"
+    },
+    {
+      "speciesID": "birdnet-v3:BN10964",
+      "scientificName": "Zosterops luteus",
+      "decision": "deferred",
+      "reason": "Span label appears to describe one wing: value is shorter than body length or explicitly sex-specific wing measurements. Needs an independent full-span source.",
+      "candidates": [
+        {
+          "speciesID": "birdnet-v3:BN10964",
+          "scientificName": "Zosterops luteus",
+          "language": "en",
+          "sourceURL": "https://en.wikipedia.org/wiki/Canary_white-eye",
+          "minimumCM": 5.2,
+          "maximumCM": 5.9,
+          "measurementPhrase": "wingspan of 52–59 mm",
+          "context": "harp beak and a brush-tipped tongue similar to the honeyeaters. The bird is 100–110 mm long, with a wingspan of 52–59 mm, a bill of 13-16mm and weighs between 6.5 and 11.0 grams.\n\nThe bird is found in mangrove, mangal and adjacent riverine vegetation. They feed on insec"
+        }
+      ]
+    }
+  ]
+}

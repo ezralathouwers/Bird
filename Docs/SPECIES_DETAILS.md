@@ -1,7 +1,7 @@
 # Short biographies and wingspans
 
 Imported 20 November 2026 for all 11,173 addressable catalog records. Coverage is
-**11,154 Dutch bios** and **1,356 reported wingspans**, not complete numeric data
+**11,154 Dutch bios** and **1,533 reported wingspans**, not complete numeric data
 for every bird. `SpeciesDetailsCoverage.json` records both missing-ID lists.
 
 ## Additions — 21 November 2026
@@ -22,7 +22,49 @@ great tit 24 cm (a single published value) from The Wildlife Trusts; great
 hornbill 151–178 cm from Animal Diversity Web. Existing measurements are
 preserved. The source dataset has only 1,424 empirical rows; matching names
 alone cannot resolve differing Avibase concepts. No prediction or wing-chord
-value is substituted. 9,817 catalog records still lack a sourced wingspan.
+value is substituted. Coverage after this first supplement was 1,356 spans.
+
+### Multilingual Wikipedia measurement pass
+
+177 additional missing wingspans were filled from explicit numerical ranges in
+the already licensed BirdNET+ Wikipedia descriptions (English, French, German,
+Spanish, Italian and Portuguese). Only exact scientific-name matches and
+per-language `wikipedia` flags are accepted. No LLM descriptions are used.
+These use the existing source-checked-guide method, meaning reviewed source
+wording, not a new independent scientific measurement. The source article URL,
+language, matched measurement phrase, surrounding context and pinned snapshot
+hash are retained per supplement. Multiple identical language descriptions are
+corroborating text, not necessarily independent evidence.
+
+`WikipediaWingspanReview.json` records the 177 accepted and 55 deferred species
+from this pass. Conflicting language ranges, apparent wing-chord labels, source
+unit/number errors, inferred spans, sex-only scope and uncertain split concepts
+are deferred. A strict parser prevents body length, tarsus, wing chord or weight
+from being picked up after a single-valued span or from the previous table row.
+The parser is a candidate collector: it does not establish source accuracy or
+automatically authorize an import. This is not a complete review of all
+Wikipedia articles. 9,640 records still lack a sourced wingspan; that does not
+mean the measurement is unavailable elsewhere. No existing content changed.
+
+Collect new candidates without mutating bundled content:
+
+```
+python Scripts/collect_wikipedia_spans.py /path/BirdNET+_Taxonomy_v0.5-Nov2026.zip
+```
+
+Candidates default to `/tmp/wikipedia-span-candidates.json`; inspect them before
+adding records with reviewed evidence to the supplement ledger. The collector
+skips filled records, so rerunning it after this pass shows only remaining
+candidates. Reapply the saved accepted decisions using
+`python Scripts/supplement_species_details.py`.
+
+Verification for this pass: all 177 additions were checked back against the
+exact licensed snapshot phrase, source URL, scientific name and numerical unit
+conversion. All 11,173 IDs, every pre-existing span and every biography were
+preserved. Fifteen Python tests pass, bundle/ledger hashes match, a repeated
+import is byte-identical, 36 Swift syntax trees parse and git diff --check passes.
+The bundled coverage XCTest expectation was updated to 1,533. Native resource
+decoding, Info links, compilation and XCTest still require Xcode.
 
 Docs/SpeciesDetailsSupplements.json retains species IDs, evidence dates, source
 URLs, numerical captions/page hashes and the licensed English basis of adapted
@@ -36,7 +78,7 @@ Run `python Scripts/collect_vogelbescherming_spans.py` to collect new candidate
 facts into /tmp/span_supplements.json without changing the app. Its parser skips
 failed pages, ambiguous names and non-range captions; this is not a complete
 audit of every source page. The 2026-11-21 pass checked all 345 guide links.
-Nine portable importer/supplement safety tests pass with
+Fifteen portable importer/supplement/parser safety tests pass with
 `PYTHONPATH=/workspace/work/validation-deps python -m unittest discover -s Scripts -p 'test_species_details*.py'`.
 All 11,173 identities, preservation of existing values, bundled SHA-256 and
 repeat-import idempotence were checked; 36 Swift syntax trees parsed and

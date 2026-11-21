@@ -42,3 +42,11 @@ Two short original factual summaries use the cited scientific species accounts.
 guide prose or images: Vogelbescherming Nederland (40), Natural History Museum
 (European robin), The Wildlife Trusts (great tit), Animal Diversity Web,
 Spurthi Paruchuri (great hornbill). Exact source URLs are retained per record.
+
+177 further factual wingspan ranges are extracted from English, French, German,
+Spanish, Italian and Portuguese Wikipedia descriptions in the same pinned
+BirdNET+ snapshot. Wikipedia contributors, CC BY-SA 4.0. Changes: numerical
+ranges converted to centimetres; no translated article prose is displayed.
+Original article URLs are retained in each record. Reviewed measurement phrases,
+short context excerpts and source languages are retained in the maintenance
+supplement ledger; see the article's contributor history for authorship.
