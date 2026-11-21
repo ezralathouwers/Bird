@@ -1,5 +1,22 @@
 # Illustration batches
 
+## Coast continuation 12F — 21 November 2026
+
+Ten reviewed originals complete visdief and grote stern, including distinct
+fish-bearing dynamic scenes, bird-only classics, front, rear and centered
+ventral flight views. Common tern uses red bill/feet with black bill tip;
+Sandwich tern uses black bill with yellow tip, black feet and shaggy crest.
+Each image was individually inspected for wing attachments, single head/bill,
+rear bill hidden, framing and main markings. Importer preflight, PNG checks,
+original byte/hash equality, review binding and both inventories pass.
+
+The original twenty-species coast/meadow batch is now complete at 100 roles.
+Overall coverage is 310 role assets and 62 complete species. The next twenty
+waterbirds remain a separate continuation; unaccepted or ungenerated roles
+are not counted. Native loading, edge blending, carousel sizing, independent
+expert and user review remain pending without Xcode.
+
+
 ## Coast continuation 12E — 21 November 2026
 
 Five reviewed originals complete grote mantelmeeuw, including a fish-bearing

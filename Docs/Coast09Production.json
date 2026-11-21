@@ -1,11 +1,11 @@
 {
-  "state": "partial-batch-checkpoint",
+  "state": "complete-no-job-running",
   "requestedSpecies": 20,
   "targetRoles": 100,
-  "generatedRoles": 90,
-  "acceptedRoles": 90,
+  "generatedRoles": 100,
+  "acceptedRoles": 100,
   "rejectedRoles": 0,
-  "pendingGeneration": 10,
+  "pendingGeneration": 0,
   "rows": [
     {
       "id": "birdnet-v3:BN10664",
@@ -913,70 +913,100 @@
       "name": "Visdief",
       "scientificName": "Sterna hirundo",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "6930d9daa1f071b73e326b2d0f71eabd6267eb76a1e8056e051efca39e291cb5",
+      "sourceFile": "exec-edb9f265-c9ef-418b-bfd3-8ff23412b568.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN09566",
       "name": "Visdief",
       "scientificName": "Sterna hirundo",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "8b782c673c88b5b264e438ab710b6e321f2e27c6d53f40d6e86796461a7c6010",
+      "sourceFile": "exec-d85d48c6-16d7-44f9-8580-43ddff0da071.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN09566",
       "name": "Visdief",
       "scientificName": "Sterna hirundo",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "a3e9f3450357fb433b1c006fecc136cdeb19b10bedaa2e1dd155c69f9ab38943",
+      "sourceFile": "exec-94e9bb48-4cc8-4bd3-b4b1-ad53151d82c6.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN09566",
       "name": "Visdief",
       "scientificName": "Sterna hirundo",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "94e493b5b2c9886c09f5094ed07e1215c7ce183c1166401fa19169c86a1b27f8",
+      "sourceFile": "exec-98fdab4c-b989-44b7-92d1-1ffab1ccb8ee.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN09566",
       "name": "Visdief",
       "scientificName": "Sterna hirundo",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "5d09336aada7c7377b308984a30908854136c53f2592ef318d81f19f00372bf7",
+      "sourceFile": "exec-103a0a0d-5114-4dcb-9902-0a4b8a7a6518.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN10035",
       "name": "Grote stern",
       "scientificName": "Thalasseus sandvicensis",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "8b880725782b7dfe9c37e384a1e37b7b081fe3bac0173faafa17d3133ee27e9f",
+      "sourceFile": "exec-c3c40253-91fd-4aff-91d0-ff7717a2b68a.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN10035",
       "name": "Grote stern",
       "scientificName": "Thalasseus sandvicensis",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "07fc5bec0592430f537ceb1c8834c0b8608b0fedf2fbe5b817a8bbd84368aea3",
+      "sourceFile": "exec-45e19996-c14d-4ab6-8c01-7e0825221465.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN10035",
       "name": "Grote stern",
       "scientificName": "Thalasseus sandvicensis",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "ab43bf7ba26b6ccecc3872d5d8ec6144792887d2b9d1dbe02bba5d369245a85a",
+      "sourceFile": "exec-7c368365-f2a5-42be-89e4-9d6242241090.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN10035",
       "name": "Grote stern",
       "scientificName": "Thalasseus sandvicensis",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "b7c9a0c34fee1877f6b31a5cae704d44d3cd28aa6b2aa0a0004111e916bf944b",
+      "sourceFile": "exec-79f23a72-40a3-41e0-a856-d6ea97299635.png",
+      "batch": "coast-12F"
     },
     {
       "id": "birdnet-v3:BN10035",
       "name": "Grote stern",
       "scientificName": "Thalasseus sandvicensis",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "74f54fe94a6b2486969707ac18d2395962a182ef252df3efd91a1ccebba0deb0",
+      "sourceFile": "exec-54292e32-0f12-4f67-8ad9-b3ee3ceed18c.png",
+      "batch": "coast-12F"
     }
   ],
   "latestResume": "2026-11-21: coast-10 adds 50 reviewed assets; no running job."

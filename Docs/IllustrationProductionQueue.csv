@@ -10616,7 +10616,7 @@ birdnet-v3:BN07216,Pelargopsis melanorhyncha,Grootsnavelijsvogel,coast-general,K
 birdnet-v3:BN05163,Larus hyperboreus,Grote burgemeester,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10031,Thalasseus bergii,Grote kuifstern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05165,Larus marinus,Grote mantelmeeuw,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
-birdnet-v3:BN10035,Thalasseus sandvicensis,Grote stern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN10035,Thalasseus sandvicensis,Grote stern,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN10197,Todiramphus saurophagus,Hagedisijsvogel,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02062,Chroicocephalus hartlaubii,Hartlaubmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05162,Larus heermanni,Heermannmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10762,7 +10762,7 @@ birdnet-v3:BN02498,Conirostrum bicolor,Tweekleurige spitssnavel,coast-general,Ku
 birdnet-v3:BN00448,Anarhynchus marginatus,Vale strandplevier,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05172,Larus vegae,Vegameeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07085,Pandion haliaetus,Visarend,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN09566,Sterna hirundo,Visdief,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN09566,Sterna hirundo,Visdief,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN02641,Corvus ossifragus,Viskraai,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09837,Tachyeres patachonicus,Vliegende booteend,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10772,Xema sabini,Vorkstaartmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

@@ -9528,5 +9528,321 @@
       "poseAndFraming": true,
       "notes": "Centered ventral flight, single upward bill and head, exactly two shoulder-attached open wings without folded silhouettes, dark outer primaries with white mirrors, pink trailing webbed feet, full framing."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09566",
+    "asset": "birdnet-v3-BN09566-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-edb9f265-c9ef-418b-bfd3-8ff23412b568.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "6930d9daa1f071b73e326b2d0f71eabd6267eb76a1e8056e051efca39e291cb5",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief"
+    ],
+    "anatomyReview": {
+      "sha256": "6930d9daa1f071b73e326b2d0f71eabd6267eb76a1e8056e051efca39e291cb5",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only classic, black cap, single red black-tipped bill, two folded wing attachments with far wing occluded, long forked white tail, two red webbed feet, whole framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN09566",
+    "asset": "birdnet-v3-BN09566-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-d85d48c6-16d7-44f9-8580-43ddff0da071.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "8b782c673c88b5b264e438ab710b6e321f2e27c6d53f40d6e86796461a7c6010",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief"
+    ],
+    "anatomyReview": {
+      "sha256": "8b782c673c88b5b264e438ab710b6e321f2e27c6d53f40d6e86796461a7c6010",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Single right-facing head and red black-tipped bill carrying small fish, two folded wing attachments with far wing occluded, two red feet on bounded driftwood, long forked tail, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09566",
+    "asset": "birdnet-v3-BN09566-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-94e9bb48-4cc8-4bd3-b4b1-ad53151d82c6.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "a3e9f3450357fb433b1c006fecc136cdeb19b10bedaa2e1dd155c69f9ab38943",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief"
+    ],
+    "anatomyReview": {
+      "sha256": "a3e9f3450357fb433b1c006fecc136cdeb19b10bedaa2e1dd155c69f9ab38943",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front, single centered red black-tipped bill and black cap, two folded wing flanks, pale breast, two red webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09566",
+    "asset": "birdnet-v3-BN09566-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-98fdab4c-b989-44b7-92d1-1ffab1ccb8ee.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "94e493b5b2c9886c09f5094ed07e1215c7ce183c1166401fa19169c86a1b27f8",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief"
+    ],
+    "anatomyReview": {
+      "sha256": "94e493b5b2c9886c09f5094ed07e1215c7ce183c1166401fa19169c86a1b27f8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear with hidden bill and eyes, two closed grey wings and dark primaries, complete white forked tail, red feet, one black-capped head."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09566",
+    "asset": "birdnet-v3-BN09566-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-103a0a0d-5114-4dcb-9902-0a4b8a7a6518.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "5d09336aada7c7377b308984a30908854136c53f2592ef318d81f19f00372bf7",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/visdief"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "5d09336aada7c7377b308984a30908854136c53f2592ef318d81f19f00372bf7",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral spread, two shoulder-attached wings only, long pointed wings and deeply forked white tail, red black-tipped single bill upward, red tucked webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN10035",
+    "asset": "birdnet-v3-BN10035-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-c3c40253-91fd-4aff-91d0-ff7717a2b68a.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "8b880725782b7dfe9c37e384a1e37b7b081fe3bac0173faafa17d3133ee27e9f",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-stern"
+    ],
+    "anatomyReview": {
+      "sha256": "8b880725782b7dfe9c37e384a1e37b7b081fe3bac0173faafa17d3133ee27e9f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only, black shaggy crest and single black yellow-tipped bill, two folded wing attachments with far wing occluded, grey mantle white body and forked tail, two black feet, whole framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN10035",
+    "asset": "birdnet-v3-BN10035-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-45e19996-c14d-4ab6-8c01-7e0825221465.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "07fc5bec0592430f537ceb1c8834c0b8608b0fedf2fbe5b817a8bbd84368aea3",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-stern"
+    ],
+    "anatomyReview": {
+      "sha256": "07fc5bec0592430f537ceb1c8834c0b8608b0fedf2fbe5b817a8bbd84368aea3",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing one head and single black yellow-tipped bill holding fish, two folded wing attachments with far wing occluded, black webbed feet on bounded stone, complete forked tail and crest."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN10035",
+    "asset": "birdnet-v3-BN10035-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-7c368365-f2a5-42be-89e4-9d6242241090.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "ab43bf7ba26b6ccecc3872d5d8ec6144792887d2b9d1dbe02bba5d369245a85a",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-stern"
+    ],
+    "anatomyReview": {
+      "sha256": "ab43bf7ba26b6ccecc3872d5d8ec6144792887d2b9d1dbe02bba5d369245a85a",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front with one centered black yellow-tipped bill, single black crested head and two eyes, two folded wing flanks, two black feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN10035",
+    "asset": "birdnet-v3-BN10035-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-79f23a72-40a3-41e0-a856-d6ea97299635.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "b7c9a0c34fee1877f6b31a5cae704d44d3cd28aa6b2aa0a0004111e916bf944b",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-stern"
+    ],
+    "anatomyReview": {
+      "sha256": "b7c9a0c34fee1877f6b31a5cae704d44d3cd28aa6b2aa0a0004111e916bf944b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear, shaggy black crest with eyes and bill hidden, two closed grey wings, black feet, complete forked tail and full framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN10035",
+    "asset": "birdnet-v3-BN10035-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-54292e32-0f12-4f67-8ad9-b3ee3ceed18c.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "74f54fe94a6b2486969707ac18d2395962a182ef252df3efd91a1ccebba0deb0",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "coast-12F",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-stern"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "74f54fe94a6b2486969707ac18d2395962a182ef252df3efd91a1ccebba0deb0",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral flight, two shoulder-attached open wings only, single upward black yellow-tipped bill, pale underwings and white forked tail, black trailing feet, full framing."
+    }
   }
 ]

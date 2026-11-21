@@ -9695,7 +9695,7 @@ birdnet-v3:BN09562,Rivierstern,Sterna aurantia,Laridae,True,True,False,False,Fal
 birdnet-v3:BN09563,Dougalls stern,Sterna dougallii,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN09564,Forsters stern,Sterna forsteri,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN09565,Zuid-amerikaanse visdief,Sterna hirundinacea,Laridae,True,True,False,False,False,False,False
-birdnet-v3:BN09566,Visdief,Sterna hirundo,Laridae,True,True,False,False,False,False,False
+birdnet-v3:BN09566,Visdief,Sterna hirundo,Laridae,True,True,True,True,True,True,True
 birdnet-v3:BN09567,Noordse stern,Sterna paradisaea,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN09568,Arabische stern,Sterna repressa,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN09569,Tarastern,Sterna striata,Laridae,True,True,False,False,False,False,False
@@ -10165,7 +10165,7 @@ birdnet-v3:BN10031,Grote kuifstern,Thalasseus bergii,Laridae,True,True,False,Fal
 birdnet-v3:BN10032,Chinese kuifstern,Thalasseus bernsteini,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN10033,Sierlijke stern,Thalasseus elegans,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN10034,Amerikaanse koningsstern,Thalasseus maximus,Laridae,True,True,False,False,False,False,False
-birdnet-v3:BN10035,Grote stern,Thalasseus sandvicensis,Laridae,True,True,False,False,False,False,False
+birdnet-v3:BN10035,Grote stern,Thalasseus sandvicensis,Laridae,True,True,True,True,True,True,True
 birdnet-v3:BN10036,Antarctische stormvogel,Thalassoica antarctica,Procellariidae,True,True,False,False,False,False,False
 birdnet-v3:BN10037,Witrugeend,Thalassornis leuconotus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN10038,Kroonbosnimf,Thalurania colombica,Trochilidae,True,True,False,False,False,False,False
