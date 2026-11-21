@@ -13320,5 +13320,321 @@
       "poseAndFraming": true,
       "notes": "Centered ventral male common scoter, single upward dark bill with incorrect yellow tip removed, black neck/belly two dark underwings greyer primaries no white patches, two trailing dark feet pointed tail, whole framing."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05783",
+    "asset": "birdnet-v3-BN05783-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-1787d991-0e8b-4f41-a2d2-4bf5f60e147d.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "0ee1dee791b35766220623fae2edfaec644cb263325f4528f3f6f97e9a80ce84",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14C",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "0ee1dee791b35766220623fae2edfaec644cb263325f4528f3f6f97e9a80ce84",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only male velvet scoter, one orange-sided dark bill pink-orange nail pale grey iris black pupil white crescent below eye, black body white wing bar two folded wings far wing occluded, two pinkish dark-webbed feet, full framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN05783",
+    "asset": "birdnet-v3-BN05783-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-fda6830d-dd17-4c83-bbec-4c4bd366dfcb.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "ec2c62e413c447afc0d4d48ea39181643977017c28557b74cbffcd5eea160481",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14C",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "ec2c62e413c447afc0d4d48ea39181643977017c28557b74cbffcd5eea160481",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Floating male velvet scoter holding single mussel in one orange-sided pink-nailed bill, pale grey iris white crescent below eye black body white secondary panel two folded wings and two naturally submerged webbed feet visible, bounded waves complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05783",
+    "asset": "birdnet-v3-BN05783-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-07c9722f-3a4a-40da-83fc-7e684e620c70.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "cbe0183e089ce65180996ee045b1f0adbd4b097507d3ef235280aaef5e2cec39",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14C",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "cbe0183e089ce65180996ee045b1f0adbd4b097507d3ef235280aaef5e2cec39",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front male velvet scoter, one centered black/orange bill pink nail two pale grey irises black pupils white under-eye crescents, black body two folded wings white secondary edges and two pinkish dark-webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05783",
+    "asset": "birdnet-v3-BN05783-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-82c47837-9207-4f16-a694-c206772314d8.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "81b3eb4bf480165ed624483c1443221ea72ab85b0b8bbd8a3cd45f29d2cb1609",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14C",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend"
+    ],
+    "anatomyReview": {
+      "sha256": "81b3eb4bf480165ed624483c1443221ea72ab85b0b8bbd8a3cd45f29d2cb1609",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear male velvet scoter, single black head bill/eyes hidden, two folded dark wings white secondary panels short dark tail and two pinkish dark-webbed feet, complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN05783",
+    "asset": "birdnet-v3-BN05783-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-5bd817de-2205-4471-b46d-d2e0f1ea9d66.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "2822106a2466301f403e711b6c11380f6c4fe95868a26f2f33aac1c848542038",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14C",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "2822106a2466301f403e711b6c11380f6c4fe95868a26f2f33aac1c848542038",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral male velvet scoter, single upward orange-sided bill pink nail grey iris edges white eye crescents black neck/belly, two dark open wings white secondary feather bands and two trailing pinkish dark-webbed feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02331",
+    "asset": "birdnet-v3-BN02331-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-787d0a1a-402a-4c2d-885d-90d595841de3.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "e242341029f618b6a40c485495cd291e4784fc572c033638f6b871d9bedaf14c",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14D",
+    "representativePlumage": "adult male winter",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend"
+    ],
+    "anatomyReview": {
+      "sha256": "e242341029f618b6a40c485495cd291e4784fc572c033638f6b871d9bedaf14c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Right-facing bird-only winter male long-tailed duck, one black pink-banded bill brown cheek patch white head/neck dark breast white belly grey flanks, two folded wings far side occluded long central tail feathers and two grey webbed feet, full framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN02331",
+    "asset": "birdnet-v3-BN02331-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-b9aa2d68-05d7-45ab-8c86-77fd544bae57.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "7b68d27ba6ba8ac94616804ccd7c21bc3f4fc83e02384730848e48184686e9d0",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14D",
+    "representativePlumage": "adult male winter",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend"
+    ],
+    "anatomyReview": {
+      "sha256": "7b68d27ba6ba8ac94616804ccd7c21bc3f4fc83e02384730848e48184686e9d0",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Calling floating winter male long-tailed duck, one head and single open black pink-banded bill two mandibles, brown cheek patch white head dark breast white belly, two folded wings long raised central tail and naturally submerged feet, bounded ripples complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02331",
+    "asset": "birdnet-v3-BN02331-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-3f826bd8-2858-4b67-a064-8976feb12ba3.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "b401f0bebd3a009dcbb21a4cb44d13b442528e49e5b69e27cccf0ad7c058a2ed",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14D",
+    "representativePlumage": "adult male winter",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend"
+    ],
+    "anatomyReview": {
+      "sha256": "b401f0bebd3a009dcbb21a4cb44d13b442528e49e5b69e27cccf0ad7c058a2ed",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Straight rear winter male long-tailed duck, one white head brown cheek edges bill/eyes hidden, dark back white scapular edges two folded wings long narrow central tail and two grey feet, whole framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02331",
+    "asset": "birdnet-v3-BN02331-flight",
+    "view": "flight",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-8f500618-0fd3-429a-bb49-e9d73871a709.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "up",
+    "displayFacing": "up",
+    "displayTransform": "none",
+    "sha256": "aa5fa9279cb46a771e33546e2db8e3397cc4c6cac21429298ebd3e388ab489d3",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14D",
+    "representativePlumage": "adult male winter",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend"
+    ],
+    "projection": "centered-ventral-spread",
+    "anatomyReview": {
+      "sha256": "aa5fa9279cb46a771e33546e2db8e3397cc4c6cac21429298ebd3e388ab489d3",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Centered ventral winter male long-tailed duck, one upward black pink-banded bill white head/neck dark cheek sides and breast white abdomen, two dark spread underwings no dorsal Y-mark copied onto belly, two grey trailing feet long tail and complete framing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02331",
+    "asset": "birdnet-v3-BN02331-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-59b7ff5c-1969-4c95-b709-027739352c32.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "b2d71aa38562c6eaae1713b0cf178348a13366ba881081bbaf76527093d9800f",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "seaducks-14D",
+    "representativePlumage": "adult male winter",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend"
+    ],
+    "anatomyReview": {
+      "sha256": "b2d71aa38562c6eaae1713b0cf178348a13366ba881081bbaf76527093d9800f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Front winter male long-tailed duck, one centered black pink-banded bill two eyes brown cheek patches white head dark breast white belly, two folded wing flanks two grey webbed feet and entire long narrow tail, huge matte removed and complete framing."
+    }
   }
 ]

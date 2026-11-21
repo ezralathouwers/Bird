@@ -1,6 +1,6 @@
 {
   "state": "next10-seaducks-in-progress-no-background-worker",
-  "installedRoles": 143,
+  "installedRoles": 153,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -289,11 +289,13 @@
     },
     {
       "url": "https://www.rspb.org.uk/birds-and-wildlife/velvet-scoter",
-      "sha256": "d52ad512dbf6ceccfe35d1a473be48cc349704328398f8a3c03ede40786893cf"
+      "sha256": "d52ad512dbf6ceccfe35d1a473be48cc349704328398f8a3c03ede40786893cf",
+      "usage": "Factual description review; no third-party media or prose copied into app."
     },
     {
       "url": "https://www.oiseaux-birds.com/card-velvet-scoter.html",
-      "sha256": "9519d9d1adbc002780403b7da5ab5ff6ab047a4bfd837f27a20d035784672ef6"
+      "sha256": "9519d9d1adbc002780403b7da5ab5ff6ab047a4bfd837f27a20d035784672ef6",
+      "usage": "Factual description review; no third-party media or prose copied into app."
     }
   ],
   "rows": [
@@ -2671,6 +2673,222 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-53a0455b-16e3-4be9-8023-f26bc50742b7.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05783",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0ee1dee791b35766220623fae2edfaec644cb263325f4528f3f6f97e9a80ce84",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male velvet scoter, one orange-sided dark bill pink-orange nail pale grey iris black pupil white crescent below eye, black body white wing bar two folded wings far wing occluded, two pinkish dark-webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-1787d991-0e8b-4f41-a2d2-4bf5f60e147d.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05783",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ec2c62e413c447afc0d4d48ea39181643977017c28557b74cbffcd5eea160481",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating male velvet scoter holding single mussel in one orange-sided pink-nailed bill, pale grey iris white crescent below eye black body white secondary panel two folded wings and two naturally submerged webbed feet visible, bounded waves complete framing."
+      },
+      "sourceFile": "exec-fda6830d-dd17-4c83-bbec-4c4bd366dfcb.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05783",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "cbe0183e089ce65180996ee045b1f0adbd4b097507d3ef235280aaef5e2cec39",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male velvet scoter, one centered black/orange bill pink nail two pale grey irises black pupils white under-eye crescents, black body two folded wings white secondary edges and two pinkish dark-webbed feet, whole framing."
+      },
+      "sourceFile": "exec-07c9722f-3a4a-40da-83fc-7e684e620c70.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05783",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "81b3eb4bf480165ed624483c1443221ea72ab85b0b8bbd8a3cd45f29d2cb1609",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male velvet scoter, single black head bill/eyes hidden, two folded dark wings white secondary panels short dark tail and two pinkish dark-webbed feet, complete framing."
+      },
+      "sourceFile": "exec-82c47837-9207-4f16-a694-c206772314d8.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05783",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zee-eend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "2822106a2466301f403e711b6c11380f6c4fe95868a26f2f33aac1c848542038",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male velvet scoter, single upward orange-sided bill pink nail grey iris edges white eye crescents black neck/belly, two dark open wings white secondary feather bands and two trailing pinkish dark-webbed feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-5bd817de-2205-4471-b46d-d2e0f1ea9d66.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02331",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend",
+      "representativePlumage": "adult male winter",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e242341029f618b6a40c485495cd291e4784fc572c033638f6b871d9bedaf14c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only winter male long-tailed duck, one black pink-banded bill brown cheek patch white head/neck dark breast white belly grey flanks, two folded wings far side occluded long central tail feathers and two grey webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-787d0a1a-402a-4c2d-885d-90d595841de3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02331",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend",
+      "representativePlumage": "adult male winter",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "7b68d27ba6ba8ac94616804ccd7c21bc3f4fc83e02384730848e48184686e9d0",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Calling floating winter male long-tailed duck, one head and single open black pink-banded bill two mandibles, brown cheek patch white head dark breast white belly, two folded wings long raised central tail and naturally submerged feet, bounded ripples complete framing."
+      },
+      "sourceFile": "exec-b9aa2d68-05d7-45ab-8c86-77fd544bae57.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02331",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend",
+      "representativePlumage": "adult male winter",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "b401f0bebd3a009dcbb21a4cb44d13b442528e49e5b69e27cccf0ad7c058a2ed",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear winter male long-tailed duck, one white head brown cheek edges bill/eyes hidden, dark back white scapular edges two folded wings long narrow central tail and two grey feet, whole framing."
+      },
+      "sourceFile": "exec-3f826bd8-2858-4b67-a064-8976feb12ba3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02331",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend",
+      "representativePlumage": "adult male winter",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "aa5fa9279cb46a771e33546e2db8e3397cc4c6cac21429298ebd3e388ab489d3",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral winter male long-tailed duck, one upward black pink-banded bill white head/neck dark cheek sides and breast white abdomen, two dark spread underwings no dorsal Y-mark copied onto belly, two grey trailing feet long tail and complete framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-8f500618-0fd3-429a-bb49-e9d73871a709.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN02331",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/ijseend",
+      "representativePlumage": "adult male winter",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "b2d71aa38562c6eaae1713b0cf178348a13366ba881081bbaf76527093d9800f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front winter male long-tailed duck, one centered black pink-banded bill two eyes brown cheek patches white head dark breast white belly, two folded wing flanks two grey webbed feet and entire long narrow tail, huge matte removed and complete framing."
+      },
+      "sourceFile": "exec-59b7ff5c-1969-4c95-b709-027739352c32.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01078",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/topper",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "3bf97ae65ecff9d4b69e2328105427f939aee40570d04ae409ec706e5f9e3830",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male greater scaup, one broad blue-grey black-tipped bill rounded green-black head yellow eye black breast white flanks grey vermiculated back, two folded wings far side occluded and two grey webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-835bd6e9-7892-4312-bc2d-a662496967f2.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN01078",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/topper",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "d4b4605bce8bd623f7419a0ec70af032f22c6aa2168391e2d89a6f61a8f371a7",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating foraging male greater scaup, one bent head and blue-grey bill pulling pondweed, yellow eye green-black head black breast white flanks grey back two folded wings, submerged feet naturally visible/occluded in bounded ripples, whole framing."
+      },
+      "sourceFile": "exec-bbc2dcf7-f9f3-4b6e-ab4d-5db75a9f7d3a.png",
+      "state": "reviewed-not-installed"
+    },
+    {
+      "id": "birdnet-v3:BN01078",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/topper",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "9d37cca0c92a71fa0a8a7e823f303b962e74209fc6ad79637c3e1440e05367d6",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male greater scaup, one broad centered pale blue-grey black-tipped bill and two yellow eyes rounded green-black head black breast white belly, two folded wing flanks grey feet, full framing."
+      },
+      "sourceFile": "exec-42d0b771-0e01-42f9-a50f-9bc8481f9aaf.png",
+      "state": "reviewed-not-installed"
     }
   ],
   "rejectedAttempts": [
@@ -2797,6 +3015,30 @@
       "sourceFile": "exec-a0ef529f-dc6a-4bfc-a5cd-a55114e7da0f.png",
       "sha256": "b57dfd1c1601a238990bcbe22ae275aca1426d7c0cee6a4853f7b18e01666982",
       "reason": "Yellow drawn at ventral bill tip instead of hidden dorsal basal patch; corrected.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-9e1a726a-307f-40d5-88e4-4fea906d95f2.png",
+      "sha256": "e34af48f421c94ee6b824d174ccb2781a00e29428058f6cc8d196167c735c4e8",
+      "reason": "Dark/brown iris and dark bill nail corrected to pale-grey adult male iris and pink-orange nail after supplementary factual review.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-46682d6a-2d45-4e3f-9412-77fb940e8799.png",
+      "sha256": "968b1d2f741bb73965889fa2ed645295a415e14c95e19c14e62ca088b99dac31",
+      "reason": "Dark/brown iris and dark bill nail corrected to pale-grey adult male iris and pink-orange nail after supplementary factual review.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-2fac9313-df50-437e-b8f4-922f1cdd1eb0.png",
+      "sha256": "bda8b2d0a5ec7c5b81b7ebefa48871f4b48beb182c5dbdf5ced61e97ea8d6d9d",
+      "reason": "Dark/brown iris and dark bill nail corrected to pale-grey adult male iris and pink-orange nail after supplementary factual review.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-5acbaddb-deec-4023-a525-387e7b6ec09f.png",
+      "sha256": "811c4c4581ca4d06e58185c56aa334ff338a15a6edbd694e5a64b3dbd350b209",
+      "reason": "Large diffuse matte; removed before import.",
       "state": "excluded-corrected-original-used"
     }
   ],
@@ -3089,12 +3331,24 @@
     {
       "id": "birdnet-v3:BN05783",
       "name": "Grote zee-eend",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN02331",
       "name": "IJseend",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01078",

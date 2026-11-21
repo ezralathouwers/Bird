@@ -10125,7 +10125,7 @@ birdnet-v3:BN00050,Acrocephalus arundinaceus,Grote karekiet,wetland-general,Wetl
 birdnet-v3:BN04878,Icthyophaga ichthyaetus,Grote rivierarend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01081,Aythya valisineria,Grote tafeleend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05906,Mergus merganser,Grote zaagbek,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN05783,Melanitta fusca,Grote zee-eend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN05783,Melanitta fusca,Grote zee-eend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN00810,Ardea alba,Grote zilverreiger,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN05344,Limosa limosa,Grutto,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN04056,Gallirallus wallacii,Halmaheraral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10141,7 +10141,7 @@ birdnet-v3:BN07109,Paradoxornis heudei,Heudediksnavelmees,wetland-general,Wetlan
 birdnet-v3:BN01227,Bradypterus centralis,Hooglandstruikzanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03971,Fulica cornuta,Hoornkoet,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04091,Gavia immer,IJsduiker,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN02331,Clangula hyemalis,IJseend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN02331,Clangula hyemalis,IJseend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN01273,Bucephala islandica,IJslandse brilduiker,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07408,Phalacrocorax fuscicollis,Indische aalscholver,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05973,Microcarbo niger,Indische dwergaalscholver,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

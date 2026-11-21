@@ -2361,7 +2361,7 @@ birdnet-v3:BN02327,Levaillants koekoek,Clamator levaillantii,Cuculidae,True,True
 birdnet-v3:BN02328,Bastaardarend,Clanga clanga,Accipitridae,True,True,False,False,False,False,False
 birdnet-v3:BN02329,Indische schreeuwarend,Clanga hastata,Accipitridae,True,True,False,False,False,False,False
 birdnet-v3:BN02330,Schreeuwarend,Clanga pomarina,Accipitridae,True,True,False,False,False,False,False
-birdnet-v3:BN02331,IJseend,Clangula hyemalis,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN02331,IJseend,Clangula hyemalis,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN02332,Blauwe grondduif,Claravis pretiosa,Columbidae,True,True,False,False,False,False,False
 birdnet-v3:BN02333,Gouden brilvogel,Cleptornis marchei,Zosteropidae,True,True,False,False,False,False,False
 birdnet-v3:BN02334,Rietstekelkruin,Clibanornis dendrocolaptoides,Furnariidae,True,True,False,False,False,False,False
@@ -5853,7 +5853,7 @@ birdnet-v3:BN05779,Roestbuikmees,Melaniparus rufiventris,Paridae,True,True,False
 birdnet-v3:BN05780,Somalische mees,Melaniparus thruppi,Paridae,True,True,False,False,False,False,False
 birdnet-v3:BN05781,Amerikaanse zee-eend,Melanitta americana,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05782,Amerikaanse grote zee-eend,Melanitta deglandi,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN05783,Grote zee-eend,Melanitta fusca,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN05783,Grote zee-eend,Melanitta fusca,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05784,Zwarte zee-eend,Melanitta nigra,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05785,Brilzee-eend,Melanitta perspicillata,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05786,Aziatische grote zee-eend,Melanitta stejnegeri,Anatidae,True,False,False,False,False,False,False

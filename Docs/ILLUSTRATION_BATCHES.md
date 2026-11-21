@@ -1,5 +1,15 @@
 # Illustration batches
 
+## Sea ducks 14C–14D — 21 November 2026
+
+Ten reviewed originals complete grote zee-eend and ijseend (winter male in
+all views). Velvet scoter iris and bill nail were corrected using supplementary
+factual descriptions. The long-tailed duck front matte was removed; entire
+long tail is preserved in each view. Five distinct roles per species passed
+individual anatomy/framing checks, PNG/import preflight, original/hash/review
+binding, preserved previous records and both inventories: 430 roles and
+86 complete species. Native Xcode loading/scaling and expert review pending.
+
 ## Sea ducks 14A–14B — 21 November 2026
 
 Ten individually reviewed originals complete eider and zwarte zee-eend.
