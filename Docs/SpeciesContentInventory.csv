@@ -1097,9 +1097,9 @@ birdnet-v3:BN01074,Ringsnaveleend,Aythya collaris,Anatidae,True,True,False,False
 birdnet-v3:BN01075,Tafeleend,Aythya ferina,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01076,Kuifeend,Aythya fuligula,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01077,Madagaskarwitoogeend,Aythya innotata,Anatidae,True,False,False,False,False,False,False
-birdnet-v3:BN01078,Topper,Aythya marila,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN01078,Topper,Aythya marila,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01079,Nieuw-zeelandse topper,Aythya novaeseelandiae,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01080,Witoogeend,Aythya nyroca,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN01080,Witoogeend,Aythya nyroca,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN01081,Grote tafeleend,Aythya valisineria,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01082,Zwartkruinmees,Baeolophus atricristatus,Paridae,True,True,False,False,False,False,False
 birdnet-v3:BN01083,Tweekleurige mees,Baeolophus bicolor,Paridae,True,True,False,False,False,False,False
@@ -5977,7 +5977,7 @@ birdnet-v3:BN05903,Liervogel,Menura novaehollandiae,Menuridae,True,True,False,Fa
 birdnet-v3:BN05904,Bergbeekeend,Merganetta armata,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05905,Nonnetje,Mergellus albellus,Anatidae,True,True,True,True,True,True,True
 avilist:edda42ed,New Zealand Merganser,Mergus australis,Anatidae,True,False,False,False,False,False,False
-birdnet-v3:BN05906,Grote zaagbek,Mergus merganser,Anatidae,True,True,False,False,False,False,False
+birdnet-v3:BN05906,Grote zaagbek,Mergus merganser,Anatidae,True,True,True,True,True,True,True
 birdnet-v3:BN05907,Braziliaanse zaagbek,Mergus octosetaceus,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05908,Middelste zaagbek,Mergus serrator,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN05909,Chinese zaagbek,Mergus squamatus,Anatidae,True,False,False,False,False,False,False

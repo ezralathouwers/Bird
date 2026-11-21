@@ -1,6 +1,6 @@
 {
   "state": "next10-seaducks-in-progress-no-background-worker",
-  "installedRoles": 153,
+  "installedRoles": 168,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -2856,7 +2856,7 @@
       },
       "composition": "bird-only",
       "sourceFile": "exec-835bd6e9-7892-4312-bc2d-a662496967f2.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN01078",
@@ -2872,7 +2872,7 @@
         "notes": "Floating foraging male greater scaup, one bent head and blue-grey bill pulling pondweed, yellow eye green-black head black breast white flanks grey back two folded wings, submerged feet naturally visible/occluded in bounded ripples, whole framing."
       },
       "sourceFile": "exec-bbc2dcf7-f9f3-4b6e-ab4d-5db75a9f7d3a.png",
-      "state": "reviewed-not-installed"
+      "state": "installed-reviewed"
     },
     {
       "id": "birdnet-v3:BN01078",
@@ -2888,6 +2888,223 @@
         "notes": "Front male greater scaup, one broad centered pale blue-grey black-tipped bill and two yellow eyes rounded green-black head black breast white belly, two folded wing flanks grey feet, full framing."
       },
       "sourceFile": "exec-42d0b771-0e01-42f9-a50f-9bc8481f9aaf.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01078",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/topper",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e830c563e4cc90e9800ee4e7449d4af5869470d2b106597fbb1b9cfb409d9aaa",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male greater scaup, one rounded green-black head bill/eyes hidden grey vermiculated back two folded wings white secondary edges short dark tail white flanks two grey feet, whole framing."
+      },
+      "sourceFile": "exec-fe499fe3-3b76-4000-ad3c-0d6b308c8ca2.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01078",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/topper",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "eaa6b5c3bdbf74db66eb7eb3643795003906c8bc03048eb20b0e038e432ab5d6",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male greater scaup, one broad upward pale blue-grey black-tipped bill yellow eye edges green-black throat black breast white belly, two grey-white spread underwings pale secondary band greyer primaries, two grey trailing feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-0e66c6d3-daa6-4b0e-a8f5-84dcf9bef4a5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01080",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/witoogeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "37e127bea5eee24041643bc2b2ac94271bd77d1cbd878bfd19f5095f9e239154",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male ferruginous duck, single dark grey bill white iris chestnut head/breast/flanks dark back white belly and sharply white undertail, two folded wings far side occluded two grey webbed feet, complete framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-71df4b64-819d-4580-98bf-ed4a5d2ee76e.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01080",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/witoogeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "13ca1273a099eccf6395fd64ed007cdc8519a6df4ee94e81ff7bbbd20c47cf0c",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Floating male ferruginous duck holding pondweed in single grey bill, white iris chestnut body dark folded wings white undertail, naturally submerged feet and bounded ripples with reed sprout, whole framing."
+      },
+      "sourceFile": "exec-bbd7e745-0d82-40f5-b6c7-2f001630ff87.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01080",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/witoogeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "ca8ed4a61a5f4ddb276b3fb841136197aa77e269ef605d78284fca4ceaa8a1a8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male ferruginous duck, one centered grey bill two white irises chestnut head breast/flanks sharply white belly, two dark folded wings and grey webbed feet, complete framing."
+      },
+      "sourceFile": "exec-1f65edbb-5853-4fdb-9b5f-394fa33a5cb5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01080",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/witoogeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8313a5023a3f5033eb62df9d15b4d271c1213e91d3f504474e3221f7d116343e",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male ferruginous duck, one upward grey bill two white iris edges chestnut throat/breast sharply white belly/undertail, two pale underwings white stripe darker outer primaries no duplicate folded wings, two grey trailing feet, complete framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-3e1d3e0d-7af6-4e86-ae73-3d6b093f2196.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05906",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "49fbdd6168d7a331eb08dbd0de90f10c89680ac7a5b8fb9cae770d79c508a911",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male common merganser, one narrow red black-hook-tipped bill smooth green head without crest white body salmon flush black back, two folded wings far wing occluded and two orange-red webbed feet, whole framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-860affd9-9adf-4347-abf8-e11ff5f13b28.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05906",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "588b0a945fd0497127ecab15daec86cc5d56df9ef0c8cfd816a09a4a1544c427",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Front male common merganser, one centered narrow red black-hook-tipped bill two dark eyes smooth green head white salmon-flushed breast, two folded wing flanks two red-orange webbed feet, full framing."
+      },
+      "sourceFile": "exec-5c3fa6fc-104e-4df0-b62a-9c2353ca18e3.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN01080",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/witoogeend",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "176246fde855c9351ad06bf671e74c5d4919131266595c3fbcbe1d465e88ba21",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male ferruginous duck, one chestnut head bill and eyes hidden, two entirely folded dark-brown wing wedges no open wings or duplicate silhouettes, chestnut flanks white undertail short tail two grey webbed feet, full framing."
+      },
+      "sourceFile": "exec-85d7d1d6-b0d9-4580-adb9-e3ad57818cc8.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05906",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "fcc0649c2943f88acf3001f265698a0d77e5abe628f2c264b3679f8a47902884",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Fish-carrying floating male common merganser, one smooth green head single narrow hooked red bill upper/lower mandibles, white salmon-flushed body two folded wings and two red webbed feet naturally submerged, bounded ripples complete framing and halo removed."
+      },
+      "sourceFile": "exec-ddbdf518-1bb5-42db-a70e-a59334f105e5.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05906",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "de6eceffdb7b15be570692a857631f444c7f5049f0f2aa32e44bbfa9c20627ae",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Straight rear male common merganser, single smooth green head bill/eyes hidden white neck black back two folded black/white wings grey tail two red-orange feet, whole framing."
+      },
+      "sourceFile": "exec-15964d96-b94e-4abe-b2bb-097b2884f03a.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05906",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/grote-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0395189a8cc97e4e1721c58e2b69041d48aeb36695e5a1ca83340abcf743b73d",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Centered ventral male common merganser, one upward narrow hooked red bill green throat white salmon-flushed belly, two pale open underwings dark grey primaries no dorsal black back on belly and two trailing red-orange feet, whole framing."
+      },
+      "projection": "centered-ventral-spread",
+      "sourceFile": "exec-21c224a8-bf97-4d4d-a682-e8bf2c6d2a55.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN05908",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/middelste-zaagbek",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "71908194940a1733ad858216b1e5af22be5622f1c25b516a7d8ad938b1e1606f",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Right-facing bird-only male red-breasted merganser, one narrow orange-red hooked bill red iris green shaggy crested head white neck collar rusty black-streaked breast grey flanks, two folded wings far side occluded two orange-red webbed feet, full framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-6a8184e6-c919-41bd-9ed0-f95237afd8ed.png",
       "state": "reviewed-not-installed"
     }
   ],
@@ -3039,6 +3256,18 @@
       "sourceFile": "exec-5acbaddb-deec-4023-a525-387e7b6ec09f.png",
       "sha256": "811c4c4581ca4d06e58185c56aa334ff338a15a6edbd694e5a64b3dbd350b209",
       "reason": "Large diffuse matte; removed before import.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-76c2f779-04f0-440f-b721-594ff16a572e.png",
+      "sha256": "8da020528a02a0f91feb89417f99e86f0cac34fcef371f15ec0e335eeafe5c18",
+      "reason": "Rear view incorrectly opened both wings while retaining folded silhouettes; regenerated with exactly two closed wings.",
+      "state": "excluded-corrected-original-used"
+    },
+    {
+      "sourceFile": "exec-db44bb9a-60ca-42b4-bd44-79a923981707.png",
+      "sha256": "6a56edbc68fff6e8f6bd9a4e981b0fc155913761b8fb557e7d446d76ec646bc1",
+      "reason": "Diffuse halo and wide non-square canvas; regenerated transparent square cutout.",
       "state": "excluded-corrected-original-used"
     }
   ],
@@ -3353,17 +3582,35 @@
     {
       "id": "birdnet-v3:BN01078",
       "name": "Topper",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN01080",
       "name": "Witoogeend",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN05906",
       "name": "Grote zaagbek",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear",
+        "flight"
+      ]
     },
     {
       "id": "birdnet-v3:BN05908",

@@ -1,5 +1,16 @@
 # Illustration batches
 
+## Waterbirds 14E–14G — 21 November 2026
+
+Fifteen reviewed originals complete topper, witoogeend and grote zaagbek.
+The ferruginous rear was regenerated with both wings fully folded to exclude
+ambiguous duplicate silhouettes. Common merganser dynamic halo was removed.
+Each full image was inspected for two wings, one head/bill, rear bill hidden,
+framing, feet and main markings; bird-only classics and ventral flights retained.
+PNG/import preflight, original/hash/review binding, preserved earlier records
+and both inventories pass: 445 roles and 89 complete species. Native Xcode
+loading/scaling and independent expert/user review remain pending.
+
 ## Sea ducks 14C–14D — 21 November 2026
 
 Ten reviewed originals complete grote zee-eend and ijseend (winter male in
