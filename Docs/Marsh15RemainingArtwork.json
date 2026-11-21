@@ -1,0 +1,269 @@
+{
+  "state": "paused-usage-limit-no-job-running",
+  "batch": "marshbirds15",
+  "resumeInstructions": "Generate one or a small group, inspect every full original, correct ambiguity or matte before hash-bound anatomy approval and installer use. Never approve from alpha checks alone. Preserve exact originals and stable IDs. Prioritize corrected lepelaar flight, then remaining zwarte ibis views.",
+  "usageLimitResetBrussels": "2026-11-22T12:48:40+01:00",
+  "jobs": [
+    {
+      "index": 183,
+      "id": "birdnet-v3:BN07817",
+      "name": "Lepelaar",
+      "role": "flight",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Platalea leucorodia (Lepelaar). Adult Eurasian spoonbill in breeding plumage: white plumage, drooping pale cream nape crest, buff-yellow breast band, long BLACK FLAT SPOON-SHAPED BILL with broad rounded yellowish TIP, long black legs with SEPARATE TOES. White adult wings without juvenile black tips. Ventral flight neck fully EXTENDED straight upward, white underwings and belly subtle buff breast, two long black legs/feet trailing beyond short tail. Bill remains a single broad spoon, not pointed heron bill. VIEW: In FLIGHT DIRECTLY FROM UNDERNEATH, centered symmetrical ventral spread. ONE head and bill pointing TOP, tail BOTTOM, TWO fully extended wings LEFT and RIGHT at equal height, correct shoulder attachments, no extra folded wing silhouette. Species-correct underwing/belly feathers (not dorsal). Feet tucked/trailing. Wingspan at most 78% of SQUARE canvas width; leave large empty transparent area above/below. No sky, props, shadows or glow.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar",
+      "status": "regenerate-clean-transparency"
+    },
+    {
+      "index": 186,
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "role": "front",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Plegadis falcinellus (Zwarte ibis). Adult breeding glossy ibis: rich chestnut head neck breast and belly, metallic green-bronze wings, LONG down-curved grey-brown bill, dark brown eyes framed by thin pale blue-white facial skin lines, dark grey-green legs with LONG SEPARATE TOES. Flight ventral chestnut neck/body and dark grey-brown underwings with restrained gloss, neck fully EXTENDED upward and long legs/toes trailing beyond tail, single downward-curved bill projects top in composition. No black/white sacred ibis plumage. VIEW: STRAIGHT FRONT full standing view, head toward viewer, ONE centered foreshortened bill, two eyes, two folded wings flank body and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 187,
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "role": "rear",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Plegadis falcinellus (Zwarte ibis). Adult breeding glossy ibis: rich chestnut head neck breast and belly, metallic green-bronze wings, LONG down-curved grey-brown bill, dark brown eyes framed by thin pale blue-white facial skin lines, dark grey-green legs with LONG SEPARATE TOES. Flight ventral chestnut neck/body and dark grey-brown underwings with restrained gloss, neck fully EXTENDED upward and long legs/toes trailing beyond tail, single downward-curved bill projects top in composition. No black/white sacred ibis plumage. VIEW: STRAIGHT REAR full standing view, head looking directly AWAY, bill and eyes HIDDEN. NO side beaks, mirrored bills or eyes. Exactly two folded wings on back, full tail and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 188,
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "role": "flight",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Plegadis falcinellus (Zwarte ibis). Adult breeding glossy ibis: rich chestnut head neck breast and belly, metallic green-bronze wings, LONG down-curved grey-brown bill, dark brown eyes framed by thin pale blue-white facial skin lines, dark grey-green legs with LONG SEPARATE TOES. Flight ventral chestnut neck/body and dark grey-brown underwings with restrained gloss, neck fully EXTENDED upward and long legs/toes trailing beyond tail, single downward-curved bill projects top in composition. No black/white sacred ibis plumage. VIEW: In FLIGHT DIRECTLY FROM UNDERNEATH, centered symmetrical ventral spread. ONE head and bill pointing TOP, tail BOTTOM, TWO fully extended wings LEFT and RIGHT at equal height, correct shoulder attachments, no extra folded wing silhouette. Species-correct underwing/belly feathers (not dorsal). Feet tucked/trailing. Wingspan at most 78% of SQUARE canvas width; leave large empty transparent area above/below. No sky, props, shadows or glow.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 189,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "primary",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Phoenicopterus roseus (Flamingo). Adult greater flamingo Phoenicopterus roseus: very pale pink-white head neck and body, richer pink-red wing coverts and black flight feathers, long thin entirely PINK legs with webbed feet, pale yellow eyes, thick bent pink bill with BLACK terminal half. One head one strongly bent bill, not straight goose bill. Ventral flight very long neck fully EXTENDED upward, head/bill top, very long pink legs trailing down far beyond tail, pale body pink underwing coverts and black primary/secondary flight feathers. Fit ENTIRE neck, legs, toes and both wings. VIEW: Classic compact portrait, calm RIGHT-FACING side profile, natural relaxed standing posture with visible feet under belly. Both wings fully folded, far wing may be occluded. Bird ONLY: NO perch, branch, ground, food, props, water or shadow. Whole bird including tail, bill, feet.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo",
+      "status": "not-generated"
+    },
+    {
+      "index": 190,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "dynamic",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Phoenicopterus roseus (Flamingo). Adult greater flamingo Phoenicopterus roseus: very pale pink-white head neck and body, richer pink-red wing coverts and black flight feathers, long thin entirely PINK legs with webbed feet, pale yellow eyes, thick bent pink bill with BLACK terminal half. One head one strongly bent bill, not straight goose bill. Ventral flight very long neck fully EXTENDED upward, head/bill top, very long pink legs trailing down far beyond tail, pale body pink underwing coverts and black primary/secondary flight feathers. Fit ENTIRE neck, legs, toes and both wings. VIEW: Right-facing greater flamingo filtering in SMALL bounded ripple patch, neck curves down gracefully and SINGLE bent bill upside down in shallow water, both wings fully FOLDED, two natural pink legs, whole neck/legs/feet inside canvas. ONE bird, only these bounded props, transparent elsewhere.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo",
+      "status": "not-generated"
+    },
+    {
+      "index": 191,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "front",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Phoenicopterus roseus (Flamingo). Adult greater flamingo Phoenicopterus roseus: very pale pink-white head neck and body, richer pink-red wing coverts and black flight feathers, long thin entirely PINK legs with webbed feet, pale yellow eyes, thick bent pink bill with BLACK terminal half. One head one strongly bent bill, not straight goose bill. Ventral flight very long neck fully EXTENDED upward, head/bill top, very long pink legs trailing down far beyond tail, pale body pink underwing coverts and black primary/secondary flight feathers. Fit ENTIRE neck, legs, toes and both wings. VIEW: STRAIGHT FRONT full standing view, head toward viewer, ONE centered foreshortened bill, two eyes, two folded wings flank body and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo",
+      "status": "not-generated"
+    },
+    {
+      "index": 192,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "rear",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Phoenicopterus roseus (Flamingo). Adult greater flamingo Phoenicopterus roseus: very pale pink-white head neck and body, richer pink-red wing coverts and black flight feathers, long thin entirely PINK legs with webbed feet, pale yellow eyes, thick bent pink bill with BLACK terminal half. One head one strongly bent bill, not straight goose bill. Ventral flight very long neck fully EXTENDED upward, head/bill top, very long pink legs trailing down far beyond tail, pale body pink underwing coverts and black primary/secondary flight feathers. Fit ENTIRE neck, legs, toes and both wings. VIEW: STRAIGHT REAR full standing view, head looking directly AWAY, bill and eyes HIDDEN. NO side beaks, mirrored bills or eyes. Exactly two folded wings on back, full tail and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo",
+      "status": "not-generated"
+    },
+    {
+      "index": 193,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "flight",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Phoenicopterus roseus (Flamingo). Adult greater flamingo Phoenicopterus roseus: very pale pink-white head neck and body, richer pink-red wing coverts and black flight feathers, long thin entirely PINK legs with webbed feet, pale yellow eyes, thick bent pink bill with BLACK terminal half. One head one strongly bent bill, not straight goose bill. Ventral flight very long neck fully EXTENDED upward, head/bill top, very long pink legs trailing down far beyond tail, pale body pink underwing coverts and black primary/secondary flight feathers. Fit ENTIRE neck, legs, toes and both wings. VIEW: In FLIGHT DIRECTLY FROM UNDERNEATH, centered symmetrical ventral spread. ONE head and bill pointing TOP, tail BOTTOM, TWO fully extended wings LEFT and RIGHT at equal height, correct shoulder attachments, no extra folded wing silhouette. Species-correct underwing/belly feathers (not dorsal). Feet tucked/trailing. Wingspan at most 78% of SQUARE canvas width; leave large empty transparent area above/below. No sky, props, shadows or glow.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo",
+      "status": "not-generated"
+    },
+    {
+      "index": 194,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "primary",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Threskiornis aethiopicus (Heilige ibis). Adult African sacred ibis: WHITE body and wings with black flight-feather tips and loose black ornamental tertial/scapular plumes draped over rump, BARE BLACK HEAD AND NECK, long BLACK down-curved bill, dark eyes and long black legs with SEPARATE TOES. Flight ventral white body pale white underwings with black trailing outer tips, bare black neck fully EXTENDED upward single curved bill, two long black feet trailing. Do not put black dorsal ornamental feathers over white belly. VIEW: Classic compact portrait, calm RIGHT-FACING side profile, natural relaxed standing posture with visible feet under belly. Both wings fully folded, far wing may be occluded. Bird ONLY: NO perch, branch, ground, food, props, water or shadow. Whole bird including tail, bill, feet.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 195,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "dynamic",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Threskiornis aethiopicus (Heilige ibis). Adult African sacred ibis: WHITE body and wings with black flight-feather tips and loose black ornamental tertial/scapular plumes draped over rump, BARE BLACK HEAD AND NECK, long BLACK down-curved bill, dark eyes and long black legs with SEPARATE TOES. Flight ventral white body pale white underwings with black trailing outer tips, bare black neck fully EXTENDED upward single curved bill, two long black feet trailing. Do not put black dorsal ornamental feathers over white belly. VIEW: Right-facing sacred ibis walking on SMALL bounded marsh bank, holding one small aquatic insect at tip of single curved bill, two wings fully folded with loose black ornamental feathers at rump, two long-toed feet. ONE bird, only these bounded props, transparent elsewhere.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 196,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "front",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Threskiornis aethiopicus (Heilige ibis). Adult African sacred ibis: WHITE body and wings with black flight-feather tips and loose black ornamental tertial/scapular plumes draped over rump, BARE BLACK HEAD AND NECK, long BLACK down-curved bill, dark eyes and long black legs with SEPARATE TOES. Flight ventral white body pale white underwings with black trailing outer tips, bare black neck fully EXTENDED upward single curved bill, two long black feet trailing. Do not put black dorsal ornamental feathers over white belly. VIEW: STRAIGHT FRONT full standing view, head toward viewer, ONE centered foreshortened bill, two eyes, two folded wings flank body and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 197,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "rear",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Threskiornis aethiopicus (Heilige ibis). Adult African sacred ibis: WHITE body and wings with black flight-feather tips and loose black ornamental tertial/scapular plumes draped over rump, BARE BLACK HEAD AND NECK, long BLACK down-curved bill, dark eyes and long black legs with SEPARATE TOES. Flight ventral white body pale white underwings with black trailing outer tips, bare black neck fully EXTENDED upward single curved bill, two long black feet trailing. Do not put black dorsal ornamental feathers over white belly. VIEW: STRAIGHT REAR full standing view, head looking directly AWAY, bill and eyes HIDDEN. NO side beaks, mirrored bills or eyes. Exactly two folded wings on back, full tail and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 198,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "flight",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Threskiornis aethiopicus (Heilige ibis). Adult African sacred ibis: WHITE body and wings with black flight-feather tips and loose black ornamental tertial/scapular plumes draped over rump, BARE BLACK HEAD AND NECK, long BLACK down-curved bill, dark eyes and long black legs with SEPARATE TOES. Flight ventral white body pale white underwings with black trailing outer tips, bare black neck fully EXTENDED upward single curved bill, two long black feet trailing. Do not put black dorsal ornamental feathers over white belly. VIEW: In FLIGHT DIRECTLY FROM UNDERNEATH, centered symmetrical ventral spread. ONE head and bill pointing TOP, tail BOTTOM, TWO fully extended wings LEFT and RIGHT at equal height, correct shoulder attachments, no extra folded wing silhouette. Species-correct underwing/belly feathers (not dorsal). Feet tucked/trailing. Wingspan at most 78% of SQUARE canvas width; leave large empty transparent area above/below. No sky, props, shadows or glow.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis",
+      "status": "not-generated"
+    },
+    {
+      "index": 199,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "primary",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Pelecanus onocrotalus (Roze pelikaan). Adult male breeding great white pelican: huge pale white body with delicate rosy flush, yellowish breast stain, BLACK flight feathers, short pale cream nape crest, pink bare eye skin and reddish-brown iris, very long bill with pale blue-grey upper ridge pinkish sides yellow gular pouch beneath and small hooked tip, short pink-yellow legs with FOUR WEBBED TOES each. Bill and gular pouch are ONE anatomical bill, never an extra beak. Ventral flight broad white underwing coverts bordered BLACK primary/secondary flights, white-pink belly and short neck RETRACTED S, single upward long bill/pouch, two short webbed feet tucked/trailing. VIEW: Classic compact portrait, calm RIGHT-FACING side profile, natural relaxed standing posture with visible feet under belly. Both wings fully folded, far wing may be occluded. Bird ONLY: NO perch, branch, ground, food, props, water or shadow. Whole bird including tail, bill, feet.",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/",
+      "status": "not-generated"
+    },
+    {
+      "index": 200,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "dynamic",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Pelecanus onocrotalus (Roze pelikaan). Adult male breeding great white pelican: huge pale white body with delicate rosy flush, yellowish breast stain, BLACK flight feathers, short pale cream nape crest, pink bare eye skin and reddish-brown iris, very long bill with pale blue-grey upper ridge pinkish sides yellow gular pouch beneath and small hooked tip, short pink-yellow legs with FOUR WEBBED TOES each. Bill and gular pouch are ONE anatomical bill, never an extra beak. Ventral flight broad white underwing coverts bordered BLACK primary/secondary flights, white-pink belly and short neck RETRACTED S, single upward long bill/pouch, two short webbed feet tucked/trailing. VIEW: Right-facing great white pelican floating on SMALL bounded ripples, one small silver fish held in slightly open single long bill above yellow pouch, neck softly curved, exactly two wings fully folded, two webbed feet naturally submerged. ONE bird, only these bounded props, transparent elsewhere.",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/",
+      "status": "not-generated"
+    },
+    {
+      "index": 201,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "front",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Pelecanus onocrotalus (Roze pelikaan). Adult male breeding great white pelican: huge pale white body with delicate rosy flush, yellowish breast stain, BLACK flight feathers, short pale cream nape crest, pink bare eye skin and reddish-brown iris, very long bill with pale blue-grey upper ridge pinkish sides yellow gular pouch beneath and small hooked tip, short pink-yellow legs with FOUR WEBBED TOES each. Bill and gular pouch are ONE anatomical bill, never an extra beak. Ventral flight broad white underwing coverts bordered BLACK primary/secondary flights, white-pink belly and short neck RETRACTED S, single upward long bill/pouch, two short webbed feet tucked/trailing. VIEW: STRAIGHT FRONT full standing view, head toward viewer, ONE centered foreshortened bill, two eyes, two folded wings flank body and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/",
+      "status": "not-generated"
+    },
+    {
+      "index": 202,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "rear",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Pelecanus onocrotalus (Roze pelikaan). Adult male breeding great white pelican: huge pale white body with delicate rosy flush, yellowish breast stain, BLACK flight feathers, short pale cream nape crest, pink bare eye skin and reddish-brown iris, very long bill with pale blue-grey upper ridge pinkish sides yellow gular pouch beneath and small hooked tip, short pink-yellow legs with FOUR WEBBED TOES each. Bill and gular pouch are ONE anatomical bill, never an extra beak. Ventral flight broad white underwing coverts bordered BLACK primary/secondary flights, white-pink belly and short neck RETRACTED S, single upward long bill/pouch, two short webbed feet tucked/trailing. VIEW: STRAIGHT REAR full standing view, head looking directly AWAY, bill and eyes HIDDEN. NO side beaks, mirrored bills or eyes. Exactly two folded wings on back, full tail and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/",
+      "status": "not-generated"
+    },
+    {
+      "index": 203,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "flight",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Pelecanus onocrotalus (Roze pelikaan). Adult male breeding great white pelican: huge pale white body with delicate rosy flush, yellowish breast stain, BLACK flight feathers, short pale cream nape crest, pink bare eye skin and reddish-brown iris, very long bill with pale blue-grey upper ridge pinkish sides yellow gular pouch beneath and small hooked tip, short pink-yellow legs with FOUR WEBBED TOES each. Bill and gular pouch are ONE anatomical bill, never an extra beak. Ventral flight broad white underwing coverts bordered BLACK primary/secondary flights, white-pink belly and short neck RETRACTED S, single upward long bill/pouch, two short webbed feet tucked/trailing. VIEW: In FLIGHT DIRECTLY FROM UNDERNEATH, centered symmetrical ventral spread. ONE head and bill pointing TOP, tail BOTTOM, TWO fully extended wings LEFT and RIGHT at equal height, correct shoulder attachments, no extra folded wing silhouette. Species-correct underwing/belly feathers (not dorsal). Feet tucked/trailing. Wingspan at most 78% of SQUARE canvas width; leave large empty transparent area above/below. No sky, props, shadows or glow.",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/",
+      "status": "not-generated"
+    },
+    {
+      "index": 204,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "primary",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Ardea ibis (Westelijke koereiger). Adult western cattle egret Ardea ibis in breeding plumage: small stocky WHITE heron, buff orange crown breast and back ornamental feathers, short stout yellow-orange dagger bill, pale yellow iris and yellow-orange legs with LONG SEPARATE TOES. Much shorter bill/legs than great egret, no black bill/yellow feet of little egret. Ventral flight white wings with no black tips, pale buff breast and white belly, neck RETRACTED short S head upward, two separate-toed feet trailing beyond tail. VIEW: Classic compact portrait, calm RIGHT-FACING side profile, natural relaxed standing posture with visible feet under belly. Both wings fully folded, far wing may be occluded. Bird ONLY: NO perch, branch, ground, food, props, water or shadow. Whole bird including tail, bill, feet.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger",
+      "status": "not-generated"
+    },
+    {
+      "index": 205,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "dynamic",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Ardea ibis (Westelijke koereiger). Adult western cattle egret Ardea ibis in breeding plumage: small stocky WHITE heron, buff orange crown breast and back ornamental feathers, short stout yellow-orange dagger bill, pale yellow iris and yellow-orange legs with LONG SEPARATE TOES. Much shorter bill/legs than great egret, no black bill/yellow feet of little egret. Ventral flight white wings with no black tips, pale buff breast and white belly, neck RETRACTED short S head upward, two separate-toed feet trailing beyond tail. VIEW: Right-facing western cattle egret stepping through SMALL bounded grass clump, one foot lifted and one stout yellow bill holding tiny grasshopper, two wings fully folded and no other animals. ONE bird, only these bounded props, transparent elsewhere.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger",
+      "status": "not-generated"
+    },
+    {
+      "index": 206,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "front",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Ardea ibis (Westelijke koereiger). Adult western cattle egret Ardea ibis in breeding plumage: small stocky WHITE heron, buff orange crown breast and back ornamental feathers, short stout yellow-orange dagger bill, pale yellow iris and yellow-orange legs with LONG SEPARATE TOES. Much shorter bill/legs than great egret, no black bill/yellow feet of little egret. Ventral flight white wings with no black tips, pale buff breast and white belly, neck RETRACTED short S head upward, two separate-toed feet trailing beyond tail. VIEW: STRAIGHT FRONT full standing view, head toward viewer, ONE centered foreshortened bill, two eyes, two folded wings flank body and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger",
+      "status": "not-generated"
+    },
+    {
+      "index": 207,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "rear",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Ardea ibis (Westelijke koereiger). Adult western cattle egret Ardea ibis in breeding plumage: small stocky WHITE heron, buff orange crown breast and back ornamental feathers, short stout yellow-orange dagger bill, pale yellow iris and yellow-orange legs with LONG SEPARATE TOES. Much shorter bill/legs than great egret, no black bill/yellow feet of little egret. Ventral flight white wings with no black tips, pale buff breast and white belly, neck RETRACTED short S head upward, two separate-toed feet trailing beyond tail. VIEW: STRAIGHT REAR full standing view, head looking directly AWAY, bill and eyes HIDDEN. NO side beaks, mirrored bills or eyes. Exactly two folded wings on back, full tail and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger",
+      "status": "not-generated"
+    },
+    {
+      "index": 208,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "flight",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Ardea ibis (Westelijke koereiger). Adult western cattle egret Ardea ibis in breeding plumage: small stocky WHITE heron, buff orange crown breast and back ornamental feathers, short stout yellow-orange dagger bill, pale yellow iris and yellow-orange legs with LONG SEPARATE TOES. Much shorter bill/legs than great egret, no black bill/yellow feet of little egret. Ventral flight white wings with no black tips, pale buff breast and white belly, neck RETRACTED short S head upward, two separate-toed feet trailing beyond tail. VIEW: In FLIGHT DIRECTLY FROM UNDERNEATH, centered symmetrical ventral spread. ONE head and bill pointing TOP, tail BOTTOM, TWO fully extended wings LEFT and RIGHT at equal height, correct shoulder attachments, no extra folded wing silhouette. Species-correct underwing/belly feathers (not dorsal). Feet tucked/trailing. Wingspan at most 78% of SQUARE canvas width; leave large empty transparent area above/below. No sky, props, shadows or glow.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger",
+      "status": "not-generated"
+    },
+    {
+      "index": 209,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "primary",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Aix galericulata (Mandarijneend). Adult male mandarin duck Aix galericulata: red bill pale tip, dark eye broad white eyebrow sweeping back, green-purple crown crest rust-orange cheek whiskers, purple breast with paired fine white black borders, buff finely barred flanks, white belly, two ORANGE SAIL FEATHERS belonging to secondary feathers of its TWO FOLDED WINGS. The sails are feathers not additional wings. Yellow-orange webbed feet. Ventral flight white belly pale grey-white underwing coverts darker brown-grey primary flights, no raised folded sail feathers when wings OPEN, one red bill upward orange cheek sides purple breast, exactly two spread wings and two trailing webbed feet. VIEW: Classic compact portrait, calm RIGHT-FACING side profile, natural relaxed standing posture with visible feet under belly. Both wings fully folded, far wing may be occluded. Bird ONLY: NO perch, branch, ground, food, props, water or shadow. Whole bird including tail, bill, feet.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend",
+      "status": "not-generated"
+    },
+    {
+      "index": 210,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "dynamic",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Aix galericulata (Mandarijneend). Adult male mandarin duck Aix galericulata: red bill pale tip, dark eye broad white eyebrow sweeping back, green-purple crown crest rust-orange cheek whiskers, purple breast with paired fine white black borders, buff finely barred flanks, white belly, two ORANGE SAIL FEATHERS belonging to secondary feathers of its TWO FOLDED WINGS. The sails are feathers not additional wings. Yellow-orange webbed feet. Ventral flight white belly pale grey-white underwing coverts darker brown-grey primary flights, no raised folded sail feathers when wings OPEN, one red bill upward orange cheek sides purple breast, exactly two spread wings and two trailing webbed feet. VIEW: Right-facing male mandarin duck floating on SMALL bounded pond ripples beside one fallen oak leaf, head gently turned toward leaf, both wings folded and exactly two orange sail FEATHERS part of folded wings, feet naturally submerged. ONE bird, only these bounded props, transparent elsewhere.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend",
+      "status": "not-generated"
+    },
+    {
+      "index": 211,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "front",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Aix galericulata (Mandarijneend). Adult male mandarin duck Aix galericulata: red bill pale tip, dark eye broad white eyebrow sweeping back, green-purple crown crest rust-orange cheek whiskers, purple breast with paired fine white black borders, buff finely barred flanks, white belly, two ORANGE SAIL FEATHERS belonging to secondary feathers of its TWO FOLDED WINGS. The sails are feathers not additional wings. Yellow-orange webbed feet. Ventral flight white belly pale grey-white underwing coverts darker brown-grey primary flights, no raised folded sail feathers when wings OPEN, one red bill upward orange cheek sides purple breast, exactly two spread wings and two trailing webbed feet. VIEW: STRAIGHT FRONT full standing view, head toward viewer, ONE centered foreshortened bill, two eyes, two folded wings flank body and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend",
+      "status": "not-generated"
+    },
+    {
+      "index": 212,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "rear",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Aix galericulata (Mandarijneend). Adult male mandarin duck Aix galericulata: red bill pale tip, dark eye broad white eyebrow sweeping back, green-purple crown crest rust-orange cheek whiskers, purple breast with paired fine white black borders, buff finely barred flanks, white belly, two ORANGE SAIL FEATHERS belonging to secondary feathers of its TWO FOLDED WINGS. The sails are feathers not additional wings. Yellow-orange webbed feet. Ventral flight white belly pale grey-white underwing coverts darker brown-grey primary flights, no raised folded sail feathers when wings OPEN, one red bill upward orange cheek sides purple breast, exactly two spread wings and two trailing webbed feet. VIEW: STRAIGHT REAR full standing view, head looking directly AWAY, bill and eyes HIDDEN. NO side beaks, mirrored bills or eyes. Exactly two folded wings on back, full tail and two natural feet. Bird only, no ground or props.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend",
+      "status": "not-generated"
+    },
+    {
+      "index": 213,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "flight",
+      "prompt": "Original premium natural-history field-guide colored-pencil and restrained watercolor illustration, lifelike detailed feathers. ONE whole bird, accurate anatomy: one head, one bill, exactly TWO wings from shoulder joints and two legs. An open wing replaces its folded silhouette; never draw duplicate wings. SQUARE high-resolution transparent PNG at least 1024x1024. Clean isolated cutout, NO halo, haze, vignette, cast shadow, text or background. Whole bird inside central 78% of canvas with generous clear margins. Species: Aix galericulata (Mandarijneend). Adult male mandarin duck Aix galericulata: red bill pale tip, dark eye broad white eyebrow sweeping back, green-purple crown crest rust-orange cheek whiskers, purple breast with paired fine white black borders, buff finely barred flanks, white belly, two ORANGE SAIL FEATHERS belonging to secondary feathers of its TWO FOLDED WINGS. The sails are feathers not additional wings. Yellow-orange webbed feet. Ventral flight white belly pale grey-white underwing coverts darker brown-grey primary flights, no raised folded sail feathers when wings OPEN, one red bill upward orange cheek sides purple breast, exactly two spread wings and two trailing webbed feet. VIEW: In FLIGHT DIRECTLY FROM UNDERNEATH, centered symmetrical ventral spread. ONE head and bill pointing TOP, tail BOTTOM, TWO fully extended wings LEFT and RIGHT at equal height, correct shoulder attachments, no extra folded wing silhouette. Species-correct underwing/belly feathers (not dorsal). Feet tucked/trailing. Wingspan at most 78% of SQUARE canvas width; leave large empty transparent area above/below. No sky, props, shadows or glow.",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend",
+      "status": "not-generated"
+    }
+  ]
+}

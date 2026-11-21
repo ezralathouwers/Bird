@@ -1,6 +1,6 @@
 {
-  "state": "marshbirds15-in-progress-no-background-worker",
-  "installedRoles": 198,
+  "state": "paused-actual-image-generation-usage-limit-no-job-running",
+  "installedRoles": 204,
   "referenceSnapshots": [
     {
       "name": "tureluur",
@@ -3657,6 +3657,106 @@
       "projection": "centered-ventral-spread",
       "sourceFile": "exec-b5d841fd-ad89-47c3-aad4-03426de3f364.png",
       "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN07817",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "e0b92afed1ba482a7644092ccc051dff11e24779a02022c4f9aaad6eaf9876ea",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed after matte correction: right-facing white adult, one black spoon bill yellow tip, buff breast band and nape crest, two folded wings with far side occluded, two black legs separate toes, bird-only entire canvas framing.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-73f9e306-61f7-496b-9da9-e19e903ab0d7.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN07817",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0597f607201e1f6b6dba9dd2209b918643f29e1cd164e3cbc955956e0f3c5ac8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed after reframing: complete tail and bounded water patch inside margins, single head/neck and spoon bill in water, exactly two folded wings, two black legs separate toes, white adult plumage and buff band."
+      },
+      "sourceFile": "exec-86215a5d-0064-4ec9-a5b5-375537243b0a.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN07817",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "26ab9909a555e35ec8ab2c88c5477ee132ff57c3208f2093583446d15a298d53",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed after matte and crop correction: whole crest and toes inside clear margins, one centered spoon bill with yellow tip, one head/two eyes, two folded white wings, buff breast and two black legs with separate toes."
+      },
+      "sourceFile": "exec-c0c1b3fc-17c9-4034-b4e7-c0e989dce412.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN07850",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "0c00251c2a78d64c95432fd37f9b55ce6ab7c00017456cccef654ab8e483ab4b",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed: chestnut glossy ibis with one down-curved bill probing bounded mud ripple, iridescent green-bronze upperwing, exactly two folded wings with far side occluded, two dark separate-toed feet, complete vignette inside canvas."
+      },
+      "sourceFile": "exec-c6e5a183-922d-4acb-bbb0-a5d223faea68.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN07817",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "8b68c9a2e5d09a537307596fe89b5e045c67c41dc425f3a7ef67d16044be2cb8",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed after simplification: single rear head bill and eyes hidden, cream nape crest, white back no misplaced breast band, exactly two folded wings, two black separate-toed feet, complete bird on transparency."
+      },
+      "sourceFile": "exec-78768db5-d7f7-4a35-a5ba-19acd617978e.png",
+      "state": "installed-reviewed"
+    },
+    {
+      "id": "birdnet-v3:BN07850",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis",
+      "representativePlumage": "adult breeding",
+      "created": "2026-11-21",
+      "anatomyReview": {
+        "sha256": "1973c6eaaff7ce8b5f38674b8dfe3e55a870a6a400059ca34589ccbfe7e7c625",
+        "twoWings": true,
+        "singleHeadAndBill": true,
+        "poseAndFraming": true,
+        "notes": "Full original reviewed after halo removal: single right-facing chestnut head/neck and curved bill, pale blue-white facial lines, metallic green-bronze two closed wings with far side occluded; two dark separate-toed feet, bird-only complete with transparent gaps between legs.",
+        "noProps": true
+      },
+      "composition": "bird-only",
+      "sourceFile": "exec-a43c01f4-a618-4c3d-b166-adcc5f2459f7.png",
+      "state": "installed-reviewed"
     }
   ],
   "rejectedAttempts": [
@@ -3854,12 +3954,56 @@
     {
       "index": 167,
       "sourceFile": "exec-044068e6-5f7a-4f8c-9abb-586e8a336955.png",
-      "reason": "Rear bill raised above crown; corrected head level away."
+      "reason": "Rear bill raised above crown; corrected head level away.",
+      "sha256": "a4c6bbbfdd07ceeaa32d9842270d112f7142a60f86a1fb2f68086bcfe1ad9489"
     },
     {
       "index": 168,
       "sourceFile": "exec-72af2a6a-211e-4903-a370-19eb2c33f6ad.png",
-      "reason": "Flight tips touching/cropped at side edges; reframed."
+      "reason": "Flight tips touching/cropped at side edges; reframed.",
+      "sha256": "2c1793244c6707551a8c56e2efddcffe7814fa966468c64b8b17f5c9df22b5ab"
+    },
+    {
+      "index": 179,
+      "sourceFile": "exec-eb8bcdc1-6ff0-480e-bca1-c7be2a293c15.png",
+      "sha256": "ef63b087fa45e64cda8bf25983f5f486c824a4dcfcb9469380fbd5143b9f22e3",
+      "reason": "Outer matte around white plumage; corrected transparent cutout."
+    },
+    {
+      "index": 180,
+      "sourceFile": "exec-34cd604c-9d3d-462b-b3f7-85ef7a1b3337.png",
+      "sha256": "95b7b8470a233bb8975bee3fdf3edd54d91ead99edaba9b8ba098ce054ec53dc",
+      "reason": "Tail cropped at left edge and outer matte; reframed complete vignette."
+    },
+    {
+      "index": 181,
+      "sourceFile": "exec-2b96c390-db08-4179-8ab4-ca6d7c26b6d3.png",
+      "sha256": "52cfc1f0791852c42abfd2a51f05510ddac81630d940dd34e5e100955d02cfac",
+      "reason": "Head touched top edge and outer grey matte; corrected framing and alpha."
+    },
+    {
+      "index": 182,
+      "sourceFile": "exec-7499953e-5bfd-4c14-ab2b-3e67f767209d.png",
+      "sha256": "9c2465d158377bee0455c224aed30e188864744f0a575ca1fe52b5bdc760b900",
+      "reason": "Spread-wing rear and outer matte; replaced by closed-wing rear."
+    },
+    {
+      "index": 183,
+      "sourceFile": "exec-a7990cba-5b6f-47c6-b5af-724503e21fb5.png",
+      "sha256": "a1389275c7f3cbcb3598fc824837ebdc1ce4cbc4bf73d8543dee7aa9f3b46835",
+      "reason": "Outer white matte; correction still has broad grey halo and is rejected."
+    },
+    {
+      "index": 184,
+      "sourceFile": "exec-8aaa59a8-ca2a-4574-823b-1dc93f7b39c7.png",
+      "sha256": "2cc83678e1e27abde1bd512894ef8425987f882a28a0a753b75df0c3036a536c",
+      "reason": "Grey halo between legs/feet; replaced by clean cutout."
+    },
+    {
+      "index": 183,
+      "sourceFile": "exec-015daf48-e534-4025-b287-66d3c008874d.png",
+      "sha256": "34bf9b9af6516ec69dedd52e20210c7ecbdef03124f2743419812900d908d310",
+      "reason": "Correction increased broad grey outer matte; rejected, flight remains missing."
     }
   ],
   "next20Species": [
@@ -4274,12 +4418,20 @@
     {
       "id": "birdnet-v3:BN07817",
       "name": "Lepelaar",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic",
+        "front",
+        "rear"
+      ]
     },
     {
       "id": "birdnet-v3:BN07850",
       "name": "Zwarte ibis",
-      "installedRoles": []
+      "installedRoles": [
+        "primary",
+        "dynamic"
+      ]
     },
     {
       "id": "birdnet-v3:BN07506",
@@ -4305,6 +4457,221 @@
       "id": "birdnet-v3:BN00252",
       "name": "Mandarijneend",
       "installedRoles": []
+    }
+  ],
+  "usageLimit": {
+    "type": "usage_limit_reached",
+    "httpStatus": 429,
+    "planType": "plus",
+    "resetsAtUnix": 1795348120,
+    "resetsAtBrussels": "2026-11-22T12:48:40+01:00",
+    "message": "The usage limit has been reached",
+    "nextRequestIndex": 186
+  },
+  "pendingGeneration15": [
+    {
+      "index": 186,
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis"
+    },
+    {
+      "index": 187,
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis"
+    },
+    {
+      "index": 188,
+      "id": "birdnet-v3:BN07850",
+      "name": "Zwarte ibis",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis"
+    },
+    {
+      "index": 189,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo"
+    },
+    {
+      "index": 190,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo"
+    },
+    {
+      "index": 191,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo"
+    },
+    {
+      "index": 192,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo"
+    },
+    {
+      "index": 193,
+      "id": "birdnet-v3:BN07506",
+      "name": "Flamingo",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/flamingo"
+    },
+    {
+      "index": 194,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis"
+    },
+    {
+      "index": 195,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis"
+    },
+    {
+      "index": 196,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis"
+    },
+    {
+      "index": 197,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis"
+    },
+    {
+      "index": 198,
+      "id": "birdnet-v3:BN10117",
+      "name": "Heilige ibis",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/heilige-ibis"
+    },
+    {
+      "index": 199,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "primary",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/"
+    },
+    {
+      "index": 200,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "dynamic",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/"
+    },
+    {
+      "index": 201,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "front",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/"
+    },
+    {
+      "index": 202,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "rear",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/"
+    },
+    {
+      "index": 203,
+      "id": "birdnet-v3:BN07225",
+      "name": "Roze pelikaan",
+      "role": "flight",
+      "referenceURL": "https://animaldiversity.org/accounts/Pelecanus_onocrotalus/"
+    },
+    {
+      "index": 204,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger"
+    },
+    {
+      "index": 205,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger"
+    },
+    {
+      "index": 206,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger"
+    },
+    {
+      "index": 207,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger"
+    },
+    {
+      "index": 208,
+      "id": "birdnet-v3:BN00818",
+      "name": "Westelijke koereiger",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/koereiger"
+    },
+    {
+      "index": 209,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "primary",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend"
+    },
+    {
+      "index": 210,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "dynamic",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend"
+    },
+    {
+      "index": 211,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "front",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend"
+    },
+    {
+      "index": 212,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "rear",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend"
+    },
+    {
+      "index": 213,
+      "id": "birdnet-v3:BN00252",
+      "name": "Mandarijneend",
+      "role": "flight",
+      "referenceURL": "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/mandarijneend"
+    }
+  ],
+  "pendingCorrections15": [
+    {
+      "index": 183,
+      "role": "flight",
+      "name": "Lepelaar",
+      "reason": "Both generated attempts retain visible outer matte. Do not install either; regenerate clean transparency after usage limit resets."
     }
   ]
 }

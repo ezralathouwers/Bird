@@ -10228,7 +10228,7 @@ birdnet-v3:BN00106,Actophilornis africanus,Lelieloper,wetland-general,Wetland,,p
 birdnet-v3:BN04968,Jacana jacana,Leljaçana,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10659,Vanellus senegallus,Lelkievit,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04347,Grus carunculata,Lelkraanvogel,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN07817,Platalea leucorodia,Lepelaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN07817,Platalea leucorodia,Lepelaar,wetland-general,Wetland,primary;dynamic;front;rear,flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05615,Malacorhynchus membranaceus,Lepelbekeend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05887,Melospiza lincolnii,Lincolngors,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07126,Pardirallus sanguinolentus,Loodgrijze ral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10497,7 +10497,7 @@ birdnet-v3:BN00053,Acrocephalus bistrigiceps,Zwartbrauwrietzanger,wetland-genera
 birdnet-v3:BN03127,Dendrocygna autumnalis,Zwartbuikfluiteend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07412,Phalacrocorax sulcirostris,Zwarte aalscholver,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05184,Laterallus jamaicensis,Zwarte dwergral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN07850,Plegadis falcinellus,Zwarte ibis,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN07850,Plegadis falcinellus,Zwarte ibis,wetland-general,Wetland,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01090,Balearica pavonina,Zwarte kroonkraanvogel,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03429,Egretta ardesiaca,Zwarte reiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN01960,Chlidonias niger,Zwarte stern,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

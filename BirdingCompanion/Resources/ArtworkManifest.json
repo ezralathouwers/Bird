@@ -15058,5 +15058,195 @@
       "poseAndFraming": true,
       "notes": "Full original reviewed: one head and upward bill, pale belly and grey underwings from two shoulder joints, no duplicate folded wing, short retracted neck, two trailing legs/separate toes and complete feather tips on transparency."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07817",
+    "asset": "birdnet-v3-BN07817-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-73f9e306-61f7-496b-9da9-e19e903ab0d7.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "e0b92afed1ba482a7644092ccc051dff11e24779a02022c4f9aaad6eaf9876ea",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15c-partial",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar"
+    ],
+    "anatomyReview": {
+      "sha256": "e0b92afed1ba482a7644092ccc051dff11e24779a02022c4f9aaad6eaf9876ea",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed after matte correction: right-facing white adult, one black spoon bill yellow tip, buff breast band and nape crest, two folded wings with far side occluded, two black legs separate toes, bird-only entire canvas framing.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN07817",
+    "asset": "birdnet-v3-BN07817-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-86215a5d-0064-4ec9-a5b5-375537243b0a.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "0597f607201e1f6b6dba9dd2209b918643f29e1cd164e3cbc955956e0f3c5ac8",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15c-partial",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar"
+    ],
+    "anatomyReview": {
+      "sha256": "0597f607201e1f6b6dba9dd2209b918643f29e1cd164e3cbc955956e0f3c5ac8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed after reframing: complete tail and bounded water patch inside margins, single head/neck and spoon bill in water, exactly two folded wings, two black legs separate toes, white adult plumage and buff band."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07817",
+    "asset": "birdnet-v3-BN07817-front",
+    "view": "front",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-c0c1b3fc-17c9-4034-b4e7-c0e989dce412.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "front",
+    "displayFacing": "front",
+    "displayTransform": "none",
+    "sha256": "26ab9909a555e35ec8ab2c88c5477ee132ff57c3208f2093583446d15a298d53",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15c-partial",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar"
+    ],
+    "anatomyReview": {
+      "sha256": "26ab9909a555e35ec8ab2c88c5477ee132ff57c3208f2093583446d15a298d53",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed after matte and crop correction: whole crest and toes inside clear margins, one centered spoon bill with yellow tip, one head/two eyes, two folded white wings, buff breast and two black legs with separate toes."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07850",
+    "asset": "birdnet-v3-BN07850-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-c6e5a183-922d-4acb-bbb0-a5d223faea68.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "0c00251c2a78d64c95432fd37f9b55ce6ab7c00017456cccef654ab8e483ab4b",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15c-partial",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis"
+    ],
+    "anatomyReview": {
+      "sha256": "0c00251c2a78d64c95432fd37f9b55ce6ab7c00017456cccef654ab8e483ab4b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed: chestnut glossy ibis with one down-curved bill probing bounded mud ripple, iridescent green-bronze upperwing, exactly two folded wings with far side occluded, two dark separate-toed feet, complete vignette inside canvas."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07817",
+    "asset": "birdnet-v3-BN07817-rear",
+    "view": "rear",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-78768db5-d7f7-4a35-a5ba-19acd617978e.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "rear",
+    "displayFacing": "rear",
+    "displayTransform": "none",
+    "sha256": "8b68c9a2e5d09a537307596fe89b5e045c67c41dc425f3a7ef67d16044be2cb8",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15c-partial",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/lepelaar"
+    ],
+    "anatomyReview": {
+      "sha256": "8b68c9a2e5d09a537307596fe89b5e045c67c41dc425f3a7ef67d16044be2cb8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed after simplification: single rear head bill and eyes hidden, cream nape crest, white back no misplaced breast band, exactly two folded wings, two black separate-toed feet, complete bird on transparency."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07850",
+    "asset": "birdnet-v3-BN07850-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "exec-a43c01f4-a618-4c3d-b166-adcc5f2459f7.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-21",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "1973c6eaaff7ce8b5f38674b8dfe3e55a870a6a400059ca34589ccbfe7e7c625",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "batch": "marsh-15c-partial",
+    "representativePlumage": "adult breeding",
+    "referenceURLs": [
+      "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/zwarte-ibis"
+    ],
+    "anatomyReview": {
+      "sha256": "1973c6eaaff7ce8b5f38674b8dfe3e55a870a6a400059ca34589ccbfe7e7c625",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "notes": "Full original reviewed after halo removal: single right-facing chestnut head/neck and curved bill, pale blue-white facial lines, metallic green-bronze two closed wings with far side occluded; two dark separate-toed feet, bird-only complete with transparent gaps between legs.",
+      "noProps": true
+    },
+    "composition": "bird-only"
   }
 ]

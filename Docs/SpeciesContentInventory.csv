@@ -7921,7 +7921,7 @@ birdnet-v3:BN07813,Borstelkop,Pityriasis gymnocephala,Pityriasidae,True,True,Fal
 birdnet-v3:BN07814,Rode lepelaar,Platalea ajaja,Threskiornithidae,True,True,False,False,False,False,False
 birdnet-v3:BN07815,Afrikaanse lepelaar,Platalea alba,Threskiornithidae,True,True,False,False,False,False,False
 birdnet-v3:BN07816,Geelsnavellepelaar,Platalea flavipes,Threskiornithidae,True,False,False,False,False,False,False
-birdnet-v3:BN07817,Lepelaar,Platalea leucorodia,Threskiornithidae,True,True,False,False,False,False,False
+birdnet-v3:BN07817,Lepelaar,Platalea leucorodia,Threskiornithidae,True,True,True,True,True,True,False
 birdnet-v3:BN07818,Kleine lepelaar,Platalea minor,Threskiornithidae,True,True,False,False,False,False,False
 birdnet-v3:BN07819,Koningslepelaar,Platalea regia,Threskiornithidae,True,True,False,False,False,False,False
 birdnet-v3:BN07820,Bleekkoprosella,Platycercus adscitus,Psittaculidae,True,True,False,False,False,False,False
@@ -7954,7 +7954,7 @@ birdnet-v3:BN07846,Beringsneeuwgors,Plectrophenax hyperboreus,Calcariidae,True,T
 birdnet-v3:BN07847,Sneeuwgors,Plectrophenax nivalis,Calcariidae,True,True,False,False,False,False,False
 birdnet-v3:BN07848,Spoorwiekgans,Plectropterus gambensis,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN07849,Witmaskeribis,Plegadis chihi,Threskiornithidae,True,True,False,False,False,False,False
-birdnet-v3:BN07850,Zwarte ibis,Plegadis falcinellus,Threskiornithidae,True,True,False,False,False,False,False
+birdnet-v3:BN07850,Zwarte ibis,Plegadis falcinellus,Threskiornithidae,True,True,True,True,False,False,False
 birdnet-v3:BN07851,Punaibis,Plegadis ridgwayi,Threskiornithidae,True,True,False,False,False,False,False
 birdnet-v3:BN07852,Zwartborstvliegenvanger,Plesiodryas albonotata,Petroicidae,True,True,False,False,False,False,False
 birdnet-v3:BN07853,Jerdonleeuwerik,Plocealauda affinis,Alaudidae,True,True,False,False,False,False,False

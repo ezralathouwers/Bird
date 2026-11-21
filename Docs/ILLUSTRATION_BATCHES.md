@@ -1,5 +1,24 @@
 # Illustration batches
 
+## Marsh birds 15C partial / actual usage limit — 22 November 2026 (Brussels)
+
+Six reviewed originals add four lepelaar views (classic, dynamic, front, rear)
+and two zwarte ibis views (classic and dynamic). The spoonbill flight and its
+correction retain visible outer matte and were excluded. Its rear was simplified
+to closed wings; the glossy ibis classic matte was corrected. No pending image
+has been approved by file checks alone.
+
+Image generation returned HTTP 429 `usage_limit_reached` on the next request;
+reported reset is 22 November 2026, 12:48:40 Europe/Brussels. No generation job
+remains running. `Marsh15RemainingArtwork.json` preserves the remaining prompts
+and explicit status for resumption. The queue remains an inventory, not a worker.
+
+Individual visual reviews, PNG import preflight, original/hash/review binding,
+preserved previous assets and both inventories pass: 481 installed roles,
+95 complete species (plus two partially illustrated species). `git diff --check`
+passes. Native Xcode asset loading/scaling and independent expert/user review
+remain unverified.
+
 ## Marsh birds 15B — 21 November 2026
 
 Five individually reviewed originals complete kwak: bird-only right-facing
