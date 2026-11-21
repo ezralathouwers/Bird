@@ -1,5 +1,18 @@
 # Illustration batches
 
+## Coast continuation 12B — 21 November 2026
+
+Five reviewed originals complete zilvermeeuw: classic, mussel-holding dynamic
+scene on a small coastal stone, front, rear and centered ventral flight. Adult
+breeding features include pale grey mantle, pale iris, red gonys spot on yellow
+bill, pink webbed feet, black primary tips and white mirrors. Full-image reviews
+checked wing attachments, single head/bill, rear view with hidden bill and
+framing. Transparency, dimensions, original byte equality, hashes and review
+bindings pass. The original coast batch now has 20 roles remaining; following
+the compact hornbill addition coverage is 290 assets and 58 complete species.
+Both inventories are refreshed. Native rendering and expert/user review remain
+pending without Xcode.
+
 ## Compact portraits 12C — 21 November 2026
 
 The user rejected the crouched woodpecker classic. Version 4 now uses a normal

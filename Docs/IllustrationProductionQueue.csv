@@ -7770,7 +7770,7 @@ birdnet-v3:BN08429,Pterodroma hasitata,Zwartkapstormvogel,open-ocean,Open zee,,p
 birdnet-v3:BN08442,Pterodroma nigripennis,Zwartvleugelstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07497,Phoebastria nigripes,Zwartvoetalbatros,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09408,Spheniscus demersus,Zwartvoetpinguïn,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN01274,Buceros bicornis,Dubbelhoornige neushoornvogel,tropical-rainforest,Tropisch regenwoud,dynamic;front;rear;flight,primary,queued,pending,centered-ventral-spread
+birdnet-v3:BN01274,Buceros bicornis,Dubbelhoornige neushoornvogel,tropical-rainforest,Tropisch regenwoud,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN10603,Upupa epops,Hop,dry-open-woodland,Droog open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN08835,Rhinopomastus minor,Abessijnse boomhop,savanna,Savanne,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN05770,Melaniparus cinerascens,Acaciamees,savanna,Savanne,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
@@ -10784,7 +10784,7 @@ birdnet-v3:BN04841,Ichthyaetus leucophthalmus,Witoogmeeuw,coast-general,Kust,,pr
 birdnet-v3:BN00443,Anarhynchus dealbatus,Witwangstrandplevier,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04445,Haliaeetus albicilla,Zeearend,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02456,Columba argentina,Zilverduif,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN05148,Larus argentatus,Zilvermeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN05148,Larus argentatus,Zilvermeeuw,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN05325,Lichmera argentauris,Zilveroorhoningeter,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09565,Sterna hirundinacea,Zuid-amerikaanse visdief,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04415,Haematopus ater,Zuid-amerikaanse zwarte scholekster,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

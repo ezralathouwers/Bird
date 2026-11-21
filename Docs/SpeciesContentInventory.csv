@@ -1295,7 +1295,7 @@ birdnet-v3:BN01270,Gevlekte baardkoekoek,Bucco tamatia,Bucconidae,True,True,Fals
 birdnet-v3:BN01271,Buffelkopeend,Bucephala albeola,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01272,Brilduiker,Bucephala clangula,Anatidae,True,True,False,False,False,False,False
 birdnet-v3:BN01273,IJslandse brilduiker,Bucephala islandica,Anatidae,True,True,False,False,False,False,False
-birdnet-v3:BN01274,Dubbelhoornige neushoornvogel,Buceros bicornis,Bucerotidae,True,True,False,True,True,True,True
+birdnet-v3:BN01274,Dubbelhoornige neushoornvogel,Buceros bicornis,Bucerotidae,True,True,True,True,True,True,True
 birdnet-v3:BN01275,Rosse neushoornvogel,Buceros hydrocorax,Bucerotidae,True,True,False,False,False,False,False
 birdnet-v3:BN01276,Gewone neushoornvogel,Buceros rhinoceros,Bucerotidae,True,True,False,False,False,False,False
 birdnet-v3:BN01277,Noordelijke hoornraaf,Bucorvus abyssinicus,Bucerotidae,True,True,False,False,False,False,False
@@ -5212,7 +5212,7 @@ birdnet-v3:BN05144,Tijgerklauwier,Lanius tigrinus,Laniidae,True,True,False,False
 birdnet-v3:BN05145,Filipijnse klauwier,Lanius validirostris,Laniidae,True,True,False,False,False,False,False
 birdnet-v3:BN05146,Bruinrugklauwier,Lanius vittatus,Laniidae,True,True,False,False,False,False,False
 birdnet-v3:BN05147,Incastern,Larosterna inca,Laridae,True,True,False,False,False,False,False
-birdnet-v3:BN05148,Zilvermeeuw,Larus argentatus,Laridae,True,True,False,False,False,False,False
+birdnet-v3:BN05148,Zilvermeeuw,Larus argentatus,Laridae,True,True,True,True,True,True,True
 birdnet-v3:BN05149,Armeense meeuw,Larus armenicus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05150,Olrogmeeuw,Larus atlanticus,Laridae,True,True,False,False,False,False,False
 birdnet-v3:BN05151,Simeonmeeuw,Larus belcheri,Laridae,True,True,False,False,False,False,False

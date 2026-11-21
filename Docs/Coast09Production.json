@@ -2,10 +2,10 @@
   "state": "partial-batch-no-job-running",
   "requestedSpecies": 20,
   "targetRoles": 100,
-  "generatedRoles": 75,
-  "acceptedRoles": 75,
+  "generatedRoles": 80,
+  "acceptedRoles": 80,
   "rejectedRoles": 0,
-  "pendingGeneration": 25,
+  "pendingGeneration": 20,
   "rows": [
     {
       "id": "birdnet-v3:BN10664",
@@ -763,35 +763,50 @@
       "name": "Zilvermeeuw",
       "scientificName": "Larus argentatus",
       "role": "primary",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "215231f103f8b2267b1ea39d30f1ebd7a4fed0cd78725086305a96843a8e4704",
+      "sourceFile": "exec-d6eb77ad-649d-4d3d-bf4f-3d8532ef1aef.png",
+      "batch": "coast-12B"
     },
     {
       "id": "birdnet-v3:BN05148",
       "name": "Zilvermeeuw",
       "scientificName": "Larus argentatus",
       "role": "dynamic",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "02bca503a599297d086b1df4dfe31869ce47924ed5ec41fe89c882a61890f4d0",
+      "sourceFile": "exec-38c4a348-f33b-4e2b-9a57-13ca28f8bef6.png",
+      "batch": "coast-12B"
     },
     {
       "id": "birdnet-v3:BN05148",
       "name": "Zilvermeeuw",
       "scientificName": "Larus argentatus",
       "role": "front",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "3fdc4c48454216dd30604d117070b761dc953687f6139f7621878fd9764dbcb5",
+      "sourceFile": "exec-18133e09-7740-4e1e-a7a6-cb7f4da793f7.png",
+      "batch": "coast-12B"
     },
     {
       "id": "birdnet-v3:BN05148",
       "name": "Zilvermeeuw",
       "scientificName": "Larus argentatus",
       "role": "rear",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "44a8ca9608cde920d0da6b035f9d0596aedc124fde080f0f8b13d4eb951a4a90",
+      "sourceFile": "exec-d9fe0a20-2862-436e-9663-7a26a770c9d0.png",
+      "batch": "coast-12B"
     },
     {
       "id": "birdnet-v3:BN05148",
       "name": "Zilvermeeuw",
       "scientificName": "Larus argentatus",
       "role": "flight",
-      "status": "pending-generation"
+      "status": "reviewed-ready",
+      "sha256": "72fb063db87b10f1cf3e8ed8308859cd97868de3adb1c0e2ec5823d3b8d18558",
+      "sourceFile": "exec-7c75e258-2d98-4b94-9128-e3032546efc9.png",
+      "batch": "coast-12B"
     },
     {
       "id": "birdnet-v3:BN05159",
