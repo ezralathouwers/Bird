@@ -9,6 +9,16 @@ You are working on a private, non-commercial, native iPhone birdwatching app. `P
 4. Keep integrations (eBird, BirdNET, photo ID, CloudKit) modular, licensed, and testable.
 5. Prefer incremental, reviewable changes over broad speculative rewrites.
 
+## Latest species-page design override (22 November 2026)
+The user's kingfisher and great hornbill right-hand reference panels supersede
+older species-page layout rules below: three tabs (Overzicht, Informatie,
+Waarnemingen) in an outlined ivory strip with a beige active segment directly
+below higher English/Dutch headings. Overview is only large bottom-aligned
+artwork with horizontal bleed; no facts, habitat footer or dots. Four slides
+loop both ways. Span/bio, a compact interactive map and habitat footer belong
+on Informatie. Keep Fraunces Dutch titles with -2% tracking and tighter leading.
+See Docs/SPECIES_DETAIL_REDESIGN.md; native visual matching remains unverified.
+
 ## Non-negotiable design rules
 - Warm **light neutral ivory** background, not dark/yellow parchment. Final tokens must be validated against the user's approved image.
 - Characterful serif **only for the Dutch species title in the upper-left**; all other interface text, including English name, active tabs and navigation, is modern sans-serif.

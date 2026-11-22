@@ -1,30 +1,88 @@
 import SwiftUI
+import UIKit
 
 enum SpeciesTab: String, CaseIterable {
     case overview = "Overzicht"
-    case distribution = "Verspreiding", observations = "Waarnemingen"
+    case information = "Informatie", observations = "Waarnemingen"
 }
 
 struct SpeciesTabStrip: View {
     @Binding var selection: SpeciesTab
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 4) {
-                ForEach(SpeciesTab.allCases, id: \.self) { tab in
-                    Button { selection = tab } label: {
-                        Text(tab.rawValue.uppercased()).font(FieldGuideTheme.sans(12, relativeTo: .caption))
-                            .tracking(1.1)
-                            .padding(.horizontal, 12).padding(.vertical, 7)
-                            .background(selection == tab ? FieldGuideTheme.selectedBeige : .clear, in: Capsule())
-                            .frame(minHeight: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .accessibilityAddTraits(selection == tab ? [.isSelected] : [])
-                }
-            }.padding(.horizontal, 4)
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(spacing: 0) { tabs }
+            } else {
+                HStack(spacing: 0) { tabs }
+            }
         }
+        .padding(.horizontal, 4)
         .frame(maxWidth: .infinity)
-        .background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 28))
+        .background {
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(FieldGuideTheme.charcoal.opacity(0.45), lineWidth: 0.5)
+                .padding(.vertical, dynamicTypeSize.isAccessibilitySize ? 0 : 5)
+        }
+    }
+
+    private var tabs: some View {
+        ForEach(SpeciesTab.allCases, id: \.self) { tab in
+            Button { selection = tab } label: {
+                Text(tab.rawValue.uppercased())
+                    .font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                    .tracking(1.1)
+                    .lineLimit(1).minimumScaleFactor(0.75)
+                    .padding(.horizontal, 8).padding(.vertical, 6)
+                    .frame(maxWidth: .infinity)
+                    .background(selection == tab ? FieldGuideTheme.beige : .clear,
+                                in: RoundedRectangle(cornerRadius: 8))
+                    .frame(minHeight: 44)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityAddTraits(selection == tab ? [.isSelected] : [])
+        }
+    }
+}
+
+// Explicit baseline spacing matches the tight two-line Dutch title in the
+// approved species-page design; tracking remains -0.02 em throughout the app.
+private struct SpeciesDetailTitleMetrics {
+    static func attributed(_ text: String, size: CGFloat) -> NSAttributedString {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.minimumLineHeight = size * 1.02
+        paragraph.maximumLineHeight = size * 1.02
+        paragraph.lineBreakMode = .byWordWrapping
+        return NSAttributedString(string: text, attributes: [
+            .font: UIFont(name: "Fraunces-9ptBlack", size: size) ?? .systemFont(ofSize: size, weight: .semibold),
+            .foregroundColor: UIColor(FieldGuideTheme.charcoal),
+            .kern: size * -0.02,
+            .paragraphStyle: paragraph
+        ])
+    }
+}
+
+struct SpeciesDetailTitle: UIViewRepresentable {
+    let text: String
+    @ScaledMetric(relativeTo: .largeTitle) private var size: CGFloat = 34
+
+    func makeUIView(context: Context) -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.isAccessibilityElement = true
+        label.accessibilityTraits = [.header, .staticText]
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return label
+    }
+    func updateUIView(_ label: UILabel, context: Context) {
+        label.attributedText = SpeciesDetailTitleMetrics.attributed(text, size: size)
+        label.accessibilityLabel = text
+    }
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UILabel, context: Context) -> CGSize? {
+        guard let width = proposal.width, width > 0 else { return nil }
+        return uiView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
     }
 }
 
@@ -78,42 +136,135 @@ struct SpeciesFacts: View {
     }
 }
 
-struct SpeciesArtworkCarousel: View {
+// Native page transitions wrap in either direction. Unlike duplicate sentinel
+// pages, this needs no delayed index reset at the end of a swipe.
+enum SpeciesArtworkPaging {
+    static func index(after index: Int, offset: Int, count: Int) -> Int? {
+        guard count > 0 else { return nil }
+        return ((index + offset) % count + count) % count
+    }
+}
+
+struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
     let species: Species
-    @State private var page = 0
-    private let slides = SpeciesMediaRole.detailSlides
-    var body: some View {
-        VStack(spacing: 8) {
-            TabView(selection: $page) {
-                ForEach(slides.indices, id: \.self) { index in
-                    Group {
-                        let role = slides[index]
-                        if UIImage(named: role.assetName(for: species)) != nil {
-                            Image(role.assetName(for: species)).resizable().scaledToFit()
-                                .accessibilityLabel("\(role.label) van \(species.dutchName)")
-                        } else {
-                            ArtworkPlaceholder(hero: true,
-                                accessibilityDescription: "\(role.label) van \(species.dutchName) nog niet beschikbaar",
-                                message: role.missingMessage)
-                        }
-                    }
-                    .padding(.vertical, 6)
-                    .tag(index)
-                }
+    @Binding var page: Int
+
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
+    func makeUIViewController(context: Context) -> UIPageViewController {
+        let controller = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        controller.view.backgroundColor = .clear
+        controller.view.clipsToBounds = true
+        controller.dataSource = context.coordinator
+        controller.delegate = context.coordinator
+        context.coordinator.configure(species: species)
+        controller.setViewControllers([context.coordinator.controllers[page]], direction: .forward, animated: false)
+        return controller
+    }
+    func updateUIViewController(_ controller: UIPageViewController, context: Context) {
+        context.coordinator.parent = self
+        if context.coordinator.speciesID != species.id {
+            context.coordinator.configure(species: species)
+            controller.setViewControllers([context.coordinator.controllers[0]], direction: .forward, animated: false)
+        }
+    }
+
+    @MainActor
+    final class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+        var parent: SpeciesArtworkCarousel
+        var speciesID: String?
+        var controllers: [UIViewController] = []
+        init(_ parent: SpeciesArtworkCarousel) { self.parent = parent }
+
+        func configure(species: Species) {
+            speciesID = species.id
+            controllers = SpeciesMediaRole.detailSlides.enumerated().map { index, role in
+                let controller = UIHostingController(rootView: SpeciesArtworkSlide(species: species, role: role, index: index))
+                controller.view.backgroundColor = .clear
+                controller.safeAreaRegions = []
+                return controller
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .frame(height: 330)
-            HStack(spacing: 0) {
-                ForEach(slides.indices, id: \.self) { index in
-                    Button { withAnimation { page = index } } label: {
-                        Circle().fill(page == index ? FieldGuideTheme.taupe : FieldGuideTheme.beige)
-                            .frame(width: 7, height: 7).frame(width: 44, height: 44)
-                    }
-                    .accessibilityLabel("\(slides[index].label), afbeelding \(index + 1) van 4")
-                    .accessibilityAddTraits(page == index ? [.isSelected] : [])
+        }
+        func pageViewController(_ pageViewController: UIPageViewController,
+                                viewControllerBefore viewController: UIViewController) -> UIViewController? {
+            adjacent(to: viewController, offset: -1)
+        }
+        func pageViewController(_ pageViewController: UIPageViewController,
+                                viewControllerAfter viewController: UIViewController) -> UIViewController? {
+            adjacent(to: viewController, offset: 1)
+        }
+        private func adjacent(to controller: UIViewController, offset: Int) -> UIViewController? {
+            guard let current = controllers.firstIndex(where: { $0 === controller }),
+                  let next = SpeciesArtworkPaging.index(after: current, offset: offset, count: controllers.count) else { return nil }
+            return controllers[next]
+        }
+        func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
+                                previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+            guard completed, let visible = pageViewController.viewControllers?.first,
+                  let index = controllers.firstIndex(where: { $0 === visible }) else { return }
+            parent.page = index
+        }
+    }
+}
+
+// Display-only trim of empty PNG margins makes the bird/scene meet the bottom
+// edge. Source masters and artwork-manifest hashes remain untouched.
+@MainActor
+private enum SpeciesArtworkDisplayCache {
+    private static let images = NSCache<NSString, UIImage>()
+    static func image(named name: String) -> UIImage? {
+        if let image = images.object(forKey: name as NSString) { return image }
+        guard let source = UIImage(named: name) else { return nil }
+        let image = trimmed(source)
+        images.setObject(image, forKey: name as NSString)
+        return image
+    }
+    private static func trimmed(_ source: UIImage) -> UIImage {
+        guard let cg = source.cgImage, source.imageOrientation == .up,
+              cg.bitsPerPixel == 32, cg.bitsPerComponent == 8,
+              let data = cg.dataProvider?.data, let bytes = CFDataGetBytePtr(data),
+              CFDataGetLength(data) >= cg.bytesPerRow * cg.height else { return source }
+        let alpha: Int
+        switch cg.alphaInfo {
+        case .first, .premultipliedFirst: alpha = 0
+        case .last, .premultipliedLast: alpha = 3
+        default: return source
+        }
+        let offset = cg.bitmapInfo.contains(.byteOrder32Little) ? 3 - alpha : alpha
+        var left = cg.width, right = -1, top = cg.height, bottom = -1
+        for y in 0..<cg.height {
+            for x in 0..<cg.width where bytes[y * cg.bytesPerRow + x * 4 + offset] > 0 {
+                left = min(left, x); right = max(right, x)
+                top = min(top, y); bottom = max(bottom, y)
+            }
+        }
+        guard right >= left, bottom >= top,
+              let crop = cg.cropping(to: CGRect(x: CGFloat(left), y: CGFloat(top), width: CGFloat(right - left + 1), height: CGFloat(bottom - top + 1))) else { return source }
+        return UIImage(cgImage: crop, scale: source.scale, orientation: .up)
+    }
+}
+
+private struct SpeciesArtworkSlide: View {
+    let species: Species
+    let role: SpeciesMediaRole
+    let index: Int
+    var body: some View {
+        GeometryReader { geometry in
+            Group {
+                if let image = SpeciesArtworkDisplayCache.image(named: role.assetName(for: species)) {
+                    Image(uiImage: image).resizable().scaledToFit()
+                        .frame(width: geometry.size.width * 1.18, height: geometry.size.height, alignment: .bottom)
+                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .bottom)
+                        .clipped()
+                        .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van 4")
+                } else {
+                    ArtworkPlaceholder(hero: true,
+                        accessibilityDescription: "\(role.label) van \(species.dutchName) nog niet beschikbaar",
+                        message: role.missingMessage)
+                        .padding(20)
                 }
             }
         }
+        .background(FieldGuideTheme.ivory)
     }
 }
 

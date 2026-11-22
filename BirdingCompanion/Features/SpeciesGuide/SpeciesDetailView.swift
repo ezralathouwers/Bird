@@ -6,6 +6,7 @@ struct SpeciesDetailView: View {
     @EnvironmentObject private var store: ObservationStore
     @Environment(\.dismiss) private var dismiss
     @State private var tab: SpeciesTab = .overview
+    @State private var artworkPage = 0
     @State private var showObservation = false
     @State private var showImages = false
     @State private var showAudio = false
@@ -18,41 +19,37 @@ struct SpeciesDetailView: View {
 
     var body: some View {
         Group {
-            if tab != .overview {
-                VStack(spacing: 16) {
-                    SpeciesTabStrip(selection: $tab).padding(.horizontal, 20)
-                    if tab == .distribution {
-                        SpeciesDistributionMap(species: species)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .padding(.top, 8)
-                    } else {
-                        ScrollView {
-                            ObservationHistoryView(species: species, embedded: true, showsExport: false, prominentTotal: true)
-                                .padding(.horizontal, 20).padding(.bottom, 24)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
+            switch tab {
+            case .overview:
+                SpeciesArtworkCarousel(species: species, page: $artworkPage)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            case .information:
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 0) {
-                        SpeciesArtworkCarousel(species: species).padding(.bottom, 20)
-                        SpeciesTabStrip(selection: $tab).padding(.bottom, 28)
-                        SpeciesFacts(species: species)
-                    }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 20)
+                    VStack(alignment: .leading, spacing: 24) {
+                        SpeciesFacts(species: species).padding(.horizontal, 20)
+                        SpeciesDistributionMap(species: species)
+                            .frame(height: 220)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .padding(.horizontal, 20)
+                    }
+                    .padding(.top, 16)
+                }
+            case .observations:
+                ScrollView {
+                    ObservationHistoryView(species: species, embedded: true, showsExport: false, prominentTotal: true)
+                        .padding(.horizontal, 20).padding(.bottom, 24)
                 }
             }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            if tab == .overview { HabitatFooter(species: species) }
+            if tab == .information { HabitatFooter(species: species) }
         }
         .background(FieldGuideTheme.ivory)
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .toolbar(.hidden, for: .navigationBar)
         .safeAreaInset(edge: .top, spacing: 0) {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 0) {
                     Button { dismiss() } label: {
                         Image(systemName: "chevron.left")
@@ -63,8 +60,9 @@ struct SpeciesDetailView: View {
                     actions
                 }
                 heading
+                SpeciesTabStrip(selection: $tab).padding(.top, 12)
             }
-            .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 16)
+            .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 4)
             .background(FieldGuideTheme.ivory)
         }
         .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
@@ -81,16 +79,15 @@ struct SpeciesDetailView: View {
     }
 
     private var heading: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            HStack(alignment: .center, spacing: 12) {
+        HStack(alignment: .top, spacing: 12) {
+            VStack(alignment: .leading, spacing: 3) {
                 Text(species.englishDisplayName)
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                     .fixedSize(horizontal: false, vertical: true)
-                Spacer(minLength: 0)
-                logStatusBadge.padding(.top, 6)
+                SpeciesDetailTitle(text: species.dutchName)
             }
-            SerifText(species.dutchName, size: 34, relativeTo: .largeTitle)
-                .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            logStatusBadge.padding(.top, 20)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .foregroundStyle(FieldGuideTheme.charcoal)

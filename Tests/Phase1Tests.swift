@@ -1259,3 +1259,20 @@ final class EBirdDiscoverTests: XCTestCase {
         catch { XCTAssertEqual(error as? EBirdError, .unsupportedDate) }
     }
 }
+
+
+final class SpeciesArtworkPagingTests: XCTestCase {
+    func testFourSlidesLoopBothWaysWithoutSkippingViews() {
+        XCTAssertEqual(SpeciesMediaRole.detailSlides, [.dynamic, .front, .rear, .flight])
+        var page = 0
+        var sequence: [Int] = []
+        for _ in 0..<8 {
+            sequence.append(page)
+            page = SpeciesArtworkPaging.index(after: page, offset: 1, count: 4)!
+        }
+        XCTAssertEqual(sequence, [0, 1, 2, 3, 0, 1, 2, 3])
+        XCTAssertEqual(SpeciesArtworkPaging.index(after: 0, offset: -1, count: 4), 3)
+        XCTAssertEqual(SpeciesArtworkPaging.index(after: 3, offset: 1, count: 4), 0)
+        XCTAssertNil(SpeciesArtworkPaging.index(after: 0, offset: 1, count: 0))
+    }
+}
