@@ -92,3 +92,41 @@ implement conversion and reviewed taxonomic mapping, and only then activate the
 local licensed dataset. An uploaded archive is needed here because the proxy
 prevents downloading directly. Native rendering and XCTest execution still
 require Xcode.
+
+## Local GeoPackage inspection — 22 November 2026
+
+The user unpacked the 4.15 GB archive on their Mac. Their screenshot shows
+`BOTW_2025.gpkg`, an XLSX handbook and a DOCX metadata document. The actual
+schema and source documents have not yet been supplied, so filenames alone do
+not establish field meanings, license notice, citation or dataset version.
+
+A standard-library-only local inspector is now available:
+
+1. Download `Scripts/BirdLife-inspectie.zip` from this branch and unpack it.
+2. Double-click `Inspecteer-BirdLife.command` and choose `BOTW_2025.gpkg`.
+3. Upload the generated `BirdLife-inspectie.json` from beside the GeoPackage,
+   together with the small XLSX and DOCX source documents.
+
+If macOS blocks double-clicking, open Terminal, type `bash ` (with a trailing
+space), drag `Inspecteer-BirdLife.command` into the window and press Enter.
+Python 3 is required; no pip, Homebrew or GIS dependency is needed. Xcode's
+command-line tools normally supply Python 3. A command-line alternative is:
+
+```sh
+python3 Scripts/inspect_birdlife_geopackage.py /path/to/BOTW_2025.gpkg
+```
+
+The inspector opens SQLite with `mode=ro` and `query_only`, reads declared vector
+layers/column names/geometry types/SRS, and selects at most five sample attribute
+rows from a fixed allowlist per layer (up to 25 layers, with a limit flag).
+It never selects geometry blobs, exports ranges, hashes/scans the whole 4 GB
+file, installs software, sends data over the network or changes the app/source
+configuration. The report omits absolute paths and arbitrary metadata text. Raw
+GeoPackages, geodatabases and local inspection reports are ignored by Git.
+
+Tests: `python -m unittest discover -s Scripts -p test_birdlife_geopackage_inspection.py -v`
+(two passing tests using fictional data: byte-identical source before/after,
+nontrivial paths, schema/sample output, no geometry/private-note/path leakage,
+and rejection of non-GeoPackage files). `bash -n Scripts/Inspecteer-BirdLife.command`
+and `git diff --check` pass. Actual BOTW schema, macOS file picker execution,
+conversion, licensed range activation and native MapKit overlays remain pending.

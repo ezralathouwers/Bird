@@ -6,3 +6,10 @@ xcuserdata/
 
 # Python maintenance scripts
 __pycache__/
+
+# Licensed GIS masters and local inspection reports stay outside public commits.
+*.gpkg
+*.gpkg-wal
+*.gpkg-shm
+*.gdb/
+BirdLife-inspectie.json
