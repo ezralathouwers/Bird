@@ -63,18 +63,19 @@ struct ConfiguredSpeciesRangeRepository: SpeciesRangeRepository {
     }
 }
 
+struct SpeciesRangeManifest: Decodable, Sendable {
+    struct Entry: Decodable, Sendable { let file: String; let sha256: String }
+    let formatVersion: Int
+    let providerID: String
+    let version: String
+    let citation: String
+    let license: String
+    let files: [String: Entry]
+}
+
 // Folder-reference resources are populated only on the user's own Mac.
 struct PrivateBirdLifeRangeRepository {
     let bundle: Bundle
-    private struct Manifest: Decodable {
-        struct Entry: Decodable { let file: String; let sha256: String }
-        let formatVersion: Int
-        let providerID: String
-        let version: String
-        let citation: String
-        let license: String
-        let files: [String: Entry]
-    }
     func diagnostic(speciesID: String) -> String {
         var lines = ["Soort-ID: \(speciesID)"]
         guard let url = bundle.url(forResource: "manifest", withExtension: "json", subdirectory: "PrivateBirdLifeRanges") else {
@@ -83,7 +84,7 @@ struct PrivateBirdLifeRangeRepository {
             return lines.joined(separator: "\n")
         }
         do {
-            let manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
+            let manifest = try JSONDecoder().decode(SpeciesRangeManifest.self, from: Data(contentsOf: url))
             lines.append("Kaartpakket: \(manifest.version), \(manifest.files.count) soorten")
             guard let entry = manifest.files[speciesID] else {
                 lines.append("Deze soort staat niet in de export. Controleer conversion-report.json.")
@@ -128,7 +129,7 @@ struct PrivateBirdLifeRangeRepository {
 
     func loadIfInstalled(speciesID: String) throws -> SpeciesRangeDataset? {
         guard let url = bundle.url(forResource: "manifest", withExtension: "json", subdirectory: "PrivateBirdLifeRanges") else { return nil }
-        let manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
+        let manifest = try JSONDecoder().decode(SpeciesRangeManifest.self, from: Data(contentsOf: url))
         guard manifest.formatVersion == 1, manifest.providerID == "birdlife-datazone",
               manifest.version == "2025.2", !manifest.citation.isEmpty, !manifest.license.isEmpty else { throw RangeDataError.invalid }
         guard let entry = manifest.files[speciesID] else { throw RangeDataError.unavailable }
@@ -181,6 +182,7 @@ struct SpeciesRangeDataset {
     let attribution: String
     let version: String
     var areas: [SpeciesRangeArea] = []
+    var mapRect: MKMapRect? = nil
 }
 
 enum RangeDataError: LocalizedError {
@@ -252,6 +254,196 @@ struct BundledSpeciesRangeRepository: SpeciesRangeRepository {
     }
 }
 
+// Only immutable coordinate values cross the background-loader actor boundary.
+// MapKit objects stay on the main actor; no unchecked Sendable conformance.
+struct SpeciesRangeSnapshot: Sendable {
+    struct Point: Decodable, Sendable {
+        let longitude: Double
+        let latitude: Double
+        init(from decoder: any Decoder) throws {
+            var values = try decoder.unkeyedContainer()
+            longitude = try values.decode(Double.self)
+            latitude = try values.decode(Double.self)
+            guard longitude.isFinite, latitude.isFinite,
+                  (-180...180).contains(longitude), (-90...90).contains(latitude) else { throw RangeDataError.invalid }
+        }
+    }
+    struct Polygon: Sendable {
+        let rings: [[Point]]
+        let season: Int?
+        let origin: Int?
+    }
+    private struct Collection: Decodable {
+        let type: String
+        let source: String
+        let license: String
+        let version: String
+        let citation: String?
+        let providerID: String?
+        let speciesID: String?
+        let features: [Feature]
+    }
+    private struct Feature: Decodable {
+        struct Attributes: Decodable { let presence: Int?; let origin: Int?; let seasonal: Int? }
+        let type: String
+        let properties: Attributes?
+        let geometry: Geometry
+    }
+    private struct Geometry: Decodable {
+        enum CodingKeys: CodingKey { case type, coordinates }
+        let polygons: [[[Point]]]
+        init(from decoder: any Decoder) throws {
+            let value = try decoder.container(keyedBy: CodingKeys.self)
+            switch try value.decode(String.self, forKey: .type) {
+            case "Polygon": polygons = [try value.decode([[Point]].self, forKey: .coordinates)]
+            case "MultiPolygon": polygons = try value.decode([[[Point]]].self, forKey: .coordinates)
+            default: throw RangeDataError.invalid
+            }
+        }
+    }
+    let polygons: [Polygon]
+    let attribution: String
+    let version: String
+    var coordinateCount: Int { polygons.reduce(0) { $0 + $1.rings.reduce(0) { $0 + $1.count } } }
+
+    static func decode(_ data: Data, expectedSpeciesID: String? = nil,
+                       expectedVersion: String? = nil, expectedCitation: String? = nil,
+                       expectedLicense: String? = nil) throws -> Self {
+        let collection = try JSONDecoder().decode(Collection.self, from: data)
+        guard collection.type == "FeatureCollection",
+              [collection.source, collection.license, collection.version].allSatisfy({
+                  !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+              }) else { throw RangeDataError.invalid }
+        if let expectedSpeciesID {
+            guard collection.speciesID == expectedSpeciesID, collection.providerID == "birdlife-datazone",
+                  collection.version == expectedVersion, collection.citation == expectedCitation,
+                  collection.license == expectedLicense else { throw RangeDataError.invalid }
+        }
+        var polygons: [Polygon] = []
+        for feature in collection.features {
+            guard feature.type == "Feature" else { throw RangeDataError.invalid }
+            var season: Int?
+            var origin: Int?
+            if collection.providerID == "birdlife-datazone" {
+                guard let attributes = feature.properties, let presence = attributes.presence,
+                      let sourceOrigin = attributes.origin, let seasonal = attributes.seasonal,
+                      (1...6).contains(presence), (1...6).contains(sourceOrigin),
+                      BirdLifeSeason(rawValue: seasonal) != nil else { throw RangeDataError.invalid }
+                guard presence == 1, [1, 2, 3, 6].contains(sourceOrigin) else { continue }
+                season = seasonal
+                origin = sourceOrigin
+            }
+            for rings in feature.geometry.polygons {
+                guard !rings.isEmpty, rings.allSatisfy({ $0.count >= 4 }) else { throw RangeDataError.invalid }
+                polygons.append(Polygon(rings: rings, season: season, origin: origin))
+            }
+        }
+        guard !polygons.isEmpty else { throw RangeDataError.unavailable }
+        return Self(polygons: polygons, attribution: "\(collection.citation ?? collection.source) · \(collection.license)", version: collection.version)
+    }
+}
+
+actor SpeciesRangeDataLoader {
+    static let shared = SpeciesRangeDataLoader()
+    private let bundle: Bundle
+    private var source: SpeciesRangeSource?
+    private var manifest: SpeciesRangeManifest?
+    private var snapshots: [String: SpeciesRangeSnapshot] = [:]
+    private var recency: [String] = []
+    private var costs: [String: Int] = [:]
+    init(bundle: Bundle = .main) { self.bundle = bundle }
+
+    func load(speciesID: String) throws -> SpeciesRangeSnapshot {
+        try Task.checkCancellation()
+        if let cached = snapshots[speciesID] {
+            touch(speciesID)
+            return cached
+        }
+        let config: SpeciesRangeSource
+        if let source { config = source }
+        else { config = try SpeciesRangeSource.load(bundle: bundle); source = config }
+        guard config.access != .awaitingPermission else { throw RangeDataError.awaitingPermission }
+        let snapshot: SpeciesRangeSnapshot
+        if let url = bundle.url(forResource: "manifest", withExtension: "json", subdirectory: "PrivateBirdLifeRanges") {
+            let index: SpeciesRangeManifest
+            if let manifest { index = manifest }
+            else {
+                index = try JSONDecoder().decode(SpeciesRangeManifest.self, from: Data(contentsOf: url))
+                guard index.formatVersion == 1, index.providerID == "birdlife-datazone", index.version == "2025.2",
+                      !index.citation.isEmpty, !index.license.isEmpty else { throw RangeDataError.invalid }
+                manifest = index
+            }
+            guard let entry = index.files[speciesID] else { throw RangeDataError.unavailable }
+            let expected = speciesID.replacingOccurrences(of: ":", with: "-") + "-range.geojson"
+            guard entry.file == expected, !entry.file.contains("/"), !entry.file.contains("..") else { throw RangeDataError.invalid }
+            let data = try Data(contentsOf: url.deletingLastPathComponent().appendingPathComponent(entry.file))
+            let digest = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+            guard digest == entry.sha256 else { throw RangeDataError.invalid }
+            snapshot = try SpeciesRangeSnapshot.decode(data, expectedSpeciesID: speciesID,
+                expectedVersion: index.version, expectedCitation: index.citation, expectedLicense: index.license)
+        } else {
+            guard config.access == .licensed else { throw RangeDataError.awaitingFiles }
+            guard let url = bundle.url(forResource: speciesID + "-range", withExtension: "geojson") else { throw RangeDataError.unavailable }
+            let decoded = try SpeciesRangeSnapshot.decode(Data(contentsOf: url))
+            guard decoded.version == config.datasetVersion,
+                  let citation = config.citation, let license = config.licenseNotice else { throw RangeDataError.invalid }
+            snapshot = SpeciesRangeSnapshot(polygons: decoded.polygons,
+                attribution: "\(citation) · \(license)", version: decoded.version)
+        }
+        try Task.checkCancellation()
+        snapshots[speciesID] = snapshot
+        costs[speciesID] = snapshot.coordinateCount * 16
+        touch(speciesID)
+        while recency.count > 8 || costs.values.reduce(0, +) > 32 * 1024 * 1024 {
+            let removed = recency.removeFirst()
+            snapshots.removeValue(forKey: removed)
+            costs.removeValue(forKey: removed)
+        }
+        return snapshot
+    }
+    private func touch(_ id: String) {
+        recency.removeAll { $0 == id }
+        recency.append(id)
+    }
+}
+
+@MainActor
+private enum SpeciesRangeDisplayCache {
+    private final class Entry {
+        let dataset: SpeciesRangeDataset
+        init(_ dataset: SpeciesRangeDataset) { self.dataset = dataset }
+    }
+    private static let entries: NSCache<NSString, Entry> = {
+        let cache = NSCache<NSString, Entry>()
+        cache.countLimit = 8
+        cache.totalCostLimit = 32 * 1024 * 1024
+        return cache
+    }()
+    static func cached(speciesID: String) -> SpeciesRangeDataset? { entries.object(forKey: speciesID as NSString)?.dataset }
+    static func display(_ snapshot: SpeciesRangeSnapshot, speciesID: String) -> SpeciesRangeDataset {
+        if let cached = cached(speciesID: speciesID) { return cached }
+        var areas: [SpeciesRangeArea] = []
+        for polygon in snapshot.polygons {
+            let holes = polygon.rings.dropFirst().map { ring -> MKPolygon in
+                let points = ring.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
+                return points.withUnsafeBufferPointer { MKPolygon(coordinates: $0.baseAddress!, count: $0.count) }
+            }
+            guard let exterior = polygon.rings.first else { continue }
+            let coordinates = exterior.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
+            let native = coordinates.withUnsafeBufferPointer {
+                MKPolygon(coordinates: $0.baseAddress!, count: $0.count, interiorPolygons: holes)
+            }
+            areas.append(SpeciesRangeArea(polygon: native, season: polygon.season.flatMap(BirdLifeSeason.init(rawValue:)), origin: polygon.origin))
+        }
+        let polygons = areas.map(\.polygon)
+        let rect = polygons.reduce(MKMapRect.null) { $0.union($1.boundingMapRect) }
+        let dataset = SpeciesRangeDataset(polygons: polygons, attribution: snapshot.attribution,
+            version: snapshot.version, areas: areas, mapRect: rect)
+        entries.setObject(Entry(dataset), forKey: speciesID as NSString, cost: snapshot.coordinateCount * 32)
+        return dataset
+    }
+}
+
 @MainActor
 final class MapConnectivity: ObservableObject {
     @Published private(set) var isOffline = false
@@ -268,7 +460,7 @@ final class MapConnectivity: ObservableObject {
 
 struct SpeciesDistributionMap: View {
     let species: Species
-    var repository: any SpeciesRangeRepository = ConfiguredSpeciesRangeRepository()
+    var repository: (any SpeciesRangeRepository)? = nil
     var onExpand: (() -> Void)? = nil
     var isFullScreen = false
     @StateObject private var connectivity = MapConnectivity()
@@ -302,27 +494,33 @@ struct SpeciesDistributionMap: View {
         }
         .onTapGesture { onExpand?() }
         .overlay(alignment: .topLeading) {
-            if loading || message != nil || connectivity.isOffline || dataset != nil {
-            VStack(alignment: .leading, spacing: 8) {
-                if loading { ProgressView("Verspreiding laden…") }
-                if let message {
-                    Text(message)
-                    Button("Kaartcontrole") { showDiagnostics = true }.frame(minHeight: 44)
-                }
-                if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Lokaal beschikbare verspreidingsdata blijft beschikbaar.") }
+            VStack(alignment: .leading, spacing: 4) {
                 if let dataset {
                     Button { showSources = true } label: {
-                        Label("BirdLife/HBW · \(dataset.version)", systemImage: "info.circle")
-                            .frame(minHeight: 44)
-                    }.accessibilityLabel(dataset.attribution)
+                        Text("BirdLife/HBW · \(dataset.version)")
+                            .font(FieldGuideTheme.sans(10, relativeTo: .caption2))
+                            .frame(minHeight: 44, alignment: .topLeading)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(FieldGuideTheme.charcoal)
+                    .accessibilityLabel(dataset.attribution)
+                }
+                if loading || message != nil || connectivity.isOffline {
+                    VStack(alignment: .leading, spacing: 8) {
+                        if loading { ProgressView("Verspreiding laden…") }
+                        if let message {
+                            Text(message)
+                            Button("Kaartcontrole") { showDiagnostics = true }.frame(minHeight: 44)
+                        }
+                        if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Lokaal beschikbare verspreidingsdata blijft beschikbaar.") }
+                    }
+                    .font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                    .padding(8)
+                    .background(FieldGuideTheme.ivory.opacity(0.96), in: RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .font(FieldGuideTheme.sans(12, relativeTo: .caption))
             .padding(12)
-            .background(FieldGuideTheme.ivory.opacity(0.96), in: RoundedRectangle(cornerRadius: 12))
-            .padding(12)
-            .accessibilityElement(children: .combine)
-            }
         }
         .overlay(alignment: .bottomLeading) {
             if let dataset {
@@ -356,7 +554,7 @@ struct SpeciesDistributionMap: View {
             Button("Sluiten", role: .cancel) {}
         } message: { Text(diagnosticText) }
         .accessibilityLabel("Interactieve verspreidingskaart van \(species.dutchName)")
-        .task(id: species.id) { loadRange() }
+        .task(id: species.id) { await loadRange() }
     }
 
     private var diagnosticText: String {
@@ -368,7 +566,7 @@ struct SpeciesDistributionMap: View {
         dataset.areas.indices.contains(index) ? (dataset.areas[index].season?.color ?? FieldGuideTheme.taupe) : FieldGuideTheme.taupe
     }
 
-    private func loadRange() {
+    private func loadRange() async {
         loading = true
         dataset = nil
         message = nil
@@ -376,11 +574,20 @@ struct SpeciesDistributionMap: View {
         source = try? SpeciesRangeSource.load()
         defer { loading = false }
         do {
-            let loaded = try repository.load(speciesID: species.id)
+            let loaded: SpeciesRangeDataset
+            if let repository { loaded = try repository.load(speciesID: species.id) }
+            else if let cached = SpeciesRangeDisplayCache.cached(speciesID: species.id) { loaded = cached }
+            else {
+                let snapshot = try await SpeciesRangeDataLoader.shared.load(speciesID: species.id)
+                try Task.checkCancellation()
+                loaded = SpeciesRangeDisplayCache.display(snapshot, speciesID: species.id)
+            }
+            guard !Task.isCancelled else { return }
             dataset = loaded
-            let rect = loaded.polygons.reduce(MKMapRect.null) { $0.union($1.boundingMapRect) }
+            let rect = loaded.mapRect ?? loaded.polygons.reduce(MKMapRect.null) { $0.union($1.boundingMapRect) }
             camera = .rect(rect.insetBy(dx: -rect.width * 0.08, dy: -rect.height * 0.08))
         } catch {
+            guard !Task.isCancelled else { return }
             switch error as? RangeDataError {
             case .awaitingFiles?:
                 message = "De omgezette kaarten ontbreken in deze app."

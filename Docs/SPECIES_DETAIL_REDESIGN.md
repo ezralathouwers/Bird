@@ -118,3 +118,14 @@ Swift syntax, Xcode project parsing and whitespace checks pass in cloud. Verify
 compact-map taps versus pan/zoom/source/diagnostic buttons, full-screen safe
 areas, close/return, and wider habitat geometry on Mac. Native interaction or
 visual correctness has not been claimed from syntax checks.
+
+
+### Faster Information revisit and compact map credit
+
+Range I/O, hash checks and typed JSON/coordinate processing now run on a separate
+actor, with prefetch from the species page and bounded snapshot/render caches.
+Information and full-screen map share the prepared data. The BirdLife credit is
+small text at the upper left without a background; diagnostic/status panels are
+separate. First/dynamic illustration shifted an additional 10 points left, for
+-20 total. The other three slides are unchanged. Native timings and visual
+verification remain pending; no new GIS conversion is required.

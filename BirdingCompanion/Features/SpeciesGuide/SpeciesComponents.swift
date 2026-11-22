@@ -282,7 +282,7 @@ private struct SpeciesArtworkSlide: View {
                                                          horizontalBleed: role == .dynamic)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
-                        .offset(x: role == .dynamic ? -10 : 0)
+                        .offset(x: role == .dynamic ? -20 : 0)
                         .frame(width: geometry.size.width,
                                height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
                                alignment: role == .dynamic ? .bottom : .center)

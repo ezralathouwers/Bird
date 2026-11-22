@@ -270,3 +270,40 @@ labels, seasonal distinctions and introduced dashed boundaries remain available.
 This is display-only and requires no reconversion of the user's BirdLife files.
 Swift syntax/project checks pass; actual native colors and legibility at map
 scales/light/dark settings still require simulator/device visual inspection.
+
+
+## Responsive range loading and caching — 22 November 2026
+
+The normal map path no longer reads a large manifest, hashes files, constructs
+Foundation JSON dictionaries and runs MKGeoJSONDecoder synchronously on the UI
+actor every time the tab or full-screen map opens. SpeciesRangeDataLoader is a
+separate actor: it caches source/manifest metadata, validates each file/hash and
+performs typed coordinate decoding/filtering there. Only immutable Sendable
+coordinate snapshots cross to the main actor. No MKPolygon/unchecked Sendable
+transfer is introduced. Main-actor rendering builds polygon/hole objects once
+and caches them along with the fitted camera rectangle. Synchronous repositories
+remain available for existing diagnostics and explicit test/provider injection.
+
+Opening a species page starts background prefetch alongside audio availability.
+The geometry cache is shared by compact/full-screen views and repeated tab visits.
+Snapshot cache is limited to eight entries and an estimated 32 MiB of coordinates;
+render cache uses NSCache with eight-entry/32-MiB cost limits. Failed and cancelled
+reads are not stored as successful results. Installed bundle resources are
+immutable for a running app; rebuilding/relaunching naturally creates new caches.
+Original source files, hashes, seasonality, origin and current-range filters are
+retained, including holes and multipart geometry. No BirdLife conversion is
+needed for this change.
+
+The BirdLife/HBW credit is now a small plain-text link at the upper left, without
+an ivory background/padded panel; full attribution stays available via its info
+sheet/accessibility label. Loading/error/offline status panels remain separate.
+The first dynamic illustration now has a total -20-point horizontal offset;
+front/rear/flight views have no new offset.
+
+XCTest fixtures added for snapshot holes/season/origin/current-area parity,
+repeated loads after the fixture file is removed (proving cache reuse), and a
+failed hash followed by a corrected file (proving failures are not cached).
+Swift syntax, source membership/project parsing and whitespace checks are the
+available cloud verification. Native build/XCTest and device timing remain
+unverified; no measured speedup is asserted. Basemap tiles and MapKit's initial
+view creation can still take time independently of local range processing.

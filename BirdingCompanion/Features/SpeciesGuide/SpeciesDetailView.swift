@@ -69,6 +69,10 @@ struct SpeciesDetailView: View {
             }
         }
         .task(id: species.id) { await audio.prepare(for: species) }
+        .task(id: species.id) {
+            // Warm immutable range data on its own actor while Overview is shown.
+            _ = try? await SpeciesRangeDataLoader.shared.load(speciesID: species.id)
+        }
         .onDisappear { audio.leavePage() }
         .onChange(of: audioIsAllowed) { _, allowed in if !allowed { audio.stop() } }
         .onChange(of: scenePhase) { _, phase in if phase != .active { audio.stop() } }

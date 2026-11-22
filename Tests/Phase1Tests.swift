@@ -1,6 +1,7 @@
 import XCTest
 import UIKit
 import CoreText
+import CryptoKit
 @testable import BirdingCompanion
 
 @MainActor
@@ -1480,5 +1481,74 @@ extension SpeciesAudioTests {
         player.failure?()
         XCTAssertFalse(model.isPlaying)
         XCTAssertNotNil(model.playbackError)
+    }
+}
+
+@MainActor
+final class SpeciesRangeLoadingTests: XCTestCase {
+    private func fixture() throws -> Data {
+        let ring = [[0.0,0],[4,0],[4,4],[0,4],[0,0]]
+        let hole = [[1.0,1],[2,1],[2,2],[1,2],[1,1]]
+        return try JSONSerialization.data(withJSONObject: [
+            "type": "FeatureCollection", "providerID": "birdlife-datazone", "speciesID": "test:bird",
+            "source": "Fictional fixture", "license": "Test only", "citation": "Fixture author", "version": "2025.2",
+            "features": [
+                ["type": "Feature", "properties": ["presence": 1,"origin": 1,"seasonal": 1],
+                 "geometry": ["type": "Polygon", "coordinates": [ring, hole]]],
+                ["type": "Feature", "properties": ["presence": 1,"origin": 3,"seasonal": 3],
+                 "geometry": ["type": "MultiPolygon", "coordinates": [[ring]]]],
+                ["type": "Feature", "properties": ["presence": 5,"origin": 1,"seasonal": 1],
+                 "geometry": ["type": "Polygon", "coordinates": [ring]]]
+            ]])
+    }
+    private func makeBundle() throws -> (URL, Bundle, URL) {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".bundle")
+        let ranges = root.appendingPathComponent("PrivateBirdLifeRanges")
+        try FileManager.default.createDirectory(at: ranges, withIntermediateDirectories: true)
+        let plist = try PropertyListSerialization.data(fromPropertyList: ["CFBundleIdentifier": "test.range-loading"], format: .xml, options: 0)
+        try plist.write(to: root.appendingPathComponent("Info.plist"))
+        let source: [String: Any] = ["providerID": "birdlife-datazone", "name": "BirdLife fixture",
+            "homepage": "https://datazone.birdlife.org/", "requestURL": "https://datazone.birdlife.org/request",
+            "termsURL": "https://datazone.birdlife.org/terms", "access": "approvedAwaitingFiles"]
+        try JSONSerialization.data(withJSONObject: source).write(to: root.appendingPathComponent("SpeciesRangeSource.json"))
+        let data = try fixture()
+        let file = ranges.appendingPathComponent("test-bird-range.geojson")
+        try data.write(to: file)
+        let digest = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+        let manifest: [String: Any] = ["formatVersion": 1, "providerID": "birdlife-datazone", "version": "2025.2",
+            "citation": "Fixture author", "license": "Test only",
+            "files": ["test:bird": ["file": file.lastPathComponent, "sha256": digest]]]
+        try JSONSerialization.data(withJSONObject: manifest).write(to: ranges.appendingPathComponent("manifest.json"))
+        return (root, try XCTUnwrap(Bundle(url: root)), file)
+    }
+    func testBackgroundSnapshotPreservesHolesSeasonOriginAndCurrentRangeFilter() throws {
+        let snapshot = try SpeciesRangeSnapshot.decode(fixture())
+        XCTAssertEqual(snapshot.polygons.count, 2)
+        XCTAssertEqual(snapshot.polygons[0].rings.count, 2)
+        XCTAssertEqual(snapshot.polygons[1].season, 3)
+        XCTAssertEqual(snapshot.polygons[1].origin, 3)
+        XCTAssertEqual(snapshot.coordinateCount, 15)
+        XCTAssertThrowsError(try SpeciesRangeSnapshot.decode(fixture(), expectedSpeciesID: "wrong"))
+    }
+    func testBackgroundLoaderReusesImmutableSnapshotWithoutReadingFilesAgain() async throws {
+        let (root, bundle, file) = try makeBundle()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let loader = SpeciesRangeDataLoader(bundle: bundle)
+        let first = try await loader.load(speciesID: "test:bird")
+        try FileManager.default.removeItem(at: file)
+        let second = try await loader.load(speciesID: "test:bird")
+        XCTAssertEqual(first.coordinateCount, second.coordinateCount)
+        XCTAssertEqual(second.polygons.count, 2)
+    }
+    func testFailedHashIsNotCachedAndValidReplacementCanLoad() async throws {
+        let (root, bundle, file) = try makeBundle()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let loader = SpeciesRangeDataLoader(bundle: bundle)
+        try Data("corrupt".utf8).write(to: file)
+        do { _ = try await loader.load(speciesID: "test:bird"); XCTFail("Expected hash rejection") }
+        catch { guard case RangeDataError.invalid = error else { return XCTFail("Wrong error: \(error)") } }
+        try fixture().write(to: file)
+        let loaded = try await loader.load(speciesID: "test:bird")
+        XCTAssertEqual(loaded.polygons.count, 2)
     }
 }
