@@ -426,3 +426,15 @@ Location prewarming runs concurrently and does not delay the intro. PNG assets
 were visually inspected; plist, project, image scales and Swift syntax checked
 in cloud. Actual launch-screen rendering/handoff and animation need Xcode and
 an iPhone cold-launch test; no native build was available here.
+
+
+### Information top-fade correction
+
+The previous numeric scroll-offset preference and asynchronous @State update
+are replaced by a bounds anchor on the moving content, resolved directly in a
+GeometryReader on the fixed scroll viewport. The top fade now uses that layout
+position in the same pass. At rest (content top >= 0) opacity is exactly zero;
+upward content movement introduces an ivory-to-transparent 28-point fade over
+12 points of scrolling. It does not intercept map taps or pan gestures. The
+bio's existing named coordinate space is preserved. Swift syntax/whitespace
+checked in cloud; visible scroll behaviour still needs native iPhone validation.

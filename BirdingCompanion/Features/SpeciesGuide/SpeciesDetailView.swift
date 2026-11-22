@@ -14,7 +14,6 @@ struct SpeciesDetailView: View {
     @Environment(\.speciesAudioIsAllowed) private var audioIsAllowed
     @Environment(\.scenePhase) private var scenePhase
     @State private var showRangeMap = false
-    @State private var informationScrollTop: CGFloat = 0
 
     private var searchURL: URL {
         var components = URLComponents(string: "https://www.google.com/search")!
@@ -44,22 +43,23 @@ struct SpeciesDetailView: View {
                             SpeciesFacts(species: species, viewportHeight: viewport.size.height).padding(.horizontal, 20)
                         }
                         .padding(.top, 12).padding(.bottom, 24)
-                        .background {
-                            GeometryReader { content in
-                                Color.clear.preference(key: InformationScrollTop.self,
-                                    value: content.frame(in: .named("speciesInformationViewport")).minY)
-                            }
-                        }
+                        .anchorPreference(key: InformationContentBounds.self, value: .bounds) { $0 }
                     }
                     .coordinateSpace(name: "speciesInformationViewport")
-                    .onPreferenceChange(InformationScrollTop.self) { value in
-                        Task { @MainActor in informationScrollTop = value }
-                    }
-                    .overlay(alignment: .top) {
-                        LinearGradient(colors: [FieldGuideTheme.ivory, FieldGuideTheme.ivory.opacity(0)],
-                            startPoint: .top, endPoint: .bottom)
-                            .frame(height: 20).opacity(min(1, max(0, -informationScrollTop / 16)))
-                            .allowsHitTesting(false).accessibilityHidden(true)
+                    .overlayPreferenceValue(InformationContentBounds.self) { bounds in
+                        GeometryReader { visibleArea in
+                            // Resolve moving content against the fixed viewport in the
+                            // same layout pass, without asynchronous offset state.
+                            let contentTop = bounds.map { visibleArea[$0].minY } ?? 0
+                            let fadeOpacity = min(1, max(0, -contentTop / 12))
+                            LinearGradient(stops: [
+                                .init(color: FieldGuideTheme.ivory, location: 0),
+                                .init(color: FieldGuideTheme.ivory.opacity(0.7), location: 0.3),
+                                .init(color: FieldGuideTheme.ivory.opacity(0), location: 1)
+                            ], startPoint: .top, endPoint: .bottom)
+                                .frame(width: visibleArea.size.width, height: 28)
+                                .opacity(fadeOpacity)
+                        }.allowsHitTesting(false).accessibilityHidden(true)
                     }
                 }
             case .observations:
@@ -176,7 +176,9 @@ struct PreviewObservationPersistence: ObservationPersistence {
     func save(_ observations: [Observation]) throws {}
 }
 
-private struct InformationScrollTop: PreferenceKey {
-    static let defaultValue: CGFloat = 0
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = nextValue() }
+private struct InformationContentBounds: PreferenceKey {
+    static var defaultValue: Anchor<CGRect>? { nil }
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
+        value = nextValue() ?? value
+    }
 }
