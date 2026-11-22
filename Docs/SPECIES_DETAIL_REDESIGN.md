@@ -398,3 +398,16 @@ CGFloat progress storage and animatableData accessor nonisolated, satisfying
 Animatable's nonisolated requirement without relaxing concurrency checks. The
 SwiftUI body remains actor isolated. Syntax/whitespace checked in Linux; Xcode
 compilation is still required to confirm against the user's SDK.
+
+
+### Scroll fade and concentric add reveal follow-up
+
+Information content measures its actual scroll offset. A subtle top ivory fade
+appears only after scrolling, reaching full strength over 16 points; it is fully
+transparent at rest. The add menu and its mask now share full-screen bounds,
+with button/mask geometry both measured in global coordinates. The mask no
+longer independently expands into safe areas, avoiding a shifted circle center.
+A geometry fixture checks center invariance and corner coverage across multiple
+safe-area frames and animation stages. Syntax/project checks can run in cloud;
+Xcode compilation, actual scroll rendering and animation smoothness still need
+physical-iPhone review.

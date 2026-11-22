@@ -68,7 +68,7 @@ struct PhotoCropView: View {
                         Button(location == nil ? "Locatie toevoegen" : "Locatie bewerken") { showLocation = true }
                             .frame(maxWidth: .infinity, minHeight: 48)
                             .background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
-                        if let location { Text(location.name).font(FieldGuideTheme.sans(14)) }
+                        if let location { PhotoLocationBadge(name: location.name) }
                         Button("Identificeer vogel") { finish(image: image, side: previewSide) }
                             .frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(FieldGuideTheme.ivory)
                             .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))

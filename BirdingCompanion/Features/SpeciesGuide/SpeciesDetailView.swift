@@ -14,6 +14,7 @@ struct SpeciesDetailView: View {
     @Environment(\.speciesAudioIsAllowed) private var audioIsAllowed
     @Environment(\.scenePhase) private var scenePhase
     @State private var showRangeMap = false
+    @State private var informationScrollTop: CGFloat = 0
 
     private var searchURL: URL {
         var components = URLComponents(string: "https://www.google.com/search")!
@@ -43,8 +44,23 @@ struct SpeciesDetailView: View {
                             SpeciesFacts(species: species, viewportHeight: viewport.size.height).padding(.horizontal, 20)
                         }
                         .padding(.top, 12).padding(.bottom, 24)
+                        .background {
+                            GeometryReader { content in
+                                Color.clear.preference(key: InformationScrollTop.self,
+                                    value: content.frame(in: .named("speciesInformationViewport")).minY)
+                            }
+                        }
                     }
                     .coordinateSpace(name: "speciesInformationViewport")
+                    .onPreferenceChange(InformationScrollTop.self) { value in
+                        Task { @MainActor in informationScrollTop = value }
+                    }
+                    .overlay(alignment: .top) {
+                        LinearGradient(colors: [FieldGuideTheme.ivory, FieldGuideTheme.ivory.opacity(0)],
+                            startPoint: .top, endPoint: .bottom)
+                            .frame(height: 20).opacity(min(1, max(0, -informationScrollTop / 16)))
+                            .allowsHitTesting(false).accessibilityHidden(true)
+                    }
                 }
             case .observations:
                 ScrollView {
@@ -158,4 +174,9 @@ private struct SafariSearchView: UIViewControllerRepresentable {
 struct PreviewObservationPersistence: ObservationPersistence {
     func load() throws -> [Observation] { [] }
     func save(_ observations: [Observation]) throws {}
+}
+
+private struct InformationScrollTop: PreferenceKey {
+    static let defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = nextValue() }
 }

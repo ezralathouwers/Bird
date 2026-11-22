@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 private enum MainSection: String {
     case discover = "Ontdek", identify = "Identificeer", sessions = "Sessies", goals = "Doelstellingen", countries = "Landen", list = "Logboek"
@@ -7,6 +8,10 @@ private enum MainSection: String {
 struct CompanionRootView: View {
     @EnvironmentObject private var store: ObservationStore
     @StateObject private var sessionLogger = SessionLiveLogger()
+    @StateObject private var soundModel = SoundIdentificationModel()
+    @StateObject private var soundPins = SoundResultPins()
+    @State private var identificationPath = NavigationPath()
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showLiveSession = false
     @StateObject private var observationNavigation = ObservationNavigation()
     @State private var section: MainSection = .discover
@@ -31,6 +36,7 @@ struct CompanionRootView: View {
                 .accessibilityHidden(observationNavigation.selection != nil || showLiveSession || showAddMenu)
             if showAddMenu {
                 AddEntryView(isPresented: $showAddMenu, onLiveStarted: { showLiveSession = true })
+                    .ignoresSafeArea()
                     .transition(reduceMotion ? .opacity : .modifier(
                         active: CircularMenuReveal(progress: 0, origin: plusCenter),
                         identity: CircularMenuReveal(progress: 1, origin: plusCenter)))
@@ -40,12 +46,18 @@ struct CompanionRootView: View {
             }
         }
             .environment(\.speciesAudioIsAllowed,
-                         observationNavigation.selection == nil && !showLiveSession && !showAddMenu)
+                         observationNavigation.selection == nil && !showLiveSession && !showAddMenu
+                            && !soundModel.isRecording && !soundModel.isStarting)
             .environmentObject(observationNavigation)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(FieldGuideTheme.ivory.ignoresSafeArea())
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
             .environmentObject(sessionLogger)
+            .environmentObject(soundModel)
+            .environmentObject(soundPins)
+            .onChange(of: soundModel.startedAt) { _, _ in soundPins.reset() }
+            .onChange(of: scenePhase) { _, phase in if phase == .background { soundModel.stop() } }
+            .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in soundModel.stop() }
             .coordinateSpace(name: "appRoot")
             .onPreferenceChange(PlusCenterPreference.self) { value in Task { @MainActor in plusCenter = value } }
             .animation(reduceMotion ? nil : .easeInOut(duration: 0.32), value: showAddMenu)
@@ -79,8 +91,14 @@ struct CompanionRootView: View {
                     .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
             }
         case .identify:
-            NavigationStack {
-                IdentificationView(isVisible: section == .identify && !showAddMenu && !showLiveSession && observationNavigation.selection == nil)
+            NavigationStack(path: $identificationPath) {
+                IdentificationView()
+                    .navigationDestination(for: IdentificationRoute.self) { route in
+                        switch route {
+                        case .photo: PhotoIdentificationView()
+                        case .audio: SoundIdentificationView()
+                        }
+                    }
             }
         case .sessions:
             NavigationStack {
@@ -161,8 +179,8 @@ struct CompanionRootView: View {
             .background {
                 GeometryReader { geometry in
                     Color.clear.preference(key: PlusCenterPreference.self,
-                        value: CGPoint(x: geometry.frame(in: .named("appRoot")).midX,
-                                       y: geometry.frame(in: .named("appRoot")).midY))
+                        value: CGPoint(x: geometry.frame(in: .global).midX,
+                                       y: geometry.frame(in: .global).midY))
                 }
             }
             .buttonStyle(.plain)
@@ -176,6 +194,10 @@ struct CompanionRootView: View {
             observationNavigation.selection = nil
             showLiveSession = false
             showAddMenu = false
+            if item == .identify {
+                identificationPath = soundModel.isRecording || soundModel.isStarting
+                    ? NavigationPath([IdentificationRoute.audio]) : NavigationPath()
+            }
             if item == .discover { speciesPath.removeAll() }
             if item == .list { logbookPath.removeAll() }
             section = item
@@ -259,7 +281,7 @@ private struct FinePlusMark: Shape {
 
 // Shared vector outlines let all icons use exactly the same stroke, including
 // at the slightly smaller binocular/bird sizes. Shapes scale before stroking.
-private struct NavigationOutlineMark: Shape {
+struct NavigationOutlineMark: Shape {
     enum Kind { case binoculars, viewfinder, clock, bird, play }
     let kind: Kind
 
@@ -331,14 +353,22 @@ private struct CircularMenuReveal: AnimatableModifier {
     func body(content: Content) -> some View {
         content.mask {
             GeometryReader { geometry in
-                let frame = geometry.frame(in: .named("appRoot"))
-                let center = origin == .zero ? CGPoint(x: geometry.size.width / 2, y: geometry.size.height)
-                    : CGPoint(x: origin.x - frame.minX, y: origin.y - frame.minY)
-                let distance = hypot(max(center.x, geometry.size.width - center.x), max(center.y, geometry.size.height - center.y))
-                let radius = 28.8 + max(0, distance - 28.8) * progress
-                Path(ellipseIn: CGRect(x: center.x - radius, y: center.y - radius, width: 2 * radius, height: 2 * radius))
+                let frame = geometry.frame(in: .global)
+                Path(ellipseIn: MenuRevealGeometry.circle(globalOrigin: origin, maskFrame: frame, progress: progress))
                     .fill(.black)
-            }.ignoresSafeArea()
+            }
         }
+    }
+}
+
+// The mask and button are measured in one screen coordinate space, including
+// status-bar and navigation safe areas. The circle center never interpolates.
+enum MenuRevealGeometry {
+    static func circle(globalOrigin: CGPoint, maskFrame: CGRect, progress: CGFloat) -> CGRect {
+        let center = globalOrigin == .zero ? CGPoint(x: maskFrame.width / 2, y: maskFrame.height)
+            : CGPoint(x: globalOrigin.x - maskFrame.minX, y: globalOrigin.y - maskFrame.minY)
+        let distance = hypot(max(center.x, maskFrame.width - center.x), max(center.y, maskFrame.height - center.y))
+        let radius = 28.8 + max(0, distance - 28.8) * min(1, max(0, progress))
+        return CGRect(x: center.x - radius, y: center.y - radius, width: radius * 2, height: radius * 2)
     }
 }

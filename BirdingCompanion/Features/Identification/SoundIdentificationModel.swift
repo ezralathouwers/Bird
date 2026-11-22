@@ -100,10 +100,23 @@ final class SoundIdentificationModel: ObservableObject {
     private var confirmation = SoundCandidateConfirmation()
     private var generation = UUID()
     private var preparationTask: Task<Void, Error>?
+    private var startTask: Task<Void, Never>?
+    private var startRequest = UUID()
     private var liveTask: Task<Void, Never>?
     private let service: any SoundIdentificationService
 
     init(service: any SoundIdentificationService = BirdNETCoreMLService()) { self.service = service }
+
+    // App-owned task: leaving the Audio view must not cancel preparation.
+    func begin() {
+        guard startTask == nil, !isRecording, !isStarting else { return }
+        let request = UUID(); startRequest = request
+        startTask = Task { [weak self] in
+            await self?.start()
+            guard let self, self.startRequest == request else { return }
+            self.startTask = nil
+        }
+    }
 
     func start() async {
         guard !isRecording, !isStarting else { return }
@@ -169,6 +182,7 @@ final class SoundIdentificationModel: ObservableObject {
     }
 
     func stop() {
+        startRequest = UUID(); startTask?.cancel(); startTask = nil
         let stoppingID = generation
         generation = UUID()
         captureTask?.cancel(); captureTask = nil

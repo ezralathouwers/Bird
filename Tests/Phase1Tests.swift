@@ -1939,3 +1939,22 @@ final class IdentificationRefinementTests: XCTestCase {
         XCTAssertFalse(PhotoRangeContext.contains(remote, latitude: 5, longitude: 0))
     }
 }
+
+final class MenuRevealGeometryTests: XCTestCase {
+    func testCircleStaysCenteredOnButtonAcrossSafeAreaFrames() {
+        let button = CGPoint(x: 196.5, y: 759)
+        for frame in [CGRect(x: 0, y: 0, width: 393, height: 852), CGRect(x: 0, y: 59, width: 393, height: 700)] {
+            for progress: CGFloat in [0, 0.2, 0.5, 1] {
+                let circle = MenuRevealGeometry.circle(globalOrigin: button, maskFrame: frame, progress: progress)
+                XCTAssertEqual(circle.width, circle.height, accuracy: 0.001)
+                XCTAssertEqual(circle.midX + frame.minX, button.x, accuracy: 0.001)
+                XCTAssertEqual(circle.midY + frame.minY, button.y, accuracy: 0.001)
+                if progress == 1 {
+                    for corner in [CGPoint(x: 0, y: 0), CGPoint(x: frame.width, y: 0), CGPoint(x: 0, y: frame.height), CGPoint(x: frame.width, y: frame.height)] {
+                        XCTAssertLessThanOrEqual(hypot(corner.x - circle.midX, corner.y - circle.midY), circle.width / 2 + 0.001)
+                    }
+                }
+            }
+        }
+    }
+}

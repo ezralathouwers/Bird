@@ -1,5 +1,28 @@
 # Photo and sound identification — 19 November 2026
 
+## Navigation and styling follow-up — 22 November 2026
+
+Audio capture and pinned-result models now live at CompanionRootView scope.
+Opening/closing species details, changing tabs or showing the add menu retains
+capture and results. Starting/preparing uses an app-owned task, independent of
+the Audio screen's appearance task. Tapping Identify while capture is starting
+or active restores the Audio route directly. A stopped session remains stopped
+until Record is pressed again. A new successful start clears the old pins.
+
+The root stops capture on backgrounding or system audio interruption; no
+background-audio entitlement or recording file writer was added. Other bird
+sound playback is disabled while microphone capture is preparing/active so it
+cannot replace the microphone audio session. Calls and other OS interruptions
+may still stop capture. These lifecycle paths require a device test.
+
+Audio rows now have a dedicated zero-spacing stack, smaller vertical insets and
+no divider after the last row. Photo placeholders use the navigation bird in
+taupe; Choose Photo has a 10% smaller icon. Photo-location summaries in both
+crop and result screens use the shared location outline in an unfilled bordered
+box. Suggestion footers were removed as requested. Photo and Audio screens each
+have 30 additional points of bottom padding.
+
+
 ## Current behaviour — 22 November 2026 (supersedes historical notes below)
 
 The production recognizers are BirdNET (audio) and BioCLIP (photo). The screens
