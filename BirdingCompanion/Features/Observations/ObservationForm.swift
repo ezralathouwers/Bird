@@ -148,7 +148,7 @@ struct ObservationLocationPicker: View {
                     Marker("Waarnemingsplek", coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                 }
             }
-            .mapStyle(.standard(pointsOfInterest: .excludingAll))
+            .mapStyle(FieldGuideTheme.mapStyle)
             .onTapGesture { point in
                 if let coordinate = proxy.convert(point, from: .local) {
                     location.select(latitude: coordinate.latitude, longitude: coordinate.longitude)

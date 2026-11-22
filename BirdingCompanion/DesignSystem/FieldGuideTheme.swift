@@ -1,9 +1,15 @@
 import SwiftUI
+import MapKit
 
 enum FieldGuideTheme {
     // Provisional: no approved screenshot has been supplied for sampling.
     static func sans(_ size: CGFloat = 17, relativeTo style: Font.TextStyle = .body) -> Font {
         .custom("DMSans-9ptRegular", size: size, relativeTo: style)
+    }
+    // Native muted cartography, shared by range, observation and location maps.
+    static var mapStyle: MapStyle {
+        .standard(elevation: .flat, emphasis: .muted,
+                  pointsOfInterest: .excludingAll, showsTraffic: false)
     }
     static let roundControlDiameter: CGFloat = 44
     // One physical stroke width for every navigation outline, independent of

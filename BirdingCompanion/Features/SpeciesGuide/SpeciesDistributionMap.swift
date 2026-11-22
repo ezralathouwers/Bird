@@ -160,10 +160,10 @@ enum BirdLifeSeason: Int, CaseIterable {
     }
     var color: Color {
         switch self {
-        case .resident: Color(red: 0.48, green: 0.53, blue: 0.25)
-        case .breeding: Color(red: 0.77, green: 0.44, blue: 0.21)
-        case .nonBreeding: Color(red: 0.25, green: 0.48, blue: 0.67)
-        case .passage: Color(red: 0.56, green: 0.41, blue: 0.62)
+        case .resident: Color(red: 0.55, green: 0.58, blue: 0.48)
+        case .breeding: Color(red: 0.70, green: 0.59, blue: 0.48)
+        case .nonBreeding: Color(red: 0.49, green: 0.59, blue: 0.66)
+        case .passage: Color(red: 0.62, green: 0.56, blue: 0.66)
         case .uncertain: FieldGuideTheme.taupe
         }
     }
@@ -287,13 +287,13 @@ struct SpeciesDistributionMap: View {
             if let dataset {
                 ForEach(dataset.polygons.indices, id: \.self) { index in
                     MapPolygon(dataset.polygons[index])
-                        .foregroundStyle(areaColor(dataset, index: index).opacity(0.28))
-                        .stroke(areaColor(dataset, index: index), style: StrokeStyle(lineWidth: 1,
+                        .foregroundStyle(areaColor(dataset, index: index).opacity(0.24))
+                        .stroke(areaColor(dataset, index: index).opacity(0.75), style: StrokeStyle(lineWidth: 0.8,
                             dash: dataset.areas.indices.contains(index) && dataset.areas[index].introduced ? [4, 3] : []))
                 }
             }
         }
-        .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
+        .mapStyle(FieldGuideTheme.mapStyle)
         .mapControls { MapCompass(); MapScaleView() }
         .overlay(alignment: .topLeading) {
             if loading || message != nil || connectivity.isOffline || dataset != nil {

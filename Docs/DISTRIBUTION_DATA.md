@@ -256,3 +256,17 @@ new islands from outside holes, recovery with byte-identical reuse of a valid
 existing map, and specific failure logging while preserving other species.
 Actual recovery counts for BOTW_2025 and native rendering are still pending on
 the user's Mac; the large source remains unavailable in the cloud.
+
+
+## Muted map palette — 22 November 2026
+
+All three native MapKit views now share FieldGuideTheme.mapStyle: flat standard
+cartography with muted emphasis, no traffic or POIs. This softens Apple's base
+map without modifying imagery or introducing a different tile/data provider.
+MapKit still controls its exact land/water colors. Range overlays use muted sage,
+sand/taupe, slate blue and dusty mauve for resident/breeding/non-breeding/passage.
+Fill opacity is 0.24 and boundary strokes are 0.8 points at 0.75 opacity; legend
+labels, seasonal distinctions and introduced dashed boundaries remain available.
+This is display-only and requires no reconversion of the user's BirdLife files.
+Swift syntax/project checks pass; actual native colors and legibility at map
+scales/light/dark settings still require simulator/device visual inspection.

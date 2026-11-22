@@ -36,7 +36,7 @@ struct ObservationMapView: View {
                 }.annotationTitles(.hidden)
             }
         }
-        .mapStyle(.standard(pointsOfInterest: .excludingAll))
+        .mapStyle(FieldGuideTheme.mapStyle)
         .mapControlVisibility(.hidden)
         .accessibilityLabel("Locatie van je waarneming van \(species.dutchName)")
         .overlay(alignment: .top) {
