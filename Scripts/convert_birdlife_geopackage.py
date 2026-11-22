@@ -12,6 +12,7 @@ import shutil
 import sqlite3
 import struct
 import tempfile
+import uuid
 
 VERSION = '2025.2'
 SOURCE = 'BirdLife International and Handbook of the Birds of the World'
@@ -146,7 +147,7 @@ def convert(source, catalog_path, output, tolerance=0.01):
         (stage / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
         (stage / 'conversion-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
         (stage / 'README.txt').write_text('Private local BirdLife range export. Do not commit or redistribute these files.\n', encoding='utf-8')
-        backup = output.with_name('.birdlife-backup-' + __import__('uuid').uuid4().hex[:12])
+        backup = output.with_name('.birdlife-backup-' + uuid.uuid4().hex[:12])
         if output.exists():
             output.rename(backup)
         try:
@@ -173,6 +174,9 @@ def main():
     catalog = args.project / 'BirdingCompanion/Resources/WorldSpeciesCatalog.json'
     if not catalog.is_file() or not (args.project / 'BirdingCompanion.xcodeproj').is_dir():
         parser.exit(1, 'Kies de uitgepakte Bird-projectmap met BirdingCompanion.xcodeproj.\n')
+    project_file = args.project / 'BirdingCompanion.xcodeproj/project.pbxproj'
+    if not project_file.is_file() or 'BirdingCompanion/Resources/PrivateBirdLifeRanges' not in project_file.read_text():
+        parser.exit(1, 'Dit is een oudere appversie. Download en pak eerst de nieuwste appcode uit en kies die nieuwe projectmap.\n')
     try:
         convert(args.geopackage, catalog, args.project / 'BirdingCompanion/Resources/PrivateBirdLifeRanges', args.tolerance)
     except Exception as error:
