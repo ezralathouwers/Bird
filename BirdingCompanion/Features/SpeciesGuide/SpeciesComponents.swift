@@ -285,7 +285,7 @@ private struct SpeciesArtworkSlide: View {
                                                          horizontalBleed: role == .dynamic)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
-                        .offset(x: role == .dynamic ? -20 : 0, y: role == .dynamic ? -30 : 0)
+                        .offset(x: role == .dynamic ? -20 : 0, y: role == .dynamic ? -60 : 0)
                         .frame(width: geometry.size.width,
                                height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
                                alignment: role == .dynamic ? .bottom : .center)
@@ -332,10 +332,13 @@ struct ArtworkPlaceholder: View {
 @MainActor
 enum HabitatArtworkCache {
     private static let images = NSCache<NSString, UIImage>()
-    static func image(for scene: HabitatScene) async -> UIImage? {
-        let regionKey = scene.artworkRegion.map { "\($0.x),\($0.y),\($0.width),\($0.height)" } ?? "full"
-        let key = "\(scene.assetName):\(regionKey)" as NSString
-        if let cached = images.object(forKey: key) { return cached }
+    private static func key(for scene: HabitatScene) -> String {
+        let region = scene.artworkRegion.map { "\($0.x),\($0.y),\($0.width),\($0.height)" } ?? "full"
+        return "\(scene.assetName):\(region)"
+    }
+    static func sourceImage(for scene: HabitatScene) -> UIImage? {
+        let cacheKey = (key(for: scene) + ":source") as NSString
+        if let cached = images.object(forKey: cacheKey) { return cached }
         guard let source = UIImage(named: scene.assetName) else { return nil }
         let result: UIImage
         if let region = scene.artworkRegion {
@@ -346,10 +349,17 @@ enum HabitatArtworkCache {
                   let selected = cgImage.cropping(to: rect) else { return nil }
             result = UIImage(cgImage: selected, scale: source.scale, orientation: .up)
         } else { result = source }
-        let composited = await ArtworkPaperBackdrop.image(result)
+        images.setObject(result, forKey: cacheKey)
+        return result
+    }
+    static func image(for scene: HabitatScene) async -> UIImage? {
+        let cacheKey = key(for: scene) as NSString
+        if let cached = images.object(forKey: cacheKey) { return cached }
+        guard let source = sourceImage(for: scene) else { return nil }
+        let result = await ArtworkPaperBackdrop.image(source)
         guard !Task.isCancelled else { return nil }
-        images.setObject(composited, forKey: key)
-        return composited
+        images.setObject(result, forKey: cacheKey)
+        return result
     }
 }
 
@@ -378,7 +388,8 @@ struct HabitatFooter: View {
     @State private var displayImage: UIImage?
     var body: some View {
         Group {
-            if let image = displayImage {
+            if let scene = HabitatSceneCatalog.primaryScene(for: species),
+               let image = displayImage ?? HabitatArtworkCache.sourceImage(for: scene) {
                 HabitatBleedLayout(imageSize: image.size) {
                     Image(uiImage: image).resizable()
                 }

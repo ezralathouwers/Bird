@@ -1,12 +1,8 @@
 import SwiftUI
-import UniformTypeIdentifiers
 
 struct LogbookView: View {
     @EnvironmentObject private var store: ObservationStore
     @State private var sort: LogbookSort = .family
-    @State private var exporting = false
-    @State private var exportDocument = ObservationExport(data: Data())
-    @State private var errorMessage: String?
     @Environment(\.dismiss) private var dismiss
     var countryCode: String? = nil
     var catalog: [Species] = DiscoverFixtures.catalog
@@ -16,71 +12,54 @@ struct LogbookView: View {
     }
 
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 24) {
-                if let countryCode {
-                    HStack(spacing: 12) {
-                        Button { dismiss() } label: { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
-                            .accessibilityLabel("Terug naar landen")
-                        Text(ObservationCountry.name(for: countryCode)).font(FieldGuideTheme.sans(24, relativeTo: .title2))
-                            .accessibilityAddTraits(.isHeader)
-                    }
-                }
-                Text("\(rows.count)").modifier(LargeHeadingStyle())
-                    .accessibilityLabel("\(rows.count) gelogde vogelsoorten")
-                    .accessibilityAddTraits(.isHeader)
-                HStack(spacing: 12) {
-                    Spacer(minLength: 0)
-                    Picker("Sortering", selection: $sort) {
-                        ForEach(LogbookSort.allCases, id: \.self) { option in
-                            Text(option.label).tag(option)
-                        }
-                    }
-                    .pickerStyle(.menu)
-                    .frame(minHeight: 44)
-                    .accessibilityHint("Per familie groepeert je soorten. Laatst ontdekt toont een doorlopende lijst.")
-                }
-                if let loadError = store.loadError {
-                    Text(loadError).foregroundStyle(.red)
-                } else if rows.isEmpty {
-                    Text("Nog geen vogelsoorten gelogd. Voeg je eerste waarneming toe met de plusknop.")
-                        .font(FieldGuideTheme.sans())
-                } else if sort == .family {
-                    ForEach(LogbookProjection.families(from: rows)) { group in
-                        Section {
-                            speciesRows(group.species)
-                        } header: {
-                            Text(group.family.dutchName.uppercased())
-                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                                .tracking(1)
-                                .foregroundStyle(FieldGuideTheme.taupe)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(FieldGuideTheme.beige.opacity(0.14), in: RoundedRectangle(cornerRadius: 8))
-                                .padding(.top, 14)
-                                .accessibilityAddTraits(.isHeader)
-                        }
-                    }
-                } else {
-                    speciesRows(rows)
-                }
-                Button("Exporteer alle waarnemingen (JSON)") {
-                    do { exportDocument = ObservationExport(data: try store.exportData()); exporting = true }
-                    catch { errorMessage = error.localizedDescription }
-                }
-                .frame(minHeight: 44)
-                .disabled(store.loadError != nil)
-                if let errorMessage { Text(errorMessage).foregroundStyle(.red) }
+        VStack(spacing: 0) {
+            if let countryCode {
+                CenteredPageHeader(title: ObservationCountry.name(for: countryCode), countryCode: countryCode) { dismiss() }
             }
-            .padding(20).padding(.bottom, 24)
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 16) {
+                    HStack(alignment: .top, spacing: 12) {
+                        ObservationTotal(value: rows.count, label: "gelogde vogelsoorten")
+                        Spacer(minLength: 0)
+                        Picker("Sortering", selection: $sort) {
+                            ForEach(LogbookSort.allCases, id: \.self) { option in
+                                Text(option.label).tag(option)
+                            }
+                        }
+                        .pickerStyle(.menu).frame(minHeight: 44).padding(.top, 4)
+                        .accessibilityHint("Per familie groepeert je soorten. Laatst ontdekt toont een doorlopende lijst.")
+                    }
+                    if let loadError = store.loadError {
+                        Text(loadError).foregroundStyle(.red)
+                    } else if rows.isEmpty {
+                        Text("Nog geen vogelsoorten gelogd. Voeg je eerste waarneming toe met de plusknop.")
+                            .font(FieldGuideTheme.sans())
+                    } else if sort == .family {
+                        ForEach(LogbookProjection.families(from: rows)) { group in
+                            Section {
+                                speciesRows(group.species)
+                            } header: {
+                                Text(group.family.dutchName.uppercased())
+                                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                    .tracking(1)
+                                    .foregroundStyle(FieldGuideTheme.taupe)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 4)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .background(FieldGuideTheme.beige.opacity(0.14), in: RoundedRectangle(cornerRadius: 8))
+                                    .padding(.top, 8)
+                                    .accessibilityAddTraits(.isHeader)
+                            }
+                        }
+                    } else {
+                        speciesRows(rows)
+                    }
+                }
+                .padding(20).padding(.bottom, 24)
+            }
         }
         .background(FieldGuideTheme.ivory)
         .toolbar(.hidden, for: .navigationBar)
-        .fileExporter(isPresented: $exporting, document: exportDocument, contentType: .json,
-                      defaultFilename: "birding-waarnemingen") { result in
-            if case .failure(let error) = result { errorMessage = error.localizedDescription }
-        }
     }
 
     private func speciesRows(_ species: [LoggedSpecies]) -> some View {

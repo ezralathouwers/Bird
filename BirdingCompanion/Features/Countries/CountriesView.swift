@@ -8,20 +8,20 @@ struct CountriesView: View {
     }
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .leading, spacing: 24) {
-                Text("Landen").modifier(LargeHeadingStyle()).accessibilityAddTraits(.isHeader)
+            LazyVStack(alignment: .leading, spacing: 14) {
+                PageHeading(text: "Landen").accessibilityAddTraits(.isHeader)
                 if let error = store.loadError { Text(error).foregroundStyle(.red) }
                 else if countries.isEmpty { Text("Nog geen landen met gelogde vogelsoorten.") }
                 ForEach(countries) { country in
                     NavigationLink(value: country) {
                         HStack(spacing: 16) {
-                            CountryFlagBadge(code: country.code, diameter: 48).accessibilityHidden(true)
+                            CountryFlagBadge(code: country.code, diameter: 33.6).accessibilityHidden(true)
                             Text(country.name).font(FieldGuideTheme.sans(20, relativeTo: .title3))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text("\(country.speciesCount) \(country.speciesCount == 1 ? "soort" : "soorten")")
                                 .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
                             Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
-                        }.padding(.vertical, 12).contentShape(Rectangle())
+                        }.padding(.vertical, 8).contentShape(Rectangle())
                     }.buttonStyle(.plain)
                     Divider()
                 }

@@ -161,10 +161,10 @@ enum BirdLifeSeason: Int, CaseIterable {
     }
     var color: Color {
         switch self {
-        case .resident: Color(red: 0.55, green: 0.58, blue: 0.48)
-        case .breeding: Color(red: 0.70, green: 0.59, blue: 0.48)
-        case .nonBreeding: Color(red: 0.49, green: 0.59, blue: 0.66)
-        case .passage: Color(red: 0.62, green: 0.56, blue: 0.66)
+        case .resident: Color(red: 0.28, green: 0.50, blue: 0.30)
+        case .breeding: Color(red: 0.82, green: 0.46, blue: 0.16)
+        case .nonBreeding: Color(red: 0.22, green: 0.45, blue: 0.76)
+        case .passage: Color(red: 0.61, green: 0.32, blue: 0.67)
         case .uncertain: FieldGuideTheme.taupe
         }
     }
@@ -482,20 +482,20 @@ struct SpeciesDistributionMap: View {
                 if let dataset {
                     ForEach(dataset.polygons.indices, id: \.self) { index in
                         MapPolygon(dataset.polygons[index])
-                            .foregroundStyle(areaColor(dataset, index: index).opacity(0.24))
+                            .foregroundStyle(areaColor(dataset, index: index).opacity(0.38))
                             .stroke(areaColor(dataset, index: index).opacity(0.75), style: StrokeStyle(lineWidth: 0.8,
                                 dash: dataset.areas.indices.contains(index) && dataset.areas[index].introduced ? [4, 3] : []))
                     }
                 }
-        }
-        .mapStyle(FieldGuideTheme.mapStyle)
-        .mapControls {
-            if !isFullScreen { MapCompass() }
-            MapScaleView()
-        }
-        .saturation(0.22)
-        .ignoresSafeArea(edges: isFullScreen ? [.top, .bottom] : [])
-        .onTapGesture { onExpand?() }
+            }
+            .mapStyle(FieldGuideTheme.mapStyle)
+            .mapControls {
+                if !isFullScreen { MapCompass() }
+                MapScaleView()
+            }
+            .saturation(0.72)
+            .ignoresSafeArea(edges: isFullScreen ? [.top, .bottom] : [])
+            .onTapGesture { onExpand?() }
         }
         .overlay(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 4) {
@@ -540,10 +540,10 @@ struct SpeciesDistributionMap: View {
                 }
                 .background(FieldGuideTheme.mapLegendBackground, in: RoundedRectangle(cornerRadius: 12))
                 .padding(.horizontal, isFullScreen ? 20 : 8)
-                .padding(.bottom, isFullScreen ? 12 : 8)
+                .padding(.bottom, isFullScreen ? 44 : 32)
             }
         }
-        .overlay(alignment: .bottomTrailing) {
+        .overlay(alignment: .topTrailing) {
             if let onExpand {
                 Button(action: onExpand) {
                     Image(systemName: "arrow.up.left.and.arrow.down.right")
@@ -552,7 +552,7 @@ struct SpeciesDistributionMap: View {
                         .background(FieldGuideTheme.ivory, in: Circle())
                 }
                 .accessibilityLabel("Open schermvullende verspreidingskaart")
-                .padding(.trailing, 12).padding(.bottom, 38)
+                .padding(.trailing, 12).padding(.top, 12)
             }
         }
         .sheet(isPresented: $showSources) { SpeciesCatalogSourcesView() }
@@ -622,7 +622,10 @@ struct SpeciesRangeFullscreenView: View {
         SpeciesDistributionMap(species: species, isFullScreen: true)
             .background(FieldGuideTheme.ivory.ignoresSafeArea())
             .overlay(alignment: .topTrailing) {
-                MapCloseButton(label: "Sluit verspreidingskaart") { dismiss() }
+                HStack(spacing: 8) {
+                    SpeciesMapBadge(species: species)
+                    MapCloseButton(label: "Sluit verspreidingskaart") { dismiss() }
+                }
                 .padding(.trailing, 20).padding(.top, 12)
             }
     }

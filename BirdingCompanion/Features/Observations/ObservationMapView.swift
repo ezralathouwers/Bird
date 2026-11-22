@@ -76,7 +76,7 @@ struct ObservationMapView: View {
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                 HStack(alignment: .top, spacing: 6) {
                     LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
-                        .frame(width: 16, height: 20).accessibilityHidden(true)
+                        .frame(width: 20, height: 24).fixedSize().accessibilityHidden(true)
                     Text(current.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                          ? "Geen locatie opgegeven" : current.locationName)
                 }.font(FieldGuideTheme.sans(15, relativeTo: .subheadline))

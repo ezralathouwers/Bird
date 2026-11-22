@@ -27,15 +27,9 @@ struct ObservationForm: View {
 
     private var standardForm: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 8) {
-                SpeciesBackButton(label: "Terug zonder opslaan") { dismiss() }
-                Text(original == nil ? "Waarneming toevoegen" : "Waarneming bewerken")
-                    .font(FieldGuideTheme.sans(17, relativeTo: .headline))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
+            CenteredPageHeader(title: original == nil ? "Waarneming toevoegen" : "Waarneming bewerken") { dismiss() }
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: 18) {
                     selectedBird
                     ViewThatFits(in: .horizontal) {
                         HStack(spacing: 16) { dateAndTimeFields }
@@ -48,7 +42,7 @@ struct ObservationForm: View {
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                         TextField("Naam van natuurgebied of plaats", text: Binding(
                             get: { location.locationName }, set: { location.editName($0) }))
-                            .textFieldStyle(.roundedBorder)
+                            .modifier(RoundedSearchField())
                             .accessibilityLabel("Locatienaam")
                         if location.isLocating { ProgressView("Huidige locatie ophalen…") }
                         if location.isNaming { ProgressView("Plaatsnaam en land ophalen…") }
@@ -67,7 +61,7 @@ struct ObservationForm: View {
                         }.disabled(location.isLocating)
                     }
                     if let errorMessage { Text(errorMessage).foregroundStyle(.red) }
-                }.padding(20)
+                }.padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 20)
             }
             .background(FieldGuideTheme.ivory)
             .safeAreaInset(edge: .bottom, spacing: 0) {
@@ -75,7 +69,7 @@ struct ObservationForm: View {
                     Text(original == nil ? "Waarneming opslaan" : "Wijzigingen opslaan")
                         .frame(maxWidth: .infinity, minHeight: 52)
                         .foregroundStyle(FieldGuideTheme.ivory)
-                        .background(FieldGuideTheme.charcoal, in: Capsule())
+                        .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
                 }
                 .disabled(store.loadError != nil || !location.canSave)
                 .opacity(store.loadError != nil || !location.canSave ? 0.4 : 1)
@@ -89,14 +83,12 @@ struct ObservationForm: View {
     }
 
     @ViewBuilder private var dateAndTimeFields: some View {
-        DatePicker("Datum", selection: $observedAt, displayedComponents: .date)
-            .labelsHidden().fixedSize().accessibilityLabel("Datum")
-        DatePicker("Tijd", selection: $observedAt, displayedComponents: .hourAndMinute)
-            .labelsHidden().fixedSize().accessibilityLabel("Tijd")
+        DateTimeField(title: "Datum", selection: $observedAt, isDate: true)
+        DateTimeField(title: "Tijd", selection: $observedAt, isDate: false)
     }
 
     private var selectedBird: some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 14) {
             Group {
                 if UIImage(named: SpeciesMediaRole.classic.assetName(for: species)) != nil {
                     PrimaryBirdImage(species: species)
@@ -107,11 +99,12 @@ struct ObservationForm: View {
                     }
                 }
             }
-            .frame(width: 110, height: 130)
+            .frame(width: 84, height: 100)
             .accessibilityLabel("Primaire illustratie van \(species.dutchName)")
             VStack(alignment: .leading, spacing: 6) {
                 Text(species.englishDisplayName).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
-                SerifText(species.dutchName, size: 34, relativeTo: .largeTitle)
+                SerifText(species.dutchName, size: 26, relativeTo: .title)
+                    .minimumScaleFactor(0.8)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
@@ -140,7 +133,10 @@ struct ObservationLocationPicker: View {
         MapReader { proxy in
             Map(position: $camera) {
                 if let latitude = location.latitude, let longitude = location.longitude {
-                    Marker("Waarnemingsplek", coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                    Annotation("Waarnemingsplek", coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)) {
+                        Circle().fill(FieldGuideTheme.charcoal).frame(width: 18, height: 18)
+                            .overlay { Circle().stroke(FieldGuideTheme.ivory, lineWidth: 2) }
+                    }.annotationTitles(.hidden)
                 }
             }
             .mapStyle(FieldGuideTheme.mapStyle)

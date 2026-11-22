@@ -12,6 +12,7 @@ enum FieldGuideTheme {
         .standard(elevation: .flat, emphasis: .muted,
                   pointsOfInterest: .excludingAll, showsTraffic: false)
     }
+    static let controlCornerRadius: CGFloat = 18
     static let roundControlDiameter: CGFloat = 44
     // One physical stroke width for every navigation outline, independent of
     // icon size. SF Symbol weights alone do not guarantee identical widths.
@@ -57,9 +58,9 @@ struct RoundedSearchField: ViewModifier {
             .padding(.vertical, 10)
             .frame(minHeight: 44)
             .background(FieldGuideTheme.navigationWhite,
-                        in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                        in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
             .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous)
                     .strokeBorder(FieldGuideTheme.beige, lineWidth: 0.75)
                     .allowsHitTesting(false)
             }
@@ -173,5 +174,86 @@ struct CountryFlagBadge: View {
         }
         .frame(width: diameter, height: diameter).clipShape(Circle())
         .accessibilityLabel(ObservationCountry.name(for: code))
+    }
+}
+
+struct CenteredPageHeader: View {
+    let title: String
+    var countryCode: String? = nil
+    let back: () -> Void
+    var body: some View {
+        ZStack {
+            HStack { SpeciesBackButton(action: back); Spacer(minLength: 0) }
+            HStack(spacing: 8) {
+                if let countryCode { CountryFlagBadge(code: countryCode, diameter: 22) }
+                Text(title).font(FieldGuideTheme.sans(17, relativeTo: .headline))
+                    .multilineTextAlignment(.center).accessibilityAddTraits(.isHeader)
+            }.padding(.horizontal, 44)
+        }
+        .frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
+        .foregroundStyle(FieldGuideTheme.charcoal)
+    }
+}
+
+struct ObservationTotal: View {
+    let value: Int
+    let label: String
+    var body: some View {
+        Text("\(value)").font(FieldGuideTheme.sans(60, relativeTo: .title3))
+            .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.35))
+            .accessibilityLabel("\(value) \(label)").accessibilityAddTraits(.isHeader)
+    }
+}
+
+// The visible control has the same 18-point corners as search/text fields.
+// The native date/time picker lives in a sheet rather than imposing its pill.
+struct DateTimeField: View {
+    let title: String
+    @Binding var selection: Date
+    let isDate: Bool
+    var latestDate: Date? = nil
+    @State private var presented = false
+    private var value: String {
+        isDate ? selection.formatted(date: .abbreviated, time: .omitted)
+               : selection.formatted(date: .omitted, time: .shortened)
+    }
+    var body: some View {
+        Button { presented = true } label: {
+            Text(value).font(FieldGuideTheme.sans(17)).lineLimit(1)
+                .modifier(RoundedSearchField())
+        }.buttonStyle(.plain).accessibilityLabel(title).accessibilityValue(value)
+            .sheet(isPresented: $presented) {
+                NavigationStack {
+                    Group {
+                        if let latestDate {
+                            DatePicker(title, selection: $selection, in: ...latestDate,
+                                       displayedComponents: isDate ? .date : .hourAndMinute)
+                        } else {
+                            DatePicker(title, selection: $selection,
+                                       displayedComponents: isDate ? .date : .hourAndMinute)
+                        }
+                    }.datePickerStyle(.wheel).labelsHidden().padding(20)
+                        .navigationTitle(title).navigationBarTitleDisplayMode(.inline)
+                        .toolbar { ToolbarItem(placement: .confirmationAction) {
+                            Button("Klaar") { presented = false }
+                        } }
+                }.presentationDetents([.height(340)])
+            }
+    }
+}
+
+struct SpeciesMapBadge: View {
+    let species: Species
+    var body: some View {
+        Group {
+            if UIImage(named: SpeciesMediaRole.classic.assetName(for: species)) != nil {
+                PrimaryBirdImage(species: species).frame(width: 28, height: 28)
+            } else {
+                Image(systemName: "bird").font(.system(size: 20, weight: .light))
+            }
+        }
+        .frame(width: 44, height: 44)
+        .background(FieldGuideTheme.ivory, in: Circle())
+        .accessibilityLabel(species.dutchName)
     }
 }

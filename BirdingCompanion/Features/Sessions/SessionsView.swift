@@ -15,7 +15,7 @@ struct SessionsView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HStack(alignment: .top, spacing: 6) {
-                    Text("Sessies").modifier(LargeHeadingStyle())
+                    PageHeading(text: "Sessies")
                         .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
                     RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { creatingLive = false; showForm = true }
                         .foregroundStyle(FieldGuideTheme.charcoal)
@@ -124,14 +124,11 @@ struct SessionForm: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     if !live {
-                        DatePicker("Dag", selection: day, in: ...Date(), displayedComponents: .date)
-                            .labelsHidden().accessibilityLabel("Dag van de sessie")
+                        DateTimeField(title: "Dag van de sessie", selection: day, isDate: true, latestDate: Date())
                         HStack {
-                            DatePicker("Startuur", selection: $start, displayedComponents: .hourAndMinute)
-                                .labelsHidden().accessibilityLabel("Startuur")
+                            DateTimeField(title: "Startuur", selection: $start, isDate: false)
                             Spacer()
-                            DatePicker("Einduur", selection: $end, displayedComponents: .hourAndMinute)
-                                .labelsHidden().accessibilityLabel("Einduur")
+                            DateTimeField(title: "Einduur", selection: $end, isDate: false)
                         }
                         if end < start {
                             Text("Het einduur valt op de volgende dag.").font(FieldGuideTheme.sans(12, relativeTo: .caption))
@@ -142,8 +139,7 @@ struct SessionForm: View {
                     TextField("Naam van natuurgebied of plaats", text: Binding(
                         get: { location.locationName }, set: { location.editName($0) }))
                         .font(FieldGuideTheme.sans(22, relativeTo: .title2))
-                        .padding(.vertical, 12).padding(.horizontal, 14)
-                        .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 12))
+                        .modifier(RoundedSearchField())
                         .accessibilityLabel("Sessielocatie en naam")
                     if location.isLocating { ProgressView("Huidige locatie ophalen…") }
                     if location.isNaming { ProgressView("Plaatsnaam ophalen…") }
@@ -166,7 +162,10 @@ struct SessionForm: View {
                                             Image(systemName: "minus.circle").frame(width: 44, height: 44)
                                         }.accessibilityLabel("Verwijder waarneming uit deze sessie")
                                     }
-                                    DatePicker("Waarnemingstijd", selection: $log.observedAt)
+                                    HStack {
+                                        DateTimeField(title: "Waarnemingsdatum", selection: $log.observedAt, isDate: true)
+                                        DateTimeField(title: "Waarnemingstijd", selection: $log.observedAt, isDate: false)
+                                    }
                                     Text(log.locationName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                                 }
                             }
@@ -430,7 +429,7 @@ private struct SessionPrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label.font(FieldGuideTheme.sans()).frame(maxWidth: .infinity, minHeight: 52)
             .foregroundStyle(FieldGuideTheme.ivory)
-            .background(FieldGuideTheme.charcoal, in: Capsule())
+            .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
             .opacity(enabled ? (configuration.isPressed ? 0.7 : 1) : 0.4)
     }
 }

@@ -11,7 +11,7 @@ struct GoalsView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HStack(alignment: .top) {
-                    Text("Doelstellingen").modifier(LargeHeadingStyle())
+                    PageHeading(text: "Doelstellingen")
                         .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
                     RoundAction(symbol: "plus", label: "Doelstelling toevoegen") { showForm = true }
                         .disabled(store.loadError != nil)
@@ -114,7 +114,7 @@ struct GoalForm: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 20) {
                     TextField("Naam van je doelstelling", text: $name)
-                        .font(FieldGuideTheme.sans(22, relativeTo: .title2)).textFieldStyle(.roundedBorder)
+                        .font(FieldGuideTheme.sans(22, relativeTo: .title2)).modifier(RoundedSearchField())
                     Text("\(selected.count) soorten geselecteerd").font(FieldGuideTheme.sans(16))
                     TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled()
                     if birds.isEmpty { Text("Geen soorten gevonden.") }
@@ -147,7 +147,7 @@ struct GoalForm: View {
                             dismiss()
                         } catch { self.error = error.localizedDescription }
                     }.frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(FieldGuideTheme.ivory)
-                        .background(FieldGuideTheme.charcoal, in: Capsule())
+                        .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
                         .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selected.isEmpty || store.loadError != nil)
                         .padding(20).background(FieldGuideTheme.ivory)
                 }

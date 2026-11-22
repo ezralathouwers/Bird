@@ -7,7 +7,7 @@ struct IdentificationView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                Text("Identificeer").modifier(LargeHeadingStyle()).accessibilityAddTraits(.isHeader)
+                PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
                 NavigationLink {
                     PhotoIdentificationView()
                 } label: { option("Foto-ID", detail: "Maak of kies een foto", symbol: "camera") }
@@ -58,7 +58,7 @@ private struct SoundIdentificationView: View {
                     } label: {
                         Label(model.isRecording ? "Stop opname" : "Opnemen", systemImage: model.isRecording ? "stop.fill" : "mic")
                             .frame(maxWidth: .infinity, minHeight: 52)
-                    }.foregroundStyle(FieldGuideTheme.ivory).background(FieldGuideTheme.charcoal, in: Capsule())
+                    }.foregroundStyle(FieldGuideTheme.ivory).background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
                         .disabled(model.isStarting || model.isIdentifying)
                     if !model.isRecording, let url = model.recordingURL {
                         ShareLink(item: url) { Image(systemName: "square.and.arrow.up").frame(width: 44, height: 44) }

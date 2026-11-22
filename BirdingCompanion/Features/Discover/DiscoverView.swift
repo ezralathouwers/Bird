@@ -114,7 +114,7 @@ struct DiscoverView: View {
     }
 
     private var heading: some View {
-        DiscoverHeading(text: showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
+        PageHeading(text: showSearch ? "Zoek een vogelsoort" : "Vandaag in \(locationTitle)")
             .frame(maxWidth: .infinity, alignment: .leading)
             .accessibilityAddTraits(.isHeader)
             .padding(.top, 60)
@@ -238,7 +238,7 @@ private struct DiscoverSpeciesRow: View {
 
 // Explicit paragraph metrics reduce the custom font's native line height.
 // SwiftUI's tight font leading alone does not give an exact baseline distance.
-private struct DiscoverHeading: UIViewRepresentable {
+struct PageHeading: UIViewRepresentable {
     let text: String
     @ScaledMetric(relativeTo: .largeTitle) private var size: CGFloat = 44.2
 

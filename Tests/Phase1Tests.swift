@@ -1095,6 +1095,13 @@ final class HabitatArtworkTests: XCTestCase {
         }
         XCTAssertEqual(Set(scenes.map(\.assetName)).count, 3)
     }
+    func testFooterHasSynchronousSourceBeforeAsyncColorPreparation() throws {
+        for scene in HabitatSceneCatalog.scenes {
+            let source = try XCTUnwrap(HabitatArtworkCache.sourceImage(for: scene), scene.id)
+            XCTAssertGreaterThan(source.size.width, 0)
+            XCTAssertGreaterThan(source.size.height, 0)
+        }
+    }
     func testOutOfBoundsAndNonfiniteRegionsAreRejected() {
         let invalid = [HabitatArtworkRegion(x: -0.1, y: 0, width: 0.5, height: 0.5),
             HabitatArtworkRegion(x: 0.9, y: 0, width: 0.5, height: 0.5),

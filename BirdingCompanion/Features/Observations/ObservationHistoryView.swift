@@ -18,15 +18,8 @@ struct ObservationHistoryView: View {
             let records = store.observations(for: species.id)
             if store.loadError == nil {
                 if prominentTotal {
-                    HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text("\(records.count)")
-                            .font(FieldGuideTheme.sans(60, relativeTo: .title3))
-                    }
-                    .padding(.vertical, 12)
-                    .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.35))
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel("\(records.count) waarnemingen")
-                    .accessibilityAddTraits(.isHeader)
+                    ObservationTotal(value: records.count, label: "waarnemingen")
+                        .padding(.top, 12).padding(.bottom, 4)
                 } else {
                     Text("\(records.count)")
                         .accessibilityLabel("\(records.count) waarnemingen")

@@ -169,3 +169,49 @@ performance measurement is available here. Verify the safe corners, map/source
 controls, close/edit/return flow, Dutch date control widths, paper-compositing
 edges and white plumage/bark, first-slide crop, flags and audio on Mac. Existing
 private BirdLife files do not need reconversion and must be retained on updates.
+
+### Footer recovery and consistent forms/lists — 22 November 2026
+
+The footer now renders a synchronous cached source panel immediately, giving the
+safe-area inset its actual image geometry before asynchronous paper compositing
+finishes. Previously its initial empty Group could have no layout footprint.
+The processed panel replaces that source in place; a regression fixture checks
+all 33 source panels are available before async preparation. Native layout must
+still be verified on Mac. Dynamic heroes move another 30 points upward (-60
+total vertical offset); other roles are unchanged. AGENTS.md now requires future
+dynamic art/props to end naturally or fade at the upper edge, without sharp cuts.
+
+Range season colors now use distinct green/orange/blue/purple with 0.38 fill,
+and overall map saturation is raised to 0.72 so seasonal distinctions survive.
+The basemap remains muted, although MapKit has no separate ocean-color token.
+Expand control is upper right; full-screen has an adjacent 44-point padded
+classic-bird badge. Legends leave clearance above Apple's attribution as well as
+safe corners. Apple Maps legal attribution remains in its standard presentation:
+MapKit exposes no public API to split/reduce those native links, and Apple Maps
+terms prohibit removing/obscuring/altering legal notices/hyperlinks.
+References: https://developer.apple.com/documentation/mapkit/mkmapview and
+https://www.apple.com/legal/internet-services/maps/terms-en.html (section 1.3).
+
+Add/edit observation uses a centered custom header, a smaller 84×100 bird with
+26-point Dutch name, reduced top/row spacing and rounded date/time buttons that
+open native wheel pickers. The shared radius is 18 points for search/location/
+name/date/time controls and primary actions in observation, session, goals and
+photo ID flows. Session editing retains date/time constraints and record edits.
+The place picker uses an outlined dark circle, without a visible annotation
+caption. The saved-observation detail location mark has fixed wider geometry.
+
+Logbook and country detail share the same translucent 60-point count as species
+observation totals, with the sort menu aligned at the upper right. Country detail
+has the shared species-page back button and a centered small flag/name header.
+Family strips have reduced padding/spacing; export buttons are hidden here while
+the underlying export capability remains intact. Observation count bottom padding
+is reduced. Countries have 33.6-point flags (30% smaller) and tighter rows. ID,
+sessions, goals and countries use exactly Discover's PageHeading renderer, while
+keeping their existing top padding/layout anchors.
+
+Available verification: 40 Swift syntax trees, project/source membership checks,
+git diff --check, local source/panel metadata checks and public audio API/media
+requests. Added XCTest is not executed here. Required Mac checks: footer mounting
+and color-compositing replacement, long hornbill names, date/time editing and
+session day limits, safe full-screen controls/legend, live season colors, count/
+sort headers, Dynamic Type, and reference-audio looping. No new BirdLife export.
