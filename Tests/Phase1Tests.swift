@@ -1344,3 +1344,141 @@ final class SpeciesDetailLayoutTests: XCTestCase {
         XCTAssertEqual(fitted.width / fitted.height, 1200.0 / 700, accuracy: 0.001)
     }
 }
+
+private struct SpeciesAudioFixtureRepository: SpeciesAudioRepository {
+    let recording: BirdAudioRecording?
+    var fails = false
+    func recording(for species: Species) async throws -> BirdAudioRecording? {
+        if fails { throw URLError(.notConnectedToInternet) }
+        return recording
+    }
+}
+
+@MainActor
+private final class SpeciesAudioFixturePlayback: SpeciesAudioPlayback {
+    var starts = 0
+    var stops = 0
+    var failure: (@MainActor @Sendable () -> Void)?
+    func startLoop(_ recording: BirdAudioRecording, onFailure: @escaping @MainActor @Sendable () -> Void) throws {
+        starts += 1
+        failure = onFailure
+    }
+    func stop() { stops += 1 }
+}
+
+@MainActor
+final class SpeciesAudioTests: XCTestCase {
+    private var bird: Species { MockSpeciesRepository.kingfisher }
+    private func response(title: String = "File:Alcedo atthis call.mp3", license: String = "CC BY-SA 4.0",
+                          original: String = "https://upload.wikimedia.org/test.mp3", derivative: String? = nil) throws -> Data {
+        var media: [String: Any] = ["url": original,
+            "descriptionurl": "https://commons.wikimedia.org/wiki/File:Alcedo_atthis_call.mp3",
+            "extmetadata": ["Artist": ["value": "<a>Fictional recorder</a>"],
+                            "LicenseShortName": ["value": license],
+                            "LicenseUrl": ["value": "https://creativecommons.org/licenses/by-sa/4.0/"]]]
+        if let derivative { media["derivatives"] = [["type": "audio/mpeg", "src": derivative]] }
+        return try JSONSerialization.data(withJSONObject: ["query": ["pages": ["1": [
+            "pageid": 1, "index": 1, "title": title, "videoinfo": [media]]]]])
+    }
+    func testExactSpeciesSupportedFormatAndAttribution() throws {
+        let recording = try XCTUnwrap(CommonsSpeciesAudioRepository.decode(response(), for: bird))
+        XCTAssertEqual(recording.speciesID, bird.id)
+        XCTAssertEqual(recording.artist, "Fictional recorder")
+        XCTAssertEqual(recording.license, "CC BY-SA 4.0")
+        XCTAssertEqual(recording.playbackURL.host, "upload.wikimedia.org")
+        XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(title: "File:Pica pica call.mp3"), for: bird))
+        XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(title: "File:en-us-Alcedo atthis pronunciation.mp3"), for: bird))
+        XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(license: "Unknown rights"), for: bird))
+        XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(original: "https://untrusted.example/test.mp3"), for: bird))
+    }
+    func testOggNeedsOfficialMP3DerivativeAndDoesNotUseAnotherHost() throws {
+        XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(original: "https://upload.wikimedia.org/test.ogg"), for: bird))
+        let data = try response(original: "https://upload.wikimedia.org/test.ogg",
+                                derivative: "https://upload.wikimedia.org/test.mp3")
+        XCTAssertEqual(try CommonsSpeciesAudioRepository.decode(data, for: bird)?.playbackURL.pathExtension, "mp3")
+        XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(original: "https://upload.wikimedia.org/test.ogg",
+            derivative: "https://untrusted.example/test.mp3"), for: bird))
+    }
+    func testTwoTapsStartThenStopAndLeavingPageStopsAgain() async throws {
+        let recording = try XCTUnwrap(CommonsSpeciesAudioRepository.decode(response(), for: bird))
+        let player = SpeciesAudioFixturePlayback()
+        let model = SpeciesAudioModel(repository: SpeciesAudioFixtureRepository(recording: recording), playback: player)
+        await model.prepare(for: bird)
+        XCTAssertNotNil(model.recording)
+        XCTAssertFalse(model.isPlaying) // Availability lookup must never autoplay.
+        model.toggle()
+        XCTAssertEqual(player.starts, 1)
+        XCTAssertTrue(model.isPlaying)
+        model.toggle()
+        XCTAssertFalse(model.isPlaying)
+        model.toggle()
+        XCTAssertTrue(model.isPlaying)
+        let count = player.stops
+        model.leavePage()
+        XCTAssertFalse(model.isPlaying)
+        XCTAssertEqual(player.stops, count + 1)
+        player.failure?() // Stale player callbacks cannot revive playback or show an error.
+        XCTAssertFalse(model.isPlaying)
+        XCTAssertNil(model.playbackError)
+    }
+    func testMissingOrUnavailableRecordingNeverEnablesPlayback() async {
+        for fails in [false, true] {
+            let player = SpeciesAudioFixturePlayback()
+            let model = SpeciesAudioModel(repository: SpeciesAudioFixtureRepository(recording: nil, fails: fails), playback: player)
+            await model.prepare(for: bird)
+            model.toggle()
+            XCTAssertNil(model.recording)
+            XCTAssertFalse(model.isPlaying)
+            XCTAssertEqual(player.starts, 0)
+        }
+    }
+}
+
+private actor DelayedSpeciesAudioFixture: SpeciesAudioRepository {
+    private var response: CheckedContinuation<BirdAudioRecording?, Never>?
+    private var requested: CheckedContinuation<Void, Never>?
+    func recording(for species: Species) async throws -> BirdAudioRecording? {
+        await withCheckedContinuation { continuation in
+            response = continuation
+            requested?.resume()
+            requested = nil
+        }
+    }
+    func waitForRequest() async {
+        if response != nil { return }
+        await withCheckedContinuation { requested = $0 }
+    }
+    func finish(_ recording: BirdAudioRecording?) {
+        response?.resume(returning: recording)
+        response = nil
+    }
+}
+
+extension SpeciesAudioTests {
+    func testLeavingDuringLookupIgnoresLateAvailability() async throws {
+        let recording = try XCTUnwrap(CommonsSpeciesAudioRepository.decode(response(), for: bird))
+        let repository = DelayedSpeciesAudioFixture()
+        let player = SpeciesAudioFixturePlayback()
+        let model = SpeciesAudioModel(repository: repository, playback: player)
+        let bird = self.bird
+        let pending = Task { await model.prepare(for: bird) }
+        await repository.waitForRequest()
+        model.leavePage()
+        await repository.finish(recording)
+        await pending.value
+        XCTAssertNil(model.recording)
+        XCTAssertFalse(model.isPlaying)
+        XCTAssertEqual(player.starts, 0)
+    }
+
+    func testCurrentPlaybackFailureStopsLoopAndShowsError() async throws {
+        let recording = try XCTUnwrap(CommonsSpeciesAudioRepository.decode(response(), for: bird))
+        let player = SpeciesAudioFixturePlayback()
+        let model = SpeciesAudioModel(repository: SpeciesAudioFixtureRepository(recording: recording), playback: player)
+        await model.prepare(for: bird)
+        model.toggle()
+        player.failure?()
+        XCTAssertFalse(model.isPlaying)
+        XCTAssertNotNil(model.playbackError)
+    }
+}
