@@ -65,3 +65,16 @@ Added native XCTest coverage for regular variable-font weight and fitted
 portrait/flight/habitat bounds. Cloud checks cover syntax and project structure,
 not UIKit typography, cropped-image positioning or MapKit. Mac build/tests and
 comparison of the revised screenshots remain required.
+
+## Navigation refinement — 22 November 2026
+
+Central action diameter and plus/close glyph dimensions reduced by 10%; the
+circle is now 57.6 points instead of 64, still above the 44-point touch minimum.
+Its center remains at the navigation's white top edge. Navigation paths now all
+use FieldGuideTheme.navigationStroke (0.7 points, round caps/joins), including
+plus/close and live play. The former SF Symbols for binoculars, identification,
+clock and bird are replaced by vector outlines to avoid glyph-dependent stroke
+weights; goal circles/lines and globe use that same stroke. Shape geometry
+scales before stroking, preserving one physical line width at different sizes.
+The goal completion dot remains filled. Static syntax and diff checks pass;
+visual matching to the binocular reference and native rendering need Xcode.

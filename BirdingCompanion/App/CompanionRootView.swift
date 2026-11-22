@@ -14,10 +14,10 @@ struct CompanionRootView: View {
     @State private var logbookPath: [Species] = []
     @StateObject private var discover = DiscoverViewModel()
     @State private var showAddMenu = false
-    private let addButtonDiameter: CGFloat = 64
+    private let addButtonDiameter: CGFloat = 64 * 0.9
     // The button's center (and plus crossbar) sits on the navigation's top edge.
     private var addButtonOverlap: CGFloat { addButtonDiameter / 2 }
-    private var addSymbolDiameter: CGFloat { showAddMenu || observationNavigation.selection != nil ? 40 : 36 }
+    private var addSymbolDiameter: CGFloat { showAddMenu || observationNavigation.selection != nil ? 40 * 0.9 : 36 * 0.9 }
     private let species = MockSpeciesRepository.kingfisher
 
     var body: some View {
@@ -81,14 +81,14 @@ struct CompanionRootView: View {
                     let centerGap = max(56, min(84, geometry.size.width - 6 * 44))
                     HStack(spacing: centerGap) {
                         HStack(spacing: 0) {
-                            navigationItem(.discover, symbol: "binoculars")
-                            navigationItem(.identify, symbol: "viewfinder")
-                            navigationItem(.sessions, symbol: "clock")
+                            navigationItem(.discover)
+                            navigationItem(.identify)
+                            navigationItem(.sessions)
                         }.frame(maxWidth: .infinity)
                         HStack(spacing: 0) {
-                            navigationItem(.goals, symbol: "checklist")
-                            navigationItem(.countries, symbol: "globe")
-                            navigationItem(.list, symbol: "bird")
+                            navigationItem(.goals)
+                            navigationItem(.countries)
+                            navigationItem(.list)
                         }.frame(maxWidth: .infinity)
                     }
                 }
@@ -112,13 +112,13 @@ struct CompanionRootView: View {
             } label: {
                 Group {
                     if store.activeSession != nil && !showAddMenu {
-                        Image(systemName: "play").font(.system(size: 32, weight: .ultraLight))
+                        NavigationOutlineMark(kind: .play).stroke(style: FieldGuideTheme.navigationStroke)
                             .foregroundStyle(FieldGuideTheme.ivory)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 36, height: 36)
                     } else {
                         FinePlusMark()
                             .stroke(showAddMenu || observationNavigation.selection != nil ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory,
-                                    style: StrokeStyle(lineWidth: 0.8, lineCap: .round))
+                                    style: FieldGuideTheme.navigationStroke)
                             .rotationEffect(.degrees(showAddMenu || observationNavigation.selection != nil ? 45 : 0))
                             .frame(width: addSymbolDiameter, height: addSymbolDiameter)
                     }
@@ -135,7 +135,7 @@ struct CompanionRootView: View {
         }
     }
 
-    private func navigationItem(_ item: MainSection, symbol: String) -> some View {
+    private func navigationItem(_ item: MainSection) -> some View {
         Button {
             observationNavigation.selection = nil
             showLiveSession = false
@@ -147,15 +147,18 @@ struct CompanionRootView: View {
             Group {
                 if item == .goals {
                     ZStack {
-                        GoalListMark().stroke(style: StrokeStyle(lineWidth: 0.85, lineCap: .round))
+                        GoalListMark().stroke(style: FieldGuideTheme.navigationStroke)
                         GoalCompletionDot().fill(FieldGuideTheme.charcoal)
                     }.frame(width: 24, height: 24)
                 } else if item == .countries {
-                    SimpleGlobeMark().stroke(style: StrokeStyle(lineWidth: 0.85, lineCap: .round))
+                    SimpleGlobeMark().stroke(style: FieldGuideTheme.navigationStroke)
                         .frame(width: 24, height: 24)
                 } else {
-                    Image(systemName: symbol)
-                        .font(.system(size: item == .discover ? 22.032 : (item == .list ? 21.6 : 24), weight: .ultraLight))
+                    NavigationOutlineMark(kind: item == .discover ? .binoculars :
+                        (item == .identify ? .viewfinder : (item == .sessions ? .clock : .bird)))
+                        .stroke(style: FieldGuideTheme.navigationStroke)
+                        .frame(width: item == .discover ? 22.032 : (item == .list ? 21.6 : 24),
+                               height: item == .discover ? 22.032 : (item == .list ? 21.6 : 24))
                 }
             }
             .frame(minWidth: 44, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
@@ -214,5 +217,67 @@ private struct FinePlusMark: Shape {
         path.move(to: CGPoint(x: rect.minX, y: rect.midY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
         return path
+    }
+}
+
+
+// Shared vector outlines let all icons use exactly the same stroke, including
+// at the slightly smaller binocular/bird sizes. Shapes scale before stroking.
+private struct NavigationOutlineMark: Shape {
+    enum Kind { case binoculars, viewfinder, clock, bird, play }
+    let kind: Kind
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        switch kind {
+        case .binoculars:
+            path.addEllipse(in: CGRect(x: 1, y: 12, width: 9.2, height: 9.2))
+            path.addEllipse(in: CGRect(x: 13.8, y: 12, width: 9.2, height: 9.2))
+            path.move(to: CGPoint(x: 1.3, y: 15))
+            path.addLine(to: CGPoint(x: 4.2, y: 4.2))
+            path.addQuadCurve(to: CGPoint(x: 8.6, y: 4.2), control: CGPoint(x: 6.4, y: 0.5))
+            path.addLine(to: CGPoint(x: 10.2, y: 16.6))
+            path.move(to: CGPoint(x: 13.8, y: 16.6))
+            path.addLine(to: CGPoint(x: 15.4, y: 4.2))
+            path.addQuadCurve(to: CGPoint(x: 19.8, y: 4.2), control: CGPoint(x: 17.6, y: 0.5))
+            path.addLine(to: CGPoint(x: 22.7, y: 15))
+            path.move(to: CGPoint(x: 9.5, y: 10))
+            path.addQuadCurve(to: CGPoint(x: 14.5, y: 10), control: CGPoint(x: 12, y: 8))
+            path.move(to: CGPoint(x: 10.2, y: 15))
+            path.addLine(to: CGPoint(x: 13.8, y: 15))
+        case .viewfinder:
+            for (x, y, dx, dy) in [(2.0, 2.0, 1.0, 1.0), (22, 2, -1, 1),
+                                   (2, 22, 1, -1), (22, 22, -1, -1)] {
+                path.move(to: CGPoint(x: x + 5 * dx, y: y))
+                path.addLine(to: CGPoint(x: x + 2 * dx, y: y))
+                path.addQuadCurve(to: CGPoint(x: x, y: y + 2 * dy), control: CGPoint(x: x, y: y))
+                path.addLine(to: CGPoint(x: x, y: y + 5 * dy))
+            }
+        case .clock:
+            path.addEllipse(in: CGRect(x: 1, y: 1, width: 22, height: 22))
+            path.move(to: CGPoint(x: 12, y: 4))
+            path.addLine(to: CGPoint(x: 12, y: 12))
+            path.addLine(to: CGPoint(x: 18, y: 12))
+        case .bird:
+            path.move(to: CGPoint(x: 14, y: 9))
+            path.addCurve(to: CGPoint(x: 9, y: 1), control1: CGPoint(x: 15, y: 5), control2: CGPoint(x: 11, y: 2))
+            path.addQuadCurve(to: CGPoint(x: 8, y: 10), control: CGPoint(x: 7, y: 5))
+            path.addQuadCurve(to: CGPoint(x: 1, y: 7), control: CGPoint(x: 4, y: 7))
+            path.addQuadCurve(to: CGPoint(x: 8, y: 15), control: CGPoint(x: 2, y: 12))
+            path.addLine(to: CGPoint(x: 5, y: 22))
+            path.addQuadCurve(to: CGPoint(x: 13, y: 18), control: CGPoint(x: 11, y: 23))
+            path.addQuadCurve(to: CGPoint(x: 18, y: 12), control: CGPoint(x: 16, y: 17))
+            path.addLine(to: CGPoint(x: 23, y: 10))
+            path.addLine(to: CGPoint(x: 19, y: 9))
+            path.addQuadCurve(to: CGPoint(x: 14, y: 9), control: CGPoint(x: 17, y: 5))
+            path.closeSubpath()
+        case .play:
+            path.move(to: CGPoint(x: 6, y: 3))
+            path.addLine(to: CGPoint(x: 21, y: 12))
+            path.addLine(to: CGPoint(x: 6, y: 21))
+            path.closeSubpath()
+        }
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24)
+            .concatenating(CGAffineTransform(translationX: rect.minX, y: rect.minY)))
     }
 }

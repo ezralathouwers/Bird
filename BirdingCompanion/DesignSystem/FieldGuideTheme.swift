@@ -6,6 +6,9 @@ enum FieldGuideTheme {
         .custom("DMSans-9ptRegular", size: size, relativeTo: style)
     }
     static let roundControlDiameter: CGFloat = 44
+    // One physical stroke width for every navigation outline, independent of
+    // icon size. SF Symbol weights alone do not guarantee identical widths.
+    static let navigationStroke = StrokeStyle(lineWidth: 0.7, lineCap: .round, lineJoin: .round)
     static let navigationWhite = Color.white
     static let ivory = Color(red: 0.96, green: 0.95, blue: 0.92)
     static let beige = Color(red: 0.89, green: 0.86, blue: 0.82)
