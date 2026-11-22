@@ -49,7 +49,7 @@ struct DiscoverView: View {
                     .background(FieldGuideTheme.ivory)
                     .fixedSize(horizontal: false, vertical: true)
                     ScrollView {
-                        catalogSearch.padding(.horizontal, 20).padding(.bottom, 24)
+                        catalogSearch.padding(.horizontal, 20).padding(.bottom, 74)
                     }
                     .scrollDismissesKeyboard(.interactively)
                 }
@@ -65,7 +65,7 @@ struct DiscoverView: View {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 20) {
                             nearbyContent
-                        }.padding(.horizontal, 20).padding(.bottom, 24)
+                        }.padding(.horizontal, 20).padding(.bottom, 74)
                     }
                     .refreshable { if let query { await model.load(query: query, demo: demo) } }
                 }
@@ -83,8 +83,10 @@ struct DiscoverView: View {
         }
         .overlay(alignment: .topTrailing) {
             Button { showSearch.toggle() } label: {
-                Image(systemName: showSearch ? "xmark" : "magnifyingglass")
-                    .font(.system(size: 22, weight: .ultraLight)).frame(width: 44, height: 44)
+                Group {
+                    if showSearch { Image(systemName: "xmark").font(.system(size: 22, weight: .ultraLight)) }
+                    else { FineSearchMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 22, height: 22) }
+                }.frame(width: 44, height: 44)
                     .background(FieldGuideTheme.searchControlBackground, in: Circle())
             }.accessibilityLabel(showSearch ? "Sluit soortenzoeker" : "Zoek alle vogelsoorten")
                 .padding(.trailing, 20).padding(.top, 8)

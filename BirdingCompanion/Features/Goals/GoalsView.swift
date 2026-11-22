@@ -6,7 +6,7 @@ struct GoalsView: View {
     @State private var showForm = false
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .leading, spacing: 24) {
+            LazyVStack(alignment: .leading, spacing: 18) {
                 HStack(alignment: .top) {
                     PageHeading(text: "Doelstellingen")
                         .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
@@ -18,7 +18,7 @@ struct GoalsView: View {
                 ForEach(store.goals.sorted { $0.createdAt > $1.createdAt }) { goal in
                     NavigationLink(value: goal) { GoalCard(goal: goal) }.buttonStyle(.plain)
                 }
-            }.padding(20).padding(.bottom, 24)
+            }.padding(20).padding(.bottom, 74)
         }
         .background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
         .navigationDestination(for: BirdGoal.self) { goal in GoalDetailView(goal: goal) }
@@ -49,10 +49,10 @@ private struct GoalCard: View {
                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
             GoalProgress(goal: goal)
         }
-        .padding(16).frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16).padding(.vertical, 28).frame(maxWidth: .infinity, alignment: .leading)
         .background {
             ZStack(alignment: .trailing) {
-                FieldGuideTheme.beige
+                FieldGuideTheme.searchControlBackground
                 if let favorite, UIImage(named: SpeciesMediaRole.dynamic.assetName(for: favorite)) != nil {
                     GeometryReader { bounds in
                         Image(SpeciesMediaRole.dynamic.assetName(for: favorite)).resizable().scaledToFill()
@@ -93,7 +93,7 @@ private struct GoalDetailView: View {
             HStack {
                 SpeciesBackButton { dismiss() }
                 Spacer()
-                RoundAction(symbol: "pencil", label: "Doelstelling bewerken") { editing = true }
+                RoundEditAction(label: "Doelstelling bewerken") { editing = true }
                     .disabled(store.loadError != nil)
             }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
             ScrollView {

@@ -55,7 +55,7 @@ struct LogbookView: View {
                         speciesRows(rows)
                     }
                 }
-                .padding(20).padding(.bottom, 24)
+                .padding(20).padding(.bottom, 74)
             }
         }
         .background(FieldGuideTheme.ivory)

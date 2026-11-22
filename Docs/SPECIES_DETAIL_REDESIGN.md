@@ -262,3 +262,47 @@ opaque app-icon pixel size/catalog settings and exact reviewed-asset hash/alpha.
 Native XCTest/build, app-icon installation, long-press vs tap/scroll behavior,
 card image cropping, edit/save/return and final layout/colors require Xcode.
 No BirdLife reconversion is needed.
+
+### Session flow, lifers and latest spacing — 22 November 2026
+
+Compact Information range map hides its seasonal legend; full-screen keeps it.
+Shared location outline has a curved bottom, and goal/session edit actions use
+the exact outlined pencil geometry from observation details. Goal cards have
+28-point vertical padding, lighter beige and 18-point gaps. Flags use saturation
+0.72. Discover's magnifier is now a vector circle and handle stroked together at
+the same 0.7-point width. Discover (both list modes), Logbook, Sessions and Goals
+scroll content gain 50 points of bottom padding (24→74).
+
+Session changes supersede earlier always-confirm-finish behavior:
+- Add menu's Session action starts a live session. Live back/header matches the
+  species screen, with reduced timer top space. Search opens a full-screen picker
+  with a fixed header/search bar, nearby-ranked empty-query suggestions and
+  world catalog text search. The same picker is used from review/add/edit.
+- Session rows show classic artwork, Dutch/English names and dividers; live/detail
+  retain time without per-row location. Live permits deleting a stored log and
+  adding its species again. The store/logger/pickers reject additional entries
+  of an already logged species in that active session. Success toast is removed;
+  real location/write failures remain visible.
+- Final review has date/start/end on one row (horizontal scrolling fallback on
+  small/accessibility sizes), no current-location button, a 24-point count and
+  compact removable artwork rows without individual date/time fields. Existing
+  GPS/time values survive review; changing start/day shifts the live timestamps.
+  Retrospective session edits update their logs to the revised session location/
+  start. Finish commits directly, then returns to Sessions through a root callback.
+- Completed session detail is a navigation destination rather than a sheet. It
+  has the shared back/edit header, location title and date/start/end, a translucent
+  numeric total and latest/alphabetical sort menu. Completed edits use an optimistic
+  expected-log snapshot and preserve every other session, goal and observation.
+- Overview uses tighter row padding, date + compact duration (e.g. 2u14), count and
+  lifers when nonzero. Active banner has more horizontal padding. Lifers derive
+  from each species' earliest retained global observation, with a stable UUID
+  tie-break so only one tied observation qualifies. The shared sparkle mark sits
+  left of the time on live/detail rows. Historic imported duplicate species are
+  not discarded or rejected on load; review cannot increase their multiplicity.
+
+Meaningful XCTest additions: uniqueness/delete/re-add, lifer chronology/ties,
+compact duration and both sorts, completed editing/reload/stale review protection.
+The old test that intentionally logged a live species twice now expects rejection
+and logs a different species to check time/location preservation. Native build,
+XCTest, navigation/modal transitions, long lists, keyboard, live GPS, end-time
+validation and actual card/map rendering remain unverified without Xcode.

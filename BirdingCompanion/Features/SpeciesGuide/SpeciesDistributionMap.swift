@@ -527,7 +527,7 @@ struct SpeciesDistributionMap: View {
             .padding(12)
         }
         .overlay(alignment: .bottomLeading) {
-            if let dataset {
+            if isFullScreen, let dataset {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(BirdLifeSeason.allCases.filter { season in dataset.areas.contains { $0.season == season } }, id: \.self) { season in
