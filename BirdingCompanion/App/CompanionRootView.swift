@@ -14,6 +14,9 @@ struct CompanionRootView: View {
     @State private var logbookPath: [Species] = []
     @StateObject private var discover = DiscoverViewModel()
     @State private var showAddMenu = false
+    @State private var showLaunchLogo = true
+    @State private var plusCenter = CGPoint.zero
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let addButtonDiameter: CGFloat = 64 * 0.9
     // The button's center (and plus crossbar) sits on the navigation's top edge.
     private var addButtonOverlap: CGFloat { addButtonDiameter / 2 }
@@ -23,11 +26,15 @@ struct CompanionRootView: View {
     var body: some View {
         ZStack {
             content
-                .opacity(observationNavigation.selection == nil && !showLiveSession && !showAddMenu ? 1 : 0)
+                .opacity(observationNavigation.selection == nil && !showLiveSession ? 1 : 0)
                 .allowsHitTesting(observationNavigation.selection == nil && !showLiveSession && !showAddMenu)
                 .accessibilityHidden(observationNavigation.selection != nil || showLiveSession || showAddMenu)
             if showAddMenu {
                 AddEntryView(isPresented: $showAddMenu, onLiveStarted: { showLiveSession = true })
+                    .transition(reduceMotion ? .opacity : .modifier(
+                        active: CircularMenuReveal(progress: 0, origin: plusCenter),
+                        identity: CircularMenuReveal(progress: 1, origin: plusCenter)))
+                    .zIndex(2)
             } else if showLiveSession {
                 LiveSessionView(isPresented: $showLiveSession, onFinished: { showLiveSession = false; section = .sessions })
             }
@@ -36,9 +43,28 @@ struct CompanionRootView: View {
                          observationNavigation.selection == nil && !showLiveSession && !showAddMenu)
             .environmentObject(observationNavigation)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background((showAddMenu ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory).ignoresSafeArea())
+            .background(FieldGuideTheme.ivory.ignoresSafeArea())
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
             .environmentObject(sessionLogger)
+            .coordinateSpace(name: "appRoot")
+            .onPreferenceChange(PlusCenterPreference.self) { value in Task { @MainActor in plusCenter = value } }
+            .animation(reduceMotion ? nil : .easeInOut(duration: 0.32), value: showAddMenu)
+            .overlay {
+                if showLaunchLogo {
+                    FieldGuideTheme.navigationOlive.ignoresSafeArea()
+                        .overlay {
+                            NavigationOutlineMark(kind: .bird).stroke(FieldGuideTheme.ivory,
+                                style: StrokeStyle(lineWidth: 1.5, lineCap: .round, lineJoin: .round))
+                                .frame(width: 88, height: 88).accessibilityLabel("Birder")
+                        }.transition(.opacity)
+                }
+            }
+            .task {
+                async let location: Void = SharedCurrentLocation.shared.prewarmIfAuthorized()
+                try? await Task.sleep(for: .seconds(1))
+                withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) { showLaunchLogo = false }
+                await location
+            }
             .fullScreenCover(item: $observationNavigation.selection) { observation in
                 ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
                     .environmentObject(store)
@@ -131,6 +157,13 @@ struct CompanionRootView: View {
                         (store.activeSession != nil ? FieldGuideTheme.khaki :
                         FieldGuideTheme.charcoal), in: Circle())
                     .contentShape(Circle())
+            }
+            .background {
+                GeometryReader { geometry in
+                    Color.clear.preference(key: PlusCenterPreference.self,
+                        value: CGPoint(x: geometry.frame(in: .named("appRoot")).midX,
+                                       y: geometry.frame(in: .named("appRoot")).midY))
+                }
             }
             .buttonStyle(.plain)
             .accessibilityLabel(showAddMenu ? "Sluit toevoegopties" : (store.activeSession != nil ? "Open livesessie" : "Open toevoegopties"))
@@ -282,5 +315,28 @@ private struct NavigationOutlineMark: Shape {
         }
         return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24)
             .concatenating(CGAffineTransform(translationX: rect.minX, y: rect.minY)))
+    }
+}
+
+private struct PlusCenterPreference: PreferenceKey {
+    static let defaultValue = CGPoint.zero
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) { value = nextValue() }
+}
+private struct CircularMenuReveal: AnimatableModifier {
+    var progress: CGFloat
+    let origin: CGPoint
+    var animatableData: CGFloat { get { progress } set { progress = newValue } }
+    func body(content: Content) -> some View {
+        content.mask {
+            GeometryReader { geometry in
+                let frame = geometry.frame(in: .named("appRoot"))
+                let center = origin == .zero ? CGPoint(x: geometry.size.width / 2, y: geometry.size.height)
+                    : CGPoint(x: origin.x - frame.minX, y: origin.y - frame.minY)
+                let distance = hypot(max(center.x, geometry.size.width - center.x), max(center.y, geometry.size.height - center.y))
+                let radius = 28.8 + max(0, distance - 28.8) * progress
+                Path(ellipseIn: CGRect(x: center.x - radius, y: center.y - radius, width: 2 * radius, height: 2 * radius))
+                    .fill(.black)
+            }.ignoresSafeArea()
+        }
     }
 }

@@ -165,6 +165,10 @@ struct AppLocationPolicy: Sendable {
     private var latest: AppLocationFix?
     private var requests: [UUID: Request] = [:]
     override init() { super.init(); manager.delegate = self }
+    func prewarmIfAuthorized() async {
+        guard manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse else { return }
+        _ = try? await current(policy: .browsing)
+    }
     func current(policy: AppLocationPolicy) async throws -> AppLocationFix {
         try Task.checkCancellation()
         switch manager.authorizationStatus {

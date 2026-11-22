@@ -378,3 +378,16 @@ English common names otherwise, preserving every family/species ID.
 Verification: Swift syntax trees, project source references, Info.plist and
 whitespace can be checked in cloud. XCTest and native iOS builds/device visual
 and performance checks remain unverified. No BirdLife reconversion is required.
+
+
+### Launch and add-menu motion — 22 November 2026
+
+A one-second foreground Birder bird-outline logo on olive appears before the
+Discover view is revealed. Discover is mounted underneath; the shared location
+service prewarms concurrently only when already authorized. The intro never
+waits for a GPS fix. The add menu uses a fast circular mask expanding from the
+measured plus-button center while the prior page stays underneath. Reduce Motion
+uses a fade instead. Native safe-area positioning and animation smoothness need
+review on an iPhone; no screenshot or performance claim was generated in Linux.
+
+Discover lists now include a further 20 points of bottom padding (94 total).
