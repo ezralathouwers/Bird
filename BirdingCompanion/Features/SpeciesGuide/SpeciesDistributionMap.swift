@@ -518,8 +518,6 @@ struct SpeciesDistributionMap: View {
     @State private var loading = true
     @State private var message: String?
     @State private var showSources = false
-    @State private var showDiagnostics = false
-    @State private var lastLoadFailure = ""
 
     var body: some View {
         NativeSpeciesRangeMap(dataset: dataset, onExpand: onExpand)
@@ -540,10 +538,7 @@ struct SpeciesDistributionMap: View {
                 if loading || message != nil || connectivity.isOffline {
                     VStack(alignment: .leading, spacing: 8) {
                         if loading { ProgressView("Verspreiding laden…") }
-                        if let message {
-                            Text(message)
-                            Button("Kaartcontrole") { showDiagnostics = true }.frame(minHeight: 44)
-                        }
+                        if let message { Text(message).fixedSize(horizontal: false, vertical: true) }
                         if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Lokaal beschikbare verspreidingsdata blijft beschikbaar.") }
                     }
                     .font(FieldGuideTheme.sans(12, relativeTo: .caption))
@@ -583,24 +578,14 @@ struct SpeciesDistributionMap: View {
             }
         }
         .sheet(isPresented: $showSources) { SpeciesCatalogSourcesView() }
-        .alert("Kaartcontrole", isPresented: $showDiagnostics) {
-            Button("Kopieer controle") { UIPasteboard.general.string = diagnosticText }
-            Button("Sluiten", role: .cancel) {}
-        } message: { Text(diagnosticText) }
         .accessibilityLabel("Interactieve verspreidingskaart van \(species.dutchName)")
         .task(id: species.id) { await loadRange() }
-    }
-
-    private var diagnosticText: String {
-        "\(species.dutchName)\n" + PrivateBirdLifeRangeRepository(bundle: .main).diagnostic(speciesID: species.id)
-            + "\nLaadresultaat: \(lastLoadFailure)"
     }
 
     private func loadRange() async {
         loading = true
         dataset = nil
         message = nil
-        lastLoadFailure = ""
         source = try? SpeciesRangeSource.load()
         defer { loading = false }
         do {
@@ -619,16 +604,12 @@ struct SpeciesDistributionMap: View {
             switch error as? RangeDataError {
             case .awaitingFiles?:
                 message = "De omgezette kaarten ontbreken in deze app."
-                lastLoadFailure = "geen lokaal kaartpakket meegebouwd"
             case .awaitingPermission?:
                 message = RangeDataError.awaitingPermission.localizedDescription
-                lastLoadFailure = "toegang niet geconfigureerd"
             case .unavailable?:
-                message = "Voor deze soort is geen huidig verspreidingsgebied ingeladen."
-                lastLoadFailure = "soort ontbreekt of heeft geen huidig gevestigd gebied"
+                message = "Voor de soort is er geen kaart."
             default:
                 message = "De kaartgegevens konden niet worden geladen."
-                lastLoadFailure = "lezen, bestandscontrole of GeoJSON-decodering mislukt"
             }
         }
     }
