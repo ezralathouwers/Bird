@@ -5,7 +5,7 @@
   "requestURL": "https://datazone.birdlife.org/contact-us/request-our-data",
   "termsURL": "https://datazone.birdlife.org/terms-and-conditions",
   "access": "approvedAwaitingFiles",
-  "datasetVersion": null,
-  "licenseNotice": null,
-  "citation": null
+  "datasetVersion": "2025.2",
+  "licenseNotice": "BirdLife International Data Terms of Use. Personal non-commercial use under granted approval; redistribution is not permitted without written permission.",
+  "citation": "BirdLife International and Handbook of the Birds of the World (2025) Bird species distribution maps of the world. Version 2025.2. Available at http://datazone.birdlife.org/species/requestdis."
 }

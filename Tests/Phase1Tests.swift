@@ -171,6 +171,30 @@ final class SpeciesRangeTests: XCTestCase {
         XCTAssertThrowsError(try BundledSpeciesRangeRepository.decode(Data(empty.utf8)))
     }
 
+    func testBirdLifeSeasonOriginAndPresenceRemainSeparate() throws {
+        let features: [[String: Any]] = [
+            [1, 1, 1], [1, 1, 2], [1, 3, 3], [1, 1, 4], [5, 1, 1], [1, 4, 1]
+        ].map { codes in
+            ["type": "Feature", "properties": ["presence": codes[0], "origin": codes[1], "seasonal": codes[2]],
+             "geometry": ["type": "Polygon", "coordinates": [[[0,0],[1,0],[1,1],[0,1],[0,0]]]]]
+        }
+        let data = try JSONSerialization.data(withJSONObject: ["type": "FeatureCollection",
+            "providerID": "birdlife-datazone", "source": "Fictional test", "license": "Test only",
+            "version": "test", "features": features])
+        let dataset = try BundledSpeciesRangeRepository.decode(data)
+        XCTAssertEqual(dataset.areas.count, 4)
+        XCTAssertEqual(dataset.areas.compactMap(\.season), [.resident, .breeding, .nonBreeding, .passage])
+        XCTAssertTrue(dataset.areas[2].introduced)
+        XCTAssertFalse(dataset.areas[0].introduced)
+    }
+
+    func testBirdLifeUnknownSeasonCannotBecomeUnlabelledCurrentRange() throws {
+        let data = fixture.replacingOccurrences(of: "\"source\":\"Unit test fixture\"",
+            with: "\"providerID\":\"birdlife-datazone\",\"source\":\"Unit test fixture\"")
+            .replacingOccurrences(of: "\"properties\":{}", with: "\"properties\":{\"presence\":1,\"origin\":1,\"seasonal\":99}")
+        XCTAssertThrowsError(try BundledSpeciesRangeRepository.decode(Data(data.utf8)))
+    }
+
     func testMissingBundledRangeIsExplicitlyUnavailable() {
         XCTAssertThrowsError(try BundledSpeciesRangeRepository().load(speciesID: "missing-test-species")) {
             guard case RangeDataError.unavailable = $0 else {

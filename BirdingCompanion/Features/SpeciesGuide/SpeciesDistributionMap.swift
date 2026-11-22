@@ -1,6 +1,7 @@
 import SwiftUI
 import MapKit
 import Network
+import CryptoKit
 
 // Provider configuration contains public metadata only, never credentials or GIS data.
 struct SpeciesRangeSource: Codable, Equatable {
@@ -45,6 +46,10 @@ struct ConfiguredSpeciesRangeRepository: SpeciesRangeRepository {
 
     func load(speciesID: String) throws -> SpeciesRangeDataset {
         let source = try SpeciesRangeSource.load(bundle: bundle)
+        if source.access != .awaitingPermission,
+           let local = try PrivateBirdLifeRangeRepository(bundle: bundle).loadIfInstalled(speciesID: speciesID) {
+            return local
+        }
         switch source.access {
         case .awaitingPermission: throw RangeDataError.awaitingPermission
         case .approvedAwaitingFiles: throw RangeDataError.awaitingFiles
@@ -53,14 +58,77 @@ struct ConfiguredSpeciesRangeRepository: SpeciesRangeRepository {
         let dataset = try BundledSpeciesRangeRepository(bundle: bundle).load(speciesID: speciesID)
         guard let version = source.datasetVersion, dataset.version == version,
               let citation = source.citation, let license = source.licenseNotice else { throw RangeDataError.invalid }
-        return SpeciesRangeDataset(polygons: dataset.polygons, attribution: "\(citation) · \(license)", version: version)
+        return SpeciesRangeDataset(polygons: dataset.polygons, attribution: "\(citation) · \(license)", version: version, areas: dataset.areas)
     }
+}
+
+// Folder-reference resources are populated only on the user's own Mac.
+struct PrivateBirdLifeRangeRepository {
+    let bundle: Bundle
+    private struct Manifest: Decodable {
+        struct Entry: Decodable { let file: String; let sha256: String }
+        let formatVersion: Int
+        let providerID: String
+        let version: String
+        let citation: String
+        let license: String
+        let files: [String: Entry]
+    }
+    func loadIfInstalled(speciesID: String) throws -> SpeciesRangeDataset? {
+        guard let url = bundle.url(forResource: "manifest", withExtension: "json", subdirectory: "PrivateBirdLifeRanges") else { return nil }
+        let manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
+        guard manifest.formatVersion == 1, manifest.providerID == "birdlife-datazone",
+              manifest.version == "2025.2", !manifest.citation.isEmpty, !manifest.license.isEmpty else { throw RangeDataError.invalid }
+        guard let entry = manifest.files[speciesID] else { throw RangeDataError.unavailable }
+        let expected = speciesID.replacingOccurrences(of: ":", with: "-") + "-range.geojson"
+        guard entry.file == expected, !entry.file.contains("/"), !entry.file.contains("..") else { throw RangeDataError.invalid }
+        let data = try Data(contentsOf: url.deletingLastPathComponent().appendingPathComponent(entry.file))
+        let digest = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+        guard digest == entry.sha256,
+              let metadata = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+              metadata["speciesID"] as? String == speciesID,
+              metadata["providerID"] as? String == "birdlife-datazone",
+              metadata["citation"] as? String == manifest.citation,
+              metadata["license"] as? String == manifest.license,
+              metadata["version"] as? String == manifest.version else { throw RangeDataError.invalid }
+        return try BundledSpeciesRangeRepository.decode(data)
+    }
+}
+
+enum BirdLifeSeason: Int, CaseIterable {
+    case resident = 1, breeding, nonBreeding, passage, uncertain
+    var label: String {
+        switch self {
+        case .resident: "Jaarrond"
+        case .breeding: "Broedgebied"
+        case .nonBreeding: "Overwintering"
+        case .passage: "Doortrek"
+        case .uncertain: "Seizoen onbekend"
+        }
+    }
+    var color: Color {
+        switch self {
+        case .resident: Color(red: 0.48, green: 0.53, blue: 0.25)
+        case .breeding: Color(red: 0.77, green: 0.44, blue: 0.21)
+        case .nonBreeding: Color(red: 0.25, green: 0.48, blue: 0.67)
+        case .passage: Color(red: 0.56, green: 0.41, blue: 0.62)
+        case .uncertain: FieldGuideTheme.taupe
+        }
+    }
+}
+
+struct SpeciesRangeArea {
+    let polygon: MKPolygon
+    let season: BirdLifeSeason?
+    let origin: Int?
+    var introduced: Bool { origin == 3 || origin == 6 }
 }
 
 struct SpeciesRangeDataset {
     let polygons: [MKPolygon]
     let attribution: String
     let version: String
+    var areas: [SpeciesRangeArea] = []
 }
 
 enum RangeDataError: LocalizedError {
@@ -99,16 +167,36 @@ struct BundledSpeciesRangeRepository: SpeciesRangeRepository {
             throw RangeDataError.invalid
         }
         let objects = try MKGeoJSONDecoder().decode(data)
-        var polygons: [MKPolygon] = []
+        var areas: [SpeciesRangeArea] = []
+        let birdLife = metadata["providerID"] as? String == "birdlife-datazone"
         for feature in objects.compactMap({ $0 as? MKGeoJSONFeature }) {
+            var season: BirdLifeSeason?
+            var origin: Int?
+            if birdLife {
+                guard let data = feature.properties,
+                      let attributes = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                      let presence = attributes["presence"] as? Int,
+                      let sourceOrigin = attributes["origin"] as? Int,
+                      let seasonal = attributes["seasonal"] as? Int,
+                      (1...6).contains(presence), (1...6).contains(sourceOrigin),
+                      let sourceSeason = BirdLifeSeason(rawValue: seasonal) else { throw RangeDataError.invalid }
+                // Current established ranges only; extinct, uncertain and vagrant
+                // areas remain preserved in the private source but are not drawn.
+                guard presence == 1, [1, 2, 3, 6].contains(sourceOrigin) else { continue }
+                season = sourceSeason
+                origin = sourceOrigin
+            }
             for geometry in feature.geometry {
-                if let polygon = geometry as? MKPolygon { polygons.append(polygon) }
-                else if let multi = geometry as? MKMultiPolygon { polygons.append(contentsOf: multi.polygons) }
+                let polygons: [MKPolygon]
+                if let polygon = geometry as? MKPolygon { polygons = [polygon] }
+                else if let multi = geometry as? MKMultiPolygon { polygons = multi.polygons }
                 else { throw RangeDataError.invalid }
+                areas += polygons.map { SpeciesRangeArea(polygon: $0, season: season, origin: origin) }
             }
         }
-        guard !polygons.isEmpty else { throw RangeDataError.invalid }
-        return SpeciesRangeDataset(polygons: polygons, attribution: "\(source) · \(license)", version: version)
+        guard !areas.isEmpty else { throw RangeDataError.unavailable }
+        return SpeciesRangeDataset(polygons: areas.map(\.polygon),
+            attribution: "\(metadata["citation"] as? String ?? source) · \(license)", version: version, areas: areas)
     }
 }
 
@@ -134,6 +222,7 @@ struct SpeciesDistributionMap: View {
     @State private var dataset: SpeciesRangeDataset?
     @State private var loading = true
     @State private var message: String?
+    @State private var showSources = false
     @State private var camera: MapCameraPosition = .region(MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 35, longitude: 60),
         span: MKCoordinateSpan(latitudeDelta: 90, longitudeDelta: 160)
@@ -144,8 +233,9 @@ struct SpeciesDistributionMap: View {
             if let dataset {
                 ForEach(dataset.polygons.indices, id: \.self) { index in
                     MapPolygon(dataset.polygons[index])
-                        .foregroundStyle(FieldGuideTheme.taupe.opacity(0.25))
-                        .stroke(FieldGuideTheme.taupe, lineWidth: 1)
+                        .foregroundStyle(areaColor(dataset, index: index).opacity(0.28))
+                        .stroke(areaColor(dataset, index: index), style: StrokeStyle(lineWidth: 1,
+                            dash: dataset.areas.indices.contains(index) && dataset.areas[index].introduced ? [4, 3] : []))
                 }
             }
         }
@@ -158,7 +248,10 @@ struct SpeciesDistributionMap: View {
                 if let message { Text(message) }
                 if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Lokaal beschikbare verspreidingsdata blijft beschikbaar.") }
                 if let dataset {
-                    Text("Verspreidingsgebied · \(dataset.attribution) · \(dataset.version)")
+                    Button { showSources = true } label: {
+                        Label("BirdLife/HBW · \(dataset.version)", systemImage: "info.circle")
+                            .frame(minHeight: 44)
+                    }.accessibilityLabel(dataset.attribution)
                 }
             }
             .font(FieldGuideTheme.sans(12, relativeTo: .caption))
@@ -168,8 +261,27 @@ struct SpeciesDistributionMap: View {
             .accessibilityElement(children: .combine)
             }
         }
+        .overlay(alignment: .bottomLeading) {
+            if let dataset {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(BirdLifeSeason.allCases.filter { season in dataset.areas.contains { $0.season == season } }, id: \.self) { season in
+                            Label { Text(season.label) } icon: { Circle().fill(season.color).frame(width: 8, height: 8) }
+                        }
+                        if dataset.areas.contains(where: \.introduced) { Text("Stippellijn: geïntroduceerd") }
+                    }
+                    .font(FieldGuideTheme.sans(10, relativeTo: .caption2)).padding(8)
+                }
+                .background(FieldGuideTheme.ivory.opacity(0.94))
+            }
+        }
+        .sheet(isPresented: $showSources) { SpeciesCatalogSourcesView() }
         .accessibilityLabel("Interactieve verspreidingskaart van \(species.dutchName)")
         .task(id: species.id) { loadRange() }
+    }
+
+    private func areaColor(_ dataset: SpeciesRangeDataset, index: Int) -> Color {
+        dataset.areas.indices.contains(index) ? (dataset.areas[index].season?.color ?? FieldGuideTheme.taupe) : FieldGuideTheme.taupe
     }
 
     private func loadRange() {

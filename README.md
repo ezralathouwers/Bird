@@ -102,3 +102,18 @@ netwerkfouten, annulering, lege resultaten, taxonomiekoppeling, de straal van
 5 km en behoud van de recentste-meldingenvolgorde. Deze tests en
 Keychain/SwiftUI-gedrag moeten nog op de Mac worden uitgevoerd;
 zie `Docs/EBIRD_DISCOVER.md`.
+
+
+## BirdLife-kaarten op je Mac toevoegen
+
+Download de nieuwste app-code en het kleine hulpmiddel
+[BirdLife-kaarten-omzetten.zip](https://github.com/ezralathouwers/Bird/raw/refs/heads/phase1/kingfisher-swiftui/Scripts/BirdLife-kaarten-omzetten.zip).
+Pak beide uit, dubbelklik op **Zet-BirdLife-kaarten-om.command**, kies
+**BOTW_2025.gpkg** en daarna de nieuwe projectmap met **BirdingCompanion.xcodeproj**.
+De converter installeert Shapely in een lokale Python-omgeving, maakt privékaarten
+en behoudt het grote origineel. Laat Terminal open tot de omzetting klaar is.
+Open daarna datzelfde project in Xcode en bouw opnieuw. De privémap wordt vanzelf
+mee in je eigen app gekopieerd; er staan geen BirdLife-polygonen op GitHub.
+Versie 2025.2, seizoenskleuren en uitsluiting van historische/onzekere gebieden
+zijn beschreven in `Docs/DISTRIBUTION_DATA.md`. De daadwerkelijke conversie en
+native kaartweergave moeten nog op de Mac worden gecontroleerd.

@@ -439,7 +439,10 @@ struct SpeciesCatalogSourcesView: View {
                     Link("Licentie CC BY-SA 4.0", destination: URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!)
                     Text("Fotoherkenning: BioCLIP 2, Imageomics Institute (Gu en collega's, 2025), MIT. Core ML-conversie: fearnt/Thicket. Tekstreferenties: TreeOfLife-200M en Valen-Peregrine/FaunaPulse, CC0; GBIF en Catalogue of Life, CC BY 4.0.")
                     Link("BioCLIP 2 en licentie", destination: URL(string: "https://huggingface.co/imageomics/bioclip-2")!)
-                    Text("Verspreidingsgegevens: BirdLife International DataZone. Gebruik volgens de verleende toestemming.")
+                    if let source = try? SpeciesRangeSource.load(), let citation = source.citation {
+                        Text(citation)
+                        if let license = source.licenseNotice { Text(license) }
+                    }
                     Link("BirdLife DataZone", destination: URL(string: "https://datazone.birdlife.org/")!)
                 }.font(FieldGuideTheme.sans(15)).padding(20)
             }.background(FieldGuideTheme.ivory)

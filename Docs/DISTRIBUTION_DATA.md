@@ -130,3 +130,69 @@ nontrivial paths, schema/sample output, no geometry/private-note/path leakage,
 and rejection of non-GeoPackage files). `bash -n Scripts/Inspecteer-BirdLife.command`
 and `git diff --check` pass. Actual BOTW schema, macOS file picker execution,
 conversion, licensed range activation and native MapKit overlays remain pending.
+
+
+## Verified BOTW 2025.2 local conversion — 22 November 2026
+
+The uploaded inspection establishes one `all_species` layer with `geom`
+MULTIPOLYGON, EPSG:4326, and `sci_name`, `sisid`, `presence`, `origin`, `seasonal`
+and original attribution/comment/version fields. The DOCX explicitly identifies
+map release **2025.2** and its citation. The XLSX is checklist **version 10**,
+which is not the map version; its species-name/SIS ID entries were inspected for
+kingfisher, great spotted woodpecker, wood pigeon and great hornbill. Neither
+source document nor their tabular contents/polygons are added to public Git.
+
+Use on the user's Mac:
+
+1. Download/unpack the newest app branch ZIP (it includes the required folder
+   reference in Xcode). Choose this new project in the converter.
+2. Download/unpack `Scripts/BirdLife-kaarten-omzetten.zip`.
+3. Double-click `Zet-BirdLife-kaarten-om.command`. Choose `BOTW_2025.gpkg`, then
+   the project folder containing `BirdingCompanion.xcodeproj`.
+4. The launcher prepares an isolated local Python environment and installs
+   Shapely 2 (BSD license) using pip. Leave Terminal open while conversion runs.
+5. Open/build that same project in Xcode. Private files are automatically copied
+   into the app through the blue `PrivateBirdLifeRanges` folder reference.
+
+If macOS blocks double-click, open Terminal, type `bash ` and drag the .command
+file into the window, then press Enter. Python 3 (normally available with Xcode)
+and internet for the initial Shapely installation are needed. The conversion
+itself is offline and reads the original database read-only. No upload is made.
+
+The converter matches exact scientific names, then unambiguous existing aliases,
+without changing app IDs. Multiple possible source taxa are not silently unioned
+or duplicated across app taxa. Unmatched species stay missing. It streams source
+features, preserves all nongeometry attributes/codes, and applies topology-
+preserving simplification of 0.01 degrees for compact-map display. That tolerance
+is recorded; no new species range is inferred. Holes and disconnected islands
+are retained. A broken feature invalidates that species export rather than
+showing its remaining features as a complete range. Failed/unmatched items are
+listed in the private `conversion-report.json`. Source absence/sensitive omissions
+are not filled from observation points or guesses.
+
+Exports are written to a staging folder before replacing the private export.
+The prior export is retained as a Git-ignored backup. Failures before activation
+leave it untouched. The manifest binds each stable ID to an expected safe
+filename and SHA256. Native loading validates metadata, ID and hash. The public
+source metadata still says approvedAwaitingFiles; a valid local manifest enables
+only the maps actually installed on that Mac. The raw .gpkg and all converted
+files/backup/staging files are ignored by Git; only README.txt is tracked in the
+empty resource folder. Never put converted polygons in the public helper ZIP.
+
+Rendering uses the verified presence/origin/season definitions: only presence=1
+(current extant) and established origins 1,2,3,6 are drawn. The discontinued
+presence=2 and possible/uncertain/extinct areas (3–6), vagrants and uncertain
+origins are not shown as current range. Exported source attributes preserve
+those distinctions. Colors separate resident, breeding, non-breeding, passage
+and uncertain season; introduced/assisted origin uses a dashed boundary. Full
+citation/terms are available from map info and the existing sources view.
+
+Verification: six portable Python tests pass on fictional GeoPackages, covering
+source byte preservation, WKB header/SRS handling, polygon holes, retained
+season/presence/origin attributes, output hashes, backups/failure isolation and
+ambiguous taxonomy rejection. `bash -n` passes for the launcher; Swift syntax and
+Xcode project/resource membership checks pass. New XCTest fixtures check seasonal
+classification and exclusion of historical/vagrant areas and unknown codes.
+Native XCTest, actual BOTW conversion, native bundling, map bounds/dateline
+behavior and comparison against official source maps require the user's Mac.
+No successful conversion of the actual 9 GB GeoPackage is claimed here.
