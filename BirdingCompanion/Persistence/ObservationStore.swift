@@ -209,6 +209,18 @@ final class ObservationStore: ObservableObject {
         goals = updated
     }
 
+    func updateGoal(_ goal: BirdGoal) throws {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        try goal.validate()
+        guard let index = goals.firstIndex(where: { $0.id == goal.id }) else { throw GoalError.missingGoal }
+        var updated = goals
+        var edited = goal
+        edited.createdAt = goals[index].createdAt
+        updated[index] = edited
+        try persistence.save(observations, sessions: sessions, goals: updated)
+        goals = updated
+    }
+
     func logStatus(for speciesID: String) -> SpeciesLogStatus {
         guard loadError == nil else { return .unavailable }
         return observations.contains { $0.speciesID == speciesID } ? .logged : .notLogged

@@ -645,6 +645,56 @@ final class GoalTests: XCTestCase {
         Observation(speciesID: species, taxonomyVersion: "test-v1", observedAt: Date(),
             locationName: "Test", count: 1, notes: "", status: .confirmed)
     }
+    func testFavoriteSelectionIsUniqueAutoSelectedAndClearedWhenDeselected() {
+        var selection = GoalSpeciesSelection()
+        selection.chooseFavorite("a")
+        XCTAssertEqual(selection.ids, ["a"]); XCTAssertEqual(selection.favoriteID, "a")
+        selection.chooseFavorite("b")
+        XCTAssertEqual(selection.ids, ["a", "b"]); XCTAssertEqual(selection.favoriteID, "b")
+        selection.toggle("a"); XCTAssertEqual(selection.favoriteID, "b")
+        selection.toggle("b"); XCTAssertNil(selection.favoriteID); XCTAssertTrue(selection.ids.isEmpty)
+    }
+    func testLegacyGoalWithoutFavoriteDecodesAndInvalidFavoriteIsRejected() throws {
+        let original = BirdGoal(name: "Oude checklist", speciesIDs: ["a"])
+        var dictionary = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
+        dictionary.removeValue(forKey: "favoriteSpeciesID")
+        let decoded = try JSONDecoder().decode(BirdGoal.self, from: JSONSerialization.data(withJSONObject: dictionary))
+        XCTAssertNil(decoded.favoriteSpeciesID); XCTAssertEqual(decoded.id, original.id)
+        XCTAssertNoThrow(try decoded.validate())
+        var invalid = decoded; invalid.favoriteSpeciesID = "outside"
+        XCTAssertThrowsError(try invalid.validate())
+    }
+    func testEditedFavoritePersistsWithoutChangingIdentityCreationDateOrOtherRecords() throws {
+        let path = url(); defer { try? FileManager.default.removeItem(at: path) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let observation = log("a"); try store.save(observation)
+        let original = BirdGoal(name: "Origineel", speciesIDs: ["a", "unknown-stable-id"])
+        let other = BirdGoal(name: "Andere", speciesIDs: ["b"])
+        try store.addGoal(original); try store.addGoal(other)
+        var edited = original; edited.name = "Bewerkt"; edited.favoriteSpeciesID = "unknown-stable-id"
+        edited.createdAt = original.createdAt.addingTimeInterval(100)
+        try store.updateGoal(edited)
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: path))
+        let saved = try XCTUnwrap(restored.goals.first { $0.id == original.id })
+        XCTAssertEqual(saved.name, "Bewerkt"); XCTAssertEqual(saved.favoriteSpeciesID, "unknown-stable-id")
+        XCTAssertEqual(saved.createdAt, original.createdAt); XCTAssertEqual(saved.speciesIDs, original.speciesIDs)
+        XCTAssertEqual(restored.goals.last, other); XCTAssertEqual(restored.observations, [observation])
+        let archive = try JSONDecoder().decode(BirdingArchive.self, from: restored.exportArchiveData())
+        XCTAssertEqual(archive.goals?.first?.favoriteSpeciesID, "unknown-stable-id")
+        let before = try Data(contentsOf: path)
+        edited.favoriteSpeciesID = "not-selected"
+        XCTAssertThrowsError(try store.updateGoal(edited))
+        XCTAssertThrowsError(try store.updateGoal(BirdGoal(name: "Ontbreekt", speciesIDs: ["a"])))
+        XCTAssertEqual(try Data(contentsOf: path), before)
+    }
+    func testFailedGoalUpdateDoesNotPublishChanges() throws {
+        let original = BirdGoal(name: "Origineel", speciesIDs: ["a"])
+        let persistence = FailingGoalUpdatePersistence(goal: original)
+        let store = ObservationStore(persistence: persistence)
+        var edited = original; edited.name = "Bewerkt"; edited.favoriteSpeciesID = "a"
+        XCTAssertThrowsError(try store.updateGoal(edited))
+        XCTAssertEqual(store.goals, [original])
+    }
     func testGoalProgressIncludesExistingAndNewLogsWithoutDuplicateCounts() throws {
         let path = url(); defer { try? FileManager.default.removeItem(at: path) }
         let store = ObservationStore(persistence: JSONObservationPersistence(url: path))
@@ -1643,5 +1693,15 @@ final class SupplementarySpeciesAudioTests: XCTestCase {
             _ = try await SupplementedSpeciesAudioRepository(primary: failed, secondary: empty).recording(for: bird)
             XCTFail("A network error must not turn into a cached absence")
         } catch { XCTAssertTrue(error is URLError) }
+    }
+}
+
+private struct FailingGoalUpdatePersistence: ObservationPersistence {
+    let goal: BirdGoal
+    func load() throws -> [Observation] { [] }
+    func loadGoals() throws -> [BirdGoal] { [goal] }
+    func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
+        throw CocoaError(.fileWriteNoPermission)
     }
 }
