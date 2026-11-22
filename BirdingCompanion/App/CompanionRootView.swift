@@ -157,8 +157,8 @@ struct CompanionRootView: View {
                     NavigationOutlineMark(kind: item == .discover ? .binoculars :
                         (item == .identify ? .viewfinder : (item == .sessions ? .clock : .bird)))
                         .stroke(style: FieldGuideTheme.navigationStroke)
-                        .frame(width: item == .discover ? 22.032 : (item == .list ? 21.6 : 24),
-                               height: item == .discover ? 22.032 : (item == .list ? 21.6 : 24))
+                        .frame(width: item == .discover ? 22.032 * 1.1 : (item == .list ? 21.6 * 1.1 : 24),
+                               height: item == .discover ? 22.032 * 1.1 : (item == .list ? 21.6 * 1.1 : 24))
                 }
             }
             .frame(minWidth: 44, maxWidth: .infinity, minHeight: 56, maxHeight: 56)

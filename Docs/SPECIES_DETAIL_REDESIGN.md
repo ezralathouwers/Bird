@@ -90,3 +90,11 @@ only the dynamic hero remains bottom aligned. Page-scroll automatic content
 insets are disabled. Verify these changes on Mac with the supplied woodpecker
 flight and long-tailed magpie examples; cloud syntax checking is insufficient
 to prove that UIKit clipping has been resolved on a device.
+
+
+### Further navigation/artwork refinement
+
+Binoculars and logbook bird outlines are 10% larger (24.2352 and 23.76 points),
+using the same unscaled 0.7-point stroke. Only the dynamic/detail first slide gets
+a 10-point leftwards display offset to leave more room at its right-facing head;
+front/rear/flight positioning is unchanged. Native visual verification pending.
