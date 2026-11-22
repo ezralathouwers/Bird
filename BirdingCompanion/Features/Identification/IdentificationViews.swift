@@ -44,7 +44,7 @@ private struct SoundIdentificationView: View {
                 identificationHeader("Geluid-ID") { model.stop(); dismiss() }
                 HStack {
                     Image(systemName: model.isRecording ? "mic.fill" : "mic")
-                    Text(model.isRecording ? "Aan het luisteren" : "Opname gestopt").font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                    Text(model.isStarting ? "Opname voorbereiden" : model.isRecording ? "Aan het luisteren" : "Opname gestopt").font(FieldGuideTheme.sans(20, relativeTo: .title3))
                     Spacer()
                     if model.isRecording, let startedAt = model.startedAt {
                         Text(startedAt, style: .timer).monospacedDigit()

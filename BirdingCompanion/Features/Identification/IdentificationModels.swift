@@ -79,13 +79,15 @@ enum SonogramAnalysis {
     static func column(samples: [Float], sampleRate: Double, bins: Int = 32) -> [Float] {
         guard sampleRate.isFinite, sampleRate > 1000, bins > 1, !samples.isEmpty else { return [] }
         let upper = min(10_000.0, sampleRate * 0.45)
+        let weighted = samples.enumerated().map { index, sample in
+            Double(sample) * (0.5 - 0.5 * cos(2 * Double.pi * Double(index) / Double(max(1, samples.count - 1))))
+        }
         return (0..<bins).map { bin in
             let frequency = 250 * pow(upper / 250, Double(bin) / Double(bins - 1))
             let coefficient = 2 * cos(2 * Double.pi * frequency / sampleRate)
             var previous = 0.0, beforePrevious = 0.0
-            for (index, sample) in samples.enumerated() {
-                let window = 0.5 - 0.5 * cos(2 * Double.pi * Double(index) / Double(max(1, samples.count - 1)))
-                let value = Double(sample) * window + coefficient * previous - beforePrevious
+            for sample in weighted {
+                let value = sample + coefficient * previous - beforePrevious
                 beforePrevious = previous; previous = value
             }
             let power = max(0, previous * previous + beforePrevious * beforePrevious - coefficient * previous * beforePrevious)

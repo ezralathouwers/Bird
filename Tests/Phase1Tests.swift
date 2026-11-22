@@ -1,4 +1,5 @@
 import XCTest
+@preconcurrency import AVFoundation
 import UIKit
 import CoreText
 import CryptoKit
@@ -1703,5 +1704,34 @@ private struct FailingGoalUpdatePersistence: ObservationPersistence {
     func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
         throw CocoaError(.fileWriteNoPermission)
+    }
+}
+
+@MainActor
+final class AudioCapturePipelineTests: XCTestCase {
+    func testWatchdogToleratesStartupAndDetectsMissingOrStalledSamples() {
+        let start = Date(timeIntervalSince1970: 100)
+        XCTAssertFalse(AudioCaptureHealth.isStalled(startedAt: nil, lastAudioAt: nil, now: start))
+        XCTAssertFalse(AudioCaptureHealth.isStalled(startedAt: start, lastAudioAt: nil, now: start.addingTimeInterval(4)))
+        XCTAssertTrue(AudioCaptureHealth.isStalled(startedAt: start, lastAudioAt: nil, now: start.addingTimeInterval(5)))
+        XCTAssertFalse(AudioCaptureHealth.isStalled(startedAt: start, lastAudioAt: start.addingTimeInterval(4), now: start.addingTimeInterval(6)))
+    }
+    func testBackgroundProcessorWritesRecordingAndBuildsThreeSecondWindow() async throws {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".caf")
+        defer { try? FileManager.default.removeItem(at: url) }
+        let processor = AudioCaptureProcessor(url: url)
+        let samples = (0..<32000).map { Float(sin(2 * Double.pi * 1000 * Double($0) / 32000)) * 0.1 }
+        let start = Date()
+        var window: LiveAudioWindow?
+        for second in 0..<3 {
+            let update = try await processor.consume(CapturedAudioChunk(samples: samples, sampleRate: 32000,
+                endedAt: start.addingTimeInterval(Double(second))))
+            XCTAssertEqual(update.column?.count, 32)
+            window = update.window
+        }
+        await processor.close()
+        XCTAssertEqual(window?.samples.count, 96000)
+        let file = try AVAudioFile(forReading: url)
+        XCTAssertEqual(file.length, 96000)
     }
 }

@@ -50,3 +50,36 @@ BirdNET 2.4 remains a smaller fallback (official documentation: 50.5 MB FP32, 6,
 ## Still to test
 
 On an actual target iPhone: Core ML loading/operator support, numerical agreement with the official reference, all-zero audio, overlapping calls, 3-second inference latency, sustained CPU/Neural Engine use, thermal/battery effects and peak memory. No model inference, accuracy benchmark, Core ML compilation or iPhone runtime test was performed here. The recommendation is technically promising, not proof of real-time performance.
+
+## Capture responsiveness correction — 22 November 2026
+
+Reported failure: Sound-ID stays at 0:00 with no sonogram and the app becomes
+unresponsive. No native hang trace is available in cloud, so the precise device
+cause is not proven. The prior implementation synchronously configured/started/
+stopped AVAudioEngine on MainActor and wrote files/computed sonograms while
+holding a tap-side lock. These blocking paths are removed:
+
+- One shared AudioCaptureController actor owns AVAudioSession/AVAudioEngine.
+  Start and stop run outside MainActor; UUID-scoped stops cannot tear down a
+  newer recording. Explicit Sendable tap captures no UI/actor state, performs
+  only mono sample copying and yields immutable chunks to a bounded stream.
+- AudioCaptureProcessor is a separate actor for file I/O, the three-second
+  accumulator and sonogram work. UI updates are at most ten columns/second.
+  Hann weights are computed once per column rather than once per frequency bin.
+- Bounded 64-chunk backlog fails visibly instead of silently discarding audio.
+  Main-actor watchdogs recover UI after 15 seconds of hardware startup or five
+  seconds without processed samples. Cancellation/generation guards reject stale
+  work, and stop returns without waiting synchronously for audio teardown.
+- Finishing awaits the processor's file close before offline file analysis.
+  Existing model preparation, inference bounds, permission checks, foreground
+  lifecycle stop and pinned/highlighted results remain.
+
+Added fixtures cover startup/stall timing and background processing of synthetic
+mono audio into a CAF and a three-second inference window. Existing silence and
+synthetic-tone sonogram tests remain relevant. Swift syntax/project checks are
+available here; native XCTest and AVFoundation capture have not run. On Mac and
+real iPhone verify first launch/permission/model download, timer and sonogram,
+start-stop-restart, back/foreground transitions, no-input error, interruptions,
+playback of the saved file and results. A simulator needs an actual configured
+Mac microphone input; cloud checks cannot establish that the reported hang is
+resolved on the user's device.
