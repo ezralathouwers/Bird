@@ -103,6 +103,7 @@ struct SpeciesFact: Identifiable {
 
 struct SpeciesFacts: View {
     let species: Species
+    var viewportHeight: CGFloat? = nil
     private var detail: SpeciesDetails? { SpeciesDetailsCatalog.details(for: species.id) }
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -117,7 +118,8 @@ struct SpeciesFacts: View {
                     Text(bio)
                         .font(FieldGuideTheme.sans(12.8, relativeTo: .body).weight(.light))
                         .fixedSize(horizontal: false, vertical: true)
-                        .padding(.top, 6)
+                        .padding(.top, 2)
+                        .modifier(BioViewportFade(viewportHeight: viewportHeight))
                     }
                 }
             }
@@ -434,7 +436,7 @@ struct SpeciesCatalogSourcesView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     if detail == nil {
                         Text("Bronnen en licenties").font(FieldGuideTheme.sans(24, relativeTo: .title2))
-                        TextField("Zoek soort voor brongegevens", text: $sourceQuery).modifier(RoundedSearchField())
+                        BirdTextField("Zoek soort voor brongegevens", text: $sourceQuery).modifier(RoundedSearchField())
                         if !sourceQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             ForEach(Array(SpeciesCatalogSearch.results(for: sourceQuery, in: SpeciesGuideCatalog.species).prefix(20))) { species in
                                 Button(species.dutchName) {
@@ -576,5 +578,29 @@ enum ArtworkPaperBackdrop {
                 bytesPerRow: width * 4, space: space, bitmapInfo: CGBitmapInfo(rawValue: bitmap),
                 provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent) else { return source }
         return UIImage(cgImage: result, scale: source.scale, orientation: .up)
+    }
+}
+
+private struct BioViewportFade: ViewModifier {
+    let viewportHeight: CGFloat?
+    func body(content: Content) -> some View {
+        if let viewportHeight {
+            content.mask {
+                GeometryReader { geometry in
+                    let height = max(1, geometry.size.height)
+                    let cut = viewportHeight - geometry.frame(in: .named("speciesInformationViewport")).minY
+                    if cut >= height { Color.black }
+                    else if cut <= 0 { Color.clear }
+                    else {
+                        LinearGradient(stops: [
+                            .init(color: .black, location: 0),
+                            .init(color: .black, location: max(0, cut - 22) / height),
+                            .init(color: .clear, location: cut / height),
+                            .init(color: .clear, location: 1)
+                        ], startPoint: .top, endPoint: .bottom)
+                    }
+                }
+            }
+        } else { content }
     }
 }

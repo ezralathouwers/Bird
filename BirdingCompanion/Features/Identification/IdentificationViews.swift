@@ -7,7 +7,7 @@ struct IdentificationView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                IdentificationOptionsLayout(viewportHeight: max(0, geometry.size.height - 40)) {
+                IdentificationOptionsLayout(viewportHeight: max(0, geometry.size.height - 72)) {
                     PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
                     NavigationLink { PhotoIdentificationView() } label: {
                         option("Foto", detail: "Maak of kies een foto", photo: true)
@@ -15,7 +15,7 @@ struct IdentificationView: View {
                     NavigationLink { SoundIdentificationView(isVisible: isVisible) } label: {
                         option("Audio", detail: "Luister naar vogels om je heen", photo: false)
                     }
-                }.padding(20)
+                }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 52)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
     }
@@ -25,7 +25,7 @@ struct IdentificationView: View {
                 if photo { CameraOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 36, height: 36) }
                 else { Image(systemName: "waveform").font(.system(size: 36, weight: .ultraLight)) }
             }.frame(width: 52)
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(name).font(FieldGuideTheme.sans(24, relativeTo: .title2))
                 Text(detail).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
             }.frame(maxWidth: .infinity, alignment: .leading)
@@ -43,17 +43,17 @@ private struct IdentificationOptionsLayout: Layout {
         let width = max(0, proposal.width ?? 320)
         let heading = subviews[0].sizeThatFits(ProposedViewSize(width: width, height: nil)).height
         let minimumCard = max(148, subviews.dropFirst().map { $0.sizeThatFits(ProposedViewSize(width: width, height: nil)).height }.max() ?? 148)
-        return CGSize(width: width, height: max(viewportHeight, heading + 18 + 24 + 2 * minimumCard))
+        return CGSize(width: width, height: max(viewportHeight, heading + 18 + 16 + 2 * minimumCard))
     }
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
         guard subviews.count == 3 else { return }
         let heading = subviews[0].sizeThatFits(ProposedViewSize(width: bounds.width, height: nil)).height
         let minimumCard = max(148, subviews.dropFirst().map { $0.sizeThatFits(ProposedViewSize(width: bounds.width, height: nil)).height }.max() ?? 148)
-        let card = max(minimumCard, (bounds.height - heading - 18 - 24) / 2)
+        let card = max(minimumCard, (bounds.height - heading - 18 - 16) / 2)
         subviews[0].place(at: CGPoint(x: bounds.minX, y: bounds.minY), anchor: .topLeading,
                           proposal: ProposedViewSize(width: bounds.width, height: heading))
         for index in 1...2 {
-            subviews[index].place(at: CGPoint(x: bounds.minX, y: bounds.minY + heading + 18 + CGFloat(index - 1) * (card + 24)),
+            subviews[index].place(at: CGPoint(x: bounds.minX, y: bounds.minY + heading + 18 + CGFloat(index - 1) * (card + 16)),
                                  anchor: .topLeading, proposal: ProposedViewSize(width: bounds.width, height: card))
         }
     }

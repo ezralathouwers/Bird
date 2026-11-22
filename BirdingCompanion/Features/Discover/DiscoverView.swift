@@ -4,7 +4,7 @@ import UIKit
 struct DiscoverView: View {
     @EnvironmentObject private var store: ObservationStore
     @ObservedObject var model: DiscoverViewModel
-    @StateObject private var location = ObservationLocationModel()
+    @StateObject private var location = ObservationLocationModel(locationPolicy: .browsing)
     @State private var filter: DiscoverFilter = .all
     @State private var demo = false
     @State private var showSearch = false
@@ -40,7 +40,7 @@ struct DiscoverView: View {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading, spacing: 20) {
                         heading
-                        TextField("Zoek een vogel", text: $catalogQuery)
+                        BirdTextField("Zoek een vogel", text: $catalogQuery)
                             .modifier(RoundedSearchField()).autocorrectionDisabled()
                             .focused($searchFocused)
                             .accessibilityLabel("Zoek alle soorten op Nederlandse, Engelse of wetenschappelijke naam")
@@ -149,9 +149,20 @@ struct DiscoverView: View {
                 }
                 LazyVStack(spacing: 0) {
                     ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
-                        NavigationLink(value: row.species) {
-                            DiscoverSpeciesRow(species: row.species, status: store.logStatus(for: row.id))
-                        }.buttonStyle(.plain)
+                        HStack(spacing: 0) {
+                            let status = store.logStatus(for: row.id)
+                            NavigationLink(value: row.species) {
+                                DiscoverSpeciesRow(species: row.species, status: status, showsBadge: false)
+                            }.buttonStyle(.plain)
+                            if status == .notLogged, let url = row.observationURL {
+                                Link(destination: url) {
+                                    SpeciesLogBadge(status: status, speciesName: row.species.dutchName, diameter: 22)
+                                        .frame(width: 44, height: 44).contentShape(Rectangle())
+                                }.buttonStyle(.plain).accessibilityLabel("Open eBird-waarneming van \(row.species.dutchName)")
+                            } else {
+                                SpeciesLogBadge(status: status, speciesName: row.species.dutchName, diameter: 22).frame(width: 44, height: 44)
+                            }
+                        }
                         if index < rows.count - 1 {
                             Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
                                 .accessibilityHidden(true)
@@ -161,14 +172,13 @@ struct DiscoverView: View {
                 if let attribution = model.attribution {
                     Text(attribution).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                 }
-                Button { demo = false; location.useCurrentLocation() } label: {
-                    Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44)
+                VStack(alignment: .leading, spacing: 0) {
+                    Button { demo = false; location.useCurrentLocation() } label: {
+                        Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44)
+                    }
+                    Button("Instellingen lokale meldingen") { showEBirdConnection = true }.frame(minHeight: 44).opacity(0.5)
                 }
-                Button("Instellingen lokale meldingen") { showEBirdConnection = true }.frame(minHeight: 44)
-                if !model.isDemo {
-                    Button("Bekijk voorbeeldpagina") { demo = true }
-                        .frame(minHeight: 44)
-                }
+
     }
 
     private var catalogSearch: some View {
@@ -220,6 +230,7 @@ struct DiscoverView: View {
 private struct DiscoverSpeciesRow: View {
     let species: Species
     let status: SpeciesLogStatus
+    var showsBadge = true
 
     var body: some View {
         HStack(spacing: 12) {
@@ -230,7 +241,7 @@ private struct DiscoverSpeciesRow: View {
             }
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
-            SpeciesLogBadge(status: status, speciesName: species.dutchName, diameter: 22)
+            if showsBadge { SpeciesLogBadge(status: status, speciesName: species.dutchName, diameter: 22) }
         }
         .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
         .padding(.vertical, 6)

@@ -41,7 +41,7 @@ struct ObservationForm: View {
                             .accessibilityAddTraits(.isHeader)
                         ObservationLocationPicker(location: location).frame(height: 228)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
-                        TextField("Naam van natuurgebied of plaats", text: Binding(
+                        BirdTextField("Naam van natuurgebied of plaats", text: Binding(
                             get: { location.locationName }, set: { location.editName($0) }))
                             .modifier(RoundedSearchField())
                             .accessibilityLabel("Locatienaam")

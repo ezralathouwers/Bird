@@ -63,10 +63,11 @@ private struct AddObservationPicker: View {
     @State private var search = ""
     @State private var selected: Species?
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            CenteredPageHeader(title: "Kies een vogel") { dismiss() }
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 16) {
-                    TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled()
+                    BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled()
                     ForEach(SpeciesCatalogSearch.results(for: search, in: SpeciesGuideCatalog.species)) { bird in
                         Button { selected = bird } label: {
                             HStack(spacing: 16) {
@@ -81,12 +82,7 @@ private struct AddObservationPicker: View {
                     }
                 }.padding(20)
             }.background(FieldGuideTheme.ivory)
-                .navigationTitle("Kies een vogel").navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement: .topBarLeading) {
-                    Button { dismiss() } label: { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
-                        .accessibilityLabel("Terug naar toevoegopties")
-                } }
                 .fullScreenCover(item: $selected) { bird in ObservationForm(species: bird) }
-        }
+        }.foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory.ignoresSafeArea())
     }
 }

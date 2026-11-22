@@ -1,6 +1,7 @@
 import XCTest
 @preconcurrency import AVFoundation
 import UIKit
+import MapKit
 import CoreText
 import CryptoKit
 @testable import BirdingCompanion
@@ -309,6 +310,16 @@ final class DiscoverRankingTests: XCTestCase {
         XCTAssertEqual(rows.map(\.reportCount), [1, 1])
     }
 
+    func testEBirdChecklistLinksAreStrictAndFollowTheDisplayedReport() {
+        XCTAssertEqual(DiscoverRanking.checklistURL("S123456")?.absoluteString, "https://ebird.org/checklist/S123456")
+        XCTAssertNil(DiscoverRanking.checklistURL("mock-checklist"))
+        XCTAssertNil(DiscoverRanking.checklistURL("S12/../../other"))
+        let row = DiscoverRanking.ranked([report(first, checklist: "S987654")], query: query).first
+        XCTAssertEqual(row?.observationURL?.absoluteString, "https://ebird.org/checklist/S987654")
+        let fallback = DiscoverRanking.ranked([report(first, checklist: "unavailable"), report(first, checklist: "S987654")], query: query).first
+        XCTAssertEqual(fallback?.observationURL?.absoluteString, "https://ebird.org/checklist/S987654")
+        XCTAssertNil(DiscoverRanking.ranked([report(first, checklist: "unavailable")], query: query).first?.observationURL)
+    }
     func testLoggedFiltersUseStableIDsAndPreserveRanking() {
         let ranked = DiscoverRanking.ranked([report(first, checklist: "A"), report(second, checklist: "B")], query: query)
         let record = Observation(speciesID: first.id, taxonomyVersion: first.taxonomyVersion,
@@ -1619,6 +1630,43 @@ final class SpeciesRangeLoadingTests: XCTestCase {
         XCTAssertEqual(snapshot.coordinateCount, 15)
         XCTAssertThrowsError(try SpeciesRangeSnapshot.decode(fixture(), expectedSpeciesID: "wrong"))
     }
+    func testBinaryCacheRoundTripPreservesHolesCoordinatesAndRejectsDamage() throws {
+        let original = try SpeciesRangeSnapshot.decode(fixture())
+        let bytes = SpeciesRangeBinaryCache.encode(original)
+        let restored = try SpeciesRangeBinaryCache.decode(bytes)
+        XCTAssertEqual(restored.coordinateCount, original.coordinateCount)
+        XCTAssertEqual(restored.attribution, original.attribution)
+        XCTAssertEqual(restored.polygons[0].rings.count, 2)
+        XCTAssertEqual(restored.polygons[1].season, 3)
+        XCTAssertEqual(restored.polygons[1].origin, 3)
+        XCTAssertEqual(restored.polygons[0].rings[1].map(\.latitude), original.polygons[0].rings[1].map(\.latitude))
+        var damaged = bytes; damaged[20] ^= 1
+        XCTAssertThrowsError(try SpeciesRangeBinaryCache.decode(damaged))
+        XCTAssertThrowsError(try SpeciesRangeBinaryCache.decode(Data(bytes.prefix(30))))
+    }
+    func testNewLoaderUsesValidatedDiskCacheWithoutReadingSourceAgain() async throws {
+        let (root, bundle, file) = try makeBundle()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let source = try Data(contentsOf: file)
+        let digest = SHA256.hash(data: source).map { String(format: "%02x", $0) }.joined()
+        let cache = root.appendingPathComponent("Cache")
+        try FileManager.default.createDirectory(at: cache, withIntermediateDirectories: true)
+        try SpeciesRangeBinaryCache.encode(SpeciesRangeSnapshot.decode(source)).write(to: cache.appendingPathComponent(digest + ".rangebin"))
+        try FileManager.default.removeItem(at: file)
+        let loader = SpeciesRangeDataLoader(bundle: bundle, cacheDirectory: cache)
+        let snapshot = try await loader.load(speciesID: "test:bird")
+        XCTAssertEqual(snapshot.polygons.count, 2); XCTAssertEqual(snapshot.coordinateCount, 15)
+    }
+    func testNativeOverlayCountDependsOnStylesNotPolygonCount() throws {
+        let coordinates = [CLLocationCoordinate2D(latitude: 0, longitude: 0), CLLocationCoordinate2D(latitude: 0, longitude: 1),
+                           CLLocationCoordinate2D(latitude: 1, longitude: 1), CLLocationCoordinate2D(latitude: 0, longitude: 0)]
+        let polygon = coordinates.withUnsafeBufferPointer { MKPolygon(coordinates: $0.baseAddress!, count: $0.count) }
+        let areas = (0..<1000).map { SpeciesRangeArea(polygon: polygon, season: $0 < 500 ? .resident : .nonBreeding, origin: 1) }
+        let dataset = SpeciesRangeDataset(polygons: areas.map(\.polygon), attribution: "fixture", version: "test", areas: areas)
+        let groups = NativeSpeciesRangeMap.groupedOverlays(dataset)
+        XCTAssertEqual(groups.count, 2)
+        XCTAssertEqual(groups.reduce(0) { $0 + $1.overlay.polygons.count }, 1000)
+    }
     func testBackgroundLoaderReusesImmutableSnapshotWithoutReadingFilesAgain() async throws {
         let (root, bundle, file) = try makeBundle()
         defer { try? FileManager.default.removeItem(at: root) }
@@ -1830,5 +1878,36 @@ final class SoundCandidateConfirmationTests: XCTestCase {
         for score in [0.1, -1, 1.1, Double.nan, Double.infinity] {
             XCTAssertTrue(filter.accept([IdentificationCandidate(species: bird, score: score)]).isEmpty)
         }
+    }
+}
+
+private struct ImmediateLocationFixture: CurrentLocationService {
+    let fix: AppLocationFix
+    @MainActor func current(policy: AppLocationPolicy) async throws -> AppLocationFix { fix }
+}
+@MainActor
+final class FastLocationRevisionTests: XCTestCase {
+    func testCachedFixPoliciesRejectStaleInaccurateOrInvalidPositions() {
+        let now = Date(timeIntervalSince1970: 1000)
+        let old = AppLocationFix(latitude: 51, longitude: 4, accuracy: 30, timestamp: now.addingTimeInterval(-20))
+        XCTAssertTrue(old.isUsable(maxAge: AppLocationPolicy.observation.maxAge, maxAccuracy: 150, now: now))
+        XCTAssertFalse(old.isUsable(maxAge: AppLocationPolicy.liveLog.maxAge, maxAccuracy: 100, now: now))
+        let coarse = AppLocationFix(latitude: 51, longitude: 4, accuracy: 400, timestamp: now)
+        XCTAssertTrue(coarse.isUsable(maxAge: 60, maxAccuracy: AppLocationPolicy.browsing.maxAccuracy, now: now))
+        XCTAssertFalse(coarse.isUsable(maxAge: 30, maxAccuracy: AppLocationPolicy.observation.maxAccuracy, now: now))
+        XCTAssertFalse(AppLocationFix(latitude: .nan, longitude: 4, accuracy: 1, timestamp: now).isUsable(maxAge: 60, maxAccuracy: 500, now: now))
+    }
+    func testLocationModelUsesSharedServiceAndNamingWithoutHardwareCallbacks() async {
+        let fix = AppLocationFix(latitude: 51, longitude: 4, accuracy: 10, timestamp: Date())
+        let model = ObservationLocationModel(namingService: TestPlaceNamingService(), currentLocation: ImmediateLocationFixture(fix: fix))
+        await model.useCurrentLocation().value
+        XCTAssertEqual(model.latitude, 51); XCTAssertEqual(model.longitude, 4)
+        XCTAssertEqual(model.locationName, "Voorbeeldpark"); XCTAssertTrue(model.canSave)
+    }
+    func testFamilyDisplayUsesFriendlyLabelsWithoutChangingIdentity() {
+        let family = BirdFamily.displayFamily(id: "Ardeidae", englishName: "Herons, Egrets, and Bitterns")
+        XCTAssertEqual(family.id, "Ardeidae"); XCTAssertEqual(family.dutchName, "Reigers")
+        let rare = BirdFamily.displayFamily(id: "Rareidae", englishName: "Friendly birds")
+        XCTAssertEqual(rare.dutchName, "Friendly birds")
     }
 }

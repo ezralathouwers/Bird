@@ -151,7 +151,7 @@ struct SessionForm: View {
                     }
                     ObservationLocationPicker(location: location).frame(height: 220)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
-                    TextField("Naam van natuurgebied of plaats", text: Binding(get: { location.locationName }, set: { location.editName($0) }))
+                    BirdTextField("Naam van natuurgebied of plaats", text: Binding(get: { location.locationName }, set: { location.editName($0) }))
                         .font(FieldGuideTheme.sans(22, relativeTo: .title2)).modifier(RoundedSearchField())
                     if location.isLocating { ProgressView("Huidige locatie ophalen…") }
                     if let message = location.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
@@ -260,7 +260,7 @@ struct SessionSpeciesPicker: View {
         VStack(alignment: .leading, spacing: 16) {
             SpeciesBackButton { dismiss() }.padding(.top, 4)
             Text("Waarnemingen toevoegen").font(FieldGuideTheme.sans(24, relativeTo: .title2))
-            TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().focused($focused)
+            BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().focused($focused)
             ScrollView {
                 LazyVStack(spacing: 0) {
                     if nearby.isLoading && search.isEmpty { ProgressView("Vogels ophalen…") }
@@ -374,7 +374,7 @@ private struct SessionLogsList: View {
             ForEach(logs) { log in
                 SessionBirdRow(bird: SessionStats.bird(log.speciesID)) {
                     HStack(spacing: 4) {
-                        if lifers.contains(log.id) { LiferStar().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 14, height: 14).foregroundStyle(FieldGuideTheme.khaki).accessibilityLabel("Lifer") }
+                        if lifers.contains(log.id) { LiferStar().fill(FieldGuideTheme.khaki).frame(width: 18, height: 18).padding(.trailing, showsTime ? 8 : 0).foregroundStyle(FieldGuideTheme.khaki).accessibilityLabel("Lifer") }
                         if showsTime { Text(log.observedAt, style: .time).font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
                         if let remove { RemoveSessionBirdButton { remove(log) } }
                     }

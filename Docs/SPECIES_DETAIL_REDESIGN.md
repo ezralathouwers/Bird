@@ -340,3 +340,41 @@ Verification available in cloud: Swift syntax/project/source-membership and
 whitespace checks, plus pinned model schema inspection. XCTest, recognition of
 recordings, native review/dismiss/navigation, camera/star visuals and card sizes
 remain unverified without Xcode. No private BirdLife files need reconversion.
+
+
+### iPhone feedback revision — 22 November 2026
+
+The app fixes its light appearance at the root and in Info.plist. Shared search
+fields explicitly set charcoal text and a readable placeholder, including
+fullscreen pickers. The add-observation picker uses the custom centered header.
+Species tabs and the Information map move up slightly; the bio sits closer to
+the wingspan and fades over its final 22 visible points when clipped by the
+information viewport. It remains fully scrollable; map attribution is unmasked.
+
+Location requests now share one short-lived CLLocationManager and accept a
+recent fix only within the requesting screen's age/accuracy bounds: Discover
+60 seconds/500 metres, observation form 30 seconds/150 metres, live session
+15 seconds/100 metres. Concurrent requests coalesce; hardware stops when none
+remain. Requests time out after 10 seconds (15 for live logging). Place naming
+caches successful nearby results for 30 minutes within 75 metres, coalesces
+concurrent lookups, and bounds new geocoding to three seconds. Cold GPS fixes
+and denied/approximate permissions can still require a manual map selection.
+No real hardware latency measurements were possible here.
+
+Discover removes the demo-page action and softens/compacts local settings.
+For never-logged species, the separate log badge opens an actual eBird
+checklist from the displayed results; bird image/name still open the species
+page. Only valid S-number checklist IDs become links. When none is provided,
+the badge stays static. No speculative observation links are constructed.
+
+Lifers use a larger filled rounded four-point star, further from the time.
+Identification cards have a smaller gap, closer subtitles and more bottom
+clearance. Goal selection opens a fullscreen search with back control and
+retains multiselection/long-press favorite selection. Goal artwork keeps its
+left fade but has full base opacity; progress takes half the content width.
+Family display labels use Dutch common names where mapped and checklist
+English common names otherwise, preserving every family/species ID.
+
+Verification: Swift syntax trees, project source references, Info.plist and
+whitespace can be checked in cloud. XCTest and native iOS builds/device visual
+and performance checks remain unverified. No BirdLife reconversion is required.

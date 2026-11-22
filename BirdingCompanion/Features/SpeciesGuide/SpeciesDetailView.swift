@@ -33,15 +33,18 @@ struct SpeciesDetailView: View {
                 }
                 .clipped()
             case .information:
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
-                        SpeciesDistributionMap(species: species, onExpand: { showRangeMap = true })
-                            .frame(height: 220)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .padding(.horizontal, 20)
-                        SpeciesFacts(species: species).padding(.horizontal, 20)
+                GeometryReader { viewport in
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 24) {
+                            SpeciesDistributionMap(species: species, onExpand: { showRangeMap = true })
+                                .frame(height: 220)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .padding(.horizontal, 20)
+                            SpeciesFacts(species: species, viewportHeight: viewport.size.height).padding(.horizontal, 20)
+                        }
+                        .padding(.top, 12).padding(.bottom, 24)
                     }
-                    .padding(.top, 16).padding(.bottom, 24)
+                    .coordinateSpace(name: "speciesInformationViewport")
                 }
             case .observations:
                 ScrollView {
@@ -95,7 +98,7 @@ struct SpeciesDetailView: View {
                     actions
                 }
                 heading
-                SpeciesTabStrip(selection: $tab).padding(.top, 12)
+                SpeciesTabStrip(selection: $tab).padding(.top, 8)
             }
             .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 4)
             .background(FieldGuideTheme.ivory)

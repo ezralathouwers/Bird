@@ -37,8 +37,7 @@ struct WorldSpeciesRecord: Decodable, Sendable {
             sample.aliases = aliases
             return sample
         }
-        let knownFamilies: [BirdFamily] = [.thrushes, .tits, .flycatchers, .woodpeckers, .kingfishers]
-        let group = knownFamilies.first { $0.id == family } ?? BirdFamily(id: family, dutchName: family)
+        let group = BirdFamily.displayFamily(id: family, englishName: familyEnglish)
         return Species(id: id, taxonomyVersion: soundIndex != nil ? "BirdNET+ labels v0.5-Nov2026" : "AviList v2026 / BirdNET+ taxonomy v0.5-Nov2026",
             dutchName: dutchName.isEmpty ? englishName.prefix(1).uppercased() + englishName.dropFirst().lowercased() : dutchName, englishName: englishName,
             scientificName: scientificName, family: group, aliases: aliases)

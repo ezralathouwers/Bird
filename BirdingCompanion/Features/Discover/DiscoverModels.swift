@@ -33,6 +33,7 @@ struct NearbyReport: Sendable {
 struct DiscoverSpecies: Identifiable, Sendable {
     let species: Species
     let reportCount: Int
+    var observationURL: URL? = nil
     var id: String { species.id }
 }
 
@@ -77,6 +78,7 @@ struct DiscoverRanking {
         // eBird sorts by observation recency before sending the response. Retain
         // that order: obsDt has no timezone and some records contain only a date.
         var firstPosition: [String: Int] = [:]
+        var firstChecklist: [String: String] = [:]
         for (position, report) in reports.enumerated() {
             guard !report.checklistID.isEmpty,
                   report.observedAt >= query.start, report.observedAt <= query.now,
@@ -84,12 +86,18 @@ struct DiscoverRanking {
                   (-90...90).contains(report.latitude), (-180...180).contains(report.longitude) else { continue }
             let point = CLLocation(latitude: report.latitude, longitude: report.longitude)
             guard point.distance(from: center) <= query.radiusKilometers * 1000 else { continue }
-            if firstPosition[report.species.id] == nil { firstPosition[report.species.id] = position }
+            if firstPosition[report.species.id] == nil {
+                firstPosition[report.species.id] = position
+            }
+            if firstChecklist[report.species.id] == nil, checklistURL(report.checklistID) != nil {
+                firstChecklist[report.species.id] = report.checklistID
+            }
             species[report.species.id] = report.species
             checklists[report.species.id, default: []].insert(report.checklistID)
         }
         return species.values.map {
-            DiscoverSpecies(species: $0, reportCount: checklists[$0.id]?.count ?? 0)
+            DiscoverSpecies(species: $0, reportCount: checklists[$0.id]?.count ?? 0,
+                            observationURL: checklistURL(firstChecklist[$0.id]))
         }.sorted {
             if ordering == .providerRecency {
                 return firstPosition[$0.id, default: Int.max] < firstPosition[$1.id, default: Int.max]
@@ -100,6 +108,11 @@ struct DiscoverRanking {
             if left != right { return left < right }
             return $0.id < $1.id
         }
+    }
+
+    static func checklistURL(_ id: String?) -> URL? {
+        guard let id, id.range(of: "^S[0-9]+$", options: .regularExpression) != nil else { return nil }
+        return URL(string: "https://ebird.org/checklist/" + id)
     }
 
     static func filtered(_ rows: [DiscoverSpecies], filter: DiscoverFilter,

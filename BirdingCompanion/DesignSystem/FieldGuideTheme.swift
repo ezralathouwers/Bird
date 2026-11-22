@@ -302,14 +302,21 @@ struct DetailPageHeader: View {
 
 struct LiferStar: Shape {
     func path(in rect: CGRect) -> Path {
+        let points = (0..<8).map { index -> CGPoint in
+            let angle = Double(index) * .pi / 4 - .pi / 2
+            let radius: CGFloat = index.isMultiple(of: 2) ? 0.48 : 0.16
+            return CGPoint(x: rect.midX + CGFloat(cos(angle)) * rect.width * radius,
+                           y: rect.midY + CGFloat(sin(angle)) * rect.height * radius)
+        }
         var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.midY), control: CGPoint(x: rect.midX, y: rect.midY))
-        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY), control: CGPoint(x: rect.midX, y: rect.midY))
-        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.midY), control: CGPoint(x: rect.midX, y: rect.midY))
-        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY), control: CGPoint(x: rect.midX, y: rect.midY))
-        path.closeSubpath()
-        return path
+        for index in points.indices {
+            let previous = points[(index + 7) % 8], point = points[index], next = points[(index + 1) % 8]
+            let start = CGPoint(x: point.x + (previous.x - point.x) * 0.18, y: point.y + (previous.y - point.y) * 0.18)
+            let end = CGPoint(x: point.x + (next.x - point.x) * 0.18, y: point.y + (next.y - point.y) * 0.18)
+            if index == 0 { path.move(to: start) } else { path.addLine(to: start) }
+            path.addQuadCurve(to: end, control: point)
+        }
+        path.closeSubpath(); return path
     }
 }
 
@@ -330,5 +337,17 @@ struct CameraOutlineMark: Shape {
         path.closeSubpath()
         path.addEllipse(in: CGRect(x: 7, y: 8, width: 10, height: 10))
         return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
+    }
+}
+
+struct BirdTextField: View {
+    let placeholder: String
+    @Binding var text: String
+    init(_ placeholder: String, text: Binding<String>) { self.placeholder = placeholder; _text = text }
+    var body: some View {
+        TextField(placeholder, text: $text,
+                  prompt: Text(placeholder).foregroundColor(FieldGuideTheme.charcoal.opacity(0.78)))
+            .foregroundStyle(FieldGuideTheme.charcoal).tint(FieldGuideTheme.charcoal)
+            .environment(\.colorScheme, .light)
     }
 }

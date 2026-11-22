@@ -47,7 +47,7 @@ private struct GoalCard: View {
             let count = goal.completedIDs(in: store.observations).count
             Text("\(count) van \(goal.speciesIDs.count) soorten gelogd")
                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-            GoalProgress(goal: goal)
+            GeometryReader { bounds in GoalProgress(goal: goal).frame(width: bounds.size.width / 2) }.frame(height: 4)
         }
         .padding(.horizontal, 16).padding(.vertical, 28).frame(maxWidth: .infinity, alignment: .leading)
         .background {
@@ -59,7 +59,7 @@ private struct GoalCard: View {
                             .frame(width: bounds.size.width * 0.48, height: bounds.size.height, alignment: .trailing)
                             .clipped()
                             .mask(LinearGradient(colors: [.clear, .black, .black], startPoint: .leading, endPoint: .trailing))
-                            .opacity(0.65).blendMode(.multiply)
+                            .blendMode(.multiply)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }.accessibilityHidden(true)
                 } else if favorite != nil {
@@ -132,7 +132,7 @@ struct GoalForm: View {
     @EnvironmentObject private var store: ObservationStore
     @Environment(\.dismiss) private var dismiss
     @State private var name: String
-    @State private var search = ""
+    @State private var showSearch = false
     @State private var selection: GoalSpeciesSelection
     @State private var error: String?
     init(goal: BirdGoal? = nil) {
@@ -141,16 +141,8 @@ struct GoalForm: View {
         _selection = State(initialValue: GoalSpeciesSelection(ids: Set(goal?.speciesIDs ?? []), favoriteID: goal?.favoriteSpeciesID))
     }
     private var birds: [Species] {
-        let term = search.trimmingCharacters(in: .whitespacesAndNewlines)
-        let catalog = SpeciesGuideCatalog.species
-        let known = Set(catalog.map(\.id))
-        let unknown = selection.ids.subtracting(known).map {
-            Species(id: $0, taxonomyVersion: "unknown", dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "")
-        }
-        return (catalog + unknown).filter { bird in
-            term.isEmpty || ([bird.dutchName, bird.englishName, bird.scientificName] + bird.aliases).contains {
-                $0.range(of: term, options: [.caseInsensitive, .diacriticInsensitive]) != nil
-            }
+        selection.ids.map { id in
+            SpeciesGuideCatalog.species(id: id) ?? Species(id: id, taxonomyVersion: "unknown", dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "")
         }.sorted { $0.dutchName.localizedStandardCompare($1.dutchName) == .orderedAscending }
     }
     var body: some View {
@@ -158,31 +150,16 @@ struct GoalForm: View {
             CenteredPageHeader(title: original == nil ? "Doelstelling toevoegen" : "Doelstelling bewerken") { dismiss() }
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 20) {
-                    TextField("Naam van je doelstelling", text: $name)
+                    BirdTextField("Naam van je doelstelling", text: $name)
                         .font(FieldGuideTheme.sans(22, relativeTo: .title2)).modifier(RoundedSearchField())
                     Text("\(selection.ids.count) soorten geselecteerd").font(FieldGuideTheme.sans(16))
-                    TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled()
-                    if birds.isEmpty { Text("Geen soorten gevonden.") }
+                    Button { showSearch = true } label: {
+                        HStack { FineSearchMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 18, height: 18); Text("Zoek een vogel"); Spacer() }
+                            .foregroundStyle(FieldGuideTheme.taupe).modifier(RoundedSearchField())
+                    }.buttonStyle(.plain)
+
                     ForEach(birds) { bird in
-                        Button { selection.toggle(bird.id) } label: {
-                            HStack(spacing: 16) {
-                                PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
-                                VStack(alignment: .leading, spacing: 6) {
-                                    SerifText(bird.dutchName, size: 16, relativeTo: .body)
-                                    Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
-                                }.frame(maxWidth: .infinity, alignment: .leading)
-                                if selection.favoriteID == bird.id {
-                                    FavoriteStar().fill(FieldGuideTheme.khaki).frame(width: 16, height: 16)
-                                        .accessibilityLabel("Favoriet")
-                                }
-                                Image(systemName: selection.ids.contains(bird.id) ? "checkmark.circle.fill" : "circle")
-                                    .foregroundStyle(FieldGuideTheme.khaki)
-                            }.frame(minHeight: 64).contentShape(Rectangle())
-                        }.buttonStyle(.plain)
-                            .highPriorityGesture(LongPressGesture(minimumDuration: 0.5).onEnded { _ in selection.chooseFavorite(bird.id) })
-                            .accessibilityAddTraits(selection.ids.contains(bird.id) ? [.isSelected] : [])
-                            .accessibilityAction(named: "Maak favoriet") { selection.chooseFavorite(bird.id) }
-                            .accessibilityHint("Houd ingedrukt om als favoriet te kiezen")
+                        GoalSelectionRow(bird: bird, selection: $selection)
                         Divider()
                     }
                     Text("Reeds gelogde soorten worden meteen afgevinkt.").font(FieldGuideTheme.sans(13, relativeTo: .footnote))
@@ -197,6 +174,7 @@ struct GoalForm: View {
                     .padding(20).background(FieldGuideTheme.ivory)
             }
         }.foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory.ignoresSafeArea())
+            .fullScreenCover(isPresented: $showSearch) { GoalSpeciesPicker(selection: $selection) }
     }
     private func save() {
         let previous = original?.speciesIDs ?? []
@@ -209,6 +187,54 @@ struct GoalForm: View {
             if original != nil { try store.updateGoal(goal) } else { try store.addGoal(goal) }
             dismiss()
         } catch { self.error = error.localizedDescription }
+    }
+}
+
+private struct GoalSelectionRow: View {
+    let bird: Species
+    @Binding var selection: GoalSpeciesSelection
+    var body: some View {
+        Button { selection.toggle(bird.id) } label: {
+            HStack(spacing: 16) {
+                PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
+                VStack(alignment: .leading, spacing: 6) {
+                    SerifText(bird.dutchName, size: 16, relativeTo: .body)
+                    Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                }.frame(maxWidth: .infinity, alignment: .leading)
+                if selection.favoriteID == bird.id { FavoriteStar().fill(FieldGuideTheme.khaki).frame(width: 16, height: 16).accessibilityLabel("Favoriet") }
+                Image(systemName: selection.ids.contains(bird.id) ? "checkmark.circle.fill" : "circle").foregroundStyle(FieldGuideTheme.khaki)
+            }.frame(minHeight: 64).contentShape(Rectangle())
+        }.buttonStyle(.plain)
+            .highPriorityGesture(LongPressGesture(minimumDuration: 0.5).onEnded { _ in selection.chooseFavorite(bird.id) })
+            .accessibilityAddTraits(selection.ids.contains(bird.id) ? [.isSelected] : [])
+            .accessibilityAction(named: "Maak favoriet") { selection.chooseFavorite(bird.id) }
+            .accessibilityHint("Houd ingedrukt om als favoriet te kiezen")
+    }
+}
+private struct GoalSpeciesPicker: View {
+    @Binding var selection: GoalSpeciesSelection
+    @Environment(\.dismiss) private var dismiss
+    @State private var search = ""
+    @FocusState private var focused: Bool
+    private var birds: [Species] {
+        let catalog = SpeciesGuideCatalog.species
+        let known = Set(catalog.map(\.id))
+        let unknown = selection.ids.subtracting(known).map { Species(id: $0, taxonomyVersion: "unknown", dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "") }
+        return SpeciesCatalogSearch.results(for: search, in: catalog + unknown)
+    }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            SpeciesBackButton { dismiss() }.padding(.top, 4)
+            Text("Vogels selecteren").font(FieldGuideTheme.sans(24, relativeTo: .title2))
+            BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().focused($focused)
+            ScrollView {
+                LazyVStack(spacing: 12) {
+                    ForEach(birds) { bird in GoalSelectionRow(bird: bird, selection: $selection); Divider() }
+                    if birds.isEmpty { Text("Geen soorten gevonden.") }
+                }.padding(.bottom, 24)
+            }
+        }.padding(.horizontal, 20).foregroundStyle(FieldGuideTheme.charcoal)
+            .background(FieldGuideTheme.ivory.ignoresSafeArea()).task { focused = true }
     }
 }
 
