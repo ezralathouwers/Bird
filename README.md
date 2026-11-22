@@ -126,3 +126,13 @@ ontbrekende kaarten opnieuw; goede bestanden blijven ongewijzigd. Downloaden van
 een nieuwe app-code-ZIP is hiervoor niet nodig. Bouw na afloop hetzelfde project
 opnieuw in Xcode. Eventuele resterende afwijsredenen staan in het bijgewerkte
 `conversion-report.json`.
+
+## Geluidsknop op de vogelsoortpagina
+
+De app zoekt bij het openen van een soortpagina een passende, vrij gelicentieerde
+opname op Wikimedia Commons. Alleen bij een gevonden iPhone-geschikte opname
+verschijnt de geluidsknop. Eén tik start afspelen in een lus; opnieuw tikken of
+het scherm verlaten stopt het geluid. Er is geen extra API-sleutel nodig.
+De opnamen streamen via internet; bron- en licentiegegevens staan in Info.
+Zie `Docs/SPECIES_AUDIO.md` voor bronselectie, controles en de native audiotests
+die nog op de Mac/iPhone moeten worden uitgevoerd.

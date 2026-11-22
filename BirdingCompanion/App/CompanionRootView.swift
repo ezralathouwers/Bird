@@ -34,6 +34,8 @@ struct CompanionRootView: View {
                 ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
             }
         }
+            .environment(\.speciesAudioIsAllowed,
+                         observationNavigation.selection == nil && !showLiveSession && !showAddMenu)
             .environmentObject(observationNavigation)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background((showAddMenu ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory).ignoresSafeArea())

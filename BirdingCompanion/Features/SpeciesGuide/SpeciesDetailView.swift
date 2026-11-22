@@ -1,5 +1,6 @@
 import SwiftUI
 import SafariServices
+import AVFoundation
 
 struct SpeciesDetailView: View {
     let species: Species
@@ -9,7 +10,9 @@ struct SpeciesDetailView: View {
     @State private var artworkPage = 0
     @State private var showObservation = false
     @State private var showImages = false
-    @State private var showAudio = false
+    @StateObject private var audio = SpeciesAudioModel()
+    @Environment(\.speciesAudioIsAllowed) private var audioIsAllowed
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showRangeMap = false
 
     private var searchURL: URL {
@@ -65,9 +68,19 @@ struct SpeciesDetailView: View {
                     .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Sluiten") { showImages = false } } }
             }
         }
-        .alert("Geluid nog niet beschikbaar", isPresented: $showAudio) {
-            Button("Sluiten", role: .cancel) {}
-        } message: { Text("Er is nog geen geluidsopname met gecontroleerde gebruiksrechten toegevoegd.") }
+        .task(id: species.id) { await audio.prepare(for: species) }
+        .onDisappear { audio.leavePage() }
+        .onChange(of: audioIsAllowed) { _, allowed in if !allowed { audio.stop() } }
+        .onChange(of: scenePhase) { _, phase in if phase != .active { audio.stop() } }
+        .onChange(of: showImages) { _, shown in if shown { audio.stop() } }
+        .onChange(of: showObservation) { _, shown in if shown { audio.stop() } }
+        .onChange(of: showRangeMap) { _, shown in if shown { audio.stop() } }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in audio.stop() }
+        .alert("Geluid afspelen", isPresented: Binding(
+            get: { audio.playbackError != nil },
+            set: { if !$0 { audio.playbackError = nil } })) {
+                Button("Sluiten", role: .cancel) { audio.playbackError = nil }
+            } message: { Text(audio.playbackError ?? "") }
     }
 
     private var header: some View {
@@ -111,7 +124,13 @@ struct SpeciesDetailView: View {
 
     private var actions: some View {
         HStack(spacing: 8) {
-            RoundAction(symbol: "speaker.wave.2", label: "Beluister \(species.dutchName)") { showAudio = true }
+            if audio.recording != nil {
+                RoundAction(symbol: audio.isPlaying ? "stop" : "speaker.wave.2",
+                            label: audio.isPlaying ? "Stop het geluid van \(species.dutchName)" : "Beluister \(species.dutchName)") {
+                    audio.toggle()
+                }
+                .accessibilityValue(audio.isPlaying ? "Wordt herhaald" : "Gestopt")
+            }
             RoundAction(symbol: "photo", label: "Zoek afbeeldingen van \(species.dutchName) op Google") { showImages = true }
             RoundAction(symbol: "plus", label: "Voeg een waarneming toe") { showObservation = true }
         }

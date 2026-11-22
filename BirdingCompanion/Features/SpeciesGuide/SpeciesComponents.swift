@@ -392,6 +392,7 @@ struct PupilFreeEye: Shape {
 
 
 struct SpeciesCatalogSourcesView: View {
+    @ObservedObject private var audioCredits = SpeciesAudioCredits.shared
     var detail: SpeciesDetails? = nil
     @State private var sourceQuery = ""
     @State private var selectedDetail: SpeciesDetails?
@@ -454,6 +455,16 @@ struct SpeciesCatalogSourcesView: View {
                     Link("BirdNET+ Taxonomy en broncredits", destination: URL(string: "https://birdnet.cornell.edu/taxonomy/about")!)
                     Text("Bewerkingen: selectie op soortniveau, hoofdletters aangepast, vaste app-ID’s behouden en geluidsherkenning apart gekoppeld. De afgeleide catalogus wordt gedeeld onder CC BY-SA 4.0.")
                     Link("Licentie CC BY-SA 4.0", destination: URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!)
+                    if !audioCredits.recordings.isEmpty {
+                        Text("Vogelgeluiden").font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                        ForEach(audioCredits.recordings.sorted { $0.speciesName < $1.speciesName }) { recording in
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text("\(recording.speciesName) — \(recording.artist)")
+                                Link("Opname en brongegevens", destination: recording.sourceURL)
+                                Link(recording.license, destination: recording.licenseURL)
+                            }
+                        }
+                    }
                     Text("Fotoherkenning: BioCLIP 2, Imageomics Institute (Gu en collega's, 2025), MIT. Core ML-conversie: fearnt/Thicket. Tekstreferenties: TreeOfLife-200M en Valen-Peregrine/FaunaPulse, CC0; GBIF en Catalogue of Life, CC BY 4.0.")
                     Link("BioCLIP 2 en licentie", destination: URL(string: "https://huggingface.co/imageomics/bioclip-2")!)
                     if let source = try? SpeciesRangeSource.load(), let citation = source.citation {
