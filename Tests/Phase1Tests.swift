@@ -267,6 +267,20 @@ final class DiscoverRankingTests: XCTestCase {
 
 @MainActor
 final class DiscoverViewModelTests: XCTestCase {
+    func testInvalidKeyShowsConnectionControlsAndResetClearsOldRequestState() async {
+        let model = DiscoverViewModel(repository: EBirdDiscoverRepository(
+            keys: EBirdFixtureKeyStore(), client: EBirdFixtureHTTP(status: 403)))
+        await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10))
+        XCTAssertTrue(model.needsConnection)
+        XCTAssertNotNil(model.message)
+        model.reset()
+        XCTAssertFalse(model.needsConnection)
+        XCTAssertNil(model.message)
+        XCTAssertNil(model.loadedQuery)
+        XCTAssertTrue(model.rows.isEmpty)
+        XCTAssertFalse(model.isLoading)
+    }
+
     func testIncompleteProviderCannotProduceMisleadingFrequencyRanking() async {
         let model = DiscoverViewModel(repository: IncompleteDiscoverFixture())
         await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 25))
@@ -276,7 +290,7 @@ final class DiscoverViewModelTests: XCTestCase {
     }
 
     func testDemoIsExplicitAndMissingProviderDoesNotInventLiveRows() async {
-        let model = DiscoverViewModel()
+        let model = DiscoverViewModel(repository: UnconfiguredDiscoverRepository())
         let query = DiscoverQuery(latitude: 0, longitude: 0,
             now: Date(timeIntervalSince1970: 2_000_000_000), radiusKilometers: 25)
         await model.load(query: query, demo: true)
@@ -1086,5 +1100,133 @@ final class SpeciesArtworkKeyTests: XCTestCase {
         let keys = SpeciesGuideCatalog.species.map(\.artworkKey)
         XCTAssertEqual(Set(keys).count, keys.count)
         XCTAssertTrue(keys.allSatisfy { !$0.contains(":") })
+    }
+}
+
+// Transport fixtures never contain a personal key and never contact eBird.
+private struct EBirdFixtureKeyStore: EBirdKeyStore {
+    var key: String? = "fixture-key"
+    func read() throws -> String? { key }
+    func save(_ key: String) throws { throw CocoaError(.featureUnsupported) }
+    func remove() throws { throw CocoaError(.featureUnsupported) }
+}
+
+private struct EBirdFixtureHTTP: EBirdHTTPClient {
+    var status = 200
+    var body = "[]"
+    var cancel = false
+    var networkFailure = false
+    func data(for request: URLRequest) async throws -> (Data, HTTPURLResponse) {
+        if cancel { throw CancellationError() }
+        if networkFailure { throw URLError(.notConnectedToInternet) }
+        return (Data(body.utf8), HTTPURLResponse(url: request.url!, statusCode: status,
+                                               httpVersion: nil, headerFields: nil)!)
+    }
+}
+
+@MainActor
+final class EBirdDiscoverTests: XCTestCase {
+    private var now: Date { Date(timeIntervalSince1970: 1_800_000_000) }
+    private var query: DiscoverQuery { DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: 10) }
+    private var index: EBirdSpeciesIndex {
+        EBirdSpeciesIndex(entries: [("eurbla", DiscoverFixtures.catalog[0]), ("gretit", DiscoverFixtures.catalog[1])])
+    }
+    private var validBody: String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd"
+        let date = formatter.string(from: now)
+        return """
+        [
+          {"speciesCode":"eurbla","sciName":"Turdus merula","obsDt":"\(date) 10:15","lat":0,"lng":0,"subId":"S1","obsValid":true},
+          {"speciesCode":"eurbla","sciName":"Turdus merula","obsDt":"\(date)","lat":0,"lng":0,"subId":"S2","obsValid":true},
+          {"speciesCode":"gretit","sciName":"Parus major","obsDt":"\(date)","lat":0,"lng":0,"subId":"S3","obsValid":true},
+          {"speciesCode":"gretit","sciName":"Parus major","obsDt":"\(date)","lat":1,"lng":1,"subId":"far","obsValid":true},
+          {"speciesCode":"unknown","sciName":"Unknown species","obsDt":"\(date)","lat":0,"lng":0,"subId":"unknown","obsValid":true}
+        ]
+        """
+    }
+    private func repository(http: EBirdFixtureHTTP = EBirdFixtureHTTP(), key: String? = "fixture-key") -> EBirdDiscoverRepository {
+        let index = index
+        let now = now
+        return EBirdDiscoverRepository(keys: EBirdFixtureKeyStore(key: key), client: http,
+                                       index: { index }, now: { now })
+    }
+
+    func testRequestUsesThirtyDaysTenKilometersAndHeaderOnlyKey() throws {
+        let request = try EBirdDiscoverRepository.request(query: query, apiKey: "  fixture-key  ")
+        XCTAssertEqual(request.value(forHTTPHeaderField: "X-eBirdApiToken"), "fixture-key")
+        XCTAssertEqual(request.url?.scheme, "https")
+        XCTAssertEqual(request.url?.host, "api.ebird.org")
+        XCTAssertEqual(request.url?.path, "/v2/data/obs/geo/recent")
+        let items = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!
+        let parameters = Dictionary(uniqueKeysWithValues: items.map { ($0.name, $0.value!) })
+        XCTAssertEqual(parameters["dist"], "10.0")
+        XCTAssertEqual(parameters["back"], "30")
+        XCTAssertEqual(parameters["cat"], "species")
+        XCTAssertEqual(parameters["includeProvisional"], "false")
+        XCTAssertFalse(request.url!.absoluteString.contains("fixture-key"))
+        let uuidKey = "00000000-0000-0000-0000-000000000001"
+        XCTAssertEqual(try EBirdDiscoverRepository.request(query: query, apiKey: uuidKey)
+            .value(forHTTPHeaderField: "X-eBirdApiToken"), uuidKey)
+        XCTAssertThrowsError(try EBirdDiscoverRepository.request(query: query, apiKey: "key\r\nInjected: value"))
+        let bad = DiscoverQuery(latitude: .nan, longitude: 0, now: now, radiusKilometers: 10)
+        XCTAssertThrowsError(try EBirdDiscoverRepository.request(query: bad, apiKey: "fixture-key"))
+    }
+
+    func testLiveInventoryUsesStableIDsLocalRadiusAndAlphabeticalOrderNotCounts() async throws {
+        let dataset = try await repository(http: EBirdFixtureHTTP(body: validBody)).reports(for: query)
+        let rows = DiscoverRanking.ranked(dataset.reports, query: query, ordering: dataset.ordering)
+        XCTAssertFalse(dataset.isDemo)
+        XCTAssertEqual(dataset.ordering, .alphabetical)
+        XCTAssertEqual(rows.map(\.species.dutchName), ["Koolmees", "Merel"])
+        XCTAssertEqual(rows.map(\.reportCount), [1, 2]) // More blackbird reports must not imply frequency ordering.
+        XCTAssertEqual(rows.last?.id, DiscoverFixtures.catalog[0].id)
+        XCTAssertEqual(dataset.reports.count, 4) // Unknown species excluded, radius filtered by shared ranking.
+    }
+
+    func testUnknownCodesUseOnlyUnambiguousScientificNamesAndAliases() {
+        var bird = DiscoverFixtures.catalog[0]
+        bird.aliases = ["Historical binomial"]
+        let lookup = EBirdSpeciesIndex(entries: [("eurbla", bird)])
+        XCTAssertEqual(lookup.species(code: "newcode", scientificName: "Historical binomial")?.id, bird.id)
+        XCTAssertNil(lookup.species(code: "unknown", scientificName: "unknown"))
+        var other = DiscoverFixtures.catalog[1]
+        other.aliases = ["Historical binomial"]
+        let ambiguous = EBirdSpeciesIndex(entries: [("eurbla", bird), ("gretit", other)])
+        XCTAssertNil(ambiguous.species(code: "unknown", scientificName: "Historical binomial"))
+    }
+
+    func testMissingKeyAuthenticationThrottlingMalformedDataAndOfflineErrors() async {
+        do { _ = try await repository(key: nil).reports(for: query); XCTFail("Expected missing key") }
+        catch { XCTAssertEqual(error as? DiscoverDataError, .notConfigured) }
+        for (http, expected) in [
+            (EBirdFixtureHTTP(status: 403), EBirdError.invalidKey),
+            (EBirdFixtureHTTP(status: 429), .rateLimited),
+            (EBirdFixtureHTTP(status: 500), .unavailable),
+            (EBirdFixtureHTTP(body: "not-json"), .invalidResponse),
+            (EBirdFixtureHTTP(networkFailure: true), .unavailable)
+        ] {
+            do { _ = try await repository(http: http).reports(for: query); XCTFail("Expected error") }
+            catch { XCTAssertEqual(error as? EBirdError, expected) }
+        }
+    }
+
+    func testCancellationIsPreservedAndEmptyFeedIsSuccessful() async throws {
+        do { _ = try await repository(http: EBirdFixtureHTTP(cancel: true)).reports(for: query); XCTFail("Expected cancellation") }
+        catch { XCTAssertTrue(error is CancellationError) }
+        let empty = try await repository().reports(for: query)
+        XCTAssertTrue(empty.reports.isEmpty)
+        XCTAssertTrue(empty.coversRequestedWindow)
+        XCTAssertFalse(empty.isDemo)
+    }
+
+    func testDateOnlyRecordsAndHistoricalRequestsDoNotInventCoverage() async {
+        XCTAssertNotNil(EBirdDiscoverRepository.observationDate("2027-01-15", relativeTo: now))
+        XCTAssertNil(EBirdDiscoverRepository.observationDate("bad-date", relativeTo: now))
+        XCTAssertNil(EBirdDiscoverRepository.observationDate("2020-01-01", relativeTo: now))
+        let historical = DiscoverQuery(latitude: 0, longitude: 0, now: now.addingTimeInterval(-31 * 86400), radiusKilometers: 10)
+        do { _ = try await repository().reports(for: historical); XCTFail("Expected unsupported date") }
+        catch { XCTAssertEqual(error as? EBirdError, .unsupportedDate) }
     }
 }

@@ -9,6 +9,8 @@ struct DiscoverView: View {
     @State private var demo = false
     @State private var showSearch = false
     @State private var showCatalogSources = false
+    @State private var showEBirdConnection = false
+    @State private var connectionRevision = UUID()
     @State private var catalogQuery = ""
     @FocusState private var searchFocused: Bool
     var catalog: [Species] = SpeciesGuideCatalog.species
@@ -16,7 +18,7 @@ struct DiscoverView: View {
 
     private var queryKey: String {
         guard let latitude = location.latitude, let longitude = location.longitude else { return "no-location" }
-        return "\(latitude),\(longitude),\(demo)"
+        return "\(latitude),\(longitude),\(demo),\(connectionRevision)"
     }
     private var query: DiscoverQuery? {
         guard let latitude = location.latitude, let longitude = location.longitude else { return nil }
@@ -92,6 +94,13 @@ struct DiscoverView: View {
             if !shown { catalogQuery = "" }
         }
         .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
+        .sheet(isPresented: $showEBirdConnection) {
+            EBirdConnectionView(query: query) {
+                model.reset()
+                demo = false
+                connectionRevision = UUID()
+            }
+        }
         .toolbar(.hidden, for: .navigationBar)
         .task { if location.latitude == nil && !demo { location.useCurrentLocation() } }
         .task(id: queryKey) { if let query { await model.load(query: query, demo: demo) } }
@@ -119,6 +128,13 @@ struct DiscoverView: View {
                 if let message = location.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                 if model.isLoading { ProgressView("Vogels in de omgeving ophalen…") }
                 if let message = model.message { Text(message) }
+                if model.needsConnection {
+                    Button("Verbind eBird") { showEBirdConnection = true }.frame(minHeight: 44)
+                } else if model.message != nil {
+                    Button("Probeer opnieuw") {
+                        if let query { Task { await model.load(query: query, demo: demo) } }
+                    }.frame(minHeight: 44)
+                }
                 if model.isDemo {
                     Text("Voorbeelddata · geen live meldingen voor deze locatie")
                         .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
@@ -146,6 +162,7 @@ struct DiscoverView: View {
                 Button { demo = false; location.useCurrentLocation() } label: {
                     Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44)
                 }
+                Button("Instellingen lokale meldingen") { showEBirdConnection = true }.frame(minHeight: 44)
                 if !model.isDemo {
                     Button("Bekijk voorbeeldpagina") { demo = true }
                         .frame(minHeight: 44)

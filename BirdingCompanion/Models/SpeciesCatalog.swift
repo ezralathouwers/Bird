@@ -20,6 +20,7 @@ struct BirdNETLabel: Decodable {
 struct WorldSpeciesRecord: Decodable, Sendable {
     let id: String
     let birdnetID: String?
+    let ebirdCode: String?
     let scientificName: String
     let dutchName: String
     let englishName: String

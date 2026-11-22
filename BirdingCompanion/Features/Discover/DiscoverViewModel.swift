@@ -8,12 +8,24 @@ final class DiscoverViewModel: ObservableObject {
     @Published private(set) var message: String?
     @Published private(set) var attribution: String?
     @Published private(set) var isDemo = false
+    @Published private(set) var needsConnection = false
     @Published private(set) var loadedQuery: DiscoverQuery?
     private let repository: any DiscoverRepository
     private var requestID = UUID()
 
-    init(repository: any DiscoverRepository = UnconfiguredDiscoverRepository()) {
+    init(repository: any DiscoverRepository = EBirdDiscoverRepository()) {
         self.repository = repository
+    }
+
+    func reset() {
+        requestID = UUID() // A request using an old key must never repopulate the list.
+        rows = []
+        isLoading = false
+        message = nil
+        attribution = nil
+        isDemo = false
+        needsConnection = false
+        loadedQuery = nil
     }
 
     func load(query: DiscoverQuery, demo: Bool = false) async {
@@ -21,6 +33,7 @@ final class DiscoverViewModel: ObservableObject {
         requestID = id
         rows = [] // Never leave another area's data under the new location heading.
         message = nil
+        needsConnection = false
         isLoading = true
         isDemo = false
         attribution = nil
@@ -32,13 +45,15 @@ final class DiscoverViewModel: ObservableObject {
             else { dataset = try await repository.reports(for: query) }
             guard requestID == id, !Task.isCancelled else { return }
             guard dataset.coversRequestedWindow else { throw DiscoverDataError.incompleteFeed }
-            rows = DiscoverRanking.ranked(dataset.reports, query: query)
+            rows = DiscoverRanking.ranked(dataset.reports, query: query, ordering: dataset.ordering)
             isDemo = dataset.isDemo
             attribution = dataset.attribution
             loadedQuery = query
             isLoading = false
         } catch {
             guard requestID == id, !Task.isCancelled else { return }
+            needsConnection = (error as? DiscoverDataError) == .notConfigured
+                || (error as? EBirdError) == .invalidKey
             message = error is CancellationError ? nil : error.localizedDescription
             isLoading = false
         }

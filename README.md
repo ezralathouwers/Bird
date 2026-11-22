@@ -71,3 +71,32 @@ Geluid-ID is nu in code gekoppeld aan BirdNET+ 3.0.1 Core ML: eenmalige modeldow
 
 
 De wereldgids bevat nu alle 11.172 AviList-v2026-soorten, inclusief soorten zonder Sound ID, plus één apart bewaarde BirdNET-compatibiliteitsvermelding. Zoeken en alle vogelkeuzes gebruiken die lijst. Iedere soort heeft een basispagina; ontbrekende illustraties/feiten blijven placeholders. Zie `Docs/WORLD_SPECIES_PAGES.md` en de inhoudsinventaris voor de verdere uitwerking.
+
+
+## Lokale vogelmeldingen instellen
+
+Ontdek haalt nu echte recent gemelde soorten op via eBird. Vraag een gratis
+persoonlijke API-sleutel aan op https://ebird.org/api/keygen. Open in de app
+**Ontdek → Verbind eBird** (of **Instellingen lokale meldingen**), plak de sleutel
+en kies **Verbind en haal vogels op**. De app controleert de toegang voordat hij
+de sleutel opslaat in de lokale iOS-sleutelhanger. Een sleutel staat nooit in de
+repository, Info.plist, URL-query of UserDefaults. Een simulator en een echte
+iPhone hebben elk hun eigen sleutelhanger; voer de sleutel op elk toestel in.
+Stel in de simulator ook een locatie in via **Features → Location** en sta
+locatietoegang toe. Trek de resultatenlijst omlaag om te vernieuwen.
+
+De lijst omvat recent gemelde soorten binnen 10 km en de laatste 30 dagen.
+De eBird-API geeft alleen de recentste melding per soort, geen complete telling
+van meldingen. Daarom staan deze resultaten alfabetisch op Nederlandse naam;
+sortering op aantallen blijft uitsluitend beschikbaar voor complete checklistfeeds.
+De soortkoppeling gebruikt bestaande eBird-codes, daarna alleen ondubbelzinnige
+wetenschappelijke namen/aliassen; interne IDs en logstatus blijven behouden.
+Onbekende taxa worden niet als nieuwe soorten verzonnen. Voor historische
+sessiedatums blijft zoeken in de volledige catalogus beschikbaar.
+
+Een live HTTP-test op 22 november 2026 gaf 92 soorten voor Gent terug; alle 92
+konden aan de lokale catalogus worden gekoppeld. Dit is geen simulator- of
+Xcode-test. Nieuwe XCTest-fixtures controleren requests, authenticatiefouten,
+netwerkfouten, annulering, lege resultaten, taxonomiekoppeling en alfabetische
+sortering. Deze tests en Keychain/SwiftUI-gedrag moeten nog op de Mac worden
+uitgevoerd; zie `Docs/EBIRD_DISCOVER.md`.

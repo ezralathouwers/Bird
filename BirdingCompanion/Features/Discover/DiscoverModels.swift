@@ -35,22 +35,27 @@ struct DiscoverSpecies: Identifiable, Sendable {
     var id: String { species.id }
 }
 
+enum DiscoverOrdering: Sendable, Equatable {
+    case checklistFrequency, alphabetical
+}
+
 struct DiscoverDataset: Sendable {
     let reports: [NearbyReport]
     let attribution: String
     let isDemo: Bool
     let coversRequestedWindow: Bool
+    var ordering: DiscoverOrdering = .checklistFrequency
 }
 
 protocol DiscoverRepository: Sendable {
     func reports(for query: DiscoverQuery) async throws -> DiscoverDataset
 }
 
-enum DiscoverDataError: LocalizedError {
+enum DiscoverDataError: LocalizedError, Equatable {
     case notConfigured, incompleteFeed
     var errorDescription: String? {
         switch self {
-        case .notConfigured: "Lokale vogelmeldingen zijn nog niet beschikbaar. Je kunt de voorbeeldpagina bekijken."
+        case .notConfigured: "Verbind eBird om vogelmeldingen in je omgeving op te halen."
         case .incompleteFeed: "Deze gegevens zijn onvolledig. Een betrouwbare rangschikking is nog niet beschikbaar."
         }
     }
@@ -63,7 +68,8 @@ struct UnconfiguredDiscoverRepository: DiscoverRepository {
 }
 
 struct DiscoverRanking {
-    static func ranked(_ reports: [NearbyReport], query: DiscoverQuery) -> [DiscoverSpecies] {
+    static func ranked(_ reports: [NearbyReport], query: DiscoverQuery,
+                       ordering: DiscoverOrdering = .checklistFrequency) -> [DiscoverSpecies] {
         let center = CLLocation(latitude: query.latitude, longitude: query.longitude)
         var species: [String: Species] = [:]
         var checklists: [String: Set<String>] = [:]
@@ -80,7 +86,7 @@ struct DiscoverRanking {
         return species.values.map {
             DiscoverSpecies(species: $0, reportCount: checklists[$0.id]?.count ?? 0)
         }.sorted {
-            if $0.reportCount != $1.reportCount { return $0.reportCount > $1.reportCount }
+            if ordering == .checklistFrequency && $0.reportCount != $1.reportCount { return $0.reportCount > $1.reportCount }
             let left = $0.species.dutchName.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
             let right = $1.species.dutchName.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
             if left != right { return left < right }
