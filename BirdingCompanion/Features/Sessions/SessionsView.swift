@@ -39,18 +39,22 @@ enum SessionStats {
     }
 }
 
+private enum NewSessionMode: String, Identifiable {
+    case live, completed
+    var id: String { rawValue }
+}
+
 struct SessionsView: View {
     @EnvironmentObject private var store: ObservationStore
-    @State private var creatingLive = false
-    @State private var showForm = false
+    @State private var newSession: NewSessionMode?
     @Binding var showLive: Bool
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HStack(alignment: .top, spacing: 6) {
                     PageHeading(text: "Sessies").frame(maxWidth: .infinity, alignment: .leading)
-                    RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { creatingLive = false; showForm = true }
-                    RoundAction(symbol: "play", label: "Nieuwe livesessie starten") { creatingLive = true; showForm = true }
+                    RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { newSession = .completed }
+                    RoundAction(symbol: "play", label: "Nieuwe livesessie starten") { newSession = .live }
                         .disabled(store.activeSession != nil || store.loadError != nil)
                 }
                 if let message = store.loadError { Text(message).foregroundStyle(.red) }
@@ -73,7 +77,7 @@ struct SessionsView: View {
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                             let logs = store.observations(in: session)
                             let count = logs.filter { lifers.contains($0.id) }.count
-                            Text("\(logs.count) waarnemingen" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
+                            Text("\(logs.count) \(logs.count == 1 ? "waarneming" : "waarnemingen")" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                         }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
                     }.buttonStyle(.plain)
@@ -81,8 +85,8 @@ struct SessionsView: View {
                 }
             }.padding(20).padding(.bottom, 74)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
-            .fullScreenCover(isPresented: $showForm) {
-                SessionForm(live: creatingLive) { if creatingLive { showLive = true } }
+            .fullScreenCover(item: $newSession) { mode in
+                SessionForm(live: mode == .live) { if mode == .live { showLive = true } }.id(mode)
             }
             .navigationDestination(for: SessionRoute.self) { route in SessionDetailView(sessionID: route.id) }
             .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
@@ -160,7 +164,7 @@ struct SessionForm: View {
                             .disabled(location.isLocating)
                     }
                     if !live {
-                        Text("\(reviewing == nil ? selected.count : reviewLogs.count) waarnemingen")
+                        Text("\(reviewing == nil ? selected.count : reviewLogs.count) \((reviewing == nil ? selected.count : reviewLogs.count) == 1 ? "waarneming" : "waarnemingen")")
                             .font(FieldGuideTheme.sans(24, relativeTo: .title2))
                         SessionSearchLauncher { showSearch = true }.padding(.bottom, -12)
                         if reviewing != nil {
@@ -312,7 +316,7 @@ struct LiveSessionView: View {
                         if let message = logger.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                         if let error { Text(error).foregroundStyle(.red) }
                         let logs = store.observations(in: session)
-                        Text("\(logs.count) waarnemingen").font(FieldGuideTheme.sans(24, relativeTo: .title2))
+                        Text("\(logs.count) \(logs.count == 1 ? "waarneming" : "waarnemingen")").font(FieldGuideTheme.sans(24, relativeTo: .title2))
                         SessionLogsList(logs: logs, remove: { log in
                             do { try store.removeLiveObservation(id: log.id, sessionID: session.id) }
                             catch { self.error = error.localizedDescription }

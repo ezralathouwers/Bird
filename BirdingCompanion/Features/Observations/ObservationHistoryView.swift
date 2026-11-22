@@ -22,7 +22,7 @@ struct ObservationHistoryView: View {
                         .padding(.top, 12).padding(.bottom, 4)
                 } else {
                     Text("\(records.count)")
-                        .accessibilityLabel("\(records.count) waarnemingen")
+                        .accessibilityLabel("\(records.count) \(records.count == 1 ? "waarneming" : "waarnemingen")")
                         .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
                         .foregroundStyle(FieldGuideTheme.charcoal)
                         .accessibilityAddTraits(.isHeader)

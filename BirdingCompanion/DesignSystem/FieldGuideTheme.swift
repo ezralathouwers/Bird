@@ -203,7 +203,7 @@ struct ObservationTotal: View {
     var body: some View {
         Text("\(value)").font(FieldGuideTheme.sans(60, relativeTo: .title3))
             .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.35))
-            .accessibilityLabel("\(value) \(label)").accessibilityAddTraits(.isHeader)
+            .accessibilityLabel("\(value) \(value == 1 && label == "waarnemingen" ? "waarneming" : label)").accessibilityAddTraits(.isHeader)
     }
 }
 

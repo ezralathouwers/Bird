@@ -38,3 +38,13 @@ Empty bird searches request the existing nearby ranking for the chosen coordinat
 Finish-review is a draft until final confirmation. The session location/name, day, start/end times and individual observation times can be edited; observations can be explicitly removed or added. Changing the session day shifts draft observation dates by the same calendar-day offset while retaining times and original GPS points. Existing live logs retain their individual coordinates and place names when only the session location is renamed/moved. New observations added during review use the selected session location and start time. Original observation IDs/metadata are preserved for retained records. Cancelling review leaves the live session and all records unchanged. Removing records explicitly warns at confirmation that they are also removed from the logbook. Invalid intervals are rejected without dropping records. Concurrently added or edited logs invalidate the draft; reopening reloads the latest records. Completion writes the revised session and logs atomically.
 
 Additional tests cover revised live times with preserved coordinates/identity and unrelated records, invalid intervals, concurrent-edit protection, and atomic add/remove/reload. These are syntax-checked but not executed here. Xcode must also verify the nested scrolling, picker semantics (including overnight sessions and time zones), review cancellation, final confirmation, icon colors and reduced headings.
+
+
+### Deterministic creation routes — 22 November 2026
+
+The Sessions screen now presents a single identifiable creation mode rather
+than updating a live/completed boolean alongside a presentation boolean. The
+play action always supplies live mode (`Sessie starten`); the separate clock
+retains completed-session entry. The add menu also supplies literal live mode.
+Displayed observation counts use `1 waarneming`, including live/review states
+and accessibility counts. Native repeated-open/close testing remains pending.

@@ -112,7 +112,7 @@ struct DiscoverRanking {
 
     static func checklistURL(_ id: String?) -> URL? {
         guard let id, id.range(of: "^S[0-9]+$", options: .regularExpression) != nil else { return nil }
-        return URL(string: "https://ebird.org/checklist/" + id)
+        return URL(string: "https://ebird.org/checklist/" + id + "?siteLanguage=nl&locale=nl")
     }
 
     static func filtered(_ rows: [DiscoverSpecies], filter: DiscoverFilter,

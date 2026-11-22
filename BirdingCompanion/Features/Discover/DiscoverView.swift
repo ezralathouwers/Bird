@@ -49,7 +49,7 @@ struct DiscoverView: View {
                     .background(FieldGuideTheme.ivory)
                     .fixedSize(horizontal: false, vertical: true)
                     ScrollView {
-                        catalogSearch.padding(.horizontal, 20).padding(.bottom, 74)
+                        catalogSearch.padding(.horizontal, 20).padding(.bottom, 94)
                     }
                     .scrollDismissesKeyboard(.interactively)
                 }
@@ -65,7 +65,7 @@ struct DiscoverView: View {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 20) {
                             nearbyContent
-                        }.padding(.horizontal, 20).padding(.bottom, 74)
+                        }.padding(.horizontal, 20).padding(.bottom, 94)
                     }
                     .refreshable { if let query { await model.load(query: query, demo: demo) } }
                 }

@@ -19,7 +19,7 @@ struct AddEntryView: View {
                     choice("Waarneming", accessibilityLabel: "Waarneming toevoegen", destination: .observation,
                            height: choiceHeight)
                     separator
-                    choice("Sessie", accessibilityLabel: "Sessie toevoegen", destination: .session,
+                    choice("Sessie", accessibilityLabel: "Sessie starten", destination: .session,
                            height: choiceHeight)
                     separator
                     choice("Doelstelling", accessibilityLabel: "Doelstelling toevoegen", destination: .goal,

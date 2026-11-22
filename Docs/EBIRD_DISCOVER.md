@@ -70,3 +70,13 @@ committed. The key must be entered once on each simulator/device.
   records and explicit `dist=5`, `back=30`, `sort=date` request parameters.
 - On an actual iPhone verify location permission and Keychain persistence. No
   native build, Keychain integration or simulator/UI test is claimed by this work.
+
+
+### Checklist language links — 22 November 2026
+
+Checklist links explicitly request Dutch using `siteLanguage=nl&locale=nl`.
+This does not change the user's ChatGPT, Safari or eBird account settings. Both
+parameters are attached only after strict validation of a provider checklist ID.
+The eBird website served an anti-bot interstitial from this cloud workspace;
+end-to-end language rendering must be checked in the user's browser. An existing
+eBird login/cookie preference may still need changing on eBird itself.
