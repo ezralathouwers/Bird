@@ -20,6 +20,7 @@ struct CompanionRootView: View {
     @StateObject private var discover = DiscoverViewModel()
     @State private var showAddMenu = false
     @State private var showLaunchLogo = true
+    @State private var launchBirdFlying = false
     @State private var plusCenter = CGPoint.zero
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let addButtonDiameter: CGFloat = 64 * 0.9
@@ -63,18 +64,28 @@ struct CompanionRootView: View {
             .animation(reduceMotion ? nil : .easeInOut(duration: 0.32), value: showAddMenu)
             .overlay {
                 if showLaunchLogo {
-                    FieldGuideTheme.navigationOlive.ignoresSafeArea()
-                        .overlay {
-                            NavigationOutlineMark(kind: .bird).stroke(FieldGuideTheme.ivory,
-                                style: StrokeStyle(lineWidth: 1.5, lineCap: .round, lineJoin: .round))
-                                .frame(width: 88, height: 88).accessibilityLabel("Birder")
-                        }.transition(.opacity)
+                    GeometryReader { screen in
+                        ZStack {
+                            Color("LaunchOlive").opacity(launchBirdFlying ? 0 : 1)
+                            Image("LaunchBird").resizable().frame(width: 88, height: 88)
+                                .rotationEffect(.degrees(launchBirdFlying && !reduceMotion ? -25 : 0))
+                                .scaleEffect(launchBirdFlying && !reduceMotion ? 0.7 : 1)
+                                .offset(x: launchBirdFlying && !reduceMotion ? screen.size.width * 0.65 : 0,
+                                        y: launchBirdFlying && !reduceMotion ? -screen.size.height * 0.65 : 0)
+                                .opacity(launchBirdFlying && reduceMotion ? 0 : 1)
+                                .accessibilityLabel("Birder")
+                        }.frame(width: screen.size.width, height: screen.size.height).clipped()
+                    }.ignoresSafeArea().transition(.identity)
                 }
             }
             .task {
                 async let location: Void = SharedCurrentLocation.shared.prewarmIfAuthorized()
-                try? await Task.sleep(for: .seconds(1))
-                withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) { showLaunchLogo = false }
+                try? await Task.sleep(for: .milliseconds(750))
+                guard !Task.isCancelled else { return }
+                withAnimation(.easeInOut(duration: 0.75)) { launchBirdFlying = true }
+                try? await Task.sleep(for: .milliseconds(750))
+                guard !Task.isCancelled else { return }
+                showLaunchLogo = false
                 await location
             }
             .fullScreenCover(item: $observationNavigation.selection) { observation in

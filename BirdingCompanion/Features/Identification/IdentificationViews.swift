@@ -97,7 +97,7 @@ struct SoundIdentificationView: View {
                     SoundIdentificationResults(candidates: model.candidates, pins: pins,
                         activeIDs: model.activity.activeIDs(at: context.date, recording: model.isRecording)) { selectedSpecies = $0 }
                 }
-            }.padding(20).padding(.bottom, 54)
+            }.padding(20).padding(.bottom, 69)
         }.safeAreaInset(edge: .top, spacing: 0) {
             CenteredPageHeader(title: "Audio ID") { dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
@@ -168,8 +168,11 @@ struct PhotoIdentificationView: View {
                 }
                 if importing { ProgressView("Foto openen…") }
                 if model.photo != nil {
-                    Button(location == nil ? "Locatie toevoegen" : "Locatie bewerken") { showLocation = true }.buttonStyle(PhotoChoiceStyle())
-                    if let location { PhotoLocationBadge(name: location.name) }
+                    if let location {
+                        PhotoLocationBadge(name: location.name, edit: { showLocation = true })
+                    } else {
+                        Button("Locatie toevoegen") { showLocation = true }.buttonStyle(PhotoChoiceStyle())
+                    }
                 }
                 if let error { Text(error).foregroundStyle(.red) }
                 if let message = model.message { Text(message).font(FieldGuideTheme.sans(14, relativeTo: .subheadline)) }
@@ -235,7 +238,7 @@ struct PhotoIdentificationView: View {
     @ViewBuilder private func photoGroup(_ title: String, likelihood: PhotoRangeLikelihood) -> some View {
         let birds = model.candidates.filter { (rangeStatus[$0.id] ?? .unknown) == likelihood }
         if !birds.isEmpty {
-            Text(title).font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 12)
+            Text(title).font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).frame(maxWidth: .infinity, alignment: .leading).padding(.top, likelihood == .unlikely ? 22 : 12)
             IdentificationResults(candidates: birds) { selectedSpecies = $0 }
         }
     }
@@ -368,11 +371,18 @@ struct PhotoLocationPicker: View {
 
 struct PhotoLocationBadge: View {
     let name: String
+    var edit: (() -> Void)? = nil
     var body: some View {
         HStack(spacing: 8) {
             LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
                 .frame(width: 24, height: 24).fixedSize().accessibilityHidden(true)
             Text(name).font(FieldGuideTheme.sans(14)).frame(maxWidth: .infinity, alignment: .leading)
+            if let edit {
+                Button(action: edit) {
+                    EditOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
+                        .frame(width: 22, height: 22).frame(width: 44, height: 44).contentShape(Rectangle())
+                }.buttonStyle(.plain).accessibilityLabel("Fotolocatie bewerken")
+            }
         }.padding(12).foregroundStyle(FieldGuideTheme.charcoal)
             .overlay { RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius)
                 .stroke(FieldGuideTheme.charcoal.opacity(0.7), lineWidth: 0.6) }

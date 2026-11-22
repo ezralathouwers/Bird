@@ -124,3 +124,11 @@ coverage, offline behavior, crop flow, licensing and unverified device tests.
 The runtime is connected in source; native inference has not run in this Linux
 environment. Earlier sound-placeholder statements are also superseded by
 BIRDNET_INTEGRATION.md.
+
+
+Photo-result follow-up: the unlikely-location group has an additional 10 points
+above its heading. Once a location exists, its unfilled outlined badge contains
+a 44-point edit-pencil target on the right; the separate edit-location button
+is removed on the result screen. Without a location, the add-location button
+remains. Crop-screen controls retain their existing behaviour. Audio bottom
+padding increases by a further 15 points (69 beyond its base 20-point inset).

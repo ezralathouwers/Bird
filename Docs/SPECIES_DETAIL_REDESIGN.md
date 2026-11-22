@@ -411,3 +411,18 @@ A geometry fixture checks center invariance and corner coverage across multiple
 safe-area frames and animation stages. Syntax/project checks can run in cloud;
 Xcode compilation, actual scroll rendering and animation smoothness still need
 physical-iPhone review.
+
+
+### Native launch handoff and flight — 22 November 2026
+
+Info.plist now defines UILaunchScreen using LaunchOlive and LaunchBird assets;
+the default empty launch-screen generation flag is removed from both app build
+configurations. The native launch and SwiftUI overlay share the same sRGB color
+and 88-point transparent bird artwork (1x/2x/3x), centered in full-screen bounds.
+This replaces the default neutral screen before the olive logo. Once SwiftUI
+appears, the logo is held for 750 ms then flies diagonally upward/right for
+750 ms while the olive background fades away. Reduce Motion uses only a fade.
+Location prewarming runs concurrently and does not delay the intro. PNG assets
+were visually inspected; plist, project, image scales and Swift syntax checked
+in cloud. Actual launch-screen rendering/handoff and animation need Xcode and
+an iPhone cold-launch test; no native build was available here.
