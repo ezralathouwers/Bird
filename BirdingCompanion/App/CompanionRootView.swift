@@ -17,7 +17,7 @@ struct CompanionRootView: View {
     private let addButtonDiameter: CGFloat = 64 * 0.9
     // The button's center (and plus crossbar) sits on the navigation's top edge.
     private var addButtonOverlap: CGFloat { addButtonDiameter / 2 }
-    private var addSymbolDiameter: CGFloat { showAddMenu || observationNavigation.selection != nil ? 40 * 0.9 : 36 * 0.9 }
+    private var addSymbolDiameter: CGFloat { showAddMenu ? 40 * 0.9 : 36 * 0.9 }
     private let species = MockSpeciesRepository.kingfisher
 
     var body: some View {
@@ -30,8 +30,6 @@ struct CompanionRootView: View {
                 AddEntryView(isPresented: $showAddMenu)
             } else if showLiveSession {
                 LiveSessionView(isPresented: $showLiveSession)
-            } else if let observation = observationNavigation.selection {
-                ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
             }
         }
             .environment(\.speciesAudioIsAllowed,
@@ -41,6 +39,10 @@ struct CompanionRootView: View {
             .background((showAddMenu ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory).ignoresSafeArea())
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
             .environmentObject(sessionLogger)
+            .fullScreenCover(item: $observationNavigation.selection) { observation in
+                ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
+                    .environmentObject(store)
+            }
     }
 
     @ViewBuilder private var content: some View {
@@ -107,8 +109,7 @@ struct CompanionRootView: View {
                     observationNavigation.selection = nil
                     showAddMenu = false
                     showLiveSession = true
-                } else if observationNavigation.selection != nil { observationNavigation.selection = nil }
-                else {
+                } else {
                     showAddMenu.toggle()
                 }
             } label: {
@@ -119,21 +120,21 @@ struct CompanionRootView: View {
                             .frame(width: 36, height: 36)
                     } else {
                         FinePlusMark()
-                            .stroke(showAddMenu || observationNavigation.selection != nil ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory,
+                            .stroke(showAddMenu ? FieldGuideTheme.charcoal : FieldGuideTheme.ivory,
                                     style: FieldGuideTheme.navigationStroke)
-                            .rotationEffect(.degrees(showAddMenu || observationNavigation.selection != nil ? 45 : 0))
+                            .rotationEffect(.degrees(showAddMenu ? 45 : 0))
                             .frame(width: addSymbolDiameter, height: addSymbolDiameter)
                     }
                 }
                     .frame(width: addButtonDiameter, height: addButtonDiameter)
                     .background(showAddMenu ? FieldGuideTheme.beige :
                         (store.activeSession != nil ? FieldGuideTheme.khaki :
-                        (observationNavigation.selection == nil ? FieldGuideTheme.charcoal : FieldGuideTheme.selectedBeige)), in: Circle())
+                        FieldGuideTheme.charcoal), in: Circle())
                     .contentShape(Circle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(showAddMenu ? "Sluit toevoegopties" : (store.activeSession != nil ? "Open livesessie" : (observationNavigation.selection == nil ? "Open toevoegopties" : "Sluit waarneming")))
-            .accessibilityHint(showAddMenu ? "Terug naar de vorige pagina" : (store.activeSession != nil ? "Terug naar de actieve vogelsessie" : (observationNavigation.selection == nil ? "Voeg een waarneming, sessie of doelstelling toe" : "Terug naar het overzicht van waarnemingen")))
+            .accessibilityLabel(showAddMenu ? "Sluit toevoegopties" : (store.activeSession != nil ? "Open livesessie" : "Open toevoegopties"))
+            .accessibilityHint(showAddMenu ? "Terug naar de vorige pagina" : (store.activeSession != nil ? "Terug naar de actieve vogelsessie" : "Voeg een waarneming, sessie of doelstelling toe"))
         }
     }
 

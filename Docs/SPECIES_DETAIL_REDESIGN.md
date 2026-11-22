@@ -129,3 +129,43 @@ small text at the upper left without a background; diagnostic/status panels are
 separate. First/dynamic illustration shifted an additional 10 points left, for
 -20 total. The other three slides are unchanged. Native timings and visual
 verification remain pending; no new GIS conversion is required.
+
+### Map, observation and artwork refinements — 22 November 2026
+
+- Apple Maps retained following the user's explicit choice; no Google SDK,
+  API key or billing dependency added. Range maps use saturation 0.22 on the
+  map layer (including polygons). MapKit does not expose a separate ocean-color
+  token. Controls/legend remain outside this effect. Legend has a lighter
+  near-white background, horizontal margins and bottom padding inside the safe
+  viewport. Only the map canvas ignores safe areas in full-screen views.
+- Observation selection presents a true fullScreenCover above root navigation.
+  Closing uses a dedicated upper-right round button; root + never becomes an
+  observation-close control. The beige details card sits at the bottom inside
+  safe areas, with custom outlined location/edit marks. Marker artwork is
+  fitted into 48 points with 12-point padding on each side.
+- Observation lists show the numeric total alone (VoiceOver retains its label)
+  and subtle separators between records. Add/edit observation uses the exact
+  shared species-page back button in a custom header, without a system glass
+  toolbar. Date/time sit side by side, with a vertical accessibility fallback
+  only when the controls do not fit. Selected-bird artwork has no added tile.
+- Dynamic hero is an additional 30 points higher; the other three roles retain
+  their position and the previous -20-point hero horizontal offset remains.
+- Source woodpecker dynamic and habitat atlas images contain opaque paper.
+  Display compositing replaces edge-connected near-paper pixels with the app's
+  sRGB ivory. Enclosed pale regions and source alpha are retained; original
+  artwork/manifest hashes are unchanged. Coordinate/image preparation stays
+  local; the pixel traversal runs in a detached task using Sendable byte arrays,
+  and finished UIKit images are cached on the main actor. No original artwork
+  is regenerated. A fixture protects enclosed white, dark detail and alpha.
+- Country flags use 257 flat local flag-icons v7.5.0 assets, cropped to squares
+  and circle-masked in one shared component. Emoji/waving flags are no longer
+  rendered in country or observation lists. MIT notice is included in the
+  already-bundled SpeciesDetails-NOTICE.txt and source information view.
+
+Cloud checks: Swift syntax parsing (40 files including XCTest source), Xcode
+project/resource parsing, flag catalog/PNG validation and git diff --check.
+No Xcode compiler, XCTest execution, simulator visuals, audio playback or device
+performance measurement is available here. Verify the safe corners, map/source
+controls, close/edit/return flow, Dutch date control widths, paper-compositing
+edges and white plumage/bark, first-slide crop, flags and audio on Mac. Existing
+private BirdLife files do not need reconversion and must be retained on updates.

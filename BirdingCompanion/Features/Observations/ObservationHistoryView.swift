@@ -21,15 +21,15 @@ struct ObservationHistoryView: View {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
                         Text("\(records.count)")
                             .font(FieldGuideTheme.sans(60, relativeTo: .title3))
-                        Text(records.count == 1 ? "waarneming" : "waarnemingen")
-                            .font(FieldGuideTheme.sans(20, relativeTo: .title3))
                     }
                     .padding(.vertical, 12)
                     .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.35))
-                    .accessibilityElement(children: .combine)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("\(records.count) waarnemingen")
                     .accessibilityAddTraits(.isHeader)
                 } else {
-                    Text(records.count == 1 ? "1 waarneming" : "\(records.count) waarnemingen")
+                    Text("\(records.count)")
+                        .accessibilityLabel("\(records.count) waarnemingen")
                         .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
                         .foregroundStyle(FieldGuideTheme.charcoal)
                         .accessibilityAddTraits(.isHeader)
@@ -50,18 +50,18 @@ struct ObservationHistoryView: View {
                                 .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
                                 .fixedSize(horizontal: false, vertical: true)
                         }.frame(maxWidth: .infinity, alignment: .leading)
-                        if let flag = ObservationCountry.foreignFlag(for: record.countryCode),
+                        if ObservationCountry.foreignFlag(for: record.countryCode) != nil,
                            let code = ObservationCountry.normalized(record.countryCode) {
-                            Text(flag).font(.system(size: 22))
-                                .frame(width: 36, height: 36)
-                                .background(FieldGuideTheme.navigationWhite, in: Circle())
-                                .clipShape(Circle())
-                                .accessibilityLabel(ObservationCountry.name(for: code))
+                            CountryFlagBadge(code: code, diameter: 36)
                         }
                     }
                     .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
                     .contentShape(Rectangle())
                 }.accessibilityHint("Open de kaart van deze waarneming")
+                if record.id != records.last?.id {
+                    Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)
+                        .accessibilityHidden(true)
+                }
             }
             if showsExport {
                 Button("Exporteer alle waarnemingen (JSON)") {

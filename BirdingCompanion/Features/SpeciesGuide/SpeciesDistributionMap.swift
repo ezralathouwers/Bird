@@ -477,22 +477,26 @@ struct SpeciesDistributionMap: View {
     ))
 
     var body: some View {
-        Map(position: $camera, interactionModes: [.pan, .zoom, .rotate]) {
-            if let dataset {
-                ForEach(dataset.polygons.indices, id: \.self) { index in
-                    MapPolygon(dataset.polygons[index])
-                        .foregroundStyle(areaColor(dataset, index: index).opacity(0.24))
-                        .stroke(areaColor(dataset, index: index).opacity(0.75), style: StrokeStyle(lineWidth: 0.8,
-                            dash: dataset.areas.indices.contains(index) && dataset.areas[index].introduced ? [4, 3] : []))
+        ZStack {
+            Map(position: $camera, interactionModes: [.pan, .zoom, .rotate]) {
+                if let dataset {
+                    ForEach(dataset.polygons.indices, id: \.self) { index in
+                        MapPolygon(dataset.polygons[index])
+                            .foregroundStyle(areaColor(dataset, index: index).opacity(0.24))
+                            .stroke(areaColor(dataset, index: index).opacity(0.75), style: StrokeStyle(lineWidth: 0.8,
+                                dash: dataset.areas.indices.contains(index) && dataset.areas[index].introduced ? [4, 3] : []))
+                    }
                 }
-            }
         }
         .mapStyle(FieldGuideTheme.mapStyle)
         .mapControls {
             if !isFullScreen { MapCompass() }
             MapScaleView()
         }
+        .saturation(0.22)
+        .ignoresSafeArea(edges: isFullScreen ? [.top, .bottom] : [])
         .onTapGesture { onExpand?() }
+        }
         .overlay(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 4) {
                 if let dataset {
@@ -531,9 +535,12 @@ struct SpeciesDistributionMap: View {
                         }
                         if dataset.areas.contains(where: \.introduced) { Text("Stippellijn: geïntroduceerd") }
                     }
-                    .font(FieldGuideTheme.sans(10, relativeTo: .caption2)).padding(8)
+                    .font(FieldGuideTheme.sans(10, relativeTo: .caption2))
+                    .padding(.horizontal, 12).padding(.vertical, 10)
                 }
-                .background(FieldGuideTheme.ivory.opacity(0.94))
+                .background(FieldGuideTheme.mapLegendBackground, in: RoundedRectangle(cornerRadius: 12))
+                .padding(.horizontal, isFullScreen ? 20 : 8)
+                .padding(.bottom, isFullScreen ? 12 : 8)
             }
         }
         .overlay(alignment: .bottomTrailing) {
@@ -613,16 +620,9 @@ struct SpeciesRangeFullscreenView: View {
 
     var body: some View {
         SpeciesDistributionMap(species: species, isFullScreen: true)
-            .ignoresSafeArea(edges: .bottom)
             .background(FieldGuideTheme.ivory.ignoresSafeArea())
             .overlay(alignment: .topTrailing) {
-                Button { dismiss() } label: {
-                    Image(systemName: "xmark").font(.system(size: 20, weight: .light))
-                        .foregroundStyle(FieldGuideTheme.charcoal)
-                        .frame(width: 44, height: 44)
-                        .background(FieldGuideTheme.ivory, in: Circle())
-                }
-                .accessibilityLabel("Sluit verspreidingskaart")
+                MapCloseButton(label: "Sluit verspreidingskaart") { dismiss() }
                 .padding(.trailing, 20).padding(.top, 12)
             }
     }

@@ -90,12 +90,7 @@ struct SpeciesDetailView: View {
     private var header: some View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 0) {
-                    Button { dismiss() } label: {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 22, weight: .light))
-                            .frame(width: 44, height: 44, alignment: .leading)
-                            .contentShape(Rectangle())
-                    }.accessibilityLabel("Terug")
+                    SpeciesBackButton { dismiss() }
                     Spacer(minLength: 0)
                     actions
                 }

@@ -17,6 +17,7 @@ struct ObservationMapView: View {
     let species: Species
     @EnvironmentObject private var store: ObservationStore
     @StateObject private var connectivity = MapConnectivity()
+    @Environment(\.dismiss) private var dismiss
     @State private var editing = false
     @State private var camera: MapCameraPosition = .automatic
 
@@ -29,17 +30,20 @@ struct ObservationMapView: View {
     }
 
     var body: some View {
-        Map(position: $camera) {
-            if let coordinate {
-                Annotation(species.dutchName, coordinate: coordinate) {
-                    SpeciesObservationMarker(species: species)
-                }.annotationTitles(.hidden)
-            }
+        ZStack {
+            Map(position: $camera) {
+                if let coordinate {
+                    Annotation(species.dutchName, coordinate: coordinate) {
+                        SpeciesObservationMarker(species: species)
+                    }.annotationTitles(.hidden)
+                }
         }
         .mapStyle(FieldGuideTheme.mapStyle)
+        .ignoresSafeArea()
         .mapControlVisibility(.hidden)
         .accessibilityLabel("Locatie van je waarneming van \(species.dutchName)")
-        .overlay(alignment: .top) {
+        }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
             VStack(spacing: 12) {
                 observationInfo
                 if coordinate == nil || connectivity.isOffline {
@@ -52,7 +56,11 @@ struct ObservationMapView: View {
                         .background(FieldGuideTheme.ivory, in: RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .padding(16)
+            .padding(.horizontal, 20).padding(.bottom, 16).padding(.top, 8)
+        }
+        .overlay(alignment: .topTrailing) {
+            MapCloseButton(label: "Sluit waarneming") { dismiss() }
+                .padding(.trailing, 20).padding(.top, 12)
         }
         .fullScreenCover(isPresented: $editing) { ObservationForm(species: species, observation: current) }
         .onAppear { centerMap() }
@@ -66,19 +74,24 @@ struct ObservationMapView: View {
                 SerifText(species.dutchName, size: 22, relativeTo: .title2)
                 Text(current.observedAt.formatted(date: .abbreviated, time: .shortened))
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
-                Label(current.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                      ? "Geen locatie opgegeven" : current.locationName, systemImage: "mappin")
-                    .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
+                HStack(alignment: .top, spacing: 6) {
+                    LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
+                        .frame(width: 16, height: 20).accessibilityHidden(true)
+                    Text(current.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                         ? "Geen locatie opgegeven" : current.locationName)
+                }.font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
             }
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
             Button { editing = true } label: {
-                Image(systemName: "pencil").frame(width: 44, height: 44)
-            }.accessibilityLabel("Bewerk datum of locatie")
+                EditOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
+                    .frame(width: 22, height: 22).frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
+            }.buttonStyle(.plain).accessibilityLabel("Bewerk datum of locatie")
         }
         .foregroundStyle(FieldGuideTheme.charcoal)
         .padding(16)
-        .background(FieldGuideTheme.ivory, in: RoundedRectangle(cornerRadius: 16))
+        .background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 16))
     }
 
     private func centerMap() {
@@ -100,7 +113,8 @@ private struct SpeciesObservationMarker: View {
                     .foregroundStyle(FieldGuideTheme.charcoal)
             }
         }
-        .frame(width: 60, height: 60)
+        .frame(width: 48, height: 48)
+        .padding(12)
         .background(FieldGuideTheme.ivory)
         .clipShape(Circle())
         .overlay { Circle().stroke(FieldGuideTheme.taupe, lineWidth: 1) }

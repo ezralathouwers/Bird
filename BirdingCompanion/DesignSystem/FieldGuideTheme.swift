@@ -1,5 +1,6 @@
 import SwiftUI
 import MapKit
+import UIKit
 
 enum FieldGuideTheme {
     // Provisional: no approved screenshot has been supplied for sampling.
@@ -16,6 +17,7 @@ enum FieldGuideTheme {
     // icon size. SF Symbol weights alone do not guarantee identical widths.
     static let navigationStroke = StrokeStyle(lineWidth: 0.7, lineCap: .round, lineJoin: .round)
     static let navigationWhite = Color.white
+    static let mapLegendBackground = Color(red: 0.995, green: 0.99, blue: 0.98)
     static let ivory = Color(red: 0.96, green: 0.95, blue: 0.92)
     static let beige = Color(red: 0.89, green: 0.86, blue: 0.82)
     static let selectedBeige = Color(red: 0.83, green: 0.79, blue: 0.73)
@@ -98,5 +100,78 @@ struct RoundAction: View {
                 .background(Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.75))
         }
         .accessibilityLabel(label)
+    }
+}
+
+// Explicit controls avoid iOS's automatic glass toolbar treatment.
+struct SpeciesBackButton: View {
+    var label = "Terug"
+    let action: () -> Void
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: "chevron.left")
+                .font(.system(size: 22, weight: .light))
+                .frame(width: 44, height: 44, alignment: .leading)
+                .contentShape(Rectangle())
+        }.buttonStyle(.plain).foregroundStyle(FieldGuideTheme.charcoal)
+            .accessibilityLabel(label)
+    }
+}
+
+struct MapCloseButton: View {
+    let label: String
+    let action: () -> Void
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: "xmark").font(.system(size: 20, weight: .light))
+                .foregroundStyle(FieldGuideTheme.charcoal)
+                .frame(width: 44, height: 44)
+                .background(FieldGuideTheme.ivory, in: Circle())
+        }.buttonStyle(.plain).accessibilityLabel(label)
+    }
+}
+
+struct LocationOutlineMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 12, y: 23))
+        path.addCurve(to: CGPoint(x: 3, y: 9), control1: CGPoint(x: 9, y: 18), control2: CGPoint(x: 3, y: 14))
+        path.addCurve(to: CGPoint(x: 21, y: 9), control1: CGPoint(x: 3, y: -2), control2: CGPoint(x: 21, y: -2))
+        path.addCurve(to: CGPoint(x: 12, y: 23), control1: CGPoint(x: 21, y: 14), control2: CGPoint(x: 15, y: 18))
+        path.addEllipse(in: CGRect(x: 9, y: 6, width: 6, height: 6))
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
+    }
+}
+
+struct EditOutlineMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 3, y: 21))
+        path.addLine(to: CGPoint(x: 4.5, y: 15))
+        path.addLine(to: CGPoint(x: 17, y: 2.5))
+        path.addQuadCurve(to: CGPoint(x: 21.5, y: 7), control: CGPoint(x: 23, y: 1))
+        path.addLine(to: CGPoint(x: 9, y: 19.5))
+        path.closeSubpath()
+        path.move(to: CGPoint(x: 14.5, y: 5))
+        path.addLine(to: CGPoint(x: 19, y: 9.5))
+        path.move(to: CGPoint(x: 4.5, y: 15))
+        path.addLine(to: CGPoint(x: 9, y: 19.5))
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
+    }
+}
+
+struct CountryFlagBadge: View {
+    let code: String
+    var diameter: CGFloat = 36
+    var body: some View {
+        Group {
+            if let normalized = ObservationCountry.normalized(code), UIImage(named: "flag-" + normalized.lowercased()) != nil {
+                Image("flag-" + normalized.lowercased()).resizable().scaledToFill()
+            } else {
+                FieldGuideTheme.beige.overlay { Image(systemName: "globe").foregroundStyle(FieldGuideTheme.taupe) }
+            }
+        }
+        .frame(width: diameter, height: diameter).clipShape(Circle())
+        .accessibilityLabel(ObservationCountry.name(for: code))
     }
 }

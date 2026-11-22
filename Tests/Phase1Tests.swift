@@ -1081,7 +1081,7 @@ final class PhotoPreprocessingTests: XCTestCase {
 
 @MainActor
 final class HabitatArtworkTests: XCTestCase {
-    func testAllScenesHaveDistinctValidPanelsAndRenderableArtwork() throws {
+    func testAllScenesHaveDistinctValidPanelsAndRenderableArtwork() async throws {
         let scenes = HabitatSceneCatalog.scenes
         XCTAssertEqual(scenes.count, 33)
         var regions = Set<String>()
@@ -1089,7 +1089,8 @@ final class HabitatArtworkTests: XCTestCase {
             let region = try XCTUnwrap(scene.artworkRegion)
             XCTAssertTrue(region.isValid, scene.id)
             XCTAssertTrue(regions.insert("\(scene.assetName):\(region.x),\(region.y),\(region.width),\(region.height)").inserted)
-            let image = try XCTUnwrap(HabitatArtworkCache.image(for: scene), scene.id)
+            let loaded = await HabitatArtworkCache.image(for: scene)
+            let image = try XCTUnwrap(loaded, scene.id)
             XCTAssertGreaterThan(image.size.width, image.size.height)
         }
         XCTAssertEqual(Set(scenes.map(\.assetName)).count, 3)
@@ -1569,5 +1570,26 @@ final class SpeciesRangeLoadingTests: XCTestCase {
         try fixture().write(to: file)
         let loaded = try await loader.load(speciesID: "test:bird")
         XCTAssertEqual(loaded.polygons.count, 2)
+    }
+}
+
+final class ArtworkPaperBackdropTests: XCTestCase {
+    func testOnlyEdgeConnectedPaperChangesAndEnclosedWhiteAndAlphaSurvive() {
+        let width = 7, height = 7
+        var pixels = [UInt8](repeating: 0, count: width * height * 4)
+        for index in 0..<(width * height) {
+            let paper = index % width == 0 || index % width == width - 1 || index / width == 0 || index / width == height - 1
+            let color: [UInt8] = paper ? [245, 241, 232, 255] : [30, 40, 50, 255]
+            pixels.replaceSubrange((index * 4)..<(index * 4 + 4), with: color)
+        }
+        let center = (3 * width + 3) * 4
+        pixels.replaceSubrange(center..<(center + 4), with: [245, 241, 232, 255])
+        let transparent = (2 * width + 2) * 4
+        pixels.replaceSubrange(transparent..<(transparent + 4), with: [0, 0, 0, 0])
+        ArtworkPaperBackdrop.normalize(&pixels, width: width, height: height)
+        XCTAssertEqual(Array(pixels[0..<4]), [245, 242, 235, 255])
+        XCTAssertEqual(Array(pixels[center..<(center + 4)]), [245, 241, 232, 255])
+        XCTAssertEqual(Array(pixels[transparent..<(transparent + 4)]), [0, 0, 0, 0])
+        XCTAssertEqual(Array(pixels[(width + 1) * 4..<(width + 2) * 4]), [30, 40, 50, 255])
     }
 }

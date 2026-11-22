@@ -224,10 +224,12 @@ struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
 @MainActor
 private enum SpeciesArtworkDisplayCache {
     private static let images = NSCache<NSString, UIImage>()
-    static func image(named name: String) -> UIImage? {
+    static func image(named name: String) async -> UIImage? {
         if let image = images.object(forKey: name as NSString) { return image }
         guard let source = UIImage(named: name) else { return nil }
-        let image = trimmed(source)
+        let rendered = name == "sample-dendrocopos-major-dynamic" ? await ArtworkPaperBackdrop.image(source) : source
+        guard !Task.isCancelled else { return nil }
+        let image = trimmed(rendered)
         images.setObject(image, forKey: name as NSString)
         return image
     }
@@ -272,21 +274,24 @@ private struct SpeciesArtworkSlide: View {
     let species: Species
     let role: SpeciesMediaRole
     let index: Int
+    @State private var displayImage: UIImage?
     var body: some View {
         GeometryReader { geometry in
             Group {
-                if let image = SpeciesArtworkDisplayCache.image(named: role.assetName(for: species)) {
+                if let image = displayImage {
                     // Flight views contain the diagnostic wing tips; fit their
                     // full width rather than bleeding these beyond the screen.
                     let size = SpeciesArtworkLayout.size(image: image.size, viewport: geometry.size,
                                                          horizontalBleed: role == .dynamic)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
-                        .offset(x: role == .dynamic ? -20 : 0)
+                        .offset(x: role == .dynamic ? -20 : 0, y: role == .dynamic ? -30 : 0)
                         .frame(width: geometry.size.width,
                                height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
                                alignment: role == .dynamic ? .bottom : .center)
                         .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van 4")
+                } else if UIImage(named: role.assetName(for: species)) != nil {
+                    Color.clear // Existing artwork is preparing; do not call it missing.
                 } else {
                     ArtworkPlaceholder(hero: true,
                         accessibilityDescription: "\(role.label) van \(species.dutchName) nog niet beschikbaar",
@@ -297,6 +302,11 @@ private struct SpeciesArtworkSlide: View {
         }
         .background(FieldGuideTheme.ivory)
         .clipped()
+        .task(id: role.assetName(for: species)) {
+            let loaded = await SpeciesArtworkDisplayCache.image(named: role.assetName(for: species))
+            guard !Task.isCancelled else { return }
+            displayImage = loaded
+        }
     }
 }
 
@@ -322,7 +332,7 @@ struct ArtworkPlaceholder: View {
 @MainActor
 enum HabitatArtworkCache {
     private static let images = NSCache<NSString, UIImage>()
-    static func image(for scene: HabitatScene) -> UIImage? {
+    static func image(for scene: HabitatScene) async -> UIImage? {
         let regionKey = scene.artworkRegion.map { "\($0.x),\($0.y),\($0.width),\($0.height)" } ?? "full"
         let key = "\(scene.assetName):\(regionKey)" as NSString
         if let cached = images.object(forKey: key) { return cached }
@@ -336,8 +346,10 @@ enum HabitatArtworkCache {
                   let selected = cgImage.cropping(to: rect) else { return nil }
             result = UIImage(cgImage: selected, scale: source.scale, orientation: .up)
         } else { result = source }
-        images.setObject(result, forKey: key)
-        return result
+        let composited = await ArtworkPaperBackdrop.image(result)
+        guard !Task.isCancelled else { return nil }
+        images.setObject(composited, forKey: key)
+        return composited
     }
 }
 
@@ -363,15 +375,24 @@ private struct HabitatBleedLayout: Layout {
 
 struct HabitatFooter: View {
     let species: Species
+    @State private var displayImage: UIImage?
     var body: some View {
-        if let scene = HabitatSceneCatalog.primaryScene(for: species), let image = HabitatArtworkCache.image(for: scene) {
-            HabitatBleedLayout(imageSize: image.size) {
-                Image(uiImage: image).resizable()
+        Group {
+            if let image = displayImage {
+                HabitatBleedLayout(imageSize: image.size) {
+                    Image(uiImage: image).resizable()
+                }
+                .frame(maxWidth: .infinity)
+                .clipped()
+                .accessibilityHidden(true)
+                .allowsHitTesting(false)
             }
-            .frame(maxWidth: .infinity)
-            .clipped()
-            .accessibilityHidden(true)
-            .allowsHitTesting(false)
+        }
+        .task(id: species.id) {
+            guard let scene = HabitatSceneCatalog.primaryScene(for: species) else { return }
+            let loaded = await HabitatArtworkCache.image(for: scene)
+            guard !Task.isCancelled else { return }
+            displayImage = loaded
         }
     }
 }
@@ -465,6 +486,8 @@ struct SpeciesCatalogSourcesView: View {
                             }
                         }
                     }
+                    Text("Vlaggen: flag-icons v7.5.0, © 2013 Panayiotis Lipiridis, MIT. Vlakke vlaggen bijgesneden tot cirkels.")
+                    Link("flag-icons en licentie", destination: URL(string: "https://github.com/lipis/flag-icons/tree/v7.5.0")!)
                     Text("Fotoherkenning: BioCLIP 2, Imageomics Institute (Gu en collega's, 2025), MIT. Core ML-conversie: fearnt/Thicket. Tekstreferenties: TreeOfLife-200M en Valen-Peregrine/FaunaPulse, CC0; GBIF en Catalogue of Life, CC BY 4.0.")
                     Link("BioCLIP 2 en licentie", destination: URL(string: "https://huggingface.co/imageomics/bioclip-2")!)
                     if let source = try? SpeciesRangeSource.load(), let citation = source.citation {
@@ -477,5 +500,72 @@ struct SpeciesCatalogSourcesView: View {
                 .navigationTitle("Info").navigationBarTitleDisplayMode(.inline)
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Sluiten") { dismiss() } } }
         }
+    }
+}
+
+// Display compositing only: source masters and their review hashes stay intact.
+// Flatten the edge-connected light paper to the app's exact ivory; enclosed
+// white feathers, bark detail, foliage and the illustration's alpha are kept.
+enum ArtworkPaperBackdrop {
+    static func normalize(_ pixels: inout [UInt8], width: Int, height: Int) {
+        guard width > 0, height > 0, pixels.count == width * height * 4 else { return }
+        var visited = [Bool](repeating: false, count: width * height)
+        var queue: [Int] = []
+        func isPaper(_ index: Int) -> Bool {
+            let offset = index * 4
+            let r = Int(pixels[offset]), g = Int(pixels[offset + 1]), b = Int(pixels[offset + 2])
+            return pixels[offset + 3] == 255 && r >= 230 && g >= 225 && b >= 215
+                && abs(r - 245) <= 18 && abs(g - 241) <= 18 && abs(b - 232) <= 18
+                && max(r, g, b) - min(r, g, b) <= 25 && r >= g - 3 && g >= b - 3
+        }
+        func enqueue(_ index: Int) {
+            guard !visited[index] else { return }
+            visited[index] = true
+            if isPaper(index) { queue.append(index) }
+        }
+        for x in 0..<width { enqueue(x); enqueue((height - 1) * width + x) }
+        for y in 0..<height { enqueue(y * width); enqueue(y * width + width - 1) }
+        var head = 0
+        while head < queue.count {
+            let index = queue[head]
+            head += 1
+            let x = index % width, y = index / width
+            if x > 0 { enqueue(index - 1) }
+            if x + 1 < width { enqueue(index + 1) }
+            if y > 0 { enqueue(index - width) }
+            if y + 1 < height { enqueue(index + width) }
+        }
+        // Match FieldGuideTheme.ivory in the sRGB bitmap used below.
+        for index in queue {
+            let offset = index * 4
+            pixels[offset] = 245; pixels[offset + 1] = 242; pixels[offset + 2] = 235
+        }
+    }
+
+    @MainActor static func image(_ source: UIImage) async -> UIImage {
+        guard let cg = source.cgImage, source.imageOrientation == .up,
+              let space = CGColorSpace(name: CGColorSpace.sRGB) else { return source }
+        let width = cg.width, height = cg.height
+        var pixels = [UInt8](repeating: 0, count: width * height * 4)
+        let bitmap = CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue
+        let drawn = pixels.withUnsafeMutableBytes { bytes -> Bool in
+            guard let context = CGContext(data: bytes.baseAddress, width: width, height: height,
+                bitsPerComponent: 8, bytesPerRow: width * 4, space: space, bitmapInfo: bitmap) else { return false }
+            context.draw(cg, in: CGRect(x: 0, y: 0, width: width, height: height))
+            return true
+        }
+        guard drawn else { return source }
+        let input = pixels
+        let normalized = await Task.detached(priority: .userInitiated) {
+            var output = input
+            normalize(&output, width: width, height: height)
+            return output
+        }.value
+        guard !Task.isCancelled else { return source }
+        guard let provider = CGDataProvider(data: Data(normalized) as CFData),
+              let result = CGImage(width: width, height: height, bitsPerComponent: 8, bitsPerPixel: 32,
+                bytesPerRow: width * 4, space: space, bitmapInfo: CGBitmapInfo(rawValue: bitmap),
+                provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent) else { return source }
+        return UIImage(cgImage: result, scale: source.scale, orientation: .up)
     }
 }

@@ -26,15 +26,20 @@ struct ObservationForm: View {
     }
 
     private var standardForm: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            HStack(spacing: 8) {
+                SpeciesBackButton(label: "Terug zonder opslaan") { dismiss() }
+                Text(original == nil ? "Waarneming toevoegen" : "Waarneming bewerken")
+                    .font(FieldGuideTheme.sans(17, relativeTo: .headline))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     selectedBird
-                    VStack(spacing: 12) {
-                        DatePicker("Datum", selection: $observedAt, displayedComponents: .date)
-                            .labelsHidden().accessibilityLabel("Datum")
-                        DatePicker("Tijd", selection: $observedAt, displayedComponents: .hourAndMinute)
-                            .labelsHidden().accessibilityLabel("Tijd")
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: 16) { dateAndTimeFields }
+                        VStack(alignment: .leading, spacing: 12) { dateAndTimeFields }
                     }
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Locatie").font(FieldGuideTheme.sans(20, relativeTo: .title3))
@@ -76,27 +81,18 @@ struct ObservationForm: View {
                 .opacity(store.loadError != nil || !location.canSave ? 0.4 : 1)
                 .padding(20).background(FieldGuideTheme.ivory)
             }
-            .navigationTitle("")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(original == nil ? "Waarneming toevoegen" : "Waarneming bewerken")
-                        .font(FieldGuideTheme.sans())
-                        .foregroundStyle(FieldGuideTheme.charcoal)
-                        .offset(y: 4)
-                }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { dismiss() } label: {
-                        Image(systemName: "chevron.left").font(.system(size: 22, weight: .light))
-                            .frame(width: 44, height: 44)
-                    }.accessibilityLabel("Terug zonder opslaan")
-                        .offset(y: 4)
-                }
-            }
-            .toolbarBackground(FieldGuideTheme.ivory, for: .navigationBar)
             .task { if original == nil { location.useCurrentLocation() } }
             .onDisappear { location.stop() }
         }
+        .foregroundStyle(FieldGuideTheme.charcoal)
+        .background(FieldGuideTheme.ivory.ignoresSafeArea())
+    }
+
+    @ViewBuilder private var dateAndTimeFields: some View {
+        DatePicker("Datum", selection: $observedAt, displayedComponents: .date)
+            .labelsHidden().fixedSize().accessibilityLabel("Datum")
+        DatePicker("Tijd", selection: $observedAt, displayedComponents: .hourAndMinute)
+            .labelsHidden().fixedSize().accessibilityLabel("Tijd")
     }
 
     private var selectedBird: some View {
@@ -112,7 +108,6 @@ struct ObservationForm: View {
                 }
             }
             .frame(width: 110, height: 130)
-            .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 16))
             .accessibilityLabel("Primaire illustratie van \(species.dutchName)")
             VStack(alignment: .leading, spacing: 6) {
                 Text(species.englishDisplayName).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
