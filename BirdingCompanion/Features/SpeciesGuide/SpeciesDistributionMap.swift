@@ -178,6 +178,7 @@ struct SpeciesRangeArea {
 }
 
 struct SpeciesRangeDataset {
+    var renderID = UUID()
     let polygons: [MKPolygon]
     let attribution: String
     let version: String
@@ -260,6 +261,7 @@ struct SpeciesRangeSnapshot: Sendable {
     struct Point: Decodable, Sendable {
         let longitude: Double
         let latitude: Double
+        init(longitude: Double, latitude: Double) { self.longitude = longitude; self.latitude = latitude }
         init(from decoder: any Decoder) throws {
             var values = try decoder.unkeyedContainer()
             longitude = try values.decode(Double.self)
@@ -346,12 +348,17 @@ struct SpeciesRangeSnapshot: Sendable {
 actor SpeciesRangeDataLoader {
     static let shared = SpeciesRangeDataLoader()
     private let bundle: Bundle
+    private let cacheDirectory: URL?
     private var source: SpeciesRangeSource?
     private var manifest: SpeciesRangeManifest?
     private var snapshots: [String: SpeciesRangeSnapshot] = [:]
     private var recency: [String] = []
     private var costs: [String: Int] = [:]
-    init(bundle: Bundle = .main) { self.bundle = bundle }
+    init(bundle: Bundle = .main, cacheDirectory: URL? = nil) {
+        self.bundle = bundle
+        self.cacheDirectory = cacheDirectory ?? (bundle.bundleURL == Bundle.main.bundleURL
+            ? URL.applicationSupportDirectory.appendingPathComponent("BirdingCompanion/RangeDisplayCache-v1", isDirectory: true) : nil)
+    }
 
     func load(speciesID: String) throws -> SpeciesRangeSnapshot {
         try Task.checkCancellation()
@@ -376,11 +383,20 @@ actor SpeciesRangeDataLoader {
             guard let entry = index.files[speciesID] else { throw RangeDataError.unavailable }
             let expected = speciesID.replacingOccurrences(of: ":", with: "-") + "-range.geojson"
             guard entry.file == expected, !entry.file.contains("/"), !entry.file.contains("..") else { throw RangeDataError.invalid }
-            let data = try Data(contentsOf: url.deletingLastPathComponent().appendingPathComponent(entry.file))
-            let digest = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
-            guard digest == entry.sha256 else { throw RangeDataError.invalid }
-            snapshot = try SpeciesRangeSnapshot.decode(data, expectedSpeciesID: speciesID,
-                expectedVersion: index.version, expectedCitation: index.citation, expectedLicense: index.license)
+            guard entry.sha256.utf8.count == 64, entry.sha256.utf8.allSatisfy({ (48...57).contains($0) || (97...102).contains($0) }) else { throw RangeDataError.invalid }
+            let cache = cacheDirectory?.appendingPathComponent(entry.sha256 + ".rangebin")
+            if let cache, let bytes = try? Data(contentsOf: cache, options: .mappedIfSafe),
+               let stored = try? SpeciesRangeBinaryCache.decode(bytes), stored.version == index.version,
+               stored.attribution == "\(index.citation) · \(index.license)" {
+                snapshot = stored
+            } else {
+                let data = try Data(contentsOf: url.deletingLastPathComponent().appendingPathComponent(entry.file), options: .mappedIfSafe)
+                let digest = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+                guard digest == entry.sha256 else { throw RangeDataError.invalid }
+                snapshot = try SpeciesRangeSnapshot.decode(data, expectedSpeciesID: speciesID,
+                    expectedVersion: index.version, expectedCitation: index.citation, expectedLicense: index.license)
+                if let cache { Task(priority: .utility) { self.persist(snapshot, at: cache) } }
+            }
         } else {
             guard config.access == .licensed else { throw RangeDataError.awaitingFiles }
             guard let url = bundle.url(forResource: speciesID + "-range", withExtension: "geojson") else { throw RangeDataError.unavailable }
@@ -401,6 +417,25 @@ actor SpeciesRangeDataLoader {
         }
         return snapshot
     }
+    private func persist(_ snapshot: SpeciesRangeSnapshot, at cache: URL) {
+        guard let directory = cacheDirectory else { return }
+        do {
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            var excluded = directory; var values = URLResourceValues(); values.isExcludedFromBackup = true
+            try? excluded.setResourceValues(values)
+            try SpeciesRangeBinaryCache.encode(snapshot).write(to: cache, options: .atomic)
+            let keys: Set<URLResourceKey> = [.fileSizeKey, .contentModificationDateKey]
+            let files = try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: Array(keys))
+                .filter { $0.pathExtension == "rangebin" }.compactMap { url -> (URL, Int, Date)? in
+                    guard let info = try? url.resourceValues(forKeys: keys) else { return nil }
+                    return (url, info.fileSize ?? 0, info.contentModificationDate ?? .distantPast)
+                }.sorted { $0.2 < $1.2 }
+            var total = files.reduce(0) { $0 + $1.1 }
+            for file in files where total > 128 * 1024 * 1024 {
+                try? FileManager.default.removeItem(at: file.0); total -= file.1
+            }
+        } catch { /* Cache is optional; validated source display remains available. */ }
+    }
     private func touch(_ id: String) {
         recency.removeAll { $0 == id }
         recency.append(id)
@@ -420,21 +455,35 @@ private enum SpeciesRangeDisplayCache {
         return cache
     }()
     static func cached(speciesID: String) -> SpeciesRangeDataset? { entries.object(forKey: speciesID as NSString)?.dataset }
-    static func display(_ snapshot: SpeciesRangeSnapshot, speciesID: String) -> SpeciesRangeDataset {
+    static func display(_ snapshot: SpeciesRangeSnapshot, speciesID: String) async throws -> SpeciesRangeDataset {
         if let cached = cached(speciesID: speciesID) { return cached }
         var areas: [SpeciesRangeArea] = []
+        var processed = 0
         for polygon in snapshot.polygons {
-            let holes = polygon.rings.dropFirst().map { ring -> MKPolygon in
-                let points = ring.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
-                return points.withUnsafeBufferPointer { MKPolygon(coordinates: $0.baseAddress!, count: $0.count) }
+            try Task.checkCancellation()
+            var nativeRings: [MKPolygon] = []
+            for ring in polygon.rings {
+                var coordinates: [CLLocationCoordinate2D] = []
+                coordinates.reserveCapacity(ring.count)
+                for point in ring {
+                    coordinates.append(CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude))
+                    processed += 1
+                    if processed % 4096 == 0 { try await Task.sleep(for: .milliseconds(1)); try Task.checkCancellation() }
+                }
+                let native = coordinates.withUnsafeBufferPointer {
+                    MKPolygon(coordinates: $0.baseAddress!, count: $0.count)
+                }
+                nativeRings.append(native)
             }
-            guard let exterior = polygon.rings.first else { continue }
-            let coordinates = exterior.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
-            let native = coordinates.withUnsafeBufferPointer {
-                MKPolygon(coordinates: $0.baseAddress!, count: $0.count, interiorPolygons: holes)
-            }
+            guard let exterior = nativeRings.first else { continue }
+            let holes = Array(nativeRings.dropFirst())
+            let native: MKPolygon
+            if holes.isEmpty { native = exterior }
+            else { native = MKPolygon(points: exterior.points(), count: exterior.pointCount, interiorPolygons: holes) }
             areas.append(SpeciesRangeArea(polygon: native, season: polygon.season.flatMap(BirdLifeSeason.init(rawValue:)), origin: polygon.origin))
+            if areas.count % 32 == 0 { await Task.yield() }
         }
+        try Task.checkCancellation()
         let polygons = areas.map(\.polygon)
         let rect = polygons.reduce(MKMapRect.null) { $0.union($1.boundingMapRect) }
         let dataset = SpeciesRangeDataset(polygons: polygons, attribution: snapshot.attribution,
@@ -471,32 +520,10 @@ struct SpeciesDistributionMap: View {
     @State private var showSources = false
     @State private var showDiagnostics = false
     @State private var lastLoadFailure = ""
-    @State private var camera: MapCameraPosition = .region(MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 35, longitude: 60),
-        span: MKCoordinateSpan(latitudeDelta: 90, longitudeDelta: 160)
-    ))
 
     var body: some View {
-        ZStack {
-            Map(position: $camera, interactionModes: [.pan, .zoom, .rotate]) {
-                if let dataset {
-                    ForEach(dataset.polygons.indices, id: \.self) { index in
-                        MapPolygon(dataset.polygons[index])
-                            .foregroundStyle(areaColor(dataset, index: index).opacity(0.38))
-                            .stroke(areaColor(dataset, index: index).opacity(0.75), style: StrokeStyle(lineWidth: 0.8,
-                                dash: dataset.areas.indices.contains(index) && dataset.areas[index].introduced ? [4, 3] : []))
-                    }
-                }
-            }
-            .mapStyle(FieldGuideTheme.mapStyle)
-            .mapControls {
-                if !isFullScreen { MapCompass() }
-                MapScaleView()
-            }
-            .saturation(0.72)
+        NativeSpeciesRangeMap(dataset: dataset, onExpand: onExpand)
             .ignoresSafeArea(edges: isFullScreen ? [.top, .bottom] : [])
-            .onTapGesture { onExpand?() }
-        }
         .overlay(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 4) {
                 if let dataset {
@@ -569,10 +596,6 @@ struct SpeciesDistributionMap: View {
             + "\nLaadresultaat: \(lastLoadFailure)"
     }
 
-    private func areaColor(_ dataset: SpeciesRangeDataset, index: Int) -> Color {
-        dataset.areas.indices.contains(index) ? (dataset.areas[index].season?.color ?? FieldGuideTheme.taupe) : FieldGuideTheme.taupe
-    }
-
     private func loadRange() async {
         loading = true
         dataset = nil
@@ -587,12 +610,10 @@ struct SpeciesDistributionMap: View {
             else {
                 let snapshot = try await SpeciesRangeDataLoader.shared.load(speciesID: species.id)
                 try Task.checkCancellation()
-                loaded = SpeciesRangeDisplayCache.display(snapshot, speciesID: species.id)
+                loaded = try await SpeciesRangeDisplayCache.display(snapshot, speciesID: species.id)
             }
             guard !Task.isCancelled else { return }
             dataset = loaded
-            let rect = loaded.mapRect ?? loaded.polygons.reduce(MKMapRect.null) { $0.union($1.boundingMapRect) }
-            camera = .rect(rect.insetBy(dx: -rect.width * 0.08, dy: -rect.height * 0.08))
         } catch {
             guard !Task.isCancelled else { return }
             switch error as? RangeDataError {
@@ -628,5 +649,154 @@ struct SpeciesRangeFullscreenView: View {
                 }
                 .padding(.trailing, 20).padding(.top, 12)
             }
+    }
+}
+
+// At most one native overlay per season/origin style, rather than a SwiftUI view
+// for every island/polygon. MapKit renders the paths at the current map scale.
+struct NativeSpeciesRangeMap: UIViewRepresentable {
+    let dataset: SpeciesRangeDataset?
+    var onExpand: (() -> Void)?
+    private struct StyleKey: Hashable { let season: Int?; let introduced: Bool }
+    func makeCoordinator() -> Coordinator { Coordinator() }
+    func makeUIView(context: Context) -> MKMapView {
+        let map = MKMapView()
+        map.delegate = context.coordinator
+        map.overrideUserInterfaceStyle = .light
+        let config = MKStandardMapConfiguration(elevationStyle: .flat, emphasisStyle: .muted)
+        config.pointOfInterestFilter = .excludingAll
+        map.preferredConfiguration = config
+        map.showsCompass = false
+        map.isPitchEnabled = false
+        map.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30, longitude: 20),
+            span: MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 160)), animated: false)
+        let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.expand))
+        tap.delegate = context.coordinator
+        map.addGestureRecognizer(tap)
+        return map
+    }
+    func updateUIView(_ map: MKMapView, context: Context) {
+        context.coordinator.onExpand = onExpand
+        guard context.coordinator.datasetID != dataset?.renderID else { return }
+        context.coordinator.datasetID = dataset?.renderID
+        map.removeOverlays(map.overlays)
+        context.coordinator.styles = [:]
+        guard let dataset else { return }
+        var overlays: [MKMultiPolygon] = []
+        for group in Self.groupedOverlays(dataset) {
+            let color = UIColor(group.season?.color ?? FieldGuideTheme.taupe)
+            context.coordinator.styles[ObjectIdentifier(group.overlay)] = (color, group.introduced)
+            overlays.append(group.overlay)
+        }
+        map.addOverlays(overlays, level: .aboveRoads)
+        let rect = dataset.mapRect ?? dataset.polygons.reduce(MKMapRect.null) { $0.union($1.boundingMapRect) }
+        map.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 32, left: 24, bottom: 40, right: 24), animated: false)
+    }
+    static func groupedOverlays(_ dataset: SpeciesRangeDataset) -> [(overlay: MKMultiPolygon, season: BirdLifeSeason?, introduced: Bool)] {
+        let groups = Dictionary(grouping: dataset.polygons.indices) { index in
+            let area = dataset.areas.indices.contains(index) ? dataset.areas[index] : nil
+            return StyleKey(season: area?.season?.rawValue, introduced: area?.introduced ?? false)
+        }
+        return groups.map { style, indices in
+            (MKMultiPolygon(indices.map { dataset.polygons[$0] }), style.season.flatMap(BirdLifeSeason.init(rawValue:)), style.introduced)
+        }
+    }
+    static func dismantleUIView(_ map: MKMapView, coordinator: Coordinator) {
+        map.delegate = nil; map.removeOverlays(map.overlays)
+    }
+    @MainActor final class Coordinator: NSObject, @preconcurrency MKMapViewDelegate, UIGestureRecognizerDelegate {
+        var datasetID: UUID?
+        var styles: [ObjectIdentifier: (UIColor, Bool)] = [:]
+        var onExpand: (() -> Void)?
+        @objc func expand() { onExpand?() }
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith other: UIGestureRecognizer) -> Bool { true }
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+            guard onExpand != nil, let map = gestureRecognizer.view,
+                  touch.location(in: map).y < map.bounds.height - 44 else { return false }
+            var ancestor = touch.view
+            while let view = ancestor {
+                if view is UIControl { return false }
+                ancestor = view.superview
+            }
+            return true
+        }
+        func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
+            guard let multi = overlay as? MKMultiPolygon else { return MKOverlayRenderer(overlay: overlay) }
+            let renderer = MKMultiPolygonRenderer(multiPolygon: multi)
+            let style = styles[ObjectIdentifier(multi)] ?? (UIColor(FieldGuideTheme.taupe), false)
+            renderer.fillColor = style.0.withAlphaComponent(0.30)
+            renderer.strokeColor = style.0.withAlphaComponent(0.85)
+            renderer.lineWidth = 0.8
+            if style.1 { renderer.lineDashPattern = [4, 3] }
+            return renderer
+        }
+    }
+}
+
+// Immutable display data only; source provenance/hash stays in the file key.
+// The checksum detects damaged caches; any cache failure falls back to GeoJSON.
+enum SpeciesRangeBinaryCache {
+    static func encode(_ snapshot: SpeciesRangeSnapshot) -> Data {
+        var data = Data("BRANGE01".utf8)
+        func integer(_ value: UInt32) { var value = value.littleEndian; withUnsafeBytes(of: &value) { data.append(contentsOf: $0) } }
+        func string(_ value: String) { let bytes = Data(value.utf8); integer(UInt32(bytes.count)); data.append(bytes) }
+        func number(_ value: Double) { var bits = value.bitPattern.littleEndian; withUnsafeBytes(of: &bits) { data.append(contentsOf: $0) } }
+        string(snapshot.attribution); string(snapshot.version); integer(UInt32(snapshot.polygons.count))
+        for polygon in snapshot.polygons {
+            integer(UInt32(polygon.season ?? 0)); integer(UInt32(polygon.origin ?? 0)); integer(UInt32(polygon.rings.count))
+            for ring in polygon.rings {
+                integer(UInt32(ring.count))
+                for point in ring { number(point.longitude); number(point.latitude) }
+            }
+        }
+        data.append(contentsOf: SHA256.hash(data: data))
+        return data
+    }
+    static func decode(_ data: Data) throws -> SpeciesRangeSnapshot {
+        guard data.count >= 40, data.count <= 128 * 1024 * 1024 else { throw RangeDataError.invalid }
+        let payload = data.dropLast(32)
+        guard Data(SHA256.hash(data: payload)) == data.suffix(32), payload.prefix(8) == Data("BRANGE01".utf8) else { throw RangeDataError.invalid }
+        var offset = 8
+        func integer() throws -> Int {
+            guard offset + 4 <= payload.count else { throw RangeDataError.invalid }
+            let value = data.withUnsafeBytes { $0.loadUnaligned(fromByteOffset: offset, as: UInt32.self).littleEndian }
+            offset += 4; return Int(value)
+        }
+        func string() throws -> String {
+            let count = try integer()
+            guard count <= 1_000_000, offset + count <= payload.count,
+                  let value = String(data: data[offset..<(offset + count)], encoding: .utf8), !value.isEmpty else { throw RangeDataError.invalid }
+            offset += count; return value
+        }
+        func number() throws -> Double {
+            guard offset + 8 <= payload.count else { throw RangeDataError.invalid }
+            let bits = data.withUnsafeBytes { $0.loadUnaligned(fromByteOffset: offset, as: UInt64.self).littleEndian }
+            offset += 8
+            let value = Double(bitPattern: bits)
+            guard value.isFinite else { throw RangeDataError.invalid }
+            return value
+        }
+        let attribution = try string(), version = try string(), count = try integer()
+        guard (1...100_000).contains(count) else { throw RangeDataError.invalid }
+        var polygons: [SpeciesRangeSnapshot.Polygon] = []
+        for _ in 0..<count {
+            let season = try integer(), origin = try integer(), ringCount = try integer()
+            guard (0...5).contains(season), (0...6).contains(origin), (1...100_000).contains(ringCount) else { throw RangeDataError.invalid }
+            var rings: [[SpeciesRangeSnapshot.Point]] = []
+            for _ in 0..<ringCount {
+                let points = try integer()
+                guard points >= 4, points <= (payload.count - offset) / 16 else { throw RangeDataError.invalid }
+                var ring: [SpeciesRangeSnapshot.Point] = []; ring.reserveCapacity(points)
+                for _ in 0..<points {
+                    let longitude = try number(), latitude = try number()
+                    guard (-180...180).contains(longitude), (-90...90).contains(latitude) else { throw RangeDataError.invalid }
+                    ring.append(.init(longitude: longitude, latitude: latitude))
+                }
+                rings.append(ring)
+            }
+            polygons.append(.init(rings: rings, season: season == 0 ? nil : season, origin: origin == 0 ? nil : origin))
+        }
+        guard offset == payload.count else { throw RangeDataError.invalid }
+        return .init(polygons: polygons, attribution: attribution, version: version)
     }
 }

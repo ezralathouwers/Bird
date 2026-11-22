@@ -307,3 +307,26 @@ Swift syntax, source membership/project parsing and whitespace checks are the
 available cloud verification. Native build/XCTest and device timing remain
 unverified; no measured speedup is asserted. Basemap tiles and MapKit's initial
 view creation can still take time independently of local range processing.
+
+
+### iPhone cold-load revision — 22 November 2026
+
+The range view now uses MKMapView with MKMultiPolygon groups per seasonal/origin
+style instead of a SwiftUI MapPolygon view for each island. Coordinates and
+interior rings are preserved. Native geometry construction yields in batches,
+and the map explicitly uses the light, muted standard basemap. The source map
+files and converter output are unchanged.
+
+After validating a source GeoJSON against its approved manifest, the loader
+writes an optional checksum-protected binary display cache under Application
+Support, excluded from backups and bounded to about 128 MiB. Files are keyed
+by the source SHA256, with version and attribution checked on reuse. Invalid
+caches fall back to the source. A new process can reuse this cache; first-ever
+source decoding and native geometry construction are still necessary. Basemap
+tiles may require network access. No on-device timing improvement has been
+measured in this Linux workspace. Native compilation and cold-start profiling
+remain required on the iPhone, especially with large private range files.
+
+Regression fixtures cover binary round trips including holes/styles, damage
+rejection, a new loader reading a disk cache, and overlay count by style rather
+than polygon count. These XCTest cases are written but have not run here.
