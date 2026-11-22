@@ -1392,6 +1392,25 @@ final class SpeciesAudioTests: XCTestCase {
         XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(license: "Unknown rights"), for: bird))
         XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(original: "https://untrusted.example/test.mp3"), for: bird))
     }
+    func testNumericCommonsBookkeepingDoesNotHideValidAudio() throws {
+        var root = try XCTUnwrap(JSONSerialization.jsonObject(with: response()) as? [String: Any])
+        var query = try XCTUnwrap(root["query"] as? [String: Any])
+        var pages = try XCTUnwrap(query["pages"] as? [String: Any])
+        var page = try XCTUnwrap(pages["1"] as? [String: Any])
+        var media = try XCTUnwrap(page["videoinfo"] as? [[String: Any]])
+        var attributes = try XCTUnwrap(media[0]["extmetadata"] as? [String: Any])
+        attributes["CommonsMetadataExtension"] = ["value": 1.2]
+        attributes["UnrelatedFlag"] = ["value": true]
+        media[0]["extmetadata"] = attributes
+        page["videoinfo"] = media; pages["1"] = page; query["pages"] = pages; root["query"] = query
+        let data = try JSONSerialization.data(withJSONObject: root)
+        XCTAssertNotNil(try CommonsSpeciesAudioRepository.decode(data, for: bird))
+        attributes["Artist"] = ["value": 42]
+        media[0]["extmetadata"] = attributes
+        page["videoinfo"] = media; pages["1"] = page; query["pages"] = pages; root["query"] = query
+        XCTAssertNil(try CommonsSpeciesAudioRepository.decode(JSONSerialization.data(withJSONObject: root), for: bird))
+    }
+
     func testOggNeedsOfficialMP3DerivativeAndDoesNotUseAnotherHost() throws {
         XCTAssertNil(try CommonsSpeciesAudioRepository.decode(response(original: "https://upload.wikimedia.org/test.ogg"), for: bird))
         let data = try response(original: "https://upload.wikimedia.org/test.ogg",

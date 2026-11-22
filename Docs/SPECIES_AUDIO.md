@@ -52,3 +52,17 @@ No forced credits dialog appears when pressing the speaker button.
   transitions, buffering/failure, rapid tapping, navigation/sheet/root overlays,
   background, phone interruption and accessibility must be checked on Mac/iPhone.
   No successful native audio playback/loop test is claimed by this cloud work.
+
+## Commons metadata decoding fix — 22 November 2026
+
+A real Commons response includes `CommonsMetadataExtension.value: 1.2` among
+otherwise textual `extmetadata` values. Decoding every dictionary entry as a
+String rejected the entire response, leaving the audio control hidden even
+for a species with a supported recording. Attribute decoding now accepts only
+strings for the values we actually use and treats unrelated non-string values
+as empty. Numeric/missing attribution still cannot qualify a recording.
+
+A regression fixture includes both numeric and boolean bookkeeping plus valid
+artist/license values; a second assertion rejects a numeric artist. The live
+Commons request for Turdus merula confirmed this mixed metadata schema. Native
+XCTest, button appearance and AVPlayer looping still require Xcode verification.

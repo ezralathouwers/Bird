@@ -35,7 +35,16 @@ struct CommonsSpeciesAudioRepository: SpeciesAudioRepository {
         let videoinfo: [Media]?
     }
     private struct Media: Decodable {
-        struct Attribute: Decodable { let value: String }
+        struct Attribute: Decodable {
+            let value: String
+            private enum CodingKeys: String, CodingKey { case value }
+            init(from decoder: any Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                // Commons also returns numeric bookkeeping fields (e.g. its
+                // metadata-extension version). They must not reject the page.
+                value = (try? container.decode(String.self, forKey: .value)) ?? ""
+            }
+        }
         struct Derivative: Decodable { let src: String; let type: String }
         let url: String?
         let descriptionurl: String?
