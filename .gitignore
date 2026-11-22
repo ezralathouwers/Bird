@@ -13,3 +13,9 @@ __pycache__/
 *.gpkg-shm
 *.gdb/
 BirdLife-inspectie.json
+
+# Private converted BirdLife data; only the empty-folder instructions are public.
+BirdingCompanion/Resources/PrivateBirdLifeRanges/*
+!BirdingCompanion/Resources/PrivateBirdLifeRanges/README.txt
+.birdlife-stage-*/
+.birdlife-backup-*/
