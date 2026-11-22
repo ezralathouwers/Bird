@@ -298,7 +298,7 @@ struct SessionSpeciesSearch: View {
         .task(id: locationKey) {
             showCatalog = false
             if let latitude, let longitude {
-                await nearby.load(query: DiscoverQuery(latitude: latitude, longitude: longitude, now: date, radiusKilometers: 10))
+                await nearby.load(query: DiscoverQuery(latitude: latitude, longitude: longitude, now: date, radiusKilometers: DiscoverQuery.nearbyRadiusKilometers))
             }
         }
     }

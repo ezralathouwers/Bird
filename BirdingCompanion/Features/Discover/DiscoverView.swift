@@ -22,7 +22,7 @@ struct DiscoverView: View {
     }
     private var query: DiscoverQuery? {
         guard let latitude = location.latitude, let longitude = location.longitude else { return nil }
-        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: 10)
+        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
     }
     private var locationTitle: String {
         if demo && location.latitude == nil { return "Voorbeeldlocatie" }
@@ -107,7 +107,7 @@ struct DiscoverView: View {
         .task(id: demo) {
             if demo && location.latitude == nil {
                 // Explicit fictional coordinate at 0/0, never presented as current GPS.
-                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10), demo: true)
+                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers), demo: true)
             }
         }
         .onDisappear { location.stop() }

@@ -133,8 +133,8 @@ struct EBirdDiscoverRepository: DiscoverRepository {
                                 latitude: observation.lat, longitude: observation.lng)
         }
         if !observations.isEmpty && reports.isEmpty { throw EBirdError.unknownSpecies }
-        return DiscoverDataset(reports: reports, attribution: "eBird · recent gemelde soorten · alfabetisch",
-                               isDemo: false, coversRequestedWindow: true, ordering: .alphabetical)
+        return DiscoverDataset(reports: reports, attribution: "eBird · laatst gemeld eerst",
+                               isDemo: false, coversRequestedWindow: true, ordering: .providerRecency)
     }
 
     static func request(query: DiscoverQuery, apiKey: String) throws -> URLRequest {
@@ -148,12 +148,13 @@ struct EBirdDiscoverRepository: DiscoverRepository {
             throw EBirdError.invalidKey
         }
         var components = URLComponents(string: "https://api.ebird.org/v2/data/obs/geo/recent")!
-        // Keep the exact center so the local 10 km filter agrees with the server.
+        // Keep the exact center so the local radius filter agrees with the server.
         components.queryItems = [
             URLQueryItem(name: "lat", value: String(query.latitude)),
             URLQueryItem(name: "lng", value: String(query.longitude)),
             URLQueryItem(name: "dist", value: String(query.radiusKilometers)),
             URLQueryItem(name: "back", value: "30"),
+            URLQueryItem(name: "sort", value: "date"),
             URLQueryItem(name: "cat", value: "species"),
             URLQueryItem(name: "includeProvisional", value: "false"),
             URLQueryItem(name: "maxResults", value: "10000")
@@ -165,8 +166,9 @@ struct EBirdDiscoverRepository: DiscoverRepository {
         return request
     }
 
-    // obsDt is local wall-clock time without a timezone. This inventory does not
-    // rank by timestamps; interpret its DATE within eBird's day-based window.
+    // obsDt is local wall-clock time without a timezone. Preserve eBird's
+    // sort=date response order for recency, including ordering within a day;
+    // interpret only its DATE locally for window validation.
     // Never invent a timezone or drop today's sightings while travelling.
     static func observationDate(_ value: String, relativeTo now: Date) -> Date? {
         let day = String(value.prefix(10))

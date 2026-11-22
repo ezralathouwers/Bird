@@ -254,6 +254,34 @@ final class DiscoverRankingTests: XCTestCase {
         XCTAssertEqual(ranked.map(\.species.dutchName), ["Koolmees", "Merel"])
     }
 
+    func testProviderRecencyPreservesOrderRatherThanNamesOrReportCounts() {
+        let newestFirst = [report(second, checklist: "latest"),
+                           report(first, checklist: "older", daysAgo: 2),
+                           report(first, checklist: "also-older", daysAgo: 3)]
+        let rows = DiscoverRanking.ranked(newestFirst, query: query, ordering: .providerRecency)
+        XCTAssertEqual(rows.map(\.id), [second.id, first.id])
+        XCTAssertEqual(rows.map(\.reportCount), [1, 2])
+        let reverse = DiscoverRanking.ranked([report(first, checklist: "latest"),
+                                             report(second, checklist: "older", daysAgo: 2)],
+                                            query: query, ordering: .providerRecency)
+        XCTAssertEqual(reverse.map(\.id), [first.id, second.id]) // Must not re-sort alphabetically.
+    }
+
+    func testFiveKilometerRecencyFilterKeepsOnlyValidReportsBeforeOrdering() {
+        let local = DiscoverQuery(latitude: 0, longitude: 0, now: now,
+                                  radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
+        let rows = DiscoverRanking.ranked([
+            report(first, checklist: "outside", latitude: 0.046), // About 5.1 km away.
+            report(first, checklist: "old", daysAgo: 31),
+            report(first, checklist: "future", daysAgo: -1),
+            report(second, checklist: "inside", latitude: 0.044), // About 4.9 km away.
+            report(first, checklist: "valid-older", daysAgo: 2)
+        ], query: local, ordering: .providerRecency)
+        XCTAssertEqual(local.radiusKilometers, 5)
+        XCTAssertEqual(rows.map(\.id), [second.id, first.id])
+        XCTAssertEqual(rows.map(\.reportCount), [1, 1])
+    }
+
     func testLoggedFiltersUseStableIDsAndPreserveRanking() {
         let ranked = DiscoverRanking.ranked([report(first, checklist: "A"), report(second, checklist: "B")], query: query)
         let record = Observation(speciesID: first.id, taxonomyVersion: first.taxonomyVersion,
@@ -270,7 +298,7 @@ final class DiscoverViewModelTests: XCTestCase {
     func testInvalidKeyShowsConnectionControlsAndResetClearsOldRequestState() async {
         let model = DiscoverViewModel(repository: EBirdDiscoverRepository(
             keys: EBirdFixtureKeyStore(), client: EBirdFixtureHTTP(status: 403)))
-        await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10))
+        await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers))
         XCTAssertTrue(model.needsConnection)
         XCTAssertNotNil(model.message)
         model.reset()
@@ -1127,7 +1155,7 @@ private struct EBirdFixtureHTTP: EBirdHTTPClient {
 @MainActor
 final class EBirdDiscoverTests: XCTestCase {
     private var now: Date { Date(timeIntervalSince1970: 1_800_000_000) }
-    private var query: DiscoverQuery { DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: 10) }
+    private var query: DiscoverQuery { DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: DiscoverQuery.nearbyRadiusKilometers) }
     private var index: EBirdSpeciesIndex {
         EBirdSpeciesIndex(entries: [("eurbla", DiscoverFixtures.catalog[0]), ("gretit", DiscoverFixtures.catalog[1])])
     }
@@ -1153,7 +1181,7 @@ final class EBirdDiscoverTests: XCTestCase {
                                        index: { index }, now: { now })
     }
 
-    func testRequestUsesThirtyDaysTenKilometersAndHeaderOnlyKey() throws {
+    func testRequestUsesThirtyDaysFiveKilometersRecencyAndHeaderOnlyKey() throws {
         let request = try EBirdDiscoverRepository.request(query: query, apiKey: "  fixture-key  ")
         XCTAssertEqual(request.value(forHTTPHeaderField: "X-eBirdApiToken"), "fixture-key")
         XCTAssertEqual(request.url?.scheme, "https")
@@ -1161,7 +1189,8 @@ final class EBirdDiscoverTests: XCTestCase {
         XCTAssertEqual(request.url?.path, "/v2/data/obs/geo/recent")
         let items = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!
         let parameters = Dictionary(uniqueKeysWithValues: items.map { ($0.name, $0.value!) })
-        XCTAssertEqual(parameters["dist"], "10.0")
+        XCTAssertEqual(parameters["dist"], "5.0")
+        XCTAssertEqual(parameters["sort"], "date")
         XCTAssertEqual(parameters["back"], "30")
         XCTAssertEqual(parameters["cat"], "species")
         XCTAssertEqual(parameters["includeProvisional"], "false")
@@ -1170,18 +1199,18 @@ final class EBirdDiscoverTests: XCTestCase {
         XCTAssertEqual(try EBirdDiscoverRepository.request(query: query, apiKey: uuidKey)
             .value(forHTTPHeaderField: "X-eBirdApiToken"), uuidKey)
         XCTAssertThrowsError(try EBirdDiscoverRepository.request(query: query, apiKey: "key\r\nInjected: value"))
-        let bad = DiscoverQuery(latitude: .nan, longitude: 0, now: now, radiusKilometers: 10)
+        let bad = DiscoverQuery(latitude: .nan, longitude: 0, now: now, radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
         XCTAssertThrowsError(try EBirdDiscoverRepository.request(query: bad, apiKey: "fixture-key"))
     }
 
-    func testLiveInventoryUsesStableIDsLocalRadiusAndAlphabeticalOrderNotCounts() async throws {
+    func testLiveInventoryPreservesProviderRecencyStableIDsAndLocalRadius() async throws {
         let dataset = try await repository(http: EBirdFixtureHTTP(body: validBody)).reports(for: query)
         let rows = DiscoverRanking.ranked(dataset.reports, query: query, ordering: dataset.ordering)
         XCTAssertFalse(dataset.isDemo)
-        XCTAssertEqual(dataset.ordering, .alphabetical)
-        XCTAssertEqual(rows.map(\.species.dutchName), ["Koolmees", "Merel"])
-        XCTAssertEqual(rows.map(\.reportCount), [1, 2]) // More blackbird reports must not imply frequency ordering.
-        XCTAssertEqual(rows.last?.id, DiscoverFixtures.catalog[0].id)
+        XCTAssertEqual(dataset.ordering, .providerRecency)
+        XCTAssertEqual(rows.map(\.species.dutchName), ["Merel", "Koolmees"])
+        XCTAssertEqual(rows.map(\.reportCount), [2, 1])
+        XCTAssertEqual(rows.first?.id, DiscoverFixtures.catalog[0].id)
         XCTAssertEqual(dataset.reports.count, 4) // Unknown species excluded, radius filtered by shared ranking.
     }
 
@@ -1225,7 +1254,7 @@ final class EBirdDiscoverTests: XCTestCase {
         XCTAssertNotNil(EBirdDiscoverRepository.observationDate("2027-01-15", relativeTo: now))
         XCTAssertNil(EBirdDiscoverRepository.observationDate("bad-date", relativeTo: now))
         XCTAssertNil(EBirdDiscoverRepository.observationDate("2020-01-01", relativeTo: now))
-        let historical = DiscoverQuery(latitude: 0, longitude: 0, now: now.addingTimeInterval(-31 * 86400), radiusKilometers: 10)
+        let historical = DiscoverQuery(latitude: 0, longitude: 0, now: now.addingTimeInterval(-31 * 86400), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
         do { _ = try await repository().reports(for: historical); XCTFail("Expected unsupported date") }
         catch { XCTAssertEqual(error as? EBirdError, .unsupportedDate) }
     }

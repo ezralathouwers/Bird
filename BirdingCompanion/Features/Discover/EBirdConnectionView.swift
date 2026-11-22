@@ -14,7 +14,7 @@ struct EBirdConnectionView: View {
         NavigationStack {
             Form {
                 Section {
-                    Text("Verbind eBird om recent gemelde vogelsoorten binnen 10 km te bekijken.")
+                    Text("Verbind eBird om recent gemelde vogelsoorten binnen 5 km te bekijken.")
                     Link("Gratis eBird-sleutel aanvragen", destination: URL(string: "https://ebird.org/api/keygen")!)
                 }
                 Section("Persoonlijke API-sleutel") {
@@ -34,7 +34,7 @@ struct EBirdConnectionView: View {
                     if let message { Text(message).foregroundStyle(.red).accessibilityAddTraits(.updatesFrequently) }
                 }
                 Section {
-                    Text("De lijst toont soorten die de afgelopen 30 dagen zijn gemeld, alfabetisch op Nederlandse naam. eBird geeft hier per soort alleen de recentste melding door.")
+                    Text("De lijst toont soorten die de afgelopen 30 dagen zijn gemeld, met de recentste meldingen bovenaan. eBird geeft hier per soort alleen de recentste melding door.")
                         .font(.footnote)
                 }
                 if hasStoredKey {
@@ -66,7 +66,7 @@ struct EBirdConnectionView: View {
                 do {
                     // If GPS is not available yet, only verify access with a neutral
                     // coordinate; these results never become the user's nearby list.
-                    let probe = query ?? DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 10)
+                    let probe = query ?? DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
                     _ = try await EBirdDiscoverRepository().reports(for: probe, apiKey: apiKey)
                     try Task.checkCancellation()
                     try keys.save(apiKey)

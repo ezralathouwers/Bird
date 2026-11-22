@@ -13,6 +13,7 @@ enum DiscoverFilter: String, CaseIterable {
 }
 
 struct DiscoverQuery: Sendable {
+    static let nearbyRadiusKilometers: Double = 5
     let latitude: Double
     let longitude: Double
     let now: Date
@@ -36,7 +37,7 @@ struct DiscoverSpecies: Identifiable, Sendable {
 }
 
 enum DiscoverOrdering: Sendable, Equatable {
-    case checklistFrequency, alphabetical
+    case checklistFrequency, providerRecency
 }
 
 struct DiscoverDataset: Sendable {
@@ -73,19 +74,26 @@ struct DiscoverRanking {
         let center = CLLocation(latitude: query.latitude, longitude: query.longitude)
         var species: [String: Species] = [:]
         var checklists: [String: Set<String>] = [:]
-        for report in reports {
+        // eBird sorts by observation recency before sending the response. Retain
+        // that order: obsDt has no timezone and some records contain only a date.
+        var firstPosition: [String: Int] = [:]
+        for (position, report) in reports.enumerated() {
             guard !report.checklistID.isEmpty,
                   report.observedAt >= query.start, report.observedAt <= query.now,
                   report.latitude.isFinite, report.longitude.isFinite,
                   (-90...90).contains(report.latitude), (-180...180).contains(report.longitude) else { continue }
             let point = CLLocation(latitude: report.latitude, longitude: report.longitude)
             guard point.distance(from: center) <= query.radiusKilometers * 1000 else { continue }
+            if firstPosition[report.species.id] == nil { firstPosition[report.species.id] = position }
             species[report.species.id] = report.species
             checklists[report.species.id, default: []].insert(report.checklistID)
         }
         return species.values.map {
             DiscoverSpecies(species: $0, reportCount: checklists[$0.id]?.count ?? 0)
         }.sorted {
+            if ordering == .providerRecency {
+                return firstPosition[$0.id, default: Int.max] < firstPosition[$1.id, default: Int.max]
+            }
             if ordering == .checklistFrequency && $0.reportCount != $1.reportCount { return $0.reportCount > $1.reportCount }
             let left = $0.species.dutchName.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
             let right = $1.species.dutchName.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
