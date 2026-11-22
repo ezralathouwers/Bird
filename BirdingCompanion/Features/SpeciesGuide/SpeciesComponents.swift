@@ -163,6 +163,10 @@ struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
         let controller = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         controller.view.backgroundColor = .clear
         controller.view.clipsToBounds = true
+        // The SwiftUI parent supplies explicit bounds below its actual header.
+        for scroll in controller.view.subviews.compactMap({ $0 as? UIScrollView }) {
+            scroll.contentInsetAdjustmentBehavior = .never
+        }
         controller.dataSource = context.coordinator
         controller.delegate = context.coordinator
         context.coordinator.configure(species: species)
@@ -280,7 +284,7 @@ private struct SpeciesArtworkSlide: View {
                         .frame(width: size.width, height: size.height)
                         .frame(width: geometry.size.width,
                                height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
-                               alignment: .bottom)
+                               alignment: role == .dynamic ? .bottom : .center)
                         .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van 4")
                 } else {
                     ArtworkPlaceholder(hero: true,

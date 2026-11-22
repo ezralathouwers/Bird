@@ -18,11 +18,16 @@ struct SpeciesDetailView: View {
     }
 
     var body: some View {
-        Group {
+        VStack(spacing: 0) {
+            header.fixedSize(horizontal: false, vertical: true)
+            Group {
             switch tab {
             case .overview:
-                SpeciesArtworkCarousel(species: species, page: $artworkPage)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                GeometryReader { viewport in
+                    SpeciesArtworkCarousel(species: species, page: $artworkPage)
+                        .frame(width: viewport.size.width, height: viewport.size.height)
+                }
+                .clipped()
             case .information:
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
@@ -40,6 +45,8 @@ struct SpeciesDetailView: View {
                         .padding(.horizontal, 20).padding(.bottom, 24)
                 }
             }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             if tab == .information { HabitatFooter(species: species) }
@@ -48,7 +55,20 @@ struct SpeciesDetailView: View {
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .toolbar(.hidden, for: .navigationBar)
-        .safeAreaInset(edge: .top, spacing: 0) {
+        .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
+        .sheet(isPresented: $showImages) {
+            NavigationStack {
+                SafariSearchView(url: searchURL).ignoresSafeArea(edges: .bottom)
+                    .navigationTitle("Google Afbeeldingen").navigationBarTitleDisplayMode(.inline)
+                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Sluiten") { showImages = false } } }
+            }
+        }
+        .alert("Geluid nog niet beschikbaar", isPresented: $showAudio) {
+            Button("Sluiten", role: .cancel) {}
+        } message: { Text("Er is nog geen geluidsopname met gecontroleerde gebruiksrechten toegevoegd.") }
+    }
+
+    private var header: some View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 0) {
                     Button { dismiss() } label: {
@@ -64,18 +84,6 @@ struct SpeciesDetailView: View {
             }
             .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 4)
             .background(FieldGuideTheme.ivory)
-        }
-        .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
-        .sheet(isPresented: $showImages) {
-            NavigationStack {
-                SafariSearchView(url: searchURL).ignoresSafeArea(edges: .bottom)
-                    .navigationTitle("Google Afbeeldingen").navigationBarTitleDisplayMode(.inline)
-                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Sluiten") { showImages = false } } }
-            }
-        }
-        .alert("Geluid nog niet beschikbaar", isPresented: $showAudio) {
-            Button("Sluiten", role: .cancel) {}
-        } message: { Text("Er is nog geen geluidsopname met gecontroleerde gebruiksrechten toegevoegd.") }
     }
 
     private var heading: some View {

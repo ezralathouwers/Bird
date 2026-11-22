@@ -78,3 +78,15 @@ weights; goal circles/lines and globe use that same stroke. Shape geometry
 scales before stroking, preserving one physical line width at different sizes.
 The goal completion dot remains filled. Static syntax and diff checks pass;
 visual matching to the binocular reference and native rendering need Xcode.
+
+### Repeated low/clipped artwork in simulator screenshots
+
+The header was previously supplied via safeAreaInset while the hosted pager
+ignored inherited safe areas. A larger bottom margin alone did not establish
+an actual smaller UIKit viewport. The header is now a real VStack sibling above
+the carousel, whose controller receives explicit bounds from the remaining
+GeometryReader. Supplemental front/rear/flight views center inside that viewport;
+only the dynamic hero remains bottom aligned. Page-scroll automatic content
+insets are disabled. Verify these changes on Mac with the supplied woodpecker
+flight and long-tailed magpie examples; cloud syntax checking is insufficient
+to prove that UIKit clipping has been resolved on a device.
