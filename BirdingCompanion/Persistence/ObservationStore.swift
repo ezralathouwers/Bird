@@ -3,6 +3,7 @@ import Combine
 
 protocol ObservationPersistence {
     func load() throws -> [Observation]
+    func preserveBeforeRestore() throws
     func save(_ observations: [Observation]) throws
     func loadSessions() throws -> [BirdSession]
     func loadGoals() throws -> [BirdGoal]
@@ -11,6 +12,7 @@ protocol ObservationPersistence {
 }
 
 extension ObservationPersistence {
+    func preserveBeforeRestore() throws { throw BackupError.unsupported }
     func loadGoals() throws -> [BirdGoal] { [] }
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
         guard goals.isEmpty else { throw GoalError.unsupportedPersistence }
@@ -37,6 +39,12 @@ struct JSONObservationPersistence: ObservationPersistence {
         let result = try JSONDecoder().decode(BirdingArchive.self, from: data)
         guard result.version == 2 || result.version == 3 else { throw CocoaError(.fileReadCorruptFile) }
         return result
+    }
+    func preserveBeforeRestore() throws {
+        guard FileManager.default.fileExists(atPath: url.path) else { return }
+        let directory = url.deletingLastPathComponent().appendingPathComponent("RecoveryCopies", isDirectory: true)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        try FileManager.default.copyItem(at: url, to: directory.appendingPathComponent("before-restore-\(UUID().uuidString).json"))
     }
     func load() throws -> [Observation] { try archive().observations }
     func loadSessions() throws -> [BirdSession] { try archive().sessions }
@@ -65,6 +73,7 @@ final class ObservationStore: ObservableObject {
     @Published private(set) var goals: [BirdGoal] = []
     @Published private(set) var sessions: [BirdSession] = []
     @Published private(set) var loadError: String?
+    @Published private(set) var revision = UUID()
     private let persistence: any ObservationPersistence
 
     init(persistence: any ObservationPersistence) {
@@ -104,6 +113,7 @@ final class ObservationStore: ObservableObject {
         try Self.validateArchive(observations: updated, sessions: sessions)
         try persistence.save(updated, sessions: sessions, goals: goals)
         observations = updated
+        revision = UUID()
     }
 
     var activeSession: BirdSession? { sessions.first { $0.isLive && $0.endedAt == nil } }
@@ -191,9 +201,10 @@ final class ObservationStore: ObservableObject {
         try persistence.save(observations, sessions: sessions, goals: goals)
         self.observations = observations
         self.sessions = sessions
+        revision = UUID()
     }
 
-    private static func validateArchive(observations: [Observation], sessions: [BirdSession]) throws {
+    nonisolated static func validateArchive(observations: [Observation], sessions: [BirdSession]) throws {
         for session in sessions { try session.validate() }
         guard Set(sessions.map(\.id)).count == sessions.count,
               Set(observations.map(\.id)).count == observations.count,
@@ -210,6 +221,17 @@ final class ObservationStore: ObservableObject {
         }
     }
 
+    func restoreArchive(_ archive: BirdingArchive, expectedRevision: UUID) throws {
+        guard revision == expectedRevision else { throw BackupError.changed }
+        guard activeSession == nil else { throw BackupError.activeSession }
+        try BackupCodec.validate(archive)
+        // Preserve even an unreadable source file before replacing it.
+        try persistence.preserveBeforeRestore()
+        try persistence.save(archive.observations, sessions: archive.sessions, goals: archive.goals ?? [])
+        observations = archive.observations; sessions = archive.sessions; goals = archive.goals ?? []
+        loadError = nil; revision = UUID()
+    }
+
     func exportArchiveData() throws -> Data {
         guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
         let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
@@ -223,6 +245,7 @@ final class ObservationStore: ObservableObject {
         let updated = goals + [goal]
         try persistence.save(observations, sessions: sessions, goals: updated)
         goals = updated
+        revision = UUID()
     }
 
     func updateGoal(_ goal: BirdGoal) throws {
@@ -235,6 +258,7 @@ final class ObservationStore: ObservableObject {
         updated[index] = edited
         try persistence.save(observations, sessions: sessions, goals: updated)
         goals = updated
+        revision = UUID()
     }
 
     func logStatus(for speciesID: String) -> SpeciesLogStatus {

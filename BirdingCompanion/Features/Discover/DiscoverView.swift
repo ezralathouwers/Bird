@@ -9,6 +9,7 @@ struct DiscoverView: View {
     @State private var demo = false
     @State private var showSearch = false
     @State private var showCatalogSources = false
+    @State private var showBackups = false
     @State private var showEBirdConnection = false
     @State private var connectionRevision = UUID()
     @State private var catalogQuery = ""
@@ -74,12 +75,17 @@ struct DiscoverView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(FieldGuideTheme.ivory)
         .overlay(alignment: .topLeading) {
-            Button { showCatalogSources = true } label: {
-                Image(systemName: "info.circle").font(.system(size: 22, weight: .ultraLight))
-                    .foregroundStyle(FieldGuideTheme.mutedIcon)
-                    .frame(width: 44, height: 44, alignment: .leading)
-                    .contentShape(Rectangle())
-            }.accessibilityLabel("Info").padding(.leading, 20).padding(.top, 8)
+            HStack(spacing: 0) {
+                Button { showCatalogSources = true } label: {
+                    Image(systemName: "info.circle").font(.system(size: 22, weight: .ultraLight))
+                        .frame(width: 44, height: 44, alignment: .leading).contentShape(Rectangle())
+                }.accessibilityLabel("Info")
+                Button { showBackups = true } label: {
+                    Image(systemName: "gearshape").font(.system(size: 22, weight: .ultraLight))
+                        .frame(width: 44, height: 44).contentShape(Rectangle())
+                }.accessibilityLabel("Gegevens en back-ups")
+            }.buttonStyle(.plain).foregroundStyle(FieldGuideTheme.mutedIcon)
+                .padding(.leading, 20).padding(.top, 8)
         }
         .overlay(alignment: .topTrailing) {
             Button { showSearch.toggle() } label: {
@@ -94,6 +100,9 @@ struct DiscoverView: View {
         .onChange(of: showSearch) { _, shown in
             searchFocused = shown
             if !shown { catalogQuery = "" }
+        }
+        .fullScreenCover(isPresented: $showBackups) {
+            NavigationStack { DataBackupsView().toolbar(.hidden, for: .navigationBar) }
         }
         .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
         .sheet(isPresented: $showEBirdConnection) {

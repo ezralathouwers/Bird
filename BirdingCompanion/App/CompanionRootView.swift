@@ -8,6 +8,7 @@ private enum MainSection: String {
 struct CompanionRootView: View {
     @EnvironmentObject private var store: ObservationStore
     @StateObject private var sessionLogger = SessionLiveLogger()
+    @StateObject private var backups = BackupController()
     @StateObject private var soundModel = SoundIdentificationModel()
     @StateObject private var soundPins = SoundResultPins()
     @State private var identificationPath = NavigationPath()
@@ -54,10 +55,15 @@ struct CompanionRootView: View {
             .background(FieldGuideTheme.ivory.ignoresSafeArea())
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
             .environmentObject(sessionLogger)
+            .environmentObject(backups)
+            .onChange(of: store.revision) { _, _ in backups.schedule(store: store) }
             .environmentObject(soundModel)
             .environmentObject(soundPins)
             .onChange(of: soundModel.startedAt) { _, _ in soundPins.reset() }
-            .onChange(of: scenePhase) { _, phase in if phase == .background { soundModel.stop() } }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .background { soundModel.stop() }
+                if phase == .active { backups.schedule(store: store) }
+            }
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in soundModel.stop() }
             .coordinateSpace(name: "appRoot")
             .onPreferenceChange(PlusCenterPreference.self) { value in Task { @MainActor in plusCenter = value } }
@@ -91,6 +97,7 @@ struct CompanionRootView: View {
                 }
             }
             .task {
+                backups.schedule(store: store)
                 async let location: Void = SharedCurrentLocation.shared.prewarmIfAuthorized()
                 try? await Task.sleep(for: .milliseconds(750))
                 guard !Task.isCancelled else { return }

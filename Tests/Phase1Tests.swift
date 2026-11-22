@@ -1970,3 +1970,119 @@ final class MenuRevealGeometryTests: XCTestCase {
         }
     }
 }
+
+@MainActor
+final class BackupSafetyTests: XCTestCase {
+    private func archive() -> BirdingArchive {
+        let session = BirdSession(locationName: "Voorbeeldpark", latitude: 51, longitude: 4, countryCode: "BE",
+                                  startedAt: Date(timeIntervalSince1970: 1000), endedAt: Date(timeIntervalSince1970: 2000), isLive: false)
+        let bird = MockSpeciesRepository.kingfisher
+        var log = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion,
+                              observedAt: Date(timeIntervalSince1970: 1500), locationName: session.locationName,
+                              count: 2, notes: "Mijn notitie", status: .confirmed)
+        log.latitude = session.latitude; log.longitude = session.longitude; log.countryCode = "BE"; log.sessionID = session.id
+        var goal = BirdGoal(name: "Voorbeeld", speciesIDs: [bird.id]); goal.favoriteSpeciesID = bird.id
+        return BirdingArchive(observations: [log], sessions: [session], goals: [goal])
+    }
+    private func temporaryDirectory() throws -> URL {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        return directory
+    }
+    func testFullArchiveRoundTripPreservesSessionsGoalsAndStableIDs() throws {
+        let original = archive()
+        let bytes = try BackupCodec.encode(payload: JSONEncoder().encode(original), date: Date(timeIntervalSince1970: 3000))
+        let decoded = try BackupCodec.decode(bytes)
+        XCTAssertEqual(decoded.archive, original)
+        XCTAssertEqual(decoded.date, Date(timeIntervalSince1970: 3000))
+        let document = try JSONDecoder().decode(BackupCodec.Document.self, from: bytes)
+        let damaged = BackupCodec.Document(format: document.format, version: document.version, createdAt: document.createdAt,
+                                          payload: document.payload + Data([0]), sha256: document.sha256)
+        XCTAssertThrowsError(try BackupCodec.decode(JSONEncoder().encode(damaged)))
+    }
+    func testEarlierFullAndStandaloneObservationExportsRemainReadable() throws {
+        let original = archive()
+        XCTAssertEqual(try BackupCodec.decode(JSONEncoder().encode(original)).archive, original)
+        var standalone = original.observations[0]; standalone.sessionID = nil
+        let legacy = try BackupCodec.decode(JSONEncoder().encode([standalone]))
+        XCTAssertEqual(legacy.archive.observations, [standalone]); XCTAssertTrue(legacy.archive.sessions.isEmpty)
+        XCTAssertNil(legacy.date)
+    }
+    func testInvalidFutureDuplicateAndOrphanArchivesAreRejected() throws {
+        var future = archive(); future.version = 999
+        XCTAssertThrowsError(try BackupCodec.encode(payload: JSONEncoder().encode(future)))
+        var duplicate = archive(); let repeatedGoal = duplicate.goals![0]; duplicate.goals?.append(repeatedGoal)
+        XCTAssertThrowsError(try BackupCodec.validate(duplicate))
+        var orphan = archive(); orphan.sessions = []
+        XCTAssertThrowsError(try BackupCodec.validate(orphan))
+        XCTAssertThrowsError(try BackupCodec.decode(Data("broken".utf8)))
+    }
+    func testRestorePreservesPreviousFileAndRejectsStalePreview() throws {
+        let directory = try temporaryDirectory(); defer { try? FileManager.default.removeItem(at: directory) }
+        let file = directory.appendingPathComponent("observations.json")
+        let persistence = JSONObservationPersistence(url: file)
+        let before = archive(), incoming = archive()
+        try persistence.save(before.observations, sessions: before.sessions, goals: before.goals ?? [])
+        let store = ObservationStore(persistence: persistence)
+        let oldRevision = store.revision
+        let originalBytes = try Data(contentsOf: file)
+        try store.restoreArchive(incoming, expectedRevision: oldRevision)
+        let reloaded = ObservationStore(persistence: persistence)
+        XCTAssertEqual(reloaded.observations, incoming.observations)
+        XCTAssertEqual(reloaded.sessions, incoming.sessions); XCTAssertEqual(reloaded.goals, incoming.goals ?? [])
+        let safety = try FileManager.default.contentsOfDirectory(at: directory.appendingPathComponent("RecoveryCopies"), includingPropertiesForKeys: nil)
+        XCTAssertEqual(safety.count, 1); XCTAssertEqual(try Data(contentsOf: XCTUnwrap(safety.first)), originalBytes)
+        XCTAssertThrowsError(try store.restoreArchive(before, expectedRevision: oldRevision))
+        XCTAssertEqual(store.observations, incoming.observations)
+    }
+    func testUnreadableLocalArchiveCanBeRecoveredWithoutLosingOriginalBytes() throws {
+        let directory = try temporaryDirectory(); defer { try? FileManager.default.removeItem(at: directory) }
+        let file = directory.appendingPathComponent("observations.json"), damaged = Data("damaged file".utf8)
+        try damaged.write(to: file)
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: file))
+        XCTAssertNotNil(store.loadError)
+        let incoming = archive()
+        try store.restoreArchive(incoming, expectedRevision: store.revision)
+        XCTAssertNil(store.loadError); XCTAssertEqual(store.observations, incoming.observations)
+        let safety = try FileManager.default.contentsOfDirectory(at: directory.appendingPathComponent("RecoveryCopies"), includingPropertiesForKeys: nil)
+        XCTAssertEqual(try Data(contentsOf: XCTUnwrap(safety.first)), damaged)
+    }
+    func testFailedRestoreWriteDoesNotPublishOrAdvanceRevision() throws {
+        let persistence = FailingRestorePersistence(original: archive())
+        let store = ObservationStore(persistence: persistence), revision = store.revision
+        XCTAssertThrowsError(try store.restoreArchive(archive(), expectedRevision: revision))
+        XCTAssertEqual(store.revision, revision); XCTAssertEqual(store.observations, persistence.original.observations)
+    }
+    func testCoordinatedBackupWritesDistinctVerifiedVersions() async throws {
+        let directory = try temporaryDirectory(); defer { try? FileManager.default.removeItem(at: directory) }
+        let payload = try JSONEncoder().encode(archive()), files = BackupFiles()
+        let first = try await files.write(payload: payload, directory: directory, reason: "test")
+        let second = try await files.write(payload: payload, directory: directory, reason: "test")
+        XCTAssertNotEqual(first, second)
+        let restored = try await files.read(first)
+        XCTAssertEqual(try BackupCodec.decode(Data(contentsOf: second)).archive, restored.0)
+        XCTAssertEqual(try BackupCodec.decode(Data(contentsOf: first)).archive, restored.0)
+    }
+    func testFailedBackupKeepsLastSuccessfulTimestamp() async throws {
+        let name = "BackupSafetyTests-\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: name))
+        defer { defaults.removePersistentDomain(forName: name) }
+        defaults.set(Data([0]), forKey: "backup.folder")
+        defaults.set(1000.0, forKey: "backup.lastSuccess")
+        let controller = BackupController(defaults: defaults)
+        let store = ObservationStore(persistence: PreviewObservationPersistence())
+        await controller.save(store: store)
+        XCTAssertEqual(controller.lastSuccess, Date(timeIntervalSince1970: 1000))
+        XCTAssertNotNil(controller.message); XCTAssertFalse(controller.isBusy)
+    }
+}
+
+private struct FailingRestorePersistence: ObservationPersistence {
+    let original: BirdingArchive
+    func load() throws -> [Observation] { original.observations }
+    func loadSessions() throws -> [BirdSession] { original.sessions }
+    func loadGoals() throws -> [BirdGoal] { original.goals ?? [] }
+    func preserveBeforeRestore() throws {}
+    func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteOutOfSpace) }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws { throw CocoaError(.fileWriteOutOfSpace) }
+}
