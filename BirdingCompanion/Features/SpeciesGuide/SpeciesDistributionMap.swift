@@ -2,6 +2,7 @@ import SwiftUI
 import MapKit
 import Network
 import CryptoKit
+import UIKit
 
 // Provider configuration contains public metadata only, never credentials or GIS data.
 struct SpeciesRangeSource: Codable, Equatable {
@@ -74,6 +75,57 @@ struct PrivateBirdLifeRangeRepository {
         let license: String
         let files: [String: Entry]
     }
+    func diagnostic(speciesID: String) -> String {
+        var lines = ["Soort-ID: \(speciesID)"]
+        guard let url = bundle.url(forResource: "manifest", withExtension: "json", subdirectory: "PrivateBirdLifeRanges") else {
+            lines.append("Privékaartpakket in deze app: ontbreekt")
+            lines.append("Kopieer de omgezette map PrivateBirdLifeRanges naar het project dat je bouwt en bouw opnieuw.")
+            return lines.joined(separator: "\n")
+        }
+        do {
+            let manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
+            lines.append("Kaartpakket: \(manifest.version), \(manifest.files.count) soorten")
+            guard let entry = manifest.files[speciesID] else {
+                lines.append("Deze soort staat niet in de export. Controleer conversion-report.json.")
+                return lines.joined(separator: "\n")
+            }
+            let expected = speciesID.replacingOccurrences(of: ":", with: "-") + "-range.geojson"
+            guard entry.file == expected, !entry.file.contains("/"), !entry.file.contains("..") else {
+                lines.append("Bestandsverwijzing voor deze soort: ongeldig")
+                return lines.joined(separator: "\n")
+            }
+            let file = url.deletingLastPathComponent().appendingPathComponent(entry.file)
+            guard FileManager.default.fileExists(atPath: file.path) else {
+                lines.append("Kaartbestand voor deze soort: ontbreekt in de app")
+                return lines.joined(separator: "\n")
+            }
+            let data = try Data(contentsOf: file)
+            let hash = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+            lines.append("Kaartbestand: \(data.count) bytes")
+            lines.append("Bestandscontrole: \(hash == entry.sha256 ? "correct" : "wijkt af van export")")
+            if let collection = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let features = collection["features"] as? [[String: Any]] {
+                let current = features.filter { feature in
+                    guard let attributes = feature["properties"] as? [String: Any],
+                          let presence = attributes["presence"] as? Int,
+                          let origin = attributes["origin"] as? Int else { return false }
+                    return presence == 1 && [1, 2, 3, 6].contains(origin)
+                }
+                lines.append("Bronvlakken: \(features.count), huidig gevestigd: \(current.count)")
+            }
+            do {
+                let decoded = try BundledSpeciesRangeRepository.decode(data)
+                lines.append("Kaartdecode: \(decoded.polygons.count) polygonen")
+            } catch {
+                let diagnostic = error as NSError
+                lines.append("Kaartdecode mislukt: \(diagnostic.domain) (\(diagnostic.code))")
+            }
+        } catch {
+            lines.append("Kaartpakket kan niet worden gelezen.")
+        }
+        return lines.joined(separator: "\n")
+    }
+
     func loadIfInstalled(speciesID: String) throws -> SpeciesRangeDataset? {
         guard let url = bundle.url(forResource: "manifest", withExtension: "json", subdirectory: "PrivateBirdLifeRanges") else { return nil }
         let manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
@@ -223,6 +275,8 @@ struct SpeciesDistributionMap: View {
     @State private var loading = true
     @State private var message: String?
     @State private var showSources = false
+    @State private var showDiagnostics = false
+    @State private var lastLoadFailure = ""
     @State private var camera: MapCameraPosition = .region(MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 35, longitude: 60),
         span: MKCoordinateSpan(latitudeDelta: 90, longitudeDelta: 160)
@@ -245,7 +299,10 @@ struct SpeciesDistributionMap: View {
             if loading || message != nil || connectivity.isOffline || dataset != nil {
             VStack(alignment: .leading, spacing: 8) {
                 if loading { ProgressView("Verspreiding laden…") }
-                if let message { Text(message) }
+                if let message {
+                    Text(message)
+                    Button("Kaartcontrole") { showDiagnostics = true }.frame(minHeight: 44)
+                }
                 if connectivity.isOffline { Text("Offline: de basiskaart is mogelijk onvolledig. Lokaal beschikbare verspreidingsdata blijft beschikbaar.") }
                 if let dataset {
                     Button { showSources = true } label: {
@@ -276,8 +333,17 @@ struct SpeciesDistributionMap: View {
             }
         }
         .sheet(isPresented: $showSources) { SpeciesCatalogSourcesView() }
+        .alert("Kaartcontrole", isPresented: $showDiagnostics) {
+            Button("Kopieer controle") { UIPasteboard.general.string = diagnosticText }
+            Button("Sluiten", role: .cancel) {}
+        } message: { Text(diagnosticText) }
         .accessibilityLabel("Interactieve verspreidingskaart van \(species.dutchName)")
         .task(id: species.id) { loadRange() }
+    }
+
+    private var diagnosticText: String {
+        "\(species.dutchName)\n" + PrivateBirdLifeRangeRepository(bundle: .main).diagnostic(speciesID: species.id)
+            + "\nLaadresultaat: \(lastLoadFailure)"
     }
 
     private func areaColor(_ dataset: SpeciesRangeDataset, index: Int) -> Color {
@@ -288,6 +354,7 @@ struct SpeciesDistributionMap: View {
         loading = true
         dataset = nil
         message = nil
+        lastLoadFailure = ""
         source = try? SpeciesRangeSource.load()
         defer { loading = false }
         do {
@@ -297,8 +364,18 @@ struct SpeciesDistributionMap: View {
             camera = .rect(rect.insetBy(dx: -rect.width * 0.08, dy: -rect.height * 0.08))
         } catch {
             switch error as? RangeDataError {
-            case .awaitingFiles?, .awaitingPermission?, .unavailable?: message = nil
-            default: message = "De kaartgegevens konden niet worden geladen."
+            case .awaitingFiles?:
+                message = "De omgezette kaarten ontbreken in deze app."
+                lastLoadFailure = "geen lokaal kaartpakket meegebouwd"
+            case .awaitingPermission?:
+                message = RangeDataError.awaitingPermission.localizedDescription
+                lastLoadFailure = "toegang niet geconfigureerd"
+            case .unavailable?:
+                message = "Voor deze soort is geen huidig verspreidingsgebied ingeladen."
+                lastLoadFailure = "soort ontbreekt of heeft geen huidig gevestigd gebied"
+            default:
+                message = "De kaartgegevens konden niet worden geladen."
+                lastLoadFailure = "lezen, bestandscontrole of GeoJSON-decodering mislukt"
             }
         }
     }

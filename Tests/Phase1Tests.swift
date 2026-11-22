@@ -1008,8 +1008,18 @@ final class SpeciesRangeSourceTests: XCTestCase {
     func testUnrecognizedAccessCannotEnableData() throws {
         XCTAssertThrowsError(try SpeciesRangeSource.decode(configuration(access: "enabled")))
     }
-    func testConfiguredRepositoryReportsApprovedAccessWithMissingFiles() {
-        XCTAssertThrowsError(try ConfiguredSpeciesRangeRepository().load(speciesID: "sample-alcedo-atthis")) {
+    func testConfiguredRepositoryReportsApprovedAccessWithMissingFiles() throws {
+        // Never depend on whether the developer has installed real private maps.
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".bundle")
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let plist = try PropertyListSerialization.data(fromPropertyList: ["CFBundleIdentifier": "test.empty-birdlife"], format: .xml, options: 0)
+        try plist.write(to: folder.appendingPathComponent("Info.plist"))
+        try configuration(access: "approvedAwaitingFiles").write(to: folder.appendingPathComponent("SpeciesRangeSource.json"))
+        let bundle = try XCTUnwrap(Bundle(url: folder))
+        XCTAssertTrue(PrivateBirdLifeRangeRepository(bundle: bundle).diagnostic(speciesID: "sample-alcedo-atthis")
+            .contains("Privékaartpakket in deze app: ontbreekt"))
+        XCTAssertThrowsError(try ConfiguredSpeciesRangeRepository(bundle: bundle).load(speciesID: "sample-alcedo-atthis")) {
             guard case RangeDataError.awaitingFiles = $0 else {
                 return XCTFail("Expected approved BirdLife access with missing files, got \($0)")
             }

@@ -196,3 +196,24 @@ classification and exclusion of historical/vagrant areas and unknown codes.
 Native XCTest, actual BOTW conversion, native bundling, map bounds/dateline
 behavior and comparison against official source maps require the user's Mac.
 No successful conversion of the actual 9 GB GeoPackage is claimed here.
+
+
+## Diagnosing a completed export with a blank map
+
+A converter `Klaar` message confirms files were written to the chosen project,
+not that a different project downloaded/opened later includes them. A new public
+ZIP necessarily contains only the empty private folder. Copy the completed
+`BirdingCompanion/Resources/PrivateBirdLifeRanges` folder from the converted
+project into the new one before building, or run the converter for that project.
+Do not copy the public README-only folder over an existing completed export.
+
+The map no longer silently discards pending/missing/failed range states. Its
+`Kaartcontrole` button reports whether the compiled app includes a manifest,
+the number of species, whether the current ID has an entry, whether its file is
+included, and whether SHA256 matches. The user can copy this diagnosis without
+exporting polygons or absolute simulator paths. Missing data, unsupported current
+range and read/decode failure remain distinct. This adds diagnostic visibility;
+no root cause on the user's Mac is presumed until the diagnosis or private
+`conversion-report.json` has been inspected. The pending-files XCTest fixture now
+uses a dedicated empty test bundle instead of depending on the developer's real
+installed BirdLife package.
