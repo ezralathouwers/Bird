@@ -323,9 +323,11 @@ private struct PlusCenterPreference: PreferenceKey {
     static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) { value = nextValue() }
 }
 private struct CircularMenuReveal: AnimatableModifier {
-    var progress: CGFloat
+    // SwiftUI interpolates this value through Animatable's nonisolated contract.
+    // Keep the plain value storage and its accessor outside the UI actor.
+    nonisolated var progress: CGFloat
     let origin: CGPoint
-    var animatableData: CGFloat { get { progress } set { progress = newValue } }
+    nonisolated var animatableData: CGFloat { get { progress } set { progress = newValue } }
     func body(content: Content) -> some View {
         content.mask {
             GeometryReader { geometry in

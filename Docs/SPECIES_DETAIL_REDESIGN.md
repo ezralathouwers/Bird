@@ -391,3 +391,10 @@ uses a fade instead. Native safe-area positioning and animation smoothness need
 review on an iPhone; no screenshot or performance claim was generated in Linux.
 
 Discover lists now include a further 20 points of bottom padding (94 total).
+
+
+Swift 6 build follow-up: CircularMenuReveal now explicitly marks its plain
+CGFloat progress storage and animatableData accessor nonisolated, satisfying
+Animatable's nonisolated requirement without relaxing concurrency checks. The
+SwiftUI body remains actor isolated. Syntax/whitespace checked in Linux; Xcode
+compilation is still required to confirm against the user's SDK.
