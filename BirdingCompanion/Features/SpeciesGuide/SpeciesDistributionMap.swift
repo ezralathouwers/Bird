@@ -269,6 +269,8 @@ final class MapConnectivity: ObservableObject {
 struct SpeciesDistributionMap: View {
     let species: Species
     var repository: any SpeciesRangeRepository = ConfiguredSpeciesRangeRepository()
+    var onExpand: (() -> Void)? = nil
+    var isFullScreen = false
     @StateObject private var connectivity = MapConnectivity()
     @State private var source: SpeciesRangeSource?
     @State private var dataset: SpeciesRangeDataset?
@@ -294,7 +296,11 @@ struct SpeciesDistributionMap: View {
             }
         }
         .mapStyle(FieldGuideTheme.mapStyle)
-        .mapControls { MapCompass(); MapScaleView() }
+        .mapControls {
+            if !isFullScreen { MapCompass() }
+            MapScaleView()
+        }
+        .onTapGesture { onExpand?() }
         .overlay(alignment: .topLeading) {
             if loading || message != nil || connectivity.isOffline || dataset != nil {
             VStack(alignment: .leading, spacing: 8) {
@@ -330,6 +336,18 @@ struct SpeciesDistributionMap: View {
                     .font(FieldGuideTheme.sans(10, relativeTo: .caption2)).padding(8)
                 }
                 .background(FieldGuideTheme.ivory.opacity(0.94))
+            }
+        }
+        .overlay(alignment: .bottomTrailing) {
+            if let onExpand {
+                Button(action: onExpand) {
+                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                        .font(.system(size: 18, weight: .light))
+                        .frame(width: 44, height: 44)
+                        .background(FieldGuideTheme.ivory, in: Circle())
+                }
+                .accessibilityLabel("Open schermvullende verspreidingskaart")
+                .padding(.trailing, 12).padding(.bottom, 38)
             }
         }
         .sheet(isPresented: $showSources) { SpeciesCatalogSourcesView() }
@@ -378,5 +396,27 @@ struct SpeciesDistributionMap: View {
                 lastLoadFailure = "lezen, bestandscontrole of GeoJSON-decodering mislukt"
             }
         }
+    }
+}
+
+
+struct SpeciesRangeFullscreenView: View {
+    let species: Species
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        SpeciesDistributionMap(species: species, isFullScreen: true)
+            .ignoresSafeArea(edges: .bottom)
+            .background(FieldGuideTheme.ivory.ignoresSafeArea())
+            .overlay(alignment: .topTrailing) {
+                Button { dismiss() } label: {
+                    Image(systemName: "xmark").font(.system(size: 20, weight: .light))
+                        .foregroundStyle(FieldGuideTheme.charcoal)
+                        .frame(width: 44, height: 44)
+                        .background(FieldGuideTheme.ivory, in: Circle())
+                }
+                .accessibilityLabel("Sluit verspreidingskaart")
+                .padding(.trailing, 20).padding(.top, 12)
+            }
     }
 }

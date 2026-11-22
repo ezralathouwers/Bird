@@ -98,3 +98,23 @@ Binoculars and logbook bird outlines are 10% larger (24.2352 and 23.76 points),
 using the same unscaled 0.7-point stroke. Only the dynamic/detail first slide gets
 a 10-point leftwards display offset to leave more room at its right-facing head;
 front/rear/flight positioning is unchanged. Native visual verification pending.
+
+### Information tab: map first and full-screen expansion
+
+Information content now puts the compact distribution map before span and bio.
+The habitat footer uses a width of 112% of the viewport; its layout derives the
+height from the scene aspect ratio and retains navigation clearance, clipping
+only the side bleed. It no longer shrinks to fit a fixed 160-point box.
+
+A tap on the compact map or its explicit 44-point expand control opens a native
+fullScreenCover containing the same interactive distribution-map component and
+muted seasonal styling. A safe-area-positioned 44-point close button dismisses
+back to the Information tab. The full-screen map omits the compass at the close
+button's position and still supports pan, zoom and rotation. Existing source/
+diagnostic controls remain separate from the map tap gesture. No range data,
+conversion or taxonomy changes are involved.
+
+Swift syntax, Xcode project parsing and whitespace checks pass in cloud. Verify
+compact-map taps versus pan/zoom/source/diagnostic buttons, full-screen safe
+areas, close/return, and wider habitat geometry on Mac. Native interaction or
+visual correctness has not been claimed from syntax checks.

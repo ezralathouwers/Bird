@@ -341,19 +341,35 @@ enum HabitatArtworkCache {
     }
 }
 
+// Size the whole scene from its aspect ratio, then let only its sides bleed.
+// Unlike aspect-fill in a fixed-height box, this preserves the treetops/ground.
+private struct HabitatBleedLayout: Layout {
+    let imageSize: CGSize
+    private let widthMultiplier: CGFloat = 1.12
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let width = max(0, proposal.width ?? 320)
+        let height = width * widthMultiplier * imageSize.height / max(1, imageSize.width)
+        return CGSize(width: width, height: height + SpeciesArtworkLayout.navigationClearance)
+    }
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        guard let image = subviews.first else { return }
+        let width = bounds.width * widthMultiplier
+        let height = width * imageSize.height / max(1, imageSize.width)
+        image.place(at: CGPoint(x: bounds.midX, y: bounds.maxY - SpeciesArtworkLayout.navigationClearance),
+                    anchor: .bottom, proposal: ProposedViewSize(width: width, height: height))
+    }
+}
+
 struct HabitatFooter: View {
     let species: Species
     var body: some View {
         if let scene = HabitatSceneCatalog.primaryScene(for: species), let image = HabitatArtworkCache.image(for: scene) {
-            GeometryReader { geometry in
-                let size = SpeciesArtworkLayout.size(image: image.size, viewport: geometry.size, horizontalBleed: false)
+            HabitatBleedLayout(imageSize: image.size) {
                 Image(uiImage: image).resizable()
-                    .frame(width: size.width, height: size.height)
-                    .frame(width: geometry.size.width,
-                           height: geometry.size.height - SpeciesArtworkLayout.navigationClearance,
-                           alignment: .bottom)
             }
-            .frame(height: 160 + SpeciesArtworkLayout.navigationClearance)
+            .frame(maxWidth: .infinity)
+            .clipped()
             .accessibilityHidden(true)
             .allowsHitTesting(false)
         }

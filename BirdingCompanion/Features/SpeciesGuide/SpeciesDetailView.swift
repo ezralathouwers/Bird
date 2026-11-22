@@ -10,6 +10,7 @@ struct SpeciesDetailView: View {
     @State private var showObservation = false
     @State private var showImages = false
     @State private var showAudio = false
+    @State private var showRangeMap = false
 
     private var searchURL: URL {
         var components = URLComponents(string: "https://www.google.com/search")!
@@ -31,13 +32,13 @@ struct SpeciesDetailView: View {
             case .information:
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
-                        SpeciesFacts(species: species).padding(.horizontal, 20)
-                        SpeciesDistributionMap(species: species)
+                        SpeciesDistributionMap(species: species, onExpand: { showRangeMap = true })
                             .frame(height: 220)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                             .padding(.horizontal, 20)
+                        SpeciesFacts(species: species).padding(.horizontal, 20)
                     }
-                    .padding(.top, 16)
+                    .padding(.top, 16).padding(.bottom, 24)
                 }
             case .observations:
                 ScrollView {
@@ -56,6 +57,7 @@ struct SpeciesDetailView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar(.hidden, for: .navigationBar)
         .fullScreenCover(isPresented: $showObservation) { ObservationForm(species: species) }
+        .fullScreenCover(isPresented: $showRangeMap) { SpeciesRangeFullscreenView(species: species) }
         .sheet(isPresented: $showImages) {
             NavigationStack {
                 SafariSearchView(url: searchURL).ignoresSafeArea(edges: .bottom)
