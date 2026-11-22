@@ -217,3 +217,42 @@ no root cause on the user's Mac is presumed until the diagnosis or private
 `conversion-report.json` has been inspected. The pending-files XCTest fixture now
 uses a dedicated empty test bundle instead of depending on the developer's real
 installed BirdLife package.
+
+
+## Converter v2: recover rejected species — 22 November 2026
+
+The user's uploaded conversion report confirms 17,377 input features, 12,901
+exported features, 8,987 exported species, 1,557 rejected species and 626 unmatched
+source names. Ekster, houtduif, grote bonte specht and ijsvogel are in the rejected
+ID list; their application IDs/names resolve correctly. The old report does not
+record per-feature reasons, so it cannot prove which validity/code/header check
+failed on the actual source. That lack of detail is fixed alongside recovery.
+
+The former converter discarded an entire species on any invalid polygon before
+attempting repair. V2 applies GEOS make_valid to invalid polygon geometry,
+retains area components and clips them to repaired original exterior shells so
+an invalid outside hole cannot become a new range island. Collapsed shell
+components without area are counted. If a topology-preserving simplification
+fails, a valid unsimplified result is kept. Processing decisions are recorded in
+each regenerated feature's appGeometryProcessing foreign member. Presence,
+origin, season, IDs and all original nongeometry fields remain unchanged.
+Irreparable geometry and unknown codes still prevent a species from being
+presented as a complete current range, with exact reason, source row and ID now
+in failedFeatures. This is geometric repair, not independent verification of
+the source's scientific range accuracy.
+
+Run the updated helper on the SAME project with the existing completed export.
+By default it verifies and copies already successful ID/hash-bound maps unchanged
+and only reads/decodes geometry for missing species. It still scans source names
+read-only; it does not reuse unknown or corrupted files. A source version/size
+mismatch aborts instead of silently mixing releases. `--full` explicitly disables
+reuse. Metadata/hash format remains compatible with the current app, so no new
+app-source ZIP or native code change is required for this repair. The prior
+export is backed up atomically. The final message reports reused/added/remaining
+species; a remaining failure is not declared fixed.
+
+Ten portable tests pass: the earlier six plus self-crossing repair, rejecting
+new islands from outside holes, recovery with byte-identical reuse of a valid
+existing map, and specific failure logging while preserving other species.
+Actual recovery counts for BOTW_2025 and native rendering are still pending on
+the user's Mac; the large source remains unavailable in the cloud.

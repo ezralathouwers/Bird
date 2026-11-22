@@ -61,7 +61,99 @@ def resolve_names(catalog, available):
     return result
 
 
-def convert(source, catalog_path, output, tolerance=0.01):
+def polygonal_geometry(geometry):
+    """Keep polygon area from make_valid's possible GeometryCollection output."""
+    from shapely import union_all
+    if geometry.geom_type in ('Polygon', 'MultiPolygon'):
+        return geometry
+    if geometry.geom_type != 'GeometryCollection':
+        raise ValueError('Geometry repair produced no polygon area')
+    parts = []
+    for part in geometry.geoms:
+        if part.geom_type in ('Polygon', 'MultiPolygon'):
+            parts.append(part)
+        elif part.geom_type == 'GeometryCollection':
+            try:
+                parts.append(polygonal_geometry(part))
+            except ValueError:
+                pass
+    if not parts:
+        raise ValueError('Geometry repair produced no polygon area')
+    return union_all(parts)
+
+
+def prepare_geometry(geometry, tolerance):
+    from shapely import make_valid, union_all
+    from shapely.geometry import Polygon
+    if geometry.geom_type not in ('Polygon', 'MultiPolygon') or geometry.is_empty:
+        raise ValueError('Empty or non-polygon source geometry')
+    processing = {'sourceWasValid': bool(geometry.is_valid), 'repairApplied': False,
+                  'simplificationApplied': False, 'toleranceDegrees': tolerance}
+    if not geometry.is_valid:
+        original_parts = [geometry] if geometry.geom_type == 'Polygon' else list(geometry.geoms)
+        # Invalid holes outside a shell must never turn into new range islands.
+        shells = []
+        collapsed = 0
+        for part in original_parts:
+            shell = make_valid(Polygon(part.exterior))
+            if shell.is_empty or shell.area == 0:
+                collapsed += 1
+                continue
+            shells.append(polygonal_geometry(shell))
+        if not shells:
+            raise ValueError('No polygon area remains in source exterior shells')
+        processing['collapsedShellsWithoutArea'] = collapsed
+        mask = union_all(shells)
+        geometry = polygonal_geometry(make_valid(geometry))
+        geometry = polygonal_geometry(geometry.intersection(mask))
+        processing['repairApplied'] = True
+        processing['repairMethod'] = 'GEOS make_valid, polygon area clipped to original exterior shells'
+    if geometry.is_empty or not geometry.is_valid:
+        raise ValueError('Geometry could not be repaired into valid polygon area')
+    simplified = geometry.simplify(tolerance, preserve_topology=True)
+    # Keep a valid unsimplified result if simplification fails, not a missing map.
+    if not simplified.is_empty and simplified.is_valid and simplified.geom_type in ('Polygon', 'MultiPolygon'):
+        geometry = simplified
+        processing['simplificationApplied'] = tolerance > 0
+    return geometry, processing
+
+
+def reusable_export(output, catalog, source, stage):
+    """Only reuse ID/hash-verified maps; no regeneration of already good maps."""
+    manifest_path = output / 'manifest.json'
+    report_path = output / 'conversion-report.json'
+    if not manifest_path.is_file() or not report_path.is_file():
+        return {}, 0, set()
+    manifest = json.loads(manifest_path.read_text())
+    previous = json.loads(report_path.read_text())
+    if (manifest.get('formatVersion') != 1 or manifest.get('providerID') != 'birdlife-datazone'
+            or manifest.get('version') != VERSION or manifest.get('citation') != CITATION
+            or manifest.get('license') != LICENSE or previous.get('sourceFile') != source.name):
+        raise ValueError('Existing export differs from this source/version; use --full for a fresh export')
+    if previous.get('sourceBytes', source.stat().st_size) != source.stat().st_size:
+        raise ValueError('Source size changed; use --full to export it as a new source')
+    ids = {bird['id'] for bird in catalog}
+    retained, count = {}, 0
+    for identifier, entry in manifest['files'].items():
+        expected = identifier.replace(':', '-') + '-range.geojson'
+        if identifier not in ids or entry.get('file') != expected or '/' in expected or '..' in expected:
+            continue
+        file = output / expected
+        if not file.is_file():
+            continue
+        data = file.read_bytes()
+        if hashlib.sha256(data).hexdigest() != entry.get('sha256'):
+            continue
+        content = json.loads(data)
+        if content.get('speciesID') != identifier or content.get('version') != VERSION or not content.get('features'):
+            continue
+        shutil.copy2(file, stage / expected)
+        retained[identifier] = entry
+        count += len(content['features'])
+    return retained, count, set(manifest['files'])
+
+
+def convert(source, catalog_path, output, tolerance=0.01, resume=True):
     from shapely import from_wkb
     from shapely.errors import ShapelyError
     from shapely.geometry import mapping
@@ -73,11 +165,18 @@ def convert(source, catalog_path, output, tolerance=0.01):
     catalog = json.loads(Path(catalog_path).read_text())
     output.parent.mkdir(parents=True, exist_ok=True)
     stage = Path(tempfile.mkdtemp(prefix='.birdlife-stage-', dir=output.parent))
-    report = {'formatVersion': 1, 'sourceFile': source.name, 'version': VERSION,
+    report = {'formatVersion': 2, 'converterVersion': 2, 'sourceFile': source.name,
+              'sourceBytes': source.stat().st_size, 'version': VERSION,
               'simplificationDegrees': tolerance, 'inputFeatures': 0, 'exportedFeatures': 0,
-              'failedSpeciesIDs': [], 'unmatchedSourceNames': [], 'exportedSpecies': 0}
+              'failedSpeciesIDs': [], 'failedFeatures': [], 'repairedFeatures': 0,
+              'reusedSpecies': 0, 'addedSpecies': 0, 'recoveredSpecies': 0,
+              'unmatchedSourceNames': [], 'exportedSpecies': 0}
     paths, counts, failed = {}, defaultdict(int), set()
     try:
+        retained, retained_features, previous_ids = reusable_export(output, catalog, source, stage) if resume else ({}, 0, set())
+        report['reusedSpecies'] = len(retained)
+        if retained:
+            print(str(len(retained)) + ' bestaande soortkaarten gecontroleerd; alleen ontbrekende kaarten opnieuw verwerken.', flush=True)
         with sqlite3.connect(source.as_uri() + '?mode=ro', uri=True) as db:
             db.row_factory = sqlite3.Row
             db.execute('PRAGMA query_only = ON')
@@ -88,32 +187,33 @@ def convert(source, catalog_path, output, tolerance=0.01):
             available = {row[0] for row in db.execute('SELECT DISTINCT sci_name FROM all_species')}
             matches = resolve_names(catalog, available)
             report['unmatchedSourceNames'] = sorted(available - matches.keys())
-            print('Kaarten omzetten; dit kan bij het grote bestand even duren…', flush=True)
-            # Stream features rather than loading the 9 GB database into memory.
-            for row in db.execute('SELECT * FROM all_species'):
+            print('Ontbrekende kaarten omzetten; bronvlakken worden zo nodig geometrisch hersteld…', flush=True)
+            # Geometry is only selected for missing species. Scientific-name
+            # scans still examine the read-only source without reprocessing maps.
+            for row in db.execute('SELECT sci_name, rowid AS source_row FROM all_species'):
                 report['inputFeatures'] += 1
                 identifier = matches.get(row['sci_name'])
-                if not identifier or identifier in failed:
+                if not identifier or identifier in retained or identifier in failed:
                     continue
                 if not all(c.isalnum() or c in ':-_' for c in identifier):
                     raise ValueError('Unsafe catalog ID')
+                record = db.execute('SELECT * FROM all_species WHERE rowid = ?', (row['source_row'],)).fetchone()
                 try:
-                    properties = {key: row[key] for key in row.keys() if key != 'geom'}
+                    properties = {key: record[key] for key in record.keys() if key != 'geom'}
                     if (properties['presence'] not in range(1, 7) or properties['origin'] not in range(1, 7)
                             or properties['seasonal'] not in range(1, 6)):
-                        raise ValueError('Unknown distribution attribute code')
-                    geometry = from_wkb(geopackage_wkb(row['geom']))
-                    if geometry.geom_type not in ('Polygon', 'MultiPolygon') or geometry.is_empty or not geometry.is_valid:
-                        raise ValueError('Invalid or non-area source geometry')
-                    geometry = geometry.simplify(tolerance, preserve_topology=True)
-                    if geometry.is_empty or not geometry.is_valid:
-                        raise ValueError('Invalid simplified geometry')
-                    feature = {'type': 'Feature', 'properties': properties, 'geometry': mapping(geometry)}
+                        raise ValueError('Unknown distribution codes: presence=' + str(properties['presence'])
+                                         + ', origin=' + str(properties['origin']) + ', seasonal=' + str(properties['seasonal']))
+                    geometry, processing = prepare_geometry(from_wkb(geopackage_wkb(record['geom'])), tolerance)
+                    feature = {'type': 'Feature', 'properties': properties, 'geometry': mapping(geometry),
+                               'appGeometryProcessing': processing}
                     payload = json.dumps(feature, ensure_ascii=False, separators=(',', ':'), allow_nan=False)
-                except (ValueError, TypeError, KeyError, ShapelyError):
-                    # One broken feature invalidates this species, never silently
-                    # present only its remaining area as a complete map.
+                    if processing['repairApplied']:
+                        report['repairedFeatures'] += 1
+                except (ValueError, TypeError, KeyError, ShapelyError) as error:
                     failed.add(identifier)
+                    report['failedFeatures'].append({'speciesID': identifier, 'scientificName': row['sci_name'],
+                        'sourceRow': row['source_row'], 'errorType': type(error).__name__, 'reason': str(error)[:250]})
                     continue
                 if identifier not in paths:
                     path = stage / (identifier.replace(':', '-') + '-range.geojson')
@@ -121,17 +221,18 @@ def convert(source, catalog_path, output, tolerance=0.01):
                     header = {'type': 'FeatureCollection', 'providerID': 'birdlife-datazone',
                               'speciesID': identifier, 'source': SOURCE, 'license': LICENSE,
                               'citation': CITATION, 'version': VERSION,
-                              'simplificationDegrees': tolerance}
+                              'simplificationDegrees': tolerance, 'converterVersion': 2}
                     path.write_text(json.dumps(header, ensure_ascii=False)[:-1] + ',"features":[', encoding='utf-8')
                 with paths[identifier].open('a', encoding='utf-8') as stream:
                     if counts[identifier]:
                         stream.write(',')
                     stream.write(payload)
                 counts[identifier] += 1
-                if report['inputFeatures'] % 1000 == 0:
-                    print(str(report['inputFeatures']) + ' bronvlakken verwerkt…', flush=True)
+                if report['inputFeatures'] % 500 == 0:
+                    print(str(report['inputFeatures']) + ' bronvlakken gecontroleerd…', flush=True)
         manifest = {'formatVersion': 1, 'providerID': 'birdlife-datazone', 'version': VERSION,
-                    'citation': CITATION, 'license': LICENSE, 'files': {}}
+                    'citation': CITATION, 'license': LICENSE, 'files': dict(retained)}
+        report['exportedFeatures'] = retained_features
         for identifier, path in paths.items():
             if identifier in failed:
                 path.unlink()
@@ -140,8 +241,12 @@ def convert(source, catalog_path, output, tolerance=0.01):
                 stream.write(']}\n')
             manifest['files'][identifier] = {'file': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
             report['exportedFeatures'] += counts[identifier]
+            report['addedSpecies'] += 1
+            if previous_ids and identifier not in previous_ids:
+                report['recoveredSpecies'] += 1
         if not manifest['files']:
-            raise ValueError('Geen geldige soortkaarten gemaakt; bestaande bestanden blijven behouden.')
+            raise ValueError('Geen geldige soortkaarten gemaakt; bestaande bestanden blijven behouden. Redenen: '
+                             + json.dumps(report['failedFeatures'][:3], ensure_ascii=False))
         report['failedSpeciesIDs'] = sorted(failed)
         report['exportedSpecies'] = len(manifest['files'])
         (stage / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
@@ -156,7 +261,11 @@ def convert(source, catalog_path, output, tolerance=0.01):
             if backup.exists():
                 backup.rename(output)
             raise
-        print('Klaar: ' + str(report['exportedSpecies']) + ' soortkaarten. Open het bijgewerkte project en bouw opnieuw in Xcode.', flush=True)
+        print('Klaar: ' + str(report['exportedSpecies']) + ' soortkaarten, ' + str(report['addedSpecies'])
+              + ' extra, ' + str(len(failed)) + ' nog niet omgezet.', flush=True)
+        if failed:
+            print('Exacte afwijsredenen staan in conversion-report.json.', flush=True)
+        print('Bouw hetzelfde project opnieuw in Xcode.', flush=True)
         if backup.exists():
             print('Vorige export bewaard in: ' + str(backup), flush=True)
         return report
@@ -170,6 +279,7 @@ def main():
     parser.add_argument('geopackage', type=Path)
     parser.add_argument('project', type=Path)
     parser.add_argument('--tolerance', type=float, default=0.01)
+    parser.add_argument('--full', action='store_true', help='Ook reeds geslaagde kaarten opnieuw verwerken')
     args = parser.parse_args()
     catalog = args.project / 'BirdingCompanion/Resources/WorldSpeciesCatalog.json'
     if not catalog.is_file() or not (args.project / 'BirdingCompanion.xcodeproj').is_dir():
@@ -178,7 +288,7 @@ def main():
     if not project_file.is_file() or 'BirdingCompanion/Resources/PrivateBirdLifeRanges' not in project_file.read_text():
         parser.exit(1, 'Dit is een oudere appversie. Download en pak eerst de nieuwste appcode uit en kies die nieuwe projectmap.\n')
     try:
-        convert(args.geopackage, catalog, args.project / 'BirdingCompanion/Resources/PrivateBirdLifeRanges', args.tolerance)
+        convert(args.geopackage, catalog, args.project / 'BirdingCompanion/Resources/PrivateBirdLifeRanges', args.tolerance, resume=not args.full)
     except Exception as error:
         parser.exit(1, 'Omzetting niet gelukt: ' + str(error) + '\n')
 

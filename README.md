@@ -117,3 +117,12 @@ mee in je eigen app gekopieerd; er staan geen BirdLife-polygonen op GitHub.
 Versie 2025.2, seizoenskleuren en uitsluiting van historische/onzekere gebieden
 zijn beschreven in `Docs/DISTRIBUTION_DATA.md`. De daadwerkelijke conversie en
 native kaartweergave moeten nog op de Mac worden gecontroleerd.
+
+
+Als de kaartcontrole meldt dat een soort ontbreekt terwijl de converter eerder
+klaar was: gebruik de bijgewerkte converter (v2) op **dezelfde projectmap** met
+jouw bestaande export. Die herstelt nu herstelbare polygonen en verwerkt alleen
+ontbrekende kaarten opnieuw; goede bestanden blijven ongewijzigd. Downloaden van
+een nieuwe app-code-ZIP is hiervoor niet nodig. Bouw na afloop hetzelfde project
+opnieuw in Xcode. Eventuele resterende afwijsredenen staan in het bijgewerkte
+`conversion-report.json`.
