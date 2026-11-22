@@ -85,6 +85,7 @@ struct SpeciesDetailView: View {
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                     .fixedSize(horizontal: false, vertical: true)
                 SpeciesDetailTitle(text: species.dutchName)
+                    .offset(y: 4) // Visual adjustment only: header/tab positions stay fixed.
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             logStatusBadge.padding(.top, 20)

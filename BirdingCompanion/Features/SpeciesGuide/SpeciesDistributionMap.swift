@@ -152,6 +152,7 @@ struct SpeciesDistributionMap: View {
         .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
         .mapControls { MapCompass(); MapScaleView() }
         .overlay(alignment: .topLeading) {
+            if loading || message != nil || connectivity.isOffline || dataset != nil {
             VStack(alignment: .leading, spacing: 8) {
                 if loading { ProgressView("Verspreiding laden…") }
                 if let message { Text(message) }
@@ -165,6 +166,7 @@ struct SpeciesDistributionMap: View {
             .background(FieldGuideTheme.ivory.opacity(0.96), in: RoundedRectangle(cornerRadius: 12))
             .padding(12)
             .accessibilityElement(children: .combine)
+            }
         }
         .accessibilityLabel("Interactieve verspreidingskaart van \(species.dutchName)")
         .task(id: species.id) { loadRange() }

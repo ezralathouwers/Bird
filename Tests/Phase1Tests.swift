@@ -1,5 +1,6 @@
 import XCTest
 import UIKit
+import CoreText
 @testable import BirdingCompanion
 
 @MainActor
@@ -1274,5 +1275,38 @@ final class SpeciesArtworkPagingTests: XCTestCase {
         XCTAssertEqual(SpeciesArtworkPaging.index(after: 0, offset: -1, count: 4), 3)
         XCTAssertEqual(SpeciesArtworkPaging.index(after: 3, offset: 1, count: 4), 0)
         XCTAssertNil(SpeciesArtworkPaging.index(after: 0, offset: 1, count: 0))
+    }
+}
+
+
+@MainActor
+final class SpeciesDetailLayoutTests: XCTestCase {
+    func testTitleUsesRegularVariableWeightInsteadOfBlackDefault() throws {
+        let font = SpeciesDetailTitleMetrics.font(size: 34)
+        let variation = try XCTUnwrap(CTFontCopyVariation(font as CTFont) as? [NSNumber: NSNumber])
+        XCTAssertEqual(variation[NSNumber(value: 0x77676874)]?.doubleValue, 400)
+    }
+
+    func testPortraitAndFlightFitAboveTheNavigationButton() {
+        let viewport = CGSize(width: 390, height: 500)
+        for original in [CGSize(width: 800, height: 1600), CGSize(width: 1800, height: 700)] {
+            let fitted = SpeciesArtworkLayout.size(image: original, viewport: viewport, horizontalBleed: false)
+            XCTAssertLessThanOrEqual(fitted.width, viewport.width)
+            XCTAssertLessThanOrEqual(fitted.height, viewport.height - 32)
+            XCTAssertEqual(fitted.width / fitted.height, original.width / original.height, accuracy: 0.001)
+        }
+        let dynamic = SpeciesArtworkLayout.size(image: CGSize(width: 1000, height: 1000),
+                                                viewport: viewport, horizontalBleed: true)
+        XCTAssertLessThanOrEqual(dynamic.height, viewport.height - 32)
+        XCTAssertEqual(SpeciesArtworkLayout.size(image: .zero, viewport: viewport, horizontalBleed: true), .zero)
+    }
+
+    func testHabitatFitsItsWholeComposition() {
+        let viewport = CGSize(width: 390, height: 192)
+        let fitted = SpeciesArtworkLayout.size(image: CGSize(width: 1200, height: 700),
+                                              viewport: viewport, horizontalBleed: false)
+        XCTAssertLessThanOrEqual(fitted.width, viewport.width)
+        XCTAssertLessThanOrEqual(fitted.height, 160)
+        XCTAssertEqual(fitted.width / fitted.height, 1200.0 / 700, accuracy: 0.001)
     }
 }

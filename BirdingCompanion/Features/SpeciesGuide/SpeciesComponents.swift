@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import CoreText
 
 enum SpeciesTab: String, CaseIterable {
     case overview = "Overzicht"
@@ -49,14 +50,22 @@ struct SpeciesTabStrip: View {
 
 // Explicit baseline spacing matches the tight two-line Dutch title in the
 // approved species-page design; tracking remains -0.02 em throughout the app.
-private struct SpeciesDetailTitleMetrics {
+struct SpeciesDetailTitleMetrics {
+    static func font(size: CGFloat) -> UIFont {
+        // Fraunces.ttf defaults to wght=900; SwiftUI SerifText explicitly uses
+        // regular. Set its variable axis too when rendering through UIKit.
+        let variation = UIFontDescriptor.AttributeName(rawValue: kCTFontVariationAttribute as String)
+        let descriptor = UIFontDescriptor(name: "Fraunces-9ptBlack", size: size)
+            .addingAttributes([variation: [NSNumber(value: 0x77676874): NSNumber(value: 400)]])
+        return UIFont(descriptor: descriptor, size: size)
+    }
     static func attributed(_ text: String, size: CGFloat) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.minimumLineHeight = size * 1.02
         paragraph.maximumLineHeight = size * 1.02
         paragraph.lineBreakMode = .byWordWrapping
         return NSAttributedString(string: text, attributes: [
-            .font: UIFont(name: "Fraunces-9ptBlack", size: size) ?? .systemFont(ofSize: size, weight: .semibold),
+            .font: font(size: size),
             .foregroundColor: UIColor(FieldGuideTheme.charcoal),
             .kern: size * -0.02,
             .paragraphStyle: paragraph
@@ -106,7 +115,7 @@ struct SpeciesFacts: View {
                     }
                     if let bio = detail?.bio {
                     Text(bio)
-                        .font(FieldGuideTheme.sans(16, relativeTo: .body).weight(.light))
+                        .font(FieldGuideTheme.sans(12.8, relativeTo: .body).weight(.light))
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.top, 6)
                     }
@@ -243,6 +252,18 @@ private enum SpeciesArtworkDisplayCache {
     }
 }
 
+// Explicit image bounds keep the illustration inside the pager's viewport.
+// Reserve the central navigation button's 32-point protrusion below the image.
+enum SpeciesArtworkLayout {
+    static let navigationClearance: CGFloat = 32
+    static func size(image: CGSize, viewport: CGSize, horizontalBleed: Bool) -> CGSize {
+        guard image.width > 0, image.height > 0 else { return .zero }
+        let height = max(0, viewport.height - navigationClearance)
+        let scale = min(viewport.width * (horizontalBleed ? 1.18 : 1) / image.width, height / image.height)
+        return CGSize(width: image.width * scale, height: image.height * scale)
+    }
+}
+
 private struct SpeciesArtworkSlide: View {
     let species: Species
     let role: SpeciesMediaRole
@@ -251,10 +272,15 @@ private struct SpeciesArtworkSlide: View {
         GeometryReader { geometry in
             Group {
                 if let image = SpeciesArtworkDisplayCache.image(named: role.assetName(for: species)) {
-                    Image(uiImage: image).resizable().scaledToFit()
-                        .frame(width: geometry.size.width * 1.18, height: geometry.size.height, alignment: .bottom)
-                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .bottom)
-                        .clipped()
+                    // Flight views contain the diagnostic wing tips; fit their
+                    // full width rather than bleeding these beyond the screen.
+                    let size = SpeciesArtworkLayout.size(image: image.size, viewport: geometry.size,
+                                                         horizontalBleed: role == .dynamic)
+                    Image(uiImage: image).resizable()
+                        .frame(width: size.width, height: size.height)
+                        .frame(width: geometry.size.width,
+                               height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
+                               alignment: .bottom)
                         .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van 4")
                 } else {
                     ArtworkPlaceholder(hero: true,
@@ -265,6 +291,7 @@ private struct SpeciesArtworkSlide: View {
             }
         }
         .background(FieldGuideTheme.ivory)
+        .clipped()
     }
 }
 
@@ -313,13 +340,17 @@ struct HabitatFooter: View {
     let species: Species
     var body: some View {
         if let scene = HabitatSceneCatalog.primaryScene(for: species), let image = HabitatArtworkCache.image(for: scene) {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity)
-                .frame(height: 160, alignment: .bottom)
-                .accessibilityHidden(true)
-                .allowsHitTesting(false)
+            GeometryReader { geometry in
+                let size = SpeciesArtworkLayout.size(image: image.size, viewport: geometry.size, horizontalBleed: false)
+                Image(uiImage: image).resizable()
+                    .frame(width: size.width, height: size.height)
+                    .frame(width: geometry.size.width,
+                           height: geometry.size.height - SpeciesArtworkLayout.navigationClearance,
+                           alignment: .bottom)
+            }
+            .frame(height: 160 + SpeciesArtworkLayout.navigationClearance)
+            .accessibilityHidden(true)
+            .allowsHitTesting(false)
         }
     }
 }
