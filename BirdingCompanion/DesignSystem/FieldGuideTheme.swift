@@ -135,10 +135,12 @@ struct MapCloseButton: View {
 struct LocationOutlineMark: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: 12, y: 23))
-        path.addCurve(to: CGPoint(x: 3, y: 9), control1: CGPoint(x: 9, y: 18), control2: CGPoint(x: 3, y: 14))
+        path.move(to: CGPoint(x: 10.5, y: 21.5))
+        path.addCurve(to: CGPoint(x: 3, y: 9), control1: CGPoint(x: 8, y: 18), control2: CGPoint(x: 3, y: 14))
         path.addCurve(to: CGPoint(x: 21, y: 9), control1: CGPoint(x: 3, y: -2), control2: CGPoint(x: 21, y: -2))
-        path.addCurve(to: CGPoint(x: 12, y: 23), control1: CGPoint(x: 21, y: 14), control2: CGPoint(x: 15, y: 18))
+        path.addCurve(to: CGPoint(x: 13.5, y: 21.5), control1: CGPoint(x: 21, y: 14), control2: CGPoint(x: 16, y: 18))
+        path.addQuadCurve(to: CGPoint(x: 10.5, y: 21.5), control: CGPoint(x: 12, y: 23.5))
+        path.closeSubpath()
         path.addEllipse(in: CGRect(x: 9, y: 6, width: 6, height: 6))
         return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
@@ -167,7 +169,7 @@ struct CountryFlagBadge: View {
     var body: some View {
         Group {
             if let normalized = ObservationCountry.normalized(code), UIImage(named: "flag-" + normalized.lowercased()) != nil {
-                Image("flag-" + normalized.lowercased()).resizable().scaledToFill().saturation(0.82)
+                Image("flag-" + normalized.lowercased()).resizable().scaledToFill().saturation(0.72)
             } else {
                 FieldGuideTheme.beige.overlay { Image(systemName: "globe").foregroundStyle(FieldGuideTheme.taupe) }
             }
@@ -255,5 +257,26 @@ struct SpeciesMapBadge: View {
         .frame(width: 44, height: 44)
         .background(FieldGuideTheme.ivory, in: Circle())
         .accessibilityLabel(species.dutchName)
+    }
+}
+
+struct RoundEditAction: View {
+    let label: String
+    let action: () -> Void
+    var body: some View {
+        Button(action: action) {
+            EditOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 22, height: 22)
+                .frame(width: 44, height: 44)
+                .background(Circle().stroke(FieldGuideTheme.beige, lineWidth: 0.75))
+                .contentShape(Circle())
+        }.buttonStyle(.plain).accessibilityLabel(label)
+    }
+}
+struct FineSearchMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.addEllipse(in: CGRect(x: 1.5, y: 1.5, width: 15.5, height: 15.5))
+        path.move(to: CGPoint(x: 14.8, y: 14.8)); path.addLine(to: CGPoint(x: 22.5, y: 22.5))
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
 }

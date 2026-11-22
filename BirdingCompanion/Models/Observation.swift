@@ -103,12 +103,13 @@ struct BirdSession: Identifiable, Codable, Equatable, Sendable {
 }
 
 enum SessionError: LocalizedError {
-    case invalidSession, alreadyActive, noActiveSession, invalidLog, unsupportedPersistence, reviewChanged
+    case invalidSession, alreadyActive, noActiveSession, invalidLog, duplicateSpecies, unsupportedPersistence, reviewChanged
     var errorDescription: String? {
         switch self {
         case .invalidSession: "Kies een locatie en een geldige begin- en eindtijd."
         case .alreadyActive: "Er loopt al een livesessie. Rond die eerst af."
         case .noActiveSession: "Deze livesessie is niet meer actief."
+        case .duplicateSpecies: "Deze soort is al toegevoegd aan de livesessie."
         case .invalidLog: "De waarneming moet binnen de sessie vallen en een geldige locatie hebben."
         case .reviewChanged: "De sessie is ondertussen gewijzigd. Open het afrondscherm opnieuw om alle waarnemingen te controleren."
         case .unsupportedPersistence: "Deze opslag ondersteunt nog geen sessies."

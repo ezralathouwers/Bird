@@ -27,9 +27,9 @@ struct CompanionRootView: View {
                 .allowsHitTesting(observationNavigation.selection == nil && !showLiveSession && !showAddMenu)
                 .accessibilityHidden(observationNavigation.selection != nil || showLiveSession || showAddMenu)
             if showAddMenu {
-                AddEntryView(isPresented: $showAddMenu)
+                AddEntryView(isPresented: $showAddMenu, onLiveStarted: { showLiveSession = true })
             } else if showLiveSession {
-                LiveSessionView(isPresented: $showLiveSession)
+                LiveSessionView(isPresented: $showLiveSession, onFinished: { showLiveSession = false; section = .sessions })
             }
         }
             .environment(\.speciesAudioIsAllowed,

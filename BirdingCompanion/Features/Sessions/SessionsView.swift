@@ -1,68 +1,91 @@
 import SwiftUI
 
+struct SessionRoute: Hashable { let id: UUID }
+enum SessionLogSort: String, CaseIterable {
+    case latest = "Laatste eerst", alphabetical = "Alfabetisch"
+}
+enum SessionStats {
+    static func liferIDs(in logs: [Observation]) -> Set<UUID> {
+        var first: [String: Observation] = [:]
+        for log in logs {
+            if let previous = first[log.speciesID],
+               previous.observedAt < log.observedAt || (previous.observedAt == log.observedAt && previous.id.uuidString < log.id.uuidString) { continue }
+            first[log.speciesID] = log
+        }
+        return Set(first.values.map(\.id))
+    }
+    static func duration(_ session: BirdSession) -> String {
+        let minutes = max(0, Int((session.endedAt ?? Date()).timeIntervalSince(session.startedAt)) / 60)
+        return minutes >= 60 ? "\(minutes / 60)u\(String(format: "%02d", minutes % 60))" : "\(minutes)min"
+    }
+    static func period(_ session: BirdSession) -> String {
+        let day = session.startedAt.formatted(date: .abbreviated, time: .omitted)
+        let start = session.startedAt.formatted(date: .omitted, time: .shortened)
+        let end = (session.endedAt ?? Date()).formatted(date: .omitted, time: .shortened)
+        return "\(day) - \(start) tot \(end)"
+    }
+    static func bird(_ id: String) -> Species {
+        SpeciesGuideCatalog.species(id: id) ?? Species(id: id, taxonomyVersion: "unknown",
+            dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "")
+    }
+    static func sorted(_ logs: [Observation], by sort: SessionLogSort) -> [Observation] {
+        logs.sorted {
+            if sort == .alphabetical {
+                let comparison = bird($0.speciesID).dutchName.localizedStandardCompare(bird($1.speciesID).dutchName)
+                if comparison != .orderedSame { return comparison == .orderedAscending }
+            }
+            return $0.observedAt == $1.observedAt ? $0.id.uuidString < $1.id.uuidString : $0.observedAt > $1.observedAt
+        }
+    }
+}
+
 struct SessionsView: View {
     @EnvironmentObject private var store: ObservationStore
     @State private var creatingLive = false
     @State private var showForm = false
-    @State private var selected: BirdSession?
     @Binding var showLive: Bool
-
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HStack(alignment: .top, spacing: 6) {
-                    PageHeading(text: "Sessies")
-                        .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
+                    PageHeading(text: "Sessies").frame(maxWidth: .infinity, alignment: .leading)
                     RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { creatingLive = false; showForm = true }
-                        .foregroundStyle(FieldGuideTheme.charcoal)
                     RoundAction(symbol: "play", label: "Nieuwe livesessie starten") { creatingLive = true; showForm = true }
-                        .foregroundStyle(FieldGuideTheme.charcoal)
                         .disabled(store.activeSession != nil || store.loadError != nil)
                 }
                 if let message = store.loadError { Text(message).foregroundStyle(.red) }
                 if let active = store.activeSession {
                     Button { showLive = true } label: {
                         HStack {
-                            Text("\(active.locationName) · livesessie")
-                            Spacer()
+                            Text("\(active.locationName) · livesessie"); Spacer()
                             Image(systemName: "play.fill").font(.system(size: 18))
-                        }.foregroundStyle(FieldGuideTheme.charcoal)
-                            .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
-                    }
-                    .padding(12).background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
+                        }.frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+                    }.buttonStyle(.plain).padding(.horizontal, 20).padding(.vertical, 12)
+                        .background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
                 }
-                if store.completedSessions.isEmpty, store.loadError == nil {
-                    Text("Nog geen afgeronde sessies. Start een livesessie of voeg een eerdere sessie toe.")
-                }
+                if store.completedSessions.isEmpty, store.loadError == nil { Text("Nog geen afgeronde sessies.") }
+                let lifers = SessionStats.liferIDs(in: store.observations)
                 ForEach(store.completedSessions) { session in
-                    Button { selected = session } label: {
-                        VStack(alignment: .leading, spacing: 8) {
+                    NavigationLink(value: SessionRoute(id: session.id)) {
+                        VStack(alignment: .leading, spacing: 6) {
                             Text(session.locationName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
-                            Text(SessionPresentation.period(session)).font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                                .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
-                            Text("\(store.observations(in: session).count) waarnemingen")
+                            Text("\(session.startedAt.formatted(date: .abbreviated, time: .omitted)) · \(SessionStats.duration(session))")
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 12)
-                            .contentShape(Rectangle())
+                            let logs = store.observations(in: session)
+                            let count = logs.filter { lifers.contains($0.id) }.count
+                            Text("\(logs.count) waarnemingen" + (count > 0 ? " · \(count) lifers" : ""))
+                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
                     }.buttonStyle(.plain)
-                    Divider().overlay(FieldGuideTheme.beige)
+                    Divider()
                 }
-            }.padding(20).padding(.bottom, 24)
-        }
-        .background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
-        .fullScreenCover(isPresented: $showForm) {
-            SessionForm(live: creatingLive) { if creatingLive { showLive = true } }
-        }
-        .sheet(item: $selected) { session in SessionDetailView(session: session) }
-
-    }
-}
-
-private enum SessionPresentation {
-    static func period(_ session: BirdSession) -> String {
-        let start = session.startedAt.formatted(date: .abbreviated, time: .shortened)
-        guard let end = session.endedAt else { return start }
-        return "\(start) – \(end.formatted(date: .abbreviated, time: .shortened))"
+            }.padding(20).padding(.bottom, 74)
+        }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
+            .fullScreenCover(isPresented: $showForm) {
+                SessionForm(live: creatingLive) { if creatingLive { showLive = true } }
+            }
+            .navigationDestination(for: SessionRoute.self) { route in SessionDetailView(sessionID: route.id) }
+            .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
     }
 }
 
@@ -72,17 +95,15 @@ struct SessionForm: View {
     var onSaved: () -> Void
     @EnvironmentObject private var store: ObservationStore
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var location = ObservationLocationModel()
+    @StateObject private var location: ObservationLocationModel
     @State private var start = Date()
     @State private var end = Date()
     @State private var selected = Set<String>()
-    @State private var search = ""
     @State private var error: String?
     @State private var reviewLogs: [Observation] = []
     @State private var originalLogs: [Observation] = []
-    @State private var confirmSave = false
     @State private var initialized = false
-
+    @State private var showSearch = false
     init(live: Bool, reviewing: BirdSession? = nil, onSaved: @escaping () -> Void) {
         self.live = live; self.reviewing = reviewing; self.onSaved = onSaved
         let seed: Observation? = reviewing.map { session in
@@ -93,134 +114,116 @@ struct SessionForm: View {
         }
         _location = StateObject(wrappedValue: ObservationLocationModel(observation: seed))
     }
-
-    private var observationCount: Int { reviewing == nil ? selected.count : reviewLogs.count }
+    private var title: String {
+        live ? "Sessie starten" : reviewing == nil ? "Sessie toevoegen" : reviewing?.endedAt == nil ? "Sessie afronden" : "Sessie bewerken"
+    }
+    private var selectedIDs: Set<String> { reviewing == nil ? selected : Set(reviewLogs.map(\.speciesID)) }
     private var day: Binding<Date> {
         Binding(get: { start }, set: { date in
             let calendar = Calendar.current
-            let dayDelta = calendar.dateComponents([.day], from: calendar.startOfDay(for: start), to: calendar.startOfDay(for: date)).day ?? 0
-            start = calendar.date(byAdding: .day, value: dayDelta, to: start) ?? start
-            end = calendar.date(byAdding: .day, value: dayDelta, to: end) ?? end
-            for index in reviewLogs.indices {
-                reviewLogs[index].observedAt = calendar.date(byAdding: .day, value: dayDelta, to: reviewLogs[index].observedAt) ?? reviewLogs[index].observedAt
-            }
+            let delta = calendar.dateComponents([.day], from: calendar.startOfDay(for: start), to: calendar.startOfDay(for: date)).day ?? 0
+            let revised = calendar.date(byAdding: .day, value: delta, to: start) ?? start
+            shiftLogs(by: revised.timeIntervalSince(start))
+            start = revised; end = calendar.date(byAdding: .day, value: delta, to: end) ?? end
         })
     }
-
+    private var startTime: Binding<Date> {
+        Binding(get: { start }, set: { value in shiftLogs(by: value.timeIntervalSince(start)); start = value })
+    }
+    private func shiftLogs(by interval: TimeInterval) {
+        for index in reviewLogs.indices { reviewLogs[index].observedAt = reviewLogs[index].observedAt.addingTimeInterval(interval) }
+    }
+    @ViewBuilder private var dateFields: some View {
+        DateTimeField(title: "Datum", selection: day, isDate: true, latestDate: Date())
+        DateTimeField(title: "Startuur", selection: startTime, isDate: false)
+        DateTimeField(title: "Einduur", selection: $end, isDate: false)
+    }
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            CenteredPageHeader(title: title) { dismiss() }
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     if !live {
-                        DateTimeField(title: "Dag van de sessie", selection: day, isDate: true, latestDate: Date())
-                        HStack {
-                            DateTimeField(title: "Startuur", selection: $start, isDate: false)
-                            Spacer()
-                            DateTimeField(title: "Einduur", selection: $end, isDate: false)
-                        }
-                        if end < start {
-                            Text("Het einduur valt op de volgende dag.").font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                        ViewThatFits(in: .horizontal) {
+                            HStack(spacing: 6) { dateFields }
+                            ScrollView(.horizontal, showsIndicators: false) { HStack(spacing: 6) { dateFields } }
                         }
                     }
                     ObservationLocationPicker(location: location).frame(height: 220)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
-                    TextField("Naam van natuurgebied of plaats", text: Binding(
-                        get: { location.locationName }, set: { location.editName($0) }))
-                        .font(FieldGuideTheme.sans(22, relativeTo: .title2))
-                        .modifier(RoundedSearchField())
-                        .accessibilityLabel("Sessielocatie en naam")
+                    TextField("Naam van natuurgebied of plaats", text: Binding(get: { location.locationName }, set: { location.editName($0) }))
+                        .font(FieldGuideTheme.sans(22, relativeTo: .title2)).modifier(RoundedSearchField())
                     if location.isLocating { ProgressView("Huidige locatie ophalen…") }
-                    if location.isNaming { ProgressView("Plaatsnaam ophalen…") }
                     if let message = location.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
-                    Button { location.useCurrentLocation() } label: {
-                        Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44)
-                    }.disabled(location.isLocating)
+                    if reviewing == nil {
+                        Button { location.useCurrentLocation() } label: { Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44) }
+                            .disabled(location.isLocating)
+                    }
                     if !live {
-                        Text("\(observationCount) waarnemingen").font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                        Text("\(reviewing == nil ? selected.count : reviewLogs.count) waarnemingen")
+                            .font(FieldGuideTheme.sans(24, relativeTo: .title2))
+                        SessionSearchLauncher { showSearch = true }
                         if reviewing != nil {
-                            ForEach($reviewLogs) { $log in
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-                                        Text(DiscoverFixtures.catalog.first { $0.id == log.speciesID }?.dutchName ?? BirdNETSpeciesLookup.species(id: log.speciesID)?.dutchName ?? log.speciesID)
-                                        Spacer()
-                                        Button(role: .destructive) {
-                                            let id = log.id
-                                            reviewLogs.removeAll { $0.id == id }
-                                        } label: {
-                                            Image(systemName: "minus.circle").frame(width: 44, height: 44)
-                                        }.accessibilityLabel("Verwijder waarneming uit deze sessie")
+                            SessionLogsList(logs: reviewLogs, showsTime: false, remove: { log in reviewLogs.removeAll { $0.id == log.id } })
+                        } else {
+                            LazyVStack(spacing: 0) {
+                                ForEach(selected.sorted(), id: \.self) { id in
+                                    SessionBirdRow(bird: SessionStats.bird(id)) {
+                                        RemoveSessionBirdButton { selected.remove(id) }
                                     }
-                                    HStack {
-                                        DateTimeField(title: "Waarnemingsdatum", selection: $log.observedAt, isDate: true)
-                                        DateTimeField(title: "Waarnemingstijd", selection: $log.observedAt, isDate: false)
-                                    }
-                                    Text(log.locationName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                                    Divider()
                                 }
                             }
-                        }
-                        SessionSpeciesSearch(search: $search, selected: reviewing == nil ? selected : [],
-                            latitude: location.latitude, longitude: location.longitude, date: start) { bird in
-                            if reviewing != nil {
-                                guard let latitude = location.latitude, let longitude = location.longitude else { return }
-                                var log = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion,
-                                    observedAt: start, locationName: location.locationName, count: 1, notes: "", status: .confirmed)
-                                log.latitude = latitude; log.longitude = longitude; log.countryCode = location.countryCode
-                                log.sessionID = reviewing?.id; log.source = "session-review"
-                                reviewLogs.append(log)
-                            } else if selected.contains(bird.id) { selected.remove(bird.id) } else { selected.insert(bird.id) }
                         }
                     }
                     if let error { Text(error).foregroundStyle(.red) }
                 }.padding(20)
             }
-            .background(FieldGuideTheme.ivory)
             .safeAreaInset(edge: .bottom) {
-                Button(live ? "Livesessie starten" : reviewing == nil ? "Sessie opslaan" : "Sessie afronden") {
-                    if reviewing != nil { confirmSave = true } else { save() }
-                }
+                Button(live ? "Livesessie starten" : reviewing == nil ? "Sessie opslaan" : reviewing?.endedAt == nil ? "Sessie afronden" : "Wijzigingen opslaan", action: save)
                     .buttonStyle(SessionPrimaryButton())
-                    .disabled(!location.canSave || store.loadError != nil || (!live && reviewing == nil && selected.isEmpty))
+                    .disabled(!location.canSave || store.loadError != nil || (live && store.activeSession != nil) || (!live && reviewing == nil && selected.isEmpty))
                     .padding(20).background(FieldGuideTheme.ivory)
             }
-            .navigationTitle("").navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(live ? "Sessie starten" : reviewing == nil ? "Sessie toevoegen" : "Sessie afronden")
-                        .font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
-                }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { dismiss() } label: { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
-                        .accessibilityLabel("Terug zonder opslaan")
-                }
-            }
+        }.background(FieldGuideTheme.ivory.ignoresSafeArea())
             .task {
                 guard !initialized else { return }; initialized = true
                 if let reviewing {
-                    start = reviewing.startedAt; end = Date()
-                    reviewLogs = store.observations(in: reviewing)
-                    originalLogs = reviewLogs
+                    start = reviewing.startedAt; end = reviewing.endedAt ?? Date()
+                    reviewLogs = store.observations(in: reviewing); originalLogs = reviewLogs
                 } else { location.useCurrentLocation() }
-            }.onDisappear { location.stop() }
-            .confirmationDialog("Livesessie afronden?", isPresented: $confirmSave, titleVisibility: .visible) {
-                Button("Sessie afronden", action: save)
-                Button("Verder controleren", role: .cancel) {}
-            } message: {
-                Text("De aangepaste sessie en waarnemingen worden opgeslagen. Verwijderde waarnemingen worden ook uit je logboek verwijderd.")
             }
-        }
+            .onDisappear { if !showSearch { location.stop() } }
+            .fullScreenCover(isPresented: $showSearch) {
+                SessionSpeciesPicker(selected: selectedIDs, latitude: location.latitude, longitude: location.longitude, date: start) { bird in
+                    if reviewing != nil {
+                        guard !selectedIDs.contains(bird.id), let latitude = location.latitude, let longitude = location.longitude else { return }
+                        var log = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion, observedAt: start,
+                            locationName: location.locationName, count: 1, notes: "", status: .confirmed)
+                        log.latitude = latitude; log.longitude = longitude; log.countryCode = location.countryCode
+                        log.sessionID = reviewing?.id; log.source = "session-review"; reviewLogs.append(log)
+                    } else { selected.insert(bird.id) }
+                }
+            }
     }
-
     private func save() {
         guard location.canSave, let latitude = location.latitude, let longitude = location.longitude else { return }
-        let now = Date()
         let resolvedEnd = end < start ? Calendar.current.date(byAdding: .day, value: 1, to: end) ?? end : end
-        var session = BirdSession(locationName: location.locationName.trimmingCharacters(in: .whitespacesAndNewlines),
-            latitude: latitude, longitude: longitude, countryCode: location.countryCode,
-            startedAt: live ? now : start, endedAt: live ? nil : resolvedEnd, isLive: live || reviewing != nil)
+        var session = BirdSession(locationName: location.locationName.trimmingCharacters(in: .whitespacesAndNewlines), latitude: latitude,
+            longitude: longitude, countryCode: location.countryCode, startedAt: live ? Date() : start,
+            endedAt: live ? nil : resolvedEnd, isLive: reviewing?.isLive ?? live)
         do {
             if let reviewing {
                 session.id = reviewing.id
-                try store.completeSession(session, logs: reviewLogs, expectedLogs: originalLogs)
+                var logs = reviewLogs
+                if !reviewing.isLive {
+                    for index in logs.indices {
+                        logs[index].observedAt = start; logs[index].latitude = latitude; logs[index].longitude = longitude
+                        logs[index].locationName = session.locationName; logs[index].countryCode = session.countryCode
+                    }
+                }
+                if reviewing.endedAt == nil { try store.completeSession(session, logs: logs, expectedLogs: originalLogs) }
+                else { try store.updateCompletedSession(session, logs: logs, expectedLogs: originalLogs) }
             } else if live { try store.startSession(session) }
             else { try store.addCompletedSession(session, species: SpeciesGuideCatalog.species.filter { selected.contains($0.id) }) }
             dismiss(); onSaved()
@@ -228,66 +231,59 @@ struct SessionForm: View {
     }
 }
 
-struct SessionSpeciesSearch: View {
-    @Binding var search: String
+private struct SessionSearchLauncher: View {
+    let open: () -> Void
+    var body: some View {
+        Button(action: open) {
+            HStack { Image(systemName: "magnifyingglass"); Text("Zoek een vogel"); Spacer() }
+                .foregroundStyle(FieldGuideTheme.taupe).modifier(RoundedSearchField())
+        }.buttonStyle(.plain).accessibilityLabel("Waarnemingen toevoegen")
+    }
+}
+
+struct SessionSpeciesPicker: View {
     var selected: Set<String> = []
     var disabled = false
     var latitude: Double? = nil
     var longitude: Double? = nil
     var date: Date = Date()
+    let choose: (Species) -> Void
+    @Environment(\.dismiss) private var dismiss
+    @State private var search = ""
     @StateObject private var nearby = DiscoverViewModel()
-    @State private var showCatalog = false
-    private var locationKey: String { "\(latitude ?? 999),\(longitude ?? 999),\(Calendar.current.startOfDay(for: date))" }
-    var choose: (Species) -> Void
+    @FocusState private var focused: Bool
     private var birds: [Species] {
-        let term = search.trimmingCharacters(in: .whitespacesAndNewlines)
-        let source = term.isEmpty && !showCatalog ? nearby.rows.map(\.species) : SpeciesGuideCatalog.species
-        let matches = source.filter {
-            term.isEmpty || ([$0.dutchName, $0.englishName, $0.scientificName] + $0.aliases).contains {
-                $0.range(of: term, options: [.caseInsensitive, .diacriticInsensitive]) != nil
-            }
-        }
-        return term.isEmpty && !showCatalog ? matches : matches.sorted { $0.dutchName.localizedStandardCompare($1.dutchName) == .orderedAscending }
+        if search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !nearby.rows.isEmpty { return nearby.rows.map(\.species) }
+        return SpeciesCatalogSearch.results(for: search, in: SpeciesGuideCatalog.species)
     }
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField())
-                .autocorrectionDisabled().accessibilityLabel("Zoek op Nederlandse, Engelse of wetenschappelijke naam")
-            if search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                if nearby.isLoading { ProgressView("Vogels voor deze locatie ophalen…") }
-                if let message = nearby.message { Text(message).font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
-                if showCatalog { Text("Alle beschikbare soorten · niet gerangschikt voor deze locatie").font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
-                else if nearby.rows.isEmpty {
-                    Button("Toon alle beschikbare soorten") { showCatalog = true }.frame(minHeight: 44)
+        VStack(alignment: .leading, spacing: 16) {
+            SpeciesBackButton { dismiss() }.padding(.top, 4)
+            Text("Waarnemingen toevoegen").font(FieldGuideTheme.sans(24, relativeTo: .title2))
+            TextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().focused($focused)
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    if nearby.isLoading && search.isEmpty { ProgressView("Vogels ophalen…") }
+                    ForEach(birds) { bird in
+                        Button { choose(bird); dismiss() } label: {
+                            SessionBirdRow(bird: bird) {
+                                Image(systemName: selected.contains(bird.id) ? "checkmark.circle" : "plus")
+                                    .font(.system(size: 20, weight: .light))
+                            }
+                        }.buttonStyle(.plain).disabled(disabled || selected.contains(bird.id))
+                            .opacity(selected.contains(bird.id) ? 0.45 : 1)
+                        Divider()
+                    }
+                    if birds.isEmpty && !nearby.isLoading { Text("Geen soorten gevonden.") }
+                }.padding(.bottom, 24)
+            }
+        }.padding(.horizontal, 20).background(FieldGuideTheme.ivory.ignoresSafeArea())
+            .task {
+                focused = true
+                if let latitude, let longitude {
+                    await nearby.load(query: DiscoverQuery(latitude: latitude, longitude: longitude, now: date, radiusKilometers: DiscoverQuery.nearbyRadiusKilometers))
                 }
             }
-            ScrollView {
-              LazyVStack(spacing: 12) {
-               if birds.isEmpty && !nearby.isLoading { Text("Geen soorten gevonden.") }
-               ForEach(birds) { bird in
-                Button { choose(bird) } label: {
-                    HStack(spacing: 12) {
-                        PrimaryBirdArtwork(species: bird).frame(width: 56, height: 56)
-                        VStack(alignment: .leading, spacing: 4) {
-                            SerifText(bird.dutchName, size: 16, relativeTo: .body)
-                            Text(bird.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
-                        }
-                        Spacer(minLength: 0)
-                        Image(systemName: selected.contains(bird.id) ? "checkmark.circle" : "plus")
-                            .font(.system(size: 20, weight: .light))
-                    }.frame(maxWidth: .infinity, minHeight: 56, alignment: .leading).contentShape(Rectangle())
-                }.buttonStyle(.plain).disabled(disabled)
-                    .accessibilityLabel("\(bird.dutchName), \(selected.contains(bird.id) ? "geselecteerd" : "toevoegen")")
-               }
-              }
-            }.frame(height: 280)
-        }
-        .task(id: locationKey) {
-            showCatalog = false
-            if let latitude, let longitude {
-                await nearby.load(query: DiscoverQuery(latitude: latitude, longitude: longitude, now: date, radiusKilometers: DiscoverQuery.nearbyRadiusKilometers))
-            }
-        }
     }
 }
 
@@ -295,94 +291,136 @@ struct LiveSessionView: View {
     @EnvironmentObject private var store: ObservationStore
     @EnvironmentObject private var logger: SessionLiveLogger
     @Binding var isPresented: Bool
-    @State private var search = ""
+    var onFinished: () -> Void = {}
+    @State private var showSearch = false
     @State private var showReview = false
-
+    @State private var finishedReview = false
+    @State private var error: String?
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                HStack {
-                    Button { isPresented = false } label: {
-                        Image(systemName: "chevron.left").frame(width: 44, height: 44)
-                    }.accessibilityLabel("Terug, sessie blijft actief")
-                    Spacer()
-                    Text("Livesessie").font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
-                    Spacer()
-                    Color.clear.frame(width: 44, height: 44)
-                }
-                if let session = store.activeSession {
-                    TimelineView(.periodic(from: .now, by: 1)) { context in
-                        Text(Self.elapsed(from: session.startedAt, to: context.date))
-                            .font(FieldGuideTheme.sans(44, relativeTo: .largeTitle)).monospacedDigit()
-                            .accessibilityLabel("Verstreken tijd \(Self.elapsed(from: session.startedAt, to: context.date))")
-                    }
-                    .frame(maxWidth: .infinity).padding(.vertical, 14)
-                    .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 12))
-                    SessionSpeciesSearch(search: $search, disabled: logger.isLogging,
-                        latitude: session.latitude, longitude: session.longitude) { bird in logger.log(bird, store: store) }
-                    if logger.isLogging { ProgressView("Actuele locatie ophalen en vogel opslaan…") }
-                    if let message = logger.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
-                    let logs = store.observations(in: session)
-                    Text("\(logs.count) waarnemingen").font(FieldGuideTheme.sans(24, relativeTo: .title2))
-                    SessionLogsList(logs: logs)
-                    Button("Livesessie afronden") { showReview = true }
-                        .buttonStyle(SessionPrimaryButton()).disabled(logger.isLogging)
-                } else { Text("Geen actieve livesessie.") }
-            }.padding(20).padding(.bottom, 36)
-        }
-        .background(FieldGuideTheme.ivory)
-        .fullScreenCover(isPresented: $showReview) {
-            if let active = store.activeSession {
-                SessionForm(live: false, reviewing: active) { isPresented = false }
+        VStack(spacing: 0) {
+            CenteredPageHeader(title: "Livesessie") { isPresented = false }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    if let session = store.activeSession {
+                        TimelineView(.periodic(from: .now, by: 1)) { context in
+                            Text(Self.elapsed(from: session.startedAt, to: context.date))
+                                .font(FieldGuideTheme.sans(44, relativeTo: .largeTitle)).monospacedDigit()
+                        }.frame(maxWidth: .infinity).padding(.vertical, 14)
+                            .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 12))
+                        SessionSearchLauncher { showSearch = true }
+                        if logger.isLogging { ProgressView("Actuele locatie ophalen…") }
+                        if let message = logger.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
+                        if let error { Text(error).foregroundStyle(.red) }
+                        let logs = store.observations(in: session)
+                        Text("\(logs.count) waarnemingen").font(FieldGuideTheme.sans(24, relativeTo: .title2))
+                        SessionLogsList(logs: logs, remove: { log in
+                            do { try store.removeLiveObservation(id: log.id, sessionID: session.id) }
+                            catch { self.error = error.localizedDescription }
+                        })
+                        Button("Livesessie afronden") { showReview = true }.buttonStyle(SessionPrimaryButton()).disabled(logger.isLogging)
+                    } else { Text("Geen actieve livesessie.") }
+                }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 36)
             }
-        }
+        }.background(FieldGuideTheme.ivory)
+            .fullScreenCover(isPresented: $showSearch) {
+                if let session = store.activeSession {
+                    SessionSpeciesPicker(selected: Set(store.observations(in: session).map(\.speciesID)), disabled: logger.isLogging,
+                        latitude: session.latitude, longitude: session.longitude) { logger.log($0, store: store) }
+                }
+            }
+            .fullScreenCover(isPresented: $showReview, onDismiss: {
+                if finishedReview { isPresented = false; onFinished() }
+            }) {
+                if let session = store.activeSession {
+                    SessionForm(live: false, reviewing: session) { finishedReview = true; showReview = false }
+                }
+            }
     }
-
     private static func elapsed(from start: Date, to now: Date) -> String {
         let seconds = max(0, Int(now.timeIntervalSince(start)))
         return String(format: "%02d:%02d:%02d", seconds / 3600, (seconds % 3600) / 60, seconds % 60)
     }
 }
 
+private struct SessionBirdRow<Trailing: View>: View {
+    let bird: Species
+    let trailing: () -> Trailing
+    init(bird: Species, @ViewBuilder trailing: @escaping () -> Trailing) { self.bird = bird; self.trailing = trailing }
+    var body: some View {
+        HStack(spacing: 12) {
+            PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
+            VStack(alignment: .leading, spacing: 4) {
+                SerifText(bird.dutchName, size: 16, relativeTo: .body)
+                Text(bird.englishDisplayName).font(FieldGuideTheme.sans(11.2, relativeTo: .caption)).foregroundStyle(FieldGuideTheme.taupe)
+            }.frame(maxWidth: .infinity, alignment: .leading)
+            trailing()
+        }.padding(.vertical, 6).frame(maxWidth: .infinity, minHeight: 64, alignment: .leading).contentShape(Rectangle())
+    }
+}
+private struct RemoveSessionBirdButton: View {
+    let remove: () -> Void
+    var body: some View {
+        Button(action: remove) { Image(systemName: "minus.circle").font(.system(size: 20, weight: .light)).frame(width: 44, height: 44) }
+            .buttonStyle(.plain).accessibilityLabel("Verwijder waarneming")
+    }
+}
 private struct SessionLogsList: View {
     let logs: [Observation]
+    var showsTime = true
+    var remove: ((Observation) -> Void)? = nil
+    @EnvironmentObject private var store: ObservationStore
     var body: some View {
-        LazyVStack(alignment: .leading, spacing: 16) {
+        let lifers = SessionStats.liferIDs(in: store.observations)
+        LazyVStack(spacing: 0) {
             ForEach(logs) { log in
-                HStack(spacing: 12) {
-                    if let bird = DiscoverFixtures.catalog.first(where: { $0.id == log.speciesID }) ?? BirdNETSpeciesLookup.species(id: log.speciesID) {
-                        PrimaryBirdArtwork(species: bird).frame(width: 52, height: 52)
-                        SerifText(bird.dutchName, size: 16, relativeTo: .body)
-                    } else { Text("Onbekende soort (\(log.speciesID))") }
-                    Spacer(minLength: 0)
-                    VStack(alignment: .trailing, spacing: 4) {
-                        Text(log.observedAt, style: .time)
-                        Text(log.locationName)
-                    }.font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                SessionBirdRow(bird: SessionStats.bird(log.speciesID)) {
+                    if showsTime {
+                        HStack(spacing: 5) {
+                            if lifers.contains(log.id) { Image(systemName: "sparkles").foregroundStyle(FieldGuideTheme.khaki).accessibilityLabel("Lifer") }
+                            Text(log.observedAt, style: .time)
+                        }.font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                    }
+                    if let remove { RemoveSessionBirdButton { remove(log) } }
                 }
                 Divider()
             }
         }
     }
 }
-
 private struct SessionDetailView: View {
-    let session: BirdSession
+    let sessionID: UUID
     @EnvironmentObject private var store: ObservationStore
     @Environment(\.dismiss) private var dismiss
+    @State private var editing = false
+    @State private var sort: SessionLogSort = .latest
+    private var current: BirdSession? { store.sessions.first { $0.id == sessionID } }
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            HStack {
+                SpeciesBackButton { dismiss() }; Spacer()
+                RoundEditAction(label: "Sessie bewerken") { editing = true }
+            }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    Text(session.locationName).font(FieldGuideTheme.sans(28, relativeTo: .title))
-                    Text(SessionPresentation.period(session))
-                    let logs = store.observations(in: session)
-                    Text("\(logs.count) waarnemingen")
-                    SessionLogsList(logs: logs)
-                }.padding(20)
-            }.background(FieldGuideTheme.ivory)
-                .toolbar { ToolbarItem(placement: .topBarLeading) { Button("Sluiten") { dismiss() } } }
-        }
+                if let session = current {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(session.locationName).font(FieldGuideTheme.sans(28, relativeTo: .title))
+                        Text(SessionStats.period(session)).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
+                        let logs = store.observations(in: session)
+                        HStack(alignment: .top) {
+                            ObservationTotal(value: logs.count, label: "waarnemingen")
+                            Spacer()
+                            Picker("Sortering", selection: $sort) {
+                                ForEach(SessionLogSort.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+                            }.pickerStyle(.menu).frame(minHeight: 44).padding(.top, 4)
+                        }.padding(.top, 16).padding(.bottom, 12)
+                        SessionLogsList(logs: SessionStats.sorted(logs, by: sort))
+                    }.padding(20).padding(.bottom, 24)
+                }
+            }
+        }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
+            .fullScreenCover(isPresented: $editing) {
+                if let session = current { SessionForm(live: false, reviewing: session) {} }
+            }
     }
 }
 
@@ -391,33 +429,26 @@ struct LiveSessionAddBirdView: View {
     @EnvironmentObject private var store: ObservationStore
     @EnvironmentObject private var logger: SessionLiveLogger
     @Environment(\.dismiss) private var dismiss
+    private var duplicate: Bool { store.activeSession.map { store.observations(in: $0).contains { $0.speciesID == species.id } } ?? false }
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 24) {
-                PrimaryBirdArtwork(species: species).frame(height: 220)
-                SerifText(species.dutchName, size: 34, relativeTo: .largeTitle)
-                Text("Deze vogel wordt in je livesessie opgeslagen met het huidige tijdstip en je actuele locatie.")
-                if logger.isLogging { ProgressView("Actuele locatie ophalen…") }
-                if let message = logger.message { Text(message) }
-                Button("Vogel loggen") { logger.log(species, store: store) { dismiss() } }
-                    .buttonStyle(SessionPrimaryButton()).disabled(logger.isLogging || store.activeSession == nil)
-                Spacer()
-            }.padding(20).background(FieldGuideTheme.ivory)
-                .navigationTitle("Waarneming toevoegen").navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement: .topBarLeading) {
-                    Button { dismiss() } label: { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
-                        .accessibilityLabel("Terug")
-                } }
-        }
+        VStack(spacing: 20) {
+            CenteredPageHeader(title: "Waarneming toevoegen") { dismiss() }
+            PrimaryBirdArtwork(species: species).frame(height: 180)
+            SerifText(species.dutchName, size: 30, relativeTo: .title)
+            Text(species.englishDisplayName).font(FieldGuideTheme.sans(14))
+            if logger.isLogging { ProgressView("Actuele locatie ophalen…") }
+            if let message = logger.message { Text(message) }
+            Button(duplicate ? "Reeds toegevoegd" : "Vogel loggen") { logger.log(species, store: store) { dismiss() } }
+                .buttonStyle(SessionPrimaryButton()).disabled(logger.isLogging || store.activeSession == nil || duplicate).padding(.horizontal, 20)
+            Spacer()
+        }.background(FieldGuideTheme.ivory)
     }
 }
-
 private struct SessionPrimaryButton: ButtonStyle {
     @Environment(\.isEnabled) private var enabled
     func makeBody(configuration: Configuration) -> some View {
         configuration.label.font(FieldGuideTheme.sans()).frame(maxWidth: .infinity, minHeight: 52)
-            .foregroundStyle(FieldGuideTheme.ivory)
-            .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
+            .foregroundStyle(FieldGuideTheme.ivory).background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
             .opacity(enabled ? (configuration.isPressed ? 0.7 : 1) : 0.4)
     }
 }

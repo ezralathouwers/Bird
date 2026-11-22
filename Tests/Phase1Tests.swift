@@ -473,7 +473,8 @@ final class SessionTests: XCTestCase {
         XCTAssertEqual(restored.activeSession?.id, live.id)
         let point = SessionLogLocation(latitude: 52, longitude: 5, name: "Andere plek", countryCode: "NL")
         try restored.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(100), location: point)
-        try restored.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(200), location: point)
+        XCTAssertThrowsError(try restored.logLive(DiscoverFixtures.catalog[0], sessionID: live.id, at: start.addingTimeInterval(200), location: point))
+        try restored.logLive(DiscoverFixtures.catalog[1], sessionID: live.id, at: start.addingTimeInterval(200), location: point)
         XCTAssertEqual(restored.observations.count, 2)
         XCTAssertEqual(restored.observations.first?.latitude, 52)
         XCTAssertEqual(restored.observations.first?.observedAt, start.addingTimeInterval(100))
@@ -1704,6 +1705,68 @@ private struct FailingGoalUpdatePersistence: ObservationPersistence {
     func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteNoPermission) }
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
         throw CocoaError(.fileWriteNoPermission)
+    }
+}
+
+@MainActor
+final class SessionFlowRevisionTests: XCTestCase {
+    private let start = Date(timeIntervalSince1970: 10000)
+    private func log(_ species: String, at date: Date, id: UUID = UUID()) -> Observation {
+        var record = Observation(speciesID: species, taxonomyVersion: "test", observedAt: date,
+            locationName: "Test", count: 1, notes: "", status: .confirmed)
+        record.id = id
+        return record
+    }
+    func testLifersUseChronologyNotArrayOrderAndTiesHaveOneWinner() {
+        let early = log("a", at: start)
+        let later = log("a", at: start.addingTimeInterval(10))
+        let different = log("b", at: start)
+        let tie = log("a", at: start)
+        let ids = SessionStats.liferIDs(in: [later, different, early, tie])
+        XCTAssertEqual(ids.count, 2); XCTAssertFalse(ids.contains(later.id)); XCTAssertTrue(ids.contains(different.id))
+        XCTAssertEqual(ids, SessionStats.liferIDs(in: [tie, early, different, later]))
+        XCTAssertEqual(SessionStats.liferIDs(in: [later]), [later.id])
+    }
+    func testCompactDurationAndBothSortOptions() {
+        let session = BirdSession(locationName: "Test", latitude: 51, longitude: 4, countryCode: "BE",
+            startedAt: start, endedAt: start.addingTimeInterval(8040), isLive: false)
+        XCTAssertEqual(SessionStats.duration(session), "2u14")
+        let a = log(MockSpeciesRepository.kingfisher.id, at: start)
+        let b = log("sample-turdus-merula", at: start.addingTimeInterval(1))
+        XCTAssertEqual(SessionStats.sorted([a,b], by: .latest).map(\.id), [b.id,a.id])
+        XCTAssertEqual(SessionStats.sorted([b,a], by: .alphabetical).map(\.id), [a.id,b.id])
+    }
+    func testRemovingLiveLogAllowsReaddingAndCompletedEditingPreservesOtherRecords() throws {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".json")
+        defer { try? FileManager.default.removeItem(at: url) }
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: url))
+        let standalone = log("outside", at: start); try store.save(standalone)
+        let session = BirdSession(locationName: "Test", latitude: 51, longitude: 4, countryCode: "BE",
+            startedAt: start, endedAt: nil, isLive: true)
+        try store.startSession(session)
+        let point = SessionLogLocation(latitude: 51, longitude: 4, name: "Actual", countryCode: "BE")
+        let bird = MockSpeciesRepository.kingfisher
+        try store.logLive(bird, sessionID: session.id, at: start.addingTimeInterval(5), location: point)
+        XCTAssertThrowsError(try store.logLive(bird, sessionID: session.id, at: start.addingTimeInterval(6), location: point))
+        let record = try XCTUnwrap(store.observations(in: session).first)
+        XCTAssertThrowsError(try store.removeLiveObservation(id: standalone.id, sessionID: session.id))
+        try store.removeLiveObservation(id: record.id, sessionID: session.id)
+        XCTAssertEqual(store.observations, [standalone])
+        try store.logLive(bird, sessionID: session.id, at: start.addingTimeInterval(7), location: point)
+        try store.finishSession(at: start.addingTimeInterval(20))
+        var completed = try XCTUnwrap(store.completedSessions.first)
+        let expected = store.observations(in: completed)
+        completed.locationName = "Edited"
+        try store.updateCompletedSession(completed, logs: expected, expectedLogs: expected)
+        XCTAssertEqual(store.completedSessions.first?.locationName, "Edited")
+        XCTAssertEqual(store.observations(in: completed), expected)
+        XCTAssertTrue(store.observations.contains(standalone))
+        var duplicate = expected[0]; duplicate.id = UUID()
+        XCTAssertThrowsError(try store.updateCompletedSession(completed, logs: expected + [duplicate], expectedLogs: expected))
+        try store.updateCompletedSession(completed, logs: [], expectedLogs: expected)
+        XCTAssertThrowsError(try store.updateCompletedSession(completed, logs: expected, expectedLogs: expected))
+        let restored = ObservationStore(persistence: JSONObservationPersistence(url: url))
+        XCTAssertEqual(restored.observations, [standalone]); XCTAssertEqual(restored.completedSessions.first?.locationName, "Edited")
     }
 }
 

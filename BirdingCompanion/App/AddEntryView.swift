@@ -7,7 +7,9 @@ private enum AddDestination: String, Identifiable {
 
 struct AddEntryView: View {
     @Binding var isPresented: Bool
+    var onLiveStarted: () -> Void = {}
     @State private var destination: AddDestination?
+    @State private var startedLive = false
     var body: some View {
         GeometryReader { geometry in
             // Leave extra room above the floating close button.
@@ -26,10 +28,12 @@ struct AddEntryView: View {
             }
         }
         .background(FieldGuideTheme.charcoal.ignoresSafeArea())
-        .fullScreenCover(item: $destination) { selected in
+        .fullScreenCover(item: $destination, onDismiss: {
+            if startedLive { startedLive = false; isPresented = false; onLiveStarted() }
+        }) { selected in
             switch selected {
             case .observation: AddObservationPicker()
-            case .session: SessionForm(live: false) { destination = nil; isPresented = false }
+            case .session: SessionForm(live: true) { startedLive = true; destination = nil }
             case .goal: GoalForm()
             }
         }
@@ -67,7 +71,10 @@ private struct AddObservationPicker: View {
                         Button { selected = bird } label: {
                             HStack(spacing: 16) {
                                 PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)
-                                SerifText(bird.dutchName, size: 16, relativeTo: .body)
+                                VStack(alignment: .leading, spacing: 4) {
+                                    SerifText(bird.dutchName, size: 16, relativeTo: .body)
+                                    Text(bird.englishDisplayName).font(FieldGuideTheme.sans(11.2, relativeTo: .caption))
+                                }
                             }.frame(maxWidth: .infinity, minHeight: 64, alignment: .leading).contentShape(Rectangle())
                         }.buttonStyle(.plain)
                         Divider()

@@ -30,6 +30,9 @@ final class SessionLiveLogger: NSObject, ObservableObject, @preconcurrency CLLoc
     func log(_ species: Species, store: ObservationStore, completion: @escaping () -> Void = {}) {
         guard !isLogging else { return }
         guard let session = store.activeSession else { message = SessionError.noActiveSession.localizedDescription; return }
+        guard !store.observations(in: session).contains(where: { $0.speciesID == species.id }) else {
+            message = SessionError.duplicateSpecies.localizedDescription; return
+        }
         let request = Pending(species: species, store: store, sessionID: session.id, tappedAt: Date(), completion: completion)
         pending = request; isLogging = true; message = nil
         timeout = Task { [weak self] in
@@ -74,7 +77,7 @@ final class SessionLiveLogger: NSObject, ObservableObject, @preconcurrency CLLoc
             do {
                 try request.store.logLive(request.species, sessionID: request.sessionID, at: request.tappedAt, location: point)
                 self.clear()
-                self.message = "\(request.species.dutchName) opgeslagen"
+                self.message = nil
                 request.completion()
             } catch { self.fail(error.localizedDescription) }
         }

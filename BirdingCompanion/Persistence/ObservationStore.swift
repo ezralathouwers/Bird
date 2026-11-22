@@ -140,6 +140,7 @@ final class ObservationStore: ObservableObject {
 
     func logLive(_ species: Species, sessionID: UUID, at date: Date, location: SessionLogLocation) throws {
         guard let session = activeSession, session.id == sessionID else { throw SessionError.noActiveSession }
+        guard !observations.contains(where: { $0.sessionID == sessionID && $0.speciesID == species.id }) else { throw SessionError.duplicateSpecies }
         var log = Observation(speciesID: species.id, taxonomyVersion: species.taxonomyVersion,
             observedAt: date, locationName: location.name, count: 1, notes: "", status: .confirmed)
         log.latitude = location.latitude; log.longitude = location.longitude
@@ -156,15 +157,30 @@ final class ObservationStore: ObservableObject {
         try commit(observations: observations, sessions: updated)
     }
 
-    // Final review replaces only this session's logs, preserving every other observation.
+    func removeLiveObservation(id: UUID, sessionID: UUID) throws {
+        guard activeSession?.id == sessionID else { throw SessionError.noActiveSession }
+        guard observations.contains(where: { $0.id == id && $0.sessionID == sessionID }) else { throw ObservationError.missingRecord }
+        try commit(observations: observations.filter { $0.id != id }, sessions: sessions)
+    }
+
+    // A review can replace only its own session and only the snapshot it opened.
     func completeSession(_ review: BirdSession, logs: [Observation], expectedLogs: [Observation]) throws {
-        guard let active = activeSession, active.id == review.id,
-              let index = sessions.firstIndex(where: { $0.id == review.id }) else { throw SessionError.noActiveSession }
-        let current = observations.filter { $0.sessionID == review.id }
-        guard current.count == expectedLogs.count,
-              current.allSatisfy({ expectedLogs.contains($0) }) else { throw SessionError.reviewChanged }
-        guard review.isLive, review.endedAt != nil,
+        guard activeSession?.id == review.id, review.isLive else { throw SessionError.noActiveSession }
+        try replaceReviewedSession(review, logs: logs, expectedLogs: expectedLogs)
+    }
+    func updateCompletedSession(_ review: BirdSession, logs: [Observation], expectedLogs: [Observation]) throws {
+        guard sessions.contains(where: { $0.id == review.id && $0.endedAt != nil }) else { throw SessionError.invalidSession }
+        try replaceReviewedSession(review, logs: logs, expectedLogs: expectedLogs)
+    }
+    private func replaceReviewedSession(_ review: BirdSession, logs: [Observation], expectedLogs: [Observation]) throws {
+        guard let index = sessions.firstIndex(where: { $0.id == review.id }), review.endedAt != nil,
+              review.isLive == sessions[index].isLive,
               logs.allSatisfy({ $0.sessionID == review.id }) else { throw SessionError.invalidSession }
+        let current = observations.filter { $0.sessionID == review.id }
+        guard current.count == expectedLogs.count, current.allSatisfy({ expectedLogs.contains($0) }) else { throw SessionError.reviewChanged }
+        let oldCounts = Dictionary(grouping: current, by: \.speciesID).mapValues(\.count)
+        let newCounts = Dictionary(grouping: logs, by: \.speciesID).mapValues(\.count)
+        guard newCounts.allSatisfy({ $0.value <= max(1, oldCounts[$0.key] ?? 0) }) else { throw SessionError.duplicateSpecies }
         var updated = sessions; updated[index] = review
         try commit(observations: observations.filter { $0.sessionID != review.id } + logs, sessions: updated)
     }
