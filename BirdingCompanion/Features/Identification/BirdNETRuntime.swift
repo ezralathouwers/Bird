@@ -1,5 +1,6 @@
 import Foundation
 import CoreML
+import OSLog
 import CryptoKit
 import ZIPFoundation
 @preconcurrency import AVFoundation
@@ -14,13 +15,14 @@ struct BirdNETAssetConfiguration: Decodable {
 }
 
 enum BirdNETRuntimeError: LocalizedError {
-    case missingAssets, checksum, download, invalidModel, invalidAudio
+    case missingAssets, checksum, download, invalidModel, invalidAudio, invalidPrediction
     var errorDescription: String? {
         switch self {
         case .missingAssets: "De BirdNET-modelgegevens ontbreken in deze appversie."
         case .checksum: "Het herkenningsmodel kon niet worden geverifieerd. Probeer het opnieuw."
         case .download: "Het herkenningsmodel kon niet worden opgehaald. Voor de eerste keer is internet nodig."
         case .invalidModel: "Dit herkenningsmodel kon niet worden geladen op dit apparaat."
+        case .invalidPrediction: "Het geluidsmodel gaf geen bruikbare uitslag. Stop de opname en probeer opnieuw."
         case .invalidAudio: "Dit geluidsfragment kon niet worden verwerkt."
         }
     }
@@ -35,7 +37,7 @@ actor BirdNETCoreMLService: StreamingSoundIdentificationService {
     private var inputShape: [NSNumber] = []
     private var inputType: MLMultiArrayDataType = .float32
     private var classCount = 0
-    private let threshold = 0.5
+    private let logger = Logger(subsystem: "Birder", category: "SoundID")
 
     // Select the synchronous overload without sending the actor-owned model
     // to Core ML's concurrent async prediction method.
@@ -113,10 +115,18 @@ actor BirdNETCoreMLService: StreamingSoundIdentificationService {
         let result = try predict(model: model, input: provider)
         try Task.checkCancellation()
         guard let scores = result.featureValue(for: outputName)?.multiArrayValue, scores.count == classCount else { throw BirdNETRuntimeError.invalidModel }
-        return IdentificationCandidate.ranked(labels.compactMap { label in
-            let score = scores[label.index].doubleValue
-            return score.isFinite && score >= threshold && score <= 1 ? IdentificationCandidate(species: label.species, score: score) : nil
-        })
+        let values = (0..<scores.count).map { scores[$0].doubleValue }
+        guard values.allSatisfy({ $0.isFinite && (0...1).contains($0) }) else {
+            logger.error("BirdNET returned invalid prediction values")
+            throw BirdNETRuntimeError.invalidPrediction
+        }
+        let bestBird = labels.map { values[$0.index] }.max() ?? 0
+        let rms = sqrt(samples.reduce(0.0) { $0 + Double($1) * Double($1) } / Double(samples.count))
+        logger.debug("BirdNET window: RMS=\(rms), highest bird score=\(bestBird)")
+        return Array(IdentificationCandidate.ranked(labels.compactMap { label in
+            let score = values[label.index]
+            return score >= SoundCandidateConfirmation.minimumScore ? IdentificationCandidate(species: label.species, score: score) : nil
+        }).prefix(8))
     }
 
     func identify(recording: URL) async throws -> [IdentificationCandidate] {

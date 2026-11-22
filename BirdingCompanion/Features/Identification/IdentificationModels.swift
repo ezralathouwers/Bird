@@ -180,3 +180,19 @@ struct SoundActivity {
         return Set(lastHeard.filter { date.timeIntervalSince($0.value) >= 0 && date.timeIntervalSince($0.value) < hold }.keys)
     }
 }
+
+// Model scores are independent multi-label scores, not calibrated probabilities.
+// A weak candidate needs support in two of the last three analyzed windows.
+struct SoundCandidateConfirmation {
+    static let minimumScore = 0.15
+    static let immediateScore = 0.35
+    private var recent: [Set<String>] = []
+    mutating func accept(_ results: [IdentificationCandidate]) -> [IdentificationCandidate] {
+        let valid = IdentificationCandidate.ranked(results).filter { $0.score >= Self.minimumScore }
+        recent.append(Set(valid.map(\.id)))
+        if recent.count > 3 { recent.removeFirst(recent.count - 3) }
+        return valid.filter { candidate in
+            candidate.score >= Self.immediateScore || recent.filter { $0.contains(candidate.id) }.count >= 2
+        }
+    }
+}

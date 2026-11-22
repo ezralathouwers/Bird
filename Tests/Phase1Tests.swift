@@ -1798,3 +1798,27 @@ final class AudioCapturePipelineTests: XCTestCase {
         XCTAssertEqual(file.length, 96000)
     }
 }
+
+final class SoundCandidateConfirmationTests: XCTestCase {
+    private var bird: Species { MockSpeciesRepository.kingfisher }
+    func testWeakSupportedMatchesAreRetainedAtTheirOriginalScore() {
+        var filter = SoundCandidateConfirmation()
+        let weak = IdentificationCandidate(species: bird, score: 0.22)
+        XCTAssertTrue(filter.accept([weak]).isEmpty)
+        let confirmed = filter.accept([weak])
+        XCTAssertEqual(confirmed.map(\.id), [bird.id])
+        XCTAssertEqual(confirmed.first?.score, 0.22)
+    }
+    func testStrongMatchIsImmediateAndIsolatedWeakOrInvalidScoresAreNotShown() {
+        var filter = SoundCandidateConfirmation()
+        XCTAssertEqual(filter.accept([IdentificationCandidate(species: bird, score: 0.4)]).count, 1)
+        filter = SoundCandidateConfirmation()
+        let weak = IdentificationCandidate(species: bird, score: 0.2)
+        XCTAssertTrue(filter.accept([weak]).isEmpty)
+        for _ in 0..<3 { XCTAssertTrue(filter.accept([]).isEmpty) }
+        XCTAssertTrue(filter.accept([weak]).isEmpty)
+        for score in [0.1, -1, 1.1, Double.nan, Double.infinity] {
+            XCTAssertTrue(filter.accept([IdentificationCandidate(species: bird, score: score)]).isEmpty)
+        }
+    }
+}

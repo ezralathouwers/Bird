@@ -83,3 +83,37 @@ start-stop-restart, back/foreground transitions, no-input error, interruptions,
 playback of the saved file and results. A simulator needs an actual configured
 Mac microphone input; cloud checks cannot establish that the reported hang is
 resolved on the user's device.
+
+## Empty recognition results — 22 November 2026
+
+User reports capture and sonogram now run, but clear examples produce no rows.
+Static inspection of the exact pinned FP16 .mlpackage confirms:
+- metadata sample_rate=32000, segment_duration=3;
+- input `input` is Float32 [1,96000];
+- output `predictions` is Float16 [1,11725] and its final MIL operation is sigmoid;
+- `embeddings` is a different [1,1280] output, not the classification result.
+The runtime's rate/shape/activation assumptions match this artifact. No extra
+sigmoid, softmax, model download, audio normalization or taxonomy change is made.
+This schema check is not execution of Core ML on cloud/Linux.
+
+The previous hard 0.50 cutoff excluded all lower scoring bird classes. The
+publisher's live-app post_processor exposes 0.15 as its process default and the
+model config uses 0.35 as its confidence default. The app now retains up to eight
+bird candidates >=0.15 per analyzed window. Display accepts scores >=0.35
+immediately; weaker candidates need presence in two of the last three analyzed
+windows. The original scores are retained (not boosted or described as calibrated
+probabilities). Confirmation history resets per recording; silence/empty windows
+age support out. Invalid/nonfinite/out-of-range model values now give an explicit
+error, rather than being silently filtered as no birds. A no-match message is
+shown when analysis runs but no suggestion has been confirmed. Local SoundID
+OSLog debug events record only window RMS and highest bird score for native
+troubleshooting, without recordings, names or locations.
+
+References inspected:
+https://github.com/birdnet-team/birdnet-live-app/blob/main/lib/features/inference/post_processor.dart
+https://github.com/birdnet-team/birdnet-live-app/blob/main/lib/features/inference/model_config.dart
+Tests added for immediate/weak repeated confirmation, single-window noise,
+support expiry and invalid scores. Native Core ML inference and the user's audio
+examples cannot be evaluated here. This changes an identified filtering issue;
+it does not establish the sole cause of the user's empty results. Re-test on Mac/
+iPhone and use SoundID debug output if clear examples still fail.

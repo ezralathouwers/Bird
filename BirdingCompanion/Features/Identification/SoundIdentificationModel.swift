@@ -109,6 +109,7 @@ final class SoundIdentificationModel: ObservableObject {
     private var captureTask: Task<Void, Never>?
     private var watchdog: Task<Void, Never>?
     private var lastAudioAt: Date?
+    private var confirmation = SoundCandidateConfirmation()
     private var generation = UUID()
     private var preparationTask: Task<Void, Error>?
     private var liveTask: Task<Void, Never>?
@@ -143,7 +144,7 @@ final class SoundIdentificationModel: ObservableObject {
             guard generation == id, !Task.isCancelled else { await capture.stop(id: id); return }
             watchdog?.cancel(); watchdog = nil
             let processor = AudioCaptureProcessor(url: url)
-            recordingURL = url; columns = []; candidates = []; activity = SoundActivity()
+            recordingURL = url; columns = []; candidates = []; activity = SoundActivity(); confirmation = SoundCandidateConfirmation()
             duration = 0; startedAt = Date(); lastAudioAt = nil
             isRecording = true; isStarting = false
             captureTask = Task { [weak self] in
@@ -201,7 +202,7 @@ final class SoundIdentificationModel: ObservableObject {
                 let results = try await streaming.identify(window: window)
                 guard let self, self.generation == id, !Task.isCancelled else { return }
                 self.receiveLiveDetections(results, detectedAt: window.endedAt, recording: recording)
-                self.message = nil
+                self.message = self.candidates.isEmpty ? "Nog geen duidelijke herkenning. Blijf luisteren of houd de microfoon dichter bij het vogelgeluid." : nil
             } catch {
                 guard let self, self.generation == id, !Task.isCancelled else { return }
                 self.message = "Herkenning tijdelijk niet beschikbaar. \(error.localizedDescription)"
@@ -215,7 +216,7 @@ final class SoundIdentificationModel: ObservableObject {
     func receiveLiveDetections(_ results: [IdentificationCandidate], detectedAt: Date, recording: URL) {
         guard isRecording, recordingURL == recording, let startedAt,
               detectedAt >= startedAt, detectedAt <= Date() else { return }
-        let valid = IdentificationCandidate.ranked(results)
+        let valid = confirmation.accept(results)
         for candidate in valid { activity.heard(candidate.id, at: detectedAt) }
         candidates = IdentificationCandidate.ranked(candidates + valid)
     }
