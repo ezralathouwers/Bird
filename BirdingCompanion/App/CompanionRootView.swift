@@ -376,9 +376,15 @@ private struct CircularMenuReveal: AnimatableModifier {
     func body(content: Content) -> some View {
         content.mask {
             GeometryReader { geometry in
-                let frame = geometry.frame(in: .global)
-                Path(ellipseIn: MenuRevealGeometry.circle(globalOrigin: origin, maskFrame: frame, progress: progress))
-                    .fill(.black)
+                if progress >= 1 {
+                    // The completed reveal fills all bounds, including safe areas.
+                    Rectangle().fill(.black).ignoresSafeArea()
+                } else {
+                    let frame = geometry.frame(in: .global)
+                    Path(ellipseIn: MenuRevealGeometry.circle(globalOrigin: origin, maskFrame: frame,
+                        progress: progress, coverageFrame: UIScreen.main.bounds))
+                        .fill(.black)
+                }
             }
         }
     }
@@ -387,11 +393,16 @@ private struct CircularMenuReveal: AnimatableModifier {
 // The mask and button are measured in one screen coordinate space, including
 // status-bar and navigation safe areas. The circle center never interpolates.
 enum MenuRevealGeometry {
-    static func circle(globalOrigin: CGPoint, maskFrame: CGRect, progress: CGFloat) -> CGRect {
-        let center = globalOrigin == .zero ? CGPoint(x: maskFrame.width / 2, y: maskFrame.height)
-            : CGPoint(x: globalOrigin.x - maskFrame.minX, y: globalOrigin.y - maskFrame.minY)
-        let distance = hypot(max(center.x, maskFrame.width - center.x), max(center.y, maskFrame.height - center.y))
-        let radius = 28.8 + max(0, distance - 28.8) * min(1, max(0, progress))
+    static func circle(globalOrigin: CGPoint, maskFrame: CGRect, progress: CGFloat,
+                       coverageFrame: CGRect? = nil) -> CGRect {
+        let origin = globalOrigin == .zero ? CGPoint(x: maskFrame.midX, y: maskFrame.maxY) : globalOrigin
+        let center = CGPoint(x: origin.x - maskFrame.minX, y: origin.y - maskFrame.minY)
+        let coverage = maskFrame.union(coverageFrame ?? maskFrame)
+        let corners = [CGPoint(x: coverage.minX, y: coverage.minY), CGPoint(x: coverage.maxX, y: coverage.minY),
+                       CGPoint(x: coverage.minX, y: coverage.maxY), CGPoint(x: coverage.maxX, y: coverage.maxY)]
+        let distance = corners.map { hypot($0.x - origin.x, $0.y - origin.y) }.max() ?? 0
+        // Overscan keeps the arc outside screen edges at the end of the reveal.
+        let radius = 28.8 + max(0, distance + 32 - 28.8) * min(1, max(0, progress))
         return CGRect(x: center.x - radius, y: center.y - radius, width: radius * 2, height: radius * 2)
     }
 }

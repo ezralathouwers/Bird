@@ -450,3 +450,20 @@ anticipation movement and faster exit. The rest pose matches the launch asset.
 Reduce Motion keeps a stationary crossfade. Vector poses were rendered and
 visually inspected in cloud; timing/smoothness and safe-area handoff remain
 unverified without Xcode/device execution.
+
+
+### Add-menu full coverage and closing clearance
+
+The reveal radius now covers the union of its global mask bounds and the full
+iPhone screen, plus 32 points of overscan, so the safe-area background cannot
+leave a visible arc above the menu. At completed progress the mask becomes a
+full rectangle extending through safe areas. The menu subtree keeps its identity
+throughout the transition. Global button coordinates still set the circle center.
+A regression fixture explicitly covers a screen larger than the mask safe area.
+
+AddEntryView now reserves a separate 180-point bottom area for the close control
+and divides the remaining height among its three choices. This raises Goal by
+about 119 points compared with the previous layout on the same-height viewport.
+The reserved area is outside the scroll viewport so larger text can scroll
+without running behind the close control. Native visual checks and XCTest remain
+pending; Swift syntax/project/whitespace checks are available in cloud.

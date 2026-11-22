@@ -1941,6 +1941,18 @@ final class IdentificationRefinementTests: XCTestCase {
 }
 
 final class MenuRevealGeometryTests: XCTestCase {
+    func testCompletedCircleCoversScreenOutsideTheMaskSafeArea() {
+        let screen = CGRect(x: 0, y: 0, width: 393, height: 852)
+        let frame = CGRect(x: 0, y: 59, width: 393, height: 700)
+        let button = CGPoint(x: 196.5, y: 759)
+        let circle = MenuRevealGeometry.circle(globalOrigin: button, maskFrame: frame, progress: 1, coverageFrame: screen)
+        for corner in [CGPoint(x: 0, y: 0), CGPoint(x: 393, y: 0), CGPoint(x: 0, y: 852), CGPoint(x: 393, y: 852)] {
+            let distance = hypot(corner.x - button.x, corner.y - button.y)
+            XCTAssertGreaterThanOrEqual(circle.width / 2 - distance, 31.99)
+        }
+        XCTAssertEqual(circle.midY + frame.minY, button.y, accuracy: 0.001)
+    }
+
     func testCircleStaysCenteredOnButtonAcrossSafeAreaFrames() {
         let button = CGPoint(x: 196.5, y: 759)
         for frame in [CGRect(x: 0, y: 0, width: 393, height: 852), CGRect(x: 0, y: 59, width: 393, height: 700)] {

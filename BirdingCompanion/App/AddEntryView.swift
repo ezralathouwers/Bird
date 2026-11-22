@@ -12,8 +12,9 @@ struct AddEntryView: View {
     @State private var startedLive = false
     var body: some View {
         GeometryReader { geometry in
-            // Leave extra room above the floating close button.
-            let choiceHeight = max(96, (geometry.size.height - 37) / 3)
+            // Reserve a separate lower area around the floating close button.
+            let bottomClearance: CGFloat = 180
+            let choiceHeight = max(96, (geometry.size.height - bottomClearance - 1) / 3)
             ScrollView {
                 VStack(spacing: 0) {
                     choice("Waarneming", accessibilityLabel: "Waarneming toevoegen", destination: .observation,
@@ -24,7 +25,10 @@ struct AddEntryView: View {
                     separator
                     choice("Doelstelling", accessibilityLabel: "Doelstelling toevoegen", destination: .goal,
                            height: choiceHeight)
-                }.frame(maxWidth: .infinity).padding(.bottom, 36)
+                }.frame(maxWidth: .infinity)
+            }
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                Color.clear.frame(height: bottomClearance).allowsHitTesting(false)
             }
         }
         .background(FieldGuideTheme.charcoal.ignoresSafeArea())
