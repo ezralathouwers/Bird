@@ -33,8 +33,7 @@ struct PhotoCropView: View {
         return UIImage(cgImage: thumbnail)
     }
     var body: some View {
-        VStack(spacing: 0) {
-            CenteredPageHeader(title: "Foto ID") { completion(nil, location) }
+        NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
                     if let image {
@@ -77,7 +76,15 @@ struct PhotoCropView: View {
                     if let error { Text(error) }
                 }.padding(20)
             }
-        }.foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory.ignoresSafeArea())
+            .safeAreaInset(edge: .top, spacing: 0) {
+                CenteredPageHeader(title: "Foto ID") { completion(nil, location) }
+                    .background(FieldGuideTheme.ivory)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(FieldGuideTheme.ivory.ignoresSafeArea())
+            .toolbar(.hidden, for: .navigationBar)
+            .navigationBarBackButtonHidden(true)
+        }.foregroundStyle(FieldGuideTheme.charcoal)
             .task { if !imageLoaded { image = Self.loadImage(data); imageLoaded = true } }
             .sheet(isPresented: $showLocation) { PhotoLocationPicker(selection: location) { location = $0 } }
     }

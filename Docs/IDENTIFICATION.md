@@ -132,3 +132,14 @@ a 44-point edit-pencil target on the right; the separate edit-location button
 is removed on the result screen. Without a location, the add-location button
 remains. Crop-screen controls retain their existing behaviour. Audio bottom
 padding increases by a further 15 points (69 beyond its base 20-point inset).
+
+
+### Crop header safe-area correction
+
+PhotoCropView now owns a NavigationStack with the native bar hidden. Its custom
+centered Foto ID header is inserted at the top safe area of the full-height
+ScrollView, rather than sharing an unconstrained outer VStack with the crop
+layout. This addresses the reported back control/title drawing under the status
+bar after photo selection. Camera/library imports share this crop view. Header
+placement and the 44-point back hit target still need a physical-device check.
+Audio bottom padding increases by a further 10 points (79 beyond base inset).

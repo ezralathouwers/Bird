@@ -20,7 +20,7 @@ struct CompanionRootView: View {
     @StateObject private var discover = DiscoverViewModel()
     @State private var showAddMenu = false
     @State private var showLaunchLogo = true
-    @State private var launchBirdFlying = false
+    @State private var launchFlightStartedAt: Date?
     @State private var plusCenter = CGPoint.zero
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let addButtonDiameter: CGFloat = 64 * 0.9
@@ -65,16 +65,28 @@ struct CompanionRootView: View {
             .overlay {
                 if showLaunchLogo {
                     GeometryReader { screen in
-                        ZStack {
-                            Color("LaunchOlive").opacity(launchBirdFlying ? 0 : 1)
-                            Image("LaunchBird").resizable().frame(width: 88, height: 88)
-                                .rotationEffect(.degrees(launchBirdFlying && !reduceMotion ? -25 : 0))
-                                .scaleEffect(launchBirdFlying && !reduceMotion ? 0.7 : 1)
-                                .offset(x: launchBirdFlying && !reduceMotion ? screen.size.width * 0.65 : 0,
-                                        y: launchBirdFlying && !reduceMotion ? -screen.size.height * 0.65 : 0)
-                                .opacity(launchBirdFlying && reduceMotion ? 0 : 1)
-                                .accessibilityLabel("Birder")
-                        }.frame(width: screen.size.width, height: screen.size.height).clipped()
+                        TimelineView(.animation(minimumInterval: 1.0 / 60,
+                                                paused: launchFlightStartedAt == nil)) { clock in
+                            let elapsed = launchFlightStartedAt.map { clock.date.timeIntervalSince($0) } ?? 0
+                            let progress = min(1, max(0, elapsed / 0.75))
+                            let motion = LaunchFlightMotion.sample(progress: progress, canvas: screen.size)
+                            ZStack {
+                                Color("LaunchOlive").opacity(1 - progress)
+                                Group {
+                                    if launchFlightStartedAt == nil || reduceMotion {
+                                        Image("LaunchBird").resizable()
+                                    } else {
+                                        LaunchFlappingBird(flap: motion.flap)
+                                            .stroke(FieldGuideTheme.ivory, style: StrokeStyle(lineWidth: 1.5, lineCap: .round, lineJoin: .round))
+                                    }
+                                }.frame(width: 88, height: 88)
+                                    .rotationEffect(.degrees(reduceMotion ? 0 : motion.rotation))
+                                    .scaleEffect(reduceMotion ? 1 : motion.scale)
+                                    .offset(reduceMotion ? .zero : motion.offset)
+                                    .opacity(reduceMotion ? 1 - progress : 1)
+                                    .accessibilityLabel("Birder")
+                            }.frame(width: screen.size.width, height: screen.size.height).clipped()
+                        }
                     }.ignoresSafeArea().transition(.identity)
                 }
             }
@@ -82,7 +94,7 @@ struct CompanionRootView: View {
                 async let location: Void = SharedCurrentLocation.shared.prewarmIfAuthorized()
                 try? await Task.sleep(for: .milliseconds(750))
                 guard !Task.isCancelled else { return }
-                withAnimation(.easeInOut(duration: 0.75)) { launchBirdFlying = true }
+                launchFlightStartedAt = Date()
                 try? await Task.sleep(for: .milliseconds(750))
                 guard !Task.isCancelled else { return }
                 showLaunchLogo = false
@@ -381,5 +393,45 @@ enum MenuRevealGeometry {
         let distance = hypot(max(center.x, maskFrame.width - center.x), max(center.y, maskFrame.height - center.y))
         let radius = 28.8 + max(0, distance - 28.8) * min(1, max(0, progress))
         return CGRect(x: center.x - radius, y: center.y - radius, width: radius * 2, height: radius * 2)
+    }
+}
+
+struct LaunchFlightMotion {
+    let offset: CGSize
+    let rotation: Double
+    let scale: CGFloat
+    let flap: CGFloat
+    static func sample(progress: Double, canvas: CGSize) -> Self {
+        let t = min(1, max(0, progress))
+        // Brief anticipation, then an accelerating curved climb. The horizontal
+        // and vertical components deliberately use different timing curves.
+        let x = -10 * CGFloat(sin(.pi * t)) + (canvas.width * 0.72 + 88) * CGFloat(pow(t, 2.7))
+        let y = 12 * CGFloat(sin(.pi * t)) - (canvas.height * 0.72 + 88) * CGFloat(pow(t, 1.8))
+            + 4 * CGFloat(sin(6 * .pi * t) * sin(.pi * t))
+        return Self(offset: CGSize(width: x, height: y), rotation: -35 * sin(.pi * t * 0.7),
+                    scale: CGFloat(1 - 0.25 * t), flap: CGFloat((1 - cos(6 * .pi * t)) / 2))
+    }
+}
+
+private struct LaunchFlappingBird: Shape {
+    let flap: CGFloat
+    func path(in rect: CGRect) -> Path {
+        // Keep the stylized wing contours apart throughout each stroke.
+        let f = min(1, max(0, flap)) * 0.55
+        var path = Path()
+        path.move(to: CGPoint(x: 14, y: 9))
+        path.addCurve(to: CGPoint(x: 9 - 8 * f, y: 1 + 16 * f),
+                      control1: CGPoint(x: 15 - 2 * f, y: 5 + 9 * f),
+                      control2: CGPoint(x: 11 - 8 * f, y: 2 + 16 * f))
+        path.addQuadCurve(to: CGPoint(x: 8, y: 10), control: CGPoint(x: 7 - 5 * f, y: 5 + 13 * f))
+        path.addQuadCurve(to: CGPoint(x: 1 + 2 * f, y: 7 + 11 * f), control: CGPoint(x: 4, y: 7 + 10 * f))
+        path.addQuadCurve(to: CGPoint(x: 8, y: 15), control: CGPoint(x: 2 + f, y: 12 + 8 * f))
+        path.addLine(to: CGPoint(x: 5, y: 22))
+        path.addQuadCurve(to: CGPoint(x: 13, y: 18), control: CGPoint(x: 11, y: 23))
+        path.addQuadCurve(to: CGPoint(x: 18, y: 12), control: CGPoint(x: 16, y: 17))
+        path.addLine(to: CGPoint(x: 23, y: 10)); path.addLine(to: CGPoint(x: 19, y: 9))
+        path.addQuadCurve(to: CGPoint(x: 14, y: 9), control: CGPoint(x: 17, y: 5))
+        path.closeSubpath()
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
 }

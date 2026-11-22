@@ -438,3 +438,15 @@ upward content movement introduces an ivory-to-transparent 28-point fade over
 12 points of scrolling. It does not intercept map taps or pan gestures. The
 bio's existing named coordinate space is preserved. Swift syntax/whitespace
 checked in cloud; visible scroll behaviour still needs native iPhone validation.
+
+
+### Wingbeat intro refinement
+
+The initial 750 ms logo hold and subsequent 750 ms departure remain. During
+departure a frame-driven outline morph performs three wingbeats, with bounded
+wing contours to avoid crossing, a small body bob and banking. Different
+horizontal/vertical acceleration curves create a curved departure with a brief
+anticipation movement and faster exit. The rest pose matches the launch asset.
+Reduce Motion keeps a stationary crossfade. Vector poses were rendered and
+visually inspected in cloud; timing/smoothness and safe-area handoff remain
+unverified without Xcode/device execution.

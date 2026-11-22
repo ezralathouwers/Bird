@@ -97,7 +97,7 @@ struct SoundIdentificationView: View {
                     SoundIdentificationResults(candidates: model.candidates, pins: pins,
                         activeIDs: model.activity.activeIDs(at: context.date, recording: model.isRecording)) { selectedSpecies = $0 }
                 }
-            }.padding(20).padding(.bottom, 69)
+            }.padding(20).padding(.bottom, 79)
         }.safeAreaInset(edge: .top, spacing: 0) {
             CenteredPageHeader(title: "Audio ID") { dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
