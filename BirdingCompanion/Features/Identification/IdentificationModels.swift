@@ -140,34 +140,14 @@ enum SoundResultOrdering {
 final class SoundResultPins: ObservableObject {
     @Published private(set) var species: [PinnedSoundSpecies] = []
     @Published private(set) var message: String?
-    private let defaults: UserDefaults
-    private let key = "sound-id-pinned-species-v1"
-    private var loadFailed = false
-
-    init(defaults: UserDefaults = .standard) {
-        self.defaults = defaults
-        guard let data = defaults.data(forKey: key) else { return }
-        do {
-            let loaded = try JSONDecoder().decode([PinnedSoundSpecies].self, from: data)
-            guard Set(loaded.map(\.id)).count == loaded.count,
-                  loaded.allSatisfy({ !$0.id.isEmpty && !$0.taxonomyVersion.isEmpty }) else { throw CocoaError(.fileReadCorruptFile) }
-            species = loaded
-        } catch {
-            loadFailed = true
-            message = "Vastgezette vogels konden niet worden geladen. De bewaarde voorkeuren blijven behouden."
-        }
-    }
+    // Pins belong to one listening session; old persisted preferences are ignored.
+    init(defaults: UserDefaults = .standard) {}
+    func reset() { species = []; message = nil }
     func toggle(_ bird: Species) {
-        guard !loadFailed else { return }
-        var updated = species
-        if updated.contains(where: { $0.id == bird.id }) { updated.removeAll { $0.id == bird.id } }
-        else { updated.append(PinnedSoundSpecies(bird)) }
-        do {
-            let data = try JSONEncoder().encode(updated)
-            defaults.set(data, forKey: key)
-            species = updated
-        } catch { message = "Deze vogel kon niet worden vastgezet. \(error.localizedDescription)" }
+        if species.contains(where: { $0.id == bird.id }) { species.removeAll { $0.id == bird.id } }
+        else { species.append(PinnedSoundSpecies(bird)) }
     }
+
 }
 
 struct SoundActivity {
@@ -184,8 +164,8 @@ struct SoundActivity {
 // Model scores are independent multi-label scores, not calibrated probabilities.
 // A weak candidate needs support in two of the last three analyzed windows.
 struct SoundCandidateConfirmation {
-    static let minimumScore = 0.15
-    static let immediateScore = 0.35
+    static let minimumScore = 0.30
+    static let immediateScore = 0.75
     private var recent: [Set<String>] = []
     mutating func accept(_ results: [IdentificationCandidate]) -> [IdentificationCandidate] {
         let valid = IdentificationCandidate.ranked(results).filter { $0.score >= Self.minimumScore }
@@ -195,4 +175,56 @@ struct SoundCandidateConfirmation {
             candidate.score >= Self.immediateScore || recent.filter { $0.contains(candidate.id) }.count >= 2
         }
     }
+}
+
+// Geographic context does not change the visual model's scores or discard a
+// candidate. Missing private maps are unknown, never an unlikely classification.
+enum PhotoRangeLikelihood: Sendable { case likely, unlikely, unknown }
+actor PhotoRangeContext {
+    static func classify(_ candidates: [IdentificationCandidate], at location: PhotoLocationSelection) async -> [String: PhotoRangeLikelihood] {
+        var result: [String: PhotoRangeLikelihood] = [:]
+        for candidate in candidates {
+            guard !Task.isCancelled else { return [:] }
+            guard let snapshot = try? await SpeciesRangeDataLoader.shared.load(speciesID: candidate.id) else {
+                result[candidate.id] = .unknown; continue
+            }
+            result[candidate.id] = contains(snapshot, latitude: location.latitude, longitude: location.longitude) ? .likely : .unlikely
+        }
+        return result
+    }
+    static func contains(_ snapshot: SpeciesRangeSnapshot, latitude: Double, longitude: Double) -> Bool {
+        snapshot.polygons.contains { polygon in
+            guard let exterior = polygon.rings.first, ringContains(exterior, latitude: latitude, longitude: longitude) else { return false }
+            return !polygon.rings.dropFirst().contains { ringContains($0, latitude: latitude, longitude: longitude) }
+        }
+    }
+    private static func ringContains(_ ring: [SpeciesRangeSnapshot.Point], latitude: Double, longitude: Double) -> Bool {
+        guard ring.count >= 4 else { return false }
+        // Unwrap successive longitudes so ranges crossing 180° remain local.
+        var points: [(Double, Double)] = []
+        var previous = ring[0].longitude
+        for point in ring {
+            var x = point.longitude
+            while x - previous > 180 { x -= 360 }
+            while x - previous < -180 { x += 360 }
+            points.append((x, point.latitude)); previous = x
+        }
+        for shift in [-360.0, 0, 360] {
+            let x = longitude + shift
+            var inside = false
+            for index in points.indices {
+                let a = points[index], b = points[(index + 1) % points.count]
+                if (a.1 > latitude) != (b.1 > latitude),
+                   x < (b.0 - a.0) * (latitude - a.1) / (b.1 - a.1) + a.0 { inside.toggle() }
+            }
+            if inside { return true }
+        }
+        return false
+    }
+}
+
+struct PhotoLocationSelection: Sendable {
+    let latitude: Double
+    let longitude: Double
+    let name: String
 }

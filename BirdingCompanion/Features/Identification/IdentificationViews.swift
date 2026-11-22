@@ -7,7 +7,7 @@ struct IdentificationView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                IdentificationOptionsLayout(viewportHeight: max(0, geometry.size.height - 72)) {
+                IdentificationOptionsLayout(viewportHeight: max(0, geometry.size.height - 97)) {
                     PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
                     NavigationLink { PhotoIdentificationView() } label: {
                         option("Foto", detail: "Maak of kies een foto", photo: true)
@@ -15,7 +15,7 @@ struct IdentificationView: View {
                     NavigationLink { SoundIdentificationView(isVisible: isVisible) } label: {
                         option("Audio", detail: "Luister naar vogels om je heen", photo: false)
                     }
-                }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 52)
+                }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 77)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
     }
@@ -69,7 +69,6 @@ private struct SoundIdentificationView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
-                identificationHeader("Geluid-ID") { model.stop(); dismiss() }
                 HStack {
                     Image(systemName: model.isRecording ? "mic.fill" : "mic")
                     Text(model.isStarting ? "Opname voorbereiden" : model.isRecording ? "Aan het luisteren" : "Opname gestopt").font(FieldGuideTheme.sans(20, relativeTo: .title3))
@@ -88,10 +87,7 @@ private struct SoundIdentificationView: View {
                             .frame(maxWidth: .infinity, minHeight: 52)
                     }.foregroundStyle(FieldGuideTheme.ivory).background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
                         .disabled(model.isStarting || model.isIdentifying)
-                    if !model.isRecording, let url = model.recordingURL {
-                        ShareLink(item: url) { Image(systemName: "square.and.arrow.up").frame(width: 44, height: 44) }
-                            .accessibilityLabel("Exporteer deze opname")
-                    }
+
                 }
                 if model.isStarting { ProgressView("Geluid-ID voorbereiden…") }
                 if model.isIdentifying { ProgressView("Opname analyseren…") }
@@ -103,9 +99,12 @@ private struct SoundIdentificationView: View {
                         activeIDs: model.activity.activeIDs(at: context.date, recording: model.isRecording)) { selectedSpecies = $0 }
                 }
             }.padding(20).padding(.bottom, 24)
+        }.safeAreaInset(edge: .top, spacing: 0) {
+            CenteredPageHeader(title: "Audio ID") { model.stop(); dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .task { if isVisible { await model.start() } }
             .onDisappear { model.stop() }
+            .onChange(of: model.startedAt) { _, _ in pins.reset() }
             .onChange(of: isVisible) { _, visible in if !visible { model.stop() } }
             .onChange(of: scenePhase) { _, phase in
                 if phase == .background || (phase == .inactive && model.isRecording) { model.stop() }
@@ -147,33 +146,59 @@ private struct PhotoIdentificationView: View {
     @State private var cameraPhoto: Data?
     @State private var crop: PhotoCropSelection?
     @State private var recognitionTask: Task<Void, Never>?
+    @State private var selectedSpecies: Species?
+    @State private var location: PhotoLocationSelection?
+    @State private var showLocation = false
+    @State private var rangeStatus: [String: PhotoRangeLikelihood] = [:]
+    @State private var checkingLocation = false
+    private var contextKey: String {
+        "\(location?.latitude ?? 999),\(location?.longitude ?? 999):" + model.candidates.map(\.id).joined(separator: ",")
+    }
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
-                identificationHeader("Foto-ID") { dismiss() }
                 HStack(spacing: 16) {
                     Button { Task { await openCamera() } } label: {
-                        Label("Maak foto", systemImage: "camera").frame(maxWidth: .infinity, minHeight: 52)
+                        HStack { CameraOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 24, height: 24); Text("Maak foto") }.frame(maxWidth: .infinity, minHeight: 52)
                     }
                     PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {
-                        Label("Kies foto", systemImage: "photo").frame(maxWidth: .infinity, minHeight: 52)
+                        HStack { Image(systemName: "photo").font(.system(size: 23, weight: .ultraLight)); Text("Kies foto") }.frame(maxWidth: .infinity, minHeight: 52)
                     }
-                }.buttonStyle(.bordered)
+                }.buttonStyle(PhotoChoiceStyle())
                 if let data = model.photo, let image = UIImage(data: data) {
-                    Image(uiImage: image).resizable().scaledToFit().frame(maxHeight: 300)
-                        .clipShape(RoundedRectangle(cornerRadius: 16)).accessibilityLabel("Geselecteerde vogelfoto")
+                    Image(uiImage: image).resizable().scaledToFit().frame(maxWidth: .infinity)
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).accessibilityLabel("Geselecteerde vogelfoto")
+                        .overlay { if model.isLoading { ProgressView("Foto analyseren…").padding(16).background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 14)) } }
+                        .padding(.bottom, 12)
                 } else {
                     RoundedRectangle(cornerRadius: 16).fill(FieldGuideTheme.beige.opacity(0.22)).frame(height: 240)
                         .overlay { Image(systemName: "photo").font(.system(size: 48, weight: .ultraLight)) }
                 }
                 if importing { ProgressView("Foto openen…") }
-                if model.isLoading { ProgressView("Foto analyseren…") }
+                if model.photo != nil {
+                    Button(location == nil ? "Locatie toevoegen" : "Locatie bewerken") { showLocation = true }.buttonStyle(PhotoChoiceStyle())
+                    if let location { Text(location.name).font(FieldGuideTheme.sans(14)) }
+                }
                 if let error { Text(error).foregroundStyle(.red) }
                 if let message = model.message { Text(message).font(FieldGuideTheme.sans(14, relativeTo: .subheadline)) }
                 Text("Mogelijke vogels").font(FieldGuideTheme.sans(24, relativeTo: .title2)).accessibilityAddTraits(.isHeader)
                 if model.photo == nil { Text("Maak of kies een foto om herkenningssuggesties te bekijken.") }
-                IdentificationResults(candidates: model.candidates)
-            }.padding(20).padding(.bottom, 24)
+                VStack(spacing: 4) {
+                    if location != nil && checkingLocation {
+                        ProgressView("Verspreiding controleren…")
+                    } else if location != nil {
+                        photoGroup("Waarschijnlijk op deze locatie", likelihood: .likely)
+                        photoGroup("Onwaarschijnlijk op deze locatie", likelihood: .unlikely)
+                        photoGroup("Geen verspreidingsgegevens beschikbaar", likelihood: .unknown)
+                    } else { IdentificationResults(candidates: model.candidates) { selectedSpecies = $0 } }
+                }
+                if !model.candidates.isEmpty {
+                    Text("Herkenning is een suggestie. Controleer de soort voor je een waarneming toevoegt.")
+                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                }
+            }.padding(20).padding(.bottom, 74)
+        }.safeAreaInset(edge: .top, spacing: 0) {
+            CenteredPageHeader(title: "Foto ID") { dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .task(id: selectedPhoto) {
                 guard let selectedPhoto else { return }
@@ -185,6 +210,7 @@ private struct PhotoIdentificationView: View {
                     guard let data = loaded, data.count <= 20 * 1024 * 1024,
                           UIImage(data: data) != nil else { throw IdentificationError.invalidPhoto }
                     crop = PhotoCropSelection(data: data)
+                    self.selectedPhoto = nil // Consume the import; returning from a cover must not reopen cropping.
                 } catch { if !Task.isCancelled { self.error = error.localizedDescription } }
             }
             .sheet(isPresented: $showCamera, onDismiss: {
@@ -198,7 +224,8 @@ private struct PhotoIdentificationView: View {
                 }
             }
             .fullScreenCover(item: $crop) { selection in
-                PhotoCropView(data: selection.data) { data in
+                PhotoCropView(data: selection.data, location: location) { data, chosenLocation in
+                    location = chosenLocation
                     crop = nil
                     guard let data else { return }
                     recognitionTask?.cancel()
@@ -206,7 +233,23 @@ private struct PhotoIdentificationView: View {
                 }
             }
             .onDisappear { recognitionTask?.cancel(); model.cancel() }
-            .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
+            .sheet(isPresented: $showLocation) { PhotoLocationPicker(selection: location) { location = $0 } }
+            .task(id: contextKey) {
+                rangeStatus = [:]; checkingLocation = false
+                guard let location else { return }
+                checkingLocation = true
+                let statuses = await PhotoRangeContext.classify(model.candidates, at: location)
+                guard !Task.isCancelled else { return }
+                rangeStatus = statuses; checkingLocation = false
+            }
+            .navigationDestination(item: $selectedSpecies) { bird in SpeciesDetailView(species: bird) }
+    }
+    @ViewBuilder private func photoGroup(_ title: String, likelihood: PhotoRangeLikelihood) -> some View {
+        let birds = model.candidates.filter { (rangeStatus[$0.id] ?? .unknown) == likelihood }
+        if !birds.isEmpty {
+            Text(title).font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 12)
+            IdentificationResults(candidates: birds) { selectedSpecies = $0 }
+        }
     }
     private func openCamera() async {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else { error = "Op dit apparaat is geen camera beschikbaar. Je kunt een foto kiezen."; return }
@@ -265,16 +308,11 @@ private struct SoundIdentificationResults: View {
                 case .second: open(row.species)
                 }
             })
-            .contextMenu {
-                Button(row.isPinned ? "Losmaken" : "Vastzetten", systemImage: row.isPinned ? "star.slash" : "star") {
-                    pins.toggle(row.species)
-                }
-                Button("Bekijk soort", systemImage: "bird") { open(row.species) }
-            }
+            .onLongPressGesture(minimumDuration: 0.5) { pins.toggle(row.species) }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("\(row.species.dutchName), \(row.species.englishDisplayName)\(row.isPinned ? ", vastgezet" : "")\(activeIDs.contains(row.id) ? ", nu gehoord" : "")")
             .accessibilityAddTraits(.isButton)
-            .accessibilityHint("Opent de soortpagina. Via Acties kun je deze vogel vastzetten of losmaken.")
+            .accessibilityHint("Opent de soortpagina. Houd ingedrukt om vast te zetten of los te maken.")
             .accessibilityAction { open(row.species) }
             .accessibilityAction(named: Text(row.isPinned ? "Losmaken" : "Vastzetten")) { pins.toggle(row.species) }
             Divider()
@@ -288,9 +326,10 @@ private struct SoundIdentificationResults: View {
 
 private struct IdentificationResults: View {
     let candidates: [IdentificationCandidate]
+    let open: (Species) -> Void
     var body: some View {
         ForEach(candidates) { candidate in
-            NavigationLink(value: candidate.species) {
+            Button { open(candidate.species) } label: {
                 HStack(spacing: 16) {
                     PrimaryBirdArtwork(species: candidate.species).frame(width: 64, height: 64)
                     VStack(alignment: .leading, spacing: 6) {
@@ -298,23 +337,44 @@ private struct IdentificationResults: View {
                         Text(candidate.species.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                     }.frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
-                }.frame(minHeight: 72).contentShape(Rectangle())
+                }.frame(minHeight: 64).contentShape(Rectangle())
             }.buttonStyle(.plain)
             Divider()
         }
-        if !candidates.isEmpty {
-            Text("Herkenning is een suggestie. Controleer de soort voor je een waarneming toevoegt.")
-                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-        }
+
     }
 }
 
-@MainActor
-private func identificationHeader(_ title: String, back: @escaping () -> Void) -> some View {
-    HStack {
-        Button(action: back) { Image(systemName: "chevron.left").font(.system(size: 22, weight: .light)).frame(width: 44, height: 44) }
-            .accessibilityLabel("Terug naar identificatie")
-        Text(title).font(FieldGuideTheme.sans(24, relativeTo: .title2)).accessibilityAddTraits(.isHeader)
-        Spacer()
+private struct PhotoChoiceStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.frame(maxWidth: .infinity, minHeight: 52)
+            .foregroundStyle(FieldGuideTheme.charcoal)
+            .background(FieldGuideTheme.beige.opacity(configuration.isPressed ? 0.9 : 0.6),
+                        in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
+    }
+}
+
+struct PhotoLocationPicker: View {
+    let selection: PhotoLocationSelection?
+    let save: (PhotoLocationSelection?) -> Void
+    @StateObject private var location = ObservationLocationModel(locationPolicy: .browsing)
+    @Environment(\.dismiss) private var dismiss
+    var body: some View {
+        VStack(spacing: 16) {
+            CenteredPageHeader(title: "Fotolocatie") { dismiss() }
+            ObservationLocationPicker(location: location).clipShape(RoundedRectangle(cornerRadius: 20)).padding(.horizontal, 20)
+            Button("Gebruik huidige locatie") { location.useCurrentLocation() }
+            if location.isLocating || location.isNaming { ProgressView() }
+            if let message = location.message { Text(message).font(FieldGuideTheme.sans(14)).padding(.horizontal, 20) }
+            Button("Locatie gebruiken") {
+                guard let latitude = location.latitude, let longitude = location.longitude else { return }
+                save(PhotoLocationSelection(latitude: latitude, longitude: longitude,
+                    name: location.locationName.isEmpty ? String(format: "%.3f, %.3f", latitude, longitude) : location.locationName))
+                dismiss()
+            }.buttonStyle(PhotoChoiceStyle()).padding(.horizontal, 20).disabled(location.latitude == nil)
+            if selection != nil { Button("Locatie verwijderen") { save(nil); dismiss() } }
+        }.padding(.bottom, 24).foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory.ignoresSafeArea())
+            .task { if let selection { location.select(latitude: selection.latitude, longitude: selection.longitude) } }
+            .onDisappear { location.stop() }
     }
 }

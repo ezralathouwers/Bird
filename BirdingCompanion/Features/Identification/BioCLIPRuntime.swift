@@ -35,7 +35,7 @@ enum PhotoSimilarity {
         guard norm.isFinite, norm > 0 else { return nil }
         return input.map { $0 / norm }
     }
-    static func accepted(_ scores: [(String?, Float)], minimum: Float = 0.2, rejectionMargin: Float = 0.01) -> [(String, Float)] {
+    static func accepted(_ scores: [(String?, Float)], minimum: Float = 0.25, rejectionMargin: Float = 0.025) -> [(String, Float)] {
         let valid = scores.filter { $0.1.isFinite && (-1.001...1.001).contains($0.1) }
         let rejection = valid.filter { $0.0 == nil }.map(\.1).max() ?? -1
         var best: [String: Float] = [:]
@@ -45,7 +45,7 @@ enum PhotoSimilarity {
         }
         let ranked = best.sorted { $0.value == $1.value ? $0.key < $1.key : $0.value > $1.value }
         guard let first = ranked.first, first.value >= minimum, first.value >= rejection + rejectionMargin else { return [] }
-        return ranked.filter { $0.value >= minimum && $0.value >= rejection + rejectionMargin }.prefix(5).map { ($0.key, $0.value) }
+        return ranked.filter { $0.value >= minimum && $0.value >= first.value - 0.06 && $0.value >= rejection + rejectionMargin }.prefix(3).map { ($0.key, $0.value) }
     }
 }
 

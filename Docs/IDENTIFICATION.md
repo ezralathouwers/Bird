@@ -1,5 +1,48 @@
 # Photo and sound identification — 19 November 2026
 
+## Current behaviour — 22 November 2026 (supersedes historical notes below)
+
+The production recognizers are BirdNET (audio) and BioCLIP (photo). The screens
+use centered `Audio ID` / `Foto ID` headers and the shared species back control.
+The identification landing cards reserve a further 25 points below Audio.
+
+Audio streaming keeps PCM/window data in memory. The production capture
+processor no longer contains a file writer, recording directory creation or
+recording share action. Previously created recordings are left untouched.
+Session identity is a UUID rather than a file URL. Pins are held in memory,
+reset on every new recording, and toggled directly by long press (no menu).
+Scores below 0.30 are discarded; scores from 0.30 up to 0.75 need support in
+two of the last three processed windows, while 0.75 or greater is immediate.
+These are tuning thresholds, not calibrated probabilities or guarantees against
+false positives. Recheck both false positives and missed calls on real audio.
+
+Photo selection opens a rounded crop preview with white fine-outline zoom
+controls. Location and identification actions sit below it. The decoded crop
+preview is reused across gesture updates. Photo source buttons use beige and
+a custom camera outline without a dot. The analyzed preview fills the content
+width and carries a centered beige loading indicator. Results are tighter,
+with 50 additional points at the bottom. Selecting a result uses an explicit
+species item route rather than a shared value route through another photo page.
+The PhotosPicker import is consumed after loading so reappearing after cropping
+or navigation cannot import the same item and reopen the crop screen.
+
+Photo ranking returns at most three candidates above 0.25 similarity, within
+0.06 of the highest score and at least 0.025 above a rejection/nonbird score.
+A location can be added, changed or removed before or after analysis. Without
+uploading it, available private BirdLife range geometry divides candidates into
+inside-range (labelled likely) and outside-range (labelled unlikely), preserving
+holes and date-line crossings. Missing/unreadable range data has a separate
+unknown group. This is geographic context, not a calibrated local frequency,
+date-specific prediction or exclusion of vagrants. It never alters model scores
+or silently removes an otherwise accepted candidate.
+
+Regression fixtures were updated for session-local pins, stricter confidence,
+photo result limits/near-best filtering, in-memory audio window processing,
+and geographic holes/date-line handling. Swift syntax/project/whitespace checks
+passed in Linux. XCTest, Xcode compilation, recording recognition quality,
+photo navigation/cropping and physical-device layout remain unverified here.
+
+
 ## Implemented capture and UI
 
 The viewfinder destination opens two actions: Foto-ID and Geluid-ID. Both keep the app's ivory/charcoal style and standard bottom navigation. No Merlin assets, code, database or recognition service were copied.

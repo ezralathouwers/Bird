@@ -64,24 +64,12 @@ private actor AudioCaptureController {
 }
 
 actor AudioCaptureProcessor {
-    private let url: URL
-    private var file: AVAudioFile?
     private var windows = AudioWindowAccumulator()
     private var lastColumnAt = Date.distantPast
-    init(url: URL) { self.url = url }
     func consume(_ chunk: CapturedAudioChunk) throws -> CapturedAudioUpdate {
         try Task.checkCancellation()
-        guard !chunk.samples.isEmpty,
-              let format = AVAudioFormat(standardFormatWithSampleRate: chunk.sampleRate, channels: 1),
-              let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(chunk.samples.count)) else {
-            throw CaptureError.unavailable
-        }
-        if file == nil { file = try AVAudioFile(forWriting: url, settings: format.settings) }
-        buffer.frameLength = buffer.frameCapacity
-        chunk.samples.withUnsafeBufferPointer { values in
-            buffer.floatChannelData![0].update(from: values.baseAddress!, count: values.count)
-        }
-        try file?.write(from: buffer)
+        guard !chunk.samples.isEmpty, chunk.sampleRate.isFinite,
+              (8000...192000).contains(chunk.sampleRate) else { throw CaptureError.unavailable }
         let window = windows.append(chunk.samples, sampleRate: chunk.sampleRate, endedAt: chunk.endedAt)
         var column: [Float]?
         if chunk.endedAt.timeIntervalSince(lastColumnAt) >= 0.1 {
@@ -90,7 +78,7 @@ actor AudioCaptureProcessor {
         }
         return CapturedAudioUpdate(column: column, window: window)
     }
-    func close() { file = nil }
+    func close() { windows = AudioWindowAccumulator() }
 }
 
 @MainActor
@@ -99,7 +87,7 @@ final class SoundIdentificationModel: ObservableObject {
     @Published private(set) var isStarting = false
     @Published private(set) var isIdentifying = false
     @Published private(set) var columns: [[Float]] = []
-    @Published private(set) var recordingURL: URL?
+    private var recordingID: UUID?
     @Published private(set) var startedAt: Date?
     @Published private(set) var duration: TimeInterval = 0
     @Published private(set) var message: String?
@@ -132,9 +120,7 @@ final class SoundIdentificationModel: ObservableObject {
                 guard generation == id, !Task.isCancelled else { return }
                 preparationTask = nil
             }
-            let directory = URL.applicationSupportDirectory.appendingPathComponent("BirdingCompanion/Recordings", isDirectory: true)
-            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-            let url = directory.appendingPathComponent(UUID().uuidString + ".caf")
+            // Streaming audio stays in memory, no file is created.
             watchdog = Task { [weak self] in
                 try? await Task.sleep(for: .seconds(15))
                 guard let self, self.generation == id, self.isStarting, !Task.isCancelled else { return }
@@ -143,8 +129,8 @@ final class SoundIdentificationModel: ObservableObject {
             let stream = try await capture.start(id: id)
             guard generation == id, !Task.isCancelled else { await capture.stop(id: id); return }
             watchdog?.cancel(); watchdog = nil
-            let processor = AudioCaptureProcessor(url: url)
-            recordingURL = url; columns = []; candidates = []; activity = SoundActivity(); confirmation = SoundCandidateConfirmation()
+            let processor = AudioCaptureProcessor()
+            recordingID = id; columns = []; candidates = []; activity = SoundActivity(); confirmation = SoundCandidateConfirmation()
             duration = 0; startedAt = Date(); lastAudioAt = nil
             isRecording = true; isStarting = false
             captureTask = Task { [weak self] in
@@ -157,7 +143,7 @@ final class SoundIdentificationModel: ObservableObject {
                             self.columns.append(column)
                             if self.columns.count > 100 { self.columns.removeFirst(self.columns.count - 100) }
                         }
-                        if let window = update.window { self.submit(window, generation: id, recording: url) }
+                        if let window = update.window { self.submit(window, generation: id, recording: id) }
                     }
                 } catch {
                     if let self, self.generation == id, !Task.isCancelled {
@@ -194,7 +180,7 @@ final class SoundIdentificationModel: ObservableObject {
         isRecording = false; isStarting = false; isIdentifying = false; activity = SoundActivity()
     }
 
-    private func submit(_ window: LiveAudioWindow, generation id: UUID, recording: URL) {
+    private func submit(_ window: LiveAudioWindow, generation id: UUID, recording: UUID) {
         guard liveTask == nil, let streaming = service as? any StreamingSoundIdentificationService else { return }
         // One inference at a time; skip windows rather than accumulate a delayed queue.
         liveTask = Task { [weak self] in
@@ -213,8 +199,8 @@ final class SoundIdentificationModel: ObservableObject {
 
     // Streaming adapters call this with a thresholded, timestamped window result.
     // A result from another recording can never light up the current session.
-    func receiveLiveDetections(_ results: [IdentificationCandidate], detectedAt: Date, recording: URL) {
-        guard isRecording, recordingURL == recording, let startedAt,
+    func receiveLiveDetections(_ results: [IdentificationCandidate], detectedAt: Date, recording: UUID) {
+        guard isRecording, recordingID == recording, let startedAt,
               detectedAt >= startedAt, detectedAt <= Date() else { return }
         let valid = confirmation.accept(results)
         for candidate in valid { activity.heard(candidate.id, at: detectedAt) }
@@ -227,22 +213,12 @@ final class SoundIdentificationModel: ObservableObject {
         let stoppedID = generation
         await finalizing?.value
         guard generation == stoppedID else { return }
-        guard let recordingURL else { return }
+        guard recordingID != nil else { return }
         if service is any StreamingSoundIdentificationService {
             message = candidates.isEmpty ? "Geen herkenningssuggesties uit de live analyse." : nil
             return
         }
-        let id = UUID(); generation = id; isIdentifying = true
-        defer { if generation == id { isIdentifying = false } }
-        do {
-            let results = try await service.identify(recording: recordingURL)
-            guard generation == id, !Task.isCancelled else { return }
-            candidates = IdentificationCandidate.ranked(results)
-            message = candidates.isEmpty ? "Geen herkenningssuggesties gevonden in deze opname." : nil
-        } catch {
-            guard generation == id, !Task.isCancelled else { return }
-            message = error.localizedDescription
-        }
+        message = "Live herkenning is niet beschikbaar voor deze dienst. Er is geen opname opgeslagen."
     }
 }
 

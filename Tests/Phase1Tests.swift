@@ -311,13 +311,13 @@ final class DiscoverRankingTests: XCTestCase {
     }
 
     func testEBirdChecklistLinksAreStrictAndFollowTheDisplayedReport() {
-        XCTAssertEqual(DiscoverRanking.checklistURL("S123456")?.absoluteString, "https://ebird.org/checklist/S123456")
+        XCTAssertEqual(DiscoverRanking.checklistURL("S123456")?.absoluteString, "https://ebird.org/checklist/S123456?siteLanguage=nl&locale=nl")
         XCTAssertNil(DiscoverRanking.checklistURL("mock-checklist"))
         XCTAssertNil(DiscoverRanking.checklistURL("S12/../../other"))
         let row = DiscoverRanking.ranked([report(first, checklist: "S987654")], query: query).first
-        XCTAssertEqual(row?.observationURL?.absoluteString, "https://ebird.org/checklist/S987654")
+        XCTAssertEqual(row?.observationURL?.absoluteString, "https://ebird.org/checklist/S987654?siteLanguage=nl&locale=nl")
         let fallback = DiscoverRanking.ranked([report(first, checklist: "unavailable"), report(first, checklist: "S987654")], query: query).first
-        XCTAssertEqual(fallback?.observationURL?.absoluteString, "https://ebird.org/checklist/S987654")
+        XCTAssertEqual(fallback?.observationURL?.absoluteString, "https://ebird.org/checklist/S987654?siteLanguage=nl&locale=nl")
         XCTAssertNil(DiscoverRanking.ranked([report(first, checklist: "unavailable")], query: query).first?.observationURL)
     }
     func testLoggedFiltersUseStableIDsAndPreserveRanking() {
@@ -869,17 +869,21 @@ private struct FixturePhotoIdentification: PhotoIdentificationService {
 
 @MainActor
 final class SoundPinningTests: XCTestCase {
-    func testMultiplePinsSurviveReloadAndCanBeRemoved() throws {
+    func testPinsAreSessionLocalAndResetForNewListeningSession() throws {
         let name = "SoundPinningTests-\(UUID().uuidString)"
         let defaults = try XCTUnwrap(UserDefaults(suiteName: name))
         defer { defaults.removePersistentDomain(forName: name) }
         let first = DiscoverFixtures.catalog[0], second = DiscoverFixtures.catalog[1]
+        defaults.set(try JSONEncoder().encode([PinnedSoundSpecies(first)]), forKey: "sound-id-pinned-species-v1")
         let pins = SoundResultPins(defaults: defaults)
+        XCTAssertTrue(pins.species.isEmpty)
         pins.toggle(first); pins.toggle(second)
         let restored = SoundResultPins(defaults: defaults)
-        XCTAssertEqual(restored.species.map(\.id), [first.id, second.id])
-        restored.toggle(first)
-        XCTAssertEqual(SoundResultPins(defaults: defaults).species.map(\.id), [second.id])
+        XCTAssertTrue(restored.species.isEmpty)
+        pins.toggle(first)
+        XCTAssertEqual(pins.species.map(\.id), [second.id])
+        pins.reset()
+        XCTAssertTrue(pins.species.isEmpty)
     }
     func testPinsKeepOrderAndRemainVisibleWhenNoLongerDetected() {
         let birds = DiscoverFixtures.catalog
@@ -1108,13 +1112,13 @@ final class PhotoSimilarityTests: XCTestCase {
         XCTAssertTrue(PhotoSimilarity.accepted([("bird", 0.5), (nil, 0.499)]).isEmpty)
     }
     func testDuplicateSpeciesDoNotOccupyMultipleResults() {
-        let ranked = PhotoSimilarity.accepted([("a", 0.7), ("a", 0.8), ("b", 0.6), (nil, 0.3)])
+        let ranked = PhotoSimilarity.accepted([("a", 0.7), ("a", 0.8), ("b", 0.76), (nil, 0.3)])
         XCTAssertEqual(ranked.map(\.0), ["a", "b"])
         XCTAssertEqual(ranked.first?.1, 0.8)
     }
-    func testAtMostFiveFiniteSuggestions() {
+    func testAtMostThreeFiniteSuggestions() {
         let rows: [(String?, Float)] = (0..<10).map { ("bird-\($0)", Float(0.9 - Double($0) * 0.01)) }
-        XCTAssertEqual(PhotoSimilarity.accepted(rows + [("invalid", .nan)]).count, 5)
+        XCTAssertEqual(PhotoSimilarity.accepted(rows + [("invalid", .nan)]).count, 3)
     }
     func testInvalidEmbeddingsAreRejected() {
         XCTAssertNil(PhotoSimilarity.normalized([0, 0]))
@@ -1837,10 +1841,8 @@ final class AudioCapturePipelineTests: XCTestCase {
         XCTAssertTrue(AudioCaptureHealth.isStalled(startedAt: start, lastAudioAt: nil, now: start.addingTimeInterval(5)))
         XCTAssertFalse(AudioCaptureHealth.isStalled(startedAt: start, lastAudioAt: start.addingTimeInterval(4), now: start.addingTimeInterval(6)))
     }
-    func testBackgroundProcessorWritesRecordingAndBuildsThreeSecondWindow() async throws {
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".caf")
-        defer { try? FileManager.default.removeItem(at: url) }
-        let processor = AudioCaptureProcessor(url: url)
+    func testBackgroundProcessorBuildsThreeSecondWindowInMemory() async throws {
+        let processor = AudioCaptureProcessor()
         let samples = (0..<32000).map { Float(sin(2 * Double.pi * 1000 * Double($0) / 32000)) * 0.1 }
         let start = Date()
         var window: LiveAudioWindow?
@@ -1852,8 +1854,6 @@ final class AudioCapturePipelineTests: XCTestCase {
         }
         await processor.close()
         XCTAssertEqual(window?.samples.count, 96000)
-        let file = try AVAudioFile(forReading: url)
-        XCTAssertEqual(file.length, 96000)
     }
 }
 
@@ -1861,21 +1861,21 @@ final class SoundCandidateConfirmationTests: XCTestCase {
     private var bird: Species { MockSpeciesRepository.kingfisher }
     func testWeakSupportedMatchesAreRetainedAtTheirOriginalScore() {
         var filter = SoundCandidateConfirmation()
-        let weak = IdentificationCandidate(species: bird, score: 0.22)
+        let weak = IdentificationCandidate(species: bird, score: 0.4)
         XCTAssertTrue(filter.accept([weak]).isEmpty)
         let confirmed = filter.accept([weak])
         XCTAssertEqual(confirmed.map(\.id), [bird.id])
-        XCTAssertEqual(confirmed.first?.score, 0.22)
+        XCTAssertEqual(confirmed.first?.score, 0.4)
     }
     func testStrongMatchIsImmediateAndIsolatedWeakOrInvalidScoresAreNotShown() {
         var filter = SoundCandidateConfirmation()
-        XCTAssertEqual(filter.accept([IdentificationCandidate(species: bird, score: 0.4)]).count, 1)
+        XCTAssertEqual(filter.accept([IdentificationCandidate(species: bird, score: 0.85)]).count, 1)
         filter = SoundCandidateConfirmation()
-        let weak = IdentificationCandidate(species: bird, score: 0.2)
+        let weak = IdentificationCandidate(species: bird, score: 0.4)
         XCTAssertTrue(filter.accept([weak]).isEmpty)
         for _ in 0..<3 { XCTAssertTrue(filter.accept([]).isEmpty) }
         XCTAssertTrue(filter.accept([weak]).isEmpty)
-        for score in [0.1, -1, 1.1, Double.nan, Double.infinity] {
+        for score in [0.1, 0.22, -1, 1.1, Double.nan, Double.infinity] {
             XCTAssertTrue(filter.accept([IdentificationCandidate(species: bird, score: score)]).isEmpty)
         }
     }
@@ -1909,5 +1909,33 @@ final class FastLocationRevisionTests: XCTestCase {
         XCTAssertEqual(family.id, "Ardeidae"); XCTAssertEqual(family.dutchName, "Reigers")
         let rare = BirdFamily.displayFamily(id: "Rareidae", englishName: "Friendly birds")
         XCTAssertEqual(rare.dutchName, "Friendly birds")
+    }
+}
+
+final class IdentificationRefinementTests: XCTestCase {
+    func testRepeatedVeryWeakAudioDoesNotBecomeAConfirmedSpecies() {
+        var filter = SoundCandidateConfirmation()
+        let candidate = IdentificationCandidate(species: MockSpeciesRepository.kingfisher, score: 0.29)
+        for _ in 0..<10 { XCTAssertTrue(filter.accept([candidate]).isEmpty) }
+    }
+    func testPhotoCandidatesMustStayNearBestVisualMatch() {
+        let results = PhotoSimilarity.accepted([("best", 0.8), ("close", 0.77), ("distant", 0.65)])
+        XCTAssertEqual(results.map(\.0), ["best", "close"])
+    }
+    func testGeographicContextPreservesHolesAndDateLineCrossings() {
+        func ring(_ points: [(Double, Double)]) -> [SpeciesRangeSnapshot.Point] {
+            points.map { .init(longitude: $0.0, latitude: $0.1) }
+        }
+        let exterior = ring([(0,0),(4,0),(4,4),(0,4),(0,0)])
+        let hole = ring([(1,1),(2,1),(2,2),(1,2),(1,1)])
+        let local = SpeciesRangeSnapshot(polygons: [.init(rings: [exterior, hole], season: 1, origin: 1)], attribution: "fixture", version: "test")
+        XCTAssertTrue(PhotoRangeContext.contains(local, latitude: 3, longitude: 3))
+        XCTAssertFalse(PhotoRangeContext.contains(local, latitude: 1.5, longitude: 1.5))
+        XCTAssertFalse(PhotoRangeContext.contains(local, latitude: 6, longitude: 6))
+        let dateLine = ring([(170,0),(-170,0),(-170,10),(170,10),(170,0)])
+        let remote = SpeciesRangeSnapshot(polygons: [.init(rings: [dateLine], season: 1, origin: 1)], attribution: "fixture", version: "test")
+        XCTAssertTrue(PhotoRangeContext.contains(remote, latitude: 5, longitude: 179))
+        XCTAssertTrue(PhotoRangeContext.contains(remote, latitude: 5, longitude: -179))
+        XCTAssertFalse(PhotoRangeContext.contains(remote, latitude: 5, longitude: 0))
     }
 }
