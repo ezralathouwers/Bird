@@ -5,29 +5,57 @@ import PhotosUI
 struct IdentificationView: View {
     var isVisible: Bool
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
-                NavigationLink {
-                    PhotoIdentificationView()
-                } label: { option("Foto-ID", detail: "Maak of kies een foto", symbol: "camera") }
-                NavigationLink {
-                    SoundIdentificationView(isVisible: isVisible)
-                } label: { option("Geluid-ID", detail: "Luister naar vogels om je heen", symbol: "waveform") }
-            }.padding(20)
+        GeometryReader { geometry in
+            ScrollView {
+                IdentificationOptionsLayout(viewportHeight: max(0, geometry.size.height - 40)) {
+                    PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
+                    NavigationLink { PhotoIdentificationView() } label: {
+                        option("Foto", detail: "Maak of kies een foto", photo: true)
+                    }
+                    NavigationLink { SoundIdentificationView(isVisible: isVisible) } label: {
+                        option("Audio", detail: "Luister naar vogels om je heen", photo: false)
+                    }
+                }.padding(20)
+            }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
     }
-    private func option(_ name: String, detail: String, symbol: String) -> some View {
+    private func option(_ name: String, detail: String, photo: Bool) -> some View {
         HStack(spacing: 20) {
-            Image(systemName: symbol).font(.system(size: 36, weight: .ultraLight)).frame(width: 52)
+            Group {
+                if photo { CameraOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 36, height: 36) }
+                else { Image(systemName: "waveform").font(.system(size: 36, weight: .ultraLight)) }
+            }.frame(width: 52)
             VStack(alignment: .leading, spacing: 8) {
                 Text(name).font(FieldGuideTheme.sans(24, relativeTo: .title2))
                 Text(detail).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
             }.frame(maxWidth: .infinity, alignment: .leading)
             Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
-        }.padding(24).frame(minHeight: 148)
+        }.padding(24).frame(minHeight: 148, maxHeight: .infinity)
             .foregroundStyle(FieldGuideTheme.charcoal)
             .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 18))
+    }
+}
+
+private struct IdentificationOptionsLayout: Layout {
+    let viewportHeight: CGFloat
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        guard subviews.count == 3 else { return .zero }
+        let width = max(0, proposal.width ?? 320)
+        let heading = subviews[0].sizeThatFits(ProposedViewSize(width: width, height: nil)).height
+        let minimumCard = max(148, subviews.dropFirst().map { $0.sizeThatFits(ProposedViewSize(width: width, height: nil)).height }.max() ?? 148)
+        return CGSize(width: width, height: max(viewportHeight, heading + 18 + 24 + 2 * minimumCard))
+    }
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        guard subviews.count == 3 else { return }
+        let heading = subviews[0].sizeThatFits(ProposedViewSize(width: bounds.width, height: nil)).height
+        let minimumCard = max(148, subviews.dropFirst().map { $0.sizeThatFits(ProposedViewSize(width: bounds.width, height: nil)).height }.max() ?? 148)
+        let card = max(minimumCard, (bounds.height - heading - 18 - 24) / 2)
+        subviews[0].place(at: CGPoint(x: bounds.minX, y: bounds.minY), anchor: .topLeading,
+                          proposal: ProposedViewSize(width: bounds.width, height: heading))
+        for index in 1...2 {
+            subviews[index].place(at: CGPoint(x: bounds.minX, y: bounds.minY + heading + 18 + CGFloat(index - 1) * (card + 24)),
+                                 anchor: .topLeading, proposal: ProposedViewSize(width: bounds.width, height: card))
+        }
     }
 }
 

@@ -629,6 +629,16 @@ final class CountryProjectionTests: XCTestCase {
         XCTAssertEqual(rows.count, 2)
         XCTAssertEqual(rows.first { $0.code == "BE" }?.flag, "🇧🇪")
     }
+    func testCountriesRankByObservationCountNotSpeciesCount() {
+        let records = [log("a", country: "BE", at: 1), log("a", country: "BE", at: 2),
+                       log("a", country: "BE", at: 3), log("a", country: "NL", at: 4),
+                       log("b", country: "NL", at: 5)]
+        let countries = CountryProjection.countries(in: records)
+        XCTAssertEqual(countries.map(\.code), ["BE", "NL"])
+        XCTAssertEqual(countries.map(\.observationCount), [3,2])
+        XCTAssertEqual(countries.map(\.speciesCount), [1,2])
+        XCTAssertEqual(countries, CountryProjection.countries(in: Array(records.reversed())))
+    }
     func testCountryDetailAndDiscoveryOrderUseOnlyThatCountry() {
         let catalog = DiscoverFixtures.catalog
         let records = [log(catalog[0].id, country: "NL", at: 1), log(catalog[0].id, country: "BE", at: 30),

@@ -280,3 +280,55 @@ struct FineSearchMark: Shape {
         return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
     }
 }
+
+struct DetailPageHeader: View {
+    let title: String
+    let editLabel: String
+    var editDisabled = false
+    let back: () -> Void
+    let edit: () -> Void
+    var body: some View {
+        ZStack {
+            Text(title).font(FieldGuideTheme.sans(17, relativeTo: .headline)).padding(.horizontal, 52)
+                .accessibilityAddTraits(.isHeader)
+            HStack {
+                SpeciesBackButton(action: back)
+                Spacer()
+                RoundEditAction(label: editLabel, action: edit).disabled(editDisabled)
+            }
+        }.frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
+    }
+}
+
+struct LiferStar: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.midY), control: CGPoint(x: rect.midX, y: rect.midY))
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY), control: CGPoint(x: rect.midX, y: rect.midY))
+        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.midY), control: CGPoint(x: rect.midX, y: rect.midY))
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY), control: CGPoint(x: rect.midX, y: rect.midY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct CameraOutlineMark: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 3, y: 6))
+        path.addLine(to: CGPoint(x: 7, y: 6)); path.addLine(to: CGPoint(x: 9, y: 3))
+        path.addLine(to: CGPoint(x: 15, y: 3)); path.addLine(to: CGPoint(x: 17, y: 6))
+        path.addLine(to: CGPoint(x: 21, y: 6))
+        path.addQuadCurve(to: CGPoint(x: 23, y: 8), control: CGPoint(x: 23, y: 6))
+        path.addLine(to: CGPoint(x: 23, y: 19))
+        path.addQuadCurve(to: CGPoint(x: 21, y: 21), control: CGPoint(x: 23, y: 21))
+        path.addLine(to: CGPoint(x: 3, y: 21))
+        path.addQuadCurve(to: CGPoint(x: 1, y: 19), control: CGPoint(x: 1, y: 21))
+        path.addLine(to: CGPoint(x: 1, y: 8))
+        path.addQuadCurve(to: CGPoint(x: 3, y: 6), control: CGPoint(x: 1, y: 6))
+        path.closeSubpath()
+        path.addEllipse(in: CGRect(x: 7, y: 8, width: 10, height: 10))
+        return path.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24))
+    }
+}

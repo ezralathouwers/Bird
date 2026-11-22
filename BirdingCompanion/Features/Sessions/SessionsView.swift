@@ -73,7 +73,7 @@ struct SessionsView: View {
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                             let logs = store.observations(in: session)
                             let count = logs.filter { lifers.contains($0.id) }.count
-                            Text("\(logs.count) waarnemingen" + (count > 0 ? " · \(count) lifers" : ""))
+                            Text("\(logs.count) waarnemingen" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                         }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
                     }.buttonStyle(.plain)
@@ -162,9 +162,9 @@ struct SessionForm: View {
                     if !live {
                         Text("\(reviewing == nil ? selected.count : reviewLogs.count) waarnemingen")
                             .font(FieldGuideTheme.sans(24, relativeTo: .title2))
-                        SessionSearchLauncher { showSearch = true }
+                        SessionSearchLauncher { showSearch = true }.padding(.bottom, -12)
                         if reviewing != nil {
-                            SessionLogsList(logs: reviewLogs, showsTime: false, remove: { log in reviewLogs.removeAll { $0.id == log.id } })
+                            SessionLogsList(logs: reviewLogs, showsTime: false, liferIDs: SessionStats.liferIDs(in: store.observations.filter { $0.sessionID != reviewing?.id } + reviewLogs), remove: { log in reviewLogs.removeAll { $0.id == log.id } })
                         } else {
                             LazyVStack(spacing: 0) {
                                 ForEach(selected.sorted(), id: \.self) { id in
@@ -293,7 +293,7 @@ struct LiveSessionView: View {
     @Binding var isPresented: Bool
     var onFinished: () -> Void = {}
     @State private var showSearch = false
-    @State private var showReview = false
+    @State private var reviewSession: BirdSession?
     @State private var finishedReview = false
     @State private var error: String?
     var body: some View {
@@ -317,7 +317,7 @@ struct LiveSessionView: View {
                             do { try store.removeLiveObservation(id: log.id, sessionID: session.id) }
                             catch { self.error = error.localizedDescription }
                         })
-                        Button("Livesessie afronden") { showReview = true }.buttonStyle(SessionPrimaryButton()).disabled(logger.isLogging)
+                        Button("Livesessie afronden") { reviewSession = session }.buttonStyle(SessionPrimaryButton()).disabled(logger.isLogging)
                     } else { Text("Geen actieve livesessie.") }
                 }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 36)
             }
@@ -328,12 +328,10 @@ struct LiveSessionView: View {
                         latitude: session.latitude, longitude: session.longitude) { logger.log($0, store: store) }
                 }
             }
-            .fullScreenCover(isPresented: $showReview, onDismiss: {
+            .fullScreenCover(item: $reviewSession, onDismiss: {
                 if finishedReview { isPresented = false; onFinished() }
-            }) {
-                if let session = store.activeSession {
-                    SessionForm(live: false, reviewing: session) { finishedReview = true; showReview = false }
-                }
+            }) { session in
+                SessionForm(live: false, reviewing: session) { finishedReview = true; reviewSession = nil }
             }
     }
     private static func elapsed(from start: Date, to now: Date) -> String {
@@ -367,20 +365,19 @@ private struct RemoveSessionBirdButton: View {
 private struct SessionLogsList: View {
     let logs: [Observation]
     var showsTime = true
+    var liferIDs: Set<UUID>? = nil
     var remove: ((Observation) -> Void)? = nil
     @EnvironmentObject private var store: ObservationStore
     var body: some View {
-        let lifers = SessionStats.liferIDs(in: store.observations)
+        let lifers = liferIDs ?? SessionStats.liferIDs(in: store.observations)
         LazyVStack(spacing: 0) {
             ForEach(logs) { log in
                 SessionBirdRow(bird: SessionStats.bird(log.speciesID)) {
-                    if showsTime {
-                        HStack(spacing: 5) {
-                            if lifers.contains(log.id) { Image(systemName: "sparkles").foregroundStyle(FieldGuideTheme.khaki).accessibilityLabel("Lifer") }
-                            Text(log.observedAt, style: .time)
-                        }.font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                    HStack(spacing: 4) {
+                        if lifers.contains(log.id) { LiferStar().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 14, height: 14).foregroundStyle(FieldGuideTheme.khaki).accessibilityLabel("Lifer") }
+                        if showsTime { Text(log.observedAt, style: .time).font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
+                        if let remove { RemoveSessionBirdButton { remove(log) } }
                     }
-                    if let remove { RemoveSessionBirdButton { remove(log) } }
                 }
                 Divider()
             }
@@ -396,10 +393,7 @@ private struct SessionDetailView: View {
     private var current: BirdSession? { store.sessions.first { $0.id == sessionID } }
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                SpeciesBackButton { dismiss() }; Spacer()
-                RoundEditAction(label: "Sessie bewerken") { editing = true }
-            }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
+            DetailPageHeader(title: "Sessie", editLabel: "Sessie bewerken", back: { dismiss() }, edit: { editing = true })
             ScrollView {
                 if let session = current {
                     VStack(alignment: .leading, spacing: 8) {

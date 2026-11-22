@@ -3,6 +3,7 @@ import Foundation
 struct LoggedCountry: Identifiable, Hashable {
     let code: String
     let speciesCount: Int
+    var observationCount: Int = 0
     var id: String { code }
     var name: String { ObservationCountry.name(for: code) }
     var flag: String {
@@ -18,11 +19,14 @@ enum CountryProjection {
 
     static func countries(in observations: [Observation]) -> [LoggedCountry] {
         var speciesByCountry: [String: Set<String>] = [:]
+        var counts: [String: Int] = [:]
         for record in observations {
             guard let code = ObservationCountry.normalized(record.countryCode) else { continue }
             speciesByCountry[code, default: []].insert(record.speciesID)
+            counts[code, default: 0] += 1
         }
-        return speciesByCountry.map { LoggedCountry(code: $0.key, speciesCount: $0.value.count) }.sorted {
+        return speciesByCountry.map { LoggedCountry(code: $0.key, speciesCount: $0.value.count, observationCount: counts[$0.key] ?? 0) }.sorted {
+            if $0.observationCount != $1.observationCount { return $0.observationCount > $1.observationCount }
             let comparison = $0.name.compare($1.name, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
             return comparison == .orderedSame ? $0.code < $1.code : comparison == .orderedAscending
         }

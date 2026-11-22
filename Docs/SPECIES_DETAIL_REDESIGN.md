@@ -306,3 +306,37 @@ The old test that intentionally logged a live species twice now expects rejectio
 and logs a different species to check time/location preservation. Native build,
 XCTest, navigation/modal transitions, long lists, keyboard, live GPS, end-time
 validation and actual card/map rendering remain unverified without Xcode.
+
+### Confirmation, centered detail headers and Identification sizing
+
+Session lifers now use one custom four-point outline star rather than the
+three-star SF Symbol. Draft review computes lifers from all other retained logs
+plus its current edited logs, so removed/added/date-shifted rows get the correct
+status before save. The star remains visible when review hides individual times.
+Live time, lifer and remove button share a four-point-gap trailing group; review
+search bottom spacing is reduced by 12. Overview uses `1 lifer`, otherwise
+`x lifers` (and omits zero).
+
+Review presentation now retains an explicit BirdSession item instead of deriving
+its content from activeSession after saving. Saving clears activeSession; that
+previously could remove modal content before completion/dismiss callbacks ran.
+The stable item remains until onSaved clears it, then onDismiss routes to Sessions.
+This structural correction still requires a native navigation test.
+
+Sessie and Doelstelling detail headers use one shared centered title with the
+existing back/edit controls at the original margins. Identification uses explicit
+layout measurement: heading stays at its existing top anchor; title-to-card gap
+is 18 points, matching Goals. Foto and Audio cards equally fill remaining height,
+with 24 points between them. At large text/small heights they retain minimum
+148-point cards and scroll. The camera is a custom outline without a flash dot.
+
+Countries now sort by descending total observation count, independently of the
+unique-species count still displayed. Country counts normalize ISO codes and
+exclude unknown country values; ties use localized Dutch country name and code.
+A regression fixture covers repeated observations vs more unique species and
+input-order independence.
+
+Verification available in cloud: Swift syntax/project/source-membership and
+whitespace checks, plus pinned model schema inspection. XCTest, recognition of
+recordings, native review/dismiss/navigation, camera/star visuals and card sizes
+remain unverified without Xcode. No private BirdLife files need reconversion.

@@ -90,12 +90,8 @@ private struct GoalDetailView: View {
     }
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                SpeciesBackButton { dismiss() }
-                Spacer()
-                RoundEditAction(label: "Doelstelling bewerken") { editing = true }
-                    .disabled(store.loadError != nil)
-            }.padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
+            DetailPageHeader(title: "Doelstelling", editLabel: "Doelstelling bewerken", editDisabled: store.loadError != nil,
+                             back: { dismiss() }, edit: { editing = true })
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(current.name).font(FieldGuideTheme.sans(28, relativeTo: .title))
