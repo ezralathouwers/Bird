@@ -1593,3 +1593,48 @@ final class ArtworkPaperBackdropTests: XCTestCase {
         XCTAssertEqual(Array(pixels[(width + 1) * 4..<(width + 2) * 4]), [30, 40, 50, 255])
     }
 }
+
+@MainActor
+final class SupplementarySpeciesAudioTests: XCTestCase {
+    private var bird: Species { MockSpeciesRepository.kingfisher }
+    private func fixture(taxon: String = "Alcedo atthis", license: String = "cc-by",
+                         file: String = "https://static.inaturalist.org/sounds/1.mp3", hidden: Bool = false,
+                         grade: String = "research") throws -> Data {
+        try JSONSerialization.data(withJSONObject: ["results": [[
+            "id": 7, "quality_grade": grade,
+            "taxon": ["name": taxon, "rank": "species", "is_active": true],
+            "user": ["login": "fixture-author"],
+            "sounds": [["id": 1, "license_code": license, "file_url": file,
+                        "file_content_type": "audio/mpeg", "hidden": hidden]]]]])
+    }
+    func testSupplementarySoundRequiresExactTaxonSoundLicenseAndTrustedPlayableURL() throws {
+        let recording = try XCTUnwrap(INaturalistSpeciesAudioRepository.decode(fixture(), for: bird))
+        XCTAssertEqual(recording.artist, "fixture-author")
+        XCTAssertEqual(recording.license, "CC BY 4.0")
+        XCTAssertEqual(recording.sourceURL.absoluteString, "https://www.inaturalist.org/observations/7")
+        XCTAssertNil(try INaturalistSpeciesAudioRepository.decode(fixture(taxon: "Pica pica"), for: bird))
+        XCTAssertNil(try INaturalistSpeciesAudioRepository.decode(fixture(license: "reserved"), for: bird))
+        XCTAssertNil(try INaturalistSpeciesAudioRepository.decode(fixture(hidden: true), for: bird))
+        XCTAssertNil(try INaturalistSpeciesAudioRepository.decode(fixture(grade: "casual"), for: bird))
+        XCTAssertNil(try INaturalistSpeciesAudioRepository.decode(fixture(file: "https://untrusted.example/1.mp3"), for: bird))
+        XCTAssertNil(try INaturalistSpeciesAudioRepository.decode(fixture(file: "https://static.inaturalist.org/sounds/1.ogg"), for: bird))
+    }
+    func testFallbackWorksAfterEmptyOrFailedPrimaryAndDoesNotReplacePrimary() async throws {
+        let recording = try XCTUnwrap(INaturalistSpeciesAudioRepository.decode(fixture(), for: bird))
+        let empty = SpeciesAudioFixtureRepository(recording: nil)
+        let found = SpeciesAudioFixtureRepository(recording: recording)
+        let failed = SpeciesAudioFixtureRepository(recording: nil, fails: true)
+        for primary in [empty, failed] {
+            let service = SupplementedSpeciesAudioRepository(primary: primary, secondary: found)
+            let actual = try await service.recording(for: bird)
+            XCTAssertEqual(actual?.id, recording.id)
+        }
+        let preferred = SupplementedSpeciesAudioRepository(primary: found, secondary: failed)
+        let actual = try await preferred.recording(for: bird)
+        XCTAssertEqual(actual?.id, recording.id)
+        do {
+            _ = try await SupplementedSpeciesAudioRepository(primary: failed, secondary: empty).recording(for: bird)
+            XCTFail("A network error must not turn into a cached absence")
+        } catch { XCTAssertTrue(error is URLError) }
+    }
+}

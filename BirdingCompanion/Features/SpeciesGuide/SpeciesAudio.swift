@@ -58,7 +58,7 @@ struct CommonsSpeciesAudioRepository: SpeciesAudioRepository {
             URLQueryItem(name: "action", value: "query"), URLQueryItem(name: "format", value: "json"),
             URLQueryItem(name: "generator", value: "search"),
             URLQueryItem(name: "gsrsearch", value: "filetype:audio \"\(species.scientificName)\""),
-            URLQueryItem(name: "gsrnamespace", value: "6"), URLQueryItem(name: "gsrlimit", value: "12"),
+            URLQueryItem(name: "gsrnamespace", value: "6"), URLQueryItem(name: "gsrlimit", value: "30"),
             URLQueryItem(name: "prop", value: "videoinfo"),
             URLQueryItem(name: "viprop", value: "url|derivatives|extmetadata")
         ]
@@ -128,6 +128,91 @@ struct CommonsSpeciesAudioRepository: SpeciesAudioRepository {
     }
 }
 
+// Additional public source; exact species identity and the sound's own license
+// are checked independently of an observation/photo license.
+struct INaturalistSpeciesAudioRepository: SpeciesAudioRepository {
+    private struct Response: Decodable { let results: [Record] }
+    private struct Record: Decodable {
+        struct Taxon: Decodable { let name: String; let rank: String; let is_active: Bool? }
+        struct User: Decodable { let login: String }
+        struct Sound: Decodable {
+            let id: Int
+            let license_code: String?
+            let attribution: String?
+            let file_url: String?
+            let file_content_type: String?
+            let hidden: Bool?
+        }
+        let id: Int
+        let quality_grade: String
+        let taxon: Taxon?
+        let user: User
+        let sounds: [Sound]
+    }
+    static func request(for species: Species) -> URLRequest {
+        var url = URLComponents(string: "https://api.inaturalist.org/v1/observations")!
+        url.queryItems = [URLQueryItem(name: "taxon_name", value: species.scientificName),
+            URLQueryItem(name: "sounds", value: "true"), URLQueryItem(name: "quality_grade", value: "research"),
+            URLQueryItem(name: "sound_license", value: "cc-by,cc-by-sa,cc0"),
+            URLQueryItem(name: "per_page", value: "30")]
+        var request = URLRequest(url: url.url!)
+        request.timeoutInterval = 15
+        request.setValue("BirdingCompanion/0.1 (https://github.com/ezralathouwers/Bird)", forHTTPHeaderField: "User-Agent")
+        return request
+    }
+    func recording(for species: Species) async throws -> BirdAudioRecording? {
+        let (data, response) = try await URLSession.shared.data(for: Self.request(for: species))
+        try Task.checkCancellation()
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw URLError(.badServerResponse) }
+        return try Self.decode(data, for: species)
+    }
+    static func decode(_ data: Data, for species: Species) throws -> BirdAudioRecording? {
+        for record in try JSONDecoder().decode(Response.self, from: data).results {
+            guard record.quality_grade == "research", let taxon = record.taxon,
+                  taxon.name.caseInsensitiveCompare(species.scientificName) == .orderedSame,
+                  taxon.rank == "species", taxon.is_active != false, !record.user.login.isEmpty else { continue }
+            for sound in record.sounds {
+                guard sound.hidden != true, let code = sound.license_code,
+                      ["cc-by", "cc-by-sa", "cc0"].contains(code),
+                      let string = sound.file_url, let url = URL(string: string), url.scheme == "https",
+                      ["static.inaturalist.org", "inaturalist-open-data.s3.amazonaws.com"].contains(url.host ?? ""),
+                      ["mp3", "m4a", "aac", "wav", "aif", "aiff"].contains(url.pathExtension.lowercased()),
+                      sound.file_content_type?.hasPrefix("audio/") == true else { continue }
+                let license = code == "cc0" ? "CC0 1.0" : (code == "cc-by" ? "CC BY 4.0" : "CC BY-SA 4.0")
+                let licenseURL = URL(string: code == "cc0" ? "https://creativecommons.org/publicdomain/zero/1.0/" :
+                    "https://creativecommons.org/licenses/\(code == "cc-by" ? "by" : "by-sa")/4.0/")!
+                let attribution = sound.attribution?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                let artist = code != "cc0" && !attribution.isEmpty ? attribution : record.user.login
+                return BirdAudioRecording(id: "inaturalist:\(sound.id)", speciesID: species.id,
+                    speciesName: species.dutchName, playbackURL: url,
+                    sourceURL: URL(string: "https://www.inaturalist.org/observations/\(record.id)")!,
+                    artist: artist, license: license, licenseURL: licenseURL)
+            }
+        }
+        return nil
+    }
+}
+
+struct SupplementedSpeciesAudioRepository: SpeciesAudioRepository {
+    var primary: any SpeciesAudioRepository = CommonsSpeciesAudioRepository()
+    var secondary: any SpeciesAudioRepository = INaturalistSpeciesAudioRepository()
+    func recording(for species: Species) async throws -> BirdAudioRecording? {
+        var primaryError: (any Error)?
+        do {
+            if let found = try await primary.recording(for: species) { return found }
+        } catch {
+            try Task.checkCancellation()
+            primaryError = error
+        }
+        try Task.checkCancellation()
+        let found = try await secondary.recording(for: species)
+        if let found { return found }
+        // A temporary primary failure must not become a cached absence.
+        if let primaryError { throw primaryError }
+        return nil
+    }
+}
+
 actor CachedSpeciesAudioRepository: SpeciesAudioRepository {
     static let shared = CachedSpeciesAudioRepository()
     private struct Entry { let recording: BirdAudioRecording?; let expires: Date }
@@ -135,7 +220,7 @@ actor CachedSpeciesAudioRepository: SpeciesAudioRepository {
     func recording(for species: Species) async throws -> BirdAudioRecording? {
         let key = species.id + ":" + species.scientificName
         if let entry = entries[key], entry.expires > Date() { return entry.recording }
-        let recording = try await CommonsSpeciesAudioRepository().recording(for: species)
+        let recording = try await SupplementedSpeciesAudioRepository().recording(for: species)
         try Task.checkCancellation()
         entries[key] = Entry(recording: recording, expires: Date().addingTimeInterval(recording == nil ? 600 : 86400))
         return recording

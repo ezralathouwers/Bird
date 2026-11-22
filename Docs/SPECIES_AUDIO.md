@@ -66,3 +66,29 @@ A regression fixture includes both numeric and boolean bookkeeping plus valid
 artist/license values; a second assertion rejects a numeric artist. The live
 Commons request for Turdus merula confirmed this mixed metadata schema. Native
 XCTest, button appearance and AVPlayer looping still require Xcode verification.
+
+## Supplementary iNaturalist recordings — 22 November 2026
+
+The cached resolver now tries Wikimedia Commons (up to 30 candidates) and then
+public iNaturalist v1 observations if Commons has no qualifying recording or a
+non-cancellation network failure. No credentials or paid service are required.
+iNaturalist queries request research-grade observations with sound licenses
+cc-by/cc-by-sa/cc0. Decoding independently checks the exact scientific species
+name, species rank/active status, research grade, the sound's own license,
+non-hidden state, HTTPS and the static.inaturalist.org or
+inaturalist-open-data.s3.amazonaws.com host, supported native extension and audio
+MIME type. Credits retain the sound's supplied attribution (or recorder login), observation source and license.
+This is a reference recording attached to an observation; other background calls
+may be audible. Identification and catalog taxonomy are unchanged.
+
+The existing loop/stop/page-exit behavior is shared by both providers. A temporary
+primary failure followed by an empty secondary does not get cached as missing.
+Tests cover exact taxon/license/URL/media filtering, primary preference, empty or
+failed primary fallback and failure propagation. Native XCTest remains pending.
+
+Live API checks returned usable candidates among the first page for Alcedo
+atthis, Dendrocopos major, Buceros bicornis and Platalea leucorodia; no matching
+research-grade free sounds were returned for Threskiornis aethiopicus. These are
+sample checks, not a worldwide coverage count. Availability is resolved per
+visited species, and the audio control is absent when both sources lack a
+qualifying recording. API metadata checks do not establish iOS playback.
