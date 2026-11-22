@@ -76,10 +76,10 @@ struct ObservationMapView: View {
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                 HStack(alignment: .top, spacing: 6) {
                     LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
-                        .frame(width: 20, height: 24).fixedSize().accessibilityHidden(true)
+                        .frame(width: 24, height: 24).fixedSize().offset(x: -2, y: -2).accessibilityHidden(true)
                     Text(current.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                          ? "Geen locatie opgegeven" : current.locationName)
-                }.font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
+                }.font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).padding(.top, 5)
             }
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -87,7 +87,7 @@ struct ObservationMapView: View {
                 EditOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
                     .frame(width: 22, height: 22).frame(width: 44, height: 44)
                     .contentShape(Rectangle())
-            }.buttonStyle(.plain).accessibilityLabel("Bewerk datum of locatie")
+            }.buttonStyle(.plain).offset(x: 6, y: -6).accessibilityLabel("Bewerk datum of locatie")
         }
         .foregroundStyle(FieldGuideTheme.charcoal)
         .padding(16)

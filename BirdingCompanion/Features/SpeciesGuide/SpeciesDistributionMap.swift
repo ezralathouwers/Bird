@@ -161,10 +161,10 @@ enum BirdLifeSeason: Int, CaseIterable {
     }
     var color: Color {
         switch self {
-        case .resident: Color(red: 0.28, green: 0.50, blue: 0.30)
-        case .breeding: Color(red: 0.82, green: 0.46, blue: 0.16)
-        case .nonBreeding: Color(red: 0.22, green: 0.45, blue: 0.76)
-        case .passage: Color(red: 0.61, green: 0.32, blue: 0.67)
+        case .resident: Color(red: 0.38, green: 0.50, blue: 0.36)
+        case .breeding: Color(red: 0.70, green: 0.50, blue: 0.30)
+        case .nonBreeding: Color(red: 0.36, green: 0.49, blue: 0.67)
+        case .passage: Color(red: 0.56, green: 0.40, blue: 0.61)
         case .uncertain: FieldGuideTheme.taupe
         }
     }
@@ -540,7 +540,7 @@ struct SpeciesDistributionMap: View {
                 }
                 .background(FieldGuideTheme.mapLegendBackground, in: RoundedRectangle(cornerRadius: 12))
                 .padding(.horizontal, isFullScreen ? 20 : 8)
-                .padding(.bottom, isFullScreen ? 44 : 32)
+                .padding(.bottom, isFullScreen ? 44 : 24)
             }
         }
         .overlay(alignment: .topTrailing) {

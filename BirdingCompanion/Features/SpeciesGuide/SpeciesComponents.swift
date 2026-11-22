@@ -227,9 +227,8 @@ private enum SpeciesArtworkDisplayCache {
     static func image(named name: String) async -> UIImage? {
         if let image = images.object(forKey: name as NSString) { return image }
         guard let source = UIImage(named: name) else { return nil }
-        let rendered = name == "sample-dendrocopos-major-dynamic" ? await ArtworkPaperBackdrop.image(source) : source
         guard !Task.isCancelled else { return nil }
-        let image = trimmed(rendered)
+        let image = trimmed(source)
         images.setObject(image, forKey: name as NSString)
         return image
     }
@@ -285,7 +284,7 @@ private struct SpeciesArtworkSlide: View {
                                                          horizontalBleed: role == .dynamic)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
-                        .offset(x: role == .dynamic ? -20 : 0, y: role == .dynamic ? -60 : 0)
+                        .offset(x: role == .dynamic ? -50 : 0, y: role == .dynamic ? -30 : 0)
                         .frame(width: geometry.size.width,
                                height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
                                alignment: role == .dynamic ? .bottom : .center)
@@ -320,7 +319,6 @@ struct ArtworkPlaceholder: View {
             .overlay {
                 VStack(spacing: 8) {
                     Image(systemName: "bird").font(hero ? .largeTitle : .title3)
-                    if hero { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                 }.foregroundStyle(FieldGuideTheme.taupe)
             }
             .accessibilityLabel(accessibilityDescription)

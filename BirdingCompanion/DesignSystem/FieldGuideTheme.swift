@@ -167,7 +167,7 @@ struct CountryFlagBadge: View {
     var body: some View {
         Group {
             if let normalized = ObservationCountry.normalized(code), UIImage(named: "flag-" + normalized.lowercased()) != nil {
-                Image("flag-" + normalized.lowercased()).resizable().scaledToFill()
+                Image("flag-" + normalized.lowercased()).resizable().scaledToFill().saturation(0.82)
             } else {
                 FieldGuideTheme.beige.overlay { Image(systemName: "globe").foregroundStyle(FieldGuideTheme.taupe) }
             }

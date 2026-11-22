@@ -364,15 +364,28 @@
     "asset": "sample-dendrocopos-major-dynamic",
     "view": "dynamic",
     "mediaType": "illustration",
-    "version": 1,
-    "sourceFile": "exec-0e3ef07d-1790-44f8-a50f-5e1e2d286144.png",
+    "version": 2,
+    "sourceFile": "exec-cf483c35-365d-45db-a69c-75e267500dfd.png",
     "source": "Original OpenAI-generated illustration for this project",
-    "created": "2026-11-19",
-    "reviewStatus": "visual composition review only; independent anatomical and user approval pending",
+    "created": "2026-11-22",
+    "reviewStatus": "Full-resolution visual review of edited bird and ivory composite: single visible folded wing with far wing occluded, no duplicate wing, one head/bill, two gripping feet, entire tail visible; trunk fades before top edge. Independent expert and native/user review pending.",
     "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
     "sourceFacing": "right",
     "displayFacing": "right",
-    "displayTransform": "none"
+    "displayTransform": "none",
+    "sha256": "21d243954b98d34592a8aaace441f7ddc69adef05dc0ac12b62eb00a1d76ffd9",
+    "previousAssetSHA256": "2099aca1a922f283557abd601d4797b015ad92a31c5571d98b289746403e26f5",
+    "pixelWidth": 1254,
+    "pixelHeight": 1254,
+    "background": "transparent",
+    "anatomyReview": {
+      "sha256": "21d243954b98d34592a8aaace441f7ddc69adef05dc0ac12b62eb00a1d76ffd9",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "topEdgeFade": true,
+      "notes": "Exactly one visible folded wing; far wing naturally occluded, not duplicated. One beak and two feet traced. Reviewed transparent original and full-resolution ivory composite."
+    }
   },
   {
     "speciesID": "sample-turdus-merula",

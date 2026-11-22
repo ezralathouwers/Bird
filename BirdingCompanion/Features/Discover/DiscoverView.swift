@@ -297,7 +297,6 @@ struct PrimaryBirdArtwork: View {
             } else {
                 VStack(spacing: 6) {
                     Image(systemName: "bird").font(.title2)
-                    Text("Illustratie volgt").font(FieldGuideTheme.sans(11, relativeTo: .caption2))
                 }
             }
         }

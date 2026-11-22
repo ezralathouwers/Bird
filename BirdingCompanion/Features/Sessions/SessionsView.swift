@@ -1,14 +1,10 @@
 import SwiftUI
-import UniformTypeIdentifiers
 
 struct SessionsView: View {
     @EnvironmentObject private var store: ObservationStore
     @State private var creatingLive = false
     @State private var showForm = false
     @State private var selected: BirdSession?
-    @State private var exporting = false
-    @State private var exportDocument = ObservationExport(data: Data())
-    @State private var error: String?
     @Binding var showLive: Bool
 
     var body: some View {
@@ -51,11 +47,6 @@ struct SessionsView: View {
                     }.buttonStyle(.plain)
                     Divider().overlay(FieldGuideTheme.beige)
                 }
-                Button("Exporteer alle gegevens (JSON)") {
-                    do { exportDocument = ObservationExport(data: try store.exportArchiveData()); exporting = true }
-                    catch { self.error = error.localizedDescription }
-                }.frame(minHeight: 44).disabled(store.loadError != nil)
-                if let error { Text(error).foregroundStyle(.red) }
             }.padding(20).padding(.bottom, 24)
         }
         .background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
@@ -63,10 +54,7 @@ struct SessionsView: View {
             SessionForm(live: creatingLive) { if creatingLive { showLive = true } }
         }
         .sheet(item: $selected) { session in SessionDetailView(session: session) }
-        .fileExporter(isPresented: $exporting, document: exportDocument, contentType: .json,
-            defaultFilename: "birding-alle-gegevens") { result in
-                if case .failure(let failure) = result { error = failure.localizedDescription }
-            }
+
     }
 }
 

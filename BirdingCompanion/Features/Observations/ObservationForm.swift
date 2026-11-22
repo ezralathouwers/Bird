@@ -32,13 +32,14 @@ struct ObservationForm: View {
                 VStack(alignment: .leading, spacing: 18) {
                     selectedBird
                     ViewThatFits(in: .horizontal) {
-                        HStack(spacing: 16) { dateAndTimeFields }
+                        HStack(spacing: 8) { dateAndTimeFields }
                         VStack(alignment: .leading, spacing: 12) { dateAndTimeFields }
                     }
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Locatie").font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                            .padding(.top, 8)
                             .accessibilityAddTraits(.isHeader)
-                        ObservationLocationPicker(location: location).frame(height: 240)
+                        ObservationLocationPicker(location: location).frame(height: 228)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                         TextField("Naam van natuurgebied of plaats", text: Binding(
                             get: { location.locationName }, set: { location.editName($0) }))
@@ -95,7 +96,6 @@ struct ObservationForm: View {
                 } else {
                     VStack(spacing: 8) {
                         Image(systemName: "bird").font(.largeTitle)
-                        Text("Illustratie volgt").font(FieldGuideTheme.sans(12, relativeTo: .caption))
                     }
                 }
             }

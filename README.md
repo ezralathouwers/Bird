@@ -1,4 +1,4 @@
-# Birding Companion — Phase 1
+# Birder — Phase 1
 
 Native iPhone SwiftUI prototype. Open `BirdingCompanion.xcodeproj` and select the shared **BirdingCompanion** scheme. The app starts on **Ontdek**, with current-location heading and icon filters. Use **Bekijk voorbeeldpagina** to inspect the six-species demonstration. Live 30-day frequency data is not yet connected; see `Docs/DISCOVER.md`.
 
@@ -136,3 +136,11 @@ het scherm verlaten stopt het geluid. Er is geen extra API-sleutel nodig.
 De opnamen streamen via internet; bron- en licentiegegevens staan in Info.
 Zie `Docs/SPECIES_AUDIO.md` voor bronselectie, controles en de native audiotests
 die nog op de Mac/iPhone moeten worden uitgevoerd.
+
+
+### App name and icon
+The home-screen app name is **Birder**. The Xcode project/target/scheme remains
+`BirdingCompanion`; the bundle identifier and local storage paths are unchanged.
+`AppIcon.appiconset` contains an opaque 1024×1024 iOS icon: the navigation bird
+outline on the shared ivory background. Source vector: `Design/Branding/Birder-icon.svg`.
+Native icon compilation and device appearance still require Xcode verification.

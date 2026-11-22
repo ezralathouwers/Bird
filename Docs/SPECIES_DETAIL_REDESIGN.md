@@ -215,3 +215,50 @@ requests. Added XCTest is not executed here. Required Mac checks: footer mountin
 and color-compositing replacement, long hornbill names, date/time editing and
 session day limits, safe full-screen controls/legend, live season colors, count/
 sort headers, Dynamic Type, and reference-audio looping. No new BirdLife export.
+
+### Birder and checklist favorites — 22 November 2026
+
+Home-screen name becomes Birder, with an opaque universal 1024-point app icon
+using the exact original navigation bird outline and ivory/charcoal tokens.
+Target/scheme, bundle ID, keychain service and local storage paths stay unchanged.
+
+The dynamic hero is now x=-50/y=-30: another 30 left and 30 down from the preceding
+revision. Other slides retain their positions. Great spotted woodpecker dynamic
+art v2 is an image-generation edit of the original, with transparent paper and a
+softly fading upper trunk. The transparent original and ivory composite were
+visually reviewed at full resolution; one head/beak, two feet, one visible folded
+wing with far wing naturally occluded, and full tail/framing were checked. The
+manifest binds the anatomy review to its SHA-256 and retains the previous hash.
+Classic/front/rear/flight remain unchanged. App placeholders show the bird icon
+alone; missing-image accessibility descriptions remain.
+
+Seasonal range colors are now duller green/ochre/blue/mauve; fill and stroke
+contrast are retained. Compact legend bottom inset changes 32→24, but does not
+cover the required Apple legal links. Full-screen legal clearance is unchanged.
+Country flags use saturation 0.82 throughout; Countries heading gets 10 more
+points below it. Observation date/time gap is 8, location heading has 8 more
+points above it, and the map height is 228 (5% shorter). Detail-card edit moves
+6 points up/right; the location glyph is 24×24, shifted 2 points left/up, and
+its entire text/glyph row has 5 extra points above it.
+
+Goals and sessions no longer show export buttons. Goals have beige cards with a
+right-aligned full-height dynamic favorite image, or icon-only fallback if that
+role has no asset. Long press selects one favorite and automatically includes the
+species; selecting another favorite replaces only the favorite, and deselecting
+it clears the favorite. A rounded custom star sits left of the selection circle.
+A named VoiceOver action offers the same operation without a long press.
+
+Goal add/edit shares ObservationForm's centered custom header. Detail uses the
+same species back button and round pencil action, less row padding, and the same
+progress view as the cards with 30 points below it. Editing updates the existing
+record transactionally; ID/createdAt, other goals, observations and sessions are
+preserved. Unknown selected IDs are retained on edit. Optional favoriteSpeciesID
+keeps older goal JSON readable; invalid favorites outside the selection are
+rejected. Tests added for selection transitions, legacy decode, archive/favorite
+round trips, identity/date preservation and rejected/failed updates.
+
+Cloud verification: Swift syntax trees/project references, git diff --check,
+opaque app-icon pixel size/catalog settings and exact reviewed-asset hash/alpha.
+Native XCTest/build, app-icon installation, long-press vs tap/scroll behavior,
+card image cropping, edit/save/return and final layout/colors require Xcode.
+No BirdLife reconversion is needed.
