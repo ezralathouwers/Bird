@@ -202,3 +202,10 @@ birdnet-v3:BN02869); individual original and ivory composite visual reviews in
 IllustrationAutomationBatch20261123Z.json. 594 installed roles; 123 species
 paired, 11,050 queued, 22,100 active images missing. No quota/reset reported.
 Next scrub species: roodborsttapuit (Saxicola rubicola, birdnet-v3:BN09064).
+
+Checkpoint AA — installed primary+dynamic breeding male roodborsttapuit
+(Saxicola rubicola, birdnet-v3:BN09064). Individual original/ivory-composite
+reviews and hashes: IllustrationAutomationBatch20261123AA.json. 596 total roles;
+124 paired species, 11,049 queued, 22,098 missing active images.
+No tool-reported quota/reset time. Next: paapje
+(Saxicola rubetra, birdnet-v3:BN09063), primary+dynamic.

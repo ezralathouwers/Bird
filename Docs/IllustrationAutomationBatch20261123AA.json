@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN09064",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-e50b495d-7bf8-41b1-ae78-b64645996d8b.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "a021f7f348ba5d9054fefaf19de433bc07ac92dc012a1e0a1b7231453e3d7bbc",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing whole bird only, black head/throat, white neck patch, orange breast pale belly, dark wings white patch, dark feet. One head/bill, two folded wings far side occluded and two natural feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN09064",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-4a37859e-5ed3-4c80-9d41-b7da8be88b83.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "914ebe788bdc7edc95c8adca2d3d3216b2ad041765ea2c5af6b3c9a7f19bfbde",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Calling on flowering gorse, one head/open bill, two folded wings far side occluded, two gripping feet. White neck patch/orange breast visible, twig below crown naturally ends/fades, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

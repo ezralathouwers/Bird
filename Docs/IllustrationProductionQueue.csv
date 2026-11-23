@@ -9541,7 +9541,7 @@ birdnet-v3:BN06743,Oenanthe dubia,Roetspekvreter,scrub-general,Struweel,,primary
 birdnet-v3:BN08225,Prunella rubeculoides,Roodborstheggenmus,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06502,Neophema splendida,Roodborstparkiet,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01852,Chaetops aurantius,Roodborstrotsspringer,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN09064,Saxicola rubicola,Roodborsttapuit,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN09064,Saxicola rubicola,Roodborsttapuit,scrub-general,Struweel,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN07120,Pardalotus rubricatus,Roodbrauwdiamantvogel,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05387,Locustella mandelli,Roodbruine struikzanger,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08612,Pycnonotus cafer,Roodbuikbuulbuul,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
