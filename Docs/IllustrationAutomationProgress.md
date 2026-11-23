@@ -23,3 +23,9 @@ Mapping/reviews: IllustrationAutomationBatch20261123B.json.
 Inventory: 490 roles, 98 complete species, 11,075 queued, 55,375 missing roles.
 No image-generation limit/reset time has been reported. Next: Bonte vliegenvanger
 (Ficedula hypoleuca, birdnet-v3:BN03860), all roles missing.
+
+Checkpoint C installed: all five male breeding bonte vliegenvanger
+(Ficedula hypoleuca, birdnet-v3:BN03860) roles. Mapping/reviews: IllustrationAutomationBatch20261123C.json.
+Inventory: 495 roles, 99 complete species, 11,074 queued, 55,370 missing roles.
+No image-generation limit/reset time has been reported. Next: glanskop
+(Poecile palustris, birdnet-v3:BN07965), all roles missing.

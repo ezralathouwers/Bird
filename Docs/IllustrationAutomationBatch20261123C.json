@@ -1,0 +1,85 @@
+[
+  {
+    "id": "birdnet-v3:BN03860",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-4c33b6a5-3b86-4b64-9443-15ab811d5343.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "d28c863c1ee1e6fda9079bf2c4a33ef25ce5eb8d9e422b028936c88fc69dda7c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing bird-only posture; two folded wings with far side occluded, one fine bill, two feet, white forehead/wing patch, black back with no white collar. Full original and ivory alpha-composite individually inspected; expert/native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN03860",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-b6abfd01-32ab-4e6f-a6a4-97166b177dfb.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "61e8de231bc46e662a8a80e2c8ffe5f2a34384710d257d3af07cbe602a84551b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Insect-catching sally; traced two open wings from shoulders with no residual closed wing along white flank; one open bill/head, two tucked feet, black nape without white collar. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN03860",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-ba89d06c-3b5c-42de-a402-541c79ca72cc.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "f6b789a1ad88a323749899f3c927fa38d3602cddb7277a3d00d15ec69ea1943c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Straight frontal view, one central fine bill, white forehead and belly, two folded wings/two feet. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN03860",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-e2d64573-a8fd-42ae-a7d3-adfe6eea050e.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "5f8cda4e989e65e1945aeab8a6581144d20e7d1d7133394b376d1c15c83c2f11",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Strict rear with hidden bill/eyes, black nape/back/rump, two folded wing patches, white outer tail and two feet. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN03860",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-c445f083-87a1-4237-a7e0-835c6c81e10b.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "3cccd15c723dabb3fcf0b59ebb29540deba496d141d24fc93ebc3a132147c12b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Centered ventral flight, two spread wings with pale coverts/darker remiges, white belly, black tail edged white, one head/bill and two tucked feet. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]
