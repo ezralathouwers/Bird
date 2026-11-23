@@ -307,3 +307,7 @@ Active inventory: 139 paired species; 11034 queued, 22068 missing active images.
 
 Checkpoint AQ — 23 November 2026: installed primary+dynamic slechtvalk (birdnet-v3:BN03828). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AQ.json. Existing assets unchanged.
 Active inventory: 140 paired species; 11033 queued, 22066 missing active images. 628 installed roles overall. No tool-reported quota/reset time. Next: Cetti's zanger BN01819 primary+dynamic; then PAUSE at user's explicit request until user says resume. Continue generation; a checkpoint does not end the authorized work.
+
+
+Checkpoint AR — 23 November 2026: installed primary+dynamic Cetti's zanger (birdnet-v3:BN01819). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AR.json. Existing assets unchanged.
+Active inventory: 141 paired species; 11032 queued, 22064 missing active images. 630 installed roles overall. No tool-reported quota/reset time. Next: PAUSED by user after Cetti's zanger. Do not generate more or re-enable automation until user explicitly says resume. All twelve requested priority species pairs now installed.. Continue generation; a checkpoint does not end the authorized work.

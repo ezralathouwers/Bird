@@ -10026,7 +10026,7 @@ birdnet-v3:BN07507,Phoenicopterus ruber,Caribische flamingo,wetland-general,Wetl
 birdnet-v3:BN00253,Aix sponsa,Carolinaeend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09875,Tadorna ferruginea,Casarca,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN04678,Hoploxypterus cayanus,Cayenneplevier,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN01819,Cettia cetti,Cetti's zanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN01819,Cettia cetti,Cetti's zanger,wetland-general,Wetland,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN05657,Mareca sibilatrix,Chileense smient,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00474,Anas flavirostris,Chileense taling,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08805,Remiz consobrinus,Chinese buidelmees,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
