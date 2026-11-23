@@ -67,3 +67,9 @@ birdnet-v3:BN03323) roles. Mapping/reviews: IllustrationAutomationBatch20261123I
 Inventory: 525 roles, 105 complete species, 11,068 queued, 55,340 missing roles.
 No image-generation limit/reset time has been reported. Next: taigaboomkruiper
 (Certhia familiaris, birdnet-v3:BN01800), all five roles missing.
+
+Checkpoint J installed: all five adult taigaboomkruiper (Certhia familiaris,
+birdnet-v3:BN01800) roles. Mapping/reviews: IllustrationAutomationBatch20261123J.json.
+Inventory: 530 roles, 106 complete species, 11,067 queued, 55,335 missing roles.
+No image-generation limit/reset time has been reported. Next: buizerd
+(Buteo buteo, birdnet-v3:BN01300), all five roles missing.

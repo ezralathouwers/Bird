@@ -1,0 +1,85 @@
+[
+  {
+    "id": "birdnet-v3:BN01800",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-538e29f8-fbc1-4441-9aeb-6a0f427c3436.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "0b2882fb2c7edd7c5087657c13f83e89ef753227fe4d804d2776d50f97cbedde",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing bird-only stance, two folded wings with far side occluded, one head/slender bill and two feet, white belly and cream-mottled brown back. Full original and ivory alpha-composite individually inspected; expert/native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN01800",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-9b054efb-ec37-4bc8-937a-7a4be189140f.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "12a4bd41b475f3064e97b2b5df9179438ed3739d9db0d44356244728447d724e",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Probing bark, two folded wings with far wing occluded, one head/bill and two gripping feet; tail braced, naturally broken wood top and faded base without upper crop. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN01800",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-941cd710-dd54-4778-9643-449fa185eea0.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "b99e720d4876e1b78777a9bf4ff29b1d6d0e643a1f97888e933541282745a4d7",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Straight front with one central fine bill, two folded wings and feet, white underside and pale supercilia. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN01800",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-728c5183-5eaf-43f2-ad29-8a3b6dbaab61.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "fdaf95cf447eb2fce5dfb7d29553665dfb0d131e657a8abb16b5248a41ce0736",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Strict rear with hidden bill/eyes, two folded wings and feet, cream-streaked brown back, buff rump and pointed tail. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN01800",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-be056aac-1e9b-4cd2-8dcc-45336c869b4f.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "75cbe71c947ff2e74a6f98a79455c411956e4d44a8a7f30502d1862b2246b52b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Centered ventral with two spread wings, white belly and pale underwing coverts/darker remiges, one head/bill, two tucked feet; tips narrow but uncut. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]
