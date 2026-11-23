@@ -6,6 +6,8 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import ssl
+import urllib.error
 from unittest.mock import patch
 from PIL import Image
 import artwork_api_pilot as pilot
@@ -71,6 +73,43 @@ class ArtworkAPIPilotTests(unittest.TestCase):
             self.execute(sender=interrupted)
         self.assertEqual(len(self.calls), 1)
         self.assertNotIn('synthetic-test-key', (self.output / 'state.json').read_text())
+
+    def test_certificate_failure_is_saved_without_saving_exception_secrets(self):
+        def certificate_failure(body, key):
+            raise urllib.error.URLError(ssl.SSLCertVerificationError(1, 'synthetic-test-key'))
+        with self.assertRaisesRegex(RuntimeError, 'tls_certificate'):
+            self.execute(sender=certificate_failure)
+        checkpoint = (self.output / 'state.json').read_text()
+        failure = next(iter(json.loads(checkpoint)['jobs'].values()))['failure']
+        self.assertEqual(failure['kind'], 'tls_certificate')
+        self.assertEqual(failure['phase'], 'transport')
+        self.assertNotIn('synthetic-test-key', checkpoint)
+
+    def test_http_error_code_is_retained_but_raw_body_is_not(self):
+        error = urllib.error.HTTPError('https://api.openai.com/v1/images/edits', 400, 'bad', {},
+            io.BytesIO(b'{"error":{"code":"model_not_found","message":"synthetic-test-key","type":"invalid_request_error"}}'))
+        failure = pilot.safe_failure(error)
+        self.assertEqual(failure['apiCode'], 'model_not_found')
+        self.assertEqual(failure['httpStatus'], 400)
+        self.assertNotIn('synthetic-test-key', json.dumps(failure))
+
+    def test_connection_diagnostic_uses_only_unauthenticated_get(self):
+        class ModelsProbe:
+            def open(inner, request, timeout):
+                self.assertEqual(request.full_url, 'https://api.openai.com/v1/models')
+                self.assertEqual(request.get_method(), 'GET')
+                self.assertIsNone(request.data)
+                self.assertIsNone(request.get_header('Authorization'))
+                raise urllib.error.HTTPError(request.full_url, 401, 'unauthorized', {}, io.BytesIO(b'{}'))
+        result = pilot.connection_diagnostic(opener=ModelsProbe())
+        self.assertTrue(result['ok'])
+        self.assertEqual(result['httpStatus'], 401)
+
+    def test_diagnose_and_generate_cannot_be_combined(self):
+        result = subprocess.run([sys.executable, str(pilot.ROOT / 'Scripts/artwork_api_pilot.py'),
+                                 '--diagnose', '--execute'], capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('mag niet gecombineerd', result.stderr)
 
     def test_spend_stop_halts_before_next_request_and_reports_usage(self):
         state = self.execute(count=20, stop=0.01)

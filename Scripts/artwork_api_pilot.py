@@ -14,6 +14,8 @@ import io
 import json
 import math
 import os
+import re
+import ssl
 from pathlib import Path
 import tempfile
 import time
@@ -115,10 +117,69 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None  # Never forward an API bearer token to another endpoint.
 
 
+def https_opener():
+    context = ssl.create_default_context()
+    try:
+        import certifi
+    except ImportError:
+        pass
+    else:
+        # Extend the default trust store, never disable certificate verification.
+        context.load_verify_locations(certifi.where())
+    return urllib.request.build_opener(NoRedirect(), urllib.request.HTTPSHandler(context=context))
+
+
+def safe_failure(error):
+    """Controlled diagnostic fields only: no keys, prompts or arbitrary errors."""
+    result = {'exceptionType': type(error).__name__}
+    if isinstance(error, urllib.error.HTTPError):
+        result.update(kind='http', httpStatus=error.code,
+            hint='De API heeft de aanvraag geweigerd. Controleer status, accountrechten en API-tegoed.')
+        try:
+            info = json.loads(error.read(32768)).get('error', {})
+            for source, target in [('code', 'apiCode'), ('type', 'apiType'), ('param', 'apiParam')]:
+                value = info.get(source)
+                if isinstance(value, str) and re.fullmatch(r'[A-Za-z0-9_.\[\]-]{1,100}', value):
+                    result[target] = value
+        except (ValueError, AttributeError, OSError):
+            pass
+    else:
+        reason = error.reason if isinstance(error, urllib.error.URLError) else error
+        result['reasonType'] = type(reason).__name__
+        if isinstance(reason, ssl.SSLCertVerificationError):
+            result.update(kind='tls_certificate',
+                hint='Python kan het HTTPS-certificaat niet verifiëren. Er is geen geldig API-antwoord ontvangen.')
+        elif isinstance(reason, TimeoutError):
+            result.update(kind='timeout', hint='De verbinding liep in een timeout. Controleer API Usage voordat je een beeld opnieuw aanvraagt.')
+        elif isinstance(error, urllib.error.URLError) or isinstance(reason, ConnectionError):
+            result.update(kind='network', hint='De HTTPS-verbinding is mislukt. De uitkomst van de aanvraag is niet bevestigd.')
+        elif isinstance(error, json.JSONDecodeError):
+            result.update(kind='response_json', hint='Het antwoord was geen leesbare JSON. Controleer API Usage.')
+        else:
+            result.update(kind='local_or_output', hint='De aanvraag of verwerking is afgebroken; controleer fase en checkpoint.')
+    return result
+
+
+def connection_diagnostic(opener=None):
+    # Unauthenticated GET: no API key, prompt, image or paid generation request.
+    request = urllib.request.Request('https://api.openai.com/v1/models', method='GET')
+    try:
+        with (opener or https_opener()).open(request, timeout=20) as response:
+            return {'ok': True, 'httpStatus': response.status,
+                'message': 'HTTPS werkt. Er is geen beeld gegenereerd en geen API-sleutel gebruikt.'}
+    except urllib.error.HTTPError as error:
+        if error.code == 401:
+            return {'ok': True, 'httpStatus': 401,
+                'message': 'HTTPS werkt. HTTP 401 is hier verwacht: deze controle gebruikt bewust geen API-sleutel.'}
+        return dict(ok=False, **safe_failure(error))
+    except (OSError, ValueError) as error:
+        return dict(ok=False, **safe_failure(error))
+
+
 def send(body, api_key):
     request = urllib.request.Request(ENDPOINT, data=body, method='POST', headers={
         'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'})
-    with urllib.request.build_opener(NoRedirect()).open(request, timeout=300) as response:
+    with https_opener().open(request, timeout=300) as response:
         return json.load(response), response.headers.get('x-request-id')
 
 
@@ -170,9 +231,11 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
         state['jobs'][job['key']] = status
         write_json(state_path, state)
         started = time.monotonic()
+        phase = 'transport'
         print(f"API {sent + 1}/{max_requests}: {job['dutchName']} — {job['role']}", flush=True)
         try:
             response, request_id = sender(blob, api_key)
+            phase = 'response_processing'
             # Save usage even if the returned image later fails validation.
             status.update(requestID=request_id, elapsedSeconds=round(time.monotonic() - started, 3),
                           usage=response.get('usage', {}), apiCreated=response.get('created'))
@@ -185,6 +248,7 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
             with path.open('xb') as handle:
                 handle.write(image)
             status['outputSHA256'] = sha(image)
+            phase = 'output_validation'
             validate_png(image, job['size'])
             status['status'] = 'generated_unreviewed'
             write_json(state_path, state)
@@ -195,11 +259,13 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
         except BaseException as error:
             if status['status'] != 'generated_unreviewed':
                 status['status'] = 'needs_reconciliation'
-            # Do not persist server response bodies or exception strings that could contain secrets.
+            status['failure'] = safe_failure(error)
+            status['failure']['phase'] = phase
             if isinstance(error, urllib.error.HTTPError):
                 status['httpStatus'] = error.code
             write_json(state_path, state)
-            raise RuntimeError('API run stopped; checkpoint saved. No automatic retry. Inspect state.json and API Usage before a new run.') from None
+            summary = status['failure'].get('apiCode') or status['failure'].get('httpStatus') or status['failure']['kind']
+            raise RuntimeError(f"API-proef gestopt ({summary}). {status['failure']['hint']} Checkpoint: {state_path}. Geen automatische retry.") from None
     return state
 
 
@@ -259,6 +325,7 @@ def export_reviewed(reviews_path, state, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--diagnose', action='store_true', help='Check HTTPS without an API key or billable generation')
     parser.add_argument('--plan', type=Path, default=DEFAULT_PLAN)
     parser.add_argument('--output', type=Path, default=ROOT / '.artwork-api/pilot-medium')
     parser.add_argument('--execute', action='store_true', help='Explicitly send billable API requests')
@@ -267,6 +334,11 @@ def main():
     parser.add_argument('--spend-stop-usd', type=float, default=2, help='Stop before next call once estimated accumulated spend reaches this value; NOT a billing cap')
     parser.add_argument('--export-reviewed', type=Path)
     args = parser.parse_args()
+    if args.diagnose:
+        if args.execute or args.export_reviewed or args.review_only:
+            raise ValueError('De verbindingscontrole mag niet gecombineerd worden met generatie of export.')
+        print(json.dumps(connection_diagnostic(), ensure_ascii=False, indent=2))
+        return
     plan = json.loads(args.plan.read_text())
     planned = jobs(plan)
     print(f"{len(planned)} missing role jobs; {plan['model']}; {plan['quality']}; transparent PNG.")

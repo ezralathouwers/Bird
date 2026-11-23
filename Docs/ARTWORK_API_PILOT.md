@@ -29,7 +29,7 @@ en [voorwaarden voor API-credits](https://developers.openai.com/api/docs/guides/
 
 Pak het bijgewerkte project uit. Dubbelklik in `Scripts` op
 `Start-API-illustratieproef.command`. De launcher maakt een lokale Python-omgeving
-met Pillow, vraagt de API-sleutel verborgen op en genereert maximaal twee nieuwe
+met Pillow en certifi, vraagt de API-sleutel verborgen op en genereert maximaal twee nieuwe
 beelden: de standaard- en dynamische shikra. Er wordt niets in de app vervangen.
 De resultatenpagina opent daarna automatisch in de browser.
 
@@ -143,10 +143,41 @@ Alleen de lokale reviewpagina opnieuw aanmaken, zonder kosten:
 
 ## Verificatie van de voorbereiding
 
-Negen offline unittests met synthetische PNG/API-fixtures geslaagd: twintig
+Dertien offline unittests met synthetische PNG/API-fixtures geslaagd: twintig
 unieke opdrachten, offline default, hervatten zonder dubbele aanvragen,
 onzekere uitkomst niet herhalen, verbruiksstop, ontbrekende usage,
 hashgebonden handmatige review, bestaande assets behouden en generatieprovenance
 valideren/bewaren bij import.
 Dit zijn **geen** echte gegenereerde vogels of uitgevoerde betaalde API-calls.
 De authenticatie en uitvoerkwaliteit worden pas met je account getest.
+
+## Herstel na de eerste mislukte proef
+
+De aangeleverde oude checkpoint meldt `needs_reconciliation` zonder HTTP-status,
+request-ID, usage of uitvoerhash. Daarmee is geen API-resultaat bevestigd, maar
+ook geen concrete foutoorzaak of facturering vast te stellen. De oude runner
+bewaarde alleen HTTP-statuscodes en verborg overige fouttypen; dat is hersteld.
+De bestaande checkpoint wordt niet gewist of automatisch opnieuw verstuurd.
+
+De runner registreert nu veilige foutcategorieën en de verwerkingsfase. Bij een
+HTTP-fout worden uitsluitend code/type/parameter vastgelegd, geen ruwe server-
+melding of sleutel. SSL/certificaatproblemen, timeout en netwerkfouten krijgen
+een eigen melding. De betaalde launcher installeert ook certifi en voegt die
+CA-certificaten toe aan de standaard trust store. Certificaatverificatie blijft
+altijd ingeschakeld. Een certificaatfout is op basis van de oude checkpoint
+slechts een mogelijkheid, geen bewezen diagnose.
+
+`Scripts/API-verbindingscontrole.zip` is een klein zelfstandig diagnosepakket.
+Pak het uit en dubbelklik `Controleer-API-verbinding.command`. Het verstuurt
+alleen een GET naar `/v1/models` zonder authenticatie, prompt of afbeelding.
+HTTP 401 is bij deze controle verwacht en betekent dat HTTPS bereikbaar is;
+het bewijst niet dat je sleutel, modeltoegang of facturering werkt. Dit pakket
+leest of verandert de bestaande checkpoint niet en kan niets genereren.
+De controle is ook beschikbaar als `python3 Scripts/artwork_api_pilot.py --diagnose`.
+
+Verificatie: 13 offline tests geslaagd, waaronder veilige foutregistratie,
+verwachte unauthenticated HTTP 401 en het blokkeren van diagnose plus generatie
+in dezelfde opdracht. De GET-controle in deze omgeving bereikte HTTP 401.
+Dat is geen test van de verbinding op de Mac van de gebruiker en geen betaalde
+API-proef. Nieuwe generatie blijft uit totdat de storing en oude uitkomst zijn
+nagekeken.
