@@ -124,3 +124,10 @@ Checkpoint R installed: all five adult male pale-intermediate wespendief
 Inventory: 570 roles, 114 complete species, 11,059 queued, 55,295 missing roles.
 No image-generation limit/reset time has been reported. Next: sijs
 (Spinus spinus, birdnet-v3:BN09448), all five roles missing.
+
+Checkpoint S installed: all five adult male sijs (Spinus spinus,
+birdnet-v3:BN09448) roles. Mapping/reviews: IllustrationAutomationBatch20261123S.json.
+Inventory: 575 roles, 115 complete species, 11,058 queued, 55,290 missing roles.
+This run has added94 images and completed20 species (including two earlier partials).
+No image-generation limit/reset time has been reported. Next: zwartkop
+(Sylvia atricapilla, birdnet-v3:BN09708), all five roles missing.
