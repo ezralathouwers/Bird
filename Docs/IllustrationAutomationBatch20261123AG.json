@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN06653",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-387fea15-a93e-4455-afe1-b44cf0cefc3e.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "2cea8ca769dfa4f82865e1ebde91b42898ec0dca18e2c36827edf14df5c126ba",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, brown/white spotted body, plain dark crown, dark wings and white tail terminal band/undertail, stout pointed bill. One head/bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN06653",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-b5205f0c-3f34-45bd-97d0-07ecd0884437.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "d99529f92d5e3462c86c3e3e9234baa5abb56d983ca752307819e494697f386d",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Pine-seed feeding scene, one head/open bill, two folded wings far side occluded, two gripping feet. Head/bill entirely inside frame; pine twig/needles naturally end below crown without top crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

@@ -254,3 +254,16 @@ Active inventory: 128 paired species; 11045 queued, 22090 missing active images.
 
 Checkpoint AF — 23 November 2026: installed primary+dynamic kneu (birdnet-v3:BN05345). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AF.json. Existing assets unchanged.
 Active inventory: 129 paired species; 11044 queued, 22088 missing active images. 606 installed roles overall. No tool-reported quota/reset time. Next: boompieper (Anthus trivialis, birdnet-v3:BN00625), primary+dynamic. Continue generation; a checkpoint does not end the authorized work.
+
+User priority override, 23 November 2026: before boompieper/general queue,
+produce primary+dynamic for these requested species in order (all currently
+missing both roles): notenkraker BN06653, turkse tortel BN09623, sperwer BN00028,
+torenvalk BN03838, koperwiek BN10466, stormmeeuw BN05155, geelpootmeeuw BN05166,
+roek BN02626, spreeuw BN09676, zwarte kraai BN02619, slechtvalk BN03828,
+Cetti's zanger BN01819. Preserve stable birdnet-v3 IDs. Do not stop after an
+arbitrary batch; continue while tools are available, checkpoint/push along the
+way. General queue resumes after requested priority pairs.
+
+
+Checkpoint AG — 23 November 2026: installed primary+dynamic notenkraker (birdnet-v3:BN06653). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AG.json. Existing assets unchanged.
+Active inventory: 130 paired species; 11043 queued, 22086 missing active images. 608 installed roles overall. No tool-reported quota/reset time. Next: user priority list: turkse tortel BN09623, sperwer BN00028, torenvalk BN03838, koperwiek BN10466, stormmeeuw BN05155, geelpootmeeuw BN05166, roek BN02626, spreeuw BN09676, zwarte kraai BN02619, slechtvalk BN03828, Cetti's zanger BN01819; primary+dynamic only. Continue generation; a checkpoint does not end the authorized work.

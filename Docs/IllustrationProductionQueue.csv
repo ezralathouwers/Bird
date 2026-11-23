@@ -3621,7 +3621,7 @@ birdnet-v3:BN07326,Petroica multicolor,Norfolkvliegenvanger,forest-general,Bos,,
 birdnet-v3:BN10733,Vireo gracilirostris,Noronhavireo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 avilist:bf367578,Turnagra tanagra,North Island Piopio,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02820,Cryptophaps poecilorrhoa,Notenduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN06653,Nucifraga caryocatactes,Notenkraker,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN06653,Nucifraga caryocatactes,Notenkraker,forest-general,Bos,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 avilist:20de8c44,Pomarea nukuhivae,Nuku Hiva Monarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03351,Ducula galeata,Nuku-hivamuskaatduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07621,Phylloscopus maforensis,Numforboszanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
