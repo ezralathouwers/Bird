@@ -1,0 +1,85 @@
+[
+  {
+    "id": "birdnet-v3:BN05505",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-01a2808e-2cc2-4342-929f-f913d7d8f77b.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "e937d3860160d7ef1ea48a3b22873bc7eeed22cbe80b8e4bdcc3ad1fbfb1cd6e",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing bird only, two folded wings far side occluded, one head and one gray crossed bill with upper/lower tips, two feet. Brick-red male, dark unbarred wings. Full original and ivory alpha-composite individually inspected; expert/native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN05505",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-b5c17ac7-2e9e-4fc4-8911-b96cb6bfa32f.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "058c9ae1ab05fe5239bd5934c893052248e211a60899b8308d58b685808b6c90",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Extracting seed from cone, one head and open crossed bill with two mandibles, two folded wings far side occluded, two gripping feet; naturally ended/faded twig below crown, upper margin clear. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN05505",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-ad062bfd-df63-49bd-841c-a2b9d3c66389.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "02c58d9c28111ec79557416afa2b6832364927c8358b9084bd6bb365a83a7227",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Straight front, one central crossed bill with two mandibles, two folded wings and feet, brick-red body and no white wingbars. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN05505",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-cad201f6-936e-426c-9020-b014c1aec741.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "56a500fe7b3af14600aeaa43cf44b042a8ad8e91a2bd0216f2d6b9cb26df66eb",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Strict rear with bill/eyes hidden, two folded wings and feet, darker red-brown back/red rump, dark forked tail. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN05505",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-5752c7a0-ff80-4f69-9f84-dac6e182d9ac.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "29e68dcd4735ec4e5764d6cd5f93660a330bf97f68b4d37cf6649bfefbea829e",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Centered ventral, two spread dark unbarred underwings, brick-red belly, one head/compact closed bill with subtle crossed tip, two tucked feet. Replaced exaggerated hooked-tip attempt. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]

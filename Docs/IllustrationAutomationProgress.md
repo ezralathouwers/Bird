@@ -91,3 +91,10 @@ birdnet-v3:BN08798) roles. Mapping/reviews: IllustrationAutomationBatch20261123M
 Inventory: 545 roles, 109 complete species, 11,064 queued, 55,320 missing roles.
 No image-generation limit/reset time has been reported. Next: kruisbek
 (Loxia curvirostra, birdnet-v3:BN05505), all five roles missing.
+
+Checkpoint N installed: all five adult male kruisbek (Loxia curvirostra,
+birdnet-v3:BN05505) roles. Mapping/reviews: IllustrationAutomationBatch20261123N.json.
+One rejected flight had exaggerated horn-like bill tips; replacement reviewed/imported.
+Inventory: 550 roles, 110 complete species, 11,063 queued, 55,315 missing roles.
+No image-generation limit/reset time has been reported. Next: grote lijster
+(Turdus viscivorus, birdnet-v3:BN10532), all five roles missing.
