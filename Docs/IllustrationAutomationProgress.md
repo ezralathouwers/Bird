@@ -287,3 +287,7 @@ Active inventory: 134 paired species; 11039 queued, 22078 missing active images.
 
 Checkpoint AL — 23 November 2026: installed primary+dynamic stormmeeuw (birdnet-v3:BN05155). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AL.json. Existing assets unchanged.
 Active inventory: 135 paired species; 11038 queued, 22076 missing active images. 618 installed roles overall. No tool-reported quota/reset time. Next: user priority geelpootmeeuw BN05166, roek BN02626, spreeuw BN09676, zwarte kraai BN02619, slechtvalk BN03828, Cetti's zanger BN01819. Continue generation; a checkpoint does not end the authorized work.
+
+
+Checkpoint AM — 23 November 2026: installed primary+dynamic geelpootmeeuw (birdnet-v3:BN05166). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AM.json. Existing assets unchanged.
+Active inventory: 136 paired species; 11037 queued, 22074 missing active images. 620 installed roles overall. No tool-reported quota/reset time. Next: user priority roek BN02626, spreeuw BN09676, zwarte kraai BN02619, slechtvalk BN03828, Cetti's zanger BN01819. Continue generation; a checkpoint does not end the authorized work.

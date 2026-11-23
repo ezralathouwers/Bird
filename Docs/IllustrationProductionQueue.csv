@@ -10597,7 +10597,7 @@ birdnet-v3:BN05303,Leucophaeus pipixcan,Franklins meeuw,coast-general,Kust,,prim
 birdnet-v3:BN01301,Buteo galapagoensis,Galapagosbuizerd,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01333,Butorides sundevalli,Galapagosreiger,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06666,Nyctanassa violacea,Geelkruinkwak,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN05166,Larus michahellis,Geelpootmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN05166,Larus michahellis,Geelpootmeeuw,coast-general,Kust,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN00220,Agelaius xanthomus,Geelschoudertroepiaal,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01657,Carpodectes antoniae,Geelsnavelcotinga,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06447,Nannopterum auritum,Geoorde aalscholver,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

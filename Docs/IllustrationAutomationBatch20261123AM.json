@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN05166",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-73477616-a0dc-4960-81ff-7b1978155cc5.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "ac0d42853c56d105807fe6ce0c9c58602727bafa328fb7fa82e6391af11a257c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing gull only, slate gray mantle/black white-tipped primaries, white head/body, pale iris/red eye ring, stout yellow bill with red lower-mandible spot and yellow legs. One head/bill, two folded wings far side occluded, two webbed feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN05166",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-a3cce891-d409-4c6e-8be5-5e494300ef00.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "0bd741357f987d683a29a14f9b7ade5a31f673fe481ccd648742be0fa79caab8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Calling on limestone rock, one head/open bill, two folded wings far side occluded, two webbed feet. Crown and bill inside frame with narrow uncut top/right margins. Low rock fades transparent, no upper-cut prop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
