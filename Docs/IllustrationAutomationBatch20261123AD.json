@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN00614",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-14e0ec16-ee8c-4b4f-b5ad-347cb8db59ea.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "5babff66d38c8396d02f90c14d4aa7593e8954e8c77275801281f813a0c189ae",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, olive brown streaked crown/back and streaked breast/flanks, pale belly, pink legs with longer slender hind claws now visible. One head/bill, two folded wings far side occluded and two natural feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN00614",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-5379a79b-9b3f-45c0-af6a-84e728dcc05e.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "1b9f33a0724fdafb0f0f4f88c2c8fc26f96de7ed0877c5bdf584c80806e7c9ad",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Caterpillar foraging on meadow clod, one head/bill, two folded wings far side occluded and two feet with natural stance/partial toe occlusion. Head/tail/bill inside frame, low grass/clod fade transparent with no upper crop. Hind claws less exposed in leaning pose; independent expert review pending. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

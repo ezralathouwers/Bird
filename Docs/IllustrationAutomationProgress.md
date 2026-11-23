@@ -221,3 +221,28 @@ nominate blue-headed flava form (Motacilla flava, birdnet-v3:BN06138).
 Individual original and ivory alpha-composite reviews in batch AC mapping.
 600 total roles; 126 paired species, 11,047 queued, 22,094 active images missing.
 No quota/reset reported. Next: graspieper (Anthus pratensis, birdnet-v3:BN00614).
+
+Checkpoint AD — 23 November 2026: installed primary+dynamic graspieper
+(Anthus pratensis, birdnet-v3:BN00614). Individual original and ivory alpha
+composite reviews: IllustrationAutomationBatch20261123AD.json. Rejected first
+primary had insufficiently distinct long hind claw; retained original and hash
+in rejection log, replaced before installation. Dynamic has less exposed hind
+claws in its leaning stance; no independent expert certainty claimed.
+
+This continuation installed twenty images for ten new species: nachtegaal,
+grauwe vliegenvanger, tuinfluiter, wielewaal, braamsluiper, grasmus,
+roodborsttapuit, paapje, gele kwikstaart and graspieper. Only primary/dynamic.
+Current totals: 602 installed roles; 127 species with both active roles;
+11,046 species queued and 22,092 active images missing. Full five-role
+inventory still has 55,263 missing images, including deliberately deferred views.
+Next suggested woodland pair: spotvogel (Hippolais icterina,
+birdnet-v3:BN04651), both active roles missing; first check for partial active
+pairs and simultaneous runs before generation. Automation remains enabled.
+No image-generation limit or retry/reset time was reported in this continuation.
+This is a saved small-batch checkpoint, not a claim that the queue is finished.
+
+Verification passed: all twenty new installed originals match source bytes,
+manifest and hash-bound anatomy reviews; PNG size/alpha and source provenance;
+all 582 pre-continuation manifest records unchanged; asset diff only additions;
+active queue counts agree; git diff --check. No native Xcode build/rendering
+or independent expert review was performed.
