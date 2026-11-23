@@ -250,3 +250,7 @@ or independent expert review was performed.
 
 Checkpoint AE — 23 November 2026: installed primary+dynamic spotvogel (birdnet-v3:BN04651). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AE.json. Existing assets unchanged.
 Active inventory: 128 paired species; 11045 queued, 22090 missing active images. 604 installed roles overall. No tool-reported quota/reset time. Next: kneu (Linaria cannabina, birdnet-v3:BN05345), primary+dynamic. Continue generation; a checkpoint does not end the authorized work.
+
+
+Checkpoint AF — 23 November 2026: installed primary+dynamic kneu (birdnet-v3:BN05345). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AF.json. Existing assets unchanged.
+Active inventory: 129 paired species; 11044 queued, 22088 missing active images. 606 installed roles overall. No tool-reported quota/reset time. Next: boompieper (Anthus trivialis, birdnet-v3:BN00625), primary+dynamic. Continue generation; a checkpoint does not end the authorized work.

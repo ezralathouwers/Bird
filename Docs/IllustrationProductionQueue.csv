@@ -6825,7 +6825,7 @@ birdnet-v3:BN07726,Picus xanthopygaeus,Kleine schubbuikspecht,woodland-general,O
 birdnet-v3:BN07355,Phacellodomus sibilatrix,Kleine stekelkruin,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03250,Diglossa sittoides,Kleverberghoningkruiper,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07631,Phylloscopus ogilviegranti,Klossboszanger,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN05345,Linaria cannabina,Kneu,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN05345,Linaria cannabina,Kneu,woodland-general,Open bos,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN09811,Syrmaticus reevesii,Koningsfazant,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02129,Cinclodes aricomae,Koningswipstaart,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02158,Cinclosoma clarum,Koperrugkwartellijster,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
