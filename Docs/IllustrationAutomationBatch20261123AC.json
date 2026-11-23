@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN06138",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-121b8b1b-da5f-4fcf-9bb6-13309f6e4d56.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding, nominate flava blue-headed form",
+    "anatomyReview": {
+      "sha256": "0be81d1c84b7f15e99b477417c4ee5e54ed460561a94efef629b1578a16e39a9",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, blue gray head white eyebrow/yellow throat, olive back, dark pale-edged wings and long dark tail with white outer feathers, dark legs. One head/bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN06138",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-de0fcfc0-171e-41c2-8228-ea4f93748ec9.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding, nominate flava blue-headed form",
+    "anatomyReview": {
+      "sha256": "ea44e408e968b32e07beefa5d14cfa7fabf4b03d5505a6dd21912432001bbd02",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Fly-holding bird on low meadow clod, one head/bill, two folded wings far side occluded, two feet. Entire tail and bill inside frame with narrow uncut side margins. Grass/clod softly fade to alpha below bird; no top crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

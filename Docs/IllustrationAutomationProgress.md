@@ -215,3 +215,9 @@ birdnet-v3:BN09063). Individually inspected original and ivory alpha composites;
 hash reviews in IllustrationAutomationBatch20261123AB.json. 598 total roles;
 125 paired species, 11,048 queued, 22,096 active images missing. This continuation
 has added sixteen images for eight new species. No quota/reset reported.
+
+Checkpoint AC — installed primary+dynamic adult male breeding gele kwikstaart,
+nominate blue-headed flava form (Motacilla flava, birdnet-v3:BN06138).
+Individual original and ivory alpha-composite reviews in batch AC mapping.
+600 total roles; 126 paired species, 11,047 queued, 22,094 active images missing.
+No quota/reset reported. Next: graspieper (Anthus pratensis, birdnet-v3:BN00614).

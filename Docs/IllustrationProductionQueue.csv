@@ -8208,7 +8208,7 @@ birdnet-v3:BN08390,Pternistis icterorhynchus,Geelsnavelfrankolijn,grassland-step
 birdnet-v3:BN05804,Melanodera xanthogramma,Geelteugelgors,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10686,Vermivora chrysoptera,Geelvleugelzanger,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00384,Ammodramus aurifrons,Geelwanggors,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN06138,Motacilla flava,Gele kwikstaart,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN06138,Motacilla flava,Gele kwikstaart,grassland-steppe,Grasland en steppe,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN00591,Anthus chii,Gele pieper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04891,Iduna natalensis,Gele rietzanger,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05692,Megalurus palustris,Gestreepte grasvogel,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
