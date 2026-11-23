@@ -48,3 +48,10 @@ birdnet-v3:BN07724) roles. Mapping/reviews: IllustrationAutomationBatch20261123F
 Inventory: 510 roles, 102 complete species, 11,071 queued, 55,355 missing roles.
 No image-generation limit/reset time has been reported. Next: appelvink
 (Coccothraustes coccothraustes, birdnet-v3:BN02367), all five roles missing.
+
+Checkpoint G installed: all five adult male breeding appelvink
+(Coccothraustes coccothraustes, birdnet-v3:BN02367) roles.
+Mapping/reviews: IllustrationAutomationBatch20261123G.json.
+Inventory: 515 roles, 103 complete species, 11,070 queued, 55,350 missing roles.
+No image-generation limit/reset time has been reported. Next: matkop
+(Poecile montanus, birdnet-v3:BN07964), all five roles missing.
