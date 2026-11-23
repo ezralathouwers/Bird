@@ -29,3 +29,9 @@ Checkpoint C installed: all five male breeding bonte vliegenvanger
 Inventory: 495 roles, 99 complete species, 11,074 queued, 55,370 missing roles.
 No image-generation limit/reset time has been reported. Next: glanskop
 (Poecile palustris, birdnet-v3:BN07965), all roles missing.
+
+Checkpoint D installed: all five adult glanskop (Poecile palustris,
+birdnet-v3:BN07965) roles. Mapping/reviews: IllustrationAutomationBatch20261123D.json.
+Inventory: 500 roles, 100 complete species, 11,073 queued, 55,365 missing roles.
+No image-generation limit/reset time has been reported. Next: bosuil
+(Strix aluco, birdnet-v3:BN09644), all five roles missing.
