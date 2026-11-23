@@ -42,3 +42,9 @@ One rejected front view touched the crown edge; replaced before import.
 Inventory: 505 roles, 101 complete species, 11,072 queued, 55,360 missing roles.
 No image-generation limit/reset time has been reported. Next: groene specht
 (Picus viridis, birdnet-v3:BN07724), all five roles missing.
+
+Checkpoint F installed: all five adult male groene specht (Picus viridis,
+birdnet-v3:BN07724) roles. Mapping/reviews: IllustrationAutomationBatch20261123F.json.
+Inventory: 510 roles, 102 complete species, 11,071 queued, 55,355 missing roles.
+No image-generation limit/reset time has been reported. Next: appelvink
+(Coccothraustes coccothraustes, birdnet-v3:BN02367), all five roles missing.

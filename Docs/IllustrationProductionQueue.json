@@ -1,12 +1,12 @@
 {
   "catalogRecords": 11173,
   "targetImageRoles": 55865,
-  "availableImageRoles": 505,
-  "completeSpeciesAssets": 101,
-  "queuedSpecies": 11072,
-  "missingImageRoles": 55360,
+  "availableImageRoles": 510,
+  "completeSpeciesAssets": 102,
+  "queuedSpecies": 11071,
+  "missingImageRoles": 55355,
   "queuedByHabitat": {
-    "forest-general": 6367,
+    "forest-general": 6366,
     "woodland-general": 923,
     "farmland": 1,
     "rivers-streams": 215,

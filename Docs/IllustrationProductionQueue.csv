@@ -2211,7 +2211,7 @@ birdnet-v3:BN10627,Urolais epichlorus,Groene prinia,forest-general,Bos,,primary;
 birdnet-v3:BN01334,Butorides virescens,Groene reiger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09081,Schiffornis virescens,Groene schiffornis,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09435,Spinus atriceps,Groene sijs,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN07724,Picus viridis,Groene specht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN07724,Picus viridis,Groene specht,forest-general,Bos,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN01745,Centropus menbeki,Groene spoorkoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10693,Vidua funerea,Groene staalvink,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN07027,Pachycephalopsis hattamensis,Groene struikvliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
