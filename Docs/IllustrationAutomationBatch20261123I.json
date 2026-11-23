@@ -1,0 +1,85 @@
+[
+  {
+    "id": "birdnet-v3:BN03323",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-b1a145cd-211f-4ce7-a043-e9e5dc291528.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "ffd557042bf40f70d2699d116cdda0e02cb59a75725f03f8f5de192f94c10f38",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing upright bird-only pose, two folded wings with far wing occluded, one head/ivory bill, two feet, full red male crown. Full original and ivory alpha-composite individually inspected; expert/native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN03323",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-5315e6ce-3d81-40f4-99cc-731e86478885.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "54f52bc1d01b49b439bcbf6694e424773630cd91f4c252ee55b15e0a6afd3a10",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Chiseling short broken trunk, two folded wings with far wing occluded, one head/bill and two gripping feet; wood top naturally ends below crown and base fades. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN03323",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-bb9fde59-f98d-4f22-b180-7357d36a3be1.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "6d24f4601ff1ba02712908722bb109f3a7f2d2518625948e95031aa5a23ab2da",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Straight front, one central bill, two folded wings and feet, red crown with otherwise black body. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN03323",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-3d8c1cb9-655a-4fe3-b33b-36259a4570fe.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "589ba697892584589953e2d5a05b655644e789d6810c02168e565de764fac41b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Strict rear with bill/eyes hidden, two folded wings and feet, red crown/nape, black back and tail. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN03323",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-7fd09314-1e34-4af3-bb87-b59baea41425.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "f09afee3c3a1f6cb91a154e3f93176325afc6de5f97b5eb36b8cbb521f82295b",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Centered ventral, two spread black underwings, charcoal belly without false white/red patches, one head/bill, two tucked feet. Entire silhouette fits; narrow but uncut tip margins. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]

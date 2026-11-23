@@ -6160,7 +6160,7 @@ birdnet-v3:BN03410,Edolisoma melas,Zwarte rupsvogel,forest-general,Bos,,primary;
 birdnet-v3:BN09007,Saltator fuliginosus,Zwarte saltator,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03555,Epimachus fastosus,Zwarte sikkelsnavel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03541,Entomodestes coracinus,Zwarte solitaire,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN03323,Dryocopus martius,Zwarte specht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN03323,Dryocopus martius,Zwarte specht,forest-general,Bos,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN09675,Sturnus unicolor,Zwarte spreeuw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04656,Hirundapus celebensis,Zwarte stekelstaartgierzwaluw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02616,Corvus celebensis,Zwarte sulawesikraai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

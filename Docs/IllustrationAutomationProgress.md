@@ -61,3 +61,9 @@ birdnet-v3:BN07964) roles. Mapping/reviews: IllustrationAutomationBatch20261123H
 Inventory: 520 roles, 104 complete species, 11,069 queued, 55,345 missing roles.
 No image-generation limit/reset time has been reported. Next: zwarte specht
 (Dryocopus martius, birdnet-v3:BN03323), all five roles missing.
+
+Checkpoint I installed: all five adult male zwarte specht (Dryocopus martius,
+birdnet-v3:BN03323) roles. Mapping/reviews: IllustrationAutomationBatch20261123I.json.
+Inventory: 525 roles, 105 complete species, 11,068 queued, 55,340 missing roles.
+No image-generation limit/reset time has been reported. Next: taigaboomkruiper
+(Certhia familiaris, birdnet-v3:BN01800), all five roles missing.
