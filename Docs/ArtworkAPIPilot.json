@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "batchID": "api-pilot-20261123",
+  "model": "gpt-image-2.5-sunburst-2026-09-08",
+  "quality": "medium",
+  "pricingChecked": "2026-11-23",
+  "pricingURL": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+  "tokenRatesUSDPerMillion": {
+    "textInput": 5,
+    "imageInput": 8,
+    "imageOutput": 30
+  },
+  "referenceAssets": {
+    "primary": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-primary.imageset/primary.png",
+    "dynamic": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-dynamic.imageset/dynamic.png"
+  },
+  "style": "Match the attached approved kingfisher reference ONLY for naturalistic watercolor and fine coloured-pencil rendering, detailed feather texture and restrained field-guide lighting. Replace the kingfisher completely with the specified species. Do not copy its blue/orange colours, proportions, facing or props. Output one new original bird illustration, never a panel or montage. No text, labels, logos, shadow, checkerboard or paper rectangle. Real transparent alpha background. No anatomy inventions: exactly two wings/flippers in total (far folded wing can be hidden), one head and one bill, correct feet/toes. An open wing replaces its folded outline on that side; never add an extra folded wing.",
+  "roles": {
+    "primary": {
+      "size": "1024x1024",
+      "direction": "PRIMARY compact portrait: whole bird in a natural resting/standing upright posture facing RIGHT. Closed wings (relaxed flippers for penguin), natural visible feet, beak/tail/toes fully inside image, bird occupies about 85% of canvas. Bird ONLY: no branch, perch, rock, ground, plants, water, food or shadow. Not flying, not crouching. Use a species-appropriate natural body carriage; a duck and penguin need not sit like a songbird."
+    },
+    "dynamic": {
+      "size": "1024x1536",
+      "direction": "DYNAMIC species-page hero: distinct species-specific behavior/vignette as described below. Large bird, centered slightly left with ample room in front of its bill, about 80-90% of available frame. Natural minimal habitat accents only; genuine alpha transparency around scene. All heads, bills and bird parts inside master image; the app may bleed the sides. No hard crop along the TOP: branches/trunks must end naturally or fade transparently before the top edge. Avoid excessive empty top/right space and avoid a beige paper background copied from the reference."
+    }
+  },
+  "species": [
+    {
+      "id": "birdnet-v3:BN09847",
+      "dutchName": "Shikra",
+      "englishName": "Shikra",
+      "scientificName": "Tachyspiza badia",
+      "representativePlumage": "adult male",
+      "fieldMarks": "Slate-grey upperparts, fine rufous barring on whitish underparts, red iris, long barred tail, small hooked bill; a small accipiter, not a falcon.",
+      "dynamicScene": "Alert on a short naturally ending thorny branch, body right-facing, head turned slightly toward viewer, wings folded.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Shikra"
+    },
+    {
+      "id": "birdnet-v3:BN06135",
+      "dutchName": "Grote gele kwikstaart",
+      "englishName": "Grey Wagtail",
+      "scientificName": "Motacilla cinerea",
+      "representativePlumage": "adult male in breeding plumage",
+      "fieldMarks": "Grey upperparts, very long slender tail, yellow vent and underparts, black breeding throat with pale moustachial border, slim insect-eating bill and pinkish-brown legs; not a yellow-backed wagtail.",
+      "dynamicScene": "On a rounded wet stone beside a small fast-flowing stream, tail lifted slightly in a natural tail-bobbing pose; a few delicate water ripples only.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Grey_wagtail"
+    },
+    {
+      "id": "birdnet-v3:BN00252",
+      "dutchName": "Mandarijneend",
+      "englishName": "Mandarin Duck",
+      "scientificName": "Aix galericulata",
+      "representativePlumage": "adult male in breeding plumage",
+      "fieldMarks": "Red bill, white crescent above eye, orange cheek whiskers, purple breast and paired orange sail-like tertials; compact duck proportions and orange webbed feet.",
+      "dynamicScene": "Swimming right-facing with correctly folded wings and orange sail tertials, subtle ripples fading out; no solid water backdrop.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Mandarin_duck"
+    },
+    {
+      "id": "birdnet-v3:BN09140",
+      "dutchName": "Houtsnip",
+      "englishName": "Eurasian Woodcock",
+      "scientificName": "Scolopax rusticola",
+      "representativePlumage": "adult",
+      "fieldMarks": "Cryptic warm brown leaf-litter plumage, transverse dark crown bars, very large high-set dark eye, long straight bill, compact plump body and short legs; not a snipe with longitudinal crown stripes.",
+      "dynamicScene": "Probing soft leaf litter with its long bill, head and entire bill inside the canvas, leaves restricted to a small fading patch.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Eurasian_woodcock"
+    },
+    {
+      "id": "birdnet-v3:BN02240",
+      "dutchName": "Bruine kiekendief",
+      "englishName": "Western Marsh Harrier",
+      "scientificName": "Circus aeruginosus",
+      "representativePlumage": "adult female",
+      "fieldMarks": "Dark brown body and wings, pale cream crown and throat, long yellow legs, long broad wings and long tail; avoid male grey wing/tail panels or an eagle build.",
+      "dynamicScene": "Quartering low over a few reed tips, gentle three-quarter bank, two naturally extended wings, feet tucked, all plumage consistent with the same adult female.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Western_marsh_harrier"
+    },
+    {
+      "id": "birdnet-v3:BN07599",
+      "dutchName": "Tjiftjaf",
+      "englishName": "Common Chiffchaff",
+      "scientificName": "Phylloscopus collybita",
+      "representativePlumage": "adult",
+      "fieldMarks": "Small olive-brown leaf warbler, pale buff-white underparts, subdued pale eyebrow, dark legs and fine pointed bill; restrained olive tones, not a bright yellow finch.",
+      "dynamicScene": "Gleaning a tiny insect from the underside of a few leaves on one short naturally ending twig, lively but anatomically simple posture, wings folded.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Common_chiffchaff"
+    },
+    {
+      "id": "birdnet-v3:BN04986",
+      "dutchName": "Himalayavisuil",
+      "englishName": "Tawny Fish Owl",
+      "scientificName": "Ketupa flavipes",
+      "representativePlumage": "adult",
+      "fieldMarks": "Large tawny-rufous fish owl, dark longitudinal streaking, conspicuous yellow eyes, outward ear tufts, strong bill and largely bare lower legs and powerful fishing toes; not a brown fish owl.",
+      "dynamicScene": "Leaning forward alertly from a low streamside rock toward clear water, both feet naturally gripping, one small fern and limited water accents; wings folded.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Tawny_fish_owl"
+    },
+    {
+      "id": "birdnet-v3:BN02749",
+      "dutchName": "Bruine hokko",
+      "englishName": "Great Curassow",
+      "scientificName": "Crax rubra",
+      "representativePlumage": "adult male",
+      "fieldMarks": "Great Curassow: glossy black plumage, crisp white vent/lower belly, prominent curled black crest and yellow knob at the base of the bill, long tail and strong grey legs. Do not make a brown female or a turkey.",
+      "dynamicScene": "Walking through a small tropical forest-floor vignette toward fallen fruit; curled crest and yellow bill knob clearly visible, wings folded, leaves and roots fade out.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Great_curassow"
+    },
+    {
+      "id": "birdnet-v3:BN09408",
+      "dutchName": "Zwartvoetpinguïn",
+      "englishName": "African Penguin",
+      "scientificName": "Spheniscus demersus",
+      "representativePlumage": "adult",
+      "fieldMarks": "African Penguin: black back, white belly with individual black spots and one black breast band, black face with broad white facial border and pink bare patch above eye, black feet; two flippers only, no second breast band.",
+      "dynamicScene": "Swimming underwater right-facing in a shallow three-quarter side view, two natural flippers, subtle bubbles and a few seaweed tips fading to transparency; no rectangular blue background.",
+      "referenceURL": "https://en.wikipedia.org/wiki/African_penguin"
+    },
+    {
+      "id": "birdnet-v3:BN01708",
+      "dutchName": "Oosterse roodstuitzwaluw",
+      "englishName": "Eastern Red-rumped Swallow",
+      "scientificName": "Cecropis daurica",
+      "representativePlumage": "adult East Asian nominate-type representative",
+      "fieldMarks": "Eastern Red-rumped Swallow Cecropis daurica: blue-black upperparts, rusty nape and rump, pale warm underparts with fine dark streaks, long deeply forked dark tail streamers and small bill; not a barn swallow or European Cecropis rufula.",
+      "dynamicScene": "Graceful three-quarter side flight catching a small insect, two open wings with natural joints and no extra folded wing on a flank; long forked tail fully shown, sparse aerial composition.",
+      "referenceURL": "https://en.wikipedia.org/wiki/Eastern_red-rumped_swallow"
+    }
+  ]
+}

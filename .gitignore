@@ -19,3 +19,8 @@ BirdingCompanion/Resources/PrivateBirdLifeRanges/*
 !BirdingCompanion/Resources/PrivateBirdLifeRanges/README.txt
 .birdlife-stage-*/
 .birdlife-backup-*/
+
+# Local API artwork candidates, usage checkpoints and secret configuration.
+.artwork-api/
+.env
+.env.*

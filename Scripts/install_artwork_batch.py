@@ -38,6 +38,10 @@ def install(mapping,batch):
    size=image.size
   facing={'front':'front','rear':'rear','flight':'up'}.get(r['role'],'right')
   record={'speciesID':r['id'],'asset':asset,'view':r['role'],'mediaType':'illustration','version':1,'sourceFile':source.name,'source':'Original OpenAI-generated illustration for this project','created':r.get('created',datetime.date.today().isoformat()),'reviewStatus':'Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending','rights':'Generated output subject to applicable OpenAI terms; no third-party copied media','sourceFacing':facing,'displayFacing':facing,'displayTransform':'none','sha256':hashlib.sha256(blob).hexdigest(),'pixelWidth':size[0],'pixelHeight':size[1],'background':'transparent','batch':batch,'representativePlumage':r.get('representativePlumage','adult'),'referenceURLs':[r['referenceURL']] if r.get('referenceURL') else []}
+  if r.get('generationProvenance'):
+   provenance=r['generationProvenance']
+   assert provenance.get('outputSHA256')==record['sha256'], 'Generation provenance must match the exact original'
+   record['generationProvenance']=dict(provenance)
   if r['role']=='flight':record['projection']='centered-ventral-spread'
   record['anatomyReview']=anatomy_review
   if r['role']=='primary':record['composition']='bird-only'

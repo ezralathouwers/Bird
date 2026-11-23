@@ -1,5 +1,11 @@
 > PAUSED BY USER — 23 November 2026: Cetti's zanger is finished. Do not generate more illustrations or re-enable the recurring task until the user explicitly says to resume. This overrides earlier continue-until-limit instructions.
 
+Limited exception, 23 November 2026: the user authorized an API pilot for ten
+named species, primary and dynamic only (Docs/ArtworkAPIPilot.json). The pipeline
+is prepared, but no API key/account is configured here and no paid image request
+has been sent. Broad production and the recurring automation remain paused.
+See Docs/ARTWORK_API_PILOT.md for setup, cost calibration and manual QA/import.
+
 Catalog audit checkpoint, 23 November 2026: 151 explicitly extinct source species
 are now excluded from the active inventory. No artwork was generated or changed.
 Active inventory: 11,022 species; 630 existing role assets; 54,480 missing roles
