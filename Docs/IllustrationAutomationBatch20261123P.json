@@ -1,0 +1,85 @@
+[
+  {
+    "id": "birdnet-v3:BN07524",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-ef1cdd40-af06-46e7-9392-4386db3e9219.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "d94831bb9e20b955c3ca269ac4a91ffece8133c9584096a451793be2b51cf609",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing bird-only, two folded wings far side occluded, one head/bill and two feet; male gray crown/white forehead, black throat, orange breast and tail sides. Full original and ivory alpha-composite individually inspected; expert/native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN07524",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-3c9e6fd6-5493-4fb7-99b8-cf57ddb36538.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "14e49445da6c09fddf55d7377ac958ee7b4ae5313d8be2aa82076811cc58aab1",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Singing on broken twig, one open bill with two mandibles, two folded wings far side occluded, two feet; twig ends naturally/fades below bird. Narrow uncut upper bird margin checked (alpha>128 begins29px). Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07524",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-2d3a4b45-b81c-4c42-b2f7-1fba42478fe5.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "455123e35bf82abf981457dfced92365b60af69216222083e665b9fb5375d83f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Straight front, one central bill, two folded wings/feet, white forehead black throat orange breast and creamy lower belly. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07524",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-4de7f97d-8cc6-4c2f-be64-9ccc46638257.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "1fb94bb655cfafa1c89d318fbdfdf689e529193367f2dabe781c2b531dc5b37d",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Head points away with bill hidden, narrow black face rims at head sides but no duplicated bill; two folded wings and two feet, gray back/orange rump and tail sides. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07524",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-c8af926f-494d-4785-8a0e-98f30bde8f17.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "261511f2dce358233fe3e9b952b914982b66a937133fe050d2d45ee4dd862a1c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Centered ventral, two spread gray-brown underwings, black throat/orange breast/creamy belly, orange outer tail dark center, one head/bill/two tucked feet. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]

@@ -104,3 +104,10 @@ birdnet-v3:BN10532) roles. Mapping/reviews: IllustrationAutomationBatch20261123O
 Inventory: 555 roles, 111 complete species, 11,062 queued, 55,310 missing roles.
 No image-generation limit/reset time has been reported. Next: gekraagde roodstaart
 (Phoenicurus phoenicurus, birdnet-v3:BN07524), all five roles missing.
+
+Checkpoint P installed: all five adult male breeding gekraagde roodstaart
+(Phoenicurus phoenicurus, birdnet-v3:BN07524) roles.
+Mapping/reviews: IllustrationAutomationBatch20261123P.json.
+Inventory: 560 roles, 112 complete species, 11,061 queued, 55,305 missing roles.
+No image-generation limit/reset time has been reported. Next: boomleeuwerik
+(Lullula arborea, birdnet-v3:BN05518), all five roles missing.
