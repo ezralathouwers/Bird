@@ -174,3 +174,10 @@ No existing assets replaced; three other views deliberately deferred.
 Active inventory: 119 species have both roles; 11,054 queued, 22,108 missing
 active images. Total installed roles: 586. No tool-reported quota/reset time.
 Next: tuinfluiter (Sylvia borin, birdnet-v3:BN09710), primary+dynamic.
+
+Checkpoint W — installed primary+dynamic tuinfluiter (Sylvia borin,
+birdnet-v3:BN09710). Both originals visually inspected individually and on
+ivory alpha composites. Mapping/reviews: IllustrationAutomationBatch20261123W.json.
+Active inventory: 120 paired species, 11,053 queued, 22,106 missing images;
+588 installed roles overall. No generation quota/reset time reported.
+Next woodland species: wielewaal (Oriolus oriolus, birdnet-v3:BN06848).
