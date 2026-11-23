@@ -26,5 +26,13 @@
     "sha256": "de53acaef45f0bddd32f298f72fa39d52dec6c1e45a5138103b8b44740cffa61",
     "reason": "Long Meadow Pipit hind claw not sufficiently distinct in primary; superseded with clearer side-on feet. Original retained, not installed.",
     "replacement": "exec-14e0ec16-ee8c-4b4f-b5ad-347cb8db59ea.png"
+  },
+  {
+    "speciesID": "birdnet-v3:BN03838",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-6b81ceb2-534c-4008-8e70-4452897905f1.png",
+    "sha256": "637e73b6d5c8c849a3593deebebabed826ff728bc6e19ac456d4b12d39ddbc69",
+    "reason": "First hovering composition had insufficient breathing room above wing tips; alpha-aware review found no opaque backdrop. Edited through image-generation tool for margins; retained original, not installed.",
+    "replacement": "exec-63799461-a4ed-404e-a75f-1de533f3105d.png"
   }
 ]

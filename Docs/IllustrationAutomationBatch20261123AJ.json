@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN03838",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-4feffb6f-4b0d-4f4f-9618-d81082e4e073.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "e3af58d0e687e40fa0d084872770f0e1b030de93155a54a26b78899f572a5b79",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, gray head/moustache, spotted chestnut upperparts and pale spotted underside, gray tail black subterminal band, yellow cere/legs. One head/hooked bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN03838",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-63799461-a4ed-404e-a75f-1de533f3105d.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "b8845301d45ca62c2a9be23f2350ed02a1c5096092f8d946de4d22b0fcfbe7bc",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Hovering with two open wings traced to shoulders, no residual folded flank wing, one head/hooked bill and two tucked feet; fanned gray tail with black band. All tips now have comfortable margin, transparent no backdrop. Imagegen edit of exec-6b81ceb2-534c-4008-8e70-4452897905f1.png to improve framing; both originals retained. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

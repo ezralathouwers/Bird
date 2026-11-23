@@ -7310,7 +7310,7 @@ birdnet-v3:BN10423,Turdoides melanops,Zwartwangbabbelaar,woodland-general,Open b
 birdnet-v3:BN06010,Microspingus melanoleucus,Zwartwangboomgors,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06858,Oriturus superciliosus,Zwartwanggors,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02788,Crithagra mennelli,Zwartwangkanarie,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN03838,Falco tinnunculus,Torenvalk,farmland,Akkers en weilanden,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN03838,Falco tinnunculus,Torenvalk,farmland,Akkers en weilanden,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN06131,Motacilla aguimp,Afrikaanse bonte kwikstaart,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05685,Megaceryle maxima,Afrikaanse reuzenijsvogel,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08991,Rynchops flavirostris,Afrikaanse schaarbek,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
