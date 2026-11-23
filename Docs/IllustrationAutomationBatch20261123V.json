@@ -1,0 +1,70 @@
+[
+  {
+    "id": "birdnet-v3:BN05522",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-103c7c93-daaa-4702-865f-a31264645b1e.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "882afc8bee7e23712da42f37e71a7bb61f592a34f7cf11d3d3375ca917a137fb",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Plain warm brown upperparts, rufous tail and pale underside, right-facing whole bird, one head/bill, two folded wings far side occluded and two natural feet; no props. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN05522",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-5e2310f2-7b68-4a5f-b565-43167f2acabd.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "be7e958ce570928be7a1d66a9556d83437f505a097a066c1d46626266962d9e5",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Singing on bramble twig, one head/open bill, two folded wings far side occluded, two gripping feet. Bill stays inside canvas with narrow but clear top margin; twig naturally ends/fades below head, no top crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN06164",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-5e87803a-adb7-4a7a-b26d-926acca20a09.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "f33420ba0f7745eb24fade69ae819c32c5bdf894a50134274bf014c58993a0ce",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Gray-brown upperparts, streaked crown and breast, pointed dark bill and dark legs; whole right-facing bird only, one head/bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN06164",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-a836e2da-1e76-403c-bd7e-9f42689f4e8b.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "3ffa352a27907b5df93cf38397f46c555efeee24c2e4e57475fedef61af23d8d",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Insect-holding perched bird with streaked crown/breast, one head/bill, two folded wings far side occluded and two gripping feet. Low twig naturally ends/fades without upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

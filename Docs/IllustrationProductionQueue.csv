@@ -6679,7 +6679,7 @@ birdnet-v3:BN07918,Ploceus subaureus,Goudwever,woodland-general,Open bos,,primar
 birdnet-v3:BN04134,Geopelia placida,Gouldzebraduif,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08608,Pycnonotus barbatus,Grauwe buulbuul,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05012,Knipolegus striaticeps,Grauwe moortiran,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN06164,Muscicapa striata,Grauwe vliegenvanger,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN06164,Muscicapa striata,Grauwe vliegenvanger,woodland-general,Open bos,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN05274,Leptotila wellsi,Grenadaduif,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00429,Anairetes alpinus,Grijsborstmeestiran,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01370,Cacomantis passerinus,Grijsbuik-piet-van-vliet,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -6905,7 +6905,7 @@ birdnet-v3:BN03042,Cyrtonyx montezumae,Montezumabergkwartel,woodland-general,Ope
 birdnet-v3:BN09462,Spizella passerina,Musgors,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10292,Trichoglossus concinnus,Muskusparkiet,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06054,Mirafra passerina,Musleeuwerik,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN05522,Luscinia megarhynchos,Nachtegaal,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN05522,Luscinia megarhynchos,Nachtegaal,woodland-general,Open bos,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN06630,Northiella narethae,Narethaparkiet,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05204,Leiothlypis ruficapilla,Nashvillezanger,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02301,Cisticola natalensis,Natalgraszanger,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

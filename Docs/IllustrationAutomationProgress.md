@@ -165,3 +165,12 @@ records unchanged; asset diff contains additions only. Active queue counts agree
 `git diff --check` passed. Native build/rendering and independent expert review
 remain unverified. Rejected originals remain recorded in
 IllustrationAutomationRejected20261123.json; no additional rejection in U.
+
+Checkpoint V — 23 November 2026: installed primary+dynamic for nachtegaal
+(Luscinia megarhynchos, birdnet-v3:BN05522) and grauwe vliegenvanger
+(Muscicapa striata, birdnet-v3:BN06164). Four original PNGs reviewed individually
+and on ivory alpha composites; provenance/hash reviews in batch V mapping.
+No existing assets replaced; three other views deliberately deferred.
+Active inventory: 119 species have both roles; 11,054 queued, 22,108 missing
+active images. Total installed roles: 586. No tool-reported quota/reset time.
+Next: tuinfluiter (Sylvia borin, birdnet-v3:BN09710), primary+dynamic.
