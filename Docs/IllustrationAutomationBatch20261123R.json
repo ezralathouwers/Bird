@@ -1,0 +1,85 @@
+[
+  {
+    "id": "birdnet-v3:BN07305",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-9c05d0fa-133c-40c4-81fd-1710d7421da4.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male pale-intermediate morph",
+    "anatomyReview": {
+      "sha256": "6d90cceb7fafd841f5aa17ce8f3b7f1b5a46c122bc2ecdce08ecd84821ae1956",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing bird-only, two folded wings far side occluded, one small gray head/bill gray cere and two yellow feet; brown back and banded long tail. Full original and ivory alpha-composite individually inspected; expert/native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN07305",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-f6b97080-f188-4a3e-a0a1-d750d7696c0a.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male pale-intermediate morph",
+    "anatomyReview": {
+      "sha256": "54c1660e74d68f99449bffdcdf992c8ac75505638b0504c38218e58a13cba100",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Feeding at wasp nest, two folded wings far side occluded, one lowered head/bill and two feet; soil/fern vignette fades along base/sides, upper edge clear. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07305",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-d0518632-7362-4634-8554-315529263c40.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male pale-intermediate morph",
+    "anatomyReview": {
+      "sha256": "c2e639a6f6f8f0803c6a7f1ea8b04d9fa2644c03e318740c09617181b8c673d0",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Straight front, one central bill gray cere, two folded wings and yellow feet, gray head/slender neck, pale barred underside and long banded tail. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07305",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-c2ca1556-9f22-4233-a3a4-7fd6b8b6ce45.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male pale-intermediate morph",
+    "anatomyReview": {
+      "sha256": "b669ce2bac0603ed50086428180074879f9bc1c15c12e798d027e7058d0d2374",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Strict rear with bill/eyes hidden, two folded wings and feet, gray head brown back and two basal/one broad subterminal tail bands. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07305",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-94ece507-78d9-4b7a-80be-78776085216d.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male pale-intermediate morph",
+    "anatomyReview": {
+      "sha256": "5d4fd27e3a45274de6525cef8e83f80166477042af8bbe6f0994aeaaa2e22deb",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Centered ventral, two long broad wings with dark carpal patches and pale barred remiges, pale barred belly, long tail with two basal/one separated broad subterminal bands, one head/bill/two tucked feet. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]

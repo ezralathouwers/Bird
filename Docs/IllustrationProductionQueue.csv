@@ -5572,7 +5572,7 @@ birdnet-v3:BN04625,Heterospingus xanthopygius,Wenkbrauwkuiftangare,forest-genera
 birdnet-v3:BN01641,Carpodacus rodochroa,Wenkbrauwroodmus,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10106,Thlypopsis superciliaris,Wenkbrauwtangare,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN02847,Crypturellus transfasciatus,Wenkbrauwtinamoe,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN07305,Pernis apivorus,Wespendief,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN07305,Pernis apivorus,Wespendief,forest-general,Bos,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN05432,Lophoceros semifasciatus,West-afrikaanse bonte tok,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09853,Tachyspiza erythropus,West-afrikaanse dwergsperwer,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN03125,Dendrocygna arborea,West-indische fluiteend,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

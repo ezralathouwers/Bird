@@ -118,3 +118,9 @@ Rejected first primary had broad white wing stripes; replaced before import.
 Inventory: 565 roles, 113 complete species, 11,060 queued, 55,300 missing roles.
 No image-generation limit/reset time has been reported. Next: wespendief
 (Pernis apivorus, birdnet-v3:BN07305), all five roles missing.
+
+Checkpoint R installed: all five adult male pale-intermediate wespendief
+(Pernis apivorus, birdnet-v3:BN07305) roles. Mapping/reviews: IllustrationAutomationBatch20261123R.json.
+Inventory: 570 roles, 114 complete species, 11,059 queued, 55,295 missing roles.
+No image-generation limit/reset time has been reported. Next: sijs
+(Spinus spinus, birdnet-v3:BN09448), all five roles missing.
