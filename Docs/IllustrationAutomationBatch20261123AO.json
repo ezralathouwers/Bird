@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN09676",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-4fb3cb7c-cd77-4b0a-b3a0-52ca5c549478.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male spring, retained pale feather tips",
+    "anatomyReview": {
+      "sha256": "fd19ff5848f1f0ca7fb4a06bf1da778def19d71f86d36f97394d08b1423f8086",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, iridescent green violet black plumage with retained pale feather tips, pointed yellow bill/blue gray base, short tail reddish legs. One head/bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN09676",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-08286290-6536-4e0f-a3cf-a2e49f3f7c54.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male spring, retained pale feather tips",
+    "anatomyReview": {
+      "sha256": "c0f10c29ac94a54f34658cfd14c3584f89e4a0c4c2c95f922e42766a34621963",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Singing on flowering twig, one head/open pointed bill, two folded wings far side occluded, two gripping feet. Bill inside frame with narrow uncut upper margin, twig naturally ends/fades below crown without top crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

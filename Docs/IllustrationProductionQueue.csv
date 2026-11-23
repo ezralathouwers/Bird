@@ -11111,7 +11111,7 @@ birdnet-v3:BN01790,Cercotrichas galactotes,Rosse waaierstaart,cultivated-general
 birdnet-v3:BN01188,Botaurus cinnamomeus,Rossige woudaap,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01863,Chaetura pelagica,Schoorsteengierzwaluw,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04444,Halcyon smyrnensis,Smyrnaijsvogel,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN09676,Sturnus vulgaris,Spreeuw,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN09676,Sturnus vulgaris,Spreeuw,cultivated-general,Cultuurlandschap,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN08615,Pycnonotus conradi,Streepoorbuulbuul,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03846,Ficedula albicilla,Taigavliegenvanger,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08320,Psilopogon nuchalis,Taiwanese baardvogel,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

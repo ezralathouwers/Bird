@@ -1,10 +1,10 @@
 {
   "catalogRecords": 11173,
   "targetImageRoles": 55865,
-  "availableImageRoles": 622,
+  "availableImageRoles": 624,
   "completeSpeciesAssets": 116,
   "queuedSpecies": 11057,
-  "missingImageRoles": 55243,
+  "missingImageRoles": 55241,
   "queuedByHabitat": {
     "forest-general": 6356,
     "woodland-general": 919,
@@ -36,7 +36,7 @@
     "flight"
   ],
   "activeTargetImageRoles": 22346,
-  "activeMissingImageRoles": 22072,
-  "activeQueuedSpecies": 11036,
-  "activeCompleteSpecies": 137
+  "activeMissingImageRoles": 22070,
+  "activeQueuedSpecies": 11035,
+  "activeCompleteSpecies": 138
 }
