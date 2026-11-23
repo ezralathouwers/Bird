@@ -1,5 +1,14 @@
 # Species illustration roles
 
+## Display fallback — 23 November 2026
+
+The species overview pages only through available dynamic/front/rear/flight
+assets. Zero or one available page has no swipe interaction. If none of those
+detail roles exists, a classic portrait may temporarily fill the overview;
+otherwise show one static placeholder. The classic portrait keeps its shared
+right-facing correction. It is not inserted as an extra page beside existing
+detail art. The five-role production model and deferred-role scope are unchanged.
+
 ## Current production priority — 23 November 2026
 
 The user has deferred front, rear and flight production. Generate only missing

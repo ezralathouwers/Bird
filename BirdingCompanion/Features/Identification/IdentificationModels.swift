@@ -178,19 +178,66 @@ struct SoundCandidateConfirmation {
 }
 
 // Geographic context does not change the visual model's scores or discard a
-// candidate. Missing private maps are unknown, never an unlikely classification.
-enum PhotoRangeLikelihood: Sendable { case likely, unlikely, unknown }
+// candidate. Missing geographic evidence stays unknown; regular regional presence
+// can support a candidate even when a generalized polygon misses the exact point.
+enum PhotoRangeLikelihood: Sendable, Equatable { case likely, unlikely, unknown }
 actor PhotoRangeContext {
     static func classify(_ candidates: [IdentificationCandidate], at location: PhotoLocationSelection) async -> [String: PhotoRangeLikelihood] {
+        guard !candidates.isEmpty else { return [:] }
+        guard location.latitude.isFinite, location.longitude.isFinite,
+              (-90...90).contains(location.latitude), (-180...180).contains(location.longitude) else {
+            return Dictionary(candidates.map { ($0.id, PhotoRangeLikelihood.unknown) }, uniquingKeysWith: { first, _ in first })
+        }
         var result: [String: PhotoRangeLikelihood] = [:]
+        let country = await resolvedCountry(at: location)
         for candidate in candidates {
             guard !Task.isCancelled else { return [:] }
-            guard let snapshot = try? await SpeciesRangeDataLoader.shared.load(speciesID: candidate.id) else {
-                result[candidate.id] = .unknown; continue
-            }
-            result[candidate.id] = contains(snapshot, latitude: location.latitude, longitude: location.longitude) ? .likely : .unlikely
+            let regional = PhotoRegionalContext.isRegular(candidate.id, countryCode: country)
+            if regional { result[candidate.id] = .likely; continue }
+            let snapshot = try? await SpeciesRangeDataLoader.shared.load(speciesID: candidate.id)
+            result[candidate.id] = likelihood(snapshot, at: location, regularInCountry: false)
         }
         return result
+    }
+    @MainActor private static func resolvedCountry(at location: PhotoLocationSelection) async -> String? {
+        if let code = ObservationCountry.normalized(location.countryCode) { return code }
+        return try? await ApplePlaceNamingService().suggestion(latitude: location.latitude, longitude: location.longitude).countryCode
+    }
+    static func likelihood(_ snapshot: SpeciesRangeSnapshot?, at location: PhotoLocationSelection,
+                           regularInCountry: Bool) -> PhotoRangeLikelihood {
+        guard location.latitude.isFinite, location.longitude.isFinite,
+              (-90...90).contains(location.latitude), (-180...180).contains(location.longitude) else { return .unknown }
+        if regularInCountry { return .likely }
+        guard let snapshot else { return .unknown }
+        if contains(snapshot, latitude: location.latitude, longitude: location.longitude) { return .likely }
+        // Range polygons are generalized, not precise ecological exclusion zones.
+        // Allow a modest 25 km margin rather than rejecting a nearby mobile bird.
+        if snapshot.polygons.contains(where: { polygon in
+            polygon.rings.contains { nearBoundary($0, latitude: location.latitude, longitude: location.longitude, meters: 25_000) }
+        }) { return .likely }
+        return .unlikely
+    }
+    private static func nearBoundary(_ ring: [SpeciesRangeSnapshot.Point], latitude: Double,
+                                     longitude: Double, meters: Double) -> Bool {
+        guard ring.count >= 4 else { return false }
+        func wrapped(_ value: Double) -> Double {
+            var value = value
+            while value > 180 { value -= 360 }
+            while value < -180 { value += 360 }
+            return value
+        }
+        let yScale = 111_195.0
+        let xScale = yScale * max(0.01, cos(latitude * .pi / 180))
+        for index in ring.indices {
+            let a = ring[index], b = ring[(index + 1) % ring.count]
+            let ax = wrapped(a.longitude - longitude) * xScale, ay = (a.latitude - latitude) * yScale
+            let bx = ax + wrapped(b.longitude - a.longitude) * xScale, by = (b.latitude - latitude) * yScale
+            let dx = bx - ax, dy = by - ay, length = dx * dx + dy * dy
+            let t = length > 0 ? min(1, max(0, -(ax * dx + ay * dy) / length)) : 0
+            let x = ax + t * dx, y = ay + t * dy
+            if x * x + y * y <= meters * meters { return true }
+        }
+        return false
     }
     static func contains(_ snapshot: SpeciesRangeSnapshot, latitude: Double, longitude: Double) -> Bool {
         snapshot.polygons.contains { polygon in
@@ -227,4 +274,20 @@ struct PhotoLocationSelection: Sendable {
     let latitude: Double
     let longitude: Double
     let name: String
+    var countryCode: String? = nil
+}
+
+
+enum PhotoRegionalContext {
+    private struct Document: Decodable { let version: Int; let countries: [String: [String]] }
+    private static let countries: [String: Set<String>] = {
+        guard let url = Bundle.main.url(forResource: "PhotoRegionalContext", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let document = try? JSONDecoder().decode(Document.self, from: data), document.version == 1 else { return [:] }
+        return document.countries.mapValues { Set($0) }
+    }()
+    static func isRegular(_ speciesID: String, countryCode: String?) -> Bool {
+        guard let code = ObservationCountry.normalized(countryCode) else { return false }
+        return countries[code]?.contains(speciesID) == true
+    }
 }

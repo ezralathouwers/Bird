@@ -266,7 +266,7 @@ final class DiscoverRankingTests: XCTestCase {
                      latitude: latitude, longitude: 0)
     }
 
-    func testRankingCountsDistinctChecklistsWithinAreaAndSevenDays() {
+    func testRankingCountsDistinctChecklistsWithinAreaAndThreeDays() {
         let reports = [report(first, checklist: "A"), report(first, checklist: "A"),
             report(first, checklist: "B"), report(second, checklist: "C"),
             report(second, checklist: "old", daysAgo: 8), report(second, checklist: "future", daysAgo: -1),
@@ -277,7 +277,7 @@ final class DiscoverRankingTests: XCTestCase {
     }
 
     func testBoundaryAndTieOrderAreDeterministic() {
-        let ranked = DiscoverRanking.ranked([report(first, checklist: "A", daysAgo: 7),
+        let ranked = DiscoverRanking.ranked([report(first, checklist: "A", daysAgo: 3),
                                             report(second, checklist: "B", daysAgo: 0)], query: query)
         XCTAssertEqual(ranked.map(\.species.dutchName), ["Koolmees", "Merel"])
     }
@@ -1303,7 +1303,7 @@ final class EBirdDiscoverTests: XCTestCase {
                                        index: { index }, now: { now })
     }
 
-    func testRequestUsesSevenDaysFiveKilometersRecencyAndHeaderOnlyKey() throws {
+    func testRequestUsesDefaultThreeDaysFiveKilometersRecencyAndHeaderOnlyKey() throws {
         let request = try EBirdDiscoverRepository.request(query: query, apiKey: "  fixture-key  ")
         XCTAssertEqual(request.value(forHTTPHeaderField: "X-eBirdApiToken"), "fixture-key")
         XCTAssertEqual(request.url?.scheme, "https")
@@ -1313,7 +1313,7 @@ final class EBirdDiscoverTests: XCTestCase {
         let parameters = Dictionary(uniqueKeysWithValues: items.map { ($0.name, $0.value!) })
         XCTAssertEqual(parameters["dist"], "5.0")
         XCTAssertEqual(parameters["sort"], "date")
-        XCTAssertEqual(parameters["back"], "7")
+        XCTAssertEqual(parameters["back"], "3")
         XCTAssertEqual(parameters["cat"], "species")
         XCTAssertEqual(parameters["includeProvisional"], "false")
         XCTAssertFalse(request.url!.absoluteString.contains("fixture-key"))
@@ -1374,8 +1374,8 @@ final class EBirdDiscoverTests: XCTestCase {
 
     func testDateOnlyRecordsAndHistoricalRequestsDoNotInventCoverage() async {
         XCTAssertNotNil(EBirdDiscoverRepository.observationDate("2027-01-15", relativeTo: now))
-        XCTAssertNotNil(EBirdDiscoverRepository.observationDate("2027-01-08", relativeTo: now))
-        XCTAssertNil(EBirdDiscoverRepository.observationDate("2027-01-07", relativeTo: now))
+        XCTAssertNotNil(EBirdDiscoverRepository.observationDate("2027-01-12", relativeTo: now))
+        XCTAssertNil(EBirdDiscoverRepository.observationDate("2027-01-11", relativeTo: now))
         XCTAssertNil(EBirdDiscoverRepository.observationDate("bad-date", relativeTo: now))
         XCTAssertNil(EBirdDiscoverRepository.observationDate("2020-01-01", relativeTo: now))
         let historical = DiscoverQuery(latitude: 0, longitude: 0, now: now.addingTimeInterval(-31 * 86400), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
@@ -2133,13 +2133,13 @@ final class DiscoverFeedbackRegressionTests: XCTestCase {
         XCTAssertEqual(SpeciesGuideCatalog.species(id: "birdnet-v3:BN09928")?.dutchName, "Zwartkopvlagstaartijsvogel")
         XCTAssertEqual(SpeciesGuideCatalog.species(id: "avilist:93d88f0a")?.dutchName, "Norfolkbrilvogel")
     }
-    func testObservationRequestUsesSevenDaysLargerPagesAndBoundedRadius() throws {
+    func testObservationRequestUsesDefaultThreeDaysLargerPagesAndBoundedRadius() throws {
         let query = DiscoverQuery(latitude: 51, longitude: 4, now: Date(timeIntervalSince1970: 1_800_000_000), radiusKilometers: 30)
         let request = try ObservationOrgDiscoverRepository.request(query: query, offset: 1000)
         let items = try XCTUnwrap(URLComponents(url: XCTUnwrap(request.url), resolvingAgainstBaseURL: false)?.queryItems)
         let values = Dictionary(uniqueKeysWithValues: items.map { ($0.name, $0.value ?? "") })
         XCTAssertEqual(values["radius"], "10000")
-        XCTAssertEqual(values["days"], "7")
+        XCTAssertEqual(values["days"], "3")
         XCTAssertEqual(values["offset"], "1000")
         XCTAssertEqual(values["end_date"], "2027-01-15")
         XCTAssertEqual(values["limit"], "1000")
@@ -2273,5 +2273,65 @@ final class DiscoverProgressTests: XCTestCase {
         XCTAssertFalse(model.isLoading)
         XCTAssertNotNil(model.message)
         XCTAssertTrue(model.rows.isEmpty)
+    }
+}
+
+@MainActor
+final class DiscoveryAndPhotoContextFeedbackTests: XCTestCase {
+    func testDiscoveryPeriodIsSharedByRequestsAndLocalFilter() throws {
+        let now = Date(timeIntervalSince1970: 1_800_000_000)
+        let standard = DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: 5)
+        XCTAssertEqual(standard.daysBack, 3)
+        XCTAssertEqual(standard.start, now.addingTimeInterval(-3 * 86400))
+        for days in [1, 3, 7, 14] {
+            let query = DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: 5, daysBack: days)
+            let ebird = try EBirdDiscoverRepository.request(query: query, apiKey: "fixture")
+            let observation = try ObservationOrgDiscoverRepository.request(query: query, offset: 0)
+            func value(_ name: String, in request: URLRequest) -> String? {
+                URLComponents(url: request.url!, resolvingAgainstBaseURL: false)?.queryItems?.first { $0.name == name }?.value
+            }
+            XCTAssertEqual(value("back", in: ebird), String(days))
+            XCTAssertEqual(value("days", in: observation), String(days))
+            let bird = MockSpeciesRepository.kingfisher
+            let rows = [NearbyReport(checklistID: "inside", species: bird, observedAt: query.start, latitude: 0, longitude: 0),
+                        NearbyReport(checklistID: "outside", species: bird, observedAt: query.start.addingTimeInterval(-1), latitude: 0, longitude: 0)]
+            XCTAssertEqual(DiscoverRanking.ranked(rows, query: query).first?.reportCount, 1)
+        }
+        XCTAssertEqual(DiscoverQuery.validLookbackDays(0), 1)
+        XCTAssertEqual(DiscoverQuery.validLookbackDays(99), 14)
+    }
+
+    func testOnlyAvailableArtworkPagesCanBeVisited() {
+        XCTAssertEqual(SpeciesArtworkPaging.slides(available: []), [])
+        XCTAssertEqual(SpeciesArtworkPaging.slides(available: [.classic]), [.classic])
+        XCTAssertEqual(SpeciesArtworkPaging.slides(available: [.classic, .dynamic]), [.dynamic])
+        XCTAssertEqual(SpeciesArtworkPaging.slides(available: [.classic, .front]), [.front])
+        XCTAssertEqual(SpeciesArtworkPaging.slides(available: [.classic, .dynamic, .rear]), [.dynamic, .rear])
+        XCTAssertNil(SpeciesArtworkPaging.index(after: 0, offset: 1, count: 1))
+        XCTAssertNil(SpeciesArtworkPaging.index(after: 0, offset: -1, count: 1))
+        XCTAssertEqual(SpeciesArtworkPaging.index(after: 1, offset: 1, count: 2), 0)
+    }
+
+    func testNorthernRavenIsPlausibleInBelgiumWithoutPromotingForeignRavens() throws {
+        let raven = try XCTUnwrap(SpeciesGuideCatalog.species.first { $0.scientificName == "Corvus corax" })
+        let foreign = try XCTUnwrap(SpeciesGuideCatalog.species.first { $0.scientificName == "Corvus albicollis" })
+        XCTAssertTrue(PhotoRegionalContext.isRegular(raven.id, countryCode: "BE"))
+        XCTAssertFalse(PhotoRegionalContext.isRegular(foreign.id, countryCode: "BE"))
+        XCTAssertFalse(PhotoRegionalContext.isRegular(raven.id, countryCode: "IN"))
+        let antwerp = PhotoLocationSelection(latitude: 51.22, longitude: 4.4, name: "Antwerpen", countryCode: "BE")
+        XCTAssertEqual(PhotoRangeContext.likelihood(nil, at: antwerp, regularInCountry: true), .likely)
+        XCTAssertEqual(PhotoRangeContext.likelihood(nil, at: antwerp, regularInCountry: false), .unknown)
+    }
+
+    func testCoarseRangeMarginsAndDateLineDoNotPromoteDistantSpecies() {
+        func snapshot(_ points: [(Double, Double)]) -> SpeciesRangeSnapshot {
+            SpeciesRangeSnapshot(polygons: [.init(rings: [points.map { .init(longitude: $0.0, latitude: $0.1) }], season: 1, origin: 1)], attribution: "fixture", version: "test")
+        }
+        let range = snapshot([(0,0), (1,0), (1,1), (0,1), (0,0)])
+        XCTAssertEqual(PhotoRangeContext.likelihood(range, at: .init(latitude: 0.5, longitude: 1.1, name: "near"), regularInCountry: false), .likely)
+        XCTAssertEqual(PhotoRangeContext.likelihood(range, at: .init(latitude: 0.5, longitude: 5, name: "far"), regularInCountry: false), .unlikely)
+        let dateLine = snapshot([(170,0), (-170,0), (-170,10), (170,10), (170,0)])
+        XCTAssertEqual(PhotoRangeContext.likelihood(dateLine, at: .init(latitude: 5, longitude: 0, name: "far"), regularInCountry: false), .unlikely)
+        XCTAssertEqual(PhotoRangeContext.likelihood(dateLine, at: .init(latitude: 5, longitude: 169.9, name: "near edge"), regularInCountry: false), .likely)
     }
 }

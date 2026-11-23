@@ -6,6 +6,7 @@ struct EBirdConnectionView: View {
     var didChange: () -> Void
     @State private var apiKey = ""
     @AppStorage("discoverRadiusKilometers") private var radius = DiscoverQuery.nearbyRadiusKilometers
+    @AppStorage("discoverLookbackDays") private var days = DiscoverQuery.defaultLookbackDays
     @State private var hasStoredKey = false
     @State private var isChecking = false
     @State private var message: String?
@@ -24,6 +25,14 @@ struct EBirdConnectionView: View {
                         .accessibilityLabel("Zoekstraal in kilometer")
                     Text("Standaard 5 km. eBird zoekt tot 50 km, Observation.org vult aan tot 10 km. De ontdekpagina wordt automatisch bijgewerkt.").font(.footnote)
                 }
+                Section("Periode") {
+                    Stepper(value: Binding(get: { DiscoverQuery.validLookbackDays(days) },
+                                           set: { days = DiscoverQuery.validLookbackDays($0) }), in: 1...14) {
+                        let value = DiscoverQuery.validLookbackDays(days)
+                        Text("Afgelopen \(value) \(value == 1 ? "dag" : "dagen")")
+                    }
+                    Text("Standaard 3 dagen. Instelbaar van 1 tot 14 dagen voor beide bronnen.").font(.footnote)
+                }
                 Section("Persoonlijke API-sleutel") {
                     if hasStoredKey { Label("eBird is verbonden", systemImage: "checkmark.circle") }
                     SecureField(hasStoredKey ? "Nieuwe sleutel invoeren" : "Plak je eBird-sleutel", text: $apiKey)
@@ -41,7 +50,7 @@ struct EBirdConnectionView: View {
                     if let message { Text(message).foregroundStyle(.red).accessibilityAddTraits(.updatesFrequently) }
                 }
                 Section {
-                    Text("De lijst combineert de laatste 7 dagen van eBird en Observation.org, met de recentste melding per soort bovenaan. Tijden zijn lokale waarnemingstijden; meldingen zonder uur worden binnen hun datum gesorteerd.")
+                    Text("De lijst combineert eBird en Observation.org voor de gekozen periode, met de recentste melding per soort bovenaan. Tijden zijn lokale waarnemingstijden; meldingen zonder uur worden binnen hun datum gesorteerd.")
                         .font(.footnote)
                 }
                 if hasStoredKey {
@@ -73,7 +82,7 @@ struct EBirdConnectionView: View {
                 do {
                     // If GPS is not available yet, only verify access with a neutral
                     // coordinate; these results never become the user's nearby list.
-                    let probe = query ?? DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: DiscoverQuery.validRadius(radius))
+                    let probe = query ?? DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: DiscoverQuery.validRadius(radius), daysBack: days)
                     _ = try await EBirdDiscoverRepository().reports(for: probe, apiKey: apiKey)
                     try Task.checkCancellation()
                     try keys.save(apiKey)

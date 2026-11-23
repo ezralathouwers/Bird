@@ -14,18 +14,20 @@ struct DiscoverView: View {
     @State private var connectionRevision = UUID()
     @State private var catalogQuery = ""
     @AppStorage("discoverRadiusKilometers") private var storedRadius = DiscoverQuery.nearbyRadiusKilometers
+    @AppStorage("discoverLookbackDays") private var storedDays = DiscoverQuery.defaultLookbackDays
+    private var days: Int { DiscoverQuery.validLookbackDays(storedDays) }
     private var radius: Double { DiscoverQuery.validRadius(storedRadius) }
     @FocusState private var searchFocused: Bool
     var catalog: [Species] = SpeciesGuideCatalog.species
     var catalogIsComplete = false
 
     private var queryKey: String {
-        guard let latitude = location.latitude, let longitude = location.longitude else { return "no-location,\(demo),\(connectionRevision),\(radius)" }
-        return "\(latitude),\(longitude),\(demo),\(connectionRevision),\(radius)"
+        guard let latitude = location.latitude, let longitude = location.longitude else { return "no-location,\(demo),\(connectionRevision),\(radius),\(days)" }
+        return "\(latitude),\(longitude),\(demo),\(connectionRevision),\(radius),\(days)"
     }
     private var query: DiscoverQuery? {
         guard let latitude = location.latitude, let longitude = location.longitude else { return nil }
-        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: radius)
+        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: radius, daysBack: days)
     }
     private var locationTitle: String {
         if demo && location.latitude == nil { return "Voorbeeldlocatie" }
@@ -65,7 +67,7 @@ struct DiscoverView: View {
                     .padding(20)
                     .background(FieldGuideTheme.ivory)
                     .fixedSize(horizontal: false, vertical: true)
-                    ScrollView {
+                    CatalogResultsScroll(resetKey: queryKey + filter.rawValue) {
                         LazyVStack(alignment: .leading, spacing: 20) {
                             nearbyContent
                         }.padding(.horizontal, 20).padding(.bottom, 114)
@@ -120,7 +122,7 @@ struct DiscoverView: View {
         .task(id: queryKey) {
             if let query { await model.load(query: query, demo: demo) }
             else if demo {
-                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: radius), demo: true)
+                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: radius, daysBack: days), demo: true)
             }
         }
         .onDisappear { location.stop() }
@@ -300,12 +302,12 @@ struct PageHeading: UIViewRepresentable {
 // Keep this shared by the guide, lists, forms, picker and map markers.
 struct PrimaryBirdImage: View {
     let species: Species
-    private var sourceFacesLeft: Bool {
-        ["sample-parus-major", "sample-cyanistes-caeruleus", "sample-alcedo-atthis"].contains(species.id)
+    static func sourceFacesLeft(speciesID: String) -> Bool {
+        ["sample-parus-major", "sample-cyanistes-caeruleus", "sample-alcedo-atthis"].contains(speciesID)
     }
     var body: some View {
         Image(SpeciesMediaRole.classic.assetName(for: species)).resizable().scaledToFit()
-            .scaleEffect(x: sourceFacesLeft ? -1 : 1, y: 1)
+            .scaleEffect(x: Self.sourceFacesLeft(speciesID: species.id) ? -1 : 1, y: 1)
     }
 }
 

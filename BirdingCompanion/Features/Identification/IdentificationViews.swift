@@ -144,7 +144,7 @@ struct PhotoIdentificationView: View {
     @State private var rangeStatus: [String: PhotoRangeLikelihood] = [:]
     @State private var checkingLocation = false
     private var contextKey: String {
-        "\(location?.latitude ?? 999),\(location?.longitude ?? 999):" + model.candidates.map(\.id).joined(separator: ",")
+        "\(location?.latitude ?? 999),\(location?.longitude ?? 999),\(location?.countryCode ?? ""):" + model.candidates.map(\.id).joined(separator: ",")
     }
     var body: some View {
         ScrollView {
@@ -359,7 +359,8 @@ struct PhotoLocationPicker: View {
             Button("Locatie gebruiken") {
                 guard let latitude = location.latitude, let longitude = location.longitude else { return }
                 save(PhotoLocationSelection(latitude: latitude, longitude: longitude,
-                    name: location.locationName.isEmpty ? String(format: "%.3f, %.3f", latitude, longitude) : location.locationName))
+                    name: location.locationName.isEmpty ? String(format: "%.3f, %.3f", latitude, longitude) : location.locationName,
+                    countryCode: location.countryCode))
                 dismiss()
             }.buttonStyle(PhotoChoiceStyle()).padding(.horizontal, 20).disabled(location.latitude == nil)
             if selection != nil { Button("Locatie verwijderen") { save(nil); dismiss() } }

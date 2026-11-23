@@ -19,6 +19,12 @@ loop both ways. Span/bio, a compact interactive map and habitat footer belong
 on Informatie. Keep Fraunces Dutch titles with -2% tracking and tighter leading.
 See Docs/SPECIES_DETAIL_REDESIGN.md; native visual matching remains unverified.
 
+Latest user override, 23 November 2026: show only existing detail illustrations
+in the species carousel. With zero or one available slide, disable swiping.
+If no detail illustration exists but a classic portrait does, temporarily show
+the classic portrait in the overview, preserving its right-facing orientation.
+This supersedes the older no-classic-fallback/placeholder-slide rule below.
+
 ## Non-negotiable design rules
 - Warm **light neutral ivory** background, not dark/yellow parchment. Final tokens must be validated against the user's approved image.
 - Characterful serif **only for the Dutch species title in the upper-left**; all other interface text, including English name, active tabs and navigation, is modern sans-serif.

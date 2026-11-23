@@ -151,9 +151,15 @@ struct SpeciesFacts: View {
 // pages, this needs no delayed index reset at the end of a swipe.
 enum SpeciesArtworkPaging {
     static func index(after index: Int, offset: Int, count: Int) -> Int? {
-        guard count > 0 else { return nil }
+        guard count > 1 else { return nil }
         return ((index + offset) % count + count) % count
     }
+    static func slides(available: Set<SpeciesMediaRole>) -> [SpeciesMediaRole] {
+        let detail = SpeciesMediaRole.detailSlides.filter { available.contains($0) }
+        if !detail.isEmpty { return detail }
+        return available.contains(.classic) ? [.classic] : []
+    }
+
 }
 
 struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
@@ -169,17 +175,27 @@ struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
         for scroll in controller.view.subviews.compactMap({ $0 as? UIScrollView }) {
             scroll.contentInsetAdjustmentBehavior = .never
         }
-        controller.dataSource = context.coordinator
         controller.delegate = context.coordinator
         context.coordinator.configure(species: species)
-        controller.setViewControllers([context.coordinator.controllers[page]], direction: .forward, animated: false)
+        configureInteraction(controller, coordinator: context.coordinator)
+        let selected = min(max(0, page), context.coordinator.controllers.count - 1)
+        controller.setViewControllers([context.coordinator.controllers[selected]], direction: .forward, animated: false)
         return controller
     }
     func updateUIViewController(_ controller: UIPageViewController, context: Context) {
         context.coordinator.parent = self
         if context.coordinator.speciesID != species.id {
             context.coordinator.configure(species: species)
+            configureInteraction(controller, coordinator: context.coordinator)
             controller.setViewControllers([context.coordinator.controllers[0]], direction: .forward, animated: false)
+        }
+    }
+
+    private func configureInteraction(_ controller: UIPageViewController, coordinator: Coordinator) {
+        let canSwipe = coordinator.controllers.count > 1
+        controller.dataSource = canSwipe ? coordinator : nil
+        for scroll in controller.view.subviews.compactMap({ $0 as? UIScrollView }) {
+            scroll.isScrollEnabled = canSwipe
         }
     }
 
@@ -192,8 +208,11 @@ struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
 
         func configure(species: Species) {
             speciesID = species.id
-            controllers = SpeciesMediaRole.detailSlides.enumerated().map { index, role in
-                let controller = UIHostingController(rootView: SpeciesArtworkSlide(species: species, role: role, index: index))
+            let available = Set(SpeciesMediaRole.allCases.filter { UIImage(named: $0.assetName(for: species)) != nil })
+            let roles = SpeciesArtworkPaging.slides(available: available)
+            let visible: [SpeciesMediaRole] = roles.isEmpty ? [.dynamic] : roles
+            controllers = visible.enumerated().map { index, role in
+                let controller = UIHostingController(rootView: SpeciesArtworkSlide(species: species, role: role, index: index, totalSlides: visible.count))
                 controller.view.backgroundColor = .clear
                 controller.safeAreaRegions = []
                 return controller
@@ -292,6 +311,7 @@ private struct SpeciesArtworkSlide: View {
     let species: Species
     let role: SpeciesMediaRole
     let index: Int
+    let totalSlides: Int
     @State private var displayImage: UIImage?
     var body: some View {
         GeometryReader { geometry in
@@ -304,11 +324,12 @@ private struct SpeciesArtworkSlide: View {
                                                          horizontalBleed: role == .dynamic, magnification: zoom)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
+                        .scaleEffect(x: role == .classic && PrimaryBirdImage.sourceFacesLeft(speciesID: species.id) ? -1 : 1, y: 1)
                         .offset(x: role == .dynamic ? -50 : 0, y: role == .dynamic ? (zoom > 1 ? -10 : -30) : 0)
                         .frame(width: geometry.size.width,
                                height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
                                alignment: role == .dynamic && zoom == 1 ? .bottom : .center)
-                        .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van 4")
+                        .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van \(totalSlides)")
                 } else if UIImage(named: role.assetName(for: species)) != nil {
                     Color.clear // Existing artwork is preparing; do not call it missing.
                 } else {
@@ -529,6 +550,8 @@ struct SpeciesCatalogSourcesView: View {
                     }
                     Text("Lokale vogelmeldingen: eBird / Cornell Lab of Ornithology en Observation International. De recentste beschikbare melding per soort wordt getoond; datum en tijd zijn lokale waarnemingstijden, soms zonder uur.")
                     Link("eBird", destination: URL(string: "https://ebird.org/")!)
+                    Text("Locatiecontext Foto ID: BirdLife-verspreidingskaarten en aanvullende gewone Belgische soorten uit Avibase. Dit is geografische plausibiliteit, geen garantie dat een soort op een exacte plek voorkomt.")
+                    Link("Avibase België", destination: URL(string: "https://avibase.bsc-eoc.org/checklist.jsp?region=BE&list=avilist&lang=NL")!)
                     Link("Observation.org", destination: URL(string: "https://observation.org/")!)
                     Link("BirdLife DataZone", destination: URL(string: "https://datazone.birdlife.org/")!)
                 }.font(FieldGuideTheme.sans(15)).padding(20)

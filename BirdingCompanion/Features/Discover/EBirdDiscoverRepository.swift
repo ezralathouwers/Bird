@@ -128,7 +128,7 @@ struct EBirdDiscoverRepository: DiscoverRepository {
         let reports = observations.compactMap { observation -> NearbyReport? in
             guard observation.obsValid,
                   let bird = lookup.species(code: observation.speciesCode, scientificName: observation.sciName),
-                  let date = Self.observationDate(observation.obsDt, relativeTo: query.now) else { return nil }
+                  let date = Self.observationDate(observation.obsDt, relativeTo: query.now, daysBack: query.daysBack) else { return nil }
             return NearbyReport(checklistID: observation.subId, species: bird, observedAt: date,
                                 latitude: observation.lat, longitude: observation.lng, localObservedAt: observation.obsDt)
         }
@@ -153,7 +153,7 @@ struct EBirdDiscoverRepository: DiscoverRepository {
             URLQueryItem(name: "lat", value: String(query.latitude)),
             URLQueryItem(name: "lng", value: String(query.longitude)),
             URLQueryItem(name: "dist", value: String(query.radiusKilometers)),
-            URLQueryItem(name: "back", value: String(DiscoverQuery.lookbackDays)),
+            URLQueryItem(name: "back", value: String(query.daysBack)),
             URLQueryItem(name: "sort", value: "date"),
             URLQueryItem(name: "cat", value: "species"),
             URLQueryItem(name: "includeProvisional", value: "false"),
@@ -170,7 +170,7 @@ struct EBirdDiscoverRepository: DiscoverRepository {
     // sort=date response order for recency, including ordering within a day;
     // interpret only its DATE locally for window validation.
     // Never invent a timezone or drop today's sightings while travelling.
-    static func observationDate(_ value: String, relativeTo now: Date) -> Date? {
+    static func observationDate(_ value: String, relativeTo now: Date, daysBack: Int = DiscoverQuery.defaultLookbackDays) -> Date? {
         let day = String(value.prefix(10))
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -181,7 +181,7 @@ struct EBirdDiscoverRepository: DiscoverRepository {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         let difference = calendar.dateComponents([.day], from: observedDay, to: calendar.startOfDay(for: now)).day ?? 100
-        guard (-1...DiscoverQuery.lookbackDays).contains(difference) else { return nil }
+        guard (-1...DiscoverQuery.validLookbackDays(daysBack)).contains(difference) else { return nil }
         return now.addingTimeInterval(-Double(max(0, difference)) * 86400)
     }
 }
@@ -258,7 +258,7 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         var parts = URLComponents(string: "https://observation.org/api/v1/observations/around-point/")!
         parts.queryItems = [
             URLQueryItem(name: "coordinates", value: "\(query.latitude),\(query.longitude)"),
-            URLQueryItem(name: "days", value: String(DiscoverQuery.lookbackDays)),
+            URLQueryItem(name: "days", value: String(query.daysBack)),
             URLQueryItem(name: "end_date", value: formatter.string(from: query.now)),
             URLQueryItem(name: "radius", value: String(Int(min(10, query.radiusKilometers) * 1000))),
             URLQueryItem(name: "species_group", value: "1"),
@@ -271,11 +271,11 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         return request
     }
     func reports(for query: DiscoverQuery) async throws -> DiscoverDataset {
-        let key = "\(DiscoverQuery.lookbackDays),\(query.latitude),\(query.longitude),\(query.radiusKilometers),\(Int(query.now.timeIntervalSince1970 / 300))"
+        let key = "\(query.daysBack),\(query.latitude),\(query.longitude),\(query.radiusKilometers),\(Int(query.now.timeIntervalSince1970 / 300))"
         if cacheEnabled, let cached = await ObservationOrgCache.shared.read(key) { return cached }
         let lookup = index()
-        // The shared seven-day window needs one query, not three overlapping
-        // fortnight queries. Larger supported pages avoid per-page round trips.
+        // The selected 1–14 day window needs one query. Larger supported pages
+        // avoid per-page round trips.
         let records = try await pages(query: query)
         var seen = Set<Int>()
         var reports: [NearbyReport] = []
@@ -289,7 +289,7 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
                   let point = record.point, point.coordinates.count == 2,
                   let bird = lookup.species(code: "", scientificName: record.species_detail.scientific_name),
                   let url = record.url else { continue }
-            let date = dates[record.date] ?? EBirdDiscoverRepository.observationDate(record.date, relativeTo: query.now)
+            let date = dates[record.date] ?? EBirdDiscoverRepository.observationDate(record.date, relativeTo: query.now, daysBack: query.daysBack)
             guard let date else { continue }
             dates[record.date] = date
             reports.append(NearbyReport(checklistID: "observation:\(record.id)", species: bird,

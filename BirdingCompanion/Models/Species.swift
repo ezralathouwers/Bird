@@ -39,7 +39,7 @@ struct MockSpeciesRepository: SpeciesRepository {
 
 
 // Five assets per species; the classic portrait is reserved for compact contexts.
-enum SpeciesMediaRole: String, CaseIterable, Sendable {
+enum SpeciesMediaRole: String, CaseIterable, Hashable, Sendable {
     case classic = "primary"
     case dynamic = "dynamic"
     case front = "front"

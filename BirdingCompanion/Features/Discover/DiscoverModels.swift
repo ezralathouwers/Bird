@@ -13,7 +13,8 @@ enum DiscoverFilter: String, CaseIterable {
 }
 
 struct DiscoverQuery: Sendable {
-    static let lookbackDays = 7
+    static let defaultLookbackDays = 3
+    static func validLookbackDays(_ value: Int) -> Int { min(14, max(1, value)) }
     static let nearbyRadiusKilometers: Double = 5
     static func validRadius(_ value: Double) -> Double {
         value.isFinite ? min(50, max(1, value)) : nearbyRadiusKilometers
@@ -22,7 +23,14 @@ struct DiscoverQuery: Sendable {
     let longitude: Double
     let now: Date
     let radiusKilometers: Double
-    var start: Date { now.addingTimeInterval(-Double(Self.lookbackDays) * 24 * 60 * 60) }
+    let daysBack: Int
+    init(latitude: Double, longitude: Double, now: Date, radiusKilometers: Double,
+         daysBack: Int = DiscoverQuery.defaultLookbackDays) {
+        self.latitude = latitude; self.longitude = longitude; self.now = now
+        self.radiusKilometers = radiusKilometers
+        self.daysBack = Self.validLookbackDays(daysBack)
+    }
+    var start: Date { now.addingTimeInterval(-Double(daysBack) * 24 * 60 * 60) }
 }
 
 // One species on one reviewed checklist, not the number of individual birds.
@@ -153,7 +161,7 @@ struct DemoDiscoverRepository: DiscoverRepository {
         let reports = DiscoverFixtures.catalog.enumerated().flatMap { index, species in
             (0..<(12 - index * 2)).map { number in
                 NearbyReport(checklistID: "demo-\(index)-\(number)", species: species,
-                    observedAt: query.now.addingTimeInterval(-Double(number + 1) * 12 * 3600),
+                    observedAt: query.now.addingTimeInterval(-Double(number + 1) / 12 * Double(query.daysBack) * 86400),
                     latitude: query.latitude, longitude: query.longitude)
             }
         }
