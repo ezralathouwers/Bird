@@ -1,3 +1,5 @@
+> PAUSED BY USER — 23 November 2026: Cetti's zanger is finished. Do not generate more illustrations or re-enable the recurring task until the user explicitly says to resume. This overrides earlier continue-until-limit instructions.
+
 # Illustration automation progress
 
 Run date: 23 November 2026. Exclusive lock: /tmp/birder-illustrations.lock.
@@ -311,3 +313,28 @@ Active inventory: 140 paired species; 11033 queued, 22066 missing active images.
 
 Checkpoint AR — 23 November 2026: installed primary+dynamic Cetti's zanger (birdnet-v3:BN01819). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AR.json. Existing assets unchanged.
 Active inventory: 141 paired species; 11032 queued, 22064 missing active images. 630 installed roles overall. No tool-reported quota/reset time. Next: PAUSED by user after Cetti's zanger. Do not generate more or re-enable automation until user explicitly says resume. All twelve requested priority species pairs now installed.. Continue generation; a checkpoint does not end the authorized work.
+
+## User-requested pause after AR — 23 November 2026
+
+All twelve requested priority species now have primary+dynamic installed:
+notenkraker, Turkse tortel, sperwer, torenvalk, koperwiek, stormmeeuw,
+geelpootmeeuw, roek, spreeuw, zwarte kraai, slechtvalk and Cetti's zanger.
+Spotvogel and kneu were also completed before the priority list arrived.
+This resumed execution installed 28 images for 14 species (AE–AR).
+
+Stopped ONLY because the user explicitly requested pausing after Cetti's zanger.
+No tool-reported quota or reset time occurred. Recurring automation
+Automation_2fee652d94a081919ec6103b15da4d64 is confirmed is_enabled=false.
+Do not resume generation until the user asks. Suggested first general queue
+pair when authorized again: boompieper (Anthus trivialis, birdnet-v3:BN00625).
+
+Current inventory: 630 roles; 141 species have primary+dynamic, 11,032 queued,
+22,064 active images missing. Full five-role inventory: 55,235 missing roles;
+front/rear/flight remain intentionally deferred.
+
+Final checks passed: all 28 AE–AR originals match retained sources, manifest
+and hash-bound reviews; PNG dimensions/alpha/provenance; twelve priority pairs
+present; all 602 pre-resumption records unchanged; artwork additions only;
+queue totals agree; git diff --check. Native Xcode build/rendering and
+independent expert review remain unverified. Superseded torenvalk/roek dynamics
+remain in rejection log and original source files, with replacement provenance.
