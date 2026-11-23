@@ -11054,7 +11054,7 @@ birdnet-v3:BN01595,Caprimulgus mahrattensis,Sykesnachtzwaluw,plains-general,Open
 birdnet-v3:BN09814,Syrrhaptes tibetanus,Tibetaans steppehoen,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01385,Calandrella acutirostris,Tibetaanse leeuwerik,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00263,Alaudala heinei,Turkestaanse kortteenleeuwerik,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN09623,Streptopelia decaocto,Turkse tortel,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN09623,Streptopelia decaocto,Turkse tortel,plains-general,Open vlakte,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN08909,Rhodospiza obsoleta,Vale woestijnvink,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00258,Alauda arvensis,Veldleeuwerik,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09218,Sephanoides sephaniodes,Vuurkroonkolibrie,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
