@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN00028",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-b2952dd7-9607-48d8-894e-65f9a7882cb6.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "b3c1a7123826e594a5f61a50afc8e9c6f6ec51bd51a57e50e6013167cb3b710e",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, slate upperparts/rust cheek and transverse underside barring, yellow orange eye, long banded gray tail and yellow slender legs. One head/hooked bill, two folded wings far side occluded and two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN00028",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-e26f7952-8116-4de5-9f3b-80cfe011c6d7.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "0bb00178ec110f0f5e00d4a861170f578fa04c38e93358996f01a23bbb1cd22e",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Alert on broken mossy stump with head toward viewer, one head/central hooked bill, two folded wings far side occluded and two gripping feet. Whole tail inside frame; stump naturally broken below bird and base fades transparent, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

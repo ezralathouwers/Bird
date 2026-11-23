@@ -4969,7 +4969,7 @@ birdnet-v3:BN02531,Contopus cooperi,Sparrenpiewie,forest-general,Bos,,primary;dy
 birdnet-v3:BN09263,Setophaga fusca,Sparrenzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03227,Dicrurus remifer,Spateldrongo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01471,Camarhynchus pallidus,Spechtvink,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN00028,Accipiter nisus,Sperwer,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN00028,Accipiter nisus,Sperwer,forest-general,Bos,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN02884,Curruca nisoria,Sperwergrasmus,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08789,Ramsayornis fasciatus,Sperwerhoningeter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10215,Tolmomyias assimilis,Spiegelbreedbektiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
