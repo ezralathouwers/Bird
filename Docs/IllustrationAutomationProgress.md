@@ -17,3 +17,9 @@ Inventory after checkpoint A: 485 role assets, 97 complete species,
 Next work: select the next habitat-grouped forest batch; never overwrite approved
 assets. No image-generation limit or retry time has been reported so far.
 Expert anatomy and native iPhone appearance remain unverified.
+
+Checkpoint B installed: all five male goudvink (Pyrrhula pyrrhula) roles.
+Mapping/reviews: IllustrationAutomationBatch20261123B.json.
+Inventory: 490 roles, 98 complete species, 11,075 queued, 55,375 missing roles.
+No image-generation limit/reset time has been reported. Next: Bonte vliegenvanger
+(Ficedula hypoleuca, birdnet-v3:BN03860), all roles missing.
