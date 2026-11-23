@@ -6831,7 +6831,7 @@ birdnet-v3:BN02129,Cinclodes aricomae,Koningswipstaart,woodland-general,Open bos
 birdnet-v3:BN02158,Cinclosoma clarum,Koperrugkwartellijster,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08311,Psilopogon haemacephalus,Koperslager,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10374,Trogon ambiguus,Koperstaarttrogon,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN10466,Turdus iliacus,Koperwiek,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN10466,Turdus iliacus,Koperwiek,woodland-general,Open bos,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN03457,Elaenia parvirostris,Kortsnavelelenia,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07280,Pericrocotus brevirostris,Kortsnavelmenievogel,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07755,Pipilo ocai,Kraagtowie,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

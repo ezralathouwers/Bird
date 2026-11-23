@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN10466",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-81d98922-de33-4d5a-92a8-9592aa3a0438.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "272cdc2cc7ccd6b367526a5c20a9b61fdb408fc9002746438753add40eb4c47a",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, creamy eyebrow/pale moustache, streaked breast and rusty flank patch, brown back/wings and pink brown legs. One head/bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN10466",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-4e55bcb3-3345-46b9-8ac2-25c7542dba8a.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "4c6c12f50d0e71714af0ce242284fdcb5f66d4ab293797ca1f254217c41fe76f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Hawthorn berry feeding, one head/open bill, two folded wings far side occluded and two gripping feet. Head/bill/berry inside frame with narrow uncut right margin; low twig naturally ends/fades, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
