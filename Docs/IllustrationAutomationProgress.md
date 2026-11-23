@@ -73,3 +73,9 @@ birdnet-v3:BN01800) roles. Mapping/reviews: IllustrationAutomationBatch20261123J
 Inventory: 530 roles, 106 complete species, 11,067 queued, 55,335 missing roles.
 No image-generation limit/reset time has been reported. Next: buizerd
 (Buteo buteo, birdnet-v3:BN01300), all five roles missing.
+
+Checkpoint K installed: all five adult intermediate brown-morph buizerd
+(Buteo buteo, birdnet-v3:BN01300) roles. Mapping/reviews: IllustrationAutomationBatch20261123K.json.
+Inventory: 535 roles, 107 complete species, 11,066 queued, 55,330 missing roles.
+No image-generation limit/reset time has been reported. Next: fluiter
+(Phylloscopus sibilatrix, birdnet-v3:BN07647), all five roles missing.
