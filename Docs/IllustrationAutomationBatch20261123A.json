@@ -1,0 +1,68 @@
+[
+  {
+    "id": "birdnet-v3:BN07817",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-97fc3967-acdc-42b6-9fce-9bd9a2cf24ff.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "f032ac206068d9bd67520063fa35e957a5b5fedb374bef402a85eb945df66c35",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "One stretched neck, one spoon bill, two white underwings, two trailing legs; centered underside; alpha composite inspected. Whole original and ivory alpha-composite viewed; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  },
+  {
+    "id": "birdnet-v3:BN07850",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-727afa13-1016-4c2c-b8a9-7a88e223f1c6.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "5febd8795aa956ea08ad6c63926ccf533386cf2b74fe4272fef98629e6069407",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Frontal body with head turned slightly to expose the single decurved bill; two folded wings and legs; chestnut breast, subdued bronze wing coverts. Whole original and ivory alpha-composite viewed; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07850",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-f567de9a-480b-425d-8302-e1b7c8411e77.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "f040234f11f0698472ac27f855468bebb256d75188ff1a7874868a213d54923c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Strict rear view; head points away with bill and eyes hidden; two folded wings, two legs, short dark tail. Whole original and ivory alpha-composite viewed; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN07850",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-efa610cd-a5fe-4d98-af6c-690266c3c439.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "870228de0a213be24ff87350f06fbe49cb3dd043e9459f687d7375632548ef38",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Ventral view, one extended neck/head/decurved bill, two extended dark underwings, chestnut belly and two trailing legs. Whole original and ivory alpha-composite viewed; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]

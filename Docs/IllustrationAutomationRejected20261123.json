@@ -1,0 +1,7 @@
+[
+  {
+    "path": "/workspace/generated_images/exec-231f7b65-5164-4359-8bd8-115289d59f11.png",
+    "sha256": "42d874566068c0b01ebcb4f45b3e4141381bfe72b4da8cc8e34a2c0a210a232f",
+    "reason": "Superseded by requested margin/transparency clarification. Initial tool preview appeared haloed; actual alpha exterior later checked and not asserted opaque. Not installed."
+  }
+]

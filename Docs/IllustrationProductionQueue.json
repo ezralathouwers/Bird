@@ -1,10 +1,10 @@
 {
   "catalogRecords": 11173,
   "targetImageRoles": 55865,
-  "availableImageRoles": 481,
-  "completeSpeciesAssets": 95,
-  "queuedSpecies": 11078,
-  "missingImageRoles": 55384,
+  "availableImageRoles": 485,
+  "completeSpeciesAssets": 97,
+  "queuedSpecies": 11076,
+  "missingImageRoles": 55380,
   "queuedByHabitat": {
     "forest-general": 6371,
     "woodland-general": 923,
@@ -17,7 +17,7 @@
     "grassland-steppe": 717,
     "desert": 55,
     "scrub-general": 1112,
-    "wetland-general": 569,
+    "wetland-general": 567,
     "coast-general": 264,
     "rockland-general": 154,
     "plains-general": 116,
