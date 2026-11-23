@@ -11041,7 +11041,7 @@ birdnet-v3:BN00552,Anthoscopus punctifrons,Sahelkapokmees,plains-general,Open vl
 birdnet-v3:BN00640,Antrostomus salvini,Salvinnachtzwaluw,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03086,Delichon lagopodum,Siberische huiszwaluw,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00602,Anthus japonicus,Siberische waterpieper,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN03828,Falco peregrinus,Slechtvalk,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN03828,Falco peregrinus,Slechtvalk,plains-general,Open vlakte,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN07153,Passer cordofanicus,Soedanese mus,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09666,Struthio molybdophanes,Somalische struisvogel,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00989,Athene noctua,Steenuil,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

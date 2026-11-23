@@ -303,3 +303,7 @@ Active inventory: 138 paired species; 11035 queued, 22070 missing active images.
 
 Checkpoint AP — 23 November 2026: installed primary+dynamic zwarte kraai (birdnet-v3:BN02619). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AP.json. Existing assets unchanged.
 Active inventory: 139 paired species; 11034 queued, 22068 missing active images. 626 installed roles overall. No tool-reported quota/reset time. Next: user priority slechtvalk BN03828, Cetti's zanger BN01819, then general primary+dynamic queue. Continue generation; a checkpoint does not end the authorized work.
+
+
+Checkpoint AQ — 23 November 2026: installed primary+dynamic slechtvalk (birdnet-v3:BN03828). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AQ.json. Existing assets unchanged.
+Active inventory: 140 paired species; 11033 queued, 22066 missing active images. 628 installed roles overall. No tool-reported quota/reset time. Next: Cetti's zanger BN01819 primary+dynamic; then PAUSE at user's explicit request until user says resume. Continue generation; a checkpoint does not end the authorized work.

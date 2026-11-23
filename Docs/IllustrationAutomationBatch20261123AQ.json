@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN03828",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-f1553ffe-b267-4012-970b-6b4ae59c8359.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "1634e40c6ed068c6562f73987cd020de2472bd773eb583deb913976297448804",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing falcon only, slate upperparts/dark hood and broad moustache, white cheek/throat, cream breast spots and horizontal lower barring, yellow cere/eye ring/legs. One head/hooked bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN03828",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-4ad0813c-8060-40ba-8bf8-b376baeb2db8.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "6c7d71e9a72ad73c0eb9b424377ed1caa613e90dcedd84d5cca8a64af5b813ba",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Scanning from low limestone ledge, one head/hooked bill, two folded wings far side occluded, two gripping feet. All head/bill/tail parts inside frame, ledge ends/fades below bird with no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
