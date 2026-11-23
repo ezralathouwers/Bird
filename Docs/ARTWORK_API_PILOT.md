@@ -181,3 +181,31 @@ in dezelfde opdracht. De GET-controle in deze omgeving bereikte HTTP 401.
 Dat is geen test van de verbinding op de Mac van de gebruiker en geen betaalde
 API-proef. Nieuwe generatie blijft uit totdat de storing en oude uitkomst zijn
 nagekeken.
+
+## Certificaatfout op de Mac bevestigd
+
+De gebruiker stuurde daarna de diagnose met `URLError`,
+`SSLCertVerificationError` en `kind: tls_certificate`. De certificaatcontrole
+faalt dus daadwerkelijk op die Mac, onafhankelijk van sleutel of beeldprompt.
+Dit bevestigt de verbindingsfout, maar reconcilieert op zichzelf niet de oudere
+checkpoint of facturering van die eerdere aanvraag.
+
+`Scripts/Herstel-API-certificaten.zip` is een klein herstelpakket. De launcher
+vindt standaard de oorspronkelijke projectdownload `Bird-74a7fb0…`; als die
+verplaatst is, verschijnt op macOS een mapkiezer. Het pakket installeert certifi
+in uitsluitend de lokale API-proefvenv, bewaart kopieën van de twee oude
+proefscripts en vervangt ze door de versie met aanvullende vertrouwde
+CA-certificaten. Daarna wordt uitsluitend de unauthenticated GET-controle
+uitgevoerd, zonder sleutel en zonder beeldgeneratie. HTTPS-verificatie wordt
+niet uitgeschakeld en systeemcertificaten worden niet aangepast.
+
+Bestaande `state.json`, gemaakte beelden en de proefrecipe blijven ongewijzigd.
+Ook na een geslaagde verbindingscontrole blijft de oude onbekende aanvraag
+geblokkeerd voor automatische herhaling; controle van API Usage/herstel van die
+checkpoint is een afzonderlijke volgende stap. Er is hier geen nieuwe betaalde
+API-aanvraag verstuurd.
+
+Drie aanvullende offline hersteltests slagen: behoud van checkpoint/beelden en
+backups, weigeren van verkeerde/onvolledige mappen en alleen CA-installatie plus
+`--diagnose`, zonder `--execute`. De herstelflow op de Mac zelf blijft te bevestigen
+met de uitkomst van de gebruiker.
