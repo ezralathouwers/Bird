@@ -5,7 +5,7 @@ No photos, descriptions or sound recordings are imported. Input downloads are se
 import argparse, csv, hashlib, io, json, pathlib, zipfile
 
 FIELDS = 'sequence.rank.order.family.familyEn.sciName.authority.citation.name.nameClements.nameBirdLife.proposalNumber.decisionSummary.range.extinct.iucn.birdLifeUrl.cornellCode.bowUrl.avibaseId.genusGender.typeSpecies.typeLocality.originalDescriptionTitle.originalDescriptionUrl.protonym'.split('.')
-DUTCH_NAME_OVERRIDES = {'birdnet-v3:BN09928': 'Zwartkopvlagstaartijsvogel', 'avilist:93d88f0a': 'Norfolkbrilvogel'}
+DUTCH_NAME_OVERRIDES = {'birdnet-v3:BN09928': 'Zwartkopvlagstaartijsvogel', 'avilist:93d88f0a': 'Norfolkbrilvogel', 'birdnet-v3:BN09426': 'Filippijnse Slangenarend', 'birdnet-v3:BN02895': 'Vietnamese Cutia', 'birdnet-v3:BN02843': 'Leimaskertinamoe', 'birdnet-v3:BN08997': 'Streepvoorhoofdmierklauwier', 'birdnet-v3:BN10778': 'Gestreepte pitpit', 'birdnet-v3:BN09415': 'Westelijke hemispingus'}
 
 SAMPLE_IDS = {'Turdus merula':'sample-turdus-merula','Parus major':'sample-parus-major',
  'Erithacus rubecula':'sample-erithacus-rubecula','Cyanistes caeruleus':'sample-cyanistes-caeruleus',

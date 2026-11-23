@@ -1,18 +1,14 @@
 id,scientificName,englishName,dutchName,extinction,finding
-birdnet-v3:BN02843,Crypturellus resonans,Slaty-masked Tinamou,,,missing Dutch; English display fallback
 birdnet-v3:BN06793,Opisthocomus hoazin,Hoatzin,Hoatzin,,same spelling; not automatically a missing translation
 birdnet-v3:BN04045,Gallirallus australis,Weka,Weka,,same spelling; not automatically a missing translation
 birdnet-v3:BN09142,Scopus umbretta,Hamerkop,Hamerkop,,same spelling; not automatically a missing translation
 birdnet-v3:BN06676,Nyctidromus albicollis,Pauraque,Pauraque,,same spelling; not automatically a missing translation
-birdnet-v3:BN09426,Spilornis holospilus,Philippine Serpent Eagle,,,missing Dutch; English display fallback
 birdnet-v3:BN09982,Terathopius ecaudatus,Bateleur,Bateleur,,same spelling; not automatically a missing translation
 birdnet-v3:BN09847,Tachyspiza badia,Shikra,Shikra,,same spelling; not automatically a missing translation
 birdnet-v3:BN09642,Strigops habroptilus,Kakapo,Kakapo,,same spelling; not automatically a missing translation
 birdnet-v3:BN06548,Nestor notabilis,Kea,Kea,,same spelling; not automatically a missing translation
-birdnet-v3:BN08997,Sakesphorus pulchellus,Streak-fronted Antshrike,,,missing Dutch; English display fallback
 birdnet-v3:BN08567,Ptilostomus afer,Piapiac,Piapiac,,same spelling; not automatically a missing translation
 birdnet-v3:BN05617,Malia grata,Malia,Malia,,same spelling; not automatically a missing translation
-birdnet-v3:BN02895,Cutia legalleni,Vietnamese Cutia,,,missing Dutch; English display fallback
 birdnet-v3:BN04342,Grandala coelicolor,Grandala,Grandala,,same spelling; not automatically a missing translation
 birdnet-v3:BN10900,Zoothera heinrichi,Geomalia,Geomalia,,same spelling; not automatically a missing translation
 birdnet-v3:BN01689,Catharus fuscescens,Veery,Veery,,same spelling; not automatically a missing translation
@@ -25,6 +21,5 @@ birdnet-v3:BN05592,Magumma parva,Anianiau,Anianiau,,same spelling; not automatic
 birdnet-v3:BN05515,Loxops caeruleirostris,Akekee,Akekee,,same spelling; not automatically a missing translation
 birdnet-v3:BN03275,Dolichonyx oryzivorus,Bobolink,Bobolink,,same spelling; not automatically a missing translation
 birdnet-v3:BN09454,Spiza americana,Dickcissel,Dickcissel,,same spelling; not automatically a missing translation
-birdnet-v3:BN10778,Xenodacnis petersi,Streaked Dacnis,,,missing Dutch; English display fallback
 birdnet-v3:BN06523,Nephelornis oneilli,Pardusco,Pardusco,,same spelling; not automatically a missing translation
-birdnet-v3:BN09415,Sphenopsis ochracea,Western Hemispingus,,,missing Dutch; English display fallback
+birdnet-v3:BN02895,Cutia legalleni,Vietnamese Cutia,Vietnamese Cutia,,same spelling; Dutch name explicitly confirmed by user

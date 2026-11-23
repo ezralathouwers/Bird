@@ -41,7 +41,7 @@ class CatalogVisibilityTests(unittest.TestCase):
         by_id = {r['id']: r for r in self.rows}
         for species_id, name in self.metadata['dutchNameOverrides'].items():
             self.assertEqual(by_id[species_id]['dutchName'], name)
-        self.assertEqual(len(self.metadata['dutchNameOverrides']), 2)
+        self.assertEqual(len(self.metadata['dutchNameOverrides']), 8)
 
 
 if __name__ == '__main__':

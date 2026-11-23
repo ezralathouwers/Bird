@@ -4,8 +4,8 @@
   "records": 11173,
   "soundSpecies": 9788,
   "withoutSound": 1385,
-  "missingDutch": 156,
-  "catalogSHA256": "9ed465ee48d984141bed8912a47556ed4d4f9bf03ee26470f9c021b540fcd521",
+  "missingDutch": 150,
+  "catalogSHA256": "fdb681a62f4363a0c402a358a042647a000676cb061494992b0ba71a82a320f1",
   "license": "CC BY-SA 4.0 (derived catalog); AviList source CC BY 4.0",
   "sources": [
     {
@@ -24,6 +24,12 @@
   ],
   "dutchNameOverrides": {
     "birdnet-v3:BN09928": "Zwartkopvlagstaartijsvogel",
-    "avilist:93d88f0a": "Norfolkbrilvogel"
+    "avilist:93d88f0a": "Norfolkbrilvogel",
+    "birdnet-v3:BN09426": "Filippijnse Slangenarend",
+    "birdnet-v3:BN02895": "Vietnamese Cutia",
+    "birdnet-v3:BN02843": "Leimaskertinamoe",
+    "birdnet-v3:BN08997": "Streepvoorhoofdmierklauwier",
+    "birdnet-v3:BN10778": "Gestreepte pitpit",
+    "birdnet-v3:BN09415": "Westelijke hemispingus"
   }
 }

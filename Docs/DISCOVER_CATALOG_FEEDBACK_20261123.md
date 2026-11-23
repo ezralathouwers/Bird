@@ -74,3 +74,11 @@ automatically missing translations. See [SpeciesCatalogNameAudit.csv](SpeciesCat
   pending on macOS/iPhone.
 
 Illustration generation remains paused at the user's request.
+
+## Dutch names follow-up — 23 November 2026
+
+The user supplied Dutch names for all six remaining active birds. They are now
+applied verbatim and pinned in the builder/provenance overrides. No active bird
+remains without a Dutch name. Vietnamese Cutia is explicitly confirmed in both
+languages, bringing the same-spelling audit to 24 active species. Historical
+extinct source rows may still lack translations. IDs and saved records are unchanged.
