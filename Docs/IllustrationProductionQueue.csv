@@ -8892,7 +8892,7 @@ birdnet-v3:BN09011,Saltator maximus,Bontkeelsaltator,scrub-general,Struweel,,pri
 birdnet-v3:BN03332,Dryoscopus senegalensis,Bospoederdonsklauwier,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00070,Acrocephalus palustris,Bosrietzanger,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06507,Neopsephotus bourkii,Bourkeparkiet,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN02872,Curruca curruca,Braamsluiper,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN02872,Curruca curruca,Braamsluiper,scrub-general,Struweel,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 avilist:10787a38,Riccordia bracei,Brace's Emerald,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09103,Schoenicola platyurus,Breedstaartzanger,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09460,Spizella breweri,Brewergors,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

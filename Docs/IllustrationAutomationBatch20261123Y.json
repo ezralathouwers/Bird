@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN02872",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-19572351-96ca-4c58-9fc5-8be9f831230f.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "10ebab0c8b28ad40c4e861bf756d0201f841b867b6a006ff4ebeea17929e39aa",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, gray crown/darker earcoverts, clean white throat, gray brown wings without rufous panel, pale underside and dark legs. One head/bill, two folded wings far side occluded, two natural feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN02872",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-9c87e9b8-c516-4819-b6fc-e6782bc99019.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "2b008fd2bbe2109a8113b2ddad18d83fc9057d47f342f96b5ac5cdd206c64cbe",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Insect-gleaning on blackthorn, gray head and dark cheek, white throat, two folded wings far side occluded, one head/bill and two gripping feet. Twig naturally ends/fades below crown, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

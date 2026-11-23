@@ -189,3 +189,10 @@ Active inventory: 121 paired species, 11,052 queued, 22,104 missing images;
 590 installed roles overall. This continuation added eight images for four
 new species. No generation quota/reset time reported. Next: braamsluiper
 (Curruca curruca, birdnet-v3:BN02872), primary+dynamic.
+
+Checkpoint Y — installed primary+dynamic braamsluiper (Curruca curruca,
+birdnet-v3:BN02872), original PNGs and ivory composites individually inspected;
+reviews in IllustrationAutomationBatch20261123Y.json. Total 592 installed roles;
+122 species paired, 11,051 active queued species, 22,102 active images missing.
+No quota/reset reported. Next scrub species: grasmus
+(Curruca communis, birdnet-v3:BN02869), primary+dynamic.
