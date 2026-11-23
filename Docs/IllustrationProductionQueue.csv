@@ -3318,7 +3318,7 @@ birdnet-v3:BN07759,Pipraeidea melanonota,Maskertangare,forest-general,Bos,,prima
 birdnet-v3:BN10162,Tityra semifasciata,Maskertityra,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10391,Trogon personatus,Maskertrogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN10386,Trogon massena,Massenatrogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN07964,Poecile montanus,Matkop,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN07964,Poecile montanus,Matkop,forest-general,Bos,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 avilist:8904189e,Loxops ochraceus,Maui Akepa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 avilist:43f17fd6,Hemignathus affinis,Maui Nukupuu,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 avilist:ca33f844,Akialoa lanaiensis,Maui-nui Akialoa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread

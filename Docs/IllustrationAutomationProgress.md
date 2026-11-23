@@ -55,3 +55,9 @@ Mapping/reviews: IllustrationAutomationBatch20261123G.json.
 Inventory: 515 roles, 103 complete species, 11,070 queued, 55,350 missing roles.
 No image-generation limit/reset time has been reported. Next: matkop
 (Poecile montanus, birdnet-v3:BN07964), all five roles missing.
+
+Checkpoint H installed: all five adult matkop (Poecile montanus,
+birdnet-v3:BN07964) roles. Mapping/reviews: IllustrationAutomationBatch20261123H.json.
+Inventory: 520 roles, 104 complete species, 11,069 queued, 55,345 missing roles.
+No image-generation limit/reset time has been reported. Next: zwarte specht
+(Dryocopus martius, birdnet-v3:BN03323), all five roles missing.
