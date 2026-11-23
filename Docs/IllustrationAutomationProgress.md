@@ -98,3 +98,9 @@ One rejected flight had exaggerated horn-like bill tips; replacement reviewed/im
 Inventory: 550 roles, 110 complete species, 11,063 queued, 55,315 missing roles.
 No image-generation limit/reset time has been reported. Next: grote lijster
 (Turdus viscivorus, birdnet-v3:BN10532), all five roles missing.
+
+Checkpoint O installed: all five adult grote lijster (Turdus viscivorus,
+birdnet-v3:BN10532) roles. Mapping/reviews: IllustrationAutomationBatch20261123O.json.
+Inventory: 555 roles, 111 complete species, 11,062 queued, 55,310 missing roles.
+No image-generation limit/reset time has been reported. Next: gekraagde roodstaart
+(Phoenicurus phoenicurus, birdnet-v3:BN07524), all five roles missing.
