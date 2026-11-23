@@ -85,3 +85,9 @@ birdnet-v3:BN07647) roles. Mapping/reviews: IllustrationAutomationBatch20261123L
 Inventory: 540 roles, 108 complete species, 11,065 queued, 55,325 missing roles.
 No image-generation limit/reset time has been reported. Next: vuurgoudhaan
 (Regulus ignicapilla, birdnet-v3:BN08798), all five roles missing.
+
+Checkpoint M installed: all five adult male vuurgoudhaan (Regulus ignicapilla,
+birdnet-v3:BN08798) roles. Mapping/reviews: IllustrationAutomationBatch20261123M.json.
+Inventory: 545 roles, 109 complete species, 11,064 queued, 55,320 missing roles.
+No image-generation limit/reset time has been reported. Next: kruisbek
+(Loxia curvirostra, birdnet-v3:BN05505), all five roles missing.

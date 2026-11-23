@@ -1,0 +1,85 @@
+[
+  {
+    "id": "birdnet-v3:BN08798",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-310d50a9-1cf2-4a83-8b1e-1041e35a8dfd.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "a9d4496e1cc79f8a4ebc2e6bdb3dbb9df95498a932733786e9392f324152c5ca",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing bird only, two folded wings with far wing occluded, one head/bill and two feet; orange male crest, white supercilium/black eye stripe, pale wingbars. Full original and ivory alpha-composite individually inspected; expert/native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN08798",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-b85b2f9b-5e2c-4452-b5fb-78587ae9b97b.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "664cfdb666bc1c23b910a565395f2ccd0b8dd9769f51326c6f08138db6139b44",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Foraging on spruce, two folded wings with far side occluded, one head/bill and two gripping feet; foliage below head, naturally ended twig with no top crop. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN08798",
+    "role": "front",
+    "path": "/workspace/generated_images/exec-b78ff6f2-6d76-4be8-96d1-4a9f36a178ae.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "f16ed422f919841c9012f4350a8d2308741cca2bb94b4d41443ac9762529682f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Straight front with single central bill, two folded wings and feet, white supercilia/black stripes and orange crest. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN08798",
+    "role": "rear",
+    "path": "/workspace/generated_images/exec-c9c41a24-4788-4668-8087-01dfa0ef5c38.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "413cf36ba888e6a328953f902257f44c75ced640532988f6a3a762768db80bb2",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Strict rear, hidden bill/eyes, two folded wings and feet, orange crown stripe bordered black, olive back and two wingbars. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    }
+  },
+  {
+    "id": "birdnet-v3:BN08798",
+    "role": "flight",
+    "path": "/workspace/generated_images/exec-e3df3cb9-e2c0-474a-bbd3-69cbb0de68de.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "3ccc9298e64644f57bd5198d1c605c130a0c8551502d7d9d69325eb018e92d8c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Centered ventral, two spread wings with pale coverts/dark gray remiges, creamy belly, head edge stripes and orange crown rim only, one head/bill/two tucked feet. Full original and ivory alpha-composite individually inspected; expert/native review pending."
+    },
+    "projection": "centered-ventral-spread"
+  }
+]
