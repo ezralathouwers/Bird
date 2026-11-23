@@ -79,3 +79,9 @@ Checkpoint K installed: all five adult intermediate brown-morph buizerd
 Inventory: 535 roles, 107 complete species, 11,066 queued, 55,330 missing roles.
 No image-generation limit/reset time has been reported. Next: fluiter
 (Phylloscopus sibilatrix, birdnet-v3:BN07647), all five roles missing.
+
+Checkpoint L installed: all five adult fluiter (Phylloscopus sibilatrix,
+birdnet-v3:BN07647) roles. Mapping/reviews: IllustrationAutomationBatch20261123L.json.
+Inventory: 540 roles, 108 complete species, 11,065 queued, 55,325 missing roles.
+No image-generation limit/reset time has been reported. Next: vuurgoudhaan
+(Regulus ignicapilla, birdnet-v3:BN08798), all five roles missing.
