@@ -63,12 +63,18 @@ enum SpeciesMediaRole: String, CaseIterable, Sendable {
 
 
 enum SpeciesCatalogSearch {
+    private static func normalized(_ value: String) -> String {
+        value.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { !$0.isEmpty }.joined(separator: " ")
+    }
+
     static func results(for query: String, in catalog: [Species]) -> [Species] {
-        let term = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        let terms = normalized(query).split(separator: " ").map(String.init)
         return catalog.filter { bird in
-            term.isEmpty || ([bird.dutchName, bird.englishName, bird.scientificName] + bird.aliases).contains {
-                $0.range(of: term, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE")) != nil
-            }
+            if terms.isEmpty { return true }
+            let names = ([bird.dutchName, bird.englishName, bird.scientificName] + bird.aliases).map(normalized)
+            return terms.allSatisfy { term in names.contains { $0.contains(term) } }
         }.sorted {
             let result = $0.dutchName.compare($1.dutchName, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
             return result == .orderedSame ? $0.id < $1.id : result == .orderedAscending

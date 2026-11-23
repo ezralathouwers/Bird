@@ -351,3 +351,38 @@ struct BirdTextField: View {
             .environment(\.colorScheme, .light)
     }
 }
+
+// A moving content anchor resolves against the fixed viewport in the same layout
+// pass. Recreating only the scroll view on query changes clears stale lazy-row
+// geometry/offsets without replacing the focused search field above it.
+struct CatalogResultsScroll<Content: View>: View {
+    let resetKey: String
+    private let content: Content
+    init(resetKey: String, @ViewBuilder content: () -> Content) {
+        self.resetKey = resetKey
+        self.content = content()
+    }
+    var body: some View {
+        ScrollView {
+            content.anchorPreference(key: CatalogContentBounds.self, value: .bounds) { $0 }
+        }
+        .scrollDismissesKeyboard(.interactively)
+        .overlayPreferenceValue(CatalogContentBounds.self) { bounds in
+            GeometryReader { viewport in
+                let top = bounds.map { viewport[$0].minY } ?? 0
+                LinearGradient(colors: [FieldGuideTheme.ivory, FieldGuideTheme.ivory.opacity(0)],
+                               startPoint: .top, endPoint: .bottom)
+                    .frame(height: 24)
+                    .opacity(min(1, max(0, -top / 12)))
+            }.allowsHitTesting(false).accessibilityHidden(true)
+        }
+        .id(resetKey)
+    }
+}
+
+private struct CatalogContentBounds: PreferenceKey {
+    static var defaultValue: Anchor<CGRect>? { nil }
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
+        value = nextValue() ?? value
+    }
+}

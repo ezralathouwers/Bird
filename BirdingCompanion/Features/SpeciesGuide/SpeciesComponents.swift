@@ -432,11 +432,15 @@ struct SpeciesCatalogSourcesView: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
-            ScrollView {
+            VStack(spacing: 0) {
+            CenteredPageHeader(title: "Bronnen & licenties") { dismiss() }
+            if detail == nil {
+                BirdTextField("Zoek soort voor brongegevens", text: $sourceQuery)
+                    .modifier(RoundedSearchField()).padding(.horizontal, 20).padding(.vertical, 12)
+            }
+            CatalogResultsScroll(resetKey: sourceQuery) {
                 VStack(alignment: .leading, spacing: 20) {
                     if detail == nil {
-                        Text("Bronnen en licenties").font(FieldGuideTheme.sans(24, relativeTo: .title2))
-                        BirdTextField("Zoek soort voor brongegevens", text: $sourceQuery).modifier(RoundedSearchField())
                         if !sourceQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             ForEach(Array(SpeciesCatalogSearch.results(for: sourceQuery, in: SpeciesGuideCatalog.species).prefix(20))) { species in
                                 Button(species.dutchName) {
@@ -505,11 +509,15 @@ struct SpeciesCatalogSourcesView: View {
                         Text(citation)
                         if let license = source.licenseNotice { Text(license) }
                     }
+                    Text("Lokale vogelmeldingen: eBird / Cornell Lab of Ornithology en Observation International. De recentste beschikbare melding per soort wordt getoond; datum en tijd zijn lokale waarnemingstijden, soms zonder uur.")
+                    Link("eBird", destination: URL(string: "https://ebird.org/")!)
+                    Link("Observation.org", destination: URL(string: "https://observation.org/")!)
                     Link("BirdLife DataZone", destination: URL(string: "https://datazone.birdlife.org/")!)
                 }.font(FieldGuideTheme.sans(15)).padding(20)
             }.background(FieldGuideTheme.ivory)
-                .navigationTitle("Info").navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Sluiten") { dismiss() } } }
+            }.foregroundStyle(FieldGuideTheme.charcoal)
+                .background(FieldGuideTheme.ivory.ignoresSafeArea())
+                .toolbar(.hidden, for: .navigationBar)
         }
     }
 }

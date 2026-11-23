@@ -25,7 +25,6 @@ birdnet-v3:BN02484,Columba unicincta,Afrikaanse houtduif,forest-general,Bos,,pri
 birdnet-v3:BN01064,Aviceda cuculoides,Afrikaanse koekoekswouw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05424,Lophaetus occipitalis,Afrikaanse kuifarend,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10263,Treron calvus,Afrikaanse papegaaiduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:43b1d88c,Acrocephalus nijoi,Aguiguan Reed Warbler,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08379,Pternistis ahantensis,Ahantafrankolijn,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05515,Loxops caeruleirostris,Akekee,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04535,Hemignathus wilsoni,Akiapolaau,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -46,7 +45,6 @@ birdnet-v3:BN10129,Thripophaga amacurensis,Amacurocanastero,forest-general,Bos,,
 birdnet-v3:BN01991,Chlorodrepanis virens,Amakihi,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09137,Scolopax mira,Amamihoutsnip,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10904,Zoothera major,Amamilijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:09cc6aea,Myadestes woahensis,Amaui,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08238,Psarocolius bifasciatus,Amazone-oropendola,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02942,Cyanoloxia rothschildii,Amazonebisschop,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04230,Glaucidium hardyi,Amazonedwerguil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -290,7 +288,6 @@ birdnet-v3:BN04063,Gallus gallus,Bankivahoen,forest-general,Bos,,primary;dynamic
 birdnet-v3:BN02953,Cyanomitra bannermani,Bannermanhoningzuiger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09949,Tauraco bannermani,Bannermantoerako,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07869,Ploceus bannermani,Bannermanwever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:f175515d,Gallirallus poecilopterus,Bar-winged Rail,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09279,Setophaga subita,Barbudazanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08661,Pyrilia barrabandi,Barrabandpapegaai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02535,Contopus lugubris,Barrancapiewie,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -370,10 +367,6 @@ birdnet-v3:BN07141,Parotia berlepschi,Berlepschparotia,forest-general,Bos,,prima
 birdnet-v3:BN02726,Cranioleuca berlepschi,Berlepschstekelkruin,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02830,Crypturellus berlepschi,Berlepschtinamoe,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05002,Knipolegus cabanisi,Berliozmoortiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:d0951d61,Colaptes oceanicus,Bermuda Flicker,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:99aeace1,Bermuteo avivorus,Bermuda Hawk,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:e553a88e,Aegolius gradyi,Bermuda Saw-whet Owl,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:52a41b18,Pipilo naufragus,Bermuda Towhee,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03309,Drymophila rubricollis,Bertonimiervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09042,Saucerottia beryllina,Berylamazilia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09872,Tachyspiza virgata,Besrasperwer,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -401,7 +394,6 @@ birdnet-v3:BN04936,Iole viridescens,Birmese buulbuul,forest-general,Bos,,primary
 birdnet-v3:BN05122,Lanius collurioides,Birmese klauwier,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10826,Yuhina humilis,Birmese meestimalia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07723,Picus viridanus,Birmese schubbuikspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:708dc3b5,Moho bishopi,Bishop's Oo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10950,Zosterops hypoxanthus,Bismarckbrilvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06984,Pachycephala citreogaster,Bismarckfluiter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10911,Zoothera talaseae,Bismarckgoudlijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -419,9 +411,6 @@ birdnet-v3:BN01733,Centropus ateralbus,Bismarckspoorkoekoek,forest-general,Bos,,
 birdnet-v3:BN05494,Loriculus tener,Bismarckvleermuisparkiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02148,Cincloramphus rubiginosus,Bismarckzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04183,Geotrygon violacea,Bisschopskwartelduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:97746c36,Drepanis funerea,Black Mamo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN09928,Tanysiptera nigriceps,Black-capped Paradise Kingfisher,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:4aa6f2a7,Cyanoramphus zealandicus,Black-fronted Kakariki,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06577,Ninox connivens,Blafuil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00233,Agraphospiza rubescens,Blanfordroodmus,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03090,Dendragapus obscurus,Blauw sneeuwhoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -588,9 +577,6 @@ birdnet-v3:BN10871,Zimmerius bolivianus,Boliviaanse vliegenpikker,forest-general
 birdnet-v3:BN02458,Columba bollii,Bolles laurierduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01582,Caprimulgus concretus,Bonapartenachtzwaluw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06311,Myiothlypis luteoviridis,Bonapartezanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:0dd36226,Carpodacus ferreorostris,Bonin Grosbeak,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:a183d8c2,Zoothera terrestris,Bonin Thrush,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:0eff2ca3,Columba versicolor,Bonin Wood Pigeon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00677,Apalopteron familiare,Boninbrilvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01177,Bolemoreus frenatus,Bontbekhoningeter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06636,Notharchus tectus,Bonte baardkoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -723,7 +709,6 @@ birdnet-v3:BN10751,Vireo solitarius,Brilvireo,forest-general,Bos,,primary;dynami
 birdnet-v3:BN10879,Zimmerius vilissimus,Brilvliegenpikker,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04253,Glycichaera fallax,Brilvogelhoningeter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06257,Myioborus melanocephalus,Brilzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:8c3cd124,Lophopsittacus mauritianus,Broad-billed Parrot,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03205,Dicrurus aeneus,Bronsdrongo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04003,Galbula leucogastra,Bronsglansvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03345,Ducula chalconota,Bronsrugmuskaatduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -927,7 +912,6 @@ birdnet-v3:BN05379,Locustella disturbans,Burustruikzanger,forest-general,Bos,,pr
 birdnet-v3:BN06580,Ninox hantu,Buruvalkuil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08161,Prioniturus mada,Buruvlagstaartpapegaai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08894,Rhipidura superflua,Buruwaaierstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:9232f027,Xenicus longipes,Bushwren,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00806,Arcanator orostruthus,Buulbuullijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03629,Erythrotriorchis buergersi,Bürgerhavik,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02141,Cincloramphus bivittatus,Büttikoferzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1036,8 +1020,6 @@ birdnet-v3:BN08009,Pogonotriccus chapmani,Chapmanlooftiran,forest-general,Bos,,p
 birdnet-v3:BN03388,Dysithamnus occidentalis,Chapmanmiervireo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03311,Drymophila striaticeps,Chapmanmiervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10398,Tropicoperdix charltonii,Charltonbospatrijs,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:9aa8b692,Anthornis melanocephala,Chatham Islands Bellbird,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:a0cf86e4,Poodytes rufescens,Chatham Islands Fernbird,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04537,Hemiphaga chathamensis,Chathamduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02966,Cyanoramphus forbesi,Chathamkakariki,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04190,Gerygone albofrontata,Chathammangrovezanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1076,7 +1058,6 @@ birdnet-v3:BN10741,Vireo masteri,Chocovireo,forest-general,Bos,,primary;dynamic;
 birdnet-v3:BN10870,Zimmerius albigularis,Chocovliegenpikker,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06300,Myiothlypis chlorophrys,Chocozanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10383,Trogon cupreicauda,Chocozwartkeeltrogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:75d098b5,Microgoura meeki,Choiseul Pigeon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04255,Gnorimopsar chopi,Chopitroepiaal,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02685,Cossypha dichroa,Choristerlawaaimaker,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10981,Zosterops natalis,Christmasbrilvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1137,7 +1118,6 @@ birdnet-v3:BN03017,Cyornis ruficrissa,Crockerjunglevliegenvanger,forest-general,
 birdnet-v3:BN00981,Atelornis crossleyi,Crossleygrondscharrelaar,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04113,Geokichla crossleyi,Crossleylijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06394,Mystacornis crossleyi,Crossleyvanga,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ee612071,Cichlocolaptes mazarbarnetti,Cryptic Treehunter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05853,Meliphaga imitatrix,Cryptische honingeter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01906,Chamaeza meruloides,Cryptische mierlijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02827,Cryptosylvicola randrianasoloi,Cryptische zanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1156,7 +1136,6 @@ birdnet-v3:BN04864,Icterus melanopsis,Cubaanse troepiaal,forest-general,Bos,,pri
 birdnet-v3:BN08183,Priotelus temnurus,Cubaanse trogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10735,Vireo gundlachii,Cubaanse vireo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02051,Chondrohierax wilsonii,Cubaanse wouw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:a5504b38,Ara tricolor,Cuban Macaw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04301,Grallaria kaestneri,Cundinamarcamierpitta,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07711,Picumnus subtilis,Cuzcodwergspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09192,Scytalopus urubambae,Cuzcotapaculo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1218,7 +1197,6 @@ birdnet-v3:BN00762,Arachnothera crassirostris,Diksnavelspinnenjager,forest-gener
 birdnet-v3:BN08847,Rhipidura brachyrhyncha,Dimorfe waaierstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09735,Symposiachrus everetti,Djampeamonarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08395,Pternistis ochropectus,Djiboutifrankolijn,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:def95927,Raphus cucullatus,Dodo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01219,Bradornis comitatus,Dofblauwe vliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04015,Gallicolumba luzonica,Dolksteekduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02594,Coracina temminckii,Donkerblauwe rupsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1326,7 +1304,6 @@ birdnet-v3:BN10949,Zosterops hypolais,Effen brilvogel,forest-general,Bos,,primar
 birdnet-v3:BN06391,Myrmotherula unicolor,Effen miersluiper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04739,Hylexetastes uniformis,Effen muisspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10787,Xenops genibarbis,Effen xenops,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:4e66cf41,Pomarea fluxa,Eiao Monarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07464,Philemon eichhorni,Eichhornlederkop,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07012,Pachycephala phaionota,Eilandfluiter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07046,Pachyramphus albogriseus,Eksterbekarde,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1471,7 +1448,6 @@ birdnet-v3:BN01732,Centropus anselli,Gabonese spoorkoekoek,forest-general,Bos,,p
 birdnet-v3:BN01132,Batis minima,Gabonese vliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01029,Atronanus fuliginosus,Gabonese zwaluw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07959,Poecile gambeli,Gambelmees,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:05c1a470,Acrocephalus musae,Garrett's Reed Warbler,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06692,Nystalus radiatus,Gebandeerde baardkoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07060,Pachyramphus versicolor,Gebandeerde bekarde,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05961,Micrastur gilvicollis,Gebandeerde bosvalk,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1928,7 +1904,6 @@ birdnet-v3:BN03952,Fringilla polatzeki,Gran-canarische blauwe vink,forest-genera
 birdnet-v3:BN05057,Lamprolaima rhami,Granaatkeelkolibrie,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03687,Eulampis jugularis,Granaatkolibrie,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03620,Erythropitta granatina,Granaatpitta,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:25d8b98b,Turdus ravidus,Grand Cayman Thrush,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10956,Zosterops kirki,Grande-comorebrilvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04822,Hypsipetes parvirostris,Grande-comorebuulbuul,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06946,Otus pauliani,Grande-comoredwergooruil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -1953,7 +1928,6 @@ birdnet-v3:BN06372,Myrmotherula behni,Grauwvleugelmiersluiper,forest-general,Bos
 birdnet-v3:BN02443,Collocalia troglodytes,Graydwergsalangaan,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10459,Turdus grayi,Graylijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03424,Edolisoma schisticeps,Grayrupsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:58f9a637,Rhodacanthis palmeri,Greater Koa Finch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06233,Myiarchus nugator,Grenadatiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10362,Troglodytes grenadensis,Grenadawinterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05695,Megapodius decollatus,Grijs boshoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2346,7 +2320,6 @@ birdnet-v3:BN02151,Cincloramphus turipavae,Guadalcanalzanger,forest-general,Bos,
 birdnet-v3:BN04973,Junco insularis,Guadalupejunco,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05754,Melanerpes herminieri,Guadeloupespecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02415,Colaptes mexicanoides,Gualtemalteekse grondspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:20d6ae5b,Myiagra freycineti,Guam Flycatcher,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10178,Todiramphus cinnamominus,Guamijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04051,Gallirallus owstoni,Guamral,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10467,Turdus infuscatus,Guatemalteekse lijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2422,15 +2395,12 @@ birdnet-v3:BN04533,Hemicircus canente,Hartvlekspecht,forest-general,Bos,,primary
 birdnet-v3:BN10461,Turdus hauxwelli,Hauxwell-lijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00975,Astur gentilis,Havik,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10626,Uroglaux dimorpha,Havikuil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:d7d0a5f1,Drepanis pacifica,Hawaii Mamo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:07958fe0,Moho nobilis,Hawaii Oo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05516,Loxops coccineus,Hawaï-akepa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01924,Chasiempis sandwichensis,Hawaï-elepaio,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01317,Buteo solitarius,Hawaïbuizerd,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02628,Corvus hawaiiensis,Hawaïkraai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05517,Loxops mana,Hawaïkruiper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06190,Myadestes obscurus,Hawaïlijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:fffac0e6,Diaphorapteryx hawkinsi,Hawkins's Rail,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09321,Siphonorhis brewsteri,Haïtiaanse nachtzwaluw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09439,Spinus dominicensis,Haïtiaanse sijs,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10525,Turdus swalesi,Haïtilijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2506,7 +2476,6 @@ birdnet-v3:BN02437,Collocalia isonota,Hooglanddwergsalangaan,forest-general,Bos,
 birdnet-v3:BN03454,Elaenia obscura,Hooglandelenia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06083,Momotus aequatorialis,Hooglandmotmot,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07899,Ploceus melanogaster,Hooglandwever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2af0bd16,Fregilupus varius,Hoopoe Starling,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06803,Oreophasis derbianus,Hoorngoean,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07209,Pauxi unicornis,Hoornhokko,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03703,Eunymphicus cornutus,Hoornparkiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2518,7 +2487,6 @@ birdnet-v3:BN05716,Megascops hoyi,Hoyschreeuwuil,forest-general,Bos,,primary;dyn
 birdnet-v3:BN04284,Grallaria capitalis,Huanucomierpitta,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07960,Poecile hudsonicus,Hudsonmees,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00280,Alcippe hueti,Huetnontimalia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:7c2eb5ff,Heteralocha acutirostris,Huia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10358,Troglodytes aedon,Huiswinterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06342,Myrmelastes humaythae,Humaitamiervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06155,Muscicapa flavirostris,Humblotvliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2698,12 +2666,10 @@ birdnet-v3:BN09739,Symposiachrus leucurus,Kaimonarch,forest-general,Bos,,primary
 birdnet-v3:BN03403,Edolisoma dispar,Kairupsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06547,Nestor meridionalis,Kaka,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09642,Strigops habroptilus,Kakapo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:3db0103d,Paroreomyza flammea,Kakawahie,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03003,Cyornis kalaoensis,Kalaoniltava,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10363,Troglodytes martinicensis,Kalinagowinterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05823,Meleagris gallopavo,Kalkoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00221,Agelastes meleagrides,Kalkoenparelhoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2641f161,Myadestes myadestinus,Kamao,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00139,Aepypodius arfakianus,Kamboskalkoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00168,Aerospiza castanilius,Kameroenhavik,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10970,Zosterops melanocephalus,Kameroense brilvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2791,9 +2757,6 @@ birdnet-v3:BN06777,Onychognathus fulgidus,Kastanjevleugelspreeuw,forest-general,
 birdnet-v3:BN01557,Cantorchilus nigricapillus,Kastanjewinterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09254,Setophaga castanea,Kastanjezanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01175,Bolborhynchus lineola,Katharinaparkiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:b50ddca2,Akialoa stejnegeri,Kauai Akialoa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:fbe9861a,Hemignathus hanapepe,Kauai Nukupuu,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:d4d46be5,Moho braccatus,Kauai Oo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01990,Chlorodrepanis stejnegeri,Kauai-amakihi,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01925,Chasiempis sclateri,Kauai-elepaio,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06801,Oreomystis bairdi,Kauaikruiper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2825,7 +2788,6 @@ birdnet-v3:BN02258,Cissa jefferyi,Kinabalukitta,forest-general,Bos,,primary;dyna
 birdnet-v3:BN09427,Spilornis kinabaluensis,Kinabaluslangenarend,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05372,Locustella accentor,Kinabalustruikzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10562,Tylas eduardi,Kinkimavo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:511f5af7,Chaetoptila angustipluma,Kioea,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02786,Crithagra melanochroa,Kipengerekanarie,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09265,Setophaga kirtlandii,Kirtlandzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00667,Apalis personata,Kivuapalis,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2919,7 +2881,6 @@ birdnet-v3:BN08581,Pucrasia macrolopha,Koklasfazant,forest-general,Bos,,primary;
 birdnet-v3:BN01532,Campylorhamphus trochilirostris,Kolibriemuisspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07585,Phylloscopus amoenus,Kolombangaraboszanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09734,Symposiachrus browni,Kolombangaramonarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:16af165d,Chloridops kona,Kona Grosbeak,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09738,Symposiachrus julianae,Koningin-julianamonarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09026,Sarcoramphus papa,Koningsgier,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02218,Cinnyris regius,Koningshoningzuiger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -2979,7 +2940,6 @@ birdnet-v3:BN05434,Lophoictinia isura,Kortstaartwouw,forest-general,Bos,,primary
 birdnet-v3:BN01750,Centropus rectunguis,Kortteenspoorkoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02855,Cuculus micropterus,Kortvleugelkoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08474,Pterorhinus koslowi,Koslowbabax,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:0a341459,Aplonis corvina,Kosrae Starling,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03153,Deroptyus accipitrinus,Kraagpapegaai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06013,Microspizias collaris,Kraagsperwer,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03208,Dicrurus annectens,Kraaienbekdrongo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3023,7 +2983,6 @@ birdnet-v3:BN04584,Herpetotheres cachinnans,Lachvalk,forest-general,Bos,,primary
 birdnet-v3:BN02087,Chrysolophus amherstiae,Lady-amherstfazant,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07699,Picumnus lafresnayi,Lafresnayedwergspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08315,Psilopogon lagrandieri,Lagrandierbaardvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:544b1381,Dysmorodrepanis munroi,Lanai Hookbill,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06188,Myadestes lanaiensis,Lanailijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01946,Chiroxiphia lanceolata,Lancetmanakin,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05842,Melionyx princeps,Langbaardhoningeter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3078,7 +3037,6 @@ birdnet-v3:BN02466,Columba junoniae,Laurierduif,forest-general,Bos,,primary;dyna
 birdnet-v3:BN07144,Parotia lawesii,Lawesparotia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10867,Zentrygon lawrencii,Lawrencekwartelduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10472,Turdus lawrencii,Lawrencelijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:4309f417,Himatione fraithii,Laysan Honeycreeper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08763,Ramphiculus leclancheri,Leclancherjufferduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06615,Nisaetus kelaarti,Leggekuifarend,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00687,Aphelocoma unicolor,Leiblauwe gaai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3103,8 +3061,6 @@ birdnet-v3:BN03685,Eulacestoma nigropectus,Leldikkop,forest-general,Bos,,primary
 birdnet-v3:BN00005,Aburria aburri,Lelgoean,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05369,Lobotos lobatus,Lelrupsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05368,Loboparadisea sericea,Lelsatijnvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:67049c23,Akialoa obscura,Lesser Akialoa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:8c3d2dca,Rhodacanthis flaviceps,Lesser Koa Finch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08456,Pteroglossus inscriptus,Letterarassari,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05992,Micromacronus leytensis,Leyteboszangertimalia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00420,Anabacerthia lichtensteini,Lichtensteinbladspeurder,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3133,7 +3089,6 @@ birdnet-v3:BN10749,Vireo plumbeus,Loodkleurige vireo,forest-general,Bos,,primary
 birdnet-v3:BN07564,Phyllomyias plumbeiceps,Loodkruinvliegenpikker,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10509,Turdus reevei,Loodruglijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08353,Psittacula derbiana,Lord derby's parkiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:d7a97007,Gerygone insularis,Lord Howe Gerygone,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04054,Gallirallus sylvestris,Lord-howeral,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06998,Pachycephala lorentzi,Lorentzfluiter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01358,Cacicus koepckeae,Loretobuidelspreeuw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3251,7 +3206,6 @@ birdnet-v3:BN01449,Caloenas nicobarica,Manenduif,forest-general,Bos,,primary;dyn
 birdnet-v3:BN04970,Jubula lettii,Manenuil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10194,Todiramphus ruficollaris,Mangaiaijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00062,Acrocephalus kerearako,Mangaiakarekiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:0605561f,Acrocephalus astrolabii,Mangareva Reed Warbler,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09117,Sclateria naevia,Mangrovemiervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06093,Monarcha cinerascens,Mangrovemonarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07242,Pellorneum rostratum,Mangrovemuistimalia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3281,7 +3235,6 @@ birdnet-v3:BN08533,Ptilinopus roseicapilla,Marianenjufferduif,forest-general,Bos
 birdnet-v3:BN02632,Corvus kubaryi,Marianenkraai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07084,Pampusana xanthonura,Marianenpatrijsduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00142,Aerodramus bartschi,Marianensalangaan,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:28a814f4,Zosterops semiflavus,Marianne White-eye,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10185,Todiramphus godeffroyi,Markiezenijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08077,Pomarea mendozae,Markiezenmonarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07081,Pampusana rubescens,Markiezenpatrijsduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3294,8 +3247,6 @@ birdnet-v3:BN07938,Podargus ocellatus,Marmeruilnachtzwaluw,forest-general,Bos,,p
 birdnet-v3:BN01861,Chaetura martinica,Martiniquegierzwaluw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08779,Ramphocinclus brachyurus,Martiniquespotlijster,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04848,Icterus bonana,Martiniquetroepiaal,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:20f87a8d,Psittacula bensoni,Mascarene Grey Parakeet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:441f544d,Mascarinus mascarinus,Mascarene Parrot,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09993,Terpsiphone bourbonnensis,Mascarenenparadijsmonarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07432,Phedina borbonica,Mascarenenzwaluw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07992,Poephila personata,Maskeramadine,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3319,15 +3270,8 @@ birdnet-v3:BN10162,Tityra semifasciata,Maskertityra,forest-general,Bos,,primary;
 birdnet-v3:BN10391,Trogon personatus,Maskertrogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10386,Trogon massena,Massenatrogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07964,Poecile montanus,Matkop,forest-general,Bos,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
-avilist:8904189e,Loxops ochraceus,Maui Akepa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:43f17fd6,Hemignathus affinis,Maui Nukupuu,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ca33f844,Akialoa lanaiensis,Maui-nui Akialoa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07140,Paroreomyza montana,Mauikruiper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08279,Pseudonestor xanthophrys,Mauipapegaaiensnavel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:98c34b37,Aplonis mavornata,Mauke Starling,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:57570d50,Pomarea maupitiensis,Maupiti Monarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:be8566b0,Alectroenas nitidissimus,Mauritius Blue Pigeon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:653134cc,Otus sauzieri,Mauritius Scops Owl,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04821,Hypsipetes olivaceus,Mauritiusbuulbuul,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06531,Nesoenas mayeri,Mauritiusduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08354,Psittacula eques,Mauritiusparkiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3536,7 +3480,6 @@ birdnet-v3:BN00098,Actinodura nipalensis,Nepalese streepvleugel,forest-general,B
 birdnet-v3:BN04545,Hemitesia neumanni,Neumannstruikzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04235,Glaucidium nubicola,Nevelwouddwerguil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01826,Ceyx collectoris,New-georgiadwergijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:c7b5b804,Psittacula exsul,Newton's Parakeet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05135,Lanius newtoni,Newtonklauwier,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08018,Poicephalus crassus,Niam-niampapegaai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05701,Megapodius nicobariensis,Nicobarenboshoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3613,23 +3556,15 @@ birdnet-v3:BN02528,Contopus bogotensis,Noordelijke spixpiewie,forest-general,Bos
 birdnet-v3:BN07477,Philesturnus rufusater,Noordelijke zadelrug,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10395,Trogon tenellus,Noordelijke zwartkeeltrogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07324,Petroica longipes,Noordereilandvliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:8d0bb075,Pampusana norfolkensis,Norfolk Ground Dove,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:7328a120,Nestor productus,Norfolk Kaka,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02965,Cyanoramphus cookii,Norfolkkakariki,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04202,Gerygone modesta,Norfolkmangrovezanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07326,Petroica multicolor,Norfolkvliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10733,Vireo gracilirostris,Noronhavireo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:bf367578,Turnagra tanagra,North Island Piopio,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02820,Cryptophaps poecilorrhoa,Notenduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06653,Nucifraga caryocatactes,Notenkraker,forest-general,Bos,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
-avilist:20de8c44,Pomarea nukuhivae,Nuku Hiva Monarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03351,Ducula galeata,Nuku-hivamuskaatduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07621,Phylloscopus maforensis,Numforboszanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09920,Tanysiptera carolinae,Numforvlagstaartijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:af12bc31,Loxops wolstenholmei,Oahu Akepa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:f131e02a,Akialoa ellisiana,Oahu Akialoa,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2019d40e,Hemignathus lucidus,Oahu Nukupuu,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:a9d4b4fa,Moho apicalis,Oahu Oo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01989,Chlorodrepanis flava,Oahu-amakihi,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01923,Chasiempis ibidis,Oahu-elepaio,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07139,Paroreomyza maculata,Oahukruiper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3642,7 +3577,6 @@ birdnet-v3:BN06432,Myzomela rubrotincta,Obidwerghoningeter,forest-general,Bos,,p
 birdnet-v3:BN09138,Scolopax rochussenii,Obihoutsnip,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05532,Lycocorax obiensis,Obiparadijskraai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03417,Edolisoma obiense,Obirupsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:915fd1e2,Eclectus infectus,Oceanic Eclectus,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04691,Horornis haddeni,Odedi,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09660,Strix uralensis,Oeraluil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07652,Phylloscopus tenellipes,Oessoerifitis,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3798,7 +3732,6 @@ birdnet-v3:BN00695,Aplonis cantoroides,Orpheuspurperspreeuw,forest-general,Bos,,
 birdnet-v3:BN03026,Cyphorhinus arada,Orpheuswinterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07259,Penelope ortoni,Ortonsjakohoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10746,Vireo osburni,Osburnvireo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ac2edfee,Psittirostra psittacea,Ou,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07577,Phylloscartes oustaleti,Oustaletlooftiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03704,Eunymphicus uvaeensis,Ouveaparkiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09197,Seiurus aurocapilla,Ovenvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3815,7 +3748,6 @@ birdnet-v3:BN10231,Touit purpuratus,Paarsstaartpapegaai,forest-general,Bos,,prim
 birdnet-v3:BN08923,Rhynchocyclus pacificus,Pacifische breedbektiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03365,Ducula pacifica,Pacifische muskaatduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06451,Nannus pacificus,Pacifische winterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:bbd2ac0c,Acrocephalus yamashinae,Pagan Reed Warbler,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09672,Sturnia pagodarum,Pagodespreeuw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00402,Ampelornis griseiceps,Palamblamiervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10190,Todiramphus pelewensis,Palau-ijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3894,7 +3826,6 @@ birdnet-v3:BN03158,Devioeca papuana,Papoeavliegenvanger,forest-general,Bos,,prim
 birdnet-v3:BN01060,Automolus paraensis,Parabladspeurder,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04001,Galbula dea,Paradijsglansvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09890,Tangara chilensis,Paradijstangare,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ecbbd3d5,Psephotellus pulcherrimus,Paradise Parrot,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09155,Scytalopus canus,Paramillotapaculo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08049,Polioptila paraensis,Paramuggenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03461,Elaenia sordida,Parana-elenia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3918,7 +3849,6 @@ birdnet-v3:BN07578,Phylloscartes parkeri,Parkerlooftiran,forest-general,Bos,,pri
 birdnet-v3:BN01787,Cercomacroides parkeri,Parkermiervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09178,Scytalopus parkeri,Parkertapaculo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04999,Kleinothraupis parodii,Paroditangare,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:d397fe25,Ectopistes migratorius,Passenger Pigeon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10601,Upucerthia saturatior,Patagonische bosaardkruiper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01320,Buteo ventralis,Patagonische buizerd,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07533,Phrygilus patagonicus,Patagonische sierragors,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -3990,7 +3920,6 @@ birdnet-v3:BN06220,Myiagra pluto,Ponapémonarch,forest-general,Bos,,primary;dyna
 birdnet-v3:BN00709,Aplonis pelzelni,Ponapépurperspreeuw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08862,Rhipidura kubaryi,Ponapéwaaierstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08332,Psiloscops flammeolus,Ponderosa-uil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:9ac8aea8,Melamprosops phaeosoma,Poo-uli,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00969,Astrapia splendidissima,Prachtastrapia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09340,Sitta formosa,Prachtboomklever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07763,Pipreola formosa,Prachtcotinga,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4029,7 +3958,6 @@ birdnet-v3:BN08352,Psittacula cyanocephala,Pruimkopparkiet,forest-general,Bos,,p
 birdnet-v3:BN09352,Sitta przewalskii,Przewalskiboomklever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09701,Suthora przewalskii,Przewalskidiksnavelmees,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04307,Grallaria przewalskii,Przewalskimierpitta,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:759ed874,Psittacara maugei,Puerto Rican Parakeet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00371,Amazona vittata,Puertoricaanse amazone,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02383,Coccyzus vieilloti,Puertoricaanse hagediskoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00558,Anthracothorax aurulentus,Puertoricaanse mango,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4082,7 +4010,6 @@ birdnet-v3:BN05625,Malimbus racheliae,Rachelprachtwever,forest-general,Bos,,prim
 birdnet-v3:BN06916,Otus brookii,Radjahdwergooruil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08839,Rhinortha chlorophaea,Rafflesmalkoha,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07101,Paradisaea raggiana,Raggiparadijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:0c4e73c1,Cyanoramphus ulietanus,Raiatea Kakariki,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08499,Ptilinopus chrysogaster,Raiateajufferduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07787,Pitohui cerviniventris,Raja-ampatpitohui,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03707,Eupetes macrocerus,Ralbabbelaar,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4098,8 +4025,6 @@ birdnet-v3:BN10380,Trogon clathratus,Rasterstaarttrogon,forest-general,Bos,,prim
 birdnet-v3:BN09286,Sheppardia aurantiithorax,Rebuhojanfrederik,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03219,Dicrurus ludwigii,Rechtstaartdrongo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09691,Surniculus lugubris,Rechtstaartdrongokoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:3dc77a87,Aphanapteryx bonasia,Red Rail,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:b526d1ae,Ptilinopus mercierii,Red-moustached Fruit Dove,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02107,Chrysuronia versicolor,Regenboogamazilia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08324,Psilopogon rafflesii,Regenboogbaardvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07184,Passerina leclancherii,Regenbooggors,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4123,8 +4048,6 @@ birdnet-v3:BN00701,Aplonis insularis,Rennellpurperspreeuw,forest-general,Bos,,pr
 birdnet-v3:BN08882,Rhipidura rennelliana,Rennellwaaierstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07575,Phylloscartes kronei,Restingalooftiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08179,Prionops retzii,Retzklauwier,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:14762870,Threskiornis solitarius,Reunion Ibis,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:42f88785,Otus grucheti,Reunion Scops Owl,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09347,Sitta magna,Reuzenboomklever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05731,Megazosterops palauensis,Reuzenbrilvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09495,Sporophila frontalis,Reuzendikbekje,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4159,7 +4082,6 @@ birdnet-v3:BN06470,Nemosia rourei,Robijnkeeltangare,forest-general,Bos,,primary;
 birdnet-v3:BN04513,Heliodoxa rubricauda,Robijnkolibrie,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10711,Vini kuhlii,Robijnlori,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01168,Blythipicus rubiginosus,Robijnspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:70452ab9,Zosterops strenuus,Robust White-eye,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02220,Cinnyris rockefelleri,Rockefellerhoningzuiger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05663,Margarornis rubiginosus,Rode boomloper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03915,Foudia omissa,Rode boswever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4176,12 +4098,6 @@ birdnet-v3:BN08987,Rupicola peruvianus,Rode rotshaan,forest-general,Bos,,primary
 birdnet-v3:BN07074,Pampa rufa,Rode sabelvleugel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09780,Synallaxis rutilans,Rode stekelstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01616,Cardellina rubra,Rode zanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:fe2288f2,Necropsittacus rodricanus,Rodrigues Parrot,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2bb91092,Nesoenas rodericanus,Rodrigues Pigeon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:eaa2fcbd,Erythromachus leguati,Rodrigues Rail,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:180ed7cc,Otus murivorus,Rodrigues Scops Owl,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2fc54a50,Pezophaps solitaria,Rodrigues Solitaire,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:c66353e1,Necropsar rodericanus,Rodrigues Starling,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03913,Foudia flavicans,Rodrigueswever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08965,Rollulus rouloul,Roelroel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01035,Attila bolivianus,Roestattila,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4659,7 +4575,6 @@ birdnet-v3:BN04058,Gallirex johnstoni,Ruwenzoritoerako,forest-general,Bos,,prima
 birdnet-v3:BN01127,Batis diops,Ruwenzorivliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09709,Sylvia atriceps,Ruwenzorizwartkop,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05651,Manucodia chalybatus,Ruwhalsparadijskraai,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:33d2620f,Columba jouyi,Ryukyu Wood Pigeon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06921,Otus elegans,Ryukyudwergooruil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07292,Pericrocotus tegimae,Ryukyumenievogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05176,Larvivora komadori,Ryukyuroodborst,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4843,7 +4758,6 @@ birdnet-v3:BN09995,Terpsiphone corvina,Seychellenparadijsmonarch,forest-general,
 birdnet-v3:BN00144,Aerodramus elaphrus,Seychellensalangaan,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03805,Falco araeus,Seychellentorenvalk,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03917,Foudia sechellarum,Seychellenwever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2c828882,Psittacula wardi,Seychelles Parakeet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09295,Sheppardia sharpei,Sharpeakalat,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07526,Pholia sharpii,Sharpespreeuw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02167,Cinnycerthia olivascens,Sharpewinterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4902,7 +4816,6 @@ birdnet-v3:BN00001,Abeillia abeillei,Smaragdkeelkolibrie,forest-general,Bos,,pri
 birdnet-v3:BN06509,Neopsittacus pullicauda,Smaragdlori,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08349,Psittacula calthrapae,Smaragdparkiet,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09898,Tangara florida,Smaragdtangare,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:cbac0bbc,Coua delalandei,Snail-eating Coua,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02405,Coenocorypha huegeli,Snaressnip,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03476,Elliotomyia chionogaster,Sneeuwbuikamazilia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01659,Carpodectes nitidus,Sneeuwcotinga,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4961,7 +4874,6 @@ birdnet-v3:BN07447,Pheugopedius felix,Sonorawinterkoning,forest-general,Bos,,pri
 birdnet-v3:BN10051,Thamnophilus ambiguus,Sooretamamierklauwier,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08961,Robsonius sorsogonensis,Sorsogonsluipzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02224,Cinnyris sovimanga,Souimangahoningzuiger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:65fab387,Turnagra capensis,South Island Piopio,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00740,Aquila adalberti,Spaanse keizerarend,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03518,Empidonax hammondii,Sparrenfeetiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07297,Periparus rufonuchalis,Sparrenmees,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -4993,10 +4905,7 @@ birdnet-v3:BN03802,Falcipennis falcipennis,Spitsvleugelhoen,forest-general,Bos,,
 birdnet-v3:BN04788,Hypocnemis striata,Spixmierzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10817,Xiphorhynchus spixii,Spixmuisspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07253,Penelope jacquacu,Spixsjakohoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:6e8b492e,Caloenas maculata,Spotted Green Pigeon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01292,Butastur rufipennis,Sprinkhaanbuizerd,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ad251783,Nannococcyx psix,St. Helena Cuckoo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:3ec85674,Upupa antaios,St. Helena Hoopoe,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02199,Cinnyris jugularis,Staalborsthoningzuiger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03209,Dicrurus atripennis,Staalglansdrongo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06214,Myiagra ferrocyanea,Staalmonarch,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -5189,7 +5098,6 @@ birdnet-v3:BN05042,Lalage moesta,Tanimbartriller,forest-general,Bos,,primary;dyn
 birdnet-v3:BN06578,Ninox forbesi,Tanimbarvalkuil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05985,Microeca hemixantha,Tanimbarvliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06836,Oriolus decipiens,Tanimbarwielewaal,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:8832822e,Pampusana ferruginea,Tanna Ground Dove,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00665,Apalis melanocephala,Tanzaniaanse apalis,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10781,Xenoperdix udzungwensis,Tanzaniaanse bospatrijs,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04900,Illadopsis distans,Tanzaniaanse lijstertimalia,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -5202,8 +5110,6 @@ birdnet-v3:BN07119,Pardalotus quadragintus,Tasmaanse diamantvogel,forest-general
 birdnet-v3:BN00013,Acanthiza ewingii,Tasmaanse doornsnavel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05871,Melithreptus validirostris,Tasmaanse honingeter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05811,Melanodryas vittata,Tasmaanse vliegenvanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:dd347dc6,Turdus poliocephalus,Tasman Sea Island Thrush,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:21d04f26,Aplonis fusca,Tasman Starling,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09150,Scytalopus alvarezlopezi,Tatamatapaculo,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02846,Crypturellus tataupa,Tataupatinamoe,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05059,Lamprolia victoriae,Taveunisatijnstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -5245,7 +5151,6 @@ birdnet-v3:BN04440,Halcyon malimbica,Teugelijsvogel,forest-general,Bos,,primary;
 birdnet-v3:BN10865,Zentrygon frenata,Teugelkwartelduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04552,Hemitriccus diops,Teugelvlektodietiran,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05208,Leipoa ocellata,Thermometervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:71be72fc,Pampusana salamonis,Thick-billed Ground Dove,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08962,Robsonius thompsoni,Thompsonsluipzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01901,Chamaetylas choloensis,Thyolobergalethe,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01805,Certhia tianquanensis,Tianquanboomkruiper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -5311,7 +5216,6 @@ birdnet-v3:BN05960,Micrastur buckleyi,Traylorbosvalk,forest-general,Bos,,primary
 birdnet-v3:BN01373,Cacomantis variolosus,Treurkoekoek,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07751,Pipile pipile,Trinidadgoean,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06084,Momotus bahamensis,Trinidadmotmot,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:75f40338,Gallinula nesiotis,Tristan Moorhen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06436,Myzomela tristrami,Tristramdwerghoningeter,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09100,Schoeniclus tristrami,Tristramgors,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02483,Columba trocaz,Trocazduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -5350,7 +5254,6 @@ birdnet-v3:BN08078,Pomarea mira,Ua-poumonarch,forest-general,Bos,,primary;dynami
 birdnet-v3:BN09796,Syndactyla ucayalae,Ucayalibladspeurder,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06772,Oneillornis lunulatus,Ucayalimiervogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07940,Podargus strigoides,Uilnachtzwaluw,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:e35f8b09,Ciridops anna,Ula-ai-hawane,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10187,Todiramphus leucopygius,Ultramarijnijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00868,Arizelocichla neumanni,Ulugurubuulbuul,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00572,Anthreptes neglectus,Uluguruhoningzuiger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -5607,8 +5510,6 @@ birdnet-v3:BN09405,Sphecotheres hypoleucus,Wetarvijgvogel,forest-general,Bos,,pr
 birdnet-v3:BN06837,Oriolus finschi,Wetarwielewaal,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07925,Ploceus weynsi,Weynswever,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03377,Ducula whartoni,Whartonmuskaatduif,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:1a365a3f,Porphyrio albus,White Swamphen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:93d88f0a,Zosterops albogularis,White-chested White-eye,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00164,Aerodramus whiteheadi,Whiteheadsalangaan,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04472,Harpactes whiteheadi,Whiteheadtrogon,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01051,Aulacorhynchus whitelianus,Whitelyarassari,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -6257,6 +6158,7 @@ birdnet-v3:BN06896,Orthotomus nigriceps,Zwartkopsnijdervogel,forest-general,Bos,
 birdnet-v3:BN07717,Picus erythropygius,Zwartkopspecht,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06885,Orthonyx spaldingii,Zwartkopstronkloper,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00875,Arremon atricapillus,Zwartkopstruikgors,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN09928,Tanysiptera nigriceps,Zwartkopvlagstaartijsvogel,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08875,Rhipidura nigrocinnamomea,Zwartkopwaaierstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06857,Oriolus xanthornus,Zwartkopwielewaal,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09278,Setophaga striata,Zwartkopzanger,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -6402,7 +6304,6 @@ birdnet-v3:BN02904,Cyanistes teneriffae,Afrikaanse pimpelmees,woodland-general,O
 birdnet-v3:BN01297,Buteo auguralis,Afrikaanse roodstaartbuizerd,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03953,Fringilla spodiogenys,Afrikaanse vink,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06827,Oriolus auratus,Afrikaanse wielewaal,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:6cccb10a,Philydor novaesi,Alagoas Foliage-gleaner,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03206,Dicrurus aldabranus,Aldabradrongo,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06427,Myzomela prawiradilagae,Alordwerghoningeter,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04858,Icterus gularis,Altamiratroepiaal,woodland-general,Open bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -7348,7 +7249,6 @@ birdnet-v3:BN07605,Phylloscopus fuscatus,Bruine boszanger,rivers-streams,Beken e
 birdnet-v3:BN03458,Elaenia pelzelni,Bruine elenia,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00317,Alopochelidon fucata,Bruinkopzwaluw,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03657,Eubucco tucinkae,Carabayabaardvogel,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:90002523,Conuropsis carolinensis,Carolina Parakeet,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06151,Muscicapa cassini,Cassinvliegenvanger,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10057,Thamnophilus cryptoleucus,Castelnaumierklauwier,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09770,Synallaxis gujanensis,Cayennestekelstaart,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -7432,7 +7332,6 @@ birdnet-v3:BN09777,Synallaxis maranonica,Marañonstekelstaart,rivers-streams,Bek
 birdnet-v3:BN06142,Motacilla samveasnae,Mekongkwikstaart,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00272,Alcedo meninting,Menintingijsvogel,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07168,Passer moabiticus,Moabmus,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:f1d2de72,Prosobonia ellisi,Moorea Sandpiper,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10882,Zonerodius heliosylus,Nieuw-guinese tijgerroerdomp,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01957,Chlidonias albostriatus,Nieuw-zeelandse stern,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02163,Cinclus mexicanus,Noord-amerikaanse waterspreeuw,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -7483,7 +7382,6 @@ birdnet-v3:BN00273,Alcedo peninsulae,Soendablauwborstijsvogel,rivers-streams,Bek
 birdnet-v3:BN07357,Phacellodomus striaticollis,Spikkelborststekelkruin,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00057,Acrocephalus dumetorum,Struikrietzanger,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00327,Amaurornis isabellina,Sulawesiwaterhoen,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:750808c3,Prosobonia leucoptera,Tahiti Sandpiper,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04675,Hirundo tahitica,Tahitizwaluw,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03111,Dendrocopos assimilis,Tamariskspecht,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04719,Hydropsalis climacocerca,Trapstaartnachtzwaluw,rivers-streams,Beken en rivieren,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -7608,7 +7506,6 @@ birdnet-v3:BN07411,Phalacrocorax punctatus,Gevlekte aalscholver,open-ocean,Open 
 birdnet-v3:BN07041,Pachyptila macgillivrayi,Goughprion,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08435,Pterodroma leucoptera,Gouldstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00830,Ardenna grisea,Grauwe pijlstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:57d2f32e,Pinguinus impennis,Great Auk,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10025,Thalassarche chrysostoma,Grijskopalbatros,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08428,Pterodroma gouldi,Grijsmaskerstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04071,Garrodia nereis,Grijsrugstormvogeltje,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -7686,7 +7583,6 @@ birdnet-v3:BN05560,Macronectes halli,Noordelijke reuzenstormvogel,open-ocean,Ope
 birdnet-v3:BN03675,Eudyptes moseleyi,Noordelijke rotspinguïn,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08599,Puffinus puffinus,Noordse pijlstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03976,Fulmarus glacialis,Noordse stormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ed16ea1f,Bulweria bifax,Olson's Petrel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05289,Leucocarbo onslowi,Onslowaalscholver,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03674,Eudyptes filholi,Oostelijke rotspinguïn,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06130,Morus serrator,Pacifische jan-van-gent,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -7719,7 +7615,6 @@ birdnet-v3:BN06694,Oceanites gracilis,Sierlijk stormvogeltje,open-ocean,Open zee
 birdnet-v3:BN03677,Eudyptes robustus,Snareskuifpinguïn,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07069,Pagodroma nivea,Sneeuwstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08446,Pterodroma solandri,Solanderstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:dc04fcd9,Pterodroma rupinarum,St. Helena Petrel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08436,Pterodroma longirostris,Stejnegerstormvogel,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07494,Phoebastria albatrus,Stelleralbatros,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08066,Polysticta stelleri,Stellers eider,open-ocean,Open zee,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8133,7 +8028,6 @@ birdnet-v3:BN10544,Turnix olivii,Cape-yorkvechtkwartel,grassland-steppe,Grasland
 birdnet-v3:BN03755,Euplectes laticauda,Capuchonwidavink,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04604,Hesperoburhinus bistriatus,Caribische griel,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07339,Peucaea cassinii,Cassingors,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:cb21bcea,Gallirallus modestus,Chatham Rail,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09667,Sturnella lilianae,Chihuahuaweidespreeuw,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06645,Nothoprocta perdicaria,Chileense tinamoe,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03069,Daptrius chimango,Chimango,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8370,7 +8264,6 @@ birdnet-v3:BN10699,Vidua nigeriae,Kwartelstaalvink,grassland-steppe,Grasland en 
 birdnet-v3:BN00611,Anthus pallidiventris,Langpootpieper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06112,Monticola explorator,Langteenrotslijster,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02243,Circus buffoni,Langvleugelkiekendief,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2699dcaf,Zapornia palmeri,Laysan Rail,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00395,Ammospiza leconteii,Lecontegors,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06906,Ortyxelos meiffrenii,Leeuwerikkwartel,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03795,Euschistospiza cinereovinacea,Leigrijze astrild,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8423,13 +8316,10 @@ birdnet-v3:BN00390,Ammomanopsis grayi,Namibleeuwerik,grassland-steppe,Grasland e
 birdnet-v3:BN03654,Estrilda troglodytes,Napoleonnetje,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01608,Caprimulgus solala,Nechisarnachtzwaluw,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03087,Delichon nipalense,Nepalese huiszwaluw,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:48e3a389,Coturnix novaezelandiae,New Zealand Quail,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10542,Turnix novaecaledoniae,Nieuw-caledonische vechtkwartel,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00609,Anthus novaeseelandiae,Nieuw-zeelandse pieper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00608,Anthus nilghiriensis,Nilgiripieper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03649,Estrilda nonnula,Nonastrild,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:36d14881,Coenocorypha barrierensis,North Island Snipe,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:027313b6,Porphyrio mantelli,North Island Takahe,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00040,Acridotheres ginginianus,Oevermaina,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00606,Anthus nattereri,Okerborstpieper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00942,Asthenes coryi,Okerbrauwdistelstaart,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8572,7 +8462,6 @@ birdnet-v3:BN02670,Corypha somalica,Somalische leeuwerik,grassland-steppe,Grasla
 birdnet-v3:BN05780,Melaniparus thruppi,Somalische mees,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04626,Heterotetrax humilis,Somalische trap,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03589,Eremopterix signatus,Somalische vinkleeuwerik,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:8de52990,Coenocorypha iredalei,South Island Snipe,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09689,Surnia ulula,Sperweruil,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03743,Euplectes albonotatus,Spiegelwidavink,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04136,Geophaps plumifera,Spinifexduif,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8606,7 +8495,6 @@ birdnet-v3:BN07175,Passer suahelicus,Swahilimus,grassland-steppe,Grasland en ste
 birdnet-v3:BN02265,Cisticola angusticauda,Taboragraszanger,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06176,Muscisaxicola griseus,Taczanowskigrondtiran,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06791,Onychostruthus taczanowskii,Taczanowskisneeuwvink,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:6872f033,Gallirallus pacificus,Tahiti Rail,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05374,Locustella alishanensis,Taiwanese struikzanger,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06761,Oenanthe oenanthe,Tapuit,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03582,Eremophila bilopha,Temmincks strandleeuwerik,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8737,7 +8625,6 @@ birdnet-v3:BN06945,Otus pamelae,Arabische dwergooruil,desert,Woestijn en halfwoe
 birdnet-v3:BN05918,Merops cyanophrys,Arabische kleine groene bijeneter,desert,Woestijn en halfwoestijn,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03570,Eremalauda eremodites,Arabische leeuwerik,desert,Woestijn en halfwoestijn,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00393,Ammoperdix heyi,Arabische woestijnpatrijs,desert,Woestijn en halfwoestijn,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:350c5d1e,Mundia elpenor,Ascension Crake,desert,Woestijn en halfwoestijn,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02883,Curruca nana,Aziatische woestijngrasmus,desert,Woestijn en halfwoestijn,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00984,Athene brama,Brahmaanse uil,desert,Woestijn en halfwoestijn,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02646,Corvus ruficollis,Bruinnekraaf,desert,Woestijn en halfwoestijn,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8795,7 +8682,6 @@ birdnet-v3:BN01928,Chelictinia riocourii,Afrikaanse zwaluwstaartwouw,scrub-gener
 birdnet-v3:BN09233,Serinus alario,Alariokanarie,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07512,Phoenicurus alaschanicus,Alashanroodstaart,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01415,Calidris mauri,Alaskastrandloper,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:63136dac,Nesillas aldabrana,Aldabra Brush Warbler,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03911,Foudia aldabrana,Aldabrawever,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09205,Selasphorus sasin,Allenkolibrie,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03523,Empidonax wrightii,Alsemfeetiran,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8893,7 +8779,6 @@ birdnet-v3:BN03332,Dryoscopus senegalensis,Bospoederdonsklauwier,scrub-general,S
 birdnet-v3:BN00070,Acrocephalus palustris,Bosrietzanger,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06507,Neopsephotus bourkii,Bourkeparkiet,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02872,Curruca curruca,Braamsluiper,scrub-general,Struweel,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
-avilist:10787a38,Riccordia bracei,Brace's Emerald,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09103,Schoenicola platyurus,Breedstaartzanger,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09460,Spizella breweri,Brewergors,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09697,Suthora conspicillata,Brildiksnavelmees,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -8997,7 +8882,6 @@ birdnet-v3:BN08470,Pterorhinus davidi,Davidlijstergaai,scrub-general,Struweel,,p
 birdnet-v3:BN05815,Melanopareia torquata,Diadeemmaansluiper,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07522,Phoenicurus moussieri,Diadeemroodstaart,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02068,Chrysococcyx caprius,Diederikkoekoek,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:2215ebd4,Gallirallus dieffenbachii,Dieffenbach's Rail,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07727,Piezorina cinerea,Dikbekgors,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09437,Spinus crassirostris,Dikbeksijs,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04140,Geositta crassirostris,Diksnavelholengraver,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9129,7 +9013,6 @@ birdnet-v3:BN04340,Granatina granatina,Granaatastrild,scrub-general,Struweel,,pr
 birdnet-v3:BN02869,Curruca communis,Grasmus,scrub-general,Struweel,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN05121,Lanius collurio,Grauwe klauwier,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02368,Coccycua cinerea,Grauwe koekoek,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:8fe1196f,Viridonia sagittirostris,Greater Amakihi,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09056,Saxicola ferreus,Grijs paapje,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08256,Pseudelaenia leucospodia,Grijs-witte elenia,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08614,Pycnonotus cinereifrons,Grijsborstbuulbuul,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9189,7 +9072,6 @@ birdnet-v3:BN02171,Cinnyris afer,Grote kraaghoningzuiger,scrub-general,Struweel,
 birdnet-v3:BN09588,Stigmatura budytoides,Grote kwikstaarttiran,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04104,Geococcyx californianus,Grote renkoekoek,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04652,Hippolais languida,Grote vale spotvogel,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:38df393d,Caracara lutosa,Guadalupe Caracara,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01552,Cantorchilus guarayanus,Guarayoswinterkoning,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04358,Guira guira,Guirakoekoek,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01727,Centrocercus minimus,Gunnisonhoen,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9287,7 +9169,6 @@ birdnet-v3:BN09712,Sylvia galinieri,Katvogelzanger,scrub-general,Struweel,,prima
 birdnet-v3:BN05537,Lyrurus mlokosiewiczi,Kaukasisch korhoen,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10940,Zosterops flavilateralis,Keniaanse brilvogel,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10080,Thamnornis chloropetoides,Kiritikazanger,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:f51dba0d,Prosobonia cancellata,Kiritimati Sandpiper,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07467,Philemon kisserensis,Kisserlederkop,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05125,Lanius excubitor,Klapekster,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02661,Corypha apiata,Klapperleeuwerik,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9367,7 +9248,6 @@ birdnet-v3:BN06125,Morococcyx erythropygus,Lijsterkoekoek,scrub-general,Struweel
 birdnet-v3:BN09151,Scytalopus androstictus,Lojatapaculo,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08639,Pycnoptilus floccosus,Loodsvogel,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01457,Calothorax lucifer,Luciferkolibrie,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:174e5bdb,Traversia lyalli,Lyall's Wren,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02680,Corythornis madagascariensis,Madagaskardwergijsvogel,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10604,Upupa marginata,Madagaskarhop,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00991,Athene superciliaris,Madagaskarsteenuil,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9501,7 +9381,6 @@ birdnet-v3:BN02278,Cisticola chiniana,Ratelgraszanger,scrub-general,Struweel,,pr
 birdnet-v3:BN01580,Caprimulgus clarus,Reichenownachtzwaluw,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02710,Coua cursor,Rencoua,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07478,Philetairus socius,Republikeinwever,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:f9a74dd9,Falco duboisi,Reunion Kestrel,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08486,Pterorhinus waddelli,Reuzenbabax,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09400,Spermestes fringilloides,Reuzenekstertje,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05127,Lanius giganteus,Reuzenklapekster,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9740,7 +9619,6 @@ birdnet-v3:BN08774,Ramphocelus flammigerus,Vuurrugtangare,scrub-general,Struweel
 birdnet-v3:BN09538,Stagonopleura bella,Vuurstaartastrild,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06440,Myzornis pyrrhoura,Vuurstaartje,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04736,Hylacola pyrrhopygia,Vuurstuitheidesluiper,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:0c903b9a,Gallirallus wakensis,Wake Island Rail,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04168,Geothlypis poliocephala,Weidemaskerzanger,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08711,Pytilia afra,Wenerastrild,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08619,Pycnonotus goiavier,Wenkbrauwbuulbuul,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9917,7 +9795,6 @@ birdnet-v3:BN10144,Tigriornis leucolopha,Afrikaanse tijgerroerdomp,wetland-gener
 birdnet-v3:BN08740,Rallus caerulescens,Afrikaanse waterral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04881,Icthyophaga vocifer,Afrikaanse zeearend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00204,Agamia agami,Agamireiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:16e62dc4,Tachybaptus rufolavatus,Alaotra Grebe,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05182,Laterallus exilis,Amazonedwergral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00373,Amazonetta brasiliensis,Amazonetaling,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08116,Porphyrio martinica,Amerikaans purperhoen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9943,7 +9820,6 @@ birdnet-v3:BN05781,Melanitta americana,Amerikaanse zee-eend,wetland-general,Wetl
 birdnet-v3:BN04446,Haliaeetus leucocephalus,Amerikaanse zeearend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00485,Anas rubripes,Amerikaanse zwarte eend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01073,Aythya baeri,Amoerwitoogeend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:b52611c1,Mareca marecula,Amsterdam Wigeon,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08733,Rallina canningi,Andamanenral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00462,Anas albogularis,Andamanentaling,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07503,Phoenicoparrus andinus,Andesflamingo,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9954,7 +9830,6 @@ birdnet-v3:BN00501,Anhima cornuta,Anioema,wetland-general,Wetland,,primary;dynam
 birdnet-v3:BN02315,Cistothorus apolinari,Apolinarwinterkoning,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09382,Spatula platalea,Argentijnse slobeend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06974,Oxyura vittata,Argentijnse stekelstaart,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:5b2c899d,Podilymbus gigas,Atitlan Grebe,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08121,Porzana fluminea,Australisch porseleinhoen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10287,Tribonyx ventralis,Australisch waterhoen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09877,Tadorna tadornoides,Australische bergeend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -9982,7 +9857,6 @@ birdnet-v3:BN09038,Sarothrura watersi,Bartlettral,wetland-general,Wetland,,prima
 birdnet-v3:BN00060,Acrocephalus griseldis,Basrakarekiet,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04163,Geothlypis beldingi,Beldingmaskerzanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07871,Ploceus benghalensis,Bengaalse wever,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:cefc0bd6,Nyctanassa carcinocatactes,Bermuda Night Heron,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06448,Nannopterum brasilianum,Bigua-aalscholver,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02118,Ciconia episcopus,Bisschopsooievaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00812,Ardea cinerea,Blauwe reiger,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
@@ -10039,7 +9913,6 @@ birdnet-v3:BN01198,Botaurus sinensis,Chinese woudaap,wetland-general,Wetland,,pr
 birdnet-v3:BN06136,Motacilla citreola,Citroenkwikstaart,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00109,Aechmophorus clarkii,Clarkfuut,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06183,Mustelirallus colombianus,Colombiaanse ral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:a62cbdd6,Podiceps andinus,Colombian Grebe,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08984,Rufirallus xenopterus,Conoverdwergral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06553,Nettapus coromandelianus,Coromandeleend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02682,Coscoroba coscoroba,Coscoroba,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10208,7 +10081,6 @@ birdnet-v3:BN02066,Chroicocephalus ridibundus,Kokmeeuw,wetland-general,Wetland,p
 birdnet-v3:BN07819,Platalea regia,Koningslepelaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08742,Rallus elegans,Koningsral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04531,Helopsaltes pleskei,Koreaanse sprinkhaanzanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:9dae5526,Zapornia monasa,Kosrae Crake,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04348,Grus grus,Kraanvogel,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05658,Mareca strepera,Krakeend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN06313,Myiothlypis rivularis,Kreekboszanger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10254,15 +10126,11 @@ birdnet-v3:BN00083,Acrocephalus tangorum,Mantsjoerijse veldrietzanger,wetland-ge
 birdnet-v3:BN01190,Botaurus eurhythmus,Mantsjoerijse woudaap,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05666,Marmaronetta angustirostris,Marmereend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05341,Limosa fedoa,Marmergrutto,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ffc0a02e,Porphyrio paepae,Marquesan Swamphen,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:358af9d9,Fulica newtonii,Mascarene Coot,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04520,Heliopais personatus,Maskerfuutkoet,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10095,Thinornis melanops,Maskerplevier,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03565,Epthianura albifrons,Maskerschijnpaapje,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06622,Nomonyx dominicus,Maskerstekelstaart,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03884,Fluvicola nengeta,Maskerwatertiran,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:36f142bd,Nycticorax mauritianus,Mauritius Night Heron,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:e4aa60c7,Alopochen mauritiana,Mauritius Sheldgoose,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03970,Fulica atra,Meerkoet,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN00481,Anas melleri,Mellereend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00471,Anas diazi,Mexicaanse eend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10285,13 +10153,10 @@ birdnet-v3:BN01747,Centropus monachus,Monniksspoorkoekoek,wetland-general,Wetlan
 birdnet-v3:BN01375,Cairina moschata,Muskuseend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03742,Euplectes afer,Napoleonwever,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04969,Jacana spinosa,Nestmanjaçana,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:051759b5,Botaurus novaezelandiae,New Zealand Bittern,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:edda42ed,Mergus australis,New Zealand Merganser,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08724,Quiscalus nicaraguensis,Nicaraguaanse troepiaal,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04418,Haematopus finschi,Nieuw-zeelandse bonte scholekster,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08032,Poliocephalus rufopectus,Nieuw-zeelandse fuut,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01079,Aythya novaeseelandiae,Nieuw-zeelandse topper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:ec92e596,Acrocephalus luscinius,Nightingale Reed Warbler,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00318,Alopochen aegyptiaca,Nijlgans,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN05905,Mergellus albellus,Nonnetje,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN01194,Botaurus lentiginosus,Noord-amerikaanse roerdomp,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10332,9 +10197,6 @@ birdnet-v3:BN08205,Progne subis,Purperzwaluw,wetland-general,Wetland,,primary;dy
 birdnet-v3:BN00836,Ardeola ralloides,Ralreiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05334,Limnoctites rectirostris,Rechtsnavelrietkruiper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07911,Ploceus reichardi,Reichardwever,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:22de8cd0,Nycticorax duboisi,Reunion Night Heron,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:7881edff,Dryolimnas augusti,Reunion Rail,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:10d0ad82,Alopochen kervazoi,Reunion Sheldgoose,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00779,Aramides ypecaha,Reuzenbosral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08259,Pseudibis gigantea,Reuzenibis,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03973,Fulica gigantea,Reuzenkoet,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10348,7 +10210,6 @@ birdnet-v3:BN01074,Aythya collaris,Ringsnaveleend,wetland-general,Wetland,,prima
 birdnet-v3:BN01447,Callonetta leucophrys,Ringtaling,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05342,Limosa haemastica,Rode grutto,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07814,Platalea ajaja,Rode lepelaar,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:9bf54783,Nycticorax megacephalus,Rodrigues Night Heron,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01199,Botaurus stellaris,Roerdomp,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN05185,Laterallus levraudi,Roestflankdwergral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09244,Serpophaga nigricans,Roettachuri,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10392,8 +10253,6 @@ birdnet-v3:BN05292,Leucogeranus leucogeranus,Siberische witte kraanvogel,wetland
 birdnet-v3:BN06661,Numenius madagascariensis,Siberische wulp,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02188,Cinnyris erythrocercus,Sierhoningzuiger,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08969,Rostrhamus sociabilis,Slakkenwouw,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:7a35de81,Numenius tenuirostris,Slender-billed Curlew,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:c19704c9,Quiscalus palustris,Slender-billed Grackle,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09378,Spatula clypeata,Slobeend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN08272,Pseudocolopteryx acutipennis,Smalvleugeldoradito,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10643,Vanellus armatus,Smidsplevier,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10413,7 +10272,6 @@ birdnet-v3:BN00459,Anarhynchus veredus,Steppeplevier,wetland-general,Wetland,,pr
 birdnet-v3:BN09586,Stictonetta naevosa,Stippeleend,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02700,Coturnicops exquisitus,Swinhoeral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01075,Aythya ferina,Tafeleend,wetland-general,Wetland,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
-avilist:b60d85a9,Zapornia nigra,Tahiti Crake,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00531,Anser fabalis,Taigarietgans,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01424,Calidris subminuta,Taigastrandloper,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04376,Gymnocrex talaudensis,Talaudnaaktoogral,wetland-general,Wetland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10541,7 +10399,6 @@ birdnet-v3:BN02067,Chroicocephalus serranus,Andesmeeuw,coast-general,Kust,,prima
 birdnet-v3:BN09568,Sterna repressa,Arabische stern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08855,Rhipidura dryas,Arafurawaaierstaart,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05149,Larus armenicus,Armeense meeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:015572be,Nycticorax olsoni,Ascension Night Heron,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00464,Anas aucklandica,Aucklandtaling,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04838,Ichthyaetus audouinii,Audouins meeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04421,Haematopus longirostris,Australische bonte scholekster,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10569,7 +10426,6 @@ birdnet-v3:BN00571,Anthreptes malacensis,Bruinkeelhoningzuiger,coast-general,Kus
 birdnet-v3:BN02058,Chroicocephalus brunnicephalus,Bruinkopmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07214,Pelargopsis amauroptera,Bruinvleugelijsvogel,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05168,Larus occidentalis,Californische meeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:d74fdd2d,Haematopus meadewaldoi,Canary Islands Oystercatcher,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08200,Progne dominicensis,Caribische purperzwaluw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08575,Ptychoramphus aleuticus,Cassinalk,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04417,Haematopus chathamensis,Chathamscholekster,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10659,7 +10515,6 @@ birdnet-v3:BN03433,Egretta gularis,Kustreiger,coast-general,Kust,,primary;dynami
 birdnet-v3:BN04666,Hirundo javanica,Kustzwaluw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00396,Ammospiza maritima,Kweldergors,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10331,Tringa semipalmata,Kwelderruiter,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:80897d19,Camptorhynchus labradorius,Labrador Duck,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05300,Leucophaeus atricilla,Lachmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04101,Gelochelidon nilotica,Lachstern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08359,Psittacula longicauda,Langstaartparkiet,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10694,7 +10549,6 @@ birdnet-v3:BN08880,Rhipidura phasiana,Mangrovewaaierstaart,coast-general,Kust,,p
 birdnet-v3:BN09271,Setophaga petechia,Mangrovezanger,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09826,Tachycineta albilinea,Mangrovezwaluw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10174,Todiramphus albicilla,Marianenijsvogel,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:08f2bbc6,Anas theodori,Mascarene Teal,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10199,Todiramphus tristrami,Melanesische ijsvogel,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05164,Larus livens,Mexicaanse meeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN10147,Tigrisoma mexicanum,Mexicaanse tijgerroerdomp,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10746,7 +10600,6 @@ birdnet-v3:BN09053,Saundersilarus saundersi,Saundersmeeuw,coast-general,Kust,,pr
 birdnet-v3:BN04423,Haematopus ostralegus,Scholekster,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN10033,Thalasseus elegans,Sierlijke stern,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05151,Larus belcheri,Simeonmeeuw,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:f7cfaa5d,Urile perspicillatus,Spectacled Cormorant,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00394,Ammospiza caudacuta,Spitsstaartgors,coast-general,Kust,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00843,Arenaria interpres,Steenloper,coast-general,Kust,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
 birdnet-v3:BN05155,Larus canus,Stormmeeuw,coast-general,Kust,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
@@ -10868,7 +10721,6 @@ birdnet-v3:BN00594,Anthus crenatus,Kopjespieper,rockland-general,Rotsland,,prima
 birdnet-v3:BN06109,Monticola brevipes,Kortteenrotslijster,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04397,Gypaetus barbatus,Lammergier,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02263,Cisticola aberrans,Langstaartgraszanger,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:1f14f0a8,Ninox albifacies,Laughing Owl,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03960,Fringillaria impetuani,Leeuwerikgors,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00729,Apus balstoni,Madagaskargierzwaluw,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06748,Oenanthe halophila,Maghrebtapuit,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10921,8 +10773,6 @@ birdnet-v3:BN06776,Onychognathus frater,Socotraspreeuw,rockland-general,Rotsland
 birdnet-v3:BN02472,Columba oliviae,Somalische holenduif,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06775,Onychognathus blythii,Somalische spreeuw,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06762,Oenanthe phillipsi,Somalische tapuit,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:b25d90d3,Zapornia astrictocarpus,St. Helena Crake,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-avilist:11cbd603,Aphanocrex podarces,St. Helena Rail,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08224,Prunella ocularis,Steenheggenmus,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03486,Emberiza buchanani,Steenortolaan,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00290,Alectoris graeca,Steenpatrijs,rockland-general,Rotsland,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
@@ -10986,7 +10836,6 @@ birdnet-v3:BN02280,Cisticola cinereolus,Grijze graszanger,plains-general,Open vl
 birdnet-v3:BN09476,Spodiopsar cineraceus,Grijze spreeuw,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN00615,Anthus richardi,Grote pieper,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08358,Psittacula krameri,Halsbandparkiet,plains-general,Open vlakte,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread,,,complete-active-assets
-avilist:fc472eb7,Zapornia sandwichensis,Hawaiian Rail,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04189,Geronticus eremita,Heremietibis,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN06749,Oenanthe heuglinii,Heuglins tapuit,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02471,Columba oenas,Holenduif,plains-general,Open vlakte,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

@@ -5,6 +5,8 @@ No photos, descriptions or sound recordings are imported. Input downloads are se
 import argparse, csv, hashlib, io, json, pathlib, zipfile
 
 FIELDS = 'sequence.rank.order.family.familyEn.sciName.authority.citation.name.nameClements.nameBirdLife.proposalNumber.decisionSummary.range.extinct.iucn.birdLifeUrl.cornellCode.bowUrl.avibaseId.genusGender.typeSpecies.typeLocality.originalDescriptionTitle.originalDescriptionUrl.protonym'.split('.')
+DUTCH_NAME_OVERRIDES = {'birdnet-v3:BN09928': 'Zwartkopvlagstaartijsvogel', 'avilist:93d88f0a': 'Norfolkbrilvogel'}
+
 SAMPLE_IDS = {'Turdus merula':'sample-turdus-merula','Parus major':'sample-parus-major',
  'Erithacus rubecula':'sample-erithacus-rubecula','Cyanistes caeruleus':'sample-cyanistes-caeruleus',
  'Dendrocopos major':'sample-dendrocopos-major','Alcedo atthis':'sample-alcedo-atthis'}
@@ -68,6 +70,9 @@ def build(avilist, taxonomy, labels, output):
     for model in sound:
         record = next(r for r in records if r['birdnetID']==model['birdnetID'])
         assert record['scientificName']==model['scientificName'], 'Review a taxonomy/model mismatch.'
+    for record in records:
+        if record["id"] in DUTCH_NAME_OVERRIDES:
+            record["dutchName"] = DUTCH_NAME_OVERRIDES[record["id"]]
     output.mkdir(parents=True,exist_ok=True)
     data = (json.dumps(records, ensure_ascii=False, separators=(',',':'))+'\n').encode()
     (output/'WorldSpeciesCatalog.json').write_bytes(data)
@@ -78,6 +83,7 @@ def build(avilist, taxonomy, labels, output):
         sources=[dict(url='https://explore.avilist.org/data/avilist-2026.json',sha256=sha(avilist)),
           dict(url='https://zenodo.org/records/24362980',file=taxonomy.name,sha256=sha(taxonomy))],
         changes='Species-only AviList core; BirdNET Dutch names/aliases; sentence-case display; fixed existing app IDs; separate sound coverage. No images or descriptions imported.',
+        dutchNameOverrides=DUTCH_NAME_OVERRIDES,
         compatibilityRecords=['Corvus cornix: retained BirdNET-specific concept, not counted as another AviList checklist species.'])
     (output/'WorldSpeciesCatalogProvenance.json').write_text(json.dumps(provenance,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:v for k,v in provenance.items() if k not in ['sources','changes','compatibilityRecords']},indent=2))

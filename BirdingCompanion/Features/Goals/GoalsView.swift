@@ -219,7 +219,9 @@ private struct GoalSpeciesPicker: View {
     private var birds: [Species] {
         let catalog = SpeciesGuideCatalog.species
         let known = Set(catalog.map(\.id))
-        let unknown = selection.ids.subtracting(known).map { Species(id: $0, taxonomyVersion: "unknown", dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "") }
+        let unknown = selection.ids.subtracting(known).map {
+            SpeciesGuideCatalog.species(id: $0) ?? Species(id: $0, taxonomyVersion: "unknown", dutchName: "Onbekende soort", englishName: "Unknown species", scientificName: "")
+        }
         return SpeciesCatalogSearch.results(for: search, in: catalog + unknown)
     }
     var body: some View {
@@ -227,7 +229,7 @@ private struct GoalSpeciesPicker: View {
             SpeciesBackButton { dismiss() }.padding(.top, 4)
             Text("Vogels selecteren").font(FieldGuideTheme.sans(24, relativeTo: .title2))
             BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().focused($focused)
-            ScrollView {
+            CatalogResultsScroll(resetKey: search) {
                 LazyVStack(spacing: 12) {
                     ForEach(birds) { bird in GoalSelectionRow(bird: bird, selection: $selection); Divider() }
                     if birds.isEmpty { Text("Geen soorten gevonden.") }

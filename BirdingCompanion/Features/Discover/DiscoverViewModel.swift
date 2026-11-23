@@ -13,7 +13,7 @@ final class DiscoverViewModel: ObservableObject {
     private let repository: any DiscoverRepository
     private var requestID = UUID()
 
-    init(repository: any DiscoverRepository = EBirdDiscoverRepository()) {
+    init(repository: any DiscoverRepository = CombinedDiscoverRepository()) {
         self.repository = repository
     }
 
@@ -48,6 +48,7 @@ final class DiscoverViewModel: ObservableObject {
             rows = DiscoverRanking.ranked(dataset.reports, query: query, ordering: dataset.ordering)
             isDemo = dataset.isDemo
             attribution = dataset.attribution
+            message = dataset.warning
             loadedQuery = query
             isLoading = false
         } catch {

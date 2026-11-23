@@ -13,17 +13,19 @@ struct DiscoverView: View {
     @State private var showEBirdConnection = false
     @State private var connectionRevision = UUID()
     @State private var catalogQuery = ""
+    @AppStorage("discoverRadiusKilometers") private var storedRadius = DiscoverQuery.nearbyRadiusKilometers
+    private var radius: Double { DiscoverQuery.validRadius(storedRadius) }
     @FocusState private var searchFocused: Bool
     var catalog: [Species] = SpeciesGuideCatalog.species
     var catalogIsComplete = false
 
     private var queryKey: String {
-        guard let latitude = location.latitude, let longitude = location.longitude else { return "no-location" }
-        return "\(latitude),\(longitude),\(demo),\(connectionRevision)"
+        guard let latitude = location.latitude, let longitude = location.longitude else { return "no-location,\(demo),\(connectionRevision),\(radius)" }
+        return "\(latitude),\(longitude),\(demo),\(connectionRevision),\(radius)"
     }
     private var query: DiscoverQuery? {
         guard let latitude = location.latitude, let longitude = location.longitude else { return nil }
-        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
+        return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: radius)
     }
     private var locationTitle: String {
         if demo && location.latitude == nil { return "Voorbeeldlocatie" }
@@ -49,8 +51,8 @@ struct DiscoverView: View {
                     .padding(20)
                     .background(FieldGuideTheme.ivory)
                     .fixedSize(horizontal: false, vertical: true)
-                    ScrollView {
-                        catalogSearch.padding(.horizontal, 20).padding(.bottom, 94)
+                    CatalogResultsScroll(resetKey: catalogQuery) {
+                        catalogSearch.padding(.horizontal, 20).padding(.bottom, 114)
                     }
                     .scrollDismissesKeyboard(.interactively)
                 }
@@ -66,7 +68,7 @@ struct DiscoverView: View {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 20) {
                             nearbyContent
-                        }.padding(.horizontal, 20).padding(.bottom, 94)
+                        }.padding(.horizontal, 20).padding(.bottom, 114)
                     }
                     .refreshable { if let query { await model.load(query: query, demo: demo) } }
                 }
@@ -78,14 +80,14 @@ struct DiscoverView: View {
             HStack(spacing: 0) {
                 Button { showCatalogSources = true } label: {
                     Image(systemName: "info.circle").font(.system(size: 22, weight: .ultraLight))
-                        .frame(width: 44, height: 44, alignment: .leading).contentShape(Rectangle())
+                        .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Info")
                 Button { showBackups = true } label: {
                     Image(systemName: "gearshape").font(.system(size: 22, weight: .ultraLight))
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Gegevens en back-ups")
             }.buttonStyle(.plain).foregroundStyle(FieldGuideTheme.mutedIcon)
-                .padding(.leading, 20).padding(.top, 8)
+                .padding(.leading, 9).padding(.top, 8)
         }
         .overlay(alignment: .topTrailing) {
             Button { showSearch.toggle() } label: {
@@ -104,7 +106,7 @@ struct DiscoverView: View {
         .fullScreenCover(isPresented: $showBackups) {
             NavigationStack { DataBackupsView().toolbar(.hidden, for: .navigationBar) }
         }
-        .sheet(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
+        .fullScreenCover(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
         .sheet(isPresented: $showEBirdConnection) {
             EBirdConnectionView(query: query) {
                 model.reset()
@@ -114,11 +116,10 @@ struct DiscoverView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .task { if location.latitude == nil && !demo { location.useCurrentLocation() } }
-        .task(id: queryKey) { if let query { await model.load(query: query, demo: demo) } }
-        .task(id: demo) {
-            if demo && location.latitude == nil {
-                // Explicit fictional coordinate at 0/0, never presented as current GPS.
-                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers), demo: true)
+        .task(id: queryKey) {
+            if let query { await model.load(query: query, demo: demo) }
+            else if demo {
+                await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: radius), demo: true)
             }
         }
         .onDisappear { location.stop() }
@@ -167,7 +168,7 @@ struct DiscoverView: View {
                                 Link(destination: url) {
                                     SpeciesLogBadge(status: status, speciesName: row.species.dutchName, diameter: 22)
                                         .frame(width: 44, height: 44).contentShape(Rectangle())
-                                }.buttonStyle(.plain).accessibilityLabel("Open eBird-waarneming van \(row.species.dutchName)")
+                                }.buttonStyle(.plain).accessibilityLabel("Open waarneming van \(row.species.dutchName)")
                             } else {
                                 SpeciesLogBadge(status: status, speciesName: row.species.dutchName, diameter: 22).frame(width: 44, height: 44)
                             }
@@ -177,9 +178,6 @@ struct DiscoverView: View {
                                 .accessibilityHidden(true)
                         }
                     }
-                }
-                if let attribution = model.attribution {
-                    Text(attribution).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                 }
                 VStack(alignment: .leading, spacing: 0) {
                     Button { demo = false; location.useCurrentLocation() } label: {

@@ -974,14 +974,15 @@ final class WorldSpeciesCatalogTests: XCTestCase {
     func testBundledCatalogIncludesFullChecklistAndIndependentSoundCoverage() {
         XCTAssertNil(SpeciesGuideCatalog.loadError)
         XCTAssertEqual(SpeciesGuideCatalog.metadata?.checklistSpecies, 11172)
-        XCTAssertEqual(SpeciesGuideCatalog.species.count, 11173)
-        XCTAssertEqual(Set(SpeciesGuideCatalog.species.map(\.id)).count, 11173)
+        XCTAssertEqual(SpeciesGuideCatalog.species.count, 11022)
+        XCTAssertEqual(Set(SpeciesGuideCatalog.species.map(\.id)).count, 11022)
         XCTAssertEqual(SpeciesGuideCatalog.metadata?.soundSpecies, 9788)
         XCTAssertEqual(SpeciesGuideCatalog.metadata?.withoutSound, 1385)
-        XCTAssertEqual(Set(SpeciesGuideCatalog.species.compactMap { $0.family?.id }).count, 250)
+        XCTAssertEqual(Set(SpeciesGuideCatalog.species.compactMap { $0.family?.id }).count, 249)
     }
-    func testSpeciesOutsideSoundModelIsSearchableAndCanBeLogged() throws {
-        let bird = try XCTUnwrap(GuideSpeciesRepository().search("Raphus cucullatus").first)
+    func testHistoricalExtinctSpeciesStillResolvesWithoutAppearingInSearch() throws {
+        let bird = try XCTUnwrap(SpeciesGuideCatalog.species(id: "avilist:def95927"))
+        XCTAssertTrue(GuideSpeciesRepository().search("Raphus cucullatus").isEmpty)
         XCTAssertNil(SpeciesGuideCatalog.record(id: bird.id)?.soundIndex)
         let store = ObservationStore(persistence: PreviewObservationPersistence())
         try store.save(Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion,
@@ -1211,12 +1212,12 @@ final class SpeciesDetailsTests: XCTestCase {
     func testBundledCoveragePreservesMissingValuesAndKingfisherOverride() throws {
         XCTAssertNil(SpeciesDetailsCatalog.loadError)
         let rows = SpeciesGuideCatalog.species.compactMap { SpeciesDetailsCatalog.details(for: $0.id) }
-        XCTAssertEqual(rows.count, 11173)
-        XCTAssertEqual(rows.filter { $0.bio != nil }.count, 11154)
+        XCTAssertEqual(rows.count, 11022)
+        XCTAssertEqual(rows.filter { $0.bio != nil }.count, 11003)
         XCTAssertNil(SpeciesWingspanEstimatesCatalog.loadError)
-        XCTAssertEqual(rows.filter { $0.wingspan != nil && $0.wingspan?.isEstimated == false }.count, 1881)
-        XCTAssertEqual(rows.filter { $0.wingspan?.isEstimated == true }.count, 7915)
-        XCTAssertEqual(rows.filter { $0.wingspan != nil }.count, 9796)
+        XCTAssertEqual(rows.filter { $0.wingspan != nil && $0.wingspan?.isEstimated == false }.count, 1880)
+        XCTAssertEqual(rows.filter { $0.wingspan?.isEstimated == true }.count, 7910)
+        XCTAssertEqual(rows.filter { $0.wingspan != nil }.count, 9790)
         XCTAssertTrue(rows.contains { $0.bio == nil })
         XCTAssertEqual(SpeciesDetailsCatalog.details(for: "sample-alcedo-atthis")?.wingspan?.displayValue, "24–26 cm")
         XCTAssertNil(SpeciesDetailsCatalog.details(for: "not-a-species"))
@@ -2085,4 +2086,94 @@ private struct FailingRestorePersistence: ObservationPersistence {
     func preserveBeforeRestore() throws {}
     func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteOutOfSpace) }
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws { throw CocoaError(.fileWriteOutOfSpace) }
+}
+
+@MainActor
+final class DiscoverFeedbackRegressionTests: XCTestCase {
+    func testSearchNormalizesPunctuationAndRepeatedWhitespace() {
+        let bird = Species(id: "cetti", taxonomyVersion: "test", dutchName: "Cetti’s zanger",
+                           englishName: "Cetti's Warbler", scientificName: "Cettia cetti")
+        for term in ["cetti zanger", "cetti's zanger", "CETTI’S   ZANGER", "Cettia\n cetti"] {
+            XCTAssertEqual(SpeciesCatalogSearch.results(for: term, in: [bird]).map(\.id), [bird.id])
+        }
+        XCTAssertTrue(SpeciesCatalogSearch.results(for: "onbestaande soort", in: [bird]).isEmpty)
+    }
+    func testExtinctSpeciesHiddenButHistoricalIdentityRetained() throws {
+        XCTAssertTrue(GuideSpeciesRepository().search("Black Mamo").isEmpty)
+        XCTAssertTrue(GuideSpeciesRepository().search("Red Rail").isEmpty)
+        let all = try JSONDecoder().decode([WorldSpeciesRecord].self,
+            from: Data(contentsOf: XCTUnwrap(Bundle.main.url(forResource: "WorldSpeciesCatalog", withExtension: "json"))))
+        XCTAssertEqual(all.filter(\.isExtinct).count, 151)
+        for record in all where record.isExtinct {
+            XCTAssertNotNil(SpeciesGuideCatalog.species(id: record.id))
+            XCTAssertFalse(SpeciesGuideCatalog.species.contains { $0.id == record.id })
+        }
+        XCTAssertTrue(all.filter { $0.extinction == "Extinct in the Wild" }.allSatisfy { !$0.isExtinct })
+        XCTAssertTrue(all.filter { $0.extinction == "Possibly Extinct" }.allSatisfy { !$0.isExtinct })
+        XCTAssertEqual(SpeciesGuideCatalog.species(id: "birdnet-v3:BN09928")?.dutchName, "Zwartkopvlagstaartijsvogel")
+        XCTAssertEqual(SpeciesGuideCatalog.species(id: "avilist:93d88f0a")?.dutchName, "Norfolkbrilvogel")
+    }
+    func testObservationRequestUsesBoundedWindowsAndRadius() throws {
+        let query = DiscoverQuery(latitude: 51, longitude: 4, now: Date(timeIntervalSince1970: 1_800_000_000), radiusKilometers: 30)
+        let request = try ObservationOrgDiscoverRepository.request(query: query, daysBack: 13, offset: 200)
+        let items = try XCTUnwrap(URLComponents(url: XCTUnwrap(request.url), resolvingAgainstBaseURL: false)?.queryItems)
+        let values = Dictionary(uniqueKeysWithValues: items.map { ($0.name, $0.value ?? "") })
+        XCTAssertEqual(values["radius"], "10000")
+        XCTAssertEqual(values["days"], "14")
+        XCTAssertEqual(values["offset"], "200")
+        XCTAssertEqual(values["end_date"], "2027-01-02")
+        XCTAssertThrowsError(try ObservationOrgDiscoverRepository.request(query: query, daysBack: -1, offset: 0))
+        XCTAssertEqual(DiscoverQuery.validRadius(.nan), 5)
+        XCTAssertEqual(DiscoverQuery.validRadius(-5), 1)
+        XCTAssertEqual(DiscoverQuery.validRadius(100), 50)
+    }
+    func testMixedFeedSortsAcrossProvidersAndKeepsLatestSourceLink() throws {
+        let bird = MockSpeciesRepository.kingfisher
+        let now = Date()
+        let ebird = NearbyReport(checklistID: "S123", species: bird, observedAt: now, latitude: 0, longitude: 0,
+                                localObservedAt: "2026-11-23 09:00")
+        let source = URL(string: "https://observation.org/observation/42/")!
+        let observation = NearbyReport(checklistID: "observation:42", species: bird, observedAt: now, latitude: 0, longitude: 0,
+                                      observationURL: source, localObservedAt: "2026-11-23 10:00")
+        let a = DiscoverDataset(reports: [ebird], attribution: "eBird", isDemo: false, coversRequestedWindow: true)
+        let b = DiscoverDataset(reports: [observation], attribution: "Observation.org", isDemo: false, coversRequestedWindow: true)
+        let mixed = try CombinedDiscoverRepository.combine(ebird: .success(a), observation: .success(b))
+        XCTAssertEqual(mixed.reports.map(\.checklistID), ["observation:42", "S123"])
+        let rows = DiscoverRanking.ranked(mixed.reports, query: DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: 5), ordering: mixed.ordering)
+        XCTAssertEqual(rows.count, 1)
+        XCTAssertEqual(rows.first?.observationURL, source)
+        let fallback = try CombinedDiscoverRepository.combine(ebird: .success(a), observation: .failure(URLError(.notConnectedToInternet)))
+        XCTAssertEqual(fallback.reports.count, 1)
+        XCTAssertNotNil(fallback.warning)
+        XCTAssertThrowsError(try CombinedDiscoverRepository.combine(ebird: .failure(DiscoverDataError.notConfigured), observation: .failure(URLError(.notConnectedToInternet))))
+    }
+    func testObservationMissingPointIsSkippedWithoutRejectingOtherRecords() async throws {
+        let body = #"{"next":null,"results":[{"id":1,"date":"2026-11-23","species_detail":{"scientific_name":"Alcedo atthis","group":1,"type":"S"},"point":null,"is_certain":true}]}"#
+        let bird = MockSpeciesRepository.kingfisher
+        let repo = ObservationOrgDiscoverRepository(client: EBirdFixtureHTTP(body: body),
+            index: { EBirdSpeciesIndex(entries: [(code: nil, species: bird)]) }, cacheEnabled: false)
+        let dataset = try await repo.reports(for: DiscoverQuery(latitude: 0, longitude: 0,
+            now: Date(timeIntervalSince1970: 1_795_435_200), radiusKilometers: 5))
+        XCTAssertTrue(dataset.reports.isEmpty)
+    }
+    func testObservationEmptyContinuationRejectsIncompleteFeed() async {
+        let repo = ObservationOrgDiscoverRepository(client: EBirdFixtureHTTP(body: #"{"next":"more","results":[]}"#), cacheEnabled: false)
+        do {
+            _ = try await repo.reports(for: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 5))
+            XCTFail("A partial provider feed must not be presented as complete")
+        } catch {
+            guard let problem = error as? ObservationOrgError, case .incomplete = problem else {
+                return XCTFail("Unexpected error: \(error)")
+            }
+        }
+    }
+    func testObservationOverlappingWindowsDeduplicateReports() async throws {
+        let body = #"{"next":null,"results":[{"id":42,"date":"2026-11-23","time":"10:30","species_detail":{"scientific_name":"Alcedo atthis","group":1,"type":"S"},"point":{"coordinates":[0,0]},"is_certain":true,"is_escape":false}]}"#
+        let bird = MockSpeciesRepository.kingfisher
+        let repo = ObservationOrgDiscoverRepository(client: EBirdFixtureHTTP(body: body),
+            index: { EBirdSpeciesIndex(entries: [(code: nil, species: bird)]) }, cacheEnabled: false)
+        let reports = try await repo.reports(for: DiscoverQuery(latitude: 0, longitude: 0, now: Date(timeIntervalSince1970: 1_795_435_200), radiusKilometers: 5))
+        XCTAssertEqual(reports.reports.count, 1)
+        XCTAssertEqual(reports.reports.first?.checklistID, "observation:42")
+    }
 }

@@ -161,7 +161,7 @@ struct PhotoIdentificationView: View {
                     Image(uiImage: image).resizable().scaledToFit().frame(maxWidth: .infinity)
                         .clipShape(RoundedRectangle(cornerRadius: 20)).accessibilityLabel("Geselecteerde vogelfoto")
                         .overlay { if model.isLoading { ProgressView("Foto analyseren…").padding(16).background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 14)) } }
-                        .padding(.bottom, 12)
+                        .padding(.bottom, -12)
                 } else {
                     RoundedRectangle(cornerRadius: 16).fill(FieldGuideTheme.beige.opacity(0.22)).frame(height: 240)
                         .overlay { NavigationOutlineMark(kind: .bird).stroke(style: FieldGuideTheme.navigationStroke).frame(width: 48, height: 48).foregroundStyle(FieldGuideTheme.taupe).accessibilityLabel("Kies een vogelfoto") }

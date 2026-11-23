@@ -265,7 +265,7 @@ struct SessionSpeciesPicker: View {
             SpeciesBackButton { dismiss() }.padding(.top, 4)
             Text("Waarnemingen toevoegen").font(FieldGuideTheme.sans(24, relativeTo: .title2))
             BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().focused($focused)
-            ScrollView {
+            CatalogResultsScroll(resetKey: search) {
                 LazyVStack(spacing: 0) {
                     if nearby.isLoading && search.isEmpty { ProgressView("Vogels ophalen…") }
                     ForEach(birds) { bird in

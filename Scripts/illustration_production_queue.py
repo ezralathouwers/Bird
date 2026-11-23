@@ -7,7 +7,8 @@ ROOT=pathlib.Path(__file__).resolve().parents[1];RES=ROOT/'BirdingCompanion/Reso
 ROLES=['primary','dynamic','front','rear','flight']
 ACTIVE_ROLES=['primary','dynamic'] # User priority, 23 November 2026; other views deferred.
 def build():
- world=json.loads((RES/'WorldSpeciesCatalog.json').read_text())
+ world=[bird for bird in json.loads((RES/'WorldSpeciesCatalog.json').read_text())
+        if (bird.get('extinction') or '').strip('() ').lower() != 'extinct']
  scenes=json.loads((RES/'HabitatScenes.json').read_text());names={s['id']:s['name'] for s in scenes}
  assignments={a['speciesID']:a['primarySceneID'] for a in json.loads((RES/'SpeciesHabitatAssignments.json').read_text()) if a['reviewStatus'] in ['source-checked','source-derived']}
  artwork=json.loads((RES/'ArtworkManifest.json').read_text());available=collections.defaultdict(set)

@@ -1,5 +1,12 @@
 > PAUSED BY USER — 23 November 2026: Cetti's zanger is finished. Do not generate more illustrations or re-enable the recurring task until the user explicitly says to resume. This overrides earlier continue-until-limit instructions.
 
+Catalog audit checkpoint, 23 November 2026: 151 explicitly extinct source species
+are now excluded from the active inventory. No artwork was generated or changed.
+Active inventory: 11,022 species; 630 existing role assets; 54,480 missing roles
+across all five views. Current primary/dynamic scope: 21,762 missing roles across
+10,881 queued species. The illustration pause and disabled automation remain in
+effect.
+
 # Illustration automation progress
 
 Run date: 23 November 2026. Exclusive lock: /tmp/birder-illustrations.lock.

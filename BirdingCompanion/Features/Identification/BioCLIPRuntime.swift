@@ -82,7 +82,8 @@ actor BioCLIPPhotoService: PhotoIdentificationService {
         }
         try Task.checkCancellation()
         return PhotoSimilarity.accepted(scores).compactMap { id, similarity in
-            guard let species = SpeciesGuideCatalog.species(id: id) else { return nil }
+            guard let species = SpeciesGuideCatalog.species(id: id),
+                  SpeciesGuideCatalog.record(id: id)?.isExtinct != true else { return nil }
             return IdentificationCandidate(species: species, score: Double(min(1, max(0, (similarity + 1) / 2))))
         }
     }

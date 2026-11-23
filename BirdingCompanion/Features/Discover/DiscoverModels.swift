@@ -14,6 +14,9 @@ enum DiscoverFilter: String, CaseIterable {
 
 struct DiscoverQuery: Sendable {
     static let nearbyRadiusKilometers: Double = 5
+    static func validRadius(_ value: Double) -> Double {
+        value.isFinite ? min(50, max(1, value)) : nearbyRadiusKilometers
+    }
     let latitude: Double
     let longitude: Double
     let now: Date
@@ -28,6 +31,8 @@ struct NearbyReport: Sendable {
     let observedAt: Date
     let latitude: Double
     let longitude: Double
+    var observationURL: URL? = nil
+    var localObservedAt: String? = nil
 }
 
 struct DiscoverSpecies: Identifiable, Sendable {
@@ -47,6 +52,7 @@ struct DiscoverDataset: Sendable {
     let isDemo: Bool
     let coversRequestedWindow: Bool
     var ordering: DiscoverOrdering = .checklistFrequency
+    var warning: String? = nil
 }
 
 protocol DiscoverRepository: Sendable {
@@ -78,7 +84,7 @@ struct DiscoverRanking {
         // eBird sorts by observation recency before sending the response. Retain
         // that order: obsDt has no timezone and some records contain only a date.
         var firstPosition: [String: Int] = [:]
-        var firstChecklist: [String: String] = [:]
+        var firstURL: [String: URL] = [:]
         for (position, report) in reports.enumerated() {
             guard !report.checklistID.isEmpty,
                   report.observedAt >= query.start, report.observedAt <= query.now,
@@ -89,15 +95,15 @@ struct DiscoverRanking {
             if firstPosition[report.species.id] == nil {
                 firstPosition[report.species.id] = position
             }
-            if firstChecklist[report.species.id] == nil, checklistURL(report.checklistID) != nil {
-                firstChecklist[report.species.id] = report.checklistID
+            if firstURL[report.species.id] == nil {
+                firstURL[report.species.id] = report.observationURL ?? checklistURL(report.checklistID)
             }
             species[report.species.id] = report.species
             checklists[report.species.id, default: []].insert(report.checklistID)
         }
         return species.values.map {
             DiscoverSpecies(species: $0, reportCount: checklists[$0.id]?.count ?? 0,
-                            observationURL: checklistURL(firstChecklist[$0.id]))
+                            observationURL: firstURL[$0.id])
         }.sorted {
             if ordering == .providerRecency {
                 return firstPosition[$0.id, default: Int.max] < firstPosition[$1.id, default: Int.max]

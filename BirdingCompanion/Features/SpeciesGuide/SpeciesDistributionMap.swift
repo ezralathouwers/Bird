@@ -577,7 +577,7 @@ struct SpeciesDistributionMap: View {
                 .padding(.trailing, 12).padding(.top, 12)
             }
         }
-        .sheet(isPresented: $showSources) { SpeciesCatalogSourcesView() }
+        .fullScreenCover(isPresented: $showSources) { SpeciesCatalogSourcesView() }
         .accessibilityLabel("Interactieve verspreidingskaart van \(species.dutchName)")
         .task(id: species.id) { await loadRange() }
     }

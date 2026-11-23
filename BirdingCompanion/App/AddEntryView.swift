@@ -13,8 +13,9 @@ struct AddEntryView: View {
     var body: some View {
         GeometryReader { geometry in
             // Reserve a separate lower area around the floating close button.
-            let bottomClearance: CGFloat = 180
-            let choiceHeight = max(96, (geometry.size.height - bottomClearance - 1) / 3)
+            let bottomClearance: CGFloat = 140
+            let topClearance: CGFloat = 24
+            let choiceHeight = max(96, (geometry.size.height - bottomClearance - topClearance - 1) / 3)
             ScrollView {
                 VStack(spacing: 0) {
                     choice("Waarneming", accessibilityLabel: "Waarneming toevoegen", destination: .observation,
@@ -25,7 +26,7 @@ struct AddEntryView: View {
                     separator
                     choice("Doelstelling", accessibilityLabel: "Doelstelling toevoegen", destination: .goal,
                            height: choiceHeight)
-                }.frame(maxWidth: .infinity)
+                }.frame(maxWidth: .infinity).padding(.top, topClearance)
             }
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 Color.clear.frame(height: bottomClearance).allowsHitTesting(false)
@@ -69,10 +70,12 @@ private struct AddObservationPicker: View {
     var body: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: "Kies een vogel") { dismiss() }
-            ScrollView {
+            BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().padding(20)
+            CatalogResultsScroll(resetKey: search) {
                 LazyVStack(alignment: .leading, spacing: 16) {
-                    BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled()
-                    ForEach(SpeciesCatalogSearch.results(for: search, in: SpeciesGuideCatalog.species)) { bird in
+                    let birds = SpeciesCatalogSearch.results(for: search, in: SpeciesGuideCatalog.species)
+                    if birds.isEmpty { Text("Geen soorten gevonden.") }
+                    ForEach(birds) { bird in
                         Button { selected = bird } label: {
                             HStack(spacing: 16) {
                                 PrimaryBirdArtwork(species: bird).frame(width: 64, height: 64)

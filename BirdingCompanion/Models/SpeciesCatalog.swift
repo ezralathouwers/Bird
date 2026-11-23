@@ -32,6 +32,11 @@ struct WorldSpeciesRecord: Decodable, Sendable {
     let checklistSpecies: Bool
     let soundIndex: Int?
 
+    // Keep source rows/IDs for historical logs and model label compatibility.
+    // Possibly extinct and extinct-in-the-wild are deliberately not equivalent.
+    var isExtinct: Bool {
+        extinction?.lowercased().trimmingCharacters(in: CharacterSet(charactersIn: "() ")) == "extinct"
+    }
     var species: Species {
         if var sample = DiscoverFixtures.catalog.first(where: { $0.id == id }) {
             sample.aliases = aliases
@@ -80,8 +85,8 @@ enum SpeciesGuideCatalog {
                   records.filter({ $0.soundIndex != nil }).count == metadata.soundSpecies else {
                 throw CocoaError(.fileReadCorruptFile)
             }
-            let birds = SpeciesCatalogSearch.results(for: "", in: records.map(\.species))
-            let byID = Dictionary(uniqueKeysWithValues: birds.map { ($0.id, $0) })
+            let birds = SpeciesCatalogSearch.results(for: "", in: records.filter { !$0.isExtinct }.map(\.species))
+            let byID = Dictionary(uniqueKeysWithValues: records.map { ($0.id, $0.species) })
             let pairs = records.compactMap { record -> (String, Species)? in
                 guard let id = record.birdnetID else { return nil }
                 return (id, record.species)
@@ -104,7 +109,7 @@ enum SpeciesGuideCatalog {
     static func record(id: String) -> WorldSpeciesRecord? { snapshot.records[id] }
     static var coverageNote: String {
         if let error = loadError { return error }
-        let count = metadata?.checklistSpecies ?? species.count
+        let count = species.count
         return "\(count.formatted(.number.locale(Locale(identifier: "nl_BE")))) soorten · AviList 2026. Illustraties en soortgegevens worden aangevuld."
     }
 }

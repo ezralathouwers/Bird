@@ -4,8 +4,8 @@
   "records": 11173,
   "soundSpecies": 9788,
   "withoutSound": 1385,
-  "missingDutch": 158,
-  "catalogSHA256": "3741a3ba04f20b42205c8e2bf9eb99cdfd30f1510b683992ef64f3593a5f79a1",
+  "missingDutch": 156,
+  "catalogSHA256": "9ed465ee48d984141bed8912a47556ed4d4f9bf03ee26470f9c021b540fcd521",
   "license": "CC BY-SA 4.0 (derived catalog); AviList source CC BY 4.0",
   "sources": [
     {
@@ -21,5 +21,9 @@
   "changes": "Species-only AviList core; BirdNET Dutch names/aliases; sentence-case display; fixed existing app IDs; separate sound coverage. No images or descriptions imported.",
   "compatibilityRecords": [
     "Corvus cornix: retained BirdNET-specific concept, not counted as another AviList checklist species."
-  ]
+  ],
+  "dutchNameOverrides": {
+    "birdnet-v3:BN09928": "Zwartkopvlagstaartijsvogel",
+    "avilist:93d88f0a": "Norfolkbrilvogel"
+  }
 }

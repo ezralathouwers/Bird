@@ -124,6 +124,7 @@ actor BirdNETCoreMLService: StreamingSoundIdentificationService {
         let rms = sqrt(samples.reduce(0.0) { $0 + Double($1) * Double($1) } / Double(samples.count))
         logger.debug("BirdNET window: RMS=\(rms), highest bird score=\(bestBird)")
         return Array(IdentificationCandidate.ranked(labels.compactMap { label in
+            guard SpeciesGuideCatalog.record(id: label.species.id)?.isExtinct != true else { return nil }
             let score = values[label.index]
             return score >= SoundCandidateConfirmation.minimumScore ? IdentificationCandidate(species: label.species, score: score) : nil
         }).prefix(8))
