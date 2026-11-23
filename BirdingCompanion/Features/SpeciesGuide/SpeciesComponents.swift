@@ -230,11 +230,12 @@ private enum SpeciesArtworkDisplayCache {
         if let image = images.object(forKey: name as NSString) { return image }
         guard let source = UIImage(named: name) else { return nil }
         guard !Task.isCancelled else { return nil }
-        let image = trimmed(source)
+        let prominentDynamic = name.hasSuffix("-dynamic") && SpeciesArtworkLayout.dynamicMagnification(speciesID: String(name.dropLast(8))) > 1
+        let image = trimmed(source, alphaThreshold: prominentDynamic ? 8 : 0, padding: prominentDynamic ? 24 : 0)
         images.setObject(image, forKey: name as NSString)
         return image
     }
-    private static func trimmed(_ source: UIImage) -> UIImage {
+    private static func trimmed(_ source: UIImage, alphaThreshold: UInt8, padding: Int) -> UIImage {
         guard let cg = source.cgImage, source.imageOrientation == .up,
               cg.bitsPerPixel == 32, cg.bitsPerComponent == 8,
               let data = cg.dataProvider?.data, let bytes = CFDataGetBytePtr(data),
@@ -248,13 +249,15 @@ private enum SpeciesArtworkDisplayCache {
         let offset = cg.bitmapInfo.contains(.byteOrder32Little) ? 3 - alpha : alpha
         var left = cg.width, right = -1, top = cg.height, bottom = -1
         for y in 0..<cg.height {
-            for x in 0..<cg.width where bytes[y * cg.bytesPerRow + x * 4 + offset] > 0 {
+            for x in 0..<cg.width where bytes[y * cg.bytesPerRow + x * 4 + offset] > alphaThreshold {
                 left = min(left, x); right = max(right, x)
                 top = min(top, y); bottom = max(bottom, y)
             }
         }
-        guard right >= left, bottom >= top,
-              let crop = cg.cropping(to: CGRect(x: CGFloat(left), y: CGFloat(top), width: CGFloat(right - left + 1), height: CGFloat(bottom - top + 1))) else { return source }
+        guard right >= left, bottom >= top else { return source }
+        left = max(0, left - padding); right = min(cg.width - 1, right + padding)
+        top = max(0, top - padding); bottom = min(cg.height - 1, bottom + padding)
+        guard let crop = cg.cropping(to: CGRect(x: CGFloat(left), y: CGFloat(top), width: CGFloat(right - left + 1), height: CGFloat(bottom - top + 1))) else { return source }
         return UIImage(cgImage: crop, scale: source.scale, orientation: .up)
     }
 }
@@ -263,12 +266,26 @@ private enum SpeciesArtworkDisplayCache {
 // Reserve the central navigation button's 32-point protrusion below the image.
 enum SpeciesArtworkLayout {
     static let navigationClearance: CGFloat = 32
-    static func size(image: CGSize, viewport: CGSize, horizontalBleed: Bool) -> CGSize {
+    static func size(image: CGSize, viewport: CGSize, horizontalBleed: Bool, magnification: CGFloat = 1) -> CGSize {
         guard image.width > 0, image.height > 0 else { return .zero }
         let height = max(0, viewport.height - navigationClearance)
-        let scale = min(viewport.width * (horizontalBleed ? 1.18 : 1) / image.width, height / image.height)
+        let fitted = min(viewport.width * (horizontalBleed ? 1.18 : 1) / image.width, height / image.height)
+        // Dynamic scenes may bleed horizontally, while their upper/lower edges
+        // remain inside the viewport even on short screens and long titles.
+        let scale = horizontalBleed && magnification > 1
+            ? min(fitted * magnification, max(0, height - 20) / image.height)
+            : fitted
         return CGSize(width: image.width * scale, height: image.height * scale)
     }
+    static func dynamicMagnification(speciesID: String) -> CGFloat {
+        switch speciesID.replacingOccurrences(of: ":", with: "-") {
+        case "birdnet-v3-BN03838": 1.9 // Torenvalk: broad hovering composition.
+        case "birdnet-v3-BN02626": 1.45 // Roek.
+        case "sample-turdus-merula": 1.4 // Merel.
+        default: 1
+        }
+    }
+
 }
 
 private struct SpeciesArtworkSlide: View {
@@ -282,14 +299,15 @@ private struct SpeciesArtworkSlide: View {
                 if let image = displayImage {
                     // Flight views contain the diagnostic wing tips; fit their
                     // full width rather than bleeding these beyond the screen.
+                    let zoom = role == .dynamic ? SpeciesArtworkLayout.dynamicMagnification(speciesID: species.id) : 1
                     let size = SpeciesArtworkLayout.size(image: image.size, viewport: geometry.size,
-                                                         horizontalBleed: role == .dynamic)
+                                                         horizontalBleed: role == .dynamic, magnification: zoom)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
-                        .offset(x: role == .dynamic ? -50 : 0, y: role == .dynamic ? -30 : 0)
+                        .offset(x: role == .dynamic ? -50 : 0, y: role == .dynamic ? (zoom > 1 ? -10 : -30) : 0)
                         .frame(width: geometry.size.width,
                                height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
-                               alignment: role == .dynamic ? .bottom : .center)
+                               alignment: role == .dynamic && zoom == 1 ? .bottom : .center)
                         .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van 4")
                 } else if UIImage(named: role.assetName(for: species)) != nil {
                     Color.clear // Existing artwork is preparing; do not call it missing.

@@ -84,6 +84,7 @@ struct DiscoverView: View {
                 }.accessibilityLabel("Info")
                 Button { showBackups = true } label: {
                     Image(systemName: "gearshape").font(.system(size: 22, weight: .ultraLight))
+                        .offset(x: -8)
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Gegevens en back-ups")
             }.buttonStyle(.plain).foregroundStyle(FieldGuideTheme.mutedIcon)

@@ -1430,6 +1430,24 @@ final class SpeciesDetailLayoutTests: XCTestCase {
         XCTAssertLessThanOrEqual(fitted.height, 160)
         XCTAssertEqual(fitted.width / fitted.height, 1200.0 / 700, accuracy: 0.001)
     }
+
+    func testEnlargedDynamicsCanBleedHorizontallyAndKeepVerticalClearance() {
+        let viewport = CGSize(width: 390, height: 620)
+        let image = CGSize(width: 1200, height: 800)
+        let normal = SpeciesArtworkLayout.size(image: image, viewport: viewport, horizontalBleed: true)
+        for id in ["birdnet-v3:BN03838", "birdnet-v3:BN02626", "sample-turdus-merula"] {
+            let zoom = SpeciesArtworkLayout.dynamicMagnification(speciesID: id)
+            let enlarged = SpeciesArtworkLayout.size(image: image, viewport: viewport,
+                                                     horizontalBleed: true, magnification: zoom)
+            XCTAssertGreaterThan(enlarged.width, normal.width)
+            XCTAssertGreaterThan(enlarged.width, viewport.width)
+            XCTAssertLessThanOrEqual(enlarged.height, viewport.height - 52)
+            XCTAssertEqual(enlarged.width / enlarged.height, image.width / image.height, accuracy: 0.001)
+        }
+        // Magnification never changes the other three diagnostic views.
+        XCTAssertEqual(SpeciesArtworkLayout.size(image: image, viewport: viewport, horizontalBleed: false, magnification: 1.9),
+                       SpeciesArtworkLayout.size(image: image, viewport: viewport, horizontalBleed: false))
+    }
 }
 
 private struct SpeciesAudioFixtureRepository: SpeciesAudioRepository {
@@ -2175,5 +2193,79 @@ final class DiscoverFeedbackRegressionTests: XCTestCase {
         let reports = try await repo.reports(for: DiscoverQuery(latitude: 0, longitude: 0, now: Date(timeIntervalSince1970: 1_795_435_200), radiusKilometers: 5))
         XCTAssertEqual(reports.reports.count, 1)
         XCTAssertEqual(reports.reports.first?.checklistID, "observation:42")
+    }
+}
+
+private actor DiscoverProgressGate {
+    private var opened = false
+    private var waiting: [CheckedContinuation<Void, Never>] = []
+    private(set) var updates: [DiscoverDataset] = []
+    func wait() async {
+        if opened { return }
+        await withCheckedContinuation { waiting.append($0) }
+    }
+    func release(update: DiscoverDataset? = nil) {
+        if let update { updates.append(update) }
+        opened = true
+        for continuation in waiting { continuation.resume() }
+        waiting.removeAll()
+    }
+}
+
+private struct GatedDiscoverFixture: DiscoverRepository {
+    let gate: DiscoverProgressGate
+    let dataset: DiscoverDataset
+    func reports(for query: DiscoverQuery) async throws -> DiscoverDataset {
+        try await withTaskCancellationHandler {
+            await gate.wait()
+            try Task.checkCancellation()
+            return dataset
+        } onCancel: {
+            Task { await gate.release() }
+        }
+    }
+}
+
+private struct ImmediateDiscoverFixture: DiscoverRepository {
+    let dataset: DiscoverDataset
+    func reports(for query: DiscoverQuery) async throws -> DiscoverDataset { dataset }
+}
+
+@MainActor
+final class DiscoverProgressTests: XCTestCase {
+    func testFastSourcePublishesBeforeSecondSourceCompletes() async throws {
+        let gate = DiscoverProgressGate()
+        let now = Date()
+        let bird = MockSpeciesRepository.kingfisher
+        let first = DiscoverDataset(reports: [NearbyReport(checklistID: "S1", species: bird,
+            observedAt: now, latitude: 0, longitude: 0, localObservedAt: "2026-11-23 09:00")],
+            attribution: "eBird", isDemo: false, coversRequestedWindow: true)
+        let second = DiscoverDataset(reports: [NearbyReport(checklistID: "observation:2", species: bird,
+            observedAt: now, latitude: 0, longitude: 0, localObservedAt: "2026-11-23 10:00")],
+            attribution: "Observation.org", isDemo: false, coversRequestedWindow: true)
+        let repo = CombinedDiscoverRepository(ebird: ImmediateDiscoverFixture(dataset: first),
+            observation: GatedDiscoverFixture(gate: gate, dataset: second), timeout: .seconds(1))
+        // The second source can only finish once an interim result has actually
+        // reached the consumer. A timeout releases the gate if this regresses.
+        let result = try await repo.reports(for: DiscoverQuery(latitude: 0, longitude: 0, now: now, radiusKilometers: 5)) {
+            await gate.release(update: $0)
+        }
+        let updates = await gate.updates
+        XCTAssertEqual(updates.count, 1)
+        XCTAssertEqual(updates.first?.reports.map(\.checklistID), ["S1"])
+        XCTAssertEqual(result.reports.map(\.checklistID), ["observation:2", "S1"])
+        XCTAssertNil(result.warning)
+    }
+
+    func testStalledProvidersStopLoadingWithAnError() async {
+        let empty = DiscoverDataset(reports: [], attribution: "test", isDemo: false, coversRequestedWindow: true)
+        let repo = CombinedDiscoverRepository(
+            ebird: GatedDiscoverFixture(gate: DiscoverProgressGate(), dataset: empty),
+            observation: GatedDiscoverFixture(gate: DiscoverProgressGate(), dataset: empty), timeout: .milliseconds(30))
+        let model = DiscoverViewModel(repository: repo)
+        await model.load(query: DiscoverQuery(latitude: 0, longitude: 0, now: Date(), radiusKilometers: 5))
+        XCTAssertFalse(model.isLoading)
+        XCTAssertNotNil(model.message)
+        XCTAssertTrue(model.rows.isEmpty)
     }
 }

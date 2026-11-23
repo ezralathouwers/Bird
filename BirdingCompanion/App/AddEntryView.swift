@@ -14,7 +14,7 @@ struct AddEntryView: View {
         GeometryReader { geometry in
             // Reserve a separate lower area around the floating close button.
             let bottomClearance: CGFloat = 140
-            let topClearance: CGFloat = 24
+            let topClearance: CGFloat = 39
             let choiceHeight = max(96, (geometry.size.height - bottomClearance - topClearance - 1) / 3)
             ScrollView {
                 VStack(spacing: 0) {

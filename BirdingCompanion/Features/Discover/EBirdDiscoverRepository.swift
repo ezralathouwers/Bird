@@ -274,39 +274,34 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         let key = "\(query.latitude),\(query.longitude),\(query.radiusKilometers),\(Int(query.now.timeIntervalSince1970 / 300))"
         if cacheEnabled, let cached = await ObservationOrgCache.shared.read(key) { return cached }
         let lookup = index()
+        // Windows are independent. Fetch them concurrently instead of making
+        // all pages for all three windows delay the first usable source.
+        let records = try await withThrowingTaskGroup(of: [ObservationOrgRecord].self) { group in
+            for daysBack in [0, 13, 26] {
+                group.addTask { try await self.window(query: query, daysBack: daysBack) }
+            }
+            var records: [ObservationOrgRecord] = []
+            for try await window in group { records.append(contentsOf: window) }
+            return records
+        }
         var seen = Set<Int>()
         var reports: [NearbyReport] = []
-        var pages = 0
-        // Overlap adjacent 14-day windows so midnight boundary inclusivity does
-        // not lose a day. Ranking applies the exact requested 30-day window.
-        for daysBack in [0, 13, 26] {
-            var offset = 0
-            while true {
-                try Task.checkCancellation()
-                pages += 1
-                guard pages <= 30 else { throw ObservationOrgError.incomplete }
-                let request = try Self.request(query: query, daysBack: daysBack, offset: offset)
-                let (data, response) = try await client.data(for: request)
-                guard response.statusCode == 200 else { throw ObservationOrgError.unavailable }
-                let page: ObservationOrgPage
-                do { page = try JSONDecoder().decode(ObservationOrgPage.self, from: data) }
-                catch { throw ObservationOrgError.invalidResponse }
-                for record in page.results where seen.insert(record.id).inserted {
-                    guard record.is_certain, record.is_escape != true, (record.obscurity ?? 0) == 0,
-                          record.species_detail.group == 1, record.species_detail.type == "S",
-                          let point = record.point, point.coordinates.count == 2,
-                          let bird = lookup.species(code: "", scientificName: record.species_detail.scientific_name),
-                          let date = EBirdDiscoverRepository.observationDate(record.date, relativeTo: query.now),
-                          let url = record.url else { continue }
-                    reports.append(NearbyReport(checklistID: "observation:\(record.id)", species: bird,
-                        observedAt: date, latitude: point.coordinates[1], longitude: point.coordinates[0],
-                        observationURL: url, localObservedAt: record.date + " " + (record.time ?? "")))
-                }
-                guard page.next != nil else { break }
-                // Never follow an untrusted pagination URL or loop on an empty page.
-                guard !page.results.isEmpty else { throw ObservationOrgError.incomplete }
-                offset += page.results.count
-            }
+        // Many observations share a day. Avoid constructing a DateFormatter for
+        // every individual record (thousands at a busy location).
+        var dates: [String: Date] = [:]
+        for record in records where seen.insert(record.id).inserted {
+            try Task.checkCancellation()
+            guard record.is_certain, record.is_escape != true, (record.obscurity ?? 0) == 0,
+                  record.species_detail.group == 1, record.species_detail.type == "S",
+                  let point = record.point, point.coordinates.count == 2,
+                  let bird = lookup.species(code: "", scientificName: record.species_detail.scientific_name),
+                  let url = record.url else { continue }
+            let date = dates[record.date] ?? EBirdDiscoverRepository.observationDate(record.date, relativeTo: query.now)
+            guard let date else { continue }
+            dates[record.date] = date
+            reports.append(NearbyReport(checklistID: "observation:\(record.id)", species: bird,
+                observedAt: date, latitude: point.coordinates[1], longitude: point.coordinates[0],
+                observationURL: url, localObservedAt: record.date + " " + (record.time ?? "")))
         }
         try Task.checkCancellation()
         let dataset = DiscoverDataset(reports: reports, attribution: "Observation International", isDemo: false,
@@ -315,29 +310,86 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         if cacheEnabled { await ObservationOrgCache.shared.save(dataset, key: key) }
         return dataset
     }
+    private func window(query: DiscoverQuery, daysBack: Int) async throws -> [ObservationOrgRecord] {
+        var records: [ObservationOrgRecord] = []
+        var offset = 0
+        // Ten pages per window, thirty total. Never present a truncated window
+        // as complete, or follow a pagination URL provided by a remote server.
+        for _ in 0..<10 {
+            try Task.checkCancellation()
+            var request = try Self.request(query: query, daysBack: daysBack, offset: offset)
+            request.timeoutInterval = 8
+            let (data, response) = try await client.data(for: request)
+            guard response.statusCode == 200 else { throw ObservationOrgError.unavailable }
+            let page: ObservationOrgPage
+            do { page = try JSONDecoder().decode(ObservationOrgPage.self, from: data) }
+            catch { throw ObservationOrgError.invalidResponse }
+            records.append(contentsOf: page.results)
+            if page.next == nil { return records }
+            guard !page.results.isEmpty else { throw ObservationOrgError.incomplete }
+            offset += page.results.count
+        }
+        throw ObservationOrgError.incomplete
+    }
+
 }
 
-struct CombinedDiscoverRepository: DiscoverRepository {
+struct CombinedDiscoverRepository: ProgressiveDiscoverRepository {
     let ebird: any DiscoverRepository
     let observation: any DiscoverRepository
     init(ebird: any DiscoverRepository = EBirdDiscoverRepository(),
-         observation: any DiscoverRepository = ObservationOrgDiscoverRepository()) {
+         observation: any DiscoverRepository = ObservationOrgDiscoverRepository(),
+         timeout: Duration = .seconds(20)) {
         self.ebird = ebird
         self.observation = observation
+        self.timeout = timeout
     }
+    let timeout: Duration
     private func result(_ repository: any DiscoverRepository, query: DiscoverQuery) async -> Result<DiscoverDataset, Error> {
         do {
-            let dataset = try await repository.reports(for: query)
+            let dataset = try await withThrowingTaskGroup(of: DiscoverDataset.self) { group in
+                defer { group.cancelAll() }
+                group.addTask { try await repository.reports(for: query) }
+                group.addTask {
+                    try await Task.sleep(for: self.timeout)
+                    throw URLError(.timedOut)
+                }
+                guard let first = try await group.next() else { throw CancellationError() }
+                return first
+            }
             guard dataset.coversRequestedWindow else { throw DiscoverDataError.incompleteFeed }
             return .success(dataset)
         } catch { return .failure(error) }
     }
     func reports(for query: DiscoverQuery) async throws -> DiscoverDataset {
-        async let ebirdResult = result(ebird, query: query)
-        async let observationResult = result(observation, query: query)
-        let (first, second) = await (ebirdResult, observationResult)
-        try Task.checkCancellation()
-        return try Self.combine(ebird: first, observation: second)
+        try await reports(for: query, onUpdate: { _ in })
+    }
+    func reports(for query: DiscoverQuery,
+                 onUpdate: @escaping @Sendable (DiscoverDataset) async -> Void) async throws -> DiscoverDataset {
+        try await withThrowingTaskGroup(of: SourceResult.self) { group in
+            defer { group.cancelAll() }
+            group.addTask { SourceResult(isEBird: true, value: await self.result(self.ebird, query: query)) }
+            group.addTask { SourceResult(isEBird: false, value: await self.result(self.observation, query: query)) }
+            var first: Result<DiscoverDataset, Error>?
+            var second: Result<DiscoverDataset, Error>?
+            for try await source in group {
+                try Task.checkCancellation()
+                if source.isEBird { first = source.value } else { second = source.value }
+                if let first, let second {
+                    return try Self.combine(ebird: first, observation: second)
+                }
+                if case .success(var dataset) = source.value {
+                    dataset = DiscoverDataset(reports: Self.chronological(dataset.reports), attribution: dataset.attribution,
+                        isDemo: dataset.isDemo, coversRequestedWindow: true, ordering: .providerRecency, warning: dataset.warning)
+                    await onUpdate(dataset)
+                }
+            }
+            throw CancellationError()
+        }
+    }
+    private struct SourceResult: Sendable {
+        let isEBird: Bool
+        let value: Result<DiscoverDataset, Error>
     }
     static func combine(ebird: Result<DiscoverDataset, Error>,
                         observation: Result<DiscoverDataset, Error>) throws -> DiscoverDataset {
@@ -360,14 +412,18 @@ struct CombinedDiscoverRepository: DiscoverRepository {
         }
         // Both feeds describe local civil time in the same nearby area. A date
         // without a time sorts at the start of that day, never with invented hour.
-        let reports = datasets.flatMap(\.reports).enumerated().sorted { left, right in
-            let a = left.element.localObservedAt ?? ""
-            let b = right.element.localObservedAt ?? ""
-            return a == b ? left.offset < right.offset : a > b
-        }.map(\.element)
+        let reports = chronological(datasets.flatMap(\.reports))
         warnings += datasets.compactMap(\.warning)
         return DiscoverDataset(reports: reports, attribution: datasets.map(\.attribution).joined(separator: " · "),
             isDemo: false, coversRequestedWindow: true, ordering: .providerRecency,
             warning: warnings.isEmpty ? nil : warnings.joined(separator: "\n"))
     }
+    private static func chronological(_ reports: [NearbyReport]) -> [NearbyReport] {
+        reports.enumerated().sorted { left, right in
+            let a = left.element.localObservedAt ?? ""
+            let b = right.element.localObservedAt ?? ""
+            return a == b ? left.offset < right.offset : a > b
+        }.map(\.element)
+    }
+
 }

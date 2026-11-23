@@ -59,6 +59,11 @@ protocol DiscoverRepository: Sendable {
     func reports(for query: DiscoverQuery) async throws -> DiscoverDataset
 }
 
+// Publish complete results from one source while the other is still loading.
+protocol ProgressiveDiscoverRepository: DiscoverRepository {
+    func reports(for query: DiscoverQuery, onUpdate: @escaping @Sendable (DiscoverDataset) async -> Void) async throws -> DiscoverDataset
+}
+
 enum DiscoverDataError: LocalizedError, Equatable {
     case notConfigured, incompleteFeed
     var errorDescription: String? {

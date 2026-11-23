@@ -42,15 +42,14 @@ final class DiscoverViewModel: ObservableObject {
         do {
             let dataset: DiscoverDataset
             if demo { dataset = try await DemoDiscoverRepository().reports(for: query) }
-            else { dataset = try await repository.reports(for: query) }
+            else if let progressive = repository as? any ProgressiveDiscoverRepository {
+                dataset = try await progressive.reports(for: query) { [weak self] update in
+                    await self?.accept(update, query: query, request: id)
+                }
+            } else { dataset = try await repository.reports(for: query) }
             guard requestID == id, !Task.isCancelled else { return }
             guard dataset.coversRequestedWindow else { throw DiscoverDataError.incompleteFeed }
-            rows = DiscoverRanking.ranked(dataset.reports, query: query, ordering: dataset.ordering)
-            isDemo = dataset.isDemo
-            attribution = dataset.attribution
-            message = dataset.warning
-            loadedQuery = query
-            isLoading = false
+            accept(dataset, query: query, request: id)
         } catch {
             guard requestID == id, !Task.isCancelled else { return }
             needsConnection = (error as? DiscoverDataError) == .notConfigured
@@ -59,4 +58,16 @@ final class DiscoverViewModel: ObservableObject {
             isLoading = false
         }
     }
+    private func accept(_ dataset: DiscoverDataset, query: DiscoverQuery, request: UUID) {
+        guard requestID == request, !Task.isCancelled else { return }
+        rows = DiscoverRanking.ranked(dataset.reports, query: query, ordering: dataset.ordering)
+        isDemo = dataset.isDemo
+        attribution = dataset.attribution
+        message = dataset.warning
+        loadedQuery = query
+        // A complete source is already usable; do not hide it behind a spinner
+        // while the optional second source catches up or reaches its deadline.
+        isLoading = false
+    }
+
 }
