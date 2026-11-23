@@ -11121,7 +11121,7 @@ birdnet-v3:BN02441,Collocalia neglecta,Vale dwergsalangaan,cultivated-general,Cu
 birdnet-v3:BN02039,Chlorostilbon melanorhynchus,West-andessmaragdkolibrie,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04892,Iduna opaca,Westelijke vale spotvogel,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01677,Catamenia analis,Witstaartcatamenia,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN02619,Corvus corone,Zwarte kraai,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN02619,Corvus corone,Zwarte kraai,cultivated-general,Cultuurlandschap,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN00044,Acridotheres melanopterus,Zwartvleugelmaina,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02985,Cymbilaimus sanctaemariae,Bamboemierklauwier,bamboo,Bamboe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01094,Bambusicola thoracicus,Chinese bamboepatrijs,bamboo,Bamboe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

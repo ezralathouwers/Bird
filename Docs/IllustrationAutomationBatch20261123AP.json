@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN02619",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-c85d19af-79cc-4723-8407-d2609434be23.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "1d79a330e8a14b9f85947a42796193da360e461175943936e72eda8fc2eec7ec",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, charcoal black sheen, robust arched bill with feathered bristled base, dark eye/legs and rounded tail. One head/bill, two folded wings far side occluded and two natural feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN02619",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-393cabb8-4d5f-4d16-8360-790b78aa3588.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "3a7c10ad107217da631f7b87b991a431521fcb63d59eec84e8ec67a8ffba9f71",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Acorn-holding crow on naturally broken mossy stump, one head/bill, two folded wings far side occluded and two gripping feet. All bird parts inside canvas; stump below bird fades at base, no top crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
