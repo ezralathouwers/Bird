@@ -266,10 +266,10 @@ final class DiscoverRankingTests: XCTestCase {
                      latitude: latitude, longitude: 0)
     }
 
-    func testRankingCountsDistinctChecklistsWithinAreaAndThirtyDays() {
+    func testRankingCountsDistinctChecklistsWithinAreaAndSevenDays() {
         let reports = [report(first, checklist: "A"), report(first, checklist: "A"),
             report(first, checklist: "B"), report(second, checklist: "C"),
-            report(second, checklist: "old", daysAgo: 31), report(second, checklist: "future", daysAgo: -1),
+            report(second, checklist: "old", daysAgo: 8), report(second, checklist: "future", daysAgo: -1),
             report(second, checklist: "far", latitude: 10), report(second, checklist: "")]
         let ranked = DiscoverRanking.ranked(reports, query: query)
         XCTAssertEqual(ranked.map(\.id), [first.id, second.id])
@@ -277,7 +277,7 @@ final class DiscoverRankingTests: XCTestCase {
     }
 
     func testBoundaryAndTieOrderAreDeterministic() {
-        let ranked = DiscoverRanking.ranked([report(first, checklist: "A", daysAgo: 30),
+        let ranked = DiscoverRanking.ranked([report(first, checklist: "A", daysAgo: 7),
                                             report(second, checklist: "B", daysAgo: 0)], query: query)
         XCTAssertEqual(ranked.map(\.species.dutchName), ["Koolmees", "Merel"])
     }
@@ -300,7 +300,7 @@ final class DiscoverRankingTests: XCTestCase {
                                   radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
         let rows = DiscoverRanking.ranked([
             report(first, checklist: "outside", latitude: 0.046), // About 5.1 km away.
-            report(first, checklist: "old", daysAgo: 31),
+            report(first, checklist: "old", daysAgo: 8),
             report(first, checklist: "future", daysAgo: -1),
             report(second, checklist: "inside", latitude: 0.044), // About 4.9 km away.
             report(first, checklist: "valid-older", daysAgo: 2)
@@ -1303,7 +1303,7 @@ final class EBirdDiscoverTests: XCTestCase {
                                        index: { index }, now: { now })
     }
 
-    func testRequestUsesThirtyDaysFiveKilometersRecencyAndHeaderOnlyKey() throws {
+    func testRequestUsesSevenDaysFiveKilometersRecencyAndHeaderOnlyKey() throws {
         let request = try EBirdDiscoverRepository.request(query: query, apiKey: "  fixture-key  ")
         XCTAssertEqual(request.value(forHTTPHeaderField: "X-eBirdApiToken"), "fixture-key")
         XCTAssertEqual(request.url?.scheme, "https")
@@ -1313,7 +1313,7 @@ final class EBirdDiscoverTests: XCTestCase {
         let parameters = Dictionary(uniqueKeysWithValues: items.map { ($0.name, $0.value!) })
         XCTAssertEqual(parameters["dist"], "5.0")
         XCTAssertEqual(parameters["sort"], "date")
-        XCTAssertEqual(parameters["back"], "30")
+        XCTAssertEqual(parameters["back"], "7")
         XCTAssertEqual(parameters["cat"], "species")
         XCTAssertEqual(parameters["includeProvisional"], "false")
         XCTAssertFalse(request.url!.absoluteString.contains("fixture-key"))
@@ -1374,6 +1374,8 @@ final class EBirdDiscoverTests: XCTestCase {
 
     func testDateOnlyRecordsAndHistoricalRequestsDoNotInventCoverage() async {
         XCTAssertNotNil(EBirdDiscoverRepository.observationDate("2027-01-15", relativeTo: now))
+        XCTAssertNotNil(EBirdDiscoverRepository.observationDate("2027-01-08", relativeTo: now))
+        XCTAssertNil(EBirdDiscoverRepository.observationDate("2027-01-07", relativeTo: now))
         XCTAssertNil(EBirdDiscoverRepository.observationDate("bad-date", relativeTo: now))
         XCTAssertNil(EBirdDiscoverRepository.observationDate("2020-01-01", relativeTo: now))
         let historical = DiscoverQuery(latitude: 0, longitude: 0, now: now.addingTimeInterval(-31 * 86400), radiusKilometers: DiscoverQuery.nearbyRadiusKilometers)
@@ -2131,16 +2133,17 @@ final class DiscoverFeedbackRegressionTests: XCTestCase {
         XCTAssertEqual(SpeciesGuideCatalog.species(id: "birdnet-v3:BN09928")?.dutchName, "Zwartkopvlagstaartijsvogel")
         XCTAssertEqual(SpeciesGuideCatalog.species(id: "avilist:93d88f0a")?.dutchName, "Norfolkbrilvogel")
     }
-    func testObservationRequestUsesBoundedWindowsAndRadius() throws {
+    func testObservationRequestUsesSevenDaysLargerPagesAndBoundedRadius() throws {
         let query = DiscoverQuery(latitude: 51, longitude: 4, now: Date(timeIntervalSince1970: 1_800_000_000), radiusKilometers: 30)
-        let request = try ObservationOrgDiscoverRepository.request(query: query, daysBack: 13, offset: 200)
+        let request = try ObservationOrgDiscoverRepository.request(query: query, offset: 1000)
         let items = try XCTUnwrap(URLComponents(url: XCTUnwrap(request.url), resolvingAgainstBaseURL: false)?.queryItems)
         let values = Dictionary(uniqueKeysWithValues: items.map { ($0.name, $0.value ?? "") })
         XCTAssertEqual(values["radius"], "10000")
-        XCTAssertEqual(values["days"], "14")
-        XCTAssertEqual(values["offset"], "200")
-        XCTAssertEqual(values["end_date"], "2027-01-02")
-        XCTAssertThrowsError(try ObservationOrgDiscoverRepository.request(query: query, daysBack: -1, offset: 0))
+        XCTAssertEqual(values["days"], "7")
+        XCTAssertEqual(values["offset"], "1000")
+        XCTAssertEqual(values["end_date"], "2027-01-15")
+        XCTAssertEqual(values["limit"], "1000")
+        XCTAssertThrowsError(try ObservationOrgDiscoverRepository.request(query: query, offset: -1))
         XCTAssertEqual(DiscoverQuery.validRadius(.nan), 5)
         XCTAssertEqual(DiscoverQuery.validRadius(-5), 1)
         XCTAssertEqual(DiscoverQuery.validRadius(100), 50)
@@ -2163,6 +2166,8 @@ final class DiscoverFeedbackRegressionTests: XCTestCase {
         let fallback = try CombinedDiscoverRepository.combine(ebird: .success(a), observation: .failure(URLError(.notConnectedToInternet)))
         XCTAssertEqual(fallback.reports.count, 1)
         XCTAssertNotNil(fallback.warning)
+        let timeout = try CombinedDiscoverRepository.combine(ebird: .success(a), observation: .failure(URLError(.timedOut)))
+        XCTAssertTrue(timeout.warning?.contains("reageert te traag") == true)
         XCTAssertThrowsError(try CombinedDiscoverRepository.combine(ebird: .failure(DiscoverDataError.notConfigured), observation: .failure(URLError(.notConnectedToInternet))))
     }
     func testObservationMissingPointIsSkippedWithoutRejectingOtherRecords() async throws {
@@ -2185,8 +2190,9 @@ final class DiscoverFeedbackRegressionTests: XCTestCase {
             }
         }
     }
-    func testObservationOverlappingWindowsDeduplicateReports() async throws {
-        let body = #"{"next":null,"results":[{"id":42,"date":"2026-11-23","time":"10:30","species_detail":{"scientific_name":"Alcedo atthis","group":1,"type":"S"},"point":{"coordinates":[0,0]},"is_certain":true,"is_escape":false}]}"#
+    func testObservationDuplicateIDsDoNotProduceDuplicateReports() async throws {
+        let record = #"{"id":42,"date":"2026-11-23","time":"10:30","species_detail":{"scientific_name":"Alcedo atthis","group":1,"type":"S"},"point":{"coordinates":[0,0]},"is_certain":true,"is_escape":false}"#
+        let body = "{\"next\":null,\"results\":[" + record + "," + record + "]}"
         let bird = MockSpeciesRepository.kingfisher
         let repo = ObservationOrgDiscoverRepository(client: EBirdFixtureHTTP(body: body),
             index: { EBirdSpeciesIndex(entries: [(code: nil, species: bird)]) }, cacheEnabled: false)

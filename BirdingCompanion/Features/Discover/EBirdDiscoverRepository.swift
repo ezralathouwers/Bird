@@ -153,7 +153,7 @@ struct EBirdDiscoverRepository: DiscoverRepository {
             URLQueryItem(name: "lat", value: String(query.latitude)),
             URLQueryItem(name: "lng", value: String(query.longitude)),
             URLQueryItem(name: "dist", value: String(query.radiusKilometers)),
-            URLQueryItem(name: "back", value: "30"),
+            URLQueryItem(name: "back", value: String(DiscoverQuery.lookbackDays)),
             URLQueryItem(name: "sort", value: "date"),
             URLQueryItem(name: "cat", value: "species"),
             URLQueryItem(name: "includeProvisional", value: "false"),
@@ -181,7 +181,7 @@ struct EBirdDiscoverRepository: DiscoverRepository {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         let difference = calendar.dateComponents([.day], from: observedDay, to: calendar.startOfDay(for: now)).day ?? 100
-        guard (-1...30).contains(difference) else { return nil }
+        guard (-1...DiscoverQuery.lookbackDays).contains(difference) else { return nil }
         return now.addingTimeInterval(-Double(max(0, difference)) * 86400)
     }
 }
@@ -246,11 +246,11 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         self.index = index
         self.cacheEnabled = cacheEnabled
     }
-    static func request(query: DiscoverQuery, daysBack: Int, offset: Int) throws -> URLRequest {
+    static func request(query: DiscoverQuery, offset: Int) throws -> URLRequest {
         guard query.latitude.isFinite, query.longitude.isFinite,
               (-90...90).contains(query.latitude), (-180...180).contains(query.longitude),
               query.radiusKilometers.isFinite, (1...50).contains(query.radiusKilometers),
-              [0, 13, 26].contains(daysBack), offset >= 0 else { throw EBirdError.invalidQuery }
+              offset >= 0 else { throw EBirdError.invalidQuery }
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -258,11 +258,11 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         var parts = URLComponents(string: "https://observation.org/api/v1/observations/around-point/")!
         parts.queryItems = [
             URLQueryItem(name: "coordinates", value: "\(query.latitude),\(query.longitude)"),
-            URLQueryItem(name: "days", value: "14"),
-            URLQueryItem(name: "end_date", value: formatter.string(from: query.now.addingTimeInterval(-Double(daysBack) * 86400))),
+            URLQueryItem(name: "days", value: String(DiscoverQuery.lookbackDays)),
+            URLQueryItem(name: "end_date", value: formatter.string(from: query.now)),
             URLQueryItem(name: "radius", value: String(Int(min(10, query.radiusKilometers) * 1000))),
             URLQueryItem(name: "species_group", value: "1"),
-            URLQueryItem(name: "limit", value: "200"),
+            URLQueryItem(name: "limit", value: "1000"),
             URLQueryItem(name: "offset", value: String(offset))
         ]
         var request = URLRequest(url: parts.url!)
@@ -271,19 +271,12 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         return request
     }
     func reports(for query: DiscoverQuery) async throws -> DiscoverDataset {
-        let key = "\(query.latitude),\(query.longitude),\(query.radiusKilometers),\(Int(query.now.timeIntervalSince1970 / 300))"
+        let key = "\(DiscoverQuery.lookbackDays),\(query.latitude),\(query.longitude),\(query.radiusKilometers),\(Int(query.now.timeIntervalSince1970 / 300))"
         if cacheEnabled, let cached = await ObservationOrgCache.shared.read(key) { return cached }
         let lookup = index()
-        // Windows are independent. Fetch them concurrently instead of making
-        // all pages for all three windows delay the first usable source.
-        let records = try await withThrowingTaskGroup(of: [ObservationOrgRecord].self) { group in
-            for daysBack in [0, 13, 26] {
-                group.addTask { try await self.window(query: query, daysBack: daysBack) }
-            }
-            var records: [ObservationOrgRecord] = []
-            for try await window in group { records.append(contentsOf: window) }
-            return records
-        }
+        // The shared seven-day window needs one query, not three overlapping
+        // fortnight queries. Larger supported pages avoid per-page round trips.
+        let records = try await pages(query: query)
         var seen = Set<Int>()
         var reports: [NearbyReport] = []
         // Many observations share a day. Avoid constructing a DateFormatter for
@@ -310,15 +303,15 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
         if cacheEnabled { await ObservationOrgCache.shared.save(dataset, key: key) }
         return dataset
     }
-    private func window(query: DiscoverQuery, daysBack: Int) async throws -> [ObservationOrgRecord] {
+    private func pages(query: DiscoverQuery) async throws -> [ObservationOrgRecord] {
         var records: [ObservationOrgRecord] = []
         var offset = 0
-        // Ten pages per window, thirty total. Never present a truncated window
+        // Bound the public feed at 10,000 records. Never present a truncated feed
         // as complete, or follow a pagination URL provided by a remote server.
         for _ in 0..<10 {
             try Task.checkCancellation()
-            var request = try Self.request(query: query, daysBack: daysBack, offset: offset)
-            request.timeoutInterval = 8
+            var request = try Self.request(query: query, offset: offset)
+            request.timeoutInterval = 12
             let (data, response) = try await client.data(for: request)
             guard response.statusCode == 200 else { throw ObservationOrgError.unavailable }
             let page: ObservationOrgPage
@@ -404,7 +397,10 @@ struct CombinedDiscoverRepository: ProgressiveDiscoverRepository {
         }
         switch observation {
         case .success(let data): datasets.append(data)
-        case .failure: warnings.append("Observation.org is tijdelijk niet beschikbaar; alleen eBird wordt getoond.")
+        case .failure(let error):
+            if (error as? URLError)?.code == .timedOut {
+                warnings.append("Observation.org reageert te traag; voorlopig worden alleen eBird-meldingen getoond.")
+            } else { warnings.append("Observation.org is tijdelijk niet beschikbaar; alleen eBird wordt getoond.") }
         }
         guard !datasets.isEmpty else {
             if case .failure(let error) = ebird { throw error }

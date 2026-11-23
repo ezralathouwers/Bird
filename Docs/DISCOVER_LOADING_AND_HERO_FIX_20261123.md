@@ -44,3 +44,32 @@ Validation:
   non-dynamic fitting unchanged.
 - Native compilation, XCTest execution and iPhone visual/timing verification
   remain pending: this environment has no Swift compiler or Xcode.
+
+## On-device follow-up: seven-day feed and smaller rook
+
+The user confirmed eBird displayed but Observation.org timed out. A complete
+read-only replay around Antwerp reproduced a 22.94-second slowest window
+(16 pages across all three windows), exceeding the existing 20-second deadline.
+All pages matched the expected schema; no decoding mismatch was found.
+
+The user then requested the last seven days instead. Both provider request
+parameters and the shared local date filter now use `DiscoverQuery.lookbackDays`
+(7). Observation.org needs only one date window and uses its verified supported
+1,000-record page size, with pagination retained for busier areas. Per-request
+timeout is 12 seconds; the existing 20-second source deadline and immediate
+eBird display remain in place. Timeout copy now says the source responded too
+slowly rather than claiming it is unavailable. Settings text reflects seven days.
+Demo records remain explicitly fictional and now fit inside the shorter window.
+
+The revised live query returned HTTP 200 with 295 records in one page in 3.98
+seconds. An independent Python check of catalog matching, certainty, privacy,
+escape status, seven-day dates and the 5 km radius retained 280 reports covering
+62 species. These are test-run counts/times, not a performance guarantee or an
+executed Swift/iPhone test. No third-party observation payloads were committed.
+
+Rook dynamic magnification decreases from 1.45 to 1.25 (about 14% smaller when
+not height-constrained), retaining the higher placement and display-only trim.
+Kestrel and blackbird are unchanged. Updated XCTest assertions cover seven-day
+provider requests and boundaries, larger pages, deduplication and timeout copy.
+Syntax parsing, catalog tests and whitespace checks passed again; native checks
+remain pending.

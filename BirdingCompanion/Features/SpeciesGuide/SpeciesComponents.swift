@@ -280,7 +280,7 @@ enum SpeciesArtworkLayout {
     static func dynamicMagnification(speciesID: String) -> CGFloat {
         switch speciesID.replacingOccurrences(of: ":", with: "-") {
         case "birdnet-v3-BN03838": 1.9 // Torenvalk: broad hovering composition.
-        case "birdnet-v3-BN02626": 1.45 // Roek.
+        case "birdnet-v3-BN02626": 1.25 // Roek: reduced after the on-device review.
         case "sample-turdus-merula": 1.4 // Merel.
         default: 1
         }

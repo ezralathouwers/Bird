@@ -41,7 +41,7 @@ struct EBirdConnectionView: View {
                     if let message { Text(message).foregroundStyle(.red).accessibilityAddTraits(.updatesFrequently) }
                 }
                 Section {
-                    Text("De lijst combineert de laatste 30 dagen van eBird en Observation.org, met de recentste melding per soort bovenaan. Tijden zijn lokale waarnemingstijden; meldingen zonder uur worden binnen hun datum gesorteerd.")
+                    Text("De lijst combineert de laatste 7 dagen van eBird en Observation.org, met de recentste melding per soort bovenaan. Tijden zijn lokale waarnemingstijden; meldingen zonder uur worden binnen hun datum gesorteerd.")
                         .font(.footnote)
                 }
                 if hasStoredKey {
