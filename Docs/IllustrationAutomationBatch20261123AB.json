@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN09063",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-9ccd8ec3-b858-48f2-8b52-980ea8b5b297.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "336086b0b44d53c5070f60338d9cea2ea89448f0ebac20b030a6218fff570fc5",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, broad white eyebrow/dark cheek, white moustache, streaked brown back, orange buff breast pale belly, dark legs. One head/bill, two folded wings far side occluded, two natural feet; narrow uncut top margin. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN09063",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-46874acb-ee61-426c-9f3a-7818db3cd39a.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male breeding",
+    "anatomyReview": {
+      "sha256": "516f664ef98ba22b43657df419631190e36cd70a8aca0c24e53d54d2ec235853",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Beetle-holding bird on dry meadow stem, white eyebrow and dark cheek, one head/bill, two folded wings far side occluded and two gripping feet. Head/bill inside frame; stem stays below bird and extends/fades at bottom, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

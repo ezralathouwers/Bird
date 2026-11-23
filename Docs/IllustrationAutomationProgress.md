@@ -209,3 +209,9 @@ reviews and hashes: IllustrationAutomationBatch20261123AA.json. 596 total roles;
 124 paired species, 11,049 queued, 22,098 missing active images.
 No tool-reported quota/reset time. Next: paapje
 (Saxicola rubetra, birdnet-v3:BN09063), primary+dynamic.
+
+Checkpoint AB — installed primary+dynamic breeding male paapje (Saxicola rubetra,
+birdnet-v3:BN09063). Individually inspected original and ivory alpha composites;
+hash reviews in IllustrationAutomationBatch20261123AB.json. 598 total roles;
+125 paired species, 11,048 queued, 22,096 active images missing. This continuation
+has added sixteen images for eight new species. No quota/reset reported.

@@ -8448,7 +8448,7 @@ birdnet-v3:BN04212,Glareola maldivarum,Oosterse vorkstaartplevier,grassland-step
 birdnet-v3:BN00414,Amytornis rowleyi,Opaltongrassluiper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03750,Euplectes franciscanus,Oranje wever,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN03647,Estrilda melpoda,Oranjekaakje,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN09063,Saxicola rubetra,Paapje,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN09063,Saxicola rubetra,Paapje,grassland-steppe,Grasland en steppe,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN01414,Calidris maritima,Paarse strandloper,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02137,Cinclodes pabsti,Pabstwipstaart,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN09091,Schoeniclus pallasi,Pallas' rietgors,grassland-steppe,Grasland en steppe,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
