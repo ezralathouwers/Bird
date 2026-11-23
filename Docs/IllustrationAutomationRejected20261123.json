@@ -34,5 +34,13 @@
     "sha256": "637e73b6d5c8c849a3593deebebabed826ff728bc6e19ac456d4b12d39ddbc69",
     "reason": "First hovering composition had insufficient breathing room above wing tips; alpha-aware review found no opaque backdrop. Edited through image-generation tool for margins; retained original, not installed.",
     "replacement": "exec-63799461-a4ed-404e-a75f-1de533f3105d.png"
+  },
+  {
+    "speciesID": "birdnet-v3:BN02626",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-9603155a-3931-4c82-b1c0-0c50406c331e.png",
+    "sha256": "671a1c18d664a2900be2df284a9d6ec35bf8de7ad9294cb662a84b8710a69cb9",
+    "reason": "Tail touched/crossed left canvas edge; original rejected, retained and corrected with image-generation edit before import.",
+    "replacement": "exec-a975b050-76b6-4bad-baff-54f74015f36c.png"
   }
 ]

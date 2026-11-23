@@ -11104,7 +11104,7 @@ birdnet-v3:BN05319,Lewinia muelleri,Müllerral,cultivated-general,Cultuurlandsch
 birdnet-v3:BN07317,Petrochelidon rufocollaris,Peruaanse klifzwaluw,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN05209,Leistes bellicosus,Peruaanse weidespreeuw,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07169,Passer montanus,Ringmus,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN02626,Corvus frugilegus,Roek,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN02626,Corvus frugilegus,Roek,cultivated-general,Cultuurlandschap,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN04668,Hirundo lucida,Roodkeelzwaluw,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN07665,Phytotoma rara,Roodstaartzaagvink,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN01790,Cercotrichas galactotes,Rosse waaierstaart,cultivated-general,Cultuurlandschap,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

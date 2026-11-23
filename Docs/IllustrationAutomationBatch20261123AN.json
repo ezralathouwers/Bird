@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN02626",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-fa75059a-86b6-483a-b008-9312e61e2ae7.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "d28d3318d8ce6fb1caa865f78083b78acc462d9dafbc2ec314296609aad967c7",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, black violet-blue sheen, bare pale bill base/long pointed bill, peaked crown and shaggy thighs. One head/bill, two folded wings far side occluded, two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN02626",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-a975b050-76b6-4bad-baff-54f74015f36c.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "a534ed017430f0ff9af644e4353119400052098fc6b1b734ea6fd13db4e6c886",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Earthworm foraging on low moss clod, one head/bill, two folded wings far side occluded, two feet. Entire tail now inside frame with comfortable margins, base fades transparent no upper crop. Imagegen framing edit of rejected exec-9603155a-3931-4c82-b1c0-0c50406c331e.png; both originals retained. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
