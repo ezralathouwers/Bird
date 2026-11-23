@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN06848",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-1b01bbc6-2de8-41c0-81bd-229f9ce75e39.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "2702086558322f45b2fc5d4d9639c33ae6eac9a170421885681e1b9dc1a440c5",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing male with golden body, black lores/wings, yellow wing detail and tail tips, pink red bill and gray legs. Whole bird only, one head/bill, two folded wings far side occluded and two feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN06848",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-888debf4-e0cf-4215-b93d-7c00f48b3a29.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "e864204a45393b0132ca999238e49d2e2bef70b120b2a5c62e82d2b0003924dc",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Caterpillar-holding male on poplar twig, one head/bill, two folded wings far side occluded, two gripping feet. Head/bill inside canvas; branch ends below crown, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]

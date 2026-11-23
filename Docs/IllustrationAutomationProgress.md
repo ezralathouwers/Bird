@@ -181,3 +181,11 @@ ivory alpha composites. Mapping/reviews: IllustrationAutomationBatch20261123W.js
 Active inventory: 120 paired species, 11,053 queued, 22,106 missing images;
 588 installed roles overall. No generation quota/reset time reported.
 Next woodland species: wielewaal (Oriolus oriolus, birdnet-v3:BN06848).
+
+Checkpoint X — installed primary+dynamic adult male wielewaal (Oriolus oriolus,
+birdnet-v3:BN06848). Originals and ivory composites individually inspected;
+reviews/provenance: IllustrationAutomationBatch20261123X.json.
+Active inventory: 121 paired species, 11,052 queued, 22,104 missing images;
+590 installed roles overall. This continuation added eight images for four
+new species. No generation quota/reset time reported. Next: braamsluiper
+(Curruca curruca, birdnet-v3:BN02872), primary+dynamic.
