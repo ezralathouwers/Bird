@@ -3,5 +3,10 @@
     "path": "/workspace/generated_images/exec-231f7b65-5164-4359-8bd8-115289d59f11.png",
     "sha256": "42d874566068c0b01ebcb4f45b3e4141381bfe72b4da8cc8e34a2c0a210a232f",
     "reason": "Superseded by requested margin/transparency clarification. Initial tool preview appeared haloed; actual alpha exterior later checked and not asserted opaque. Not installed."
+  },
+  {
+    "path": "/workspace/generated_images/exec-6dc1b39f-60fd-46dd-b338-747b65f03998.png",
+    "sha256": "a76d754a142c190fcfb2c0e8907d27522956d5b941638f01aee2b19bcc263a71",
+    "reason": "Front view crown touches/crops at upper canvas edge. Not installed; replaced with more transparent framing margin."
   }
 ]

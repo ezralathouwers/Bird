@@ -35,3 +35,10 @@ birdnet-v3:BN07965) roles. Mapping/reviews: IllustrationAutomationBatch20261123D
 Inventory: 500 roles, 100 complete species, 11,073 queued, 55,365 missing roles.
 No image-generation limit/reset time has been reported. Next: bosuil
 (Strix aluco, birdnet-v3:BN09644), all five roles missing.
+
+Checkpoint E installed: all five adult brown-morph bosuil (Strix aluco,
+birdnet-v3:BN09644) roles. Mapping/reviews: IllustrationAutomationBatch20261123E.json.
+One rejected front view touched the crown edge; replaced before import.
+Inventory: 505 roles, 101 complete species, 11,072 queued, 55,360 missing roles.
+No image-generation limit/reset time has been reported. Next: groene specht
+(Picus viridis, birdnet-v3:BN07724), all five roles missing.

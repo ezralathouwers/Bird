@@ -670,7 +670,7 @@ birdnet-v3:BN05720,Megascops marshalli,Bosschreeuwuil,forest-general,Bos,,primar
 birdnet-v3:BN01548,Canachites canadensis,Bossneeuwhoen,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04031,Gallinago nemoricola,Bossnip,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN00983,Athene blewitti,Bossteenuil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
-birdnet-v3:BN09644,Strix aluco,Bosuil,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
+birdnet-v3:BN09644,Strix aluco,Bosuil,forest-general,Bos,primary;dynamic;front;rear;flight,,complete-assets,pending,centered-ventral-spread
 birdnet-v3:BN10559,Tychaedon leucosticta,Boswaaierstaart,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN04582,Henicorhina leucosticta,Boswinterkoning,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
 birdnet-v3:BN09725,Sylviparus modestus,Boszangermees,forest-general,Bos,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread
