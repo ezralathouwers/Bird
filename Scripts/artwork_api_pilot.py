@@ -56,6 +56,18 @@ def jobs(plan, root=ROOT):
     catalog = {r['id']: r for r in json.loads((root / 'BirdingCompanion/Resources/WorldSpeciesCatalog.json').read_text())}
     manifest = json.loads((root / 'BirdingCompanion/Resources/ArtworkManifest.json').read_text())
     installed = {(r['speciesID'], r['view']) for r in manifest}
+    scope = plan.get('scope', 'pilot')
+    if scope == 'belgium':
+        import csv
+        inventory = root / plan['inventoryCSV']
+        if sha(inventory.read_bytes()) != plan['inventorySHA256']:
+            raise ValueError('Belgian inventory changed: rebuild and review the recipe first.')
+        with inventory.open() as handle:
+            allowed = {r['catalogID'] for r in csv.DictReader(handle) if r['decision'] == 'queued'}
+        if {r['id'] for r in plan['species']} != allowed:
+            raise ValueError('Belgian recipe does not match its audited production list.')
+    elif scope != 'pilot':
+        raise ValueError('Unknown production scope.')
     seen = set()
     result = []
     for species in plan['species']:
@@ -77,8 +89,8 @@ def jobs(plan, root=ROOT):
                 reference=str(reference), referenceSHA256=sha(reference.read_bytes()),
                 representativePlumage=species['representativePlumage'], referenceURL=species['referenceURL'],
                 dutchName=species['dutchName']))
-    if len(seen) != 10:
-        raise ValueError('This pilot is restricted to the ten selected birds.')
+    if (scope == 'pilot' and len(seen) != 10) or (scope == 'belgium' and not 1 <= len(seen) <= 500):
+        raise ValueError('Species count is outside the approved recipe scope.')
     return result
 
 
@@ -197,10 +209,11 @@ def production_lock():
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
-def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=send):
+def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=send, after_save=None):
     """Stop threshold is NOT a provider billing cap; one call can exceed it."""
-    if not 1 <= max_requests <= 20 or not math.isfinite(spend_stop_usd) or spend_stop_usd <= 0:
-        raise ValueError('Use 1–20 requests and a positive spend stop threshold.')
+    limit = 2 * len(plan['species']) if plan.get('scope') == 'belgium' else 20
+    if not 1 <= max_requests <= limit or not math.isfinite(spend_stop_usd) or spend_stop_usd <= 0:
+        raise ValueError(f'Use 1–{limit} requests and a positive spend stop threshold.')
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     state_path = output / 'state.json'
@@ -209,6 +222,10 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
         raise ValueError('Recipe changed: use a separate output directory for a separate experiment.')
     charged = 0.0
     for status in state['jobs'].values():
+        if status['status'] == 'request_rejected':
+            if (output / status['file']).exists():
+                raise ValueError('Rejected request unexpectedly has an image; reconcile before retrying.')
+            continue
         if status['status'] != 'generated_unreviewed' or status.get('costEstimateUSD') is None:
             raise ValueError('Previous request needs manual reconciliation; it will not be retried automatically.')
         path = output / status['file']
@@ -217,7 +234,8 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
         charged += status['costEstimateUSD']
     sent = 0
     for job in planned:
-        if job['key'] in state['jobs']:
+        previous = state['jobs'].get(job['key'])
+        if previous and previous['status'] != 'request_rejected':
             continue
         if sent >= max_requests or charged >= spend_stop_usd:
             break
@@ -228,6 +246,8 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
         status = dict(status='request_pending', file=path.name, model=plan['model'], quality=plan['quality'],
             size=job['size'], promptSHA256=sha(job['prompt'].encode()), payloadSHA256=sha(blob),
             referenceSHA256=job['referenceSHA256'], startedAt=datetime.datetime.now(datetime.timezone.utc).isoformat())
+        if previous:
+            state.setdefault('rejectedAttempts', []).append(dict(job=job['key'], **previous))
         state['jobs'][job['key']] = status
         write_json(state_path, state)
         started = time.monotonic()
@@ -253,6 +273,8 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
             status['status'] = 'generated_unreviewed'
             write_json(state_path, state)
             sent += 1
+            if after_save is not None:
+                after_save(state)
             if status['costEstimateUSD'] is None:
                 raise ValueError('Usage details missing: check API billing before continuing.')
             charged += status['costEstimateUSD']
@@ -261,6 +283,15 @@ def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=sen
                 status['status'] = 'needs_reconciliation'
             status['failure'] = safe_failure(error)
             status['failure']['phase'] = phase
+            # Only an explicit API rejection with a recognized non-generation
+            # code can be retried on a later, user-initiated run. Never retry
+            # timeouts, TLS/transport failures or uncertain outcomes this way.
+            rejected_codes = {'rate_limit_exceeded', 'insufficient_quota', 'credit_balance_exhausted',
+                              'billing_hard_limit_reached', 'invalid_api_key', 'model_not_found'}
+            if (phase == 'transport' and isinstance(error, urllib.error.HTTPError)
+                    and error.code in {400, 401, 403, 404, 429}
+                    and status['failure'].get('apiCode') in rejected_codes):
+                status['status'] = 'request_rejected'
             if isinstance(error, urllib.error.HTTPError):
                 status['httpStatus'] = error.code
             write_json(state_path, state)
@@ -288,7 +319,7 @@ def review_files(planned, state, output):
                 usage=status.get('usage'), estimatedCostUSD=status.get('costEstimateUSD'),
                 elapsedSeconds=status.get('elapsedSeconds'))))
         cards.append(f'<article><h2>{html.escape(job["dutchName"])} — {job["role"]}</h2>'
-                     f'<a href="{status["file"]}"><img src="{status["file"]}" alt="{html.escape(job["dutchName"], quote=True)}"></a></article>')
+                     f'<a href="{status["file"]}"><img loading="lazy" decoding="async" src="{status["file"]}" alt="{html.escape(job["dutchName"], quote=True)}"></a></article>')
     # Never overwrite a review the user has already started filling in.
     template = output / 'review-template.json'
     existing = json.loads(template.read_text()) if template.exists() else []
@@ -297,7 +328,7 @@ def review_files(planned, state, output):
     (output / 'review.html').write_text('<!doctype html><meta charset="utf-8"><title>Birder API-proef</title>'
         '<style>body{background:#f5f2eb;color:#4c4b46;font:16px system-ui}main{display:flex;flex-wrap:wrap;gap:24px}'
         'article{width:340px}h2{font-size:17px}img{width:100%;height:440px;object-fit:contain}</style>'
-        '<h1>API-proef — nog niet goedgekeurd</h1><p>Open elk origineel op volle grootte. Controleer soort, stijl, twee vleugels, één kop/snavel, poten, houding, transparantie en randruimte. Standaardbeelden: uitsluitend de vogel, naar rechts.</p><main>' + ''.join(cards) + '</main>')
+        f'<h1>API-illustraties — nog niet goedgekeurd</h1><p>{len(cards)} van {len(planned)} kandidaten beschikbaar.</p><p>Open elk origineel op volle grootte. Controleer soort, stijl, twee vleugels, één kop/snavel, poten, houding, transparantie en randruimte. Standaardbeelden: uitsluitend de vogel, naar rechts.</p><main>' + ''.join(cards) + '</main>')
 
 
 def export_reviewed(reviews_path, state, output):
@@ -330,7 +361,7 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT / '.artwork-api/pilot-medium')
     parser.add_argument('--execute', action='store_true', help='Explicitly send billable API requests')
     parser.add_argument('--review-only', action='store_true', help='Refresh local review files without generating anything')
-    parser.add_argument('--max-requests', type=int, default=2, help='Two-image calibration by default; at most 20')
+    parser.add_argument('--max-requests', type=int, default=2, help='Two-image calibration by default; at most the approved recipe job count')
     parser.add_argument('--spend-stop-usd', type=float, default=2, help='Stop before next call once estimated accumulated spend reaches this value; NOT a billing cap')
     parser.add_argument('--export-reviewed', type=Path)
     args = parser.parse_args()
@@ -369,7 +400,8 @@ def main():
         key = os.environ.get('OPENAI_API_KEY') or getpass.getpass('OpenAI API-sleutel (verborgen, wordt niet bewaard): ')
         if not key.strip():
             raise ValueError('No API key: no request sent.')
-        state = run(plan, planned, args.output, key.strip(), args.max_requests, args.spend_stop_usd)
+        state = run(plan, planned, args.output, key.strip(), args.max_requests, args.spend_stop_usd,
+                    after_save=lambda checkpoint: review_files(planned, checkpoint, args.output))
         review_files(planned, state, args.output)
         print(f'Review: {args.output / "review.html"}. Nothing is automatically anatomically approved or installed.')
 

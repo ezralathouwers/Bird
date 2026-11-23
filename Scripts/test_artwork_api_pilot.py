@@ -117,6 +117,35 @@ class ArtworkAPIPilotTests(unittest.TestCase):
         cost = next(iter(state['jobs'].values()))['costEstimateUSD']
         self.assertAlmostEqual(cost, 0.0921)
 
+    def test_explicit_quota_rejection_can_resume_without_repeating_completed_images(self):
+        def quota(body, key):
+            raise urllib.error.HTTPError(pilot.ENDPOINT, 429, 'quota', {},
+                io.BytesIO(b'{"error":{"code":"insufficient_quota","type":"insufficient_quota"}}'))
+        with self.assertRaises(RuntimeError):
+            self.execute(count=1, sender=quota)
+        state = json.loads((self.output / 'state.json').read_text())
+        self.assertEqual(next(iter(state['jobs'].values()))['status'], 'request_rejected')
+        state = self.execute(count=1)
+        self.assertEqual(len(self.calls), 1)
+        self.assertEqual(len(state['rejectedAttempts']), 1)
+        self.assertEqual(next(iter(state['jobs'].values()))['status'], 'generated_unreviewed')
+
+    def test_belgian_recipe_matches_audited_scope_and_skips_existing_and_pilot_images(self):
+        plan = json.loads((pilot.ROOT / 'Docs/BelgiumArtworkAPIPlan.json').read_text())
+        jobs = pilot.jobs(plan)
+        self.assertEqual(len(plan['species']), 335)
+        self.assertEqual(len(jobs), 670)
+        old_pilot = {r['id'] for r in self.plan['species']}
+        self.assertFalse(old_pilot & {r['id'] for r in jobs})
+        self.assertEqual({r['role'] for r in jobs}, {'primary', 'dynamic'})
+        self.plan, self.jobs = plan, jobs
+        # A 670-image recipe is allowed, but spend stop still limits paid calls.
+        self.execute(count=670, stop=0.01)
+        self.assertEqual(len(self.calls), 1)
+        plan['species'].pop()
+        with self.assertRaises(ValueError):
+            pilot.jobs(plan)
+
     def test_missing_usage_stops_before_more_billing(self):
         def missing(body, key):
             response, request = self.sender(body, key)
@@ -131,6 +160,7 @@ class ArtworkAPIPilotTests(unittest.TestCase):
     def test_review_template_cannot_approve_itself_and_retains_manual_work(self):
         state = self.execute(count=1)
         pilot.review_files(self.jobs, state, self.output)
+        self.assertIn('loading="lazy"', (self.output / 'review.html').read_text())
         path = self.output / 'review-template.json'
         rows = json.loads(path.read_text())
         with self.assertRaises(ValueError):

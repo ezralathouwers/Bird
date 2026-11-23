@@ -1,0 +1,36 @@
+{
+  "snapshotDate": "2026-11-23",
+  "scope": "Practical Belgium checklist including rare/historical visitors and established introduced birds; excludes uncertain-origin-only records and extinct species.",
+  "sources": [
+    {
+      "url": "https://avibase.bsc-eoc.org/checklist.jsp?region=BE&list=avilist&lang=NL",
+      "sha256": "8d762eb1350bfc3a847c26b62be941304bd8a403cd5924c2dab66b65c9f67d57",
+      "rows": 497
+    },
+    {
+      "url": "https://www.belgianrbc.be/checklist.php",
+      "sha256": "67ed09a502afc4e02a105e4ea80a8f2334b02898a956c45d1edd5a4af6178194"
+    }
+  ],
+  "selectedSpecies": 478,
+  "alreadyAvailableSpecies": 143,
+  "queuedSpecies": 335,
+  "newImages": 670,
+  "excludedUncertainOrigin": 21,
+  "excludedExtinct": 1,
+  "excludedPilotBelgiumSpecies": [
+    "Mandarijneend",
+    "Houtsnip",
+    "Bruine kiekendief",
+    "Tjiftjaf",
+    "Grote gele kwikstaart"
+  ],
+  "estimatedUSD": 17.15,
+  "roughSequentialGenerationHours": 3.49,
+  "notes": [
+    "Counts refer to this practical snapshot, not an exhaustive up-to-date official national total.",
+    "BRBC-listed Porphyrio porphyrio, Apus affinis and retained app concept Corvus cornix included.",
+    "Old BRBC broad Cecropis daurica interpreted as current European C. rufula; no unsupported Eastern swallow addition.",
+    "Available includes user-confirmed generated pilot images, still awaiting individual original-image review before installation."
+  ]
+}

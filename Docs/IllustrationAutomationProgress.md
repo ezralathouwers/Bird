@@ -6,6 +6,13 @@ is prepared, but no API key/account is configured here and no paid image request
 has been sent. Broad production and the recurring automation remain paused.
 See Docs/ARTWORK_API_PILOT.md for setup, cost calibration and manual QA/import.
 
+Belgium exception, 23 November 2026: user requested the remaining Belgian
+species after completing all twenty API-pilot images locally. A separate scoped
+API recipe is prepared for 335 species / 670 primary+dynamic candidates, excluding
+existing assets and the completed pilot. See Docs/BELGIUM_ARTWORK_API.md. No paid
+API calls were made here; individual original-image review/import remains pending.
+This is a local on-demand producer, not a resumed worldwide scheduled run.
+
 Catalog audit checkpoint, 23 November 2026: 151 explicitly extinct source species
 are now excluded from the active inventory. No artwork was generated or changed.
 Active inventory: 11,022 species; 630 existing role assets; 54,480 missing roles
