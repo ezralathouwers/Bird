@@ -111,3 +111,10 @@ Mapping/reviews: IllustrationAutomationBatch20261123P.json.
 Inventory: 560 roles, 112 complete species, 11,061 queued, 55,305 missing roles.
 No image-generation limit/reset time has been reported. Next: boomleeuwerik
 (Lullula arborea, birdnet-v3:BN05518), all five roles missing.
+
+Checkpoint Q installed: all five adult boomleeuwerik (Lullula arborea,
+birdnet-v3:BN05518) roles. Mapping/reviews: IllustrationAutomationBatch20261123Q.json.
+Rejected first primary had broad white wing stripes; replaced before import.
+Inventory: 565 roles, 113 complete species, 11,060 queued, 55,300 missing roles.
+No image-generation limit/reset time has been reported. Next: wespendief
+(Pernis apivorus, birdnet-v3:BN07305), all five roles missing.
