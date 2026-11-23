@@ -1,10 +1,10 @@
 {
   "catalogRecords": 11173,
   "targetImageRoles": 55865,
-  "availableImageRoles": 580,
+  "availableImageRoles": 582,
   "completeSpeciesAssets": 116,
   "queuedSpecies": 11057,
-  "missingImageRoles": 55285,
+  "missingImageRoles": 55283,
   "queuedByHabitat": {
     "forest-general": 6356,
     "woodland-general": 919,
@@ -25,5 +25,18 @@
     "bamboo": 6,
     "unassigned": 43
   },
-  "execution": "Inventory only. No autonomous background worker, scheduled job or image-generation service has been started by this script."
+  "execution": "Inventory only. No autonomous background worker, scheduled job or image-generation service has been started by this script.",
+  "activeRoles": [
+    "primary",
+    "dynamic"
+  ],
+  "deferredRoles": [
+    "front",
+    "rear",
+    "flight"
+  ],
+  "activeTargetImageRoles": 22346,
+  "activeMissingImageRoles": 22112,
+  "activeQueuedSpecies": 11056,
+  "activeCompleteSpecies": 117
 }

@@ -137,3 +137,31 @@ birdnet-v3:BN09708) roles. Mapping/reviews: IllustrationAutomationBatch20261123T
 Inventory: 580 roles, 116 complete species, 11,057 queued, 55,285 missing roles.
 No image-generation limit/reset time has been reported. Next: fitis
 (Phylloscopus trochilus, birdnet-v3:BN07656), all five roles missing.
+
+## User scope change and checkpoint U — 23 November 2026
+
+Only primary and dynamic production is active from now on. Do not finish
+front/rear/flight sets, even for partial species. Existing approved views stay.
+The recurring automation prompt, AGENTS.md, ARTWORK_ROLES.md and inventory
+now record this override. The five-role inventory remains available separately.
+
+Installed fitis (Phylloscopus trochilus, birdnet-v3:BN07656): primary and dynamic
+only. Original PNGs and hash-bound visual reviews: IllustrationAutomationBatch20261123U.json.
+Front, rear and flight intentionally deferred, not generation failures.
+
+Current inventory: 582 installed roles; 116 complete five-role species.
+Active phase: 117 species have primary+dynamic; 11,056 species queued,
+22,112 active images missing. Full inventory: 55,283 missing roles.
+This execution added 101 images; 21 species completed five-role sets before
+the override (including two earlier partials), then fitis completed its active pair.
+No tool-reported generation limit or retry/reset time occurred. Execution
+checkpointed for the user's approach change, not because a quota was reached.
+Next: finish any single missing primary/dynamic pair first, then continue
+habitat batches; never generate deferred roles under the current instruction.
+
+Validation: all 101 new PNGs match their retained source bytes, manifest hashes,
+review hashes, dimensions and transparent-alpha checks. All 481 pre-run manifest
+records unchanged; asset diff contains additions only. Active queue counts agree.
+`git diff --check` passed. Native build/rendering and independent expert review
+remain unverified. Rejected originals remain recorded in
+IllustrationAutomationRejected20261123.json; no additional rejection in U.

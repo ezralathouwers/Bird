@@ -5,6 +5,7 @@ Only existing, manifest-backed asset files count as completed image roles.
 import collections,csv,json,pathlib
 ROOT=pathlib.Path(__file__).resolve().parents[1];RES=ROOT/'BirdingCompanion/Resources'
 ROLES=['primary','dynamic','front','rear','flight']
+ACTIVE_ROLES=['primary','dynamic'] # User priority, 23 November 2026; other views deferred.
 def build():
  world=json.loads((RES/'WorldSpeciesCatalog.json').read_text())
  scenes=json.loads((RES/'HabitatScenes.json').read_text());names={s['id']:s['name'] for s in scenes}
@@ -23,10 +24,16 @@ def build():
  for bird in ordered:
   done=[r for r in ROLES if r in available[bird['id']]];missing=[r for r in ROLES if r not in done];habitat=assignments.get(bird['id'],'unassigned')
   rows.append({'speciesID':bird['id'],'scientificName':bird['scientificName'],'name':bird['dutchName'] or bird['englishName'],'habitatID':habitat,'habitat':names.get(habitat,'Nog te bepalen'),'completedRoles':';'.join(done),'missingRoles':';'.join(missing),'state':'complete-assets' if not missing else 'queued','expertReview':'pending','flightProjection':'centered-ventral-spread'})
+ for row in rows:
+  missing=row['missingRoles'].split(';') if row['missingRoles'] else []
+  row['activeMissingRoles']=';'.join(r for r in ACTIVE_ROLES if r in missing)
+  row['deferredMissingRoles']=';'.join(r for r in missing if r not in ACTIVE_ROLES)
+  row['activeState']='queued' if row['activeMissingRoles'] else 'complete-active-assets'
  with (ROOT/'Docs/IllustrationProductionQueue.csv').open('w',newline='') as f:
   writer=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator='\n');writer.writeheader();writer.writerows(rows)
  groups=collections.Counter(r['habitatID'] for r in rows if r['missingRoles'])
  summary={'catalogRecords':len(world),'targetImageRoles':len(world)*5,'availableImageRoles':sum(len(available[b['id']]) for b in world),'completeSpeciesAssets':sum(r['state']=='complete-assets' for r in rows),'queuedSpecies':sum(r['state']=='queued' for r in rows),'missingImageRoles':sum(len(r['missingRoles'].split(';')) if r['missingRoles'] else 0 for r in rows),'queuedByHabitat':dict(groups),'execution':'Inventory only. No autonomous background worker, scheduled job or image-generation service has been started by this script.'}
+ summary.update(activeRoles=ACTIVE_ROLES,deferredRoles=[r for r in ROLES if r not in ACTIVE_ROLES],activeTargetImageRoles=len(world)*len(ACTIVE_ROLES),activeMissingImageRoles=sum(len(r['activeMissingRoles'].split(';')) if r['activeMissingRoles'] else 0 for r in rows),activeQueuedSpecies=sum(bool(r['activeMissingRoles']) for r in rows),activeCompleteSpecies=sum(not r['activeMissingRoles'] for r in rows))
  (ROOT/'Docs/IllustrationProductionQueue.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps({k:v for k,v in summary.items() if k!='queuedByHabitat'},indent=2))
  return rows,summary
 if __name__=='__main__':build()

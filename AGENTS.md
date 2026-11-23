@@ -72,6 +72,11 @@ Build the kingfisher species-detail SwiftUI screen, reusable design tokens, tab 
 
 
 ## Global artwork production scope
+Latest user override, 23 November 2026: produce only missing primary and dynamic
+roles for now. Front, rear and flight are deferred, including for partial sets.
+Keep existing approved assets and the five-role model. This supersedes the
+five-role production scope below until the user resumes the deferred views.
+
 The user authorized completing all five illustration roles for all catalog
 species, using habitat-grouped, reviewable batches, without asking approval for
 each batch. Keep existing species/observation IDs, the shared style and the

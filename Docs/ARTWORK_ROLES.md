@@ -1,5 +1,14 @@
 # Species illustration roles
 
+## Current production priority — 23 November 2026
+
+The user has deferred front, rear and flight production. Generate only missing
+primary and dynamic illustrations for now, including when finishing partially
+started species. Preserve all existing approved views and the five-role asset
+model. The three other views will be added later; do not generate them until
+the user resumes that phase. Queue `activeMissingRoles` tracks this two-role
+phase separately from the full five-role inventory.
+
 Latest user direction: 19 November 2026. All five assets are illustrations, including the flight view.
 
 | Role | Asset suffix | Use |
