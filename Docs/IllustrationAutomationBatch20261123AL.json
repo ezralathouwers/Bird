@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN05155",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-d3030939-5ff5-4c40-a2dc-b6ed68edefeb.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "019f8c39965a66622b3824cbb0e7ee16e9dffc38751584989725826b1af5501f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing gull only, white rounded head/dark iris, slender green yellow bill no red spot, gray mantle, black white-spotted primary tips, greenish yellow legs. One head/bill, two folded wings far side occluded, two webbed feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN05155",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-c7f0fda0-49a6-444b-9d16-d28a8b63b434.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult breeding",
+    "anatomyReview": {
+      "sha256": "29d1895fea15ecb156d7af02e979e6b928035113d3490bebe8a804189a2025e7",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Examining shell on low tide rock, one head/bill, two folded wings far side occluded, two webbed feet. All bird parts inside canvas; low rock fades to transparent below bird, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
