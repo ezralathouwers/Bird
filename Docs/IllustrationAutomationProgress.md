@@ -246,3 +246,7 @@ manifest and hash-bound anatomy reviews; PNG size/alpha and source provenance;
 all 582 pre-continuation manifest records unchanged; asset diff only additions;
 active queue counts agree; git diff --check. No native Xcode build/rendering
 or independent expert review was performed.
+
+
+Checkpoint AE — 23 November 2026: installed primary+dynamic spotvogel (birdnet-v3:BN04651). Individually inspected originals and ivory alpha composites; hash-bound reviews/provenance in Docs/IllustrationAutomationBatch20261123AE.json. Existing assets unchanged.
+Active inventory: 128 paired species; 11045 queued, 22090 missing active images. 604 installed roles overall. No tool-reported quota/reset time. Next: kneu (Linaria cannabina, birdnet-v3:BN05345), primary+dynamic. Continue generation; a checkpoint does not end the authorized work.

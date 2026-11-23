@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN04651",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-73a2e871-adaf-44b4-afe5-76773e89b404.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "1205fbce2b2d6761109484c80c48ae517743bdfd80f8615d46dfacac0d5a86f2",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Whole right-facing bird only, olive upperparts/pale yellow underside, orange lower bill, gray blue legs and pale secondary wing panel. One head/bill, two folded wings far side occluded, two natural feet. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN04651",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-b932756b-409a-486c-90f5-0c59bce0922c.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult",
+    "anatomyReview": {
+      "sha256": "5c49e4cf108323d94c1f5a22a4e7b082dd58b01c7a1b957dcf9f6765b7f12f07",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Singing on elder twig, one head/open bill, two folded wings far side occluded, two gripping feet. Head/bill entirely inside frame; twig/leaves naturally end/fade below crown, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
