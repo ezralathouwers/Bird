@@ -9126,7 +9126,7 @@ birdnet-v3:BN09450,Spinus tristis,Goudsijs,scrub-general,Struweel,,primary;dynam
 birdnet-v3:BN03763,Eupsittula aurea,Goudvoorhoofdparkiet,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN08971,Rowettia goughensis,Goughgors,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN04340,Granatina granatina,Granaatastrild,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
-birdnet-v3:BN02869,Curruca communis,Grasmus,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
+birdnet-v3:BN02869,Curruca communis,Grasmus,scrub-general,Struweel,primary;dynamic,front;rear;flight,queued,pending,centered-ventral-spread,,front;rear;flight,complete-active-assets
 birdnet-v3:BN05121,Lanius collurio,Grauwe klauwier,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 birdnet-v3:BN02368,Coccycua cinerea,Grauwe koekoek,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued
 avilist:8fe1196f,Viridonia sagittirostris,Greater Amakihi,scrub-general,Struweel,,primary;dynamic;front;rear;flight,queued,pending,centered-ventral-spread,primary;dynamic,front;rear;flight,queued

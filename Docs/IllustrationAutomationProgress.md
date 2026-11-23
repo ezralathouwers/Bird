@@ -196,3 +196,9 @@ reviews in IllustrationAutomationBatch20261123Y.json. Total 592 installed roles;
 122 species paired, 11,051 active queued species, 22,102 active images missing.
 No quota/reset reported. Next scrub species: grasmus
 (Curruca communis, birdnet-v3:BN02869), primary+dynamic.
+
+Checkpoint Z — installed primary+dynamic adult male grasmus (Curruca communis,
+birdnet-v3:BN02869); individual original and ivory composite visual reviews in
+IllustrationAutomationBatch20261123Z.json. 594 installed roles; 123 species
+paired, 11,050 queued, 22,100 active images missing. No quota/reset reported.
+Next scrub species: roodborsttapuit (Saxicola rubicola, birdnet-v3:BN09064).

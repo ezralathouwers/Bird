@@ -1,0 +1,36 @@
+[
+  {
+    "id": "birdnet-v3:BN02869",
+    "role": "primary",
+    "path": "/workspace/generated_images/exec-560f2d03-7853-4d08-a327-dd6993535377.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "bd091f6df932d1b82cac678f0a2d604229a0721ba5b5825bbca8614435b3466e",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Right-facing whole bird only, gray head/pale iris, white throat pink buff breast, rusty wing edges and tan pink legs. One head/bill, two folded wings far side occluded, two feet. Narrow but visible bill margin. Original and ivory alpha-composite individually inspected; independent expert and native review pending.",
+      "noProps": true
+    },
+    "composition": "bird-only"
+  },
+  {
+    "id": "birdnet-v3:BN02869",
+    "role": "dynamic",
+    "path": "/workspace/generated_images/exec-6842cf58-5a97-46bf-ace9-18dc7d4e693b.png",
+    "created": "2026-11-23",
+    "representativePlumage": "adult male",
+    "anatomyReview": {
+      "sha256": "085eab920bc19b3ce9857b19d78fe45c415954d72dc5db93e8dc0634f75952a6",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "reviewer": "Codex visual review",
+      "reviewed": "2026-11-23",
+      "notes": "Singing male on bramble, one head/open bill, two folded wings far side occluded, two gripping feet. Gray crown slightly raised, pale iris and rusty wing edges. Branch ends/fades below crown, no upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
+    }
+  }
+]
