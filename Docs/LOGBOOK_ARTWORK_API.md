@@ -85,3 +85,18 @@ AppleScript-broncode geïnterpoleerd. Dit verhelpt fout -2741 vóór de
 projectkeuze. Zowel de startkiezer als de importkiezer zijn aangepast.
 De regressietests gebruiken een nagebootste subprocess voor map/bestand,
 Unicode en annuleren; een native Mac-dialoog kon hier niet worden getest.
+
+
+## Logboekopdrachten met meer dan 20 beelden
+
+Logboekproductie mag tot twee aanvragen per geselecteerde soort uitvoeren,
+zoals de bestaande België-productie. Alleen de kalibratieproef blijft beperkt
+tot twintig. De CLI controleert aantal en kostenstop vóór het vragen naar de
+API-sleutel. De vaste opdracht, checkpoints, cumulatieve kostenstop van $25,
+geen automatische herhaling bij een onzekere API-uitkomst en bescherming tegen
+overschrijven blijven behouden.
+
+Regressietest met 218 soorten / 436 rollen, uitsluitend een nagebootste API:
+productie geaccepteerd, kostenstop werkt ook na herstart, reeds opgeslagen
+beelden worden overgeslagen, hervatten doet alleen nieuw werk en 437 aanvragen
+of een ongeldige kostenstop worden afgewezen. De proeflimiet blijft twintig.

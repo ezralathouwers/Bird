@@ -157,6 +157,36 @@ class ArtworkAPIPilotTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             pilot.jobs(plan)
 
+    def test_logbook_436_jobs_respects_cost_stop_and_resumes_without_duplicate_requests(self):
+        plan = json.loads((pilot.ROOT / 'Docs/BelgiumArtworkAPIPlan.json').read_text())
+        plan['scope'] = 'logbook'
+        plan['species'] = plan['species'][:218]
+        plan['scopeSpeciesIDs'] = [bird['id'] for bird in plan['species']]
+        plan['scopeIDsSHA256'] = pilot.sha(json.dumps(sorted(plan['scopeSpeciesIDs']), separators=(',', ':')).encode())
+        self.plan, self.jobs = plan, pilot.jobs(plan)
+        self.assertEqual(len(self.jobs), 436)
+        state = self.execute(count=436, stop=0.01)
+        self.assertEqual(len(self.calls), 1)
+        first_key = next(iter(state['jobs']))
+        first_path = self.output / state['jobs'][first_key]['file']
+        original = first_path.read_bytes()
+        self.execute(count=436, stop=0.01)
+        self.assertEqual(len(self.calls), 1, 'Cumulative cost stop must survive restarting')
+        spent = sum(row['costEstimateUSD'] for row in state['jobs'].values())
+        self.execute(count=436, stop=spent + 0.0001)
+        self.assertEqual(len(self.calls), 2)
+        self.assertEqual(first_path.read_bytes(), original)
+        with self.assertRaises(ValueError):
+            self.execute(count=437)
+        with self.assertRaises(ValueError):
+            self.execute(count=436, stop=0)
+        self.assertEqual(len(self.calls), 2)
+
+    def test_calibration_pilot_keeps_twenty_request_limit(self):
+        with self.assertRaises(ValueError):
+            self.execute(count=21)
+        self.assertEqual(self.calls, [])
+
     def test_missing_usage_stops_before_more_billing(self):
         def missing(body, key):
             response, request = self.sender(body, key)

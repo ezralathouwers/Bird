@@ -213,11 +213,17 @@ def production_lock():
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
-def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=send, after_save=None):
-    """Stop threshold is NOT a provider billing cap; one call can exceed it."""
-    limit = 2 * len(plan['species']) if plan.get('scope') == 'belgium' else 20
+def validate_run_limits(plan, max_requests, spend_stop_usd):
+    # Both production scopes have a fixed, validated primary/dynamic inventory.
+    # The calibration pilot retains its original 20-request ceiling.
+    limit = 2 * len(plan['species']) if plan.get('scope') in ('belgium', 'logbook') else 20
     if not 1 <= max_requests <= limit or not math.isfinite(spend_stop_usd) or spend_stop_usd <= 0:
         raise ValueError(f'Use 1–{limit} requests and a positive spend stop threshold.')
+
+
+def run(plan, planned, output, api_key, max_requests, spend_stop_usd, sender=send, after_save=None):
+    """Stop threshold is NOT a provider billing cap; one call can exceed it."""
+    validate_run_limits(plan, max_requests, spend_stop_usd)
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     state_path = output / 'state.json'
@@ -402,6 +408,7 @@ def main():
             from PIL import Image  # Preflight BEFORE any billable request.
         except ImportError:
             raise ValueError('Install Pillow in a local virtual environment before executing.') from None
+        validate_run_limits(plan, args.max_requests, args.spend_stop_usd)
         key = os.environ.get('OPENAI_API_KEY') or getpass.getpass('OpenAI API-sleutel (verborgen, wordt niet bewaard): ')
         if not key.strip():
             raise ValueError('No API key: no request sent.')
