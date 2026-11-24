@@ -448,7 +448,7 @@ private struct SessionDetailView: View {
                     RoundAction(symbol: "map", label: "Bekijk sessie op de kaart") { showMap = true }
                     RoundEditAction(label: "Sessie bewerken") { editing = true }
                 }
-            }.frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
+            }.frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 4)
             ScrollView {
                 if let session = current {
                     VStack(alignment: .leading, spacing: 8) {
@@ -458,9 +458,15 @@ private struct SessionDetailView: View {
                         HStack(alignment: .top) {
                             ObservationTotal(value: logs.count, label: "waarnemingen")
                             Spacer()
-                            Picker("Sortering", selection: $sort) {
-                                ForEach(SessionLogSort.allCases, id: \.self) { Text($0.rawValue).tag($0) }
-                            }.pickerStyle(.menu).frame(minHeight: 44).padding(.top, 4)
+                            Menu {
+                                Picker("Sortering", selection: $sort) {
+                                    ForEach(SessionLogSort.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+                                }
+                            } label: {
+                                FineControlIcon(symbol: "arrow.up.arrow.down", size: 20)
+                                    .frame(width: 44, height: 44)
+                                    .background(FieldGuideTheme.searchControlBackground, in: Circle())
+                            }.accessibilityLabel("Sortering").accessibilityValue(sort.rawValue)
                         }.padding(.top, 16).padding(.bottom, 12)
                         SessionLogsList(logs: SessionStats.sorted(logs, by: sort))
                     }.padding(20).padding(.bottom, 59)

@@ -8,6 +8,7 @@ struct IdentificationView: View {
     var body: some View {
         VStack(spacing: 0) {
             PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 18)
                 .fixedSize(horizontal: false, vertical: true)
             GeometryReader { geometry in

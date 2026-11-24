@@ -126,7 +126,7 @@ struct SpeciesDetailView: View {
                     SpeciesBackButton { dismiss() }
                     Spacer(minLength: 0)
                     actions
-                }
+                }.offset(y: 4)
                 heading
                 SpeciesTabStrip(selection: $tab).padding(.top, 8)
             }

@@ -2832,3 +2832,34 @@ final class MapsHomeAndMilestoneTests: XCTestCase {
         XCTAssertNil(restarted.current)
     }
 }
+
+@MainActor
+final class FineControlRenderingRegressionTests: XCTestCase {
+    private let canvas = CGRect(x: 0, y: 0, width: 24, height: 24)
+    private func ink(_ symbol: String, at point: CGPoint) -> Bool {
+        FineControlMark(symbol: symbol).path(in: canvas)
+            .strokedPath(FieldGuideTheme.navigationStroke).contains(point)
+    }
+    func testPlayRetainsClosedTriangleAndHouseRetainsBothSides() {
+        let play = FineControlMark(symbol: "play").path(in: canvas)
+        XCTAssertTrue(play.contains(CGPoint(x: 10, y: 12)), "A play button must enclose a triangle, not collapse to one diagonal")
+        XCTAssertTrue(ink("house", at: CGPoint(x: 6.5, y: 5.5)), "Left roof slope must remain connected")
+        XCTAssertTrue(ink("house", at: CGPoint(x: 4, y: 16)), "Left wall must be drawn")
+        XCTAssertTrue(ink("house", at: CGPoint(x: 20, y: 16)))
+        XCTAssertTrue(ink("house", at: CGPoint(x: 12, y: 22)))
+        XCTAssertFalse(ink("house", at: CGPoint(x: 12, y: 18)), "Simple house has no door")
+    }
+    func testClockAndBackupRetainBothHandsAndBackupArrow() {
+        for symbol in ["clock", "clock.arrow.circlepath"] {
+            XCTAssertTrue(ink(symbol, at: CGPoint(x: 12, y: 8)), "Vertical clock hand missing")
+            XCTAssertTrue(ink(symbol, at: CGPoint(x: 16, y: 12)), "Horizontal clock hand missing")
+        }
+        XCTAssertTrue(ink("clock.arrow.circlepath", at: CGPoint(x: 17, y: 4.6)), "Backup arrowhead must have both strokes")
+    }
+    func testSortRetainsCompleteArrowheads() {
+        for point in [CGPoint(x: 3.5, y: 4.5), CGPoint(x: 8.5, y: 4.5),
+                      CGPoint(x: 15.5, y: 19.5), CGPoint(x: 20.5, y: 19.5)] {
+            XCTAssertTrue(ink("arrow.up.arrow.down", at: point))
+        }
+    }
+}

@@ -33,7 +33,7 @@ struct LogbookView: View {
             }
             HStack(alignment: .top, spacing: 8) {
                 ObservationTotal(value: loggedRows.count, label: "gelogde vogelsoorten")
-                    .offset(y: countryCode == nil ? -8 : 0)
+                    .offset(y: countryCode == nil ? -18 : 0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Menu {
                     Picker("Sortering", selection: $sort) {

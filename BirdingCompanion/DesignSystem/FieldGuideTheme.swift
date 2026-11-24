@@ -299,7 +299,7 @@ struct DetailPageHeader: View {
                 Spacer()
                 RoundEditAction(label: editLabel, action: edit).disabled(editDisabled)
             }
-        }.frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
+        }.frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 4)
     }
 }
 
@@ -390,6 +390,8 @@ private struct CatalogContentBounds: PreferenceKey {
     }
 }
 
+// Use explicit addLine(to:) for connected strokes; Path.addLines starts a new
+// subpath and would discard the preceding move point.
 // Scale the paths before stroking: every glyph uses the same physical 0.7pt
 // line as FineSearchMark, independent of SF Symbols' optical font weights.
 struct FineControlIcon: View {
@@ -413,32 +415,32 @@ struct FineControlMark: Shape {
         var p = Path()
         switch symbol {
         case "map":
-            p.move(to: CGPoint(x: 2, y: 5)); p.addLines([CGPoint(x: 8.5, y: 2), CGPoint(x: 15.5, y: 5), CGPoint(x: 22, y: 2), CGPoint(x: 22, y: 19), CGPoint(x: 15.5, y: 22), CGPoint(x: 8.5, y: 19), CGPoint(x: 2, y: 22)]); p.closeSubpath()
+            p.move(to: CGPoint(x: 2, y: 5)); p.addLine(to: CGPoint(x: 8.5, y: 2)); p.addLine(to: CGPoint(x: 15.5, y: 5)); p.addLine(to: CGPoint(x: 22, y: 2)); p.addLine(to: CGPoint(x: 22, y: 19)); p.addLine(to: CGPoint(x: 15.5, y: 22)); p.addLine(to: CGPoint(x: 8.5, y: 19)); p.addLine(to: CGPoint(x: 2, y: 22)); p.closeSubpath()
             for x in [8.5, 15.5] {
                 p.move(to: CGPoint(x: x, y: x == 8.5 ? 2 : 5)); p.addLine(to: CGPoint(x: x, y: x == 8.5 ? 19 : 22))
             }
         case "play":
-            p.move(to: CGPoint(x: 6, y: 3)); p.addLines([CGPoint(x: 21, y: 12), CGPoint(x: 6, y: 21)]); p.closeSubpath()
+            p.move(to: CGPoint(x: 6, y: 3)); p.addLine(to: CGPoint(x: 21, y: 12)); p.addLine(to: CGPoint(x: 6, y: 21)); p.closeSubpath()
         case "clock", "clock.arrow.circlepath":
             if symbol == "clock" { p.addEllipse(in: CGRect(x: 1, y: 1, width: 22, height: 22)) }
             else {
                 p.addArc(center: CGPoint(x: 12, y: 12), radius: 10.5, startAngle: .degrees(-30), endAngle: .degrees(315), clockwise: false)
-                p.move(to: CGPoint(x: 15.2, y: 4.6)); p.addLines([CGPoint(x: 19.4, y: 4.6), CGPoint(x: 19.4, y: 0.4)])
+                p.move(to: CGPoint(x: 15.2, y: 4.6)); p.addLine(to: CGPoint(x: 19.4, y: 4.6)); p.addLine(to: CGPoint(x: 19.4, y: 0.4))
             }
-            p.move(to: CGPoint(x: 12, y: 5)); p.addLines([CGPoint(x: 12, y: 12), CGPoint(x: 18, y: 12)])
+            p.move(to: CGPoint(x: 12, y: 5)); p.addLine(to: CGPoint(x: 12, y: 12)); p.addLine(to: CGPoint(x: 18, y: 12))
         case "plus", "minus", "plus.circle", "minus.circle", "checkmark.circle":
             let circled = symbol.hasSuffix(".circle")
             if circled { p.addEllipse(in: CGRect(x: 1, y: 1, width: 22, height: 22)) }
             if symbol == "checkmark.circle" {
-                p.move(to: CGPoint(x: 6, y: 12)); p.addLines([CGPoint(x: 10, y: 16), CGPoint(x: 18, y: 8)])
+                p.move(to: CGPoint(x: 6, y: 12)); p.addLine(to: CGPoint(x: 10, y: 16)); p.addLine(to: CGPoint(x: 18, y: 8))
             } else {
                 let edge: CGFloat = circled ? 6 : 3
                 p.move(to: CGPoint(x: edge, y: 12)); p.addLine(to: CGPoint(x: 24 - edge, y: 12))
                 if symbol.hasPrefix("plus") { p.move(to: CGPoint(x: 12, y: edge)); p.addLine(to: CGPoint(x: 12, y: 24 - edge)) }
             }
         case "house":
-            p.move(to: CGPoint(x: 1, y: 10)); p.addLines([CGPoint(x: 12, y: 1), CGPoint(x: 23, y: 10)])
-            p.move(to: CGPoint(x: 4, y: 7.5)); p.addLines([CGPoint(x: 4, y: 22), CGPoint(x: 20, y: 22), CGPoint(x: 20, y: 7.5)])
+            p.move(to: CGPoint(x: 1, y: 10)); p.addLine(to: CGPoint(x: 12, y: 1)); p.addLine(to: CGPoint(x: 23, y: 10))
+            p.move(to: CGPoint(x: 4, y: 7.5)); p.addLine(to: CGPoint(x: 4, y: 22)); p.addLine(to: CGPoint(x: 20, y: 22)); p.addLine(to: CGPoint(x: 20, y: 7.5))
         case "mic":
             p.addRoundedRect(in: CGRect(x: 8, y: 1, width: 8, height: 14), cornerSize: CGSize(width: 4, height: 4))
             p.move(to: CGPoint(x: 5, y: 10)); p.addLine(to: CGPoint(x: 5, y: 12))
@@ -452,14 +454,14 @@ struct FineControlMark: Shape {
             }
         case "arrow.up.right.square":
             p.move(to: CGPoint(x: 11, y: 3)); p.addLine(to: CGPoint(x: 3, y: 3))
-            p.addLine(to: CGPoint(x: 3, y: 21)); p.addLines([CGPoint(x: 21, y: 21), CGPoint(x: 21, y: 13)])
+            p.addLine(to: CGPoint(x: 3, y: 21)); p.addLine(to: CGPoint(x: 21, y: 21)); p.addLine(to: CGPoint(x: 21, y: 13))
             p.move(to: CGPoint(x: 10, y: 14)); p.addLine(to: CGPoint(x: 22, y: 2))
-            p.move(to: CGPoint(x: 14, y: 2)); p.addLines([CGPoint(x: 22, y: 2), CGPoint(x: 22, y: 10)])
+            p.move(to: CGPoint(x: 14, y: 2)); p.addLine(to: CGPoint(x: 22, y: 2)); p.addLine(to: CGPoint(x: 22, y: 10))
         case "arrow.up.arrow.down":
             p.move(to: CGPoint(x: 6, y: 22)); p.addLine(to: CGPoint(x: 6, y: 2))
-            p.move(to: CGPoint(x: 1, y: 7)); p.addLines([CGPoint(x: 6, y: 2), CGPoint(x: 11, y: 7)])
+            p.move(to: CGPoint(x: 1, y: 7)); p.addLine(to: CGPoint(x: 6, y: 2)); p.addLine(to: CGPoint(x: 11, y: 7))
             p.move(to: CGPoint(x: 18, y: 2)); p.addLine(to: CGPoint(x: 18, y: 22))
-            p.move(to: CGPoint(x: 13, y: 17)); p.addLines([CGPoint(x: 18, y: 22), CGPoint(x: 23, y: 17)])
+            p.move(to: CGPoint(x: 13, y: 17)); p.addLine(to: CGPoint(x: 18, y: 22)); p.addLine(to: CGPoint(x: 23, y: 17))
         default: break
         }
         return p.applying(CGAffineTransform(scaleX: rect.width / 24, y: rect.height / 24)

@@ -91,3 +91,26 @@ sleutelhanger en API-verificatie blijven hetzelfde.
 - Geen wijzigingen aan herkenning, gegevensopslag, signing of bundle identifier.
 - Swift-syntaxcontrole en git diff --check uitgevoerd; native visuele controle
   en compilatie blijven voor Xcode/iPhone.
+
+## Herstel van ontbrekende iconenlijnen — 24 november 2026
+
+- De vorige padimplementatie gebruikte `Path.addLines` na `move`. Die functie
+  begint een nieuwe subpath bij het eerste arraypunt; daardoor ontbraken onder
+  meer de verticale wijzers, driehoekzijden en linkerkant van het huisje.
+  Alle elf toepassingen in FineControlMark gebruiken nu expliciete addLine(to:)
+  stappen. Stroke en icoongrootte blijven behouden.
+- De vijf gemelde iconen zijn geïnspecteerd in een technische rasterpreview van
+  de gecorrigeerde padcoördinaten; dit is geen native SwiftUI/iPhone-render.
+- Drie native geometrische regressietests toegevoegd voor de gesloten
+  afspeeldriehoek, beide huiszijden zonder deur, klokwijzers, backuppijl en
+  volledige sorteerpijlen. Niet uitgevoerd zonder Xcode.
+- Sessiedetail krijgt dezelfde ronde sorteerknop als Logboek, met de bestaande
+  keuzes Laatste eerst / Alfabetisch en toegankelijke selectieaanduiding.
+- Identificeer: expliciete volledige breedte en leading alignment voor titel.
+- Detailheaders voor sessie/doelstelling: top 4 -> 8pt, bottom 8 -> 4pt zodat de
+  inhoud eronder op zijn plek blijft. De actie-/terugrij van de vogelsoortpagina
+  schuift alleen visueel 4pt omlaag; illustratieframe en tabstrip blijven staan.
+- Alleen het algemene logboekaantal krijgt nog 10pt extra opwaartse offset
+  (-8 -> -18pt); knoppen blijven op hun plek.
+- Syntaxcontrole voor alle 49 Swift-bestanden en git diff --check geslaagd;
+  native build en uitlijning op iPhone nog te controleren.
