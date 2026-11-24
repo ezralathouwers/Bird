@@ -647,6 +647,7 @@ struct NativeSpeciesRangeMap: UIViewRepresentable {
         let config = MKStandardMapConfiguration(elevationStyle: .flat, emphasisStyle: .muted)
         config.pointOfInterestFilter = .excludingAll
         map.preferredConfiguration = config
+        map.addOverlay(context.coordinator.basemapTone, level: .aboveRoads)
         map.showsCompass = false
         map.isPitchEnabled = false
         map.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30, longitude: 20),
@@ -661,6 +662,8 @@ struct NativeSpeciesRangeMap: UIViewRepresentable {
         guard context.coordinator.datasetID != dataset?.renderID else { return }
         context.coordinator.datasetID = dataset?.renderID
         map.removeOverlays(map.overlays)
+        // Add before the range overlays: neutralize the basemap only.
+        map.addOverlay(context.coordinator.basemapTone, level: .aboveRoads)
         context.coordinator.styles = [:]
         guard let dataset else { return }
         var overlays: [MKMultiPolygon] = []
@@ -686,6 +689,12 @@ struct NativeSpeciesRangeMap: UIViewRepresentable {
         map.delegate = nil; map.removeOverlays(map.overlays)
     }
     @MainActor final class Coordinator: NSObject, @preconcurrency MKMapViewDelegate, UIGestureRecognizerDelegate {
+        let basemapTone: MKPolygon = {
+            let world = MKMapRect.world
+            let points = [MKMapPoint(x: world.minX, y: world.minY), MKMapPoint(x: world.maxX, y: world.minY),
+                          MKMapPoint(x: world.maxX, y: world.maxY), MKMapPoint(x: world.minX, y: world.maxY)]
+            return MKPolygon(points: points, count: points.count)
+        }()
         var datasetID: UUID?
         var styles: [ObjectIdentifier: (UIColor, Bool)] = [:]
         var onExpand: (() -> Void)?
@@ -702,6 +711,12 @@ struct NativeSpeciesRangeMap: UIViewRepresentable {
             return true
         }
         func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
+            if let polygon = overlay as? MKPolygon, polygon === basemapTone {
+                let renderer = MKPolygonRenderer(polygon: polygon)
+                renderer.fillColor = UIColor(FieldGuideTheme.ivory).withAlphaComponent(0.22)
+                renderer.strokeColor = .clear
+                return renderer
+            }
             guard let multi = overlay as? MKMultiPolygon else { return MKOverlayRenderer(overlay: overlay) }
             let renderer = MKMultiPolygonRenderer(multiPolygon: multi)
             let style = styles[ObjectIdentifier(multi)] ?? (UIColor(FieldGuideTheme.taupe), false)

@@ -252,7 +252,7 @@ private struct DiscoverSpeciesRow: View {
             }
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
-            if showsBadge { SpeciesLogBadge(status: status, speciesName: species.dutchName, diameter: 22) }
+            if showsBadge { SpeciesLogBadge(status: status, speciesName: species.dutchName, diameter: 22).frame(width: 44, height: 44) }
         }
         .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
         .padding(.vertical, 6)

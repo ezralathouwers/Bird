@@ -114,3 +114,26 @@ sleutelhanger en API-verificatie blijven hetzelfde.
   (-8 -> -18pt); knoppen blijven op hun plek.
 - Syntaxcontrole voor alle 49 Swift-bestanden en git diff --check geslaagd;
   native build en uitlijning op iPhone nog te controleren.
+
+## Kleine layout- en kaartcorrecties — 24 november 2026
+
+- Algemeen logboekaantal 5pt omlaag (offset -18 -> -13). Header ondermarge
+  alleen op Logboek 16 -> 4pt. Landdetail behoudt eigen marge en verschuift
+  uitsluitend de drie knoppen als groep 15pt omlaag.
+- Ontdekresultaten en cataloguszoekresultaten reserveren beide een 44pt vak
+  voor de 22pt logbadge. Daardoor blijft het centrum op dezelfde afstand van
+  de rechterrand bij wisselen naar zoeken.
+- Verspreidingskaart: bestaande lichte, vlakke, muted Apple-basiskaart blijft.
+  Eén neutrale ivory-laag met alpha 0.22 wordt vóór de rangeoverlays getekend,
+  waardoor de basiskaart rustiger wordt op wereld-/regioschaal. Geen
+  `.saturation` op de samengestelde kaart, geen wijziging van seizoenskleuren,
+  fill-alpha 0.30 of stroke-alpha 0.85 van de polygonen. De tintlaag is één
+  vierhoek, ook zonder range beschikbaar, zonder extra netwerkverzoeken of
+  afbeeldingsfilters. Geldt voor compacte en fullscreen verspreidingskaart.
+- HistoryTime toont geen UTC-achtervoegsel meer. Opgeslagen Date-waarden en
+  tijdzonekeuze (inclusief UTC-fallback voor imports zonder bekende zone)
+  blijven behouden. De importuitleg en bestaande tijdzoneregressietest zijn
+  aangepast aan deze presentatiekeuze.
+- Syntaxcontrole voor 49 Swift-bestanden en git diff --check geslaagd.
+  Geen native build, testuitvoering of iPhone-weergave beschikbaar in deze
+  omgeving; kaarttoon en uitlijning nog op toestel te beoordelen.

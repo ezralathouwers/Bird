@@ -33,40 +33,42 @@ struct LogbookView: View {
             }
             HStack(alignment: .top, spacing: 8) {
                 ObservationTotal(value: loggedRows.count, label: "gelogde vogelsoorten")
-                    .offset(y: countryCode == nil ? -18 : 0)
+                    .offset(y: countryCode == nil ? -13 : 0)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Menu {
-                    Picker("Sortering", selection: $sort) {
-                        ForEach(LogbookSort.allCases, id: \.self) { Text($0.label).tag($0) }
-                    }
-                } label: {
-                    FineControlIcon(symbol: "arrow.up.arrow.down", size: 20)
-                        .frame(width: 44, height: 44).background(FieldGuideTheme.searchControlBackground, in: Circle())
-                }.accessibilityLabel("Sortering").accessibilityValue(sort.label)
-                if countryCode != nil {
-                    RoundAction(symbol: "map", label: "Bekijk alle waarnemingen van dit land") { showMap = true }
-                } else {
-                    Button {
-                        if home == nil { showHomeSetup = true } else { homeOnly.toggle() }
+                HStack(spacing: 8) {
+                    Menu {
+                        Picker("Sortering", selection: $sort) {
+                            ForEach(LogbookSort.allCases, id: \.self) { Text($0.label).tag($0) }
+                        }
                     } label: {
-                        FineControlIcon(symbol: "house", size: 20)
-                            .frame(width: 44, height: 44)
-                            .foregroundStyle(homeOnly ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal)
-                            .background(homeOnly ? FieldGuideTheme.navigationOlive : FieldGuideTheme.searchControlBackground, in: Circle())
-                    }.buttonStyle(.plain)
-                        .onLongPressGesture { showHomeSetup = true }
-                        .accessibilityLabel("Enkel vogels binnen 150 meter van thuis")
-                        .accessibilityValue(homeOnly ? "Aan" : "Uit")
-                        .accessibilityHint("Houd ingedrukt om je thuislocatie te wijzigen")
-                        .accessibilityAction(named: Text("Thuislocatie wijzigen")) { showHomeSetup = true }
-                }
-                Button { showSearch.toggle() } label: {
-                    Group {
-                        if showSearch { Image(systemName: "xmark").font(.system(size: 22, weight: .ultraLight)) }
-                        else { FineSearchMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 22, height: 22) }
-                    }.frame(width: 44, height: 44).background(FieldGuideTheme.searchControlBackground, in: Circle())
-                }.accessibilityLabel(showSearch ? "Sluit zoeken in logboek" : "Zoek in je logboek")
-            }.padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
+                        FineControlIcon(symbol: "arrow.up.arrow.down", size: 20)
+                            .frame(width: 44, height: 44).background(FieldGuideTheme.searchControlBackground, in: Circle())
+                    }.accessibilityLabel("Sortering").accessibilityValue(sort.label)
+                    if countryCode != nil {
+                        RoundAction(symbol: "map", label: "Bekijk alle waarnemingen van dit land") { showMap = true }
+                    } else {
+                        Button {
+                            if home == nil { showHomeSetup = true } else { homeOnly.toggle() }
+                        } label: {
+                            FineControlIcon(symbol: "house", size: 20)
+                                .frame(width: 44, height: 44)
+                                .foregroundStyle(homeOnly ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal)
+                                .background(homeOnly ? FieldGuideTheme.navigationOlive : FieldGuideTheme.searchControlBackground, in: Circle())
+                        }.buttonStyle(.plain)
+                            .onLongPressGesture { showHomeSetup = true }
+                            .accessibilityLabel("Enkel vogels binnen 150 meter van thuis")
+                            .accessibilityValue(homeOnly ? "Aan" : "Uit")
+                            .accessibilityHint("Houd ingedrukt om je thuislocatie te wijzigen")
+                            .accessibilityAction(named: Text("Thuislocatie wijzigen")) { showHomeSetup = true }
+                    }
+                    Button { showSearch.toggle() } label: {
+                        Group {
+                            if showSearch { Image(systemName: "xmark").font(.system(size: 22, weight: .ultraLight)) }
+                            else { FineSearchMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 22, height: 22) }
+                        }.frame(width: 44, height: 44).background(FieldGuideTheme.searchControlBackground, in: Circle())
+                    }.accessibilityLabel(showSearch ? "Sluit zoeken in logboek" : "Zoek in je logboek")
+                }.offset(y: countryCode == nil ? 0 : 15)
+            }.padding(.horizontal, 20).padding(.top, 8).padding(.bottom, countryCode == nil ? 4 : 16)
                 .fixedSize(horizontal: false, vertical: true)
             if showSearch {
                 BirdTextField("Zoek in je logboek", text: $search).modifier(RoundedSearchField())

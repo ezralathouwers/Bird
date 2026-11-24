@@ -2377,10 +2377,11 @@ final class BirdaImportTests: XCTestCase {
         XCTAssertEqual(result.observations.first?.notes, "Een, twee\n\"drie\"")
         XCTAssertEqual(result.observations.first?.speciesID, bird.id)
     }
-    func testExplicitTimeOffsetKeepsSameInstantAndUTCIsLabelled() throws {
+    func testExplicitTimeOffsetKeepsSameInstantWithoutTimezoneSuffix() throws {
         let result = try BirdaImport.decode(csv([line(one), line(two, date: "2020-01-01T15:30:00+05:30")]), catalog: [bird])
         XCTAssertEqual(result.observations[0].observedAt, result.observations[1].observedAt)
-        XCTAssertTrue(result.observations[0].historyDate().hasSuffix(" UTC"))
+        XCTAssertFalse(result.observations[0].historyDate().contains("UTC"))
+        XCTAssertEqual(result.observations[0].historyTimeZone.secondsFromGMT(for: result.observations[0].observedAt), 0)
         var local = result.observations[0]
         local.timeZoneIdentifier = "Asia/Kolkata"
         XCTAssertFalse(local.historyDate().contains("UTC"))

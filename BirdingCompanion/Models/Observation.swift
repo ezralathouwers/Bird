@@ -146,8 +146,8 @@ enum HistoryTime {
                      time: Date.FormatStyle.TimeStyle = .shortened) -> String {
         var style = Date.FormatStyle(date: day, time: time, locale: Locale(identifier: "nl_BE"))
         style.timeZone = zone(identifier: identifier, imported: imported)
-        let suffix = imported && identifier.flatMap(TimeZone.init(identifier:)) == nil ? " UTC" : ""
-        return date.formatted(style) + suffix
+        // Presentation only: keep the source/UTC fallback zone and stored instant.
+        return date.formatted(style)
     }
 }
 
