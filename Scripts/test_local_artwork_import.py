@@ -1,4 +1,6 @@
 import json
+import subprocess
+import sys
 from pathlib import Path
 import tempfile
 import unittest
@@ -120,6 +122,60 @@ class LocalArtworkImportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'gewijzigd'):
             local.import_review(approved, self.project)
         self.assertEqual(local.read(self.res / 'ArtworkManifest.json'), [])
+
+    def bulk_file(self):
+        rows, _ = local.candidates(self.source, self.project)
+        path = self.root / 'bulk-accepted.json'
+        path.write_text(json.dumps(local.accept_all(rows)))
+        return path
+
+    def test_bulk_acceptance_installs_with_false_review_flags_and_source_hash(self):
+        path = self.bulk_file()
+        document = local.read(path)
+        # Even accidental true fields must not create a fictitious visual review.
+        document['rows'][0]['anatomyReview']['twoWings'] = True
+        path.write_text(json.dumps(document))
+        self.assertEqual(local.import_review(path, self.project)[0], 1)
+        record = local.read(self.res / 'ArtworkManifest.json')[0]
+        self.assertIn('individual visual/anatomy review not performed', record['reviewStatus'])
+        self.assertEqual(record['ownerAcceptance']['method'], 'bulk-user-accepted-unreviewed')
+        self.assertEqual(record['ownerAcceptance']['sha256'], record['sha256'])
+        for flag in ['twoWings', 'singleHeadAndBill', 'poseAndFraming', 'noProps']:
+            self.assertIs(record['anatomyReview'][flag], False)
+        self.assertIs(record['visualReview']['speciesPlumage'], False)
+        self.assertEqual(local.import_review(path, self.project)[0], 0)
+
+    def test_bulk_acceptance_rejects_mismatched_hash_and_missing_timestamp_zone(self):
+        path = self.bulk_file()
+        original = local.read(path)
+        bad = local.read(path)
+        bad['rows'][0]['ownerAcceptance']['sha256'] = 'different-image'
+        path.write_text(json.dumps(bad))
+        with self.assertRaises(ValueError):
+            local.import_review(path, self.project)
+        original['rows'][0]['ownerAcceptance']['acceptedAt'] = '2026-11-24T10:00:00'
+        path.write_text(json.dumps(original))
+        with self.assertRaises(ValueError):
+            local.import_review(path, self.project)
+        self.assertEqual(local.read(self.res / 'ArtworkManifest.json'), [])
+
+    def test_bulk_cli_installs_directly_without_browser_or_api(self):
+        args = [sys.executable, str(Path(local.__file__).resolve()), '--project', str(self.project),
+                '--source', str(self.source.parents[1]), '--accept-all']
+        result = subprocess.run(args, capture_output=True, text=True, check=True)
+        self.assertIn('Klaar: 1 beelden', result.stdout)
+        self.assertEqual(len(local.read(self.res / 'ArtworkManifest.json')), 1)
+        repeated = subprocess.run(args, capture_output=True, text=True, check=True)
+        self.assertIn('al geïnstalleerd', repeated.stdout)
+        self.assertEqual(len(local.read(self.res / 'ArtworkManifest.json')), 1)
+
+    def test_owner_acceptance_does_not_cover_deferred_roles(self):
+        document = local.read(self.bulk_file())
+        row = document['rows'][0]
+        row['role'] = 'flight'
+        blob = (self.source / 'test-bird-primary.png').read_bytes()
+        with self.assertRaises(ValueError):
+            local.installer.validate_owner_acceptance(row, blob)
 
 
 if __name__ == '__main__':

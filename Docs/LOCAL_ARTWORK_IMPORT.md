@@ -5,6 +5,30 @@ geen nieuwe beeldgeneratie gestart. Python 3 is nodig; de launcher installeert
 Pillow zo nodig in een eigen lokale Python-omgeving. Houd de productiemappen
 met state.json, review-template.json en de PNG’s bij elkaar.
 
+## Snel: alles tegelijk accepteren en installeren
+
+Op uitdrukkelijk verzoek van de eigenaar kan dit nu zonder afzonderlijke vinkjes:
+
+1. Download het nieuwste `Scripts/Birder-illustraties-importeren.zip` en pak uit.
+2. Open `Scripts/Importeer-API-illustraties.command`.
+3. Kies de app-projectmap met `BirdingCompanion.xcodeproj`.
+4. Typ **3**: **alle beelden accepteren en direct installeren**.
+5. Kies de productiemap met `Start-Belgie-illustraties.command`.
+6. Wacht op **Klaar** en bouw de app opnieuw in Xcode.
+
+De PNG’s blijven op de Mac. Bestaande identieke beelden worden overgeslagen en
+bestaand ander werk wordt niet overschreven. De tool controleert de bestanden,
+hashes, bronregistratie, afmetingen en alpha. Geen API-sleutel of nieuwe betaalde
+generatie. Voor een aparte oorspronkelijke proefmap kun je dezelfde stappen
+herhalen. Opties 1 en 2 hieronder blijven beschikbaar voor individuele controle.
+
+Bulkacceptatie wordt per exacte PNG opgeslagen als `ownerAcceptance` met
+bestands-SHA-256, methode en tijdstip. Dit is een acceptatie door de eigenaar,
+geen verklaring dat anatomie of soortkenmerken individueel gecontroleerd zijn.
+Die velden blijven false; de manifeststatus geeft dat expliciet aan. De twintig
+reeds door Codex bekeken proefbeelden houden hun bestaande echte review.
+Specifieke correcties kunnen later afzonderlijk worden aangevraagd.
+
 ## 1. Controleoverzicht maken
 
 1. Download `Scripts/Birder-illustraties-importeren.zip` en pak de hele map uit.
@@ -90,3 +114,12 @@ Een Node-test met een gesimuleerde DOM controleert openen, goedkeuren en exporte
 van de geselecteerde hashgebonden review. Dit is geen echte browsertest.
 De macOS-mapkiezers, browserbediening, Xcode-build en iPhone-weergave zijn hier
 niet uitgevoerd en moeten op de Mac worden bevestigd.
+
+## Verificatie van bulkimport
+
+Vier aanvullende synthetische tests controleren echte CLI-installatie met optie
+3/`--accept-all`, opnieuw uitvoeren zonder dubbels, hash-/tijdzonevalidatie van
+eigenaaracceptatie, het behouden van false reviewvelden (ook bij onterechte true
+invoer) en uitsluiting van uitgestelde rollen. In totaal 12 lokale-importtests
+plus 15 API-productietests. Geen betaalde generatie of echte Belgische batch
+uitgevoerd bij deze tests; macOS-mapkiezers en iPhone-weergave blijven onbevestigd.

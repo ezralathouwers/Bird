@@ -131,6 +131,20 @@ rows.forEach((r,i)=>{try{if(localStorage.getItem(key(i))==='yes'){inspected.add(
     return destination
 
 
+def accept_all(rows):
+    accepted = copy.deepcopy(rows)
+    date = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    for row in accepted:
+        row['ownerAcceptance'] = dict(method='bulk-user-accepted-unreviewed',
+            sha256=row['anatomyReview']['sha256'], acceptedAt=date)
+        # Owner acceptance is not an anatomy attestation. Keep all flags false.
+        row['anatomyReview'] = dict(sha256=row['anatomyReview']['sha256'],
+            twoWings=False, singleHeadAndBill=False, poseAndFraming=False, noProps=False)
+        row['visualReview'] = dict(speciesPlumage=False, styleMatch=False,
+            transparency=False, notes='Door de eigenaar in bulk geaccepteerd; niet individueel visueel gecontroleerd.')
+    return dict(format=FORMAT, rows=accepted)
+
+
 def import_review(review_file, project):
     res = resources(project)
     document = read(review_file)
@@ -159,14 +173,21 @@ def import_review(review_file, project):
         current = known.get(key)
         if current is None or current['anatomyReview']['sha256'] != decision.get('anatomyReview', {}).get('sha256'):
             raise ValueError('Bronbestand of registratie is gewijzigd. Maak de controlepagina opnieuw.')
-        installer.validate_anatomy_review(decision, Path(current['path']).read_bytes())
-        flags = ['speciesPlumage', 'styleMatch', 'transparency']
-        if any(decision.get('visualReview', {}).get(k) is not True for k in flags):
-            raise ValueError('Visuele goedkeuring ontbreekt.')
-        if decision['role'] == 'primary' and decision['anatomyReview'].get('noProps') is not True:
-            raise ValueError('Standaardbeeld moet zonder attributen zijn gecontroleerd.')
-        current['anatomyReview'] = decision['anatomyReview']
-        current['visualReview'] = decision['visualReview']
+        if decision.get('ownerAcceptance'):
+            installer.validate_owner_acceptance(decision, Path(current['path']).read_bytes())
+            normalized = accept_all([current])['rows'][0]
+            current['anatomyReview'] = normalized['anatomyReview']
+            current['visualReview'] = normalized['visualReview']
+            current['ownerAcceptance'] = decision['ownerAcceptance']
+        else:
+            installer.validate_anatomy_review(decision, Path(current['path']).read_bytes())
+            flags = ['speciesPlumage', 'styleMatch', 'transparency']
+            if any(decision.get('visualReview', {}).get(k) is not True for k in flags):
+                raise ValueError('Visuele goedkeuring ontbreekt.')
+            if decision['role'] == 'primary' and decision['anatomyReview'].get('noProps') is not True:
+                raise ValueError('Standaardbeeld moet zonder attributen zijn gecontroleerd.')
+            current['anatomyReview'] = decision['anatomyReview']
+            current['visualReview'] = decision['visualReview']
         accepted.append(current)
     if not accepted:
         return 0, skipped
@@ -204,7 +225,10 @@ def main():
     parser.add_argument('--project', type=Path)
     parser.add_argument('--source', type=Path)
     parser.add_argument('--review', type=Path)
+    parser.add_argument('--accept-all', action='store_true', help='Owner accepts all primary/dynamic candidates without individual visual review')
     args = parser.parse_args()
+    if args.accept_all and args.review:
+        parser.error('--accept-all kan niet gecombineerd worden met --review')
     project = args.project or choose('Kies de Birder-projectmap met BirdingCompanion.xcodeproj waarin je de beelden wilt installeren.')
     resources(project)
     lock_folder = project / '.artwork-api'
@@ -214,7 +238,7 @@ def main():
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             raise ValueError('Er loopt al een lokale illustratie-import. Sluit die eerst af.')
-        mode = '2' if args.review else '1' if args.source else input('1: controlepagina maken\n2: goedgekeurde selectie installeren\nKies 1 of 2: ').strip()
+        mode = '3' if args.accept_all else '2' if args.review else '1' if args.source else input('1: controlepagina maken\n2: goedgekeurde selectie installeren\n3: alle beelden accepteren en direct installeren\nKies 1, 2 of 3: ').strip()
         if mode == '1':
             source = args.source or choose('Kies de productiemap met Start-Belgie-illustraties.command (of de uitgepakte proefprojectmap).')
             rows, skipped = candidates(source, project)
@@ -223,8 +247,19 @@ def main():
                 page = review_page(rows, lock_folder / 'local-review/controle.html')
                 webbrowser.open(page.resolve().as_uri())
                 print('Controleer de beelden en bewaar je selectie. Start daarna dit bestand opnieuw en kies 2.')
-        elif mode == '2':
-            review = args.review or choose('Kies Birder-goedgekeurde-illustraties.json uit je Downloads.', file=True)
+        elif mode in ['2', '3']:
+            if mode == '3':
+                source = args.source or choose('Kies de productiemap met Start-Belgie-illustraties.command (of de uitgepakte proefprojectmap).')
+                rows, skipped = candidates(source, project)
+                if not rows:
+                    print(f'Klaar: alle {skipped} beelden zijn al geïnstalleerd.')
+                    return
+                review = lock_folder / 'local-review/alles-geaccepteerd.json'
+                review.parent.mkdir(parents=True, exist_ok=True)
+                review.write_text(json.dumps(accept_all(rows), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+                print(f'{len(rows)} beelden in bulk geaccepteerd; technische bestandscontrole uitgevoerd. Geen individuele anatomiecontrole geregistreerd.', flush=True)
+            else:
+                review = args.review or choose('Kies Birder-goedgekeurde-illustraties.json uit je Downloads.', file=True)
             count, skipped = import_review(review, project)
             queue = project / 'Scripts/illustration_production_queue.py'
             if count and queue.is_file():
@@ -233,7 +268,7 @@ def main():
                     print('Beelden geïnstalleerd, maar de inventaris kon niet bijgewerkt worden:', result.stderr[-500:])
             print(f'Klaar: {count} beelden geïnstalleerd. Bestaande beelden behouden. Bouw de app opnieuw in Xcode.')
         else:
-            raise ValueError('Kies 1 of 2.')
+            raise ValueError('Kies 1, 2 of 3.')
 
 
 if __name__ == '__main__':

@@ -37,6 +37,18 @@ This supersedes the older no-classic-fallback/placeholder-slide rule below.
 - Keep a 44-point minimum touch target and support Dynamic Type, safe areas, small screens, long Dutch names and VoiceOver.
 - Do not use the original mockup as a literal source of scientific truth. Validate content separately.
 
+## Owner bulk acceptance override — 24 November 2026
+
+The owner explicitly requested accepting all locally API-generated primary and
+dynamic images together, with specific corrections later, instead of mandatory
+per-image checkboxes. The local importer may install those exact hash-bound
+candidates with `ownerAcceptance.method: bulk-user-accepted-unreviewed`.
+Do not mark anatomy/noProps/style checks as performed: keep those flags false
+and record that individual visual review is pending. Technical file, provenance,
+ID, transparency and no-overwrite checks remain required. Existing individually
+reviewed assets retain their real reviews. This exception applies to the owner's
+explicit bulk import, not automatic approval of future image generations.
+
 ## Latest approved artwork direction
 - Dynamic/detail illustration top edges must finish naturally or fade to transparency; never sharply crop a trunk, branch or other prop at the upper canvas edge. Keep heads/beaks fully inside the top edge. Include this constraint in all future generation prompts and visual reviews.
 - Classic primary illustrations for compact contexts show ONLY the bird, without branches, perches, rocks, plants, water, food, ground or shadows, on transparent background. Include the whole bird and natural feet. This applies to all existing and future classics; dynamic/detail scenes may retain props. Future primary imports require composition: bird-only and a hash-bound anatomyReview.noProps attestation.
