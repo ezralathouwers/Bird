@@ -97,3 +97,12 @@ het blokkeren van onbekende uitkomsten. Geen API-sleutel of betaalde productie
 is gebruikt bij die tests. De ZIP bevat alleen expliciet geselecteerde scripts,
 broninventaris, catalogus/assetmetadata en de twee bestaande stijlreferenties;
 geen lokale checkpoints, privégegevens, API-sleutels of volledige app.
+
+## Lokale installatie zonder uploads
+
+Na generatie kunnen de PNG’s op de Mac blijven. Gebruik het kleine pakket
+`Scripts/Birder-illustraties-importeren.zip`. Daarmee maak je een lokaal visueel
+controleoverzicht en installeer je afzonderlijk goedgekeurde beelden in de
+gekozen app-projectmap. Zie [de stappen](LOCAL_ARTWORK_IMPORT.md).
+De twintig originele proefbeelden zijn op 24 november geïnstalleerd; de 670
+Belgische kandidaten zijn nog niet in deze repository gecontroleerd/geïnstalleerd.

@@ -19989,5 +19989,1135 @@
       "reviewed": "2026-11-23",
       "notes": "Singing on willow/reed scene, one head/open bill, two short folded wings far side occluded and two gripping feet. Whole bill/tail/head inside canvas; low twigs/reed ends naturally broken/faded below crown without upper crop. Original and ivory alpha-composite individually inspected; independent expert and native review pending."
     }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09847",
+    "asset": "birdnet-v3-BN09847-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN09847-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "d4c8b327e092ca79d4200ceb448d35be6c9d71895bc4805b645f5a058d76ca71",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Shikra"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_78447a90678c4eac8a888d3ec52e2d1e",
+      "promptSHA256": "3e3e32f12175140aed331bc59ad85ea9f4a3e2356e3d08b229f6bfb16caa2e4e",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "d4c8b327e092ca79d4200ceb448d35be6c9d71895bc4805b645f5a058d76ca71",
+      "usage": {
+        "input_tokens": 1837,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 316
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2276
+      },
+      "estimatedCostUSD": 0.026918,
+      "elapsedSeconds": 20.591
+    },
+    "anatomyReview": {
+      "sha256": "d4c8b327e092ca79d4200ceb448d35be6c9d71895bc4805b645f5a058d76ca71",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult male: grey upperparts, rufous barred breast, red iris, hooked bill and barred long tail. Closed near wing; far wing concealed; no extra wing outline."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN09847",
+    "asset": "birdnet-v3-BN09847-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN09847-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "47aa0760758a9db2e2cec6648bfea408674d120b4ab2147f436e0d28cb2ee70c",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Shikra"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_cc1d656fa42d431f8316a59338cbae76",
+      "promptSHA256": "8bfd3088404e14893efbda9b647bdaca094d1eb1ed17dad2c5f78f3603002e8d",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "47aa0760758a9db2e2cec6648bfea408674d120b4ab2147f436e0d28cb2ee70c",
+      "usage": {
+        "input_tokens": 1867,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 346
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2210
+      },
+      "estimatedCostUSD": 0.024188,
+      "elapsedSeconds": 16.846
+    },
+    "anatomyReview": {
+      "sha256": "47aa0760758a9db2e2cec6648bfea408674d120b4ab2147f436e0d28cb2ee70c",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult male: grey upperparts, rufous barred breast, red iris, hooked bill and barred long tail. Closed near wing; far wing concealed; no extra wing outline."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN06135",
+    "asset": "birdnet-v3-BN06135-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN06135-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "b5da3ae78f090362c5806a325242a2dde15efe6e7d0f161b4751d8982b7df643",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male in breeding plumage",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Grey_wagtail"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_a7ce2dd40a1843a79947ca823e7b31cd",
+      "promptSHA256": "d511ed47411f313279aefdb39fe56414cd5175c9764082487ba253ceb428cc9d",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "b5da3ae78f090362c5806a325242a2dde15efe6e7d0f161b4751d8982b7df643",
+      "usage": {
+        "input_tokens": 1845,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 324
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2284
+      },
+      "estimatedCostUSD": 0.026958,
+      "elapsedSeconds": 19.579
+    },
+    "anatomyReview": {
+      "sha256": "b5da3ae78f090362c5806a325242a2dde15efe6e7d0f161b4751d8982b7df643",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Grey upperparts, white brow and moustachial stripe, black breeding throat, yellow belly and long tail. Two natural feet; closed wing, far wing concealed."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN06135",
+    "asset": "birdnet-v3-BN06135-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN06135-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "2dc562335d4bca687f79c6e904b18d64638a9f8bdba4a14622afe0842b77fa10",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male in breeding plumage",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Grey_wagtail"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_117a8b79b606463e8014e7395196029e",
+      "promptSHA256": "7b398f041e447b22551e57fad3427056c933156a5acc66545ef4676ee476593f",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "2dc562335d4bca687f79c6e904b18d64638a9f8bdba4a14622afe0842b77fa10",
+      "usage": {
+        "input_tokens": 1885,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 364
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2228
+      },
+      "estimatedCostUSD": 0.024278,
+      "elapsedSeconds": 21.825
+    },
+    "anatomyReview": {
+      "sha256": "2dc562335d4bca687f79c6e904b18d64638a9f8bdba4a14622afe0842b77fa10",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Grey upperparts, white brow and moustachial stripe, black breeding throat, yellow belly and long tail. Two natural feet; closed wing, far wing concealed."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN00252",
+    "asset": "birdnet-v3-BN00252-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN00252-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "e507e9c39e469d32e962934633ba21bf0f39ef5cca56a0aa7a575173b8c78568",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male in breeding plumage",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Mandarin_duck"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_c122890aa75a4d9c8caa684da8190781",
+      "promptSHA256": "005621895331e3dbce9d37e80d7368afe4bf4c3f0e48a8324f9b187e377afafc",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "e507e9c39e469d32e962934633ba21bf0f39ef5cca56a0aa7a575173b8c78568",
+      "usage": {
+        "input_tokens": 1832,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 311
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2271
+      },
+      "estimatedCostUSD": 0.026893,
+      "elapsedSeconds": 18.309
+    },
+    "anatomyReview": {
+      "sha256": "e507e9c39e469d32e962934633ba21bf0f39ef5cca56a0aa7a575173b8c78568",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult male: red bill, white eye crescent, orange cheek ruff and paired orange sail feathers. Sails are modified wing feathers, not additional wings. Webbed feet in primary; feet submerged in dynamic."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN00252",
+    "asset": "birdnet-v3-BN00252-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN00252-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "7fc8e8fce26a988e3fd30ff32c89c8f44155f7e882e79725b74d63f886f618f1",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male in breeding plumage",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Mandarin_duck"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_c89a534e9ed046cba5bbc73ab2315d9a",
+      "promptSHA256": "9fe538762feaafcbc65490250d36d42307691ba6555935c29cbd0847ef0047a8",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "7fc8e8fce26a988e3fd30ff32c89c8f44155f7e882e79725b74d63f886f618f1",
+      "usage": {
+        "input_tokens": 1863,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 342
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2206
+      },
+      "estimatedCostUSD": 0.024168,
+      "elapsedSeconds": 19.481
+    },
+    "anatomyReview": {
+      "sha256": "7fc8e8fce26a988e3fd30ff32c89c8f44155f7e882e79725b74d63f886f618f1",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult male: red bill, white eye crescent, orange cheek ruff and paired orange sail feathers. Sails are modified wing feathers, not additional wings. Webbed feet in primary; feet submerged in dynamic."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09140",
+    "asset": "birdnet-v3-BN09140-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN09140-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "df48a22c3d26182e2a84fff06ed87cbb6066e9c81f58f6a454dfbdff20589793",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Eurasian_woodcock"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_9c2fdc7a7267433d93a1f70109ddd676",
+      "promptSHA256": "42603691e78a67b1f2a158dc78ce95a0f063d9dbf437c4542611c46c4b483b38",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "df48a22c3d26182e2a84fff06ed87cbb6066e9c81f58f6a454dfbdff20589793",
+      "usage": {
+        "input_tokens": 1841,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 320
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2280
+      },
+      "estimatedCostUSD": 0.026938,
+      "elapsedSeconds": 21.241
+    },
+    "anatomyReview": {
+      "sha256": "df48a22c3d26182e2a84fff06ed87cbb6066e9c81f58f6a454dfbdff20589793",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Mottled brown plumage, crossbarred crown, large dark eye, long single straight bill. One closed near wing, opposite wing concealed. Natural feet visible."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN09140",
+    "asset": "birdnet-v3-BN09140-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN09140-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "27704385c16b08c3a632bb30e1a03e8fce4247e999a39ee6e18dbaa58c298eea",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Eurasian_woodcock"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_2202f58d70d341a88129cef2ce59e5f8",
+      "promptSHA256": "de391f47d80974134e1a5b75d7358288038be587deda8dba1e719b228ffc7d58",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "27704385c16b08c3a632bb30e1a03e8fce4247e999a39ee6e18dbaa58c298eea",
+      "usage": {
+        "input_tokens": 1874,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 353
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2217
+      },
+      "estimatedCostUSD": 0.024223,
+      "elapsedSeconds": 18.187
+    },
+    "anatomyReview": {
+      "sha256": "27704385c16b08c3a632bb30e1a03e8fce4247e999a39ee6e18dbaa58c298eea",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Mottled brown plumage, crossbarred crown, large dark eye, long single straight bill. One closed near wing, opposite wing concealed. Natural feet visible."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02240",
+    "asset": "birdnet-v3-BN02240-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN02240-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "964d7f3c574fc221e8aceba4b239c158ab0ed007c5251126f57b2284ef603916",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult female",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Western_marsh_harrier"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_37a73493b03f4fe6859ee47910789116",
+      "promptSHA256": "adea8ac95b5b6c8e35aafd740f273943373b83f944a131be9e87474dcee8bae5",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "964d7f3c574fc221e8aceba4b239c158ab0ed007c5251126f57b2284ef603916",
+      "usage": {
+        "input_tokens": 1833,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 312
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2272
+      },
+      "estimatedCostUSD": 0.026898,
+      "elapsedSeconds": 16.581
+    },
+    "anatomyReview": {
+      "sha256": "964d7f3c574fc221e8aceba4b239c158ab0ed007c5251126f57b2284ef603916",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult female: dark brown body, creamy head and throat, yellow cere and legs. Primary closed-wing pose; dynamic has two open wings traced to shoulder roots, no retained folded wing."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN02240",
+    "asset": "birdnet-v3-BN02240-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN02240-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "d2a3b547964a6e9d9798a9904aa6038b3c081136e92d87c408505674d6f810dc",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult female",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Western_marsh_harrier"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_ecb7d4e581f8475d8b22941a6a0edc4e",
+      "promptSHA256": "a643f5e04c5a2cf1d3b76c7f54c8ae295833ae2d88cc524cc6fda66ba259f67a",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "d2a3b547964a6e9d9798a9904aa6038b3c081136e92d87c408505674d6f810dc",
+      "usage": {
+        "input_tokens": 1872,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 351
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2215
+      },
+      "estimatedCostUSD": 0.024213,
+      "elapsedSeconds": 18.811
+    },
+    "anatomyReview": {
+      "sha256": "d2a3b547964a6e9d9798a9904aa6038b3c081136e92d87c408505674d6f810dc",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult female: dark brown body, creamy head and throat, yellow cere and legs. Primary closed-wing pose; dynamic has two open wings traced to shoulder roots, no retained folded wing."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN07599",
+    "asset": "birdnet-v3-BN07599-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN07599-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "67bf135e3b9f501353b3ff08510aeb7db129c6c3fcae16bad16c2be17baf84a6",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Common_chiffchaff"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_e78c68530fe74200ac7c78b56e7e6849",
+      "promptSHA256": "23ed64844fd9f88dbe2e6a23ea8290b92c854c7c878e6a785d5e848440e0e981",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "67bf135e3b9f501353b3ff08510aeb7db129c6c3fcae16bad16c2be17baf84a6",
+      "usage": {
+        "input_tokens": 1835,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 314
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2274
+      },
+      "estimatedCostUSD": 0.026908,
+      "elapsedSeconds": 16.277
+    },
+    "anatomyReview": {
+      "sha256": "67bf135e3b9f501353b3ff08510aeb7db129c6c3fcae16bad16c2be17baf84a6",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Olive-brown upperparts, pale underparts, modest pale brow, dark legs and slender single bill. Closed wings; dynamic foraging on branch near insect."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN07599",
+    "asset": "birdnet-v3-BN07599-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN07599-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "6f01da6a417b3fee97d789662ab91ba1cb5546ce37806f2d0ba69d2b1667c564",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Common_chiffchaff"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_8f00b7b1e59a495c9acb51879fc30745",
+      "promptSHA256": "c4a8e7d73bf44902082dcfd85f84f3328cdb323c3a942a33bfa434bf8be2aa65",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "6f01da6a417b3fee97d789662ab91ba1cb5546ce37806f2d0ba69d2b1667c564",
+      "usage": {
+        "input_tokens": 1872,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 351
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2215
+      },
+      "estimatedCostUSD": 0.024213,
+      "elapsedSeconds": 19.477
+    },
+    "anatomyReview": {
+      "sha256": "6f01da6a417b3fee97d789662ab91ba1cb5546ce37806f2d0ba69d2b1667c564",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Olive-brown upperparts, pale underparts, modest pale brow, dark legs and slender single bill. Closed wings; dynamic foraging on branch near insect."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN04986",
+    "asset": "birdnet-v3-BN04986-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN04986-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "74f324a21db7d4508b27c6d18e2d45535d9a59e129e80daef93d2ecb70d185ad",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Tawny_fish_owl"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_c708f7526ac14ab58901a5c19bcc2f8f",
+      "promptSHA256": "58e7a595e89e0d5fcd9ef627539f38d25168cd4866f9bc61669f7d654c43fda8",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "74f324a21db7d4508b27c6d18e2d45535d9a59e129e80daef93d2ecb70d185ad",
+      "usage": {
+        "input_tokens": 1837,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 316
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2276
+      },
+      "estimatedCostUSD": 0.026918,
+      "elapsedSeconds": 17.707
+    },
+    "anatomyReview": {
+      "sha256": "74f324a21db7d4508b27c6d18e2d45535d9a59e129e80daef93d2ecb70d185ad",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Tawny heavily streaked fish owl, prominent ear tufts, yellow eyes and a single hooked bill. Closed near wing; far wing concealed. Two feet with strong talons."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN04986",
+    "asset": "birdnet-v3-BN04986-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN04986-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "5f33bafa99850d53f3df88d1cde0a1b2e2171fb1c77c04a94b4098f2c831617f",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Tawny_fish_owl"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_43710a402b764f48bb67d210071fa3a8",
+      "promptSHA256": "99c4bbb33330de5778dfe33bd1330a78c8e6e7bd323c4d96cb51c3db2a00e675",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "5f33bafa99850d53f3df88d1cde0a1b2e2171fb1c77c04a94b4098f2c831617f",
+      "usage": {
+        "input_tokens": 1875,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 354
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2218
+      },
+      "estimatedCostUSD": 0.024228,
+      "elapsedSeconds": 19.6
+    },
+    "anatomyReview": {
+      "sha256": "5f33bafa99850d53f3df88d1cde0a1b2e2171fb1c77c04a94b4098f2c831617f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Tawny heavily streaked fish owl, prominent ear tufts, yellow eyes and a single hooked bill. Closed near wing; far wing concealed. Two feet with strong talons."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN02749",
+    "asset": "birdnet-v3-BN02749-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN02749-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "9d2b2fe875e5b6285a50b3990a98128ed45edebb9a6207816c1a899e3de59283",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Great_curassow"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_02cf55db615442c7958d08e0f957fbe5",
+      "promptSHA256": "ef9a1d59e06993ab594814329db898cf376d54f245180ea2da683ecc27af7c24",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "9d2b2fe875e5b6285a50b3990a98128ed45edebb9a6207816c1a899e3de59283",
+      "usage": {
+        "input_tokens": 1844,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 323
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2283
+      },
+      "estimatedCostUSD": 0.026953,
+      "elapsedSeconds": 16.918
+    },
+    "anatomyReview": {
+      "sha256": "9d2b2fe875e5b6285a50b3990a98128ed45edebb9a6207816c1a899e3de59283",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult male: black plumage, curled crest, yellow bill knob and white belly/vent. Folded wing silhouette, one bill, two feet; dynamic walking on leaf litter."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN02749",
+    "asset": "birdnet-v3-BN02749-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN02749-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "8f21d87268706f9408937b7ecd39edc92210ac1c31baba095c4004a70059de3f",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult male",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Great_curassow"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_a8bfdc05cbe4401cbacdd89cca19fd6b",
+      "promptSHA256": "3f998ed54ffe339191b0743ff3211ac3086796cf04c6d16c1bc96303a7af053d",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "8f21d87268706f9408937b7ecd39edc92210ac1c31baba095c4004a70059de3f",
+      "usage": {
+        "input_tokens": 1882,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 361
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2225
+      },
+      "estimatedCostUSD": 0.024263,
+      "elapsedSeconds": 20.319
+    },
+    "anatomyReview": {
+      "sha256": "8f21d87268706f9408937b7ecd39edc92210ac1c31baba095c4004a70059de3f",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult male: black plumage, curled crest, yellow bill knob and white belly/vent. Folded wing silhouette, one bill, two feet; dynamic walking on leaf litter."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN09408",
+    "asset": "birdnet-v3-BN09408-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN09408-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "1e4d7898fdee5a2d2ae5f5ad3f35373f2e5ae596cc1302fc2d795a775c348d2e",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/African_penguin"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_40f794f3e9d4486eaf0481aaa7021f9f",
+      "promptSHA256": "38a9b6b15ecaaf82731a23191e62a467b35bc36d27ca0308a3f32622114042e5",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "1e4d7898fdee5a2d2ae5f5ad3f35373f2e5ae596cc1302fc2d795a775c348d2e",
+      "usage": {
+        "input_tokens": 1840,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 319
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2279
+      },
+      "estimatedCostUSD": 0.026933,
+      "elapsedSeconds": 18.343
+    },
+    "anatomyReview": {
+      "sha256": "1e4d7898fdee5a2d2ae5f5ad3f35373f2e5ae596cc1302fc2d795a775c348d2e",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult African penguin: black face with white border, pink bare patch over eye, single breast band and spotted white belly. Primary two relaxed flippers, dynamic two extended flippers only."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN09408",
+    "asset": "birdnet-v3-BN09408-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN09408-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "feb1b85fb048f744fb3ac826d1d97aaeda70ef80f964060e26a2f6586f362e87",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/African_penguin"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_dd00c8e90816426ead34c3ffa335b611",
+      "promptSHA256": "94acaa134a2943457742a4f4664aa766874821b32bea625a8ca852bae302673f",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "feb1b85fb048f744fb3ac826d1d97aaeda70ef80f964060e26a2f6586f362e87",
+      "usage": {
+        "input_tokens": 1881,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 360
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2224
+      },
+      "estimatedCostUSD": 0.024258,
+      "elapsedSeconds": 18.434
+    },
+    "anatomyReview": {
+      "sha256": "feb1b85fb048f744fb3ac826d1d97aaeda70ef80f964060e26a2f6586f362e87",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult African penguin: black face with white border, pink bare patch over eye, single breast band and spotted white belly. Primary two relaxed flippers, dynamic two extended flippers only."
+    }
+  },
+  {
+    "speciesID": "birdnet-v3:BN01708",
+    "asset": "birdnet-v3-BN01708-primary",
+    "view": "primary",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN01708-primary.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "c839733510c0b2201a347e77abf571a8b9264cff7e488fc3e7ddf38eac2de9b8",
+    "pixelWidth": 1024,
+    "pixelHeight": 1024,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult East Asian nominate-type representative",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Eastern_red-rumped_swallow"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_a265ad9600cb48f4a935cd9eb163bcbd",
+      "promptSHA256": "e0d0a187890b8daf4478a4da94195f823febd8fd63883e2b856215ec6ebdef18",
+      "referenceSHA256": "9bc9d6aa35327a3e6c3a445e5cfcecb9ffe331d81d1ae872cc15ba9c6490141e",
+      "outputSHA256": "c839733510c0b2201a347e77abf571a8b9264cff7e488fc3e7ddf38eac2de9b8",
+      "usage": {
+        "input_tokens": 1864,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 343
+        },
+        "output_tokens": 439,
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        },
+        "total_tokens": 2303
+      },
+      "estimatedCostUSD": 0.027053,
+      "elapsedSeconds": 17.863
+    },
+    "anatomyReview": {
+      "sha256": "c839733510c0b2201a347e77abf571a8b9264cff7e488fc3e7ddf38eac2de9b8",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": true,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult eastern red-rumped swallow concept: blue crown/back, rufous nape/rump, streaked pale underside and forked long tail. Dynamic has two open wings with continuous shoulder roots; open gape is one bill."
+    },
+    "composition": "bird-only"
+  },
+  {
+    "speciesID": "birdnet-v3:BN01708",
+    "asset": "birdnet-v3-BN01708-dynamic",
+    "view": "dynamic",
+    "mediaType": "illustration",
+    "version": 1,
+    "sourceFile": "birdnet-v3-BN01708-dynamic.png",
+    "source": "Original OpenAI-generated illustration for this project",
+    "created": "2026-11-23",
+    "reviewStatus": "Visual review of role, framing, facing and main species markings performed; independent expert and native/user review pending",
+    "rights": "Generated output subject to applicable OpenAI terms; no third-party copied media",
+    "sourceFacing": "right",
+    "displayFacing": "right",
+    "displayTransform": "none",
+    "sha256": "478672253d9ae8a21b873b3da948870c340c29c29684e12df2eab0d0810409a5",
+    "pixelWidth": 1024,
+    "pixelHeight": 1536,
+    "background": "transparent",
+    "batch": "api-pilot-import-20261124",
+    "representativePlumage": "adult East Asian nominate-type representative",
+    "referenceURLs": [
+      "https://en.wikipedia.org/wiki/Eastern_red-rumped_swallow"
+    ],
+    "generationProvenance": {
+      "provider": "OpenAI Images API",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "requestID": "req_e753da47bc2742e9b40680a6b9ac4d45",
+      "promptSHA256": "d55cb83b0e77a1896acc61c4628cf943958dfbba386eecbdc529fa26204fdc68",
+      "referenceSHA256": "45018d68e7554d420c1c563d0c5beb4a6b95f886abc8e887b452dc513c1a80bc",
+      "outputSHA256": "478672253d9ae8a21b873b3da948870c340c29c29684e12df2eab0d0810409a5",
+      "usage": {
+        "input_tokens": 1908,
+        "input_tokens_details": {
+          "image_tokens": 1521,
+          "text_tokens": 387
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "image_tokens": 343,
+          "text_tokens": 0
+        },
+        "total_tokens": 2251
+      },
+      "estimatedCostUSD": 0.024393,
+      "elapsedSeconds": 18.464
+    },
+    "anatomyReview": {
+      "sha256": "478672253d9ae8a21b873b3da948870c340c29c29684e12df2eab0d0810409a5",
+      "twoWings": true,
+      "singleHeadAndBill": true,
+      "poseAndFraming": true,
+      "noProps": false,
+      "reviewer": "Codex visual review, individual full-resolution original, 2026-11-24",
+      "notes": "Adult eastern red-rumped swallow concept: blue crown/back, rufous nape/rump, streaked pale underside and forked long tail. Dynamic has two open wings with continuous shoulder roots; open gape is one bill."
+    }
   }
 ]

@@ -358,3 +358,15 @@ present; all 602 pre-resumption records unchanged; artwork additions only;
 queue totals agree; git diff --check. Native Xcode build/rendering and
 independent expert review remain unverified. Superseded torenvalk/roek dynamics
 remain in rejection log and original source files, with replacement provenance.
+
+## 24 November 2026 — supplied API pilot imported
+
+Imported 20 user-supplied originals, primary/dynamic for the 10 fixed pilot
+species, batch api-pilot-import-20261124. All originals individually inspected;
+hash-bound reviews and unchanged PNGs installed, existing work retained.
+Last role: birdnet-v3:BN01708 dynamic. No rejections or new paid generation in
+this run. Independent expert and native device review remain pending.
+670 Belgium-medium candidates remain on the owner's Mac; supplied metadata was
+checked, but those actual images have not been visually approved or installed.
+A local review/import launcher is available; global generation remains paused.
+No quota/reset/retry time was reported by any image-generation tool in this run.

@@ -17,10 +17,21 @@ import install_artwork_batch as installer
 class ArtworkAPIPilotTests(unittest.TestCase):
     def setUp(self):
         self.plan = json.loads(pilot.DEFAULT_PLAN.read_text())
-        self.jobs = pilot.jobs(self.plan)
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)
         self.output = Path(self.directory.name)
+        # Production may now contain the completed pilot. Test generation against
+        # an isolated empty manifest, not the changing installed artwork set.
+        root = self.output / 'planning-fixture'
+        res = root / 'BirdingCompanion/Resources'
+        res.mkdir(parents=True)
+        (res / 'WorldSpeciesCatalog.json').write_bytes((pilot.ROOT / 'BirdingCompanion/Resources/WorldSpeciesCatalog.json').read_bytes())
+        (res / 'ArtworkManifest.json').write_text('[]')
+        for relative in self.plan['referenceAssets'].values():
+            target = root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((pilot.ROOT / relative).read_bytes())
+        self.jobs = pilot.jobs(self.plan, root=root)
         self.calls = []
 
     def sender(self, body, key):
