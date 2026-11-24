@@ -467,3 +467,32 @@ about 119 points compared with the previous layout on the same-height viewport.
 The reserved area is outside the scroll viewport so larger text can scroll
 without running behind the close control. Native visual checks and XCTest remain
 pending; Swift syntax/project/whitespace checks are available in cloud.
+
+
+## 24 November 2026 — overflow and observation scrolling
+
+Overview artwork now draws in a full-page pager behind the transparent header.
+An anchor resolves the actual header height in the same layout pass. Each slide
+subtracts that height when calculating its original image-fitting viewport and
+adds it back to its drawing origin. The existing image scale, magnification,
+-50pt horizontal shift, -30/-10pt dynamic vertical shifts and 32pt navigation
+clearance are unchanged. Page-edge clipping stays in place to contain adjacent
+pages; the tab strip is no longer the clipping boundary. Header buttons/title/
+tabs remain above the artwork and keep their original layout.
+
+On Waarnemingen the original prominent count stays above the scroll view. The
+shared CatalogResultsScroll supplies a top fade only after content moves upward.
+The nested history hides its own count, preserving a single accessible heading.
+Bottom row padding increases from 24 to 74pt. Other history uses keep their totals.
+
+Discovery's top-left actions are now Info, Gegevens en back-ups (Time Machine
+backup symbol), and Instellingen lokale meldingen (gear). All use the existing
+muted icon colour and 44pt hit areas. The lower text link to local settings is
+removed; the new gear opens the same settings/radius/time-window sheet.
+
+Verification: Swift tree-sitter parse of all app/test Swift files and
+`git diff --check`. Changes are presentation-only; no user data, assets, API
+requests or image transforms were modified. Native Xcode compilation, on-device
+swiping/button hit testing and visual matching remain unverified on Linux.
+Check a tall raptor, a long two-line title, a single-slide species, and a long
+observation history when building on the Mac.

@@ -6,6 +6,7 @@ struct ObservationHistoryView: View {
     var embedded = false
     var showsExport = true
     var prominentTotal = false
+    var showsTotal = true
     @EnvironmentObject private var store: ObservationStore
     @EnvironmentObject private var navigation: ObservationNavigation
     @State private var exporting = false
@@ -16,7 +17,7 @@ struct ObservationHistoryView: View {
         LazyVStack(alignment: .leading, spacing: 16) {
             if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
             let records = store.observations(for: species.id)
-            if store.loadError == nil {
+            if showsTotal && store.loadError == nil {
                 if prominentTotal {
                     ObservationTotal(value: records.count, label: "waarnemingen")
                         .padding(.top, 12).padding(.bottom, 4)

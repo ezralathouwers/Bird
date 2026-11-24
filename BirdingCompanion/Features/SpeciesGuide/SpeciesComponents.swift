@@ -165,13 +165,15 @@ enum SpeciesArtworkPaging {
 struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
     let species: Species
     @Binding var page: Int
+    var topOverlap: CGFloat = 0
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
     func makeUIViewController(context: Context) -> UIPageViewController {
         let controller = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         controller.view.backgroundColor = .clear
         controller.view.clipsToBounds = true
-        // The SwiftUI parent supplies explicit bounds below its actual header.
+        // The pager spans the page so tall art can draw behind the header.
+        // Slides subtract topOverlap to preserve their original sizing viewport.
         for scroll in controller.view.subviews.compactMap({ $0 as? UIScrollView }) {
             scroll.contentInsetAdjustmentBehavior = .never
         }
@@ -184,6 +186,7 @@ struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
     }
     func updateUIViewController(_ controller: UIPageViewController, context: Context) {
         context.coordinator.parent = self
+        context.coordinator.updateTopOverlap(topOverlap)
         if context.coordinator.speciesID != species.id {
             context.coordinator.configure(species: species)
             configureInteraction(controller, coordinator: context.coordinator)
@@ -204,15 +207,26 @@ struct SpeciesArtworkCarousel: UIViewControllerRepresentable {
         var parent: SpeciesArtworkCarousel
         var speciesID: String?
         var controllers: [UIViewController] = []
+        private var topOverlap: CGFloat = 0
         init(_ parent: SpeciesArtworkCarousel) { self.parent = parent }
 
+        func updateTopOverlap(_ value: CGFloat) {
+            guard topOverlap != value else { return }
+            topOverlap = value
+            for case let hosted as UIHostingController<SpeciesArtworkSlide> in controllers {
+                var slide = hosted.rootView
+                slide.topOverlap = value
+                hosted.rootView = slide
+            }
+        }
         func configure(species: Species) {
             speciesID = species.id
+            topOverlap = parent.topOverlap
             let available = Set(SpeciesMediaRole.allCases.filter { UIImage(named: $0.assetName(for: species)) != nil })
             let roles = SpeciesArtworkPaging.slides(available: available)
             let visible: [SpeciesMediaRole] = roles.isEmpty ? [.dynamic] : roles
             controllers = visible.enumerated().map { index, role in
-                let controller = UIHostingController(rootView: SpeciesArtworkSlide(species: species, role: role, index: index, totalSlides: visible.count))
+                let controller = UIHostingController(rootView: SpeciesArtworkSlide(species: species, role: role, index: index, totalSlides: visible.count, topOverlap: topOverlap))
                 controller.view.backgroundColor = .clear
                 controller.safeAreaRegions = []
                 return controller
@@ -281,7 +295,8 @@ private enum SpeciesArtworkDisplayCache {
     }
 }
 
-// Explicit image bounds keep the illustration inside the pager's viewport.
+// Size images using the original content viewport below the header; the pager
+// itself extends behind the header so existing upward offsets are not clipped.
 // Reserve the central navigation button's 32-point protrusion below the image.
 enum SpeciesArtworkLayout {
     static let navigationClearance: CGFloat = 32
@@ -289,8 +304,8 @@ enum SpeciesArtworkLayout {
         guard image.width > 0, image.height > 0 else { return .zero }
         let height = max(0, viewport.height - navigationClearance)
         let fitted = min(viewport.width * (horizontalBleed ? 1.18 : 1) / image.width, height / image.height)
-        // Dynamic scenes may bleed horizontally, while their upper/lower edges
-        // remain inside the viewport even on short screens and long titles.
+        // Keep the same fitted size on short screens and long titles. Rendering
+        // uses a taller canvas so the existing upward offset can cross the header.
         let scale = horizontalBleed && magnification > 1
             ? min(fitted * magnification, max(0, height - 20) / image.height)
             : fitted
@@ -312,22 +327,24 @@ private struct SpeciesArtworkSlide: View {
     let role: SpeciesMediaRole
     let index: Int
     let totalSlides: Int
+    var topOverlap: CGFloat = 0
     @State private var displayImage: UIImage?
     var body: some View {
         GeometryReader { geometry in
+            let viewport = CGSize(width: geometry.size.width, height: max(0, geometry.size.height - topOverlap))
             Group {
                 if let image = displayImage {
                     // Flight views contain the diagnostic wing tips; fit their
                     // full width rather than bleeding these beyond the screen.
                     let zoom = role == .dynamic ? SpeciesArtworkLayout.dynamicMagnification(speciesID: species.id) : 1
-                    let size = SpeciesArtworkLayout.size(image: image.size, viewport: geometry.size,
+                    let size = SpeciesArtworkLayout.size(image: image.size, viewport: viewport,
                                                          horizontalBleed: role == .dynamic, magnification: zoom)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
                         .scaleEffect(x: role == .classic && PrimaryBirdImage.sourceFacesLeft(speciesID: species.id) ? -1 : 1, y: 1)
                         .offset(x: role == .dynamic ? -50 : 0, y: role == .dynamic ? (zoom > 1 ? -10 : -30) : 0)
-                        .frame(width: geometry.size.width,
-                               height: max(0, geometry.size.height - SpeciesArtworkLayout.navigationClearance),
+                        .frame(width: viewport.width,
+                               height: max(0, viewport.height - SpeciesArtworkLayout.navigationClearance),
                                alignment: role == .dynamic && zoom == 1 ? .bottom : .center)
                         .accessibilityLabel("\(role.label) van \(species.dutchName), afbeelding \(index + 1) van \(totalSlides)")
                 } else if UIImage(named: role.assetName(for: species)) != nil {
@@ -339,9 +356,11 @@ private struct SpeciesArtworkSlide: View {
                         .padding(20)
                 }
             }
+            .frame(width: viewport.width, height: viewport.height, alignment: .topLeading)
+            .offset(y: topOverlap)
         }
         .background(FieldGuideTheme.ivory)
-        .clipped()
+        .clipped() // Clip at the page edges, never at the tab strip.
         .task(id: role.assetName(for: species)) {
             let loaded = await SpeciesArtworkDisplayCache.image(named: role.assetName(for: species))
             guard !Task.isCancelled else { return }

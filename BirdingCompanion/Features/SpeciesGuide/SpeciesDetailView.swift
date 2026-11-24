@@ -24,14 +24,13 @@ struct SpeciesDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             header.fixedSize(horizontal: false, vertical: true)
+                .anchorPreference(key: SpeciesHeaderBounds.self, value: .bounds) { $0 }
             Group {
             switch tab {
             case .overview:
-                GeometryReader { viewport in
-                    SpeciesArtworkCarousel(species: species, page: $artworkPage)
-                        .frame(width: viewport.size.width, height: viewport.size.height)
-                }
-                .clipped()
+                // The pager draws behind the header in the background below.
+                // This keeps the original below-header viewport in the layout.
+                Color.clear.allowsHitTesting(false)
             case .information:
                 GeometryReader { viewport in
                     ScrollView {
@@ -63,13 +62,28 @@ struct SpeciesDetailView: View {
                     }
                 }
             case .observations:
-                ScrollView {
-                    ObservationHistoryView(species: species, embedded: true, showsExport: false, prominentTotal: true)
-                        .padding(.horizontal, 20).padding(.bottom, 24)
+                VStack(alignment: .leading, spacing: 0) {
+                    if store.loadError == nil {
+                        ObservationTotal(value: store.observations(for: species.id).count, label: "waarnemingen")
+                            .padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 20)
+                    }
+                    CatalogResultsScroll(resetKey: species.id) {
+                        ObservationHistoryView(species: species, embedded: true, showsExport: false, showsTotal: false)
+                            .padding(.horizontal, 20).padding(.bottom, 74)
+                    }
                 }
             }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .backgroundPreferenceValue(SpeciesHeaderBounds.self) { headerBounds in
+            if tab == .overview {
+                GeometryReader { canvas in
+                    let headerHeight = headerBounds.map { canvas[$0].maxY } ?? 0
+                    SpeciesArtworkCarousel(species: species, page: $artworkPage, topOverlap: headerHeight)
+                        .frame(width: canvas.size.width, height: canvas.size.height)
+                }
+            }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             if tab == .information { HabitatFooter(species: species) }
@@ -117,7 +131,7 @@ struct SpeciesDetailView: View {
                 SpeciesTabStrip(selection: $tab).padding(.top, 8)
             }
             .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 4)
-            .background(FieldGuideTheme.ivory)
+            .background(tab == .overview ? Color.clear : FieldGuideTheme.ivory)
     }
 
     private var heading: some View {
@@ -177,6 +191,13 @@ struct PreviewObservationPersistence: ObservationPersistence {
 }
 
 private struct InformationContentBounds: PreferenceKey {
+    static var defaultValue: Anchor<CGRect>? { nil }
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
+        value = nextValue() ?? value
+    }
+}
+
+private struct SpeciesHeaderBounds: PreferenceKey {
     static var defaultValue: Anchor<CGRect>? { nil }
     static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
         value = nextValue() ?? value

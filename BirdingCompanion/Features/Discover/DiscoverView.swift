@@ -85,10 +85,15 @@ struct DiscoverView: View {
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Info")
                 Button { showBackups = true } label: {
-                    Image(systemName: "gearshape").font(.system(size: 22, weight: .ultraLight))
+                    Image(systemName: "externaldrive.badge.timemachine").font(.system(size: 22, weight: .ultraLight))
                         .offset(x: -8)
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Gegevens en back-ups")
+                Button { showEBirdConnection = true } label: {
+                    Image(systemName: "gearshape").font(.system(size: 22, weight: .ultraLight))
+                        .offset(x: -8)
+                        .frame(width: 44, height: 44).contentShape(Rectangle())
+                }.accessibilityLabel("Instellingen lokale meldingen")
             }.buttonStyle(.plain).foregroundStyle(FieldGuideTheme.mutedIcon)
                 .padding(.leading, 9).padding(.top, 8)
         }
@@ -186,7 +191,6 @@ struct DiscoverView: View {
                     Button { demo = false; location.useCurrentLocation() } label: {
                         Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44)
                     }
-                    Button("Instellingen lokale meldingen") { showEBirdConnection = true }.frame(minHeight: 44).opacity(0.5)
                 }
 
     }
