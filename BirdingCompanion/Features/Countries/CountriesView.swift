@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CountriesView: View {
     @EnvironmentObject private var store: ObservationStore
+    @EnvironmentObject private var countryRepair: CountryRepairController
     private var countries: [LoggedCountry] { CountryProjection.countries(in: store.observations) }
     private var unknownCount: Int {
         store.observations.filter { ObservationCountry.normalized($0.countryCode) == nil }.count
@@ -10,6 +11,11 @@ struct CountriesView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 14) {
                 PageHeading(text: "Landen").accessibilityAddTraits(.isHeader).padding(.bottom, 10)
+                if countryRepair.isWorking { ProgressView("Landen aanvullen…") }
+                if let message = countryRepair.errorMessage {
+                    Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                    Button("Probeer landen opnieuw aan te vullen") { countryRepair.retry(store: store) }
+                }
                 if let error = store.loadError { Text(error).foregroundStyle(.red) }
                 else if countries.isEmpty { Text("Nog geen landen met gelogde vogelsoorten.") }
                 ForEach(countries) { country in
@@ -26,7 +32,7 @@ struct CountriesView: View {
                     Divider()
                 }
                 if unknownCount > 0 {
-                    Text("\(unknownCount) waarnemingen hebben nog geen bekend land en zijn hier niet meegeteld.")
+                    Text("\(unknownCount) \(unknownCount == 1 ? "waarneming heeft" : "waarnemingen hebben") nog geen bekend land en \(unknownCount == 1 ? "is" : "zijn") hier niet meegeteld.")
                         .font(FieldGuideTheme.sans(13, relativeTo: .footnote)).foregroundStyle(FieldGuideTheme.taupe)
                 }
             }.padding(20).padding(.bottom, 24)

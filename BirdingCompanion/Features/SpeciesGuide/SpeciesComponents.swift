@@ -540,6 +540,8 @@ struct SpeciesCatalogSourcesView: View {
                             }
                         }
                     }
+                    Text("Landen uit coördinaten: Natural Earth 1:10m, publiek domein. Kust- en grensgebieden kunnen afwijken; ontbrekende landen worden waar mogelijk via Apple aangevuld.")
+                    Link("Natural Earth en gebruiksvoorwaarden", destination: URL(string: "https://www.naturalearthdata.com/about/terms-of-use/")!)
                     Text("Vlaggen: flag-icons v7.5.0, © 2013 Panayiotis Lipiridis, MIT. Vlakke vlaggen bijgesneden tot cirkels.")
                     Link("flag-icons en licentie", destination: URL(string: "https://github.com/lipis/flag-icons/tree/v7.5.0")!)
                     Text("Fotoherkenning: BioCLIP 2, Imageomics Institute (Gu en collega's, 2025), MIT. Core ML-conversie: fearnt/Thicket. Tekstreferenties: TreeOfLife-200M en Valen-Peregrine/FaunaPulse, CC0; GBIF en Catalogue of Life, CC BY 4.0.")

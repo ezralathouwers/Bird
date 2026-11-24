@@ -221,6 +221,34 @@ final class ObservationStore: ObservableObject {
         }
     }
 
+    // Fill only missing countries, rechecking coordinates after the background
+    // lookup. Edits/deletions made while computing are never overwritten.
+    @discardableResult
+    func applyCountryResolutions(_ results: [CountryResolution]) throws -> Int {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        var logs = observations, groups = sessions
+        let logIndices = Dictionary(uniqueKeysWithValues: logs.enumerated().map { ($0.element.id, $0.offset) })
+        let sessionIndices = Dictionary(uniqueKeysWithValues: groups.enumerated().map { ($0.element.id, $0.offset) })
+        var changed = 0
+        for resolution in results {
+            let request = resolution.request
+            guard let code = ObservationCountry.normalized(resolution.code) else { continue }
+            if request.isSession {
+                guard let i = sessionIndices[request.id], ObservationCountry.normalized(groups[i].countryCode) == nil,
+                      groups[i].latitude == request.latitude, groups[i].longitude == request.longitude else { continue }
+                groups[i].countryCode = code
+            } else {
+                guard let i = logIndices[request.id], ObservationCountry.normalized(logs[i].countryCode) == nil,
+                      logs[i].latitude == request.latitude, logs[i].longitude == request.longitude else { continue }
+                logs[i].countryCode = code
+            }
+            changed += 1
+        }
+        guard changed > 0 else { return 0 }
+        try commit(observations: logs, sessions: groups)
+        return changed
+    }
+
     @discardableResult
     func importBirda(_ batch: BirdaImportBatch, expectedRevision: UUID) throws -> BirdaImportPlan {
         guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }

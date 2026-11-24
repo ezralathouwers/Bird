@@ -49,6 +49,7 @@ enum BirdaImport {
         let fractional = ISO8601DateFormatter()
         fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         let whole = ISO8601DateFormatter()
+        let countryIndex = try? CountryBoundaryIndex.bundled.get()
         var observations: [Observation] = []
         var groups: [UUID: [Int]] = [:]
         var seen = Set<UUID>()
@@ -82,6 +83,7 @@ enum BirdaImport {
                 notes: row["note"] ?? "", status: .confirmed)
             log.id = id; log.createdAt = date; log.source = "birda-csv"
             log.latitude = latitude; log.longitude = longitude
+            log.countryCode = ObservationCountry.normalized(countryIndex?.country(latitude: latitude, longitude: longitude))
             // Preserve all original fields, including source count, lifer and Birda taxonomy IDs.
             log.importMetadata = row
             observations.append(log)
@@ -103,7 +105,7 @@ enum BirdaImport {
                 .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty })
             guard titles.count <= 1 else { throw BirdaImportError(message: "Een Birda-sessie heeft meerdere titels. Er is niets geïmporteerd.") }
             var session = BirdSession(locationName: titles.first ?? first.locationName,
-                latitude: first.latitude!, longitude: first.longitude!, countryCode: nil,
+                latitude: first.latitude!, longitude: first.longitude!, countryCode: first.countryCode,
                 startedAt: first.observedAt, endedAt: last.observedAt, isLive: false)
             session.id = id
             session.importMetadata = ["source": "birda-csv", "sessionId": id.uuidString,

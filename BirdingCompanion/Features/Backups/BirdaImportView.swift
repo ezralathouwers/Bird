@@ -32,7 +32,7 @@ struct BirdaImportView: View {
                         }.padding(16).frame(maxWidth: .infinity, alignment: .leading)
                             .background(FieldGuideTheme.beige.opacity(0.25), in: RoundedRectangle(cornerRadius: 16))
                         Text("Aantal altijd 1. Het start- en einduur van elke sessie komen van de eerste en laatste waarneming. Groepen met één waarneming blijven losse waarnemingen.")
-                        Text("De exacte tijdstippen en coördinaten blijven behouden. De export bevat geen landen of tijdzones. Zonder vastgestelde tijdzone tonen we geïmporteerde tijden expliciet in UTC. Locatienamen ontbreken bij losse waarnemingen; daar tonen we de coördinaten.")
+                        Text("De exacte tijdstippen en coördinaten blijven behouden. Landen worden automatisch uit de coördinaten bepaald. De export bevat geen tijdzones. Zonder vastgestelde tijdzone tonen we geïmporteerde tijden expliciet in UTC. Locatienamen ontbreken bij losse waarnemingen; daar tonen we de coördinaten.")
                             .font(FieldGuideTheme.sans(14))
                         Text("Je huidige gegevens blijven behouden. Birder maakt vóór het toevoegen een lokale herstelkopie. Maak na de import ook een back-up in iCloud Drive.")
                             .font(FieldGuideTheme.sans(14))

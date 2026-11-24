@@ -1,0 +1,7 @@
+Offline country lookup: Natural Earth, 1:10 million admin-0 map units.
+Public domain: https://www.naturalearthdata.com/about/terms-of-use/
+Source: https://github.com/nvkelso/natural-earth-vector
+Exact data URL, source hash, conversion and output hash:
+BirdingCompanion/Resources/CountryBoundaries.json and Scripts/build_country_boundaries.py.
+Boundaries/coastlines are approximate cartographic data, not a legal authority.
+Source vertices and polygon holes retained; coordinates packed as Float32.

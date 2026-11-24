@@ -9,6 +9,7 @@ struct CompanionRootView: View {
     @EnvironmentObject private var store: ObservationStore
     @StateObject private var sessionLogger = SessionLiveLogger()
     @StateObject private var backups = BackupController()
+    @StateObject private var countryRepair = CountryRepairController()
     @StateObject private var soundModel = SoundIdentificationModel()
     @StateObject private var soundPins = SoundResultPins()
     @State private var identificationPath = NavigationPath()
@@ -56,13 +57,18 @@ struct CompanionRootView: View {
             .safeAreaInset(edge: .bottom, spacing: -addButtonOverlap) { bottomNavigation }
             .environmentObject(sessionLogger)
             .environmentObject(backups)
-            .onChange(of: store.revision) { _, _ in backups.schedule(store: store) }
+            .environmentObject(countryRepair)
+            .task { countryRepair.resume(store: store) }
+            .onChange(of: store.revision) { _, _ in
+                backups.schedule(store: store)
+                countryRepair.schedule(store: store)
+            }
             .environmentObject(soundModel)
             .environmentObject(soundPins)
             .onChange(of: soundModel.startedAt) { _, _ in soundPins.reset() }
             .onChange(of: scenePhase) { _, phase in
-                if phase == .background { soundModel.stop() }
-                if phase == .active { backups.schedule(store: store) }
+                if phase == .background { soundModel.stop(); countryRepair.pause() }
+                if phase == .active { backups.schedule(store: store); countryRepair.resume(store: store) }
             }
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in soundModel.stop() }
             .coordinateSpace(name: "appRoot")

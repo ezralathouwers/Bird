@@ -29,9 +29,12 @@ deleting the app.
 - Require ISO dates with explicit UTC/offset. Store absolute instants unchanged.
   This export has no timezone identifiers or countries: do not infer these from
   the phone's current location. Imported dates display explicit **UTC** until a
-  source timezone is known. No reverse-geocoding enrichment is included in this
-  version. Coordinates remain exact and usable on maps; countries will not be
-  automatically populated on the Countries page by this import.
+  source timezone is known. Countries are now inferred from bundled offline
+  Natural Earth map-unit boundaries. Existing imports are backfilled automatically
+  on app launch without importing again. Unresolved coastal/offshore coordinates
+  are queried gradually through Apple; unknown/zero coordinates remain unknown.
+  See COUNTRY_BACKFILL.md. The user's current phone location is never used to
+  label historical observations.
 - Preserve imported per-log times/coordinates when editing a session. Explicit
   changes to session start/day shift the logs by that same interval; changing
   other session fields does not collapse logs onto the start time or map point.

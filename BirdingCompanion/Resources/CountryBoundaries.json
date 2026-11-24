@@ -1,0 +1,32 @@
+{
+  "format": "BIRDCTR1",
+  "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_map_units.geojson",
+  "sourceSHA256": "57da82be755f4afccd8f3b14251bb2752f5df1395f47d2d86f817470c4a48862",
+  "binarySHA256": "a0cf7e6f2906a7bb01ad9390796a77f807c354505e584b45d7323b65ea3cb035",
+  "license": "Public domain",
+  "licenseURL": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "scale": "1:10 million",
+  "codeProperty": "ISO_A2_EH",
+  "polygonParts": 4255,
+  "vertices": 551418,
+  "countryCodes": 250,
+  "excludedWithoutISOCode": [
+    "Dhekelia Sovereign Base Area",
+    "Somaliland",
+    "Korean Demilitarized Zone (south)",
+    "Korean Demilitarized Zone (north)",
+    "US Naval Base Guantanamo Bay",
+    "Northern Cyprus",
+    "Cyprus No Mans Area",
+    "Siachen Glacier",
+    "Akrotiri Sovereign Base Area",
+    "Southern Patagonian Ice Field",
+    "Bir Tawil",
+    "Paracel Islands",
+    "Spratly Islands",
+    "Bajo Nuevo Bank (Petrel Is.)",
+    "Serranilla Bank",
+    "Scarborough Reef"
+  ],
+  "notes": "Offline approximate cartographic country lookup, not a legal boundary authority. Float32 coordinates; source vertices and polygon holes retained. Unknown/offshore or disputed areas without ISO codes remain unresolved."
+}

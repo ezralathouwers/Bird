@@ -144,3 +144,8 @@ The home-screen app name is **Birder**. The Xcode project/target/scheme remains
 `AppIcon.appiconset` contains an opaque 1024×1024 iOS icon: the navigation bird
 outline on the shared ivory background. Source vector: `Design/Branding/Birder-icon.svg`.
 Native icon compilation and device appearance still require Xcode verification.
+
+Landen bij historische waarnemingen worden automatisch vanuit de opgeslagen
+coördinaten aangevuld, ook voor eerder geïmporteerde Birda-gegevens. De meeste
+worden lokaal bepaald; resterende kust-/zeeplekken worden rustig via Apple
+geprobeerd. Herimporteren is niet nodig. Zie `Docs/COUNTRY_BACKFILL.md`.

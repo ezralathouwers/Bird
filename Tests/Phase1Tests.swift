@@ -2465,3 +2465,150 @@ final class BirdaImportTests: XCTestCase {
         XCTAssertNil(decoded.timeZoneIdentifier)
     }
 }
+
+@MainActor
+final class CountryRepairTests: XCTestCase {
+    private func log(latitude: Double = 51.2194, longitude: Double = 4.4025, country: String? = nil) -> Observation {
+        var log = Observation(speciesID: "test-bird", taxonomyVersion: "test-v1", observedAt: Date(timeIntervalSince1970: 1000),
+            locationName: "Bestaande locatie", count: 7, notes: "Bewaar deze notitie", status: .confirmed)
+        log.latitude = latitude; log.longitude = longitude; log.countryCode = country
+        log.source = "birda-csv"; log.importMetadata = ["sightingId": log.id.uuidString]
+        return log
+    }
+    func testOfflineCountriesIslandsEnclavesAndInvalidInput() throws {
+        let index = try CountryBoundaryIndex.bundled.get()
+        for (lat, lon, code) in [(51.2194, 4.4025, "BE"), (28.6139, 77.209, "IN"),
+                                 (59.91, 10.75, "NO"), (48.85, 2.35, "FR"), (-20.93, 55.30, "RE"),
+                                 (-29.316, 27.486, "LS"), (41.903, 12.453, "VA"), (-16.84, -179.97, "FJ")] {
+            XCTAssertEqual(index.country(latitude: lat, longitude: lon), code)
+        }
+        XCTAssertNil(index.country(latitude: 0, longitude: 0))
+        XCTAssertNil(index.country(latitude: .nan, longitude: 0))
+        XCTAssertNil(index.country(latitude: 91, longitude: 4))
+        XCTAssertThrowsError(try CountryBoundaryIndex(data: Data("corrupt".utf8)))
+    }
+    func testBackfillPersistsOnlyCountryAndPreservesSessionsGoalsAndAllOtherFields() throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let url = folder.appendingPathComponent("records.json")
+        let persistence = JSONObservationPersistence(url: url)
+        var first = log(), second = log(latitude: 28.6139, longitude: 77.209)
+        let session = BirdSession(locationName: "Eigen sessietitel", latitude: first.latitude!, longitude: first.longitude!,
+            countryCode: nil, startedAt: first.observedAt, endedAt: first.observedAt, isLive: false)
+        first.sessionID = session.id; second.sessionID = session.id
+        let goal = BirdGoal(name: "Bestaande doelstelling", speciesIDs: [first.speciesID])
+        try persistence.save([first, second], sessions: [session], goals: [goal])
+        let store = ObservationStore(persistence: persistence)
+        let results = [CountryResolution(request: CountryRepairRequest(id: first.id, isSession: false, latitude: first.latitude!, longitude: first.longitude!), code: "BE"),
+            CountryResolution(request: CountryRepairRequest(id: second.id, isSession: false, latitude: second.latitude!, longitude: second.longitude!), code: "IN"),
+            CountryResolution(request: CountryRepairRequest(id: session.id, isSession: true, latitude: session.latitude, longitude: session.longitude), code: "BE")]
+        XCTAssertEqual(try store.applyCountryResolutions(results), 3)
+        var expectedFirst = first, expectedSecond = second, expectedSession = session
+        expectedFirst.countryCode = "BE"; expectedSecond.countryCode = "IN"; expectedSession.countryCode = "BE"
+        XCTAssertEqual(store.observations, [expectedFirst, expectedSecond])
+        XCTAssertEqual(store.sessions, [expectedSession]); XCTAssertEqual(store.goals, [goal])
+        XCTAssertEqual(CountryProjection.countries(in: store.observations).count, 2)
+        let revision = store.revision
+        XCTAssertEqual(try store.applyCountryResolutions(results), 0)
+        XCTAssertEqual(store.revision, revision)
+        let reopened = ObservationStore(persistence: persistence)
+        XCTAssertEqual(reopened.observations, store.observations)
+        XCTAssertEqual(reopened.sessions, store.sessions)
+    }
+    func testKnownCountriesChangedCoordinatesAndDeletedRecordsAreNotOverwritten() throws {
+        let known = log(country: "NL"), moved = log(latitude: 52, longitude: 5)
+        let archive = BirdingArchive(observations: [known, moved], sessions: [])
+        let store = ObservationStore(persistence: ReadOnlyCountryFixture(archive: archive))
+        let revision = store.revision
+        let requests = [known.id, moved.id, UUID()].map {
+            CountryResolution(request: CountryRepairRequest(id: $0, isSession: false, latitude: 51.2194, longitude: 4.4025), code: "BE")
+        }
+        XCTAssertEqual(try store.applyCountryResolutions(requests), 0)
+        XCTAssertEqual(store.observations, archive.observations)
+        XCTAssertEqual(store.revision, revision)
+    }
+    func testFailedCountrySaveLeavesStoreAndRevisionUntouched() throws {
+        let record = log()
+        let archive = BirdingArchive(observations: [record], sessions: [])
+        let store = ObservationStore(persistence: FailingRestorePersistence(original: archive))
+        let revision = store.revision
+        let result = CountryResolution(request: CountryRepairRequest(id: record.id, isSession: false,
+            latitude: record.latitude!, longitude: record.longitude!), code: "BE")
+        XCTAssertThrowsError(try store.applyCountryResolutions([result]))
+        XCTAssertEqual(store.observations, [record]); XCTAssertEqual(store.revision, revision)
+    }
+    func testOfflineRepairMakesNoGeocodingRequestForLandCoordinates() async throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let persistence = JSONObservationPersistence(url: folder.appendingPathComponent("records.json"))
+        try persistence.save([log(), log(latitude: 28.6139, longitude: 77.209)], sessions: [])
+        let store = ObservationStore(persistence: persistence)
+        let naming = CountryNamingFixture()
+        let controller = CountryRepairController(naming: naming, delay: .zero)
+        await controller.repair(store: store)
+        XCTAssertEqual(naming.calls, 0)
+        XCTAssertEqual(store.observations.map(\.countryCode), ["BE", "IN"])
+        XCTAssertNil(controller.errorMessage)
+    }
+    func testFallbackGroupsExactCoordinatesAndDoesNotInventCountryAtZeroZero() async throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let persistence = JSONObservationPersistence(url: folder.appendingPathComponent("records.json"))
+        try persistence.save([log(latitude: 35, longitude: -30), log(latitude: 35, longitude: -30), log(latitude: 0, longitude: 0)], sessions: [])
+        let store = ObservationStore(persistence: persistence)
+        let naming = CountryNamingFixture()
+        let controller = CountryRepairController(naming: naming, delay: .zero)
+        await controller.repair(store: store)
+        XCTAssertEqual(naming.calls, 1)
+        XCTAssertEqual(store.observations.map(\.countryCode), ["PT", "PT", nil])
+        await controller.repair(store: store)
+        XCTAssertEqual(naming.calls, 1)
+    }
+    func testGeocodingWithoutResultsContinuesAndCachesOnlyAttempts() async throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let persistence = JSONObservationPersistence(url: folder.appendingPathComponent("records.json"))
+        try persistence.save([log(latitude: 35, longitude: -30), log(latitude: 36, longitude: -30)], sessions: [])
+        let store = ObservationStore(persistence: persistence)
+        let naming = CountryNamingFixture(); naming.noResult = true
+        let controller = CountryRepairController(naming: naming, delay: .zero)
+        await controller.repair(store: store)
+        XCTAssertEqual(naming.calls, 2)
+        XCTAssertTrue(store.observations.allSatisfy { $0.countryCode == nil })
+        XCTAssertNil(controller.errorMessage)
+        await controller.repair(store: store)
+        XCTAssertEqual(naming.calls, 2)
+    }
+    func testNetworkFailureKeepsOfflineSuccessesAndPausesFurtherRequests() async throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let persistence = JSONObservationPersistence(url: folder.appendingPathComponent("records.json"))
+        try persistence.save([log(), log(latitude: 35, longitude: -30), log(latitude: 36, longitude: -30)], sessions: [])
+        let store = ObservationStore(persistence: persistence)
+        let naming = CountryNamingFixture(); naming.fails = true
+        let controller = CountryRepairController(naming: naming, delay: .zero)
+        await controller.repair(store: store)
+        XCTAssertEqual(store.observations.map(\.countryCode), ["BE", nil, nil])
+        XCTAssertNotNil(controller.errorMessage)
+        await controller.repair(store: store)
+        XCTAssertEqual(naming.calls, 1)
+    }
+}
+
+private struct ReadOnlyCountryFixture: ObservationPersistence {
+    let archive: BirdingArchive
+    func load() throws -> [Observation] { archive.observations }
+    func loadSessions() throws -> [BirdSession] { archive.sessions }
+    func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteUnknown) }
+}
+@MainActor private final class CountryNamingFixture: PlaceNamingService {
+    var calls = 0
+    var fails = false
+    var noResult = false
+    func suggestion(latitude: Double, longitude: Double) async throws -> PlaceSuggestion {
+        calls += 1
+        if fails { throw CocoaError(.fileReadUnknown) }
+        if noResult { throw CLError(.geocodeFoundNoResult) }
+        return PlaceSuggestion(name: "Synthetische test", countryCode: "PT")
+    }
+}
