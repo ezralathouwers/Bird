@@ -122,8 +122,13 @@ def prepare(project, history):
 
 
 def choose(prompt, file=False):
-    expression = 'POSIX path of (choose ' + ('file' if file else 'folder') + ' with prompt ' + json.dumps(prompt) + ')'
-    return Path(subprocess.check_output(['osascript', '-e', expression], text=True).strip())
+    # Pass human text as argv, never as AppleScript source. JSON's \uXXXX
+    # escapes (e.g. in geïmporteerd) are not AppleScript string escapes.
+    kind = 'file' if file else 'folder'
+    expression = ('on run argv\n'
+                  'return POSIX path of (choose ' + kind + ' with prompt (item 1 of argv))\n'
+                  'end run')
+    return Path(subprocess.check_output(['osascript', '-e', expression, prompt], text=True).strip())
 
 
 def main():

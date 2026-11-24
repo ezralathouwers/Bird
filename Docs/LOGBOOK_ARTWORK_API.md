@@ -75,3 +75,13 @@ catalogus valideert de koppeling. Er zijn hier geen betaalde API-calls gestart.
 
 Voor een kosteloze Terminal-proef kan de voorbereider zonder --execute draaien:
 `python Scripts/prepare_logbook_artwork.py --project /pad/naar/app --history /pad/naar/backup.json --output /tmp/logboek-proef`.
+
+
+## Herstel van de Mac-bestandskiezer
+
+De Mac-kiezer geeft de Nederlandse prompt als apart `osascript`-argument door.
+Unicode (zoals ï), aanhalingstekens en backslashes worden niet meer in
+AppleScript-broncode geïnterpoleerd. Dit verhelpt fout -2741 vóór de
+projectkeuze. Zowel de startkiezer als de importkiezer zijn aangepast.
+De regressietests gebruiken een nagebootste subprocess voor map/bestand,
+Unicode en annuleren; een native Mac-dialoog kon hier niet worden getest.

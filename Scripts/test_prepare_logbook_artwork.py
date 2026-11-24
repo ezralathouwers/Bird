@@ -7,6 +7,8 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+import local_artwork_import as importer
 from PIL import Image
 import prepare_logbook_artwork as prepare
 import artwork_api_pilot as api
@@ -105,4 +107,28 @@ class LogbookArtworkTests(unittest.TestCase):
         self.assertFalse((output/'state.json').exists())
 
 
-if __name__=='__main__':unittest.main()
+
+
+class MacPickerTests(unittest.TestCase):
+    def test_unicode_prompt_is_data_not_applescript_source(self):
+        prompt = 'Kies je geïmporteerde beelden: "vogels", België, 🐦 en \\ pad'
+        for module in (prepare, importer):
+            for file in (False, True):
+                with self.subTest(module=module.__name__, file=file):
+                    with patch.object(module.subprocess, 'check_output', return_value='/tmp/map met spaties/\n') as call:
+                        selected = module.choose(prompt, file=file)
+                    args = call.call_args.args[0]
+                    self.assertEqual(args[:2], ['osascript', '-e'])
+                    self.assertEqual(args[3], prompt)
+                    self.assertNotIn(prompt, args[2])
+                    self.assertIn('choose ' + ('file' if file else 'folder'), args[2])
+                    self.assertIn('with prompt (item 1 of argv)', args[2])
+                    self.assertEqual(selected, Path('/tmp/map met spaties'))
+
+    def test_cancelled_picker_does_not_continue(self):
+        for module in (prepare, importer):
+            with patch.object(module.subprocess, 'check_output', side_effect=subprocess.CalledProcessError(1, 'osascript')):
+                with self.assertRaises(subprocess.CalledProcessError):
+                    module.choose('Kies een bestand', file=True)
+
+if __name__ == '__main__': unittest.main()
