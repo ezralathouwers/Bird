@@ -72,7 +72,7 @@ struct ObservationMapView: View {
         HStack(alignment: .top, spacing: 12) {
             VStack(alignment: .leading, spacing: 6) {
                 SerifText(species.dutchName, size: 22, relativeTo: .title2)
-                Text(current.observedAt.formatted(date: .abbreviated, time: .shortened))
+                Text(current.historyDate())
                     .font(FieldGuideTheme.sans(15, relativeTo: .subheadline))
                 HStack(alignment: .top, spacing: 6) {
                     LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)

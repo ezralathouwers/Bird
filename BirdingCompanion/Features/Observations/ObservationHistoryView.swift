@@ -38,7 +38,7 @@ struct ObservationHistoryView: View {
                                 .font(FieldGuideTheme.sans(20, relativeTo: .title3))
                                 .foregroundStyle(FieldGuideTheme.charcoal)
                                 .fixedSize(horizontal: false, vertical: true)
-                            Text(record.observedAt.formatted(date: .abbreviated, time: .shortened))
+                            Text(record.historyDate())
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                                 .foregroundStyle(FieldGuideTheme.charcoal.opacity(0.7))
                                 .fixedSize(horizontal: false, vertical: true)

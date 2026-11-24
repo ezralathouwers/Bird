@@ -2335,3 +2335,133 @@ final class DiscoveryAndPhotoContextFeedbackTests: XCTestCase {
         XCTAssertEqual(PhotoRangeContext.likelihood(dateLine, at: .init(latitude: 5, longitude: 169.9, name: "near edge"), regularInCountry: false), .likely)
     }
 }
+
+@MainActor
+final class BirdaImportTests: XCTestCase {
+    private let bird = Species(id: "test-bird", taxonomyVersion: "test-v1", dutchName: "Testvogel",
+        englishName: "Test bird", scientificName: "Testus birdus", aliases: ["Oldus birdus|Anotherus birdus"])
+    private let session = "10000000-0000-0000-0000-000000000000"
+    private let one = "20000000-0000-0000-0000-000000000001"
+    private let two = "20000000-0000-0000-0000-000000000002"
+    private let three = "20000000-0000-0000-0000-000000000003"
+    private func csv(_ lines: [String]) -> Data {
+        Data(("\u{feff}sightingId,date,longitude,latitude,scientificName,count,countType,note,sessionId,sessionTitle\r\n" + lines.joined(separator: "\r\n") + "\r\n").utf8)
+    }
+    private func line(_ id: String, date: String = "2020-01-01T10:00:00Z", group: String = "", title: String = "") -> String {
+        "\(id),\(date),4.4,51.2,Testus birdus,99,UNKNOWN,,\(group),\(title)"
+    }
+    private func batch() throws -> BirdaImportBatch {
+        try BirdaImport.decode(csv([
+            line(two, date: "2020-01-01T12:00:00.000Z", group: session, title: "Testsessie"),
+            line(one, group: session, title: "Testsessie"), line(three)
+        ]), catalog: [bird])
+    }
+    func testCountOneMinMaxSessionsSingletonAndSourcePreservation() throws {
+        let result = try batch()
+        XCTAssertEqual(result.observations.count, 3)
+        XCTAssertEqual(result.speciesCount, 1)
+        XCTAssertEqual(result.standaloneCount, 1)
+        let group = try XCTUnwrap(result.sessions.first)
+        XCTAssertEqual(group.id, UUID(uuidString: session))
+        XCTAssertEqual(group.locationName, "Testsessie")
+        XCTAssertEqual(group.endedAt!.timeIntervalSince(group.startedAt), 7200)
+        XCTAssertTrue(result.observations.allSatisfy { $0.count == 1 && $0.latitude == 51.2 && $0.longitude == 4.4 })
+        XCTAssertEqual(result.observations.first?.importMetadata?["count"], "99")
+        XCTAssertEqual(result.observations.first?.importMetadata?["countType"], "UNKNOWN")
+        XCTAssertEqual(result.observations.first?.source, "birda-csv")
+        XCTAssertEqual(result.observations.last?.id, UUID(uuidString: three))
+    }
+    func testQuotedCommasNewlinesEscapedQuotesAndScientificAliases() throws {
+        let data = csv(["\(one),2020-01-01T10:00:00Z,4.4,51.2,Oldus birdus,1,EXACT,\"Een, twee\n\"\"drie\"\"\",,\"Naam, test\""])
+        let result = try BirdaImport.decode(data, catalog: [bird])
+        XCTAssertEqual(result.observations.first?.notes, "Een, twee\n\"drie\"")
+        XCTAssertEqual(result.observations.first?.speciesID, bird.id)
+    }
+    func testExplicitTimeOffsetKeepsSameInstantAndUTCIsLabelled() throws {
+        let result = try BirdaImport.decode(csv([line(one), line(two, date: "2020-01-01T15:30:00+05:30")]), catalog: [bird])
+        XCTAssertEqual(result.observations[0].observedAt, result.observations[1].observedAt)
+        XCTAssertTrue(result.observations[0].historyDate().hasSuffix(" UTC"))
+        var local = result.observations[0]
+        local.timeZoneIdentifier = "Asia/Kolkata"
+        XCTAssertFalse(local.historyDate().contains("UTC"))
+        XCTAssertEqual(local.historyTimeZone.secondsFromGMT(for: local.observedAt), 19800)
+    }
+    func testInvalidDataNeverDropsRowsSilently() {
+        let valid = line(one)
+        let bad = [line(one), line(two).replacingOccurrences(of: "51.2", with: "NaN"),
+            line(two).replacingOccurrences(of: "Testus birdus", with: "Unknown bird"),
+            line(two).replacingOccurrences(of: "10:00:00Z", with: "10:00:00"),
+            line(two) + ",extra", line(two).replacingOccurrences(of: "Testus birdus", with: "\"Testus birdus")]
+        for invalid in bad {
+            XCTAssertThrowsError(try BirdaImport.decode(csv([valid, invalid]), catalog: [bird]))
+        }
+    }
+    func testAmbiguousAliasRejectedAndZeroDurationAllowed() throws {
+        let other = Species(id: "other", taxonomyVersion: "test", dutchName: "Andere", englishName: "Other", scientificName: "Testus birdus")
+        XCTAssertThrowsError(try BirdaImport.decode(csv([line(one)]), catalog: [bird, other]))
+        let result = try BirdaImport.decode(csv([line(one, group: session), line(two, group: session)]), catalog: [bird])
+        XCTAssertEqual(result.sessions.first?.startedAt, result.sessions.first?.endedAt)
+        XCTAssertEqual(result.observations.count, 2) // Repeat sightings of the same species are not deduplicated.
+    }
+    func testImportMergeRepeatAndPersistenceKeepExistingHistoryAndEdits() throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appendingPathComponent("observations.json")
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: url))
+        var existing = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion,
+            observedAt: Date(), locationName: "Bestaand", count: 3, notes: "Bewaren", status: .confirmed)
+        try store.save(existing)
+        let goal = BirdGoal(name: "Bestaande doelstelling", speciesIDs: [bird.id])
+        try store.addGoal(goal)
+        let imported = try batch()
+        let result = try store.importBirda(imported, expectedRevision: store.revision)
+        XCTAssertEqual(result.addedObservations, 3)
+        XCTAssertEqual(store.observations.count, 4)
+        var edited = try XCTUnwrap(store.observations.first { $0.id == UUID(uuidString: one) })
+        edited.notes = "Bewerkt"; edited.count = 4
+        try store.save(edited, editing: true)
+        let revision = store.revision
+        let repeated = try store.importBirda(imported, expectedRevision: revision)
+        XCTAssertEqual(repeated.addedObservations, 0)
+        XCTAssertEqual(repeated.skipped, 3)
+        XCTAssertEqual(store.revision, revision)
+        XCTAssertEqual(store.observations.first { $0.id == edited.id }, edited)
+        let reopened = ObservationStore(persistence: JSONObservationPersistence(url: url))
+        XCTAssertNil(reopened.loadError)
+        XCTAssertEqual(reopened.observations, store.observations)
+        XCTAssertEqual(reopened.sessions, store.sessions)
+        XCTAssertEqual(reopened.goals, [goal])
+        XCTAssertFalse(try FileManager.default.contentsOfDirectory(atPath: directory.appendingPathComponent("RecoveryCopies").path).isEmpty)
+        existing.notes = "Gewijzigd"
+        try store.save(existing, editing: true)
+        XCTAssertThrowsError(try store.importBirda(imported, expectedRevision: revision))
+    }
+    func testUnrelatedUUIDCollisionAndChangedSessionBoundsRejectMerge() throws {
+        let imported = try batch()
+        var collision = imported.observations[0]; collision.source = "personal-manual"
+        XCTAssertThrowsError(try BirdaImport.plan(imported, observations: [collision], sessions: imported.sessions))
+        var changed = imported.sessions[0]
+        changed.startedAt = changed.endedAt!
+        XCTAssertThrowsError(try BirdaImport.plan(imported, observations: [], sessions: [changed]))
+    }
+    func testFailedSaveDoesNotPublishAnythingAndGoalsArePreserved() throws {
+        let goal = BirdGoal(name: "Test", speciesIDs: [bird.id], createdAt: Date())
+        let archive = BirdingArchive(observations: [], sessions: [], goals: [goal])
+        let persistence = FailingRestorePersistence(original: archive)
+        let store = ObservationStore(persistence: persistence)
+        let revision = store.revision
+        XCTAssertThrowsError(try store.importBirda(batch(), expectedRevision: revision))
+        XCTAssertTrue(store.observations.isEmpty)
+        XCTAssertTrue(store.sessions.isEmpty)
+        XCTAssertEqual(store.goals, [goal])
+        XCTAssertEqual(store.revision, revision)
+    }
+    func testOldRecordsDecodeWithoutImportMetadata() throws {
+        let imported = try batch()
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(imported.observations[0])) as? [String: Any])
+        json.removeValue(forKey: "importMetadata"); json.removeValue(forKey: "timeZoneIdentifier")
+        let decoded = try JSONDecoder().decode(Observation.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertNil(decoded.importMetadata)
+        XCTAssertNil(decoded.timeZoneIdentifier)
+    }
+}

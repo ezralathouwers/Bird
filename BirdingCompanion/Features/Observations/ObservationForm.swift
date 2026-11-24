@@ -80,6 +80,7 @@ struct ObservationForm: View {
             .onDisappear { location.stop() }
         }
         .foregroundStyle(FieldGuideTheme.charcoal)
+        .environment(\.timeZone, original?.historyTimeZone ?? .current)
         .background(FieldGuideTheme.ivory.ignoresSafeArea())
     }
 

@@ -19,9 +19,9 @@ enum SessionStats {
         return minutes >= 60 ? "\(minutes / 60)u\(String(format: "%02d", minutes % 60))" : "\(minutes)min"
     }
     static func period(_ session: BirdSession) -> String {
-        let day = session.startedAt.formatted(date: .abbreviated, time: .omitted)
-        let start = session.startedAt.formatted(date: .omitted, time: .shortened)
-        let end = (session.endedAt ?? Date()).formatted(date: .omitted, time: .shortened)
+        let day = session.historyDate(session.startedAt, time: .omitted)
+        let start = session.historyDate(session.startedAt, day: .omitted)
+        let end = session.historyDate(session.endedAt ?? Date(), day: .omitted)
         return "\(day) - \(start) tot \(end)"
     }
     static func bird(_ id: String) -> Species {
@@ -73,7 +73,7 @@ struct SessionsView: View {
                     NavigationLink(value: SessionRoute(id: session.id)) {
                         VStack(alignment: .leading, spacing: 6) {
                             Text(session.locationName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
-                            Text("\(session.startedAt.formatted(date: .abbreviated, time: .omitted)) · \(SessionStats.duration(session))")
+                            Text("\(session.historyDate(session.startedAt, time: .omitted)) · \(SessionStats.duration(session))")
                                 .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                             let logs = store.observations(in: session)
                             let count = logs.filter { lifers.contains($0.id) }.count
@@ -124,7 +124,8 @@ struct SessionForm: View {
     private var selectedIDs: Set<String> { reviewing == nil ? selected : Set(reviewLogs.map(\.speciesID)) }
     private var day: Binding<Date> {
         Binding(get: { start }, set: { date in
-            let calendar = Calendar.current
+            var calendar = Calendar.current
+            calendar.timeZone = reviewing?.historyTimeZone ?? .current
             let delta = calendar.dateComponents([.day], from: calendar.startOfDay(for: start), to: calendar.startOfDay(for: date)).day ?? 0
             let revised = calendar.date(byAdding: .day, value: delta, to: start) ?? start
             shiftLogs(by: revised.timeIntervalSince(start))
@@ -190,6 +191,7 @@ struct SessionForm: View {
                     .padding(20).background(FieldGuideTheme.ivory)
             }
         }.background(FieldGuideTheme.ivory.ignoresSafeArea())
+            .environment(\.timeZone, reviewing?.historyTimeZone ?? .current)
             .task {
                 guard !initialized else { return }; initialized = true
                 if let reviewing {
@@ -205,22 +207,28 @@ struct SessionForm: View {
                         var log = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion, observedAt: start,
                             locationName: location.locationName, count: 1, notes: "", status: .confirmed)
                         log.latitude = latitude; log.longitude = longitude; log.countryCode = location.countryCode
-                        log.sessionID = reviewing?.id; log.source = "session-review"; reviewLogs.append(log)
+                        log.sessionID = reviewing?.id; log.source = "session-review"
+                        log.timeZoneIdentifier = reviewing?.historyTimeZone.identifier
+                        reviewLogs.append(log)
                     } else { selected.insert(bird.id) }
                 }
             }
     }
     private func save() {
         guard location.canSave, let latitude = location.latitude, let longitude = location.longitude else { return }
-        let resolvedEnd = end < start ? Calendar.current.date(byAdding: .day, value: 1, to: end) ?? end : end
+        var calendar = Calendar.current
+        calendar.timeZone = reviewing?.historyTimeZone ?? .current
+        let resolvedEnd = end < start ? calendar.date(byAdding: .day, value: 1, to: end) ?? end : end
         var session = BirdSession(locationName: location.locationName.trimmingCharacters(in: .whitespacesAndNewlines), latitude: latitude,
             longitude: longitude, countryCode: location.countryCode, startedAt: live ? Date() : start,
             endedAt: live ? nil : resolvedEnd, isLive: reviewing?.isLive ?? live)
         do {
             if let reviewing {
                 session.id = reviewing.id
+                session.importMetadata = reviewing.importMetadata
+                session.timeZoneIdentifier = reviewing.timeZoneIdentifier
                 var logs = reviewLogs
-                if !reviewing.isLive {
+                if !reviewing.isLive && reviewing.importMetadata?["source"] != "birda-csv" {
                     for index in logs.indices {
                         logs[index].observedAt = start; logs[index].latitude = latitude; logs[index].longitude = longitude
                         logs[index].locationName = session.locationName; logs[index].countryCode = session.countryCode
@@ -379,7 +387,7 @@ private struct SessionLogsList: View {
                 SessionBirdRow(bird: SessionStats.bird(log.speciesID)) {
                     HStack(spacing: 4) {
                         if lifers.contains(log.id) { LiferStar().fill(FieldGuideTheme.khaki).frame(width: 18, height: 18).padding(.trailing, showsTime ? 8 : 0).foregroundStyle(FieldGuideTheme.khaki).accessibilityLabel("Lifer") }
-                        if showsTime { Text(log.observedAt, style: .time).font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
+                        if showsTime { Text(log.historyDate(day: .omitted)).font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
                         if let remove { RemoveSessionBirdButton { remove(log) } }
                     }
                 }

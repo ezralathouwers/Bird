@@ -210,14 +210,17 @@ struct ObservationTotal: View {
 // The visible control has the same 18-point corners as search/text fields.
 // The native date/time picker lives in a sheet rather than imposing its pill.
 struct DateTimeField: View {
+    @Environment(\.timeZone) private var timeZone
     let title: String
     @Binding var selection: Date
     let isDate: Bool
     var latestDate: Date? = nil
     @State private var presented = false
     private var value: String {
-        isDate ? selection.formatted(date: .abbreviated, time: .omitted)
-               : selection.formatted(date: .omitted, time: .shortened)
+        var style = Date.FormatStyle(date: isDate ? .abbreviated : .omitted,
+                                     time: isDate ? .omitted : .shortened)
+        style.timeZone = timeZone
+        return selection.formatted(style)
     }
     var body: some View {
         Button { presented = true } label: {

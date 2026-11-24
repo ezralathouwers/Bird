@@ -20,6 +20,8 @@ struct Observation: Identifiable, Codable, Equatable, Sendable {
     var longitude: Double? = nil
     var countryCode: String? = nil
     var sessionID: UUID? = nil
+    var importMetadata: [String: String]? = nil
+    var timeZoneIdentifier: String? = nil
 
     func validate() throws {
         guard !speciesID.isEmpty, !taxonomyVersion.isEmpty, count > 0 else {
@@ -90,6 +92,8 @@ struct BirdSession: Identifiable, Codable, Equatable, Sendable {
     var startedAt: Date
     var endedAt: Date?
     var isLive: Bool
+    var importMetadata: [String: String]? = nil
+    var timeZoneIdentifier: String? = nil
 
     func validate() throws {
         guard !locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
@@ -129,4 +133,35 @@ struct SessionLogLocation: Sendable {
     let longitude: Double
     let name: String
     let countryCode: String?
+}
+
+// A source timestamp is an absolute instant. Unknown source zones must never
+// silently become the current device zone, especially for historical travel.
+enum HistoryTime {
+    static func zone(identifier: String?, imported: Bool) -> TimeZone {
+        identifier.flatMap(TimeZone.init(identifier:)) ?? (imported ? TimeZone(secondsFromGMT: 0)! : .current)
+    }
+    static func text(_ date: Date, identifier: String?, imported: Bool,
+                     day: Date.FormatStyle.DateStyle = .abbreviated,
+                     time: Date.FormatStyle.TimeStyle = .shortened) -> String {
+        var style = Date.FormatStyle(date: day, time: time, locale: Locale(identifier: "nl_BE"))
+        style.timeZone = zone(identifier: identifier, imported: imported)
+        let suffix = imported && identifier.flatMap(TimeZone.init(identifier:)) == nil ? " UTC" : ""
+        return date.formatted(style) + suffix
+    }
+}
+
+extension Observation {
+    var historyTimeZone: TimeZone { HistoryTime.zone(identifier: timeZoneIdentifier, imported: source == "birda-csv") }
+    func historyDate(day: Date.FormatStyle.DateStyle = .abbreviated, time: Date.FormatStyle.TimeStyle = .shortened) -> String {
+        HistoryTime.text(observedAt, identifier: timeZoneIdentifier, imported: source == "birda-csv", day: day, time: time)
+    }
+}
+
+extension BirdSession {
+    var historyTimeZone: TimeZone { HistoryTime.zone(identifier: timeZoneIdentifier, imported: importMetadata?["source"] == "birda-csv") }
+    func historyDate(_ date: Date, day: Date.FormatStyle.DateStyle = .abbreviated,
+                     time: Date.FormatStyle.TimeStyle = .shortened) -> String {
+        HistoryTime.text(date, identifier: timeZoneIdentifier, imported: importMetadata?["source"] == "birda-csv", day: day, time: time)
+    }
 }

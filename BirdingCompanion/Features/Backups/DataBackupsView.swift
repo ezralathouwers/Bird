@@ -49,6 +49,15 @@ struct DataBackupsView: View {
                             .font(FieldGuideTheme.sans(14))
                         action("Herstel vanuit back-up", symbol: "arrow.down.doc") { chooseFile = true }
                     }.backupCard()
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Birda-geschiedenis").font(FieldGuideTheme.sans(17, relativeTo: .headline))
+                        Text("Voeg waarnemingen en sessies toe vanuit je CSV-export. Je huidige gegevens blijven behouden.")
+                            .font(FieldGuideTheme.sans(14))
+                        NavigationLink { BirdaImportView().toolbar(.hidden, for: .navigationBar) } label: {
+                            Label("Importeren uit Birda", systemImage: "square.and.arrow.down")
+                                .frame(maxWidth: .infinity, minHeight: 48)
+                        }.buttonStyle(.plain).disabled(backups.isBusy || store.loadError != nil)
+                    }.backupCard()
                     if let loadError = store.loadError { Text(loadError) }
                     if backups.isBusy { ProgressView("Back-up verwerken…") }
                     if let message = backups.message { Text(message).foregroundStyle(FieldGuideTheme.charcoal) }

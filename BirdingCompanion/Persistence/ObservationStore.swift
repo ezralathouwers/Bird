@@ -221,6 +221,21 @@ final class ObservationStore: ObservableObject {
         }
     }
 
+    @discardableResult
+    func importBirda(_ batch: BirdaImportBatch, expectedRevision: UUID) throws -> BirdaImportPlan {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        guard revision == expectedRevision else {
+            throw BirdaImportError(message: "Je gegevens zijn ondertussen gewijzigd. Open de CSV opnieuw om de import te controleren.")
+        }
+        guard activeSession == nil else { throw SessionError.alreadyActive }
+        let plan = try BirdaImport.plan(batch, observations: observations, sessions: sessions)
+        guard plan.addedObservations > 0 || plan.addedSessions > 0 else { return plan }
+        try persistence.preserveBeforeRestore()
+        try persistence.save(plan.observations, sessions: plan.sessions, goals: goals)
+        observations = plan.observations; sessions = plan.sessions; revision = UUID()
+        return plan
+    }
+
     func restoreArchive(_ archive: BirdingArchive, expectedRevision: UUID) throws {
         guard revision == expectedRevision else { throw BackupError.changed }
         guard activeSession == nil else { throw BackupError.activeSession }
