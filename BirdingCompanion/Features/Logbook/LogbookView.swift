@@ -5,13 +5,22 @@ struct LogbookView: View {
     @State private var sort: LogbookSort = .family
     @State private var showSearch = false
     @State private var search = ""
+    @State private var homeOnly = false
+    @State private var showHomeSetup = false
+    @State private var showMap = false
+    @AppStorage(HomeLogbookLocation.preferenceKey) private var storedHome = ""
+    private var home: HomeLogbookLocation? { HomeLogbookLocation.load(storedHome) }
+    private var scopedObservations: [Observation] {
+        let logs = countryCode.map { CountryProjection.observations(in: $0, from: store.observations) } ?? store.observations
+        return countryCode == nil && homeOnly ? logs.filter { home?.contains($0) == true } : logs
+    }
     @FocusState private var focused: Bool
     @Environment(\.dismiss) private var dismiss
     var countryCode: String? = nil
     var catalog: [Species] = SpeciesGuideCatalog.species
 
     private var loggedRows: [LoggedSpecies] {
-        LogbookProjection.species(observations: countryCode.map { CountryProjection.observations(in: $0, from: store.observations) } ?? store.observations, catalog: catalog, sort: sort)
+        LogbookProjection.species(observations: scopedObservations, catalog: catalog, sort: sort)
     }
     private var rows: [LoggedSpecies] {
         let matches = Set(SpeciesCatalogSearch.results(for: search, in: loggedRows.map(\.species)).map(\.id))
@@ -33,6 +42,23 @@ struct LogbookView: View {
                     Image(systemName: "arrow.up.arrow.down").font(.system(size: 20, weight: .ultraLight))
                         .frame(width: 44, height: 44).background(FieldGuideTheme.searchControlBackground, in: Circle())
                 }.accessibilityLabel("Sortering").accessibilityValue(sort.label)
+                if countryCode != nil {
+                    RoundAction(symbol: "map", label: "Bekijk alle waarnemingen van dit land") { showMap = true }
+                } else {
+                    Button {
+                        if home == nil { showHomeSetup = true } else { homeOnly.toggle() }
+                    } label: {
+                        Image(systemName: "house").font(.system(size: 20, weight: .ultraLight))
+                            .frame(width: 44, height: 44)
+                            .foregroundStyle(homeOnly ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal)
+                            .background(homeOnly ? FieldGuideTheme.navigationOlive : FieldGuideTheme.searchControlBackground, in: Circle())
+                    }.buttonStyle(.plain)
+                        .onLongPressGesture { showHomeSetup = true }
+                        .accessibilityLabel("Enkel vogels binnen 150 meter van thuis")
+                        .accessibilityValue(homeOnly ? "Aan" : "Uit")
+                        .accessibilityHint("Houd ingedrukt om je thuislocatie te wijzigen")
+                        .accessibilityAction(named: Text("Thuislocatie wijzigen")) { showHomeSetup = true }
+                }
                 Button { showSearch.toggle() } label: {
                     Group {
                         if showSearch { Image(systemName: "xmark").font(.system(size: 22, weight: .ultraLight)) }
@@ -45,10 +71,10 @@ struct LogbookView: View {
                 BirdTextField("Zoek in je logboek", text: $search).modifier(RoundedSearchField())
                     .autocorrectionDisabled().focused($focused).padding(.horizontal, 20).padding(.bottom, 16)
             }
-            CatalogResultsScroll(resetKey: "\(countryCode ?? "all")-\(sort.rawValue)-\(search)") {
+            CatalogResultsScroll(resetKey: "\(countryCode ?? "all")-\(sort.rawValue)-\(search)-\(homeOnly)-\(storedHome)") {
                 LazyVStack(alignment: .leading, spacing: 16) {
                     if let loadError = store.loadError { Text(loadError).foregroundStyle(.red) }
-                    else if loggedRows.isEmpty { Text("Nog geen vogelsoorten gelogd. Voeg je eerste waarneming toe met de plusknop.") }
+                    else if loggedRows.isEmpty { Text(homeOnly ? "Nog geen vogelsoorten binnen 150 meter van thuis gelogd." : "Nog geen vogelsoorten gelogd. Voeg je eerste waarneming toe met de plusknop.") }
                     else if rows.isEmpty { Text("Geen soorten gevonden in je logboek.") }
                     else if sort == .family {
                         ForEach(LogbookProjection.families(from: rows)) { group in
@@ -65,6 +91,10 @@ struct LogbookView: View {
                 }.padding(.horizontal, 20).padding(.bottom, 94)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
+            .fullScreenCover(isPresented: $showHomeSetup) { HomeLogbookSetupView { homeOnly = true } }
+            .fullScreenCover(isPresented: $showMap) {
+                FirstObservationsMapView(observations: scopedObservations, mapTitle: "Landkaart")
+            }
             .onChange(of: showSearch) { _, shown in focused = shown; if !shown { search = "" } }
     }
 

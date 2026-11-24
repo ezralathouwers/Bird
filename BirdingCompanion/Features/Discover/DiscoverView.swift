@@ -11,6 +11,7 @@ struct DiscoverView: View {
     @State private var showCatalogSources = false
     @State private var showBackups = false
     @State private var showEBirdConnection = false
+    @State private var selectedReport: NearbyReport?
     @State private var connectionRevision = UUID()
     @State private var catalogQuery = ""
     @AppStorage("discoverRadiusKilometers") private var storedRadius = DiscoverQuery.nearbyRadiusKilometers
@@ -112,8 +113,9 @@ struct DiscoverView: View {
         .fullScreenCover(isPresented: $showBackups) {
             NavigationStack { DataBackupsView().toolbar(.hidden, for: .navigationBar) }
         }
+        .fullScreenCover(item: $selectedReport) { NearbyReportMapView(report: $0) }
         .fullScreenCover(isPresented: $showCatalogSources) { SpeciesCatalogSourcesView() }
-        .sheet(isPresented: $showEBirdConnection) {
+        .fullScreenCover(isPresented: $showEBirdConnection) {
             EBirdConnectionView(query: query) {
                 model.reset()
                 demo = false
@@ -170,14 +172,11 @@ struct DiscoverView: View {
                             NavigationLink(value: row.species) {
                                 DiscoverSpeciesRow(species: row.species, status: status, showsBadge: false)
                             }.buttonStyle(.plain)
-                            if status == .notLogged, let url = row.observationURL {
-                                Link(destination: url) {
-                                    SpeciesLogBadge(status: status, speciesName: row.species.dutchName, diameter: 22)
-                                        .frame(width: 44, height: 44).contentShape(Rectangle())
-                                }.buttonStyle(.plain).accessibilityLabel("Open waarneming van \(row.species.dutchName)")
-                            } else {
-                                SpeciesLogBadge(status: status, speciesName: row.species.dutchName, diameter: 22).frame(width: 44, height: 44)
-                            }
+                            Button { selectedReport = row.report } label: {
+                                SpeciesLogBadge(status: status, speciesName: row.species.dutchName, diameter: 22)
+                                    .frame(width: 44, height: 44).contentShape(Rectangle())
+                            }.buttonStyle(.plain).disabled(row.report == nil)
+                                .accessibilityLabel("Bekijk melding van \(row.species.dutchName) op de kaart")
                         }
                         if index < rows.count - 1 {
                             Rectangle().fill(FieldGuideTheme.charcoal.opacity(0.10)).frame(height: 0.5)

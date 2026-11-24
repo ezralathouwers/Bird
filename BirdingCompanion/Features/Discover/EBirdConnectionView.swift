@@ -13,7 +13,8 @@ struct EBirdConnectionView: View {
     private let keys = EBirdKeychainStore()
 
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            CenteredPageHeader(title: "Lokale vogelmeldingen") { dismiss() }
             Form {
                 Section {
                     Text("Observation.org levert openbare vogelmeldingen. Verbind eBird om ook die bron toe te voegen.")
@@ -69,9 +70,7 @@ struct EBirdConnectionView: View {
             .scrollContentBackground(.hidden)
             .background(FieldGuideTheme.ivory)
             .foregroundStyle(FieldGuideTheme.charcoal)
-            .navigationTitle("Lokale vogelmeldingen")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Sluiten") { dismiss() } } }
+            .toolbar(.hidden, for: .navigationBar)
             .task {
                 do { hasStoredKey = try keys.read() != nil }
                 catch { message = error.localizedDescription }
@@ -95,6 +94,6 @@ struct EBirdConnectionView: View {
                     if !Task.isCancelled { message = error.localizedDescription }
                 }
             }
-        }
+        }.foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory)
     }
 }

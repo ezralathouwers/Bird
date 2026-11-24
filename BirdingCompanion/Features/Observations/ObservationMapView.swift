@@ -102,7 +102,7 @@ struct ObservationMapView: View {
     }
 }
 
-private struct SpeciesObservationMarker: View {
+struct SpeciesObservationMarker: View {
     let species: Species
     var body: some View {
         Group {
@@ -121,5 +121,52 @@ private struct SpeciesObservationMarker: View {
         .overlay { Circle().stroke(FieldGuideTheme.taupe, lineWidth: 1) }
         .accessibilityLabel("\(species.dutchName), waarnemingsplek")
         .accessibilityHint(UIImage(named: SpeciesMediaRole.classic.assetName(for: species)) == nil ? "Primaire vogelillustratie nog niet beschikbaar" : "")
+    }
+}
+
+// Public reports remain read-only and never become confirmed personal logs.
+struct NearbyReportMapView: View {
+    let report: NearbyReport
+    @Environment(\.dismiss) private var dismiss
+    @State private var camera: MapCameraPosition = .automatic
+    @StateObject private var connectivity = MapConnectivity()
+    private var coordinate: CLLocationCoordinate2D { .init(latitude: report.latitude, longitude: report.longitude) }
+    var body: some View {
+        Map(position: $camera) {
+            Annotation(report.species.dutchName, coordinate: coordinate) {
+                SpeciesObservationMarker(species: report.species)
+            }.annotationTitles(.hidden)
+        }.mapStyle(FieldGuideTheme.mapStyle).mapControlVisibility(.hidden).ignoresSafeArea()
+            .environment(\.colorScheme, .light)
+            .overlay(alignment: .topTrailing) {
+                HStack(spacing: 8) {
+                    if let url = report.observationURL ?? DiscoverRanking.checklistURL(report.checklistID) {
+                        Link(destination: url) {
+                            Image(systemName: "arrow.up.right.square").font(.system(size: 22, weight: .ultraLight))
+                                .frame(width: 44, height: 44).foregroundStyle(FieldGuideTheme.charcoal)
+                                .background(FieldGuideTheme.ivory, in: Circle())
+                        }.accessibilityLabel("Open oorspronkelijke waarneming")
+                    }
+                    MapCloseButton(label: "Sluit melding") { dismiss() }
+                }.padding(.trailing, 20).padding(.top, 12)
+            }
+            .safeAreaInset(edge: .bottom) {
+                VStack(alignment: .leading, spacing: 8) {
+                    SerifText(report.species.dutchName, size: 22, relativeTo: .title2)
+                    Text(report.observerName?.isEmpty == false ? report.observerName! : "Waarnemer niet meegeleverd door de bron")
+                    Text(report.localObservedAt?.isEmpty == false ? report.localObservedAt! : report.observedAt.formatted(date: .abbreviated, time: .shortened))
+                    HStack(alignment: .top, spacing: 6) {
+                        LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 24, height: 24).fixedSize()
+                        Text(report.locationName?.isEmpty == false ? report.locationName! : String(format: "%.5f, %.5f", report.latitude, report.longitude))
+                    }.padding(.top, 5)
+                    Text(report.checklistID.hasPrefix("observation:") ? "Observation.org" : report.checklistID.hasPrefix("demo-") ? "Voorbeeldmelding" : "eBird")
+                        .font(FieldGuideTheme.sans(12, relativeTo: .caption)).opacity(0.65)
+                    if connectivity.isOffline { Text("Offline: de basiskaart kan onvolledig zijn.").font(FieldGuideTheme.sans(12)) }
+                }.font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).foregroundStyle(FieldGuideTheme.charcoal)
+                    .frame(maxWidth: .infinity, alignment: .leading).padding(16)
+                    .background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 16))
+                    .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
+            }
+            .onAppear { camera = .region(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))) }
     }
 }

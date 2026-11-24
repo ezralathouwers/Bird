@@ -154,3 +154,6 @@ De nieuwste logboek-/sessiebewerkingen, Audio ID-toevoegknoppen en de kaart met
 eerste waarnemingen staan in `Docs/LOGBOOK_SESSIONS_MAP_UPDATE.md`. Voor ontbrekende
 illustraties van je actuele logboek is er een lokaal API-productiepakket:
 `Scripts/Birder-Logboek-illustraties.zip`, zie `Docs/LOGBOOK_ARTWORK_API.md`.
+
+Mijlpalen, kaarten van openbare meldingen/sessies/landen en de lokale thuisfilter:
+zie [Docs/MILESTONES_AND_REPORT_MAPS.md](Docs/MILESTONES_AND_REPORT_MAPS.md).

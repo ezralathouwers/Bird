@@ -435,11 +435,20 @@ private struct SessionDetailView: View {
     @EnvironmentObject private var store: ObservationStore
     @Environment(\.dismiss) private var dismiss
     @State private var editing = false
+    @State private var showMap = false
     @State private var sort: SessionLogSort = .latest
     private var current: BirdSession? { store.sessions.first { $0.id == sessionID } }
     var body: some View {
         VStack(spacing: 0) {
-            DetailPageHeader(title: "Sessie", editLabel: "Sessie bewerken", back: { dismiss() }, edit: { editing = true })
+            ZStack {
+                Text("Sessie").font(FieldGuideTheme.sans(17, relativeTo: .headline)).padding(.horizontal, 100)
+                HStack {
+                    SpeciesBackButton { dismiss() }
+                    Spacer()
+                    RoundAction(symbol: "map", label: "Bekijk sessie op de kaart") { showMap = true }
+                    RoundEditAction(label: "Sessie bewerken") { editing = true }
+                }
+            }.frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 8)
             ScrollView {
                 if let session = current {
                     VStack(alignment: .leading, spacing: 8) {
@@ -454,10 +463,13 @@ private struct SessionDetailView: View {
                             }.pickerStyle(.menu).frame(minHeight: 44).padding(.top, 4)
                         }.padding(.top, 16).padding(.bottom, 12)
                         SessionLogsList(logs: SessionStats.sorted(logs, by: sort))
-                    }.padding(20).padding(.bottom, 24)
+                    }.padding(20).padding(.bottom, 59)
                 }
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
+            .fullScreenCover(isPresented: $showMap) {
+                if let session = current { FirstObservationsMapView(observations: store.observations(in: session), mapTitle: "Sessiekaart") }
+            }
             .fullScreenCover(isPresented: $editing) {
                 if let session = current { SessionForm(live: false, reviewing: session) {} }
             }

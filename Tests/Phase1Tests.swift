@@ -2745,3 +2745,90 @@ final class FirstObservationMapTests: XCTestCase {
         XCTAssertTrue(FirstObservationMapProjection.records([record("bad", at: 0, latitude: .nan)]).isEmpty)
     }
 }
+
+@MainActor
+final class MapsHomeAndMilestoneTests: XCTestCase {
+    private func log(_ species: String, latitude: Double? = nil, longitude: Double? = nil) -> Observation {
+        var log = Observation(speciesID: species, taxonomyVersion: "test", observedAt: Date(), locationName: "Testplek", count: 1, notes: "", status: .confirmed)
+        log.latitude = latitude; log.longitude = longitude
+        return log
+    }
+    func testHomeFilterUsesDistanceNotNameOrCountry() {
+        let home = HomeLogbookLocation(latitude: 50, longitude: 4, name: "Testadres")
+        XCTAssertTrue(home.contains(log("near", latitude: 50.001, longitude: 4)))
+        XCTAssertFalse(home.contains(log("far", latitude: 50.002, longitude: 4)))
+        XCTAssertFalse(home.contains(log("missing")))
+        XCTAssertFalse(home.contains(log("zero", latitude: 0, longitude: 0)))
+        XCTAssertFalse(home.contains(log("invalid", latitude: .nan, longitude: 4)))
+        XCTAssertEqual(HomeLogbookLocation.load(home.encoded), home)
+        XCTAssertNil(HomeLogbookLocation.load("{\"latitude\":200,\"longitude\":4,\"name\":\"invalid\"}"))
+    }
+    func testRankingKeepsOneCoherentSourceReport() throws {
+        let bird = MockSpeciesRepository.kingfisher
+        let now = Date()
+        let latest = NearbyReport(checklistID: "S100", species: bird, observedAt: now, latitude: 50, longitude: 4,
+            localObservedAt: "2026-11-24 10:00", locationName: "Eerste plek", observerName: "Eerste waarnemer")
+        let older = NearbyReport(checklistID: "observation:2", species: bird, observedAt: now.addingTimeInterval(-60), latitude: 50.001, longitude: 4,
+            observationURL: URL(string: "https://observation.org/observation/2/"), locationName: "Andere plek", observerName: "Andere waarnemer")
+        let rows = DiscoverRanking.ranked([latest, older], query: .init(latitude: 50, longitude: 4, now: now, radiusKilometers: 5), ordering: .providerRecency)
+        let report = try XCTUnwrap(rows.first?.report)
+        XCTAssertEqual(report.checklistID, "S100")
+        XCTAssertEqual(report.latitude, 50)
+        XCTAssertEqual(report.locationName, "Eerste plek")
+        XCTAssertEqual(report.observerName, "Eerste waarnemer")
+        XCTAssertEqual(rows.first?.reportCount, 2)
+    }
+    func testOptionalPublicMetadataDoesNotBreakOldFeeds() throws {
+        let legacy = Data(#"{"speciesCode":"x","sciName":"Test bird","obsDt":"2026-11-24","lat":50,"lng":4,"subId":"S1","obsValid":true}"#.utf8)
+        let decoded = try JSONDecoder().decode(EBirdObservation.self, from: legacy)
+        XCTAssertNil(decoded.locName)
+        XCTAssertNil(decoded.userDisplayName)
+        let publicRecord = Data(#"{"id":12,"date":"2026-11-24","time":null,"species_detail":{"scientific_name":"Test bird","group":1,"type":"S"},"point":{"coordinates":[4,50]},"is_certain":true,"location_detail":{"name":"Testgebied"},"user":123}"#.utf8)
+        let record = try JSONDecoder().decode(ObservationOrgRecord.self, from: publicRecord)
+        XCTAssertEqual(record.location_detail?.name, "Testgebied")
+        XCTAssertEqual(record.user, 123)
+        XCTAssertNil(record.time)
+    }
+    func testMilestoneTotalsUseConfirmedUniqueWildSpecies() {
+        let first = log("first")
+        var uncertain = log("uncertain"); uncertain.status = .uncertain
+        var captive = log("captive"); captive.isCaptive = true
+        let earned = MilestoneProjection.earned(observations: [first, log("first"), uncertain, captive], goals: [], catalog: [])
+        XCTAssertEqual(earned.map(\.id), ["lifelist-1"])
+        let ten = (0..<10).map { log("species-\($0)") }
+        XCTAssertEqual(MilestoneProjection.earned(observations: ten, goals: [], catalog: []).map(\.id), ["lifelist-1", "lifelist-10"])
+    }
+    func testFirstOwlAndCompletedGoal() {
+        let owl = Species(id: "owl", taxonomyVersion: "test", dutchName: "Testuil", englishName: "Test owl", scientificName: "Test owl", family: BirdFamily(id: "Strigidae", dutchName: "Uilen"))
+        let goal = BirdGoal(name: "Testdoel", speciesIDs: [owl.id])
+        let earned = MilestoneProjection.earned(observations: [log(owl.id)], goals: [goal], catalog: [owl])
+        XCTAssertTrue(earned.contains { $0.id == "first-owl" })
+        XCTAssertTrue(earned.contains { $0.id == "goal-\(goal.id)" })
+        XCTAssertFalse(earned.contains { $0.id.hasPrefix("family-") })
+    }
+    func testMilestonesNeverReplayAfterRestartImportOrRestore() throws {
+        let suite = "milestone-test-\(UUID())"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let controller = MilestoneController(defaults: defaults)
+        let initialEpoch = UUID()
+        controller.update(observations: [], goals: [], catalog: [], historyReplacementID: initialEpoch)
+        let first = log("first")
+        controller.update(observations: [first], goals: [], catalog: [], historyReplacementID: initialEpoch)
+        XCTAssertEqual(controller.current?.id, "lifelist-1")
+        controller.advance()
+        controller.update(observations: [], goals: [], catalog: [], historyReplacementID: initialEpoch)
+        controller.update(observations: [first], goals: [], catalog: [], historyReplacementID: initialEpoch)
+        XCTAssertNil(controller.current)
+        let restored = (0..<50).map { log("restored-\($0)") }
+        let restoredEpoch = UUID()
+        controller.update(observations: restored, goals: [], catalog: [], historyReplacementID: restoredEpoch)
+        XCTAssertNil(controller.current)
+        let restarted = MilestoneController(defaults: defaults)
+        restarted.update(observations: restored, goals: [], catalog: [], historyReplacementID: restoredEpoch)
+        XCTAssertNil(restarted.current)
+        var imported = log("imported"); imported.source = "birda-csv"
+        restarted.update(observations: restored + [imported], goals: [], catalog: [], historyReplacementID: UUID())
+        XCTAssertNil(restarted.current)
+    }
+}

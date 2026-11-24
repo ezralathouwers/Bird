@@ -33,7 +33,7 @@ struct CountriesView: View {
                         }.buttonStyle(.plain)
                         Divider()
                     }
-                }.padding(.horizontal, 20).padding(.bottom, 94)
+                }.padding(.horizontal, 20).padding(.bottom, 109)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .fullScreenCover(isPresented: $showMap) { FirstObservationsMapView() }

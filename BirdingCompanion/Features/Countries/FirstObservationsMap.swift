@@ -25,14 +25,25 @@ struct FirstObservationsMapView: View {
     @State private var cluster: [Observation] = []
     @State private var showCluster = false
     @State private var queuedSelection: Observation?
-    private var records: [Observation] { FirstObservationMapProjection.records(store.observations) }
+    // nil preserves the original first-log-per-species country overview.
+    var observations: [Observation]? = nil
+    var mapTitle = "Logboekkaart"
+    private var records: [Observation] {
+        if let observations {
+            return observations.filter { log in
+                guard let lat = log.latitude, let lon = log.longitude else { return false }
+                return lat.isFinite && lon.isFinite && (-90...90).contains(lat) && (-180...180).contains(lon) && (lat != 0 || lon != 0)
+            }
+        }
+        return FirstObservationMapProjection.records(store.observations)
+    }
     var body: some View {
         ZStack {
             FirstObservationNativeMap(records: records, selectCluster: { cluster = $0; showCluster = true }) { selected = $0 }
                 .ignoresSafeArea()
         }
             .overlay(alignment: .topTrailing) {
-                MapCloseButton(label: "Sluit logboekkaart") { dismiss() }.padding(.trailing, 20).padding(.top, 12)
+                MapCloseButton(label: "Sluit \(mapTitle)") { dismiss() }.padding(.trailing, 20).padding(.top, 12)
             }
             .overlay(alignment: .bottom) {
                 if connectivity.isOffline {
@@ -43,7 +54,7 @@ struct FirstObservationsMapView: View {
                 }
             }
             .overlay {
-                if records.isEmpty { Text("Nog geen eerste waarnemingsplekken beschikbaar.").padding(20).background(FieldGuideTheme.ivory, in: RoundedRectangle(cornerRadius: 16)).padding(20) }
+                if records.isEmpty { Text("Geen waarnemingsplekken beschikbaar.").padding(20).background(FieldGuideTheme.ivory, in: RoundedRectangle(cornerRadius: 16)).padding(20) }
             }
             .sheet(isPresented: $showCluster, onDismiss: {
                 if let log = queuedSelection { queuedSelection = nil; selected = log }
@@ -153,7 +164,7 @@ private struct FirstObservationNativeMap: UIViewRepresentable {
             let species = SessionStats.bird(bird.log.speciesID)
             let key = species.id as NSString
             view.image = marker(image: thumbnails.object(forKey: key))
-            view.accessibilityLabel = "\(species.dutchName), eerste waarneming"
+            view.accessibilityLabel = "\(species.dutchName), waarnemingsplek"
             if thumbnails.object(forKey: key) == nil {
                 thumbnailJobs.append(ThumbnailJob(species: species, view: view, annotation: bird))
                 prepareNextThumbnail()

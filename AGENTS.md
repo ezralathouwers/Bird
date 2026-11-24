@@ -118,3 +118,15 @@ each batch. Keep existing species/observation IDs, the shared style and the
 centered ventral flight standard. Refresh Scripts/illustration_production_queue.py
 after each batch. The queue is an inventory, not a background execution service;
 never imply all remaining images are being generated after a turn ends.
+
+## Latest feedback — milestones and local maps, 24 November 2026
+
+Milestones use a fullscreen olive/light overlay, tap anywhere to dismiss with no
+close icon. Baseline existing history and suppress import/restore replays.
+Discover report badges open read-only native maps for both logged and unlogged
+species, with source links beside the close button. Never invent observer names
+or times that providers omit. Session/country detail maps show all their valid
+log points; the general Countries map still shows each species' first log.
+The logbook home filter uses a privately configured local home point and 150m
+radius; no private addresses in source control. Local bird settings use a
+fullscreen back/header flow. See Docs/MILESTONES_AND_REPORT_MAPS.md.

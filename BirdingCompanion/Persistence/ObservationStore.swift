@@ -74,6 +74,7 @@ final class ObservationStore: ObservableObject {
     @Published private(set) var sessions: [BirdSession] = []
     @Published private(set) var loadError: String?
     @Published private(set) var revision = UUID()
+    private(set) var historyReplacementID = UUID()
     private let persistence: any ObservationPersistence
 
     init(persistence: any ObservationPersistence) {
@@ -291,7 +292,7 @@ final class ObservationStore: ObservableObject {
         guard plan.addedObservations > 0 || plan.addedSessions > 0 else { return plan }
         try persistence.preserveBeforeRestore()
         try persistence.save(plan.observations, sessions: plan.sessions, goals: goals)
-        observations = plan.observations; sessions = plan.sessions; revision = UUID()
+        observations = plan.observations; sessions = plan.sessions; historyReplacementID = UUID(); revision = UUID()
         return plan
     }
 
@@ -303,7 +304,7 @@ final class ObservationStore: ObservableObject {
         try persistence.preserveBeforeRestore()
         try persistence.save(archive.observations, sessions: archive.sessions, goals: archive.goals ?? [])
         observations = archive.observations; sessions = archive.sessions; goals = archive.goals ?? []
-        loadError = nil; revision = UUID()
+        loadError = nil; historyReplacementID = UUID(); revision = UUID()
     }
 
     func exportArchiveData() throws -> Data {

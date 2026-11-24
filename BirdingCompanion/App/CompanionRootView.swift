@@ -8,6 +8,7 @@ private enum MainSection: String {
 struct CompanionRootView: View {
     @EnvironmentObject private var store: ObservationStore
     @StateObject private var sessionLogger = SessionLiveLogger()
+    @StateObject private var milestones = MilestoneController()
     @StateObject private var backups = BackupController()
     @StateObject private var countryRepair = CountryRepairController()
     @StateObject private var soundModel = SoundIdentificationModel()
@@ -64,10 +65,14 @@ struct CompanionRootView: View {
             .environmentObject(sessionLogger)
             .environmentObject(backups)
             .environmentObject(countryRepair)
-            .task { countryRepair.resume(store: store) }
+            .task {
+                milestones.update(observations: store.observations, goals: store.goals, catalog: SpeciesGuideCatalog.species, historyReplacementID: store.historyReplacementID)
+                countryRepair.resume(store: store)
+            }
             .onChange(of: store.revision) { _, _ in
                 backups.schedule(store: store)
                 countryRepair.schedule(store: store)
+                milestones.update(observations: store.observations, goals: store.goals, catalog: SpeciesGuideCatalog.species, historyReplacementID: store.historyReplacementID)
             }
             .environmentObject(soundModel)
             .environmentObject(soundPins)
@@ -118,6 +123,11 @@ struct CompanionRootView: View {
                 guard !Task.isCancelled else { return }
                 showLaunchLogo = false
                 await location
+            }
+            .overlay {
+                if !showLaunchLogo, let milestone = milestones.current {
+                    MilestoneCelebration(milestone: milestone) { milestones.advance() }
+                }
             }
             .fullScreenCover(item: $observationNavigation.selection) { observation in
                 ObservationMapView(observation: observation, species: observationNavigation.species ?? species)

@@ -34,7 +34,8 @@ struct DiscoverQuery: Sendable {
 }
 
 // One species on one reviewed checklist, not the number of individual birds.
-struct NearbyReport: Sendable {
+struct NearbyReport: Sendable, Identifiable {
+    var id: String { checklistID + ":" + species.id }
     let checklistID: String
     let species: Species
     let observedAt: Date
@@ -42,12 +43,15 @@ struct NearbyReport: Sendable {
     let longitude: Double
     var observationURL: URL? = nil
     var localObservedAt: String? = nil
+    var locationName: String? = nil
+    var observerName: String? = nil
 }
 
 struct DiscoverSpecies: Identifiable, Sendable {
     let species: Species
     let reportCount: Int
     var observationURL: URL? = nil
+    var report: NearbyReport? = nil
     var id: String { species.id }
 }
 
@@ -99,6 +103,7 @@ struct DiscoverRanking {
         // that order: obsDt has no timezone and some records contain only a date.
         var firstPosition: [String: Int] = [:]
         var firstURL: [String: URL] = [:]
+        var firstReport: [String: NearbyReport] = [:]
         for (position, report) in reports.enumerated() {
             guard !report.checklistID.isEmpty,
                   report.observedAt >= query.start, report.observedAt <= query.now,
@@ -108,6 +113,7 @@ struct DiscoverRanking {
             guard point.distance(from: center) <= query.radiusKilometers * 1000 else { continue }
             if firstPosition[report.species.id] == nil {
                 firstPosition[report.species.id] = position
+                firstReport[report.species.id] = report
             }
             if firstURL[report.species.id] == nil {
                 firstURL[report.species.id] = report.observationURL ?? checklistURL(report.checklistID)
@@ -117,7 +123,7 @@ struct DiscoverRanking {
         }
         return species.values.map {
             DiscoverSpecies(species: $0, reportCount: checklists[$0.id]?.count ?? 0,
-                            observationURL: firstURL[$0.id])
+                            observationURL: firstURL[$0.id], report: firstReport[$0.id])
         }.sorted {
             if ordering == .providerRecency {
                 return firstPosition[$0.id, default: Int.max] < firstPosition[$1.id, default: Int.max]

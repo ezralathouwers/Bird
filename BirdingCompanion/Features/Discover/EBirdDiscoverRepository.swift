@@ -47,6 +47,8 @@ struct EBirdObservation: Decodable, Sendable {
     let lat: Double
     let lng: Double
     let subId: String
+    var locName: String? = nil
+    var userDisplayName: String? = nil
     let obsValid: Bool
 }
 
@@ -130,7 +132,7 @@ struct EBirdDiscoverRepository: DiscoverRepository {
                   let bird = lookup.species(code: observation.speciesCode, scientificName: observation.sciName),
                   let date = Self.observationDate(observation.obsDt, relativeTo: query.now, daysBack: query.daysBack) else { return nil }
             return NearbyReport(checklistID: observation.subId, species: bird, observedAt: date,
-                                latitude: observation.lat, longitude: observation.lng, localObservedAt: observation.obsDt)
+                                latitude: observation.lat, longitude: observation.lng, localObservedAt: observation.obsDt, locationName: observation.locName, observerName: observation.userDisplayName)
         }
         if !observations.isEmpty && reports.isEmpty { throw EBirdError.unknownSpecies }
         return DiscoverDataset(reports: reports, attribution: "eBird · laatst gemeld eerst",
@@ -207,6 +209,9 @@ struct ObservationOrgRecord: Decodable, Sendable {
         let type: String
     }
     struct Point: Decodable, Sendable { let coordinates: [Double] }
+    struct Location: Decodable, Sendable { let name: String }
+    var location_detail: Location? = nil
+    var user: Int? = nil
     let id: Int
     let date: String
     let time: String?
@@ -294,7 +299,8 @@ struct ObservationOrgDiscoverRepository: DiscoverRepository {
             dates[record.date] = date
             reports.append(NearbyReport(checklistID: "observation:\(record.id)", species: bird,
                 observedAt: date, latitude: point.coordinates[1], longitude: point.coordinates[0],
-                observationURL: url, localObservedAt: record.date + " " + (record.time ?? "")))
+                observationURL: url, localObservedAt: record.date + " " + (record.time ?? ""),
+                locationName: record.location_detail?.name, observerName: record.user.map { "Waarnemer #\($0)" }))
         }
         try Task.checkCancellation()
         let dataset = DiscoverDataset(reports: reports, attribution: "Observation International", isDemo: false,
