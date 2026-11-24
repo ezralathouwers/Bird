@@ -49,7 +49,7 @@ def installed(row, res, index=None):
 
 def candidates(source, project):
     source = Path(source).resolve()
-    folders = [source] if (source / 'state.json').is_file() else [source / '.artwork-api' / n for n in ['pilot-medium', 'belgium-medium']]
+    folders = [source] if (source / 'state.json').is_file() else [source / '.artwork-api' / n for n in ['pilot-medium', 'belgium-medium', 'logbook-medium']]
     res = resources(project)
     catalog = {r['id']: r for r in read(res / 'WorldSpeciesCatalog.json')}
     index = {}
@@ -240,7 +240,7 @@ def main():
             raise ValueError('Er loopt al een lokale illustratie-import. Sluit die eerst af.')
         mode = '3' if args.accept_all else '2' if args.review else '1' if args.source else input('1: controlepagina maken\n2: goedgekeurde selectie installeren\n3: alle beelden accepteren en direct installeren\nKies 1, 2 of 3: ').strip()
         if mode == '1':
-            source = args.source or choose('Kies de productiemap met Start-Belgie-illustraties.command (of de uitgepakte proefprojectmap).')
+            source = args.source or choose('Kies de productiemap met Start-Belgie-illustraties.command of Start-Logboek-illustraties.command (of de proefprojectmap).')
             rows, skipped = candidates(source, project)
             print(f'{len(rows)} nieuwe beelden beschikbaar; {skipped} identieke beelden al geïnstalleerd.')
             if rows:
@@ -249,7 +249,7 @@ def main():
                 print('Controleer de beelden en bewaar je selectie. Start daarna dit bestand opnieuw en kies 2.')
         elif mode in ['2', '3']:
             if mode == '3':
-                source = args.source or choose('Kies de productiemap met Start-Belgie-illustraties.command (of de uitgepakte proefprojectmap).')
+                source = args.source or choose('Kies de productiemap met Start-Belgie-illustraties.command of Start-Logboek-illustraties.command (of de proefprojectmap).')
                 rows, skipped = candidates(source, project)
                 if not rows:
                     print(f'Klaar: alle {skipped} beelden zijn al geïnstalleerd.')

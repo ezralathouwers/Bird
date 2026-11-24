@@ -49,49 +49,55 @@ struct SessionsView: View {
     @State private var newSession: NewSessionMode?
     @Binding var showLive: Bool
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 24) {
-                HStack(alignment: .top, spacing: 6) {
-                    PageHeading(text: "Sessies").frame(maxWidth: .infinity, alignment: .leading)
-                    RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { newSession = .completed }
-                    RoundAction(symbol: "play", label: "Nieuwe livesessie starten") { newSession = .live }
-                        .disabled(store.activeSession != nil || store.loadError != nil)
-                }
-                if let message = store.loadError { Text(message).foregroundStyle(.red) }
-                if let active = store.activeSession {
-                    Button { showLive = true } label: {
-                        HStack {
-                            Text("\(active.locationName) · livesessie"); Spacer()
-                            Image(systemName: "play.fill").font(.system(size: 18))
-                        }.frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
-                    }.buttonStyle(.plain).padding(.horizontal, 20).padding(.vertical, 12)
-                        .background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
-                }
-                if store.completedSessions.isEmpty, store.loadError == nil { Text("Nog geen afgeronde sessies.") }
-                let lifers = SessionStats.liferIDs(in: store.observations)
-                ForEach(store.completedSessions) { session in
-                    NavigationLink(value: SessionRoute(id: session.id)) {
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(session.locationName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
-                            Text("\(session.historyDate(session.startedAt, time: .omitted)) · \(SessionStats.duration(session))")
-                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                            let logs = store.observations(in: session)
-                            let count = logs.filter { lifers.contains($0.id) }.count
-                            Text("\(logs.count) \(logs.count == 1 ? "waarneming" : "waarnemingen")" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
-                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
-                    }.buttonStyle(.plain)
-                    Divider()
-                }
-            }.padding(20).padding(.bottom, 74)
-        }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
-            .fullScreenCover(item: $newSession) { mode in
-                SessionForm(live: mode == .live) { if mode == .live { showLive = true } }.id(mode)
+        VStack(spacing: 0) {
+            HStack(alignment: .top, spacing: 6) {
+                PageHeading(text: "Sessies").frame(maxWidth: .infinity, alignment: .leading)
+                RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { newSession = .completed }
+                RoundAction(symbol: "play", label: "Nieuwe livesessie starten") { newSession = .live }
+                .disabled(store.activeSession != nil || store.loadError != nil)
             }
-            .navigationDestination(for: SessionRoute.self) { route in SessionDetailView(sessionID: route.id) }
-            .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
+            .padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 24)
+            .fixedSize(horizontal: false, vertical: true)
+            CatalogResultsScroll(resetKey: "sessions") {
+                LazyVStack(alignment: .leading, spacing: 24) {
+
+                    if let message = store.loadError { Text(message).foregroundStyle(.red) }
+                    if let active = store.activeSession {
+                        Button { showLive = true } label: {
+                            HStack {
+                                Text("\(active.locationName) · livesessie"); Spacer()
+                                Image(systemName: "play.fill").font(.system(size: 18))
+                            }.frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+                        }.buttonStyle(.plain).padding(.horizontal, 20).padding(.vertical, 12)
+                        .background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
+                    }
+                    if store.completedSessions.isEmpty, store.loadError == nil { Text("Nog geen afgeronde sessies.") }
+                    let lifers = SessionStats.liferIDs(in: store.observations)
+                    ForEach(store.completedSessions) { session in
+                        NavigationLink(value: SessionRoute(id: session.id)) {
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text(session.locationName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
+                                Text("\(session.historyDate(session.startedAt, time: .omitted)) · \(SessionStats.duration(session))")
+                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                let logs = store.observations(in: session)
+                                let count = logs.filter { lifers.contains($0.id) }.count
+                                Text("\(logs.count) \(logs.count == 1 ? "waarneming" : "waarnemingen")" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
+                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                            }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
+                        }.buttonStyle(.plain)
+                        Divider()
+                    }
+                }.padding(.horizontal, 20).padding(.bottom, 94)
+            }
+        }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
+        .fullScreenCover(item: $newSession) { mode in
+            SessionForm(live: mode == .live) { if mode == .live { showLive = true } }.id(mode)
+        }
+        .navigationDestination(for: SessionRoute.self) { route in SessionDetailView(sessionID: route.id) }
+        .navigationDestination(for: Species.self) { bird in SpeciesDetailView(species: bird) }
     }
 }
+
 
 struct SessionForm: View {
     let live: Bool
@@ -108,6 +114,8 @@ struct SessionForm: View {
     @State private var originalLogs: [Observation] = []
     @State private var initialized = false
     @State private var showSearch = false
+    @State private var confirmDelete = false
+    @State private var confirmConvert = false
     init(live: Bool, reviewing: BirdSession? = nil, onSaved: @escaping () -> Void) {
         self.live = live; self.reviewing = reviewing; self.onSaved = onSaved
         let seed: Observation? = reviewing.map { session in
@@ -185,13 +193,30 @@ struct SessionForm: View {
                 }.padding(20)
             }
             .safeAreaInset(edge: .bottom) {
-                Button(live ? "Livesessie starten" : reviewing == nil ? "Sessie opslaan" : reviewing?.endedAt == nil ? "Sessie afronden" : "Wijzigingen opslaan", action: save)
-                    .buttonStyle(SessionPrimaryButton())
-                    .disabled(!location.canSave || store.loadError != nil || (live && store.activeSession != nil) || (!live && reviewing == nil && selected.isEmpty))
-                    .padding(20).background(FieldGuideTheme.ivory)
+                VStack(spacing: 4) {
+                    Button(live ? "Livesessie starten" : reviewing == nil ? "Sessie opslaan" : reviewing?.endedAt == nil ? "Sessie afronden" : "Wijzigingen opslaan", action: save)
+                        .buttonStyle(SessionPrimaryButton())
+                        .disabled(!location.canSave || store.loadError != nil || (live && store.activeSession != nil) || (!live && reviewing == nil && selected.isEmpty))
+                    if let reviewing {
+                        if reviewing.endedAt != nil {
+                            Button("Omzetten in waarnemingen") { confirmConvert = true }
+                                .frame(maxWidth: .infinity, minHeight: 44).disabled(store.loadError != nil)
+                        }
+                        Button("Sessie verwijderen", role: .destructive) { confirmDelete = true }
+                            .frame(maxWidth: .infinity, minHeight: 44).disabled(store.loadError != nil)
+                    }
+                }.padding(20).background(FieldGuideTheme.ivory)
             }
         }.background(FieldGuideTheme.ivory.ignoresSafeArea())
             .environment(\.timeZone, reviewing?.historyTimeZone ?? .current)
+            .confirmationDialog("Sessie verwijderen?", isPresented: $confirmDelete, titleVisibility: .visible) {
+                Button("Verwijder sessie en waarnemingen", role: .destructive) { removeSession(keepObservations: false) }
+                Button("Annuleren", role: .cancel) {}
+            } message: { Text("Deze sessie en alle bijbehorende waarnemingen worden verwijderd.") }
+            .confirmationDialog("Omzetten in losse waarnemingen?", isPresented: $confirmConvert, titleVisibility: .visible) {
+                Button("Omzetten in waarnemingen") { removeSession(keepObservations: true) }
+                Button("Annuleren", role: .cancel) {}
+            } message: { Text("De opgeslagen waarnemingen behouden hun tijdstip en locatie. De sessie wordt verwijderd.") }
             .task {
                 guard !initialized else { return }; initialized = true
                 if let reviewing {
@@ -213,6 +238,11 @@ struct SessionForm: View {
                     } else { selected.insert(bird.id) }
                 }
             }
+    }
+    private func removeSession(keepObservations: Bool) {
+        guard let reviewing else { return }
+        do { try store.deleteSession(id: reviewing.id, keepObservations: keepObservations); dismiss(); onSaved() }
+        catch { self.error = error.localizedDescription }
     }
     private func save() {
         guard location.canSave, let latitude = location.latitude, let longitude = location.longitude else { return }
@@ -304,6 +334,7 @@ struct LiveSessionView: View {
     @EnvironmentObject private var logger: SessionLiveLogger
     @Binding var isPresented: Bool
     var onFinished: () -> Void = {}
+    var openAudio: () -> Void = {}
     @State private var showSearch = false
     @State private var reviewSession: BirdSession?
     @State private var finishedReview = false
@@ -320,6 +351,9 @@ struct LiveSessionView: View {
                         }.frame(maxWidth: .infinity).padding(.vertical, 14)
                             .background(FieldGuideTheme.beige.opacity(0.22), in: RoundedRectangle(cornerRadius: 12))
                         SessionSearchLauncher { showSearch = true }
+                        Button(action: openAudio) {
+                            Label("Audio ID", systemImage: "waveform").frame(maxWidth: .infinity, minHeight: 48)
+                        }.background(FieldGuideTheme.beige.opacity(0.3), in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
                         if logger.isLogging { ProgressView("Actuele locatie ophalen…") }
                         if let message = logger.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                         if let error { Text(error).foregroundStyle(.red) }
@@ -427,6 +461,7 @@ private struct SessionDetailView: View {
             .fullScreenCover(isPresented: $editing) {
                 if let session = current { SessionForm(live: false, reviewing: session) {} }
             }
+            .onChange(of: current == nil) { _, missing in if missing { dismiss() } }
     }
 }
 

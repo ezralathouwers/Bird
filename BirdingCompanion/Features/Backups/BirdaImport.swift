@@ -137,7 +137,8 @@ enum BirdaImport {
             }
         }
         let addedLogs = batch.observations.filter { oldLogs[$0.id] == nil }
-        let addedSessions = batch.sessions.filter { oldSessions[$0.id] == nil }
+        let referencedSessions = Set(addedLogs.compactMap(\.sessionID))
+        let addedSessions = batch.sessions.filter { oldSessions[$0.id] == nil && referencedSessions.contains($0.id) }
         let mergedLogs = observations + addedLogs, mergedSessions = sessions + addedSessions
         // Includes session bounds: do not silently replace edits to an existing imported session.
         try ObservationStore.validateArchive(observations: mergedLogs, sessions: mergedSessions)

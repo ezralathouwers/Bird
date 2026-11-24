@@ -5,20 +5,25 @@ struct GoalsView: View {
     @EnvironmentObject private var store: ObservationStore
     @State private var showForm = false
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 18) {
-                HStack(alignment: .top) {
-                    PageHeading(text: "Doelstellingen")
-                        .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
-                    RoundAction(symbol: "plus", label: "Doelstelling toevoegen") { showForm = true }
-                        .disabled(store.loadError != nil)
-                }
-                if let message = store.loadError { Text(message).foregroundStyle(.red) }
-                else if store.goals.isEmpty { Text("Maak een checklist met de vogels die je wilt zien.") }
-                ForEach(store.goals.sorted { $0.createdAt > $1.createdAt }) { goal in
-                    NavigationLink(value: goal) { GoalCard(goal: goal) }.buttonStyle(.plain)
-                }
-            }.padding(20).padding(.bottom, 74)
+        VStack(spacing: 0) {
+            HStack(alignment: .top) {
+                PageHeading(text: "Doelstellingen")
+                .frame(maxWidth: .infinity, alignment: .leading).accessibilityAddTraits(.isHeader)
+                RoundAction(symbol: "plus", label: "Doelstelling toevoegen") { showForm = true }
+                .disabled(store.loadError != nil)
+            }
+            .padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 18)
+            .fixedSize(horizontal: false, vertical: true)
+            CatalogResultsScroll(resetKey: "goals") {
+                LazyVStack(alignment: .leading, spacing: 18) {
+
+                    if let message = store.loadError { Text(message).foregroundStyle(.red) }
+                    else if store.goals.isEmpty { Text("Maak een checklist met de vogels die je wilt zien.") }
+                    ForEach(store.goals.sorted { $0.createdAt > $1.createdAt }) { goal in
+                        NavigationLink(value: goal) { GoalCard(goal: goal) }.buttonStyle(.plain)
+                    }
+                }.padding(.horizontal, 20).padding(.bottom, 94)
+            }
         }
         .background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
         .navigationDestination(for: BirdGoal.self) { goal in GoalDetailView(goal: goal) }
@@ -26,6 +31,7 @@ struct GoalsView: View {
         .fullScreenCover(isPresented: $showForm) { GoalForm() }
     }
 }
+
 
 private struct GoalProgress: View {
     let goal: BirdGoal
@@ -124,6 +130,7 @@ private struct GoalDetailView: View {
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .fullScreenCover(isPresented: $editing) { GoalForm(goal: current) }
+            .onChange(of: store.goals.contains { $0.id == goal.id }) { _, exists in if !exists { dismiss() } }
     }
 }
 
@@ -135,6 +142,7 @@ struct GoalForm: View {
     @State private var showSearch = false
     @State private var selection: GoalSpeciesSelection
     @State private var error: String?
+    @State private var confirmDelete = false
     init(goal: BirdGoal? = nil) {
         original = goal
         _name = State(initialValue: goal?.name ?? "")
@@ -167,14 +175,27 @@ struct GoalForm: View {
                 }.padding(20)
             }
             .safeAreaInset(edge: .bottom) {
-                Button(original == nil ? "Doelstelling opslaan" : "Wijzigingen opslaan", action: save)
-                    .frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(FieldGuideTheme.ivory)
-                    .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
-                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selection.ids.isEmpty || store.loadError != nil)
-                    .padding(20).background(FieldGuideTheme.ivory)
+                VStack(spacing: 4) {
+                    Button(original == nil ? "Doelstelling opslaan" : "Wijzigingen opslaan", action: save)
+                        .frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(FieldGuideTheme.ivory)
+                        .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
+                        .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selection.ids.isEmpty || store.loadError != nil)
+                    if original != nil {
+                        Button("Doelstelling verwijderen", role: .destructive) { confirmDelete = true }
+                            .frame(maxWidth: .infinity, minHeight: 44).disabled(store.loadError != nil)
+                    }
+                }.padding(20).background(FieldGuideTheme.ivory)
             }
         }.foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory.ignoresSafeArea())
             .fullScreenCover(isPresented: $showSearch) { GoalSpeciesPicker(selection: $selection) }
+            .confirmationDialog("Doelstelling verwijderen?", isPresented: $confirmDelete, titleVisibility: .visible) {
+                Button("Verwijder doelstelling", role: .destructive) {
+                    guard let original else { return }
+                    do { try store.deleteGoal(id: original.id); dismiss() }
+                    catch { self.error = error.localizedDescription }
+                }
+                Button("Annuleren", role: .cancel) {}
+            } message: { Text("Je gelogde waarnemingen blijven bewaard.") }
     }
     private func save() {
         let previous = original?.speciesIDs ?? []

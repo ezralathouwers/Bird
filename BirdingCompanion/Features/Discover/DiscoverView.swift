@@ -79,19 +79,17 @@ struct DiscoverView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(FieldGuideTheme.ivory)
         .overlay(alignment: .topLeading) {
-            HStack(spacing: 0) {
+            HStack(spacing: -8) {
                 Button { showCatalogSources = true } label: {
                     Image(systemName: "info.circle").font(.system(size: 22, weight: .ultraLight))
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Info")
                 Button { showBackups = true } label: {
-                    Image(systemName: "externaldrive.badge.timemachine").font(.system(size: 22, weight: .ultraLight))
-                        .offset(x: -8)
+                    Image(systemName: "clock.arrow.circlepath").font(.system(size: 22, weight: .ultraLight))
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Gegevens en back-ups")
                 Button { showEBirdConnection = true } label: {
                     Image(systemName: "gearshape").font(.system(size: 22, weight: .ultraLight))
-                        .offset(x: -8)
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Instellingen lokale meldingen")
             }.buttonStyle(.plain).foregroundStyle(FieldGuideTheme.mutedIcon)

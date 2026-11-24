@@ -69,7 +69,7 @@ struct SpeciesDetailView: View {
                     }
                     CatalogResultsScroll(resetKey: species.id) {
                         ObservationHistoryView(species: species, embedded: true, showsExport: false, showsTotal: false)
-                            .padding(.horizontal, 20).padding(.bottom, 74)
+                            .padding(.horizontal, 20).padding(.bottom, 104)
                     }
                 }
             }

@@ -45,7 +45,13 @@ struct CompanionRootView: View {
                         identity: CircularMenuReveal(progress: 1, origin: plusCenter)))
                     .zIndex(2)
             } else if showLiveSession {
-                LiveSessionView(isPresented: $showLiveSession, onFinished: { showLiveSession = false; section = .sessions })
+                LiveSessionView(isPresented: $showLiveSession, onFinished: { showLiveSession = false; section = .sessions }, openAudio: {
+                    showLiveSession = false
+                    section = .identify
+                    identificationPath = NavigationPath()
+                    identificationPath.append(IdentificationRoute.audio)
+                    if !soundModel.isRecording && !soundModel.isStarting { soundModel.begin() }
+                })
             }
         }
             .environment(\.speciesAudioIsAllowed,

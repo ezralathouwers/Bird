@@ -149,3 +149,8 @@ Landen bij historische waarnemingen worden automatisch vanuit de opgeslagen
 coördinaten aangevuld, ook voor eerder geïmporteerde Birda-gegevens. De meeste
 worden lokaal bepaald; resterende kust-/zeeplekken worden rustig via Apple
 geprobeerd. Herimporteren is niet nodig. Zie `Docs/COUNTRY_BACKFILL.md`.
+
+De nieuwste logboek-/sessiebewerkingen, Audio ID-toevoegknoppen en de kaart met
+eerste waarnemingen staan in `Docs/LOGBOOK_SESSIONS_MAP_UPDATE.md`. Voor ontbrekende
+illustraties van je actuele logboek is er een lokaal API-productiepakket:
+`Scripts/Birder-Logboek-illustraties.zip`, zie `Docs/LOGBOOK_ARTWORK_API.md`.

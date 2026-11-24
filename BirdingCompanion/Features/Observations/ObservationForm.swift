@@ -9,6 +9,7 @@ struct ObservationForm: View {
     @StateObject private var location: ObservationLocationModel
     @State private var observedAt: Date
     @State private var errorMessage: String?
+    @State private var confirmDelete = false
 
     init(species: Species, observation: Observation? = nil) {
         self.species = species
@@ -66,15 +67,17 @@ struct ObservationForm: View {
             }
             .background(FieldGuideTheme.ivory)
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                Button(action: save) {
-                    Text(original == nil ? "Waarneming opslaan" : "Wijzigingen opslaan")
-                        .frame(maxWidth: .infinity, minHeight: 52)
-                        .foregroundStyle(FieldGuideTheme.ivory)
-                        .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
-                }
-                .disabled(store.loadError != nil || !location.canSave)
-                .opacity(store.loadError != nil || !location.canSave ? 0.4 : 1)
-                .padding(20).background(FieldGuideTheme.ivory)
+                VStack(spacing: 4) {
+                    Button(action: save) {
+                        Text(original == nil ? "Waarneming opslaan" : "Wijzigingen opslaan")
+                            .frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(FieldGuideTheme.ivory)
+                            .background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
+                    }.disabled(store.loadError != nil || !location.canSave)
+                    if original != nil {
+                        Button("Waarneming verwijderen", role: .destructive) { confirmDelete = true }
+                            .frame(maxWidth: .infinity, minHeight: 44).disabled(store.loadError != nil)
+                    }
+                }.padding(20).background(FieldGuideTheme.ivory)
             }
             .task { if original == nil { location.useCurrentLocation() } }
             .onDisappear { location.stop() }
@@ -82,6 +85,14 @@ struct ObservationForm: View {
         .foregroundStyle(FieldGuideTheme.charcoal)
         .environment(\.timeZone, original?.historyTimeZone ?? .current)
         .background(FieldGuideTheme.ivory.ignoresSafeArea())
+        .confirmationDialog("Waarneming verwijderen?", isPresented: $confirmDelete, titleVisibility: .visible) {
+            Button("Verwijder waarneming", role: .destructive) {
+                guard let original else { return }
+                do { try store.deleteObservation(id: original.id); dismiss() }
+                catch { errorMessage = error.localizedDescription }
+            }
+            Button("Annuleren", role: .cancel) {}
+        }
     }
 
     @ViewBuilder private var dateAndTimeFields: some View {

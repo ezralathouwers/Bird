@@ -64,6 +64,7 @@ struct ObservationMapView: View {
         }
         .fullScreenCover(isPresented: $editing) { ObservationForm(species: species, observation: current) }
         .onAppear { centerMap() }
+        .onChange(of: store.observations.contains { $0.id == observation.id }) { _, exists in if !exists { dismiss() } }
         .onChange(of: current.latitude) { _, _ in centerMap() }
         .onChange(of: current.longitude) { _, _ in centerMap() }
     }

@@ -167,6 +167,37 @@ final class ObservationStore: ObservableObject {
         try commit(observations: observations, sessions: updated)
     }
 
+    func deleteObservation(id: UUID) throws {
+        guard observations.contains(where: { $0.id == id }) else { throw ObservationError.missingRecord }
+        try commit(observations: observations.filter { $0.id != id }, sessions: sessions)
+    }
+    func deleteSession(id: UUID, keepObservations: Bool = false) throws {
+        guard let session = sessions.first(where: { $0.id == id }) else { throw SessionError.invalidSession }
+        if keepObservations && session.endedAt == nil { throw SessionError.invalidSession }
+        let logs: [Observation]
+        if keepObservations {
+            logs = observations.map { log in
+                var copy = log
+                if copy.sessionID == id { copy.sessionID = nil }
+                return copy
+            }
+        } else { logs = observations.filter { $0.sessionID != id } }
+        try commit(observations: logs, sessions: sessions.filter { $0.id != id })
+    }
+    func logAudio(_ species: Species, at date: Date, location: SessionLogLocation) throws {
+        if let session = activeSession {
+            try logLive(species, sessionID: session.id, at: max(date, session.startedAt), location: location)
+            return
+        }
+        let session = BirdSession(locationName: location.name, latitude: location.latitude,
+            longitude: location.longitude, countryCode: location.countryCode, startedAt: date, endedAt: nil, isLive: true)
+        var log = Observation(speciesID: species.id, taxonomyVersion: species.taxonomyVersion,
+            observedAt: date, locationName: location.name, count: 1, notes: "", status: .confirmed)
+        log.latitude = location.latitude; log.longitude = location.longitude
+        log.countryCode = location.countryCode; log.sessionID = session.id; log.source = "session-audio"
+        try commit(observations: observations + [log], sessions: sessions + [session])
+    }
+
     func removeLiveObservation(id: UUID, sessionID: UUID) throws {
         guard activeSession?.id == sessionID else { throw SessionError.noActiveSession }
         guard observations.contains(where: { $0.id == id && $0.sessionID == sessionID }) else { throw ObservationError.missingRecord }
@@ -302,6 +333,14 @@ final class ObservationStore: ObservableObject {
         try persistence.save(observations, sessions: sessions, goals: updated)
         goals = updated
         revision = UUID()
+    }
+
+    func deleteGoal(id: UUID) throws {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        guard goals.contains(where: { $0.id == id }) else { throw GoalError.missingGoal }
+        let updated = goals.filter { $0.id != id }
+        try persistence.save(observations, sessions: sessions, goals: updated)
+        goals = updated; revision = UUID()
     }
 
     func logStatus(for speciesID: String) -> SpeciesLogStatus {

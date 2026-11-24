@@ -51,8 +51,8 @@ write precedes publication, and a failed save leaves data/revision unchanged.
 Country updates trigger normal backup scheduling when configured.
 
 Countries shows progress and any lookup error; resolved countries appear without
-waiting for all online requests. Unknown records remain visible as a count and
-are not silently dropped from the history.
+waiting for all online requests. Unknown records remain in the history; the footer count is intentionally
+omitted from Countries following the later interface feedback.
 
 ## Verification
 

@@ -66,6 +66,10 @@ def jobs(plan, root=ROOT):
             allowed = {r['catalogID'] for r in csv.DictReader(handle) if r['decision'] == 'queued'}
         if {r['id'] for r in plan['species']} != allowed:
             raise ValueError('Belgian recipe does not match its audited production list.')
+    elif scope == 'logbook':
+        ids = plan.get('scopeSpeciesIDs', [])
+        if not isinstance(ids, list) or any(not isinstance(i, str) for i in ids) or len(ids) != len(set(ids)) or set(ids) != {r['id'] for r in plan['species']} or sha(json.dumps(sorted(ids), separators=(',', ':')).encode()) != plan.get('scopeIDsSHA256'):
+            raise ValueError('Logbook scope does not match its fixed species inventory.')
     elif scope != 'pilot':
         raise ValueError('Unknown production scope.')
     seen = set()
@@ -89,7 +93,7 @@ def jobs(plan, root=ROOT):
                 reference=str(reference), referenceSHA256=sha(reference.read_bytes()),
                 representativePlumage=species['representativePlumage'], referenceURL=species['referenceURL'],
                 dutchName=species['dutchName']))
-    if (scope == 'pilot' and len(seen) != 10) or (scope == 'belgium' and not 1 <= len(seen) <= 500):
+    if (scope == 'pilot' and len(seen) != 10) or (scope == 'belgium' and not 1 <= len(seen) <= 500) or (scope == 'logbook' and not 1 <= len(seen) <= len(catalog)):
         raise ValueError('Species count is outside the approved recipe scope.')
     return result
 
@@ -358,6 +362,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--diagnose', action='store_true', help='Check HTTPS without an API key or billable generation')
     parser.add_argument('--plan', type=Path, default=DEFAULT_PLAN)
+    parser.add_argument('--project-root', type=Path, default=ROOT, help='Local app project supplying catalog and approved reference assets')
     parser.add_argument('--output', type=Path, default=ROOT / '.artwork-api/pilot-medium')
     parser.add_argument('--execute', action='store_true', help='Explicitly send billable API requests')
     parser.add_argument('--review-only', action='store_true', help='Refresh local review files without generating anything')
@@ -371,7 +376,7 @@ def main():
         print(json.dumps(connection_diagnostic(), ensure_ascii=False, indent=2))
         return
     plan = json.loads(args.plan.read_text())
-    planned = jobs(plan)
+    planned = jobs(plan, root=args.project_root)
     print(f"{len(planned)} missing role jobs; {plan['model']}; {plan['quality']}; transparent PNG.")
     if not args.execute and not args.export_reviewed and not args.review_only:
         print('OFFLINE PLAN: no API calls, no credits used. First execute run defaults to two images.')

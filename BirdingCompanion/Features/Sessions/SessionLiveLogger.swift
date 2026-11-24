@@ -10,10 +10,11 @@ import Combine
     init(location: any CurrentLocationService = SharedCurrentLocation.shared, naming: any PlaceNamingService = ApplePlaceNamingService()) {
         self.location = location; self.naming = naming
     }
-    func log(_ species: Species, store: ObservationStore, completion: @escaping () -> Void = {}) {
+    func log(_ species: Species, store: ObservationStore, startIfNeeded: Bool = false, completion: @escaping () -> Void = {}) {
         guard !isLogging else { return }
-        guard let session = store.activeSession else { message = SessionError.noActiveSession.localizedDescription; return }
-        guard !store.observations(in: session).contains(where: { $0.speciesID == species.id }) else {
+        let session = store.activeSession
+        guard session != nil || startIfNeeded else { message = SessionError.noActiveSession.localizedDescription; return }
+        guard !store.observations.contains(where: { $0.sessionID == session?.id && session != nil && $0.speciesID == species.id }) else {
             message = SessionError.duplicateSpecies.localizedDescription; return
         }
         let tappedAt = Date()
@@ -27,7 +28,12 @@ import Combine
                 let point = SessionLogLocation(latitude: fix.latitude, longitude: fix.longitude,
                     name: name.isEmpty ? String(format: "%.5f, %.5f", fix.latitude, fix.longitude) : name,
                     countryCode: suggestion?.countryCode)
-                try store.logLive(species, sessionID: session.id, at: tappedAt, location: point)
+                if let session {
+                    guard store.activeSession?.id == session.id else { throw SessionError.noActiveSession }
+                    try store.logLive(species, sessionID: session.id, at: tappedAt, location: point)
+                } else {
+                    try store.logAudio(species, at: tappedAt, location: point)
+                }
                 self.isLogging = false; self.pending = nil; self.message = nil
                 completion()
             } catch {

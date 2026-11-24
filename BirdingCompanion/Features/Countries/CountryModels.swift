@@ -26,6 +26,7 @@ enum CountryProjection {
             counts[code, default: 0] += 1
         }
         return speciesByCountry.map { LoggedCountry(code: $0.key, speciesCount: $0.value.count, observationCount: counts[$0.key] ?? 0) }.sorted {
+            if $0.speciesCount != $1.speciesCount { return $0.speciesCount > $1.speciesCount }
             if $0.observationCount != $1.observationCount { return $0.observationCount > $1.observationCount }
             let comparison = $0.name.compare($1.name, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "nl_BE"))
             return comparison == .orderedSame ? $0.code < $1.code : comparison == .orderedAscending

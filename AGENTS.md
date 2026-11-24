@@ -32,6 +32,16 @@ fit still uses the below-header viewport. On Waarnemingen, pin the count above
 the scrolling rows, fade rows at the top only after scrolling, and add 50pt
 bottom padding. Discovery has info, backup and nearby-settings icon buttons.
 
+Latest user feedback, later 24 November 2026: pin the headers on Logbook,
+Sessions, Goals, Identify and Countries with scroll-only top fades. Logbook
+search is scoped to logged species; sort is an icon menu. Countries rank by
+unique species count, not observation count, and expose a first-observation
+map. Species observation-list bottom padding is now 104pt (24+50+30). Keep
+observation/session/goal deletion explicit and atomic; session conversion keeps
+exact logs and removes only their session link. Audio result quick-add is an
+explicit user confirmation and may atomically create a live session. See
+Docs/LOGBOOK_SESSIONS_MAP_UPDATE.md and Docs/LOGBOOK_ARTWORK_API.md.
+
 ## Non-negotiable design rules
 - Warm **light neutral ivory** background, not dark/yellow parchment. Final tokens must be validated against the user's approved image.
 - Characterful serif **only for the Dutch species title in the upper-left**; all other interface text, including English name, active tabs and navigation, is modern sans-serif.

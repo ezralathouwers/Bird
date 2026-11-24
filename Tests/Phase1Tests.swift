@@ -640,14 +640,14 @@ final class CountryProjectionTests: XCTestCase {
         XCTAssertEqual(rows.count, 2)
         XCTAssertEqual(rows.first { $0.code == "BE" }?.flag, "🇧🇪")
     }
-    func testCountriesRankByObservationCountNotSpeciesCount() {
+    func testCountriesRankBySpeciesCountThenObservationCount() {
         let records = [log("a", country: "BE", at: 1), log("a", country: "BE", at: 2),
                        log("a", country: "BE", at: 3), log("a", country: "NL", at: 4),
                        log("b", country: "NL", at: 5)]
         let countries = CountryProjection.countries(in: records)
-        XCTAssertEqual(countries.map(\.code), ["BE", "NL"])
-        XCTAssertEqual(countries.map(\.observationCount), [3,2])
-        XCTAssertEqual(countries.map(\.speciesCount), [1,2])
+        XCTAssertEqual(countries.map(\.code), ["NL", "BE"])
+        XCTAssertEqual(countries.map(\.observationCount), [2,3])
+        XCTAssertEqual(countries.map(\.speciesCount), [2,1])
         XCTAssertEqual(countries, CountryProjection.countries(in: Array(records.reversed())))
     }
     func testCountryDetailAndDiscoveryOrderUseOnlyThatCountry() {
@@ -2610,5 +2610,138 @@ private struct ReadOnlyCountryFixture: ObservationPersistence {
         if fails { throw CocoaError(.fileReadUnknown) }
         if noResult { throw CLError(.geocodeFoundNoResult) }
         return PlaceSuggestion(name: "Synthetische test", countryCode: "PT")
+    }
+}
+
+@MainActor
+final class HistoryManagementTests: XCTestCase {
+    private let bird = MockSpeciesRepository.kingfisher
+    private func archive() -> BirdingArchive {
+        let time = Date(timeIntervalSince1970: 1000)
+        let session = BirdSession(locationName: "Sessie", latitude: 51, longitude: 4, countryCode: "BE", startedAt: time,
+            endedAt: time.addingTimeInterval(100), isLive: false)
+        var one = Observation(speciesID: bird.id, taxonomyVersion: bird.taxonomyVersion, observedAt: time,
+            locationName: "Eerste plek", count: 3, notes: "Bewaren", status: .confirmed)
+        one.latitude = 51; one.longitude = 4; one.countryCode = "BE"; one.sessionID = session.id
+        one.source = "birda-csv"; one.importMetadata = ["sightingId": one.id.uuidString]
+        var two = one; two.id = UUID(); two.observedAt = time.addingTimeInterval(50)
+        two.latitude = 52; two.longitude = 5; two.locationName = "Andere plek"; two.countryCode = "NL"
+        var loose = one; loose.id = UUID(); loose.sessionID = nil
+        return BirdingArchive(observations: [one,two,loose], sessions: [session], goals: [BirdGoal(name: "Doel", speciesIDs: [bird.id])])
+    }
+    private func makeStore(_ archive: BirdingArchive) throws -> ObservationStore {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        addTeardownBlock { try? FileManager.default.removeItem(at: directory) }
+        let persistence = JSONObservationPersistence(url: directory.appendingPathComponent("history.json"))
+        try persistence.save(archive.observations, sessions: archive.sessions, goals: archive.goals ?? [])
+        return ObservationStore(persistence: persistence)
+    }
+    func testConvertSessionRetainsExactObservationsExceptSessionLink() throws {
+        let original = archive(), store = try makeStore(original)
+        try store.deleteSession(id: original.sessions[0].id, keepObservations: true)
+        let expected = original.observations.map { log -> Observation in var copy = log; copy.sessionID = nil; return copy }
+        XCTAssertEqual(store.observations, expected)
+        XCTAssertEqual(store.goals, original.goals ?? [])
+        XCTAssertTrue(store.sessions.isEmpty)
+        XCTAssertEqual(store.observations.count, 3)
+    }
+    func testDeleteSessionRemovesOnlyItsLogsAndDeleteGoalDoesNotAffectHistory() throws {
+        let original = archive(), store = try makeStore(original)
+        try store.deleteSession(id: original.sessions[0].id)
+        XCTAssertEqual(store.observations, [original.observations[2]])
+        XCTAssertTrue(store.sessions.isEmpty)
+        XCTAssertEqual(store.goals, original.goals ?? [])
+        try store.deleteGoal(id: store.goals[0].id)
+        XCTAssertTrue(store.goals.isEmpty)
+        XCTAssertEqual(store.observations, [original.observations[2]])
+    }
+    func testDeleteObservationKeepsOtherRecordsAndExistingSession() throws {
+        let original = archive(), store = try makeStore(original)
+        try store.deleteObservation(id: original.observations[0].id)
+        XCTAssertEqual(store.observations, Array(original.observations.dropFirst()))
+        XCTAssertEqual(store.sessions, original.sessions)
+        XCTAssertEqual(store.goals, original.goals ?? [])
+    }
+    func testFailedDeletionOrConversionNeverPublishesPartialData() {
+        for operation in 0...3 {
+            let original = archive()
+            let store = ObservationStore(persistence: FailingRestorePersistence(original: original))
+            let revision = store.revision
+            XCTAssertThrowsError(try {
+                switch operation {
+                case 0: try store.deleteObservation(id: original.observations[0].id)
+                case 1: try store.deleteSession(id: original.sessions[0].id)
+                case 2: try store.deleteSession(id: original.sessions[0].id, keepObservations: true)
+                default: try store.deleteGoal(id: original.goals![0].id)
+                }
+            }())
+            XCTAssertEqual(store.observations, original.observations)
+            XCTAssertEqual(store.sessions, original.sessions)
+            XCTAssertEqual(store.goals, original.goals ?? [])
+            XCTAssertEqual(store.revision, revision)
+        }
+    }
+    func testAudioOneTapCreatesAndAddsAtomicallyThenReusesSessionAndRejectsDuplicate() throws {
+        let store = try makeStore(BirdingArchive(observations: [], sessions: []))
+        let point = SessionLogLocation(latitude: 51, longitude: 4, name: "Plek", countryCode: "BE")
+        let date = Date(timeIntervalSince1970: 1000)
+        try store.logAudio(bird, at: date, location: point)
+        let session = try XCTUnwrap(store.activeSession)
+        XCTAssertEqual(store.sessions.count, 1); XCTAssertEqual(store.observations.count, 1)
+        XCTAssertEqual(store.observations[0].sessionID, session.id)
+        XCTAssertEqual(store.observations[0].observedAt, date)
+        XCTAssertEqual(store.observations[0].status, .confirmed)
+        XCTAssertThrowsError(try store.logAudio(bird, at: date.addingTimeInterval(1), location: point))
+        let second = Species(id: "other-test", taxonomyVersion: "test", dutchName: "Andere", englishName: "Other", scientificName: "Other")
+        try store.logAudio(second, at: date.addingTimeInterval(10), location: point)
+        XCTAssertEqual(store.sessions.count, 1); XCTAssertEqual(store.observations.count, 2)
+        XCTAssertThrowsError(try store.deleteSession(id: session.id, keepObservations: true))
+        try store.deleteSession(id: session.id)
+        XCTAssertNil(store.activeSession); XCTAssertTrue(store.observations.isEmpty)
+    }
+    func testFailedFirstAudioLogDoesNotLeaveEmptyLiveSession() {
+        let original = BirdingArchive(observations: [], sessions: [])
+        let store = ObservationStore(persistence: FailingRestorePersistence(original: original))
+        let revision = store.revision
+        XCTAssertThrowsError(try store.logAudio(bird, at: Date(), location: SessionLogLocation(latitude: 51, longitude: 4, name: "Plek", countryCode: "BE")))
+        XCTAssertTrue(store.sessions.isEmpty); XCTAssertTrue(store.observations.isEmpty)
+        XCTAssertEqual(store.revision, revision)
+    }
+    func testReimportAfterConversionDoesNotRecreateEmptyBirdaSession() throws {
+        let sessionID = UUID(), one = UUID(), two = UUID()
+        let text = "sightingId,date,longitude,latitude,scientificName,sessionId,sessionTitle\n\(one),2020-01-01T10:00:00Z,4,51,Alcedo atthis,\(sessionID),Test\n\(two),2020-01-01T11:00:00Z,4,51,Alcedo atthis,\(sessionID),Test\n"
+        let batch = try BirdaImport.decode(Data(text.utf8), catalog: [bird])
+        let store = try makeStore(BirdingArchive(observations: [], sessions: []))
+        try store.importBirda(batch, expectedRevision: store.revision)
+        try store.deleteSession(id: sessionID, keepObservations: true)
+        let result = try store.importBirda(batch, expectedRevision: store.revision)
+        XCTAssertEqual(result.addedObservations, 0); XCTAssertEqual(result.addedSessions, 0)
+        XCTAssertTrue(store.sessions.isEmpty)
+        XCTAssertTrue(store.observations.allSatisfy { $0.sessionID == nil })
+    }
+}
+
+final class FirstObservationMapTests: XCTestCase {
+    private func record(_ species: String, at time: Double, latitude: Double = 51, longitude: Double = 4) -> Observation {
+        var log = Observation(speciesID: species, taxonomyVersion: "test", observedAt: Date(timeIntervalSince1970: time),
+            locationName: "Plek", count: 1, notes: "", status: .confirmed)
+        log.latitude = latitude; log.longitude = longitude
+        return log
+    }
+    func testOnlyFirstPerSpeciesAndStableTieOrderWithoutMergingSamePlaceSpecies() {
+        let old = record("bird-a", at: 10), recent = record("bird-a", at: 30), other = record("bird-b", at: 20)
+        let result = FirstObservationMapProjection.records([recent, other, old])
+        XCTAssertEqual(Set(result.map(\.id)), Set([old.id, other.id]))
+        XCTAssertEqual(FirstObservationMapProjection.records([old,recent,other]), result)
+        var tie = old
+        tie.id = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
+        XCTAssertEqual(FirstObservationMapProjection.records([old,tie]).first?.id, tie.id)
+    }
+    func testUnknownFirstCoordinatesDoNotInventOrSubstituteAPlace() {
+        let first = record("bird-a", at: 1, latitude: 0, longitude: 0)
+        let later = record("bird-a", at: 2)
+        var missing = record("bird-b", at: 1); missing.latitude = nil; missing.longitude = nil
+        XCTAssertTrue(FirstObservationMapProjection.records([first,later,missing]).isEmpty)
+        XCTAssertTrue(FirstObservationMapProjection.records([record("bad", at: 0, latitude: .nan)]).isEmpty)
     }
 }

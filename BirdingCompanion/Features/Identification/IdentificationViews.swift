@@ -6,17 +6,21 @@ enum IdentificationRoute: Hashable { case photo, audio }
 
 struct IdentificationView: View {
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                IdentificationOptionsLayout(viewportHeight: max(0, geometry.size.height - 97)) {
-                    PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
+        VStack(spacing: 0) {
+            PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
+                .padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 18)
+                .fixedSize(horizontal: false, vertical: true)
+            GeometryReader { geometry in
+            CatalogResultsScroll(resetKey: "identify") {
+                IdentificationOptionsLayout(viewportHeight: max(0, geometry.size.height - 77)) {
                     NavigationLink(value: IdentificationRoute.photo) {
                         option("Foto", detail: "Maak of kies een foto", photo: true)
                     }
                     NavigationLink(value: IdentificationRoute.audio) {
                         option("Audio", detail: "Luister naar vogels om je heen", photo: false)
                     }
-                }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 77)
+                }.padding(.horizontal, 20).padding(.bottom, 77)
+            }
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
     }
@@ -40,21 +44,17 @@ struct IdentificationView: View {
 private struct IdentificationOptionsLayout: Layout {
     let viewportHeight: CGFloat
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
-        guard subviews.count == 3 else { return .zero }
+        guard subviews.count == 2 else { return .zero }
         let width = max(0, proposal.width ?? 320)
-        let heading = subviews[0].sizeThatFits(ProposedViewSize(width: width, height: nil)).height
-        let minimumCard = max(148, subviews.dropFirst().map { $0.sizeThatFits(ProposedViewSize(width: width, height: nil)).height }.max() ?? 148)
-        return CGSize(width: width, height: max(viewportHeight, heading + 18 + 16 + 2 * minimumCard))
+        let minimumCard = max(148, subviews.map { $0.sizeThatFits(ProposedViewSize(width: width, height: nil)).height }.max() ?? 148)
+        return CGSize(width: width, height: max(viewportHeight, 16 + 2 * minimumCard))
     }
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        guard subviews.count == 3 else { return }
-        let heading = subviews[0].sizeThatFits(ProposedViewSize(width: bounds.width, height: nil)).height
-        let minimumCard = max(148, subviews.dropFirst().map { $0.sizeThatFits(ProposedViewSize(width: bounds.width, height: nil)).height }.max() ?? 148)
-        let card = max(minimumCard, (bounds.height - heading - 18 - 16) / 2)
-        subviews[0].place(at: CGPoint(x: bounds.minX, y: bounds.minY), anchor: .topLeading,
-                          proposal: ProposedViewSize(width: bounds.width, height: heading))
-        for index in 1...2 {
-            subviews[index].place(at: CGPoint(x: bounds.minX, y: bounds.minY + heading + 18 + CGFloat(index - 1) * (card + 16)),
+        guard subviews.count == 2 else { return }
+        let minimumCard = max(148, subviews.map { $0.sizeThatFits(ProposedViewSize(width: bounds.width, height: nil)).height }.max() ?? 148)
+        let card = max(minimumCard, (bounds.height - 16) / 2)
+        for index in 0...1 {
+            subviews[index].place(at: CGPoint(x: bounds.minX, y: bounds.minY + CGFloat(index) * (card + 16)),
                                  anchor: .topLeading, proposal: ProposedViewSize(width: bounds.width, height: card))
         }
     }
@@ -64,7 +64,12 @@ struct SoundIdentificationView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var model: SoundIdentificationModel
     @EnvironmentObject private var pins: SoundResultPins
+    @EnvironmentObject private var store: ObservationStore
+    @EnvironmentObject private var sessionLogger: SessionLiveLogger
     @State private var selectedSpecies: Species?
+    private var loggedInSession: Set<String> {
+        store.activeSession.map { Set(store.observations(in: $0).map(\.speciesID)) } ?? []
+    }
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
@@ -93,15 +98,20 @@ struct SoundIdentificationView: View {
                 Text("Mogelijke vogels").font(FieldGuideTheme.sans(24, relativeTo: .title2)).accessibilityAddTraits(.isHeader)
                 if let message = model.message { Text(message).font(FieldGuideTheme.sans(14, relativeTo: .subheadline)) }
                 if let message = pins.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
+                if let message = store.loadError { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
+                if sessionLogger.isLogging { ProgressView("Waarneming toevoegen…") }
+                if let message = sessionLogger.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                 TimelineView(.periodic(from: .now, by: 0.5)) { context in
                     SoundIdentificationResults(candidates: model.candidates, pins: pins,
-                        activeIDs: model.activity.activeIDs(at: context.date, recording: model.isRecording)) { selectedSpecies = $0 }
+                        activeIDs: model.activity.activeIDs(at: context.date, recording: model.isRecording),
+                        addedIDs: loggedInSession, isLogging: sessionLogger.isLogging || store.loadError != nil,
+                        add: { sessionLogger.log($0, store: store, startIfNeeded: true) }, open: { selectedSpecies = $0 })
                 }
             }.padding(20).padding(.bottom, 79)
         }.safeAreaInset(edge: .top, spacing: 0) {
             CenteredPageHeader(title: "Audio ID") { dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
-            .onAppear { if model.startedAt == nil { model.begin() } }
+            .onAppear { if model.startedAt == nil && !model.isStarting { model.begin() } }
             .navigationDestination(item: $selectedSpecies) { bird in SpeciesDetailView(species: bird) }
     }
     private static func elapsed(_ value: TimeInterval) -> String {
@@ -272,42 +282,43 @@ private struct SoundIdentificationResults: View {
     let candidates: [IdentificationCandidate]
     @ObservedObject var pins: SoundResultPins
     var activeIDs: Set<String> = []
-    var open: (Species) -> Void
+    var addedIDs: Set<String> = []
+    var isLogging = false
+    let add: (Species) -> Void
+    let open: (Species) -> Void
     var body: some View {
         let rows = SoundResultOrdering.rows(candidates: candidates, pins: pins.species)
         VStack(spacing: 0) {
             ForEach(rows) { row in
-                HStack(spacing: 16) {
-                    PrimaryBirdArtwork(species: row.species).frame(width: 64, height: 64)
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack(spacing: 6) {
-                            SerifText(row.species.dutchName, size: 18, relativeTo: .body)
-                            if row.isPinned {
-                                Image(systemName: "star.fill").font(.system(size: 12)).foregroundStyle(FieldGuideTheme.khaki)
+                HStack(spacing: 8) {
+                    HStack(spacing: 16) {
+                        PrimaryBirdArtwork(species: row.species).frame(width: 64, height: 64)
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack(spacing: 6) {
+                                SerifText(row.species.dutchName, size: 18, relativeTo: .body)
+                                if row.isPinned { Image(systemName: "star.fill").font(.system(size: 12)).foregroundStyle(FieldGuideTheme.khaki) }
                             }
-                        }
-                        Text(row.species.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
-                    }.frame(maxWidth: .infinity, alignment: .leading)
-                    Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
-                }
-                .frame(minHeight: 64).padding(.horizontal, 12).padding(.vertical, 1)
-                .background(activeIDs.contains(row.id) ? FieldGuideTheme.beige.opacity(0.4) : Color.clear,
-                            in: RoundedRectangle(cornerRadius: 12))
-                .animation(.easeOut(duration: 0.35), value: activeIDs.contains(row.id))
-                .contentShape(Rectangle())
-                .gesture(TapGesture(count: 2).exclusively(before: TapGesture(count: 1)).onEnded { action in
-                    switch action {
-                    case .first: pins.toggle(row.species)
-                    case .second: open(row.species)
-                    }
-                })
-                .onLongPressGesture(minimumDuration: 0.5) { pins.toggle(row.species) }
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("\(row.species.dutchName), \(row.species.englishDisplayName)\(row.isPinned ? ", vastgezet" : "")\(activeIDs.contains(row.id) ? ", nu gehoord" : "")")
-                .accessibilityAddTraits(.isButton)
-                .accessibilityHint("Opent de soortpagina. Houd ingedrukt om vast te zetten of los te maken.")
-                .accessibilityAction { open(row.species) }
-                .accessibilityAction(named: Text(row.isPinned ? "Losmaken" : "Vastzetten")) { pins.toggle(row.species) }
+                            Text(row.species.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
+                    }.contentShape(Rectangle())
+                        .gesture(TapGesture(count: 2).exclusively(before: TapGesture(count: 1)).onEnded { action in
+                            switch action { case .first: pins.toggle(row.species); case .second: open(row.species) }
+                        })
+                        .onLongPressGesture(minimumDuration: 0.5) { pins.toggle(row.species) }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("\(row.species.dutchName), \(row.species.englishDisplayName)\(row.isPinned ? ", vastgezet" : "")")
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityAction { open(row.species) }
+                        .accessibilityAction(named: Text(row.isPinned ? "Losmaken" : "Vastzetten")) { pins.toggle(row.species) }
+                    Button { add(row.species) } label: {
+                        Image(systemName: addedIDs.contains(row.id) ? "checkmark.circle" : "plus.circle")
+                            .font(.system(size: 24, weight: .ultraLight)).frame(width: 44, height: 44)
+                    }.buttonStyle(.plain).disabled(isLogging || addedIDs.contains(row.id))
+                        .accessibilityLabel(addedIDs.contains(row.id) ? "Al in de livesessie" : "Voeg \(row.species.dutchName) toe aan je livesessie")
+                }.frame(minHeight: 64).padding(.horizontal, 12).padding(.vertical, 1)
+                    .background(activeIDs.contains(row.id) ? FieldGuideTheme.beige.opacity(0.4) : Color.clear, in: RoundedRectangle(cornerRadius: 12))
+                    .animation(.easeOut(duration: 0.35), value: activeIDs.contains(row.id))
                 if row.id != rows.last?.id { Divider() }
             }
         }
