@@ -142,7 +142,7 @@ struct NearbyReportMapView: View {
                 HStack(spacing: 8) {
                     if let url = report.observationURL ?? DiscoverRanking.checklistURL(report.checklistID) {
                         Link(destination: url) {
-                            Image(systemName: "arrow.up.right.square").font(.system(size: 22, weight: .ultraLight))
+                            FineControlIcon(symbol: "arrow.up.right.square")
                                 .frame(width: 44, height: 44).foregroundStyle(FieldGuideTheme.charcoal)
                                 .background(FieldGuideTheme.ivory, in: Circle())
                         }.accessibilityLabel("Open oorspronkelijke waarneming")
@@ -153,10 +153,9 @@ struct NearbyReportMapView: View {
             .safeAreaInset(edge: .bottom) {
                 VStack(alignment: .leading, spacing: 8) {
                     SerifText(report.species.dutchName, size: 22, relativeTo: .title2)
-                    Text(report.observerName?.isEmpty == false ? report.observerName! : "Waarnemer niet meegeleverd door de bron")
                     Text(report.localObservedAt?.isEmpty == false ? report.localObservedAt! : report.observedAt.formatted(date: .abbreviated, time: .shortened))
                     HStack(alignment: .top, spacing: 6) {
-                        LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 24, height: 24).fixedSize()
+                        LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 24, height: 24).fixedSize().offset(y: -3)
                         Text(report.locationName?.isEmpty == false ? report.locationName! : String(format: "%.5f, %.5f", report.latitude, report.longitude))
                     }.padding(.top, 5)
                     Text(report.checklistID.hasPrefix("observation:") ? "Observation.org" : report.checklistID.hasPrefix("demo-") ? "Voorbeeldmelding" : "eBird")

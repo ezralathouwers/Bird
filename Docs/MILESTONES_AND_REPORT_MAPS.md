@@ -73,3 +73,21 @@ sleutelhanger en API-verificatie blijven hetzelfde.
 - `git diff --check` geslaagd.
 - Geen Xcode/Swift-toolchain aanwezig: native tests, build, fullscreen-layout,
   VoiceOver, kaartinteractie en geocoding moeten op Mac/iPhone worden getest.
+
+## Visuele verfijning — later 24 november 2026
+
+- Openbare meldingdetails: waarnemerregel verwijderd; uitsluitend het
+  locatie-icoon 3pt omhoog via offset. Bronknop gebruikt dezelfde 0.7pt
+  stroke als zoeken.
+- Gedeelde FineControlIcon/FineControlMark paden voor kaart, afspelen, klok,
+  plus/min/cirkelvarianten, audio, microfoon, bronlink, sorteren en eenvoudig huis.
+  De paden schalen voor het stroken, zodat lijndikte niet van icoonmaat afhangt.
+  De ronde bediening houdt de bestaande 44pt raakvlakken en labeltoegankelijkheid;
+  RoundAction behoudt de dynamisch geschaalde 17pt basismaat.
+- Identificeer/Sessies/Doelstellingen/Landen: header top 20 -> 8pt, gelijk aan
+  de iconenrij van Logboek. Daar schuift alleen het aantal visueel 8pt omhoog.
+- Het Opnemen-knopicoon wordt waveform; Stop opname blijft stop. Het
+  microfoonsymbool in de statusregel blijft behouden, met een lichtere fontweight.
+- Geen wijzigingen aan herkenning, gegevensopslag, signing of bundle identifier.
+- Swift-syntaxcontrole en git diff --check uitgevoerd; native visuele controle
+  en compilatie blijven voor Xcode/iPhone.

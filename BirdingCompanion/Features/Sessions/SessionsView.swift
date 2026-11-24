@@ -56,7 +56,7 @@ struct SessionsView: View {
                 RoundAction(symbol: "play", label: "Nieuwe livesessie starten") { newSession = .live }
                 .disabled(store.activeSession != nil || store.loadError != nil)
             }
-            .padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 24)
+            .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 24)
             .fixedSize(horizontal: false, vertical: true)
             CatalogResultsScroll(resetKey: "sessions") {
                 LazyVStack(alignment: .leading, spacing: 24) {
@@ -66,7 +66,7 @@ struct SessionsView: View {
                         Button { showLive = true } label: {
                             HStack {
                                 Text("\(active.locationName) · livesessie"); Spacer()
-                                Image(systemName: "play.fill").font(.system(size: 18))
+                                FineControlIcon(symbol: "play", size: 18)
                             }.frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
                         }.buttonStyle(.plain).padding(.horizontal, 20).padding(.vertical, 12)
                         .background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
@@ -309,7 +309,7 @@ struct SessionSpeciesPicker: View {
                     ForEach(birds) { bird in
                         Button { choose(bird); dismiss() } label: {
                             SessionBirdRow(bird: bird) {
-                                Image(systemName: selected.contains(bird.id) ? "checkmark.circle" : "plus")
+                                FineControlIcon(symbol: selected.contains(bird.id) ? "checkmark.circle" : "plus")
                                     .font(.system(size: 20, weight: .light))
                             }
                         }.buttonStyle(.plain).disabled(disabled || selected.contains(bird.id))
@@ -404,7 +404,7 @@ private struct SessionBirdRow<Trailing: View>: View {
 private struct RemoveSessionBirdButton: View {
     let remove: () -> Void
     var body: some View {
-        Button(action: remove) { Image(systemName: "minus.circle").font(.system(size: 20, weight: .light)).frame(width: 44, height: 44) }
+        Button(action: remove) { FineControlIcon(symbol: "minus.circle", size: 20).frame(width: 44, height: 44) }
             .buttonStyle(.plain).accessibilityLabel("Verwijder waarneming")
     }
 }

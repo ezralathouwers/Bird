@@ -12,7 +12,7 @@ struct GoalsView: View {
                 RoundAction(symbol: "plus", label: "Doelstelling toevoegen") { showForm = true }
                 .disabled(store.loadError != nil)
             }
-            .padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 18)
+            .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 18)
             .fixedSize(horizontal: false, vertical: true)
             CatalogResultsScroll(resetKey: "goals") {
                 LazyVStack(alignment: .leading, spacing: 18) {

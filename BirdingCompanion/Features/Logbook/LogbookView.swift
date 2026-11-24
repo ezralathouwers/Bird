@@ -33,13 +33,14 @@ struct LogbookView: View {
             }
             HStack(alignment: .top, spacing: 8) {
                 ObservationTotal(value: loggedRows.count, label: "gelogde vogelsoorten")
+                    .offset(y: countryCode == nil ? -8 : 0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Menu {
                     Picker("Sortering", selection: $sort) {
                         ForEach(LogbookSort.allCases, id: \.self) { Text($0.label).tag($0) }
                     }
                 } label: {
-                    Image(systemName: "arrow.up.arrow.down").font(.system(size: 20, weight: .ultraLight))
+                    FineControlIcon(symbol: "arrow.up.arrow.down", size: 20)
                         .frame(width: 44, height: 44).background(FieldGuideTheme.searchControlBackground, in: Circle())
                 }.accessibilityLabel("Sortering").accessibilityValue(sort.label)
                 if countryCode != nil {
@@ -48,7 +49,7 @@ struct LogbookView: View {
                     Button {
                         if home == nil { showHomeSetup = true } else { homeOnly.toggle() }
                     } label: {
-                        Image(systemName: "house").font(.system(size: 20, weight: .ultraLight))
+                        FineControlIcon(symbol: "house", size: 20)
                             .frame(width: 44, height: 44)
                             .foregroundStyle(homeOnly ? FieldGuideTheme.ivory : FieldGuideTheme.charcoal)
                             .background(homeOnly ? FieldGuideTheme.navigationOlive : FieldGuideTheme.searchControlBackground, in: Circle())

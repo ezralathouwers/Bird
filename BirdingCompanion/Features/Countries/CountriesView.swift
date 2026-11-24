@@ -11,7 +11,7 @@ struct CountriesView: View {
                 PageHeading(text: "Landen").accessibilityAddTraits(.isHeader).frame(maxWidth: .infinity, alignment: .leading)
                 RoundAction(symbol: "map", label: "Bekijk eerste waarnemingen op de kaart") { showMap = true }
                     .disabled(store.loadError != nil)
-            }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 24)
+            }.padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 24)
                 .fixedSize(horizontal: false, vertical: true)
             CatalogResultsScroll(resetKey: "countries") {
                 LazyVStack(alignment: .leading, spacing: 14) {

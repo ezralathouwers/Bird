@@ -8,7 +8,7 @@ struct IdentificationView: View {
     var body: some View {
         VStack(spacing: 0) {
             PageHeading(text: "Identificeer").accessibilityAddTraits(.isHeader)
-                .padding(.horizontal, 20).padding(.top, 20).padding(.bottom, 18)
+                .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 18)
                 .fixedSize(horizontal: false, vertical: true)
             GeometryReader { geometry in
             CatalogResultsScroll(resetKey: "identify") {
@@ -74,7 +74,7 @@ struct SoundIdentificationView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
                 HStack {
-                    Image(systemName: model.isRecording ? "mic.fill" : "mic")
+                    Image(systemName: model.isRecording ? "mic.fill" : "mic").font(.system(size: 20, weight: .ultraLight))
                     Text(model.isStarting ? "Opname voorbereiden" : model.isRecording ? "Aan het luisteren" : "Opname gestopt").font(FieldGuideTheme.sans(20, relativeTo: .title3))
                     Spacer()
                     if model.isRecording, let startedAt = model.startedAt {
@@ -87,8 +87,11 @@ struct SoundIdentificationView: View {
                         if model.isRecording { Task { await model.finishAndIdentify() } }
                         else { model.begin() }
                     } label: {
-                        Label(model.isRecording ? "Stop opname" : "Opnemen", systemImage: model.isRecording ? "stop.fill" : "mic")
-                            .frame(maxWidth: .infinity, minHeight: 52)
+                        HStack(spacing: 8) {
+                            if model.isRecording { Image(systemName: "stop.fill") }
+                            else { FineControlIcon(symbol: "waveform") }
+                            Text(model.isRecording ? "Stop opname" : "Opnemen")
+                        }.frame(maxWidth: .infinity, minHeight: 52)
                     }.foregroundStyle(FieldGuideTheme.ivory).background(FieldGuideTheme.charcoal, in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
                         .disabled(model.isStarting || model.isIdentifying)
 
@@ -312,8 +315,8 @@ private struct SoundIdentificationResults: View {
                         .accessibilityAction { open(row.species) }
                         .accessibilityAction(named: Text(row.isPinned ? "Losmaken" : "Vastzetten")) { pins.toggle(row.species) }
                     Button { add(row.species) } label: {
-                        Image(systemName: addedIDs.contains(row.id) ? "checkmark.circle" : "plus.circle")
-                            .font(.system(size: 24, weight: .ultraLight)).frame(width: 44, height: 44)
+                        FineControlIcon(symbol: addedIDs.contains(row.id) ? "checkmark.circle" : "plus.circle", size: 24)
+                            .frame(width: 44, height: 44)
                     }.buttonStyle(.plain).disabled(isLogging || addedIDs.contains(row.id))
                         .accessibilityLabel(addedIDs.contains(row.id) ? "Al in de livesessie" : "Voeg \(row.species.dutchName) toe aan je livesessie")
                 }.frame(minHeight: 64).padding(.horizontal, 12).padding(.vertical, 1)

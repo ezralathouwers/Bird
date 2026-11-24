@@ -86,7 +86,7 @@ struct DiscoverView: View {
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Info")
                 Button { showBackups = true } label: {
-                    Image(systemName: "clock.arrow.circlepath").font(.system(size: 22, weight: .ultraLight))
+                    FineControlIcon(symbol: "clock.arrow.circlepath")
                         .frame(width: 44, height: 44).contentShape(Rectangle())
                 }.accessibilityLabel("Gegevens en back-ups")
                 Button { showEBirdConnection = true } label: {
