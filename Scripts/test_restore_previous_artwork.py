@@ -49,7 +49,27 @@ class PreviousArtworkTests(unittest.TestCase):
         self.assertEqual(repairs.read(self.res(self.new)/'ArtworkManifest.json'),[])
         shutil.copy2(source,self.root/'changed.png')
         self.add(self.new,'test',(200,0,0,255));(self.res(self.new)/'Assets.xcassets/bird-test-primary.imageset/primary.png').unlink()
-        with self.assertRaises((ValueError,OSError)):restore.restore(self.old,self.new)
+        result=restore.restore(self.old,self.new)
+        self.assertEqual(result['restored'],1);self.assertEqual(len(result['warnings']),1)
+        self.assertFalse((self.res(self.new)/'Assets.xcassets/bird-test-primary.imageset/primary.png').exists())
+
+    def test_legacy_destination_without_hash_does_not_block_other_missing_roles(self):
+        self.add(self.new,'test',(255,0,0,255))
+        mp=self.res(self.new)/'ArtworkManifest.json';rows=repairs.read(mp);rows[0].pop('sha256');repairs.api.write_json(mp,rows)
+        image=self.res(self.new)/'Assets.xcassets/bird-test-primary.imageset/primary.png';before=image.read_bytes()
+        result=restore.restore(self.old,self.new)
+        self.assertEqual(result['restored'],1);self.assertEqual(result['warnings'],[])
+        self.assertEqual(image.read_bytes(),before)
+        self.assertNotIn('sha256',repairs.read(mp)[0])
+
+    def test_missing_legacy_source_without_hash_gets_technical_hash_only(self):
+        mp=self.res(self.old)/'ArtworkManifest.json';rows=repairs.read(mp)
+        rows[0].pop('sha256');repairs.api.write_json(mp,rows)
+        result=restore.restore(self.old,self.new);self.assertEqual(result['restored'],2)
+        row=repairs.read(self.res(self.new)/'ArtworkManifest.json')[0]
+        self.assertFalse(row['carryoverTechnicalVerification']['sourceHashWasRecorded'])
+        self.assertFalse(row['anatomyReview']['twoWings'])
+        self.assertEqual(row['sha256'],repairs.digest(self.res(self.old)/'Assets.xcassets/bird-test-primary.imageset/primary.png'))
 
     def test_exception_mid_commit_restores_all_destination_files(self):
         before=(self.res(self.new)/'ArtworkManifest.json').read_bytes()

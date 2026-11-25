@@ -59,3 +59,19 @@ nieuwere correcties behouden, identieke herhaling, bronhashfouten/onvolledige
 bestemmingen, terugdraaien bij fout, metadata behouden, onbekende soorten overslaan
 en de gerichte broncode-update met backup/weigering van onbekende gebruikerscode.
 Geen native Xcode-build of toesteltest in deze omgeving.
+
+## Compatibiliteit met oudere manifests
+
+De eerste overnametool weigerde de bestaande sample-alcedo-atthis-dynamic omdat
+het vroege manifestrecord geen sha256 bevat. De meegeleverde imageset bestaat
+wel; afwezigheid van die historische hash bewijst geen beschadiging. De update
+behoudt zulke bestaande assets ongewijzigd. Ook andere afwijkende bestaande
+bestemmingen worden bewaard en als waarschuwing gerapporteerd, zodat zij het
+bijplaatsen van losstaande ontbrekende rollen niet blokkeren.
+
+Bij een ontbrekende rol uit een oud manifest zonder hash berekent de tool een
+technische hash van het gekozen bronbestand en controleert de gekopieerde bytes.
+Dat wordt als sourceHashWasRecorded=false vastgelegd; de visuele reviewstatus
+wordt niet opgewaardeerd. Een wél vastgelegde bronhash die afwijkt blijft een
+harde fout. Twee extra regressies dekken oude bron- en bestemmingsrecords zonder
+hash. Er zijn nu zeven tests. De sessiecodefix is herhaalbaar en blijft staan.

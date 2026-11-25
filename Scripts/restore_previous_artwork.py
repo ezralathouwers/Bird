@@ -50,7 +50,7 @@ def restore(previous,project,after_swap=None):
         catalog={r['id'] for r in repairs.read(res/'WorldSpeciesCatalog.json')}
         index={}
         for row in manifest:index.setdefault(row['asset'],[]).append(row)
-        seen=set();selected=[];kept=0;unknown=0
+        seen=set();selected=[];kept=0;unknown=0;warnings=[]
         for row in old_manifest:
             asset=row['asset']
             if asset in seen:raise ValueError('Dubbel oud manifestrecord: '+asset)
@@ -65,18 +65,27 @@ def restore(previous,project,after_swap=None):
             dest=res/'Assets.xcassets'/(asset+'.imageset')
             if dest.exists() or asset in index:
                 records=index.get(asset,[])
-                if not dest.exists() or len(records)!=1 or records[0].get('sha256') not in repairs.image_hashes(dest):
-                    raise ValueError('Onvolledige bestemming, niet overschreven: '+asset)
+                # This tool only adds missing roles. Never block the rest of the
+                # migration on an untouched legacy/mismatched destination record.
+                try:
+                    hashes=repairs.image_hashes(dest) if dest.is_dir() else set()
+                    valid=len(records)==1 and bool(hashes) and (records[0].get('sha256') is None or records[0]['sha256'] in hashes)
+                except (OSError,ValueError,KeyError):valid=False
+                if not valid:warnings.append(dict(asset=asset,reason='Bestaande bestemming wijkt af of is onvolledig; ongewijzigd behouden'))
                 kept+=1;continue
             source=old_res/'Assets.xcassets'/(asset+'.imageset')
             if not source.is_dir() or source.is_symlink() or not source.resolve().is_relative_to(old_res.resolve()):raise ValueError('Ontbrekende/onveilige bronmap: '+asset)
             names={x.get('filename') for x in repairs.read(source/'Contents.json').get('images',[]) if x.get('filename')}
             if any((source/name).is_symlink() for name in names):raise ValueError('Symlink in bronafbeelding: '+asset)
             hashes=repairs.image_hashes(source)
-            if not row.get('sha256') or hashes!={row['sha256']}:
+            if len(hashes)!=1 or (row.get('sha256') is not None and hashes!={row['sha256']}):
                 raise ValueError('Oude afbeelding wijkt af van het manifest: '+asset)
+            if row.get('sha256') is None:
+                # Old assets predate recorded checksums. Bind the current bytes
+                # without upgrading the original visual/anatomy review status.
+                row=dict(row,sha256=next(iter(hashes)),carryoverTechnicalVerification=dict(sourceHashWasRecorded=False,sha256=next(iter(hashes))))
             selected.append((row,source,dest))
-        if not selected:return dict(restored=0,kept=kept,unknown=unknown)
+        if not selected:return dict(restored=0,kept=kept,unknown=unknown,warnings=warnings)
         stage=Path(tempfile.mkdtemp(prefix='repair-stage-',dir=project/'.artwork-api'))
         try:
             entries=[]
@@ -98,7 +107,7 @@ def restore(previous,project,after_swap=None):
             except BaseException:
                 repairs.recover(project,journal);raise
             print('Herstelkopie van manifest:',backup)
-            return dict(restored=len(selected),kept=kept,unknown=unknown)
+            return dict(restored=len(selected),kept=kept,unknown=unknown,warnings=warnings)
         finally:
             if not journal.exists():shutil.rmtree(stage,ignore_errors=True)
 
@@ -127,6 +136,7 @@ def main():
                 if not (res/'Assets.xcassets'/(asset+'.imageset')).is_dir():missing.append(bird['dutchName'])
         repairs.api.write_json(project/'.artwork-api/artwork-overname-rapport.json',dict(**result,missingReportedExamples=sorted(missing)))
         if missing:print('Deze voorbeelden ontbreken ook in de gekozen oude projectmap:',', '.join(sorted(missing)),'. Bewaar ook je eerdere Belgische productiemap; laat dit rapport nakijken.')
+        if result['warnings']:print(len(result['warnings']),'bestaande afwijkende/onvolledige assets ongewijzigd behouden; details in artwork-overname-rapport.json.')
         if result['unknown']:print(result['unknown'],'oude records met onbekende soort-ID niet overgenomen.')
     print('Bouw nu deze NIEUWE projectmap opnieuw in Xcode. Geen API-aanvragen of beeldgeneratie.')
 
