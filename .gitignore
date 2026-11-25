@@ -24,3 +24,7 @@ BirdingCompanion/Resources/PrivateBirdLifeRanges/*
 .artwork-api/
 .env
 .env.*
+
+# Local repair previews and virtual environment (originals stay private).
+.illustration-review/
+*-controle.zip

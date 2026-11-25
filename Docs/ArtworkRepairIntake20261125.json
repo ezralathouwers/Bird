@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-25",
+  "status": "waiting-for-compact-inspection-pack",
+  "sourceArchive": "Archief.zip",
+  "sourceAccessBlock": "Uploaded archive exceeds the tool transfer maximum of 32 MiB; no member list or image has been read from this upload.",
+  "speciesCount": null,
+  "imagesGenerated": 0,
+  "imagesReplaced": 0,
+  "userCategories": {
+    "Foute anatomie": "Wing proportions and shape",
+    "Foute kleuren/patronen": "Verify species-specific adult plumage; special care for every supplied bunting",
+    "Foute vleugels/pose": "Avoid far-wing-only display, extra wings and wings attached above/below swallow body"
+  },
+  "researchedExamples": [
+    {
+      "speciesID": "birdnet-v3:BN08621",
+      "scientificName": "Pycnonotus leucogenys",
+      "dutchName": "Witwangbuulbuul",
+      "correction": "Prominent forward-curving crest, black forehead/throat, large white cheek patch, brown upperparts, pale underparts and yellow vent. Do not substitute the weakly crested White-eared Bulbul.",
+      "sourceURL": "https://indianexpress.com/article/cities/chandigarh/birdwatch-yellow-vent-distinguishes-himalayan-bulbuls-from-others-in-its-family-8509538/lite/",
+      "descriptionChecked": true,
+      "originalImageCompared": false,
+      "readyForGeneration": false
+    },
+    {
+      "speciesID": "birdnet-v3:BN04813",
+      "scientificName": "Hypsipetes leucocephalus",
+      "dutchName": "Aziatische zwarte buulbuul",
+      "correction": "Use an adult black-headed morph, with entirely dark head/crest and orange-red bill and legs. Body tone can vary by subspecies. Do not use a white-headed morph for this requested repair.",
+      "sourceURL": "https://birdnet.cornell.edu/taxonomy/species/Hypsipetes%20leucocephalus",
+      "descriptionChecked": true,
+      "originalImageCompared": false,
+      "readyForGeneration": false
+    },
+    {
+      "speciesID": "birdnet-v3:BN04447",
+      "scientificName": "Haliaeetus leucoryphus",
+      "dutchName": "Witbandzeearend",
+      "correction": "Adult plumage: pale sandy/creamy head, dark brown body and wings, broad black tail crossed by a conspicuous broad white band. Do not use the unbanded juvenile tail or an entirely white sea-eagle tail.",
+      "sourceURL": "https://www.himalayanraptors.org/pallass-fish-eagle",
+      "descriptionChecked": true,
+      "originalImageCompared": false,
+      "readyForGeneration": false
+    },
+    {
+      "speciesID": "birdnet-v3:BN02458",
+      "scientificName": "Columba bollii",
+      "dutchName": "Bolles laurierduif",
+      "correction": "Dark slate-grey pigeon with pink/purple breast and subdued neck gloss; darker flight feathers and grey tail with dark terminal band. No white neck patch or white tail as in other pigeons. Avoid a pale generic wood pigeon.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Bolle%27s_pigeon",
+      "descriptionChecked": true,
+      "originalImageCompared": false,
+      "readyForGeneration": false
+    },
+    {
+      "speciesID": "birdnet-v3:BN06747",
+      "scientificName": "Oenanthe fusca",
+      "dutchName": "Bruine rotsspekvreter",
+      "correction": "Predominantly uniform warm/rufous brown, wings and rounded tail slightly darker, vent grading grey-brown. Fine slightly curved bill; no invented stripes or bright red vent.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Brown_rock_chat",
+      "descriptionChecked": true,
+      "originalImageCompared": false,
+      "readyForGeneration": false
+    }
+  ],
+  "additionalRightEdgeSpecies": [
+    {
+      "speciesID": "birdnet-v3:BN06072",
+      "rolesPendingInspection": true
+    },
+    {
+      "speciesID": "birdnet-v3:BN06289",
+      "rolesPendingInspection": true
+    },
+    {
+      "speciesID": "birdnet-v3:BN01170",
+      "rolesPendingInspection": true
+    },
+    {
+      "speciesID": "birdnet-v3:BN02171",
+      "rolesPendingInspection": true
+    },
+    {
+      "speciesID": "birdnet-v3:BN02172",
+      "rolesPendingInspection": true
+    },
+    {
+      "speciesID": "birdnet-v3:BN03921",
+      "rolesPendingInspection": true
+    }
+  ],
+  "buntingsStatus": "Exact species/roles and diagnostic head, breast, wing and rump patterns must be researched after reading the archive inventory; do not assume one generic bunting pattern."
+}

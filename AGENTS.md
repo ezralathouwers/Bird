@@ -141,3 +141,15 @@ of existing completed sessions, including linked logs. Preserve recovery copies
 and atomic migration receipts, never shift active/future sessions or standalone
 observations. Receipts must survive ordinary saves, export and restore. See
 Docs/SESSION_SEARCH_HABITATS_AND_TIME_CORRECTION.md.
+
+
+## Artwork repair direction — 25 November 2026
+
+No source illustration may crop at the right edge; reserve at least 6% clear
+transparent margin. Use both wings folded or both naturally open, never the
+far-wing-only pose with a folded near wing. Check bilateral shoulder attachment,
+swallow wing roots and species-specific proportions. Research every identified
+plumage repair, especially buntings, with sex/age/morph explicit. See
+Docs/ArtworkRepairIntake20261125.json and Docs/ARTWORK_REPAIR_REVIEW_PACK.md.
+The uploaded repair archive was not readable through the 32 MiB transfer tool;
+no image review/replacement may be claimed until the compact pack is supplied.

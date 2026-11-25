@@ -59,6 +59,13 @@ class ArtworkAPIPilotTests(unittest.TestCase):
         self.assertIn('facing RIGHT', body['prompt'])
         self.assertTrue(body['images'][0]['image_url'].startswith('data:image/png;base64,'))
 
+    def test_every_generated_role_has_latest_wing_and_uncropped_right_edge_rules(self):
+        for job in self.jobs:
+            self.assertIn(pilot.COMPOSITION_RULES, job['prompt'])
+            self.assertIn('6 percent transparent clearance on the RIGHT', job['prompt'])
+            self.assertIn('BOTH wings correctly folded or BOTH wings naturally open', job['prompt'])
+            self.assertTrue(job['prompt'].endswith(pilot.COMPOSITION_RULES))
+
     def test_default_cli_is_offline(self):
         result = subprocess.run([sys.executable, str(pilot.ROOT / 'Scripts/artwork_api_pilot.py')], capture_output=True, text=True, check=True)
         self.assertIn('OFFLINE PLAN: no API calls', result.stdout)

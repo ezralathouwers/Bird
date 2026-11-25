@@ -35,3 +35,22 @@ Two original dynamic examples are bundled: kingfisher carrying a fish and great 
 Current coverage: classic portraits 6/6, dynamic heroes 2/6, front/rear/flight illustrations 0/6 each. The remaining artwork has not been created and is explicitly shown as pending. Kestrel hovering is recorded as a future composition example, not a new taxonomy/catalog entry. No photographs or external media were added.
 
 Verification: `git diff --check`, Swift tree-sitter syntax scan, JSON manifest parsing and existence checks for all eight referenced illustration assets passed. No source files were added to the Xcode project; its asset catalog automatically includes the two new image sets. Native rendering, carousel sizing, original thumbnail retention and VoiceOver order must still be checked with Xcode.
+
+
+## Latest repair direction — 25 November 2026
+
+Every generated bird and scene element must remain within the source canvas,
+with at least 6% transparent clearance at the RIGHT edge. No clipped wingtip,
+bill, tail, foot or prop. This supersedes older source-image bleed instructions;
+app layout overflow is a separate question and must be diagnosed separately.
+
+Use either both wings naturally folded or both wings naturally open. Do not
+spread only the far wing while retaining a folded near wing. Exactly two wings,
+with plausible species-specific proportions and matching left/right shoulder
+attachments on the sides of the upper body; no wings stuck above/below a
+swallow's body. Prefer simpler resting poses over ambiguous action.
+
+Corrections to plumage require species/sex/age/morph-specific source research,
+particularly each bunting's head pattern and streaking. Do not treat a generic
+bird description as diagnostic evidence. Original input inspection and final
+output anatomy/plumage inspection remain separate recorded steps.

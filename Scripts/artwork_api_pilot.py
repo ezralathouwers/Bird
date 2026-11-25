@@ -25,6 +25,17 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PLAN = ROOT / 'Docs/ArtworkAPIPilot.json'
 ENDPOINT = 'https://api.openai.com/v1/images/edits'
+COMPOSITION_RULES = (
+    'Composition update 2026-11-25, superseding older crop/bleed or one-wing instructions: keep the ENTIRE bird and every scene element inside the canvas, '
+    'with at least 6 percent transparent clearance on the RIGHT and breathing room on the other edges. '
+    'Never crop a bill, tail, wingtip, foot, branch or plant at the right edge. '
+    'Props must end naturally or fade to fully transparent before the canvas border. '
+    'Choose either BOTH wings correctly folded or BOTH wings naturally open in a balanced pose; '
+    'never spread only the far wing while the near wing stays folded. Exactly two wings total. '
+    'When open, both wings must attach at homologous shoulder joints on the left and right sides of the upper torso, '
+    'never on the belly, back or above/below the body. Show believable species-specific wing shape and span. '
+    'Prefer an uncomplicated folded-wing posture if a dynamic scene makes the anatomy ambiguous.'
+)
 
 
 def sha(blob):
@@ -88,7 +99,7 @@ def jobs(plan, root=ROOT):
             prompt = '\n\n'.join([plan['style'],
                 f"Species: {species['englishName']} ({species['scientificName']}); {species['representativePlumage']}.",
                 'Diagnostic features: ' + species['fieldMarks'], config['direction'],
-                'Scene: ' + species['dynamicScene'] if role == 'dynamic' else 'No props of any kind.'])
+                'Scene: ' + species['dynamicScene'] if role == 'dynamic' else 'No props of any kind.', COMPOSITION_RULES])
             result.append(dict(key=key, id=species['id'], role=role, prompt=prompt, size=config['size'],
                 reference=str(reference), referenceSHA256=sha(reference.read_bytes()),
                 representativePlumage=species['representativePlumage'], referenceURL=species['referenceURL'],
