@@ -75,12 +75,12 @@ def refresh_review(jobs, state, output):
             bounds = image.getchannel('A').point(lambda a: 255 if a > 16 else 0).getbbox()
             margin = (image.width - bounds[2]) / image.width if bounds else 0
         report.append(dict(key=job['key'], rightClearance=margin, minimumRightClearance=0.06,
-                           passesRightClearance=margin >= 0.06, anatomyAssessed=False, plumageAssessed=False))
+                           passesRightClearance=margin >= 0.06, touchesRightEdge=margin <= 0, anatomyAssessed=False, plumageAssessed=False))
     api.write_json(output/'framing-report.json', report)
     failed = [r['key'] for r in report if not r['passesRightClearance']]
     if failed:
         page = output/'review.html'
-        banner = '<div style="padding:20px;background:#f5dfc3">Rechterrandcontrole afgekeurd: ' + ', '.join(failed) + '. Deze beelden kunnen niet worden geïnstalleerd. Geen automatische hergeneratie.</div>'
+        banner = '<div style="padding:20px;background:#f5dfc3">Minder dan de aanbevolen 6% rechterruimte: ' + ', '.join(failed) + '. Dit is een advies, geen bewijs van afsnijding. Visueel goedgekeurde beelden met vrije rechterruimte kunnen na eigenaaracceptatie worden geïnstalleerd. Inhoud op de rechterrand blijft geblokkeerd. Geen automatische hergeneratie.</div>'
         page.write_text(banner+page.read_text())
     return report
 
@@ -150,8 +150,9 @@ def install_completed(plan, project, output, accept=False, after_swap=None):
         if journal.exists(): raise ValueError('Vorige installatie onderbroken. Kies eerst Herstel onderbroken installatie.')
         rows = completed_rows(plan, project, output)
         framing = read(Path(output)/'framing-report.json')
-        if any(not row['passesRightClearance'] for row in framing):
-            raise ValueError('Een nieuw beeld heeft onvoldoende vrije rechterrand. Bekijk framing-report.json; niets geïnstalleerd en geen automatische hergeneratie.')
+        if any(row['rightClearance'] <= 0 for row in framing):
+            raise ValueError('Een nieuw beeld raakt de rechterrand. Bekijk framing-report.json; niets geïnstalleerd en geen automatische hergeneratie.')
+        framing_by_key = {r['key']: r for r in framing}
         old_manifest = read(res/'ArtworkManifest.json'); old_bytes = (res/'ArtworkManifest.json').read_bytes()
         selected=[]
         for row in rows:
@@ -169,6 +170,9 @@ def install_completed(plan, project, output, accept=False, after_swap=None):
             elif records: raise ValueError('Manifest/assetmap onvolledig: '+asset)
             row=copy.deepcopy(row)
             row['ownerAcceptance']=dict(method='bulk-user-accepted-unreviewed',sha256=new_sha,acceptedAt=datetime.datetime.now(datetime.timezone.utc).isoformat())
+            measured = framing_by_key[asset]
+            if not measured['passesRightClearance']:
+                row['ownerAcceptance']['rightMarginWarningAcknowledged'] = dict(sha256=new_sha, measuredClearance=measured['rightClearance'], recommendedClearance=0.06, basis='Owner accepted visually; not an automatic anatomy or plumage attestation')
             selected.append((row,folder,asset,records[0] if records else None))
         if not selected:return 0
         backup=project/'.artwork-api/repair-import-backups'/('repair-'+uuid.uuid4().hex)
@@ -228,7 +232,7 @@ def main():
         print('Originele installatie hersteld; geen API-aanvragen.');return
     jobs=repair_jobs(plan,project)
     if args.install:
-        print('Bekijk eerst review.html. Alleen deze exacte herstelrollen worden vervangen; individuele QA wordt niet automatisch geclaimd.')
+        print('Bekijk eerst review.html. Met JA accepteer je ook marges kleiner dan de aanbevolen 6%, zolang rechts vrije ruimte aanwezig is. Individuele QA wordt niet automatisch geclaimd.')
         if input('Typ JA om de gemaakte beelden te accepteren en installeren: ').strip()!='JA':print('Niets geïnstalleerd.');return
         print('Geïnstalleerd:',install_completed(plan,project,args.output,accept=True));return
     if args.execute:

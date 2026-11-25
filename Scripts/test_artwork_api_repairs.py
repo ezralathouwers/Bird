@@ -119,6 +119,25 @@ class ArtworkRepairTests(unittest.TestCase):
         for target in self.plan['targets'][:2]:
             self.assertEqual(repairs.image_hashes(self.res/'Assets.xcassets'/(target['key']+'.imageset')),{target['originalSHA256']})
 
+    def test_positive_margin_below_six_percent_can_be_owner_accepted_without_altering_png(self):
+        self.prepare_old();state=self.generate()
+        key=self.jobs[0]['key'];path=self.output/state['jobs'][key]['file']
+        image=Image.new('RGBA',tuple(map(int,self.jobs[0]['size'].split('x'))))
+        image.putpixel((image.width-12,500),(20,30,40,255));image.save(path)
+        original=path.read_bytes();new_sha=api.sha(original)
+        state['jobs'][key]['outputSHA256']=new_sha;api.write_json(self.output/'state.json',state)
+        with self.assertRaises(ValueError):repairs.install_completed(self.plan,self.project,self.output)
+        self.assertEqual(repairs.install_completed(self.plan,self.project,self.output,accept=True),1)
+        report=json.loads((self.output/'framing-report.json').read_text())[0]
+        self.assertFalse(report['passesRightClearance']);self.assertFalse(report['touchesRightEdge'])
+        record=next(r for r in json.loads((self.res/'ArtworkManifest.json').read_text()) if r['asset']==key)
+        warning=record['ownerAcceptance']['rightMarginWarningAcknowledged']
+        self.assertEqual(warning['sha256'],new_sha)
+        self.assertAlmostEqual(warning['measuredClearance'],11/image.width)
+        self.assertFalse(record['anatomyReview']['twoWings'])
+        installed=self.res/'Assets.xcassets'/(key+'.imageset')/(self.jobs[0]['role']+'.png')
+        self.assertEqual(installed.read_bytes(),original)
+
     def test_refuses_missing_acceptance_changed_output_and_insufficient_right_margin(self):
         self.prepare_old();state=self.generate()
         with self.assertRaises(ValueError):repairs.install_completed(self.plan,self.project,self.output)

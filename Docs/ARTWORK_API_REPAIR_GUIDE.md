@@ -60,8 +60,10 @@ Alle delen van vogel en scène blijven binnen het canvas, met 6% transparante
 ruimte rechts. Takken eindigen natuurlijk of vervagen vóór de grens.
 
 De technische rechterrandcontrole gebruikt de alpha-bounds boven drempel 16.
-Bij minder dan 6% ruimte volgt een waarschuwing in review.html en blokkeert de
-installatie van de selectie. Geen automatische retry of extra facturering.
+Bij minder dan 6% ruimte volgt een advies in review.html. Na expliciete
+eigenaaracceptatie mag een beeld met positieve vrije rechterruimte worden
+geïnstalleerd; gemeten inhoud op de rechterrand blijft geblokkeerd. De aanbevolen
+6% blijft in generatieprompts staan. Geen automatische retry of extra facturering.
 Een afgekeurd resultaat moet in een afzonderlijke gecontroleerde vervolgronde
 opnieuw worden gemaakt; verwijder nooit zomaar state.json/PNG's om te herstarten.
 Anatomie, soortkenmerken, stijl en realistische pose blijven visueel te beoordelen.
@@ -107,3 +109,19 @@ van twee goede primary-rollen, dubbele aanvragen vermijden, checksums,
 manifest/versies/provenance, onjuiste bronhash, rechterrandweigering, terugdraaien
 bij schrijffout en expliciet herstel na een echt beëindigd testproces.
 Mac-keuzevensters en daadwerkelijke API-output zijn in deze omgeving niet getest.
+
+## Update voor de goedgekeurde herstelbeelden
+
+De eigenaar heeft alle nieuwe versies visueel goedgekeurd. Het aangeleverde
+framingrapport bevat 77 beelden: 64 onder de aanbevolen 6%, maar geen met nul
+gemeten rechterruimte (minimum circa 1,1%). Deze meting bewijst geen afsnijding.
+De importer registreert acceptatie van een smalle marge met de exacte outputhash,
+gemeten marge en aanbevolen marge; anatomie/plumage-QA wordt niet geclaimd.
+
+Bij de oude blokkade: pak Birder-Herstelimport-fix.zip uit en open
+Herstel-Installatie.command. Kies de **bestaande Birder-Illustratieherstel-map**
+met je gemaakte beelden, niet de Xcode-projectmap. De updater herkent uitsluitend
+de oorspronkelijke scriptversie, bewaart een herstelkopie en vervangt alleen het
+installatiescript. PNG's, state.json en de vaste opdracht blijven onaangeraakt.
+Open daarna het oorspronkelijke Scripts/Start-Illustratieherstel.command, kies
+optie 4 en bevestig met JA. Geen generatie, API-sleutel of nieuwe kosten nodig.

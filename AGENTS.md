@@ -163,3 +163,12 @@ The hash-bound plan has 77 targets, pilot six, four missing additional species.
 See Docs/ARTWORK_API_REPAIR_GUIDE.md. Input review was of compact previews, not
 full originals; new output has no visual approval. Replacement must match exact
 rejected source hashes, retain backups, and require explicit local acceptance.
+
+## Approved repair import override — later 25 November 2026
+
+The owner visually approved all generated repair outputs. For this explicit
+owner-accepted import, 6% right clearance is advisory; require positive measured
+clearance and retain hash-bound acknowledgment for narrower margins. Do not
+claim anatomy/plumage QA. Keep 6% in generation prompts, and preserve source
+hashes, backups, frozen recipe/checkpoints and all unrelated assets. The small
+updater changes only the known original repair runner, keeping generated PNGs.
