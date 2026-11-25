@@ -181,3 +181,12 @@ roles must match the frozen repair hashes. Preserve all other assets and source
 checkpoints. Commit both batches only after preflight; support rollback/recovery
 and no-op reruns. See Docs/LOGBOOK_AND_REPAIR_IMPORT.md. Installer updates do not
 update app UI; session habitats require building the current Swift project.
+
+## Carry over locally imported artwork — 25 November 2026
+
+A fresh project archive does not contain every previously imported local batch.
+When migrating, merge missing old-project imagesets and their exact manifest
+records, preserving all newer destination artwork/repairs. Do not replace the
+whole resources directory or manifest. See Docs/ARTWORK_CARRYOVER_AND_SESSION_RENDERING.md.
+SessionHabitatArtwork must keep a concrete placeholder mounted while its image
+is nil so the initial loading task has a view to attach to.

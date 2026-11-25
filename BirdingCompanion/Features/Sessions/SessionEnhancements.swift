@@ -82,7 +82,9 @@ struct SessionHabitatArtwork: View {
     let scene: HabitatScene
     @State private var image: UIImage?
     var body: some View {
-        Group {
+        // Keep a concrete view mounted while image is nil, so the loading task
+        // also starts on the first appearance of a session row.
+        Color.clear.overlay {
             if let image { Image(uiImage: image).resizable().scaledToFit() }
         }.task(id: scene.id) {
             image = nil
