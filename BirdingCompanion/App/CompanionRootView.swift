@@ -16,6 +16,7 @@ struct CompanionRootView: View {
     @State private var identificationPath = NavigationPath()
     @Environment(\.scenePhase) private var scenePhase
     @State private var showLiveSession = false
+    @State private var sessionTimeCorrectionError: String?
     @StateObject private var observationNavigation = ObservationNavigation()
     @State private var section: MainSection = .discover
     @State private var speciesPath: [Species] = []
@@ -66,8 +67,14 @@ struct CompanionRootView: View {
             .environmentObject(backups)
             .environmentObject(countryRepair)
             .task {
+                do { try store.adjustExistingSessionTimesOnce() }
+                catch { sessionTimeCorrectionError = error.localizedDescription }
                 milestones.update(observations: store.observations, goals: store.goals, catalog: SpeciesGuideCatalog.species, historyReplacementID: store.historyReplacementID)
                 countryRepair.resume(store: store)
+            }
+            .onChange(of: store.historyReplacementID) { _, _ in
+                do { try store.adjustExistingSessionTimesOnce() }
+                catch { sessionTimeCorrectionError = error.localizedDescription }
             }
             .onChange(of: store.revision) { _, _ in
                 backups.schedule(store: store)
@@ -129,6 +136,10 @@ struct CompanionRootView: View {
                     MilestoneCelebration(milestone: milestone) { milestones.advance() }
                 }
             }
+            .alert("Sessietijden konden niet worden aangepast", isPresented: Binding(
+                get: { sessionTimeCorrectionError != nil }, set: { if !$0 { sessionTimeCorrectionError = nil } })) {
+                    Button("Sluiten", role: .cancel) { sessionTimeCorrectionError = nil }
+                } message: { Text(sessionTimeCorrectionError ?? "") }
             .fullScreenCover(item: $observationNavigation.selection) { observation in
                 ObservationMapView(observation: observation, species: observationNavigation.species ?? species)
                     .environmentObject(store)

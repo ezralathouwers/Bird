@@ -130,3 +130,14 @@ log points; the general Countries map still shows each species' first log.
 The logbook home filter uses a privately configured local home point and 150m
 radius; no private addresses in source control. Local bird settings use a
 fullscreen back/header flow. See Docs/MILESTONES_AND_REPORT_MAPS.md.
+
+## Session enhancements — 25 November 2026
+
+Sessions has header search, foreign-country circle flags (except BE), and
+species-voted habitat illustrations with an editable optional habitatSceneID.
+Species rows on session details link to species pages; detail bottom padding
+is now 79pt plus general padding. The owner authorized a one-time +2h correction
+of existing completed sessions, including linked logs. Preserve recovery copies
+and atomic migration receipts, never shift active/future sessions or standalone
+observations. Receipts must survive ordinary saves, export and restore. See
+Docs/SESSION_SEARCH_HABITATS_AND_TIME_CORRECTION.md.

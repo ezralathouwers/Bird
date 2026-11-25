@@ -2864,3 +2864,128 @@ final class FineControlRenderingRegressionTests: XCTestCase {
         }
     }
 }
+
+@MainActor
+final class SessionEnhancementTests: XCTestCase {
+    private func fixture() -> BirdingArchive {
+        let start = Date(timeIntervalSince1970: 100000)
+        let session = BirdSession(locationName: "Testgebied", latitude: 50, longitude: 4, countryCode: "NL",
+            startedAt: start, endedAt: start.addingTimeInterval(3600), isLive: false)
+        var log = Observation(speciesID: "test-bird", taxonomyVersion: "test", observedAt: start.addingTimeInterval(600),
+            locationName: "Andere testplek", count: 2, notes: "Behoud deze notitie", status: .confirmed)
+        log.sessionID = session.id; log.latitude = 50.001; log.longitude = 4.001
+        log.source = "birda-csv"; log.importMetadata = ["sourceID": "test-original"]
+        log.timeZoneIdentifier = "Europe/Brussels"
+        var standalone = log; standalone.id = UUID(); standalone.sessionID = nil
+        let live = BirdSession(locationName: "Live", latitude: 50, longitude: 4, countryCode: "BE",
+            startedAt: start, endedAt: nil, isLive: true)
+        return BirdingArchive(observations: [log, standalone], sessions: [session, live],
+            goals: [BirdGoal(name: "Testdoel", speciesIDs: [log.speciesID])])
+    }
+    func testCorrectionMovesCompletedSessionAndLinkedLogsExactlyTwoHours() throws {
+        let original = fixture()
+        let result = SessionTimeAdjustment.apply(to: original)
+        XCTAssertEqual(result.sessions[0].startedAt, original.sessions[0].startedAt.addingTimeInterval(7200))
+        XCTAssertEqual(result.sessions[0].endedAt, original.sessions[0].endedAt?.addingTimeInterval(7200))
+        XCTAssertEqual(SessionStats.duration(result.sessions[0]), SessionStats.duration(original.sessions[0]))
+        var expectedLog = original.observations[0]; expectedLog.observedAt = expectedLog.observedAt.addingTimeInterval(7200)
+        XCTAssertEqual(result.observations[0], expectedLog)
+        XCTAssertEqual(result.observations[1], original.observations[1])
+        XCTAssertEqual(result.sessions[1], original.sessions[1])
+        XCTAssertEqual(result.goals, original.goals)
+        XCTAssertEqual(result.sessions[0].id, original.sessions[0].id)
+        try ObservationStore.validateArchive(observations: result.observations, sessions: result.sessions)
+    }
+    func testCorrectionIsIdempotentAndSurvivesRoundTripAndMissingGlobalReceipt() throws {
+        let once = SessionTimeAdjustment.apply(to: fixture())
+        let decoded = try JSONDecoder().decode(BirdingArchive.self, from: JSONEncoder().encode(once))
+        XCTAssertEqual(SessionTimeAdjustment.apply(to: decoded), once)
+        var oldAppArchive = decoded; oldAppArchive.appliedDataFixes = nil
+        let result = SessionTimeAdjustment.apply(to: oldAppArchive)
+        XCTAssertEqual(result.sessions, once.sessions)
+        XCTAssertEqual(result.observations, once.observations)
+        var withNewSession = once
+        var new = once.sessions[0]; new.id = UUID(); new.importMetadata = nil
+        withNewSession.sessions.append(new)
+        XCTAssertEqual(SessionTimeAdjustment.apply(to: withNewSession), withNewSession, "Future sessions must not receive the historical correction")
+    }
+    func testPersistedCorrectionHasRecoveryCopyAndSurvivesNormalSaveExportAndRestore() throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let persistence = JSONObservationPersistence(url: folder.appendingPathComponent("history.json"))
+        let original = fixture()
+        try persistence.save(original.observations, sessions: original.sessions, goals: original.goals ?? [])
+        let originalBytes = try Data(contentsOf: persistence.url)
+        let store = ObservationStore(persistence: persistence)
+        try store.adjustExistingSessionTimesOnce()
+        let adjustedLogs = store.observations
+        let recovery = try FileManager.default.contentsOfDirectory(at: folder.appendingPathComponent("RecoveryCopies"), includingPropertiesForKeys: nil)
+        XCTAssertEqual(recovery.count, 1)
+        XCTAssertEqual(try Data(contentsOf: XCTUnwrap(recovery.first)), originalBytes)
+        var log = store.observations[1]; log.notes = "Bewerkte notitie"
+        try store.save(log, editing: true)
+        let reloaded = ObservationStore(persistence: persistence)
+        try reloaded.adjustExistingSessionTimesOnce()
+        XCTAssertEqual(reloaded.observations[0], adjustedLogs[0])
+        let exported = try JSONDecoder().decode(BirdingArchive.self, from: reloaded.exportArchiveData())
+        XCTAssertTrue(exported.appliedDataFixes?.contains(SessionTimeAdjustment.identifier) == true)
+        let next = JSONObservationPersistence(url: folder.appendingPathComponent("restored.json"))
+        let restored = ObservationStore(persistence: next)
+        try restored.restoreArchive(exported, expectedRevision: restored.revision)
+        try restored.adjustExistingSessionTimesOnce()
+        XCTAssertEqual(restored.observations, reloaded.observations)
+        XCTAssertEqual(restored.sessions, reloaded.sessions)
+    }
+    func testFailedCorrectionNeverPublishesOrMarksData() throws {
+        let original = fixture()
+        let persistence = SessionCorrectionFailureFixture(original: original)
+        let store = ObservationStore(persistence: persistence)
+        let revision = store.revision
+        XCTAssertThrowsError(try store.adjustExistingSessionTimesOnce())
+        XCTAssertTrue(persistence.preserved)
+        XCTAssertEqual(store.observations, original.observations)
+        XCTAssertEqual(store.sessions, original.sessions)
+        XCTAssertEqual(store.revision, revision)
+        XCTAssertFalse(store.appliedDataFixes.contains(SessionTimeAdjustment.identifier))
+    }
+    func testHabitatVotingCountsUniqueConfirmedSpeciesAndTiesAreStable() {
+        var one = fixture().observations[0]; one.sessionID = nil
+        var two = Observation(speciesID: "other", taxonomyVersion: "test", observedAt: Date(), locationName: "", count: 1, notes: "", status: .confirmed)
+        let choose: (String) -> String? = { $0 == "test-bird" ? "woodland" : $0 == "other" ? "coast" : nil }
+        XCTAssertEqual(SessionHabitatProjection.sceneID(logs: [one, one, two], primaryScene: choose), "coast")
+        two.status = .uncertain
+        XCTAssertEqual(SessionHabitatProjection.sceneID(logs: [one, two], primaryScene: choose), "woodland")
+        XCTAssertNil(SessionHabitatProjection.sceneID(logs: [], primaryScene: choose))
+        one.isCaptive = true
+        XCTAssertNil(SessionHabitatProjection.sceneID(logs: [one, two], primaryScene: choose))
+    }
+    func testSessionSearchMatchesPlaceCountryAndBirdNamesWithoutAccents() {
+        let archive = fixture()
+        let bird = Species(id: "test-bird", taxonomyVersion: "test", dutchName: "Grote bonte specht", englishName: "Great spotted woodpecker", scientificName: "Dendrocopos major")
+        let matches: (String) -> Bool = { SessionCatalogSearch.matches($0, session: archive.sessions[0], logs: archive.observations, catalog: [bird]) }
+        XCTAssertTrue(matches("TESTGEBIED")); XCTAssertTrue(matches("Nederland"))
+        XCTAssertTrue(matches("woodpecker")); XCTAssertTrue(matches("bonte specht"))
+        XCTAssertFalse(matches("onbekende plek")); XCTAssertTrue(matches(""))
+    }
+    func testHabitatOverrideRoundTripsAndOldSessionsRemainDecodable() throws {
+        var archive = fixture(); archive.sessions[0].habitatSceneID = "woodland"
+        let decoded = try JSONDecoder().decode(BirdingArchive.self, from: JSONEncoder().encode(archive))
+        XCTAssertEqual(decoded.sessions[0].habitatSceneID, "woodland")
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(archive.sessions[0])) as? [String: Any])
+        json.removeValue(forKey: "habitatSceneID")
+        let old = try JSONDecoder().decode(BirdSession.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertNil(old.habitatSceneID)
+    }
+}
+
+private final class SessionCorrectionFailureFixture: ObservationPersistence {
+    let original: BirdingArchive
+    var preserved = false
+    init(original: BirdingArchive) { self.original = original }
+    func load() throws -> [Observation] { original.observations }
+    func loadSessions() throws -> [BirdSession] { original.sessions }
+    func loadGoals() throws -> [BirdGoal] { original.goals ?? [] }
+    func preserveBeforeRestore() throws { preserved = true }
+    func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteOutOfSpace) }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal], dataFixes: [String]) throws { throw CocoaError(.fileWriteOutOfSpace) }
+}

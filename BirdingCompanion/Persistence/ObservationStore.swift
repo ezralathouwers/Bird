@@ -7,6 +7,8 @@ protocol ObservationPersistence {
     func save(_ observations: [Observation]) throws
     func loadSessions() throws -> [BirdSession]
     func loadGoals() throws -> [BirdGoal]
+    func loadDataFixes() throws -> [String]
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal], dataFixes: [String]) throws
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws
     func save(_ observations: [Observation], sessions: [BirdSession]) throws
 }
@@ -14,6 +16,11 @@ protocol ObservationPersistence {
 extension ObservationPersistence {
     func preserveBeforeRestore() throws { throw BackupError.unsupported }
     func loadGoals() throws -> [BirdGoal] { [] }
+    func loadDataFixes() throws -> [String] { [] }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal], dataFixes: [String]) throws {
+        guard dataFixes.isEmpty else { throw SessionError.unsupportedPersistence }
+        try save(observations, sessions: sessions, goals: goals)
+    }
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
         guard goals.isEmpty else { throw GoalError.unsupportedPersistence }
         try save(observations, sessions: sessions)
@@ -49,6 +56,7 @@ struct JSONObservationPersistence: ObservationPersistence {
     func load() throws -> [Observation] { try archive().observations }
     func loadSessions() throws -> [BirdSession] { try archive().sessions }
     func loadGoals() throws -> [BirdGoal] { try archive().goals ?? [] }
+    func loadDataFixes() throws -> [String] { try archive().appliedDataFixes ?? [] }
     func save(_ observations: [Observation]) throws {
         try save(observations, sessions: archive().sessions)
     }
@@ -56,10 +64,13 @@ struct JSONObservationPersistence: ObservationPersistence {
         try save(observations, sessions: sessions, goals: archive().goals ?? [])
     }
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal]) throws {
+        try save(observations, sessions: sessions, goals: goals, dataFixes: loadDataFixes())
+    }
+    func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal], dataFixes: [String]) throws {
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-        // One atomic write: never publish a session without its individual observations.
-        try JSONEncoder().encode(BirdingArchive(observations: observations, sessions: sessions, goals: goals))
-            .write(to: url, options: .atomic)
+        // The migration receipt and adjusted records share one atomic write.
+        try JSONEncoder().encode(BirdingArchive(observations: observations, sessions: sessions, goals: goals,
+            appliedDataFixes: dataFixes.isEmpty ? nil : dataFixes)).write(to: url, options: .atomic)
     }
 }
 
@@ -75,6 +86,7 @@ final class ObservationStore: ObservableObject {
     @Published private(set) var loadError: String?
     @Published private(set) var revision = UUID()
     private(set) var historyReplacementID = UUID()
+    private(set) var appliedDataFixes: [String] = []
     private let persistence: any ObservationPersistence
 
     init(persistence: any ObservationPersistence) {
@@ -88,6 +100,7 @@ final class ObservationStore: ObservableObject {
             let loadedGoals = try persistence.loadGoals()
             for goal in loadedGoals { try goal.validate() }
             guard Set(loadedGoals.map(\.id)).count == loadedGoals.count else { throw GoalError.duplicateID }
+            appliedDataFixes = try persistence.loadDataFixes()
             observations = loaded
             sessions = loadedSessions
             goals = loadedGoals
@@ -302,15 +315,30 @@ final class ObservationStore: ObservableObject {
         try BackupCodec.validate(archive)
         // Preserve even an unreadable source file before replacing it.
         try persistence.preserveBeforeRestore()
-        try persistence.save(archive.observations, sessions: archive.sessions, goals: archive.goals ?? [])
+        try persistence.save(archive.observations, sessions: archive.sessions, goals: archive.goals ?? [], dataFixes: archive.appliedDataFixes ?? [])
         observations = archive.observations; sessions = archive.sessions; goals = archive.goals ?? []
+        appliedDataFixes = archive.appliedDataFixes ?? []
         loadError = nil; historyReplacementID = UUID(); revision = UUID()
+    }
+
+    func adjustExistingSessionTimesOnce() throws {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        guard !appliedDataFixes.contains(SessionTimeAdjustment.identifier) else { return }
+        let adjusted = SessionTimeAdjustment.apply(to: BirdingArchive(observations: observations, sessions: sessions,
+            goals: goals, appliedDataFixes: appliedDataFixes))
+        try Self.validateArchive(observations: adjusted.observations, sessions: adjusted.sessions)
+        try persistence.preserveBeforeRestore()
+        try persistence.save(adjusted.observations, sessions: adjusted.sessions, goals: goals, dataFixes: adjusted.appliedDataFixes ?? [])
+        observations = adjusted.observations; sessions = adjusted.sessions
+        appliedDataFixes = adjusted.appliedDataFixes ?? []
+        revision = UUID()
     }
 
     func exportArchiveData() throws -> Data {
         guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
         let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        return try encoder.encode(BirdingArchive(observations: observations, sessions: sessions, goals: goals))
+        return try encoder.encode(BirdingArchive(observations: observations, sessions: sessions, goals: goals,
+            appliedDataFixes: appliedDataFixes.isEmpty ? nil : appliedDataFixes))
     }
 
     func addGoal(_ goal: BirdGoal) throws {

@@ -48,6 +48,17 @@ struct SessionsView: View {
     @EnvironmentObject private var store: ObservationStore
     @State private var newSession: NewSessionMode?
     @Binding var showLive: Bool
+    @State private var showSearch = false
+    @State private var search = ""
+    @FocusState private var searchFocused: Bool
+    private func matches(_ session: BirdSession) -> Bool {
+        if search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return true }
+        let logs = store.observations(in: session)
+        return SessionCatalogSearch.matches(search, session: session, logs: logs,
+            catalog: logs.map { SessionStats.bird($0.speciesID) })
+    }
+    private var filteredSessions: [BirdSession] { store.completedSessions.filter { matches($0) } }
+    private var visibleActive: BirdSession? { store.activeSession.flatMap { matches($0) ? $0 : nil } }
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top, spacing: 6) {
@@ -55,41 +66,61 @@ struct SessionsView: View {
                 RoundAction(symbol: "clock", label: "Voltooide sessie toevoegen") { newSession = .completed }
                 RoundAction(symbol: "play", label: "Nieuwe livesessie starten") { newSession = .live }
                 .disabled(store.activeSession != nil || store.loadError != nil)
+                Button { showSearch.toggle() } label: {
+                    Group {
+                        if showSearch { Image(systemName: "xmark").font(.system(size: 22, weight: .ultraLight)) }
+                        else { FineSearchMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 22, height: 22) }
+                    }.frame(width: 44, height: 44).background(FieldGuideTheme.searchControlBackground, in: Circle())
+                }.accessibilityLabel(showSearch ? "Sluit zoeken in sessies" : "Zoek in je sessies")
             }
             .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 24)
             .fixedSize(horizontal: false, vertical: true)
-            CatalogResultsScroll(resetKey: "sessions") {
+            if showSearch {
+                BirdTextField("Zoek sessies, plaatsen of vogelsoorten", text: $search).modifier(RoundedSearchField())
+                    .autocorrectionDisabled().focused($searchFocused).padding(.horizontal, 20).padding(.bottom, 16)
+            }
+            CatalogResultsScroll(resetKey: "sessions-\(search)") {
                 LazyVStack(alignment: .leading, spacing: 24) {
 
                     if let message = store.loadError { Text(message).foregroundStyle(.red) }
-                    if let active = store.activeSession {
+                    if let active = visibleActive {
                         Button { showLive = true } label: {
                             HStack {
-                                Text("\(active.locationName) · livesessie"); Spacer()
+                                SessionCountryTitle(session: active); Text("Livesessie").font(FieldGuideTheme.sans(12)); Spacer()
+                                if let scene = SessionHabitatProjection.scene(session: active, logs: store.observations(in: active)) {
+                                    SessionHabitatArtwork(scene: scene).frame(width: 80, height: 60)
+                                }
                                 FineControlIcon(symbol: "play", size: 18)
                             }.frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
                         }.buttonStyle(.plain).padding(.horizontal, 20).padding(.vertical, 12)
                         .background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
                     }
                     if store.completedSessions.isEmpty, store.loadError == nil { Text("Nog geen afgeronde sessies.") }
+                    if !search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && filteredSessions.isEmpty && visibleActive == nil { Text("Geen sessies gevonden.") }
                     let lifers = SessionStats.liferIDs(in: store.observations)
-                    ForEach(store.completedSessions) { session in
+                    ForEach(filteredSessions) { session in
                         NavigationLink(value: SessionRoute(id: session.id)) {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(session.locationName).font(FieldGuideTheme.sans(20, relativeTo: .title3))
-                                Text("\(session.historyDate(session.startedAt, time: .omitted)) · \(SessionStats.duration(session))")
-                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                                let logs = store.observations(in: session)
-                                let count = logs.filter { lifers.contains($0.id) }.count
-                                Text("\(logs.count) \(logs.count == 1 ? "waarneming" : "waarnemingen")" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
-                                .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                            }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
+                            let logs = store.observations(in: session)
+                            HStack(spacing: 12) {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    SessionCountryTitle(session: session)
+                                    Text("\(session.historyDate(session.startedAt, time: .omitted)) · \(SessionStats.duration(session))")
+                                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                    let count = logs.filter { lifers.contains($0.id) }.count
+                                    Text("\(logs.count) \(logs.count == 1 ? "waarneming" : "waarnemingen")" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
+                                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                                if let scene = SessionHabitatProjection.scene(session: session, logs: logs) {
+                                    SessionHabitatArtwork(scene: scene).frame(width: 112, height: 90)
+                                }
+                            }.frame(maxWidth: .infinity, minHeight: 90, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
                         }.buttonStyle(.plain)
                         Divider()
                     }
                 }.padding(.horizontal, 20).padding(.bottom, 94)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
+        .onChange(of: showSearch) { _, shown in searchFocused = shown; if !shown { search = "" } }
         .fullScreenCover(item: $newSession) { mode in
             SessionForm(live: mode == .live) { if mode == .live { showLive = true } }.id(mode)
         }
@@ -116,6 +147,7 @@ struct SessionForm: View {
     @State private var showSearch = false
     @State private var confirmDelete = false
     @State private var confirmConvert = false
+    @State private var habitatSceneID = ""
     init(live: Bool, reviewing: BirdSession? = nil, onSaved: @escaping () -> Void) {
         self.live = live; self.reviewing = reviewing; self.onSaved = onSaved
         let seed: Observation? = reviewing.map { session in
@@ -172,6 +204,15 @@ struct SessionForm: View {
                         Button { location.useCurrentLocation() } label: { Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44) }
                             .disabled(location.isLocating)
                     }
+                    VStack(alignment: .leading, spacing: 8) {
+                        Picker("Leefomgeving", selection: $habitatSceneID) {
+                            Text("Automatisch op basis van vogelsoorten").tag("")
+                            ForEach(HabitatSceneCatalog.scenes.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }) { scene in
+                                Text(scene.name).tag(scene.id)
+                            }
+                        }.pickerStyle(.menu)
+                        Text("De automatische keuze is een voorstel. Je kunt dit later aanpassen.").font(FieldGuideTheme.sans(13))
+                    }
                     if !live {
                         Text("\(reviewing == nil ? selected.count : reviewLogs.count) \((reviewing == nil ? selected.count : reviewLogs.count) == 1 ? "waarneming" : "waarnemingen")")
                             .font(FieldGuideTheme.sans(24, relativeTo: .title2))
@@ -221,6 +262,7 @@ struct SessionForm: View {
                 guard !initialized else { return }; initialized = true
                 if let reviewing {
                     start = reviewing.startedAt; end = reviewing.endedAt ?? Date()
+                    habitatSceneID = reviewing.habitatSceneID ?? ""
                     reviewLogs = store.observations(in: reviewing); originalLogs = reviewLogs
                 } else { location.useCurrentLocation() }
             }
@@ -252,6 +294,7 @@ struct SessionForm: View {
         var session = BirdSession(locationName: location.locationName.trimmingCharacters(in: .whitespacesAndNewlines), latitude: latitude,
             longitude: longitude, countryCode: location.countryCode, startedAt: live ? Date() : start,
             endedAt: live ? nil : resolvedEnd, isLive: reviewing?.isLive ?? live)
+        session.habitatSceneID = habitatSceneID.isEmpty ? nil : habitatSceneID
         do {
             if let reviewing {
                 session.id = reviewing.id
@@ -411,6 +454,7 @@ private struct RemoveSessionBirdButton: View {
 private struct SessionLogsList: View {
     let logs: [Observation]
     var showsTime = true
+    var linksToSpecies = false
     var liferIDs: Set<UUID>? = nil
     var remove: ((Observation) -> Void)? = nil
     @EnvironmentObject private var store: ObservationStore
@@ -418,13 +462,16 @@ private struct SessionLogsList: View {
         let lifers = liferIDs ?? SessionStats.liferIDs(in: store.observations)
         LazyVStack(spacing: 0) {
             ForEach(logs) { log in
-                SessionBirdRow(bird: SessionStats.bird(log.speciesID)) {
+                let row = SessionBirdRow(bird: SessionStats.bird(log.speciesID)) {
                     HStack(spacing: 4) {
                         if lifers.contains(log.id) { LiferStar().fill(FieldGuideTheme.khaki).frame(width: 18, height: 18).padding(.trailing, showsTime ? 8 : 0).foregroundStyle(FieldGuideTheme.khaki).accessibilityLabel("Lifer") }
                         if showsTime { Text(log.historyDate(day: .omitted)).font(FieldGuideTheme.sans(12, relativeTo: .caption)) }
                         if let remove { RemoveSessionBirdButton { remove(log) } }
                     }
                 }
+                if linksToSpecies {
+                    NavigationLink(value: SessionStats.bird(log.speciesID)) { row }.buttonStyle(.plain)
+                } else { row }
                 Divider()
             }
         }
@@ -452,7 +499,7 @@ private struct SessionDetailView: View {
             ScrollView {
                 if let session = current {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(session.locationName).font(FieldGuideTheme.sans(28, relativeTo: .title))
+                        SessionCountryTitle(session: session, size: 28)
                         Text(SessionStats.period(session)).font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
                         let logs = store.observations(in: session)
                         HStack(alignment: .top) {
@@ -468,8 +515,8 @@ private struct SessionDetailView: View {
                                     .background(FieldGuideTheme.searchControlBackground, in: Circle())
                             }.accessibilityLabel("Sortering").accessibilityValue(sort.rawValue)
                         }.padding(.top, 16).padding(.bottom, 12)
-                        SessionLogsList(logs: SessionStats.sorted(logs, by: sort))
-                    }.padding(20).padding(.bottom, 59)
+                        SessionLogsList(logs: SessionStats.sorted(logs, by: sort), linksToSpecies: true)
+                    }.padding(20).padding(.bottom, 79)
                 }
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)

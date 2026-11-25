@@ -94,6 +94,7 @@ struct BirdSession: Identifiable, Codable, Equatable, Sendable {
     var isLive: Bool
     var importMetadata: [String: String]? = nil
     var timeZoneIdentifier: String? = nil
+    var habitatSceneID: String? = nil
 
     func validate() throws {
         guard !locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
@@ -126,6 +127,7 @@ struct BirdingArchive: Codable, Equatable, Sendable {
     var observations: [Observation]
     var sessions: [BirdSession]
     var goals: [BirdGoal]? = nil
+    var appliedDataFixes: [String]? = nil
 }
 
 struct SessionLogLocation: Sendable {

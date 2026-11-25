@@ -157,3 +157,6 @@ illustraties van je actuele logboek is er een lokaal API-productiepakket:
 
 Mijlpalen, kaarten van openbare meldingen/sessies/landen en de lokale thuisfilter:
 zie [Docs/MILESTONES_AND_REPORT_MAPS.md](Docs/MILESTONES_AND_REPORT_MAPS.md).
+
+Sessies zoeken, leefomgevingen en de eenmalige tijdcorrectie:
+[Docs/SESSION_SEARCH_HABITATS_AND_TIME_CORRECTION.md](Docs/SESSION_SEARCH_HABITATS_AND_TIME_CORRECTION.md).
