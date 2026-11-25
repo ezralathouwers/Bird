@@ -172,3 +172,12 @@ clearance and retain hash-bound acknowledgment for narrower margins. Do not
 claim anatomy/plumage QA. Keep 6% in generation prompts, and preserve source
 hashes, backups, frozen recipe/checkpoints and all unrelated assets. The small
 updater changes only the known original repair runner, keeping generated PNGs.
+
+## Combined local artwork import — 25 November 2026
+
+The owner requested importing the uninstalled logbook batch together with the
+approved repairs. Use the offline staged combined importer; superseded original
+roles must match the frozen repair hashes. Preserve all other assets and source
+checkpoints. Commit both batches only after preflight; support rollback/recovery
+and no-op reruns. See Docs/LOGBOOK_AND_REPAIR_IMPORT.md. Installer updates do not
+update app UI; session habitats require building the current Swift project.

@@ -87,9 +87,10 @@ struct SessionHabitatArtwork: View {
         }.task(id: scene.id) {
             image = nil
             guard let source = await HabitatArtworkCache.image(for: scene), !Task.isCancelled else { return }
+            image = source
             let thumbnail = await source.byPreparingThumbnail(ofSize: CGSize(width: 400, height: 240))
             guard !Task.isCancelled else { return }
-            image = thumbnail
+            image = thumbnail ?? source
         }.accessibilityHidden(true)
     }
 }

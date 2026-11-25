@@ -73,3 +73,14 @@ waarnemingstijden zodat begin/einde, lijst en kaartdetails consistent blijven.
   Native build, appnavigatie, tijdcorrectie en de nieuwe overzichtsillustraties
   moeten nog in Xcode/op iPhone worden gecontroleerd. Er zijn in deze omgeving
   geen persoonlijke records van het toestel gewijzigd.
+
+## Zichtbaarheid na een installer-update
+
+Een illustratie-import of losse update van het herstelscript verandert de Swift
+appcode niet. De sessie-leefomgevingen en de keuze bij bewerken staan in het
+app-project en vereisen een nieuwe Xcode-build van die broncode. De renderer
+toont nu de geladen scène direct, verkleint die daarna en houdt het origineel
+als terugval wanneer iOS geen thumbnail kan maken. De soortgebaseerde bepaling
+en bewerkbare opgeslagen keuze blijven behouden. Dit is een mogelijke lege-
+previewroute; zonder toestelreproductie is niet vastgesteld dat dit de oorzaak
+was van de ontbrekende beelden op het toestel. Native build blijft onverifieerd.
