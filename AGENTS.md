@@ -153,3 +153,13 @@ plumage repair, especially buntings, with sex/age/morph explicit. See
 Docs/ArtworkRepairIntake20261125.json and Docs/ARTWORK_REPAIR_REVIEW_PACK.md.
 The uploaded repair archive was not readable through the 32 MiB transfer tool;
 no image review/replacement may be claimed until the compact pack is supplied.
+
+## Repair pack received — later 25 November 2026
+
+The compact archive has now been read: 80 previews, 62 species, 79 distinct
+roles. One identical fantail occurs in two categories. Preserve complete primary
+art for Black-and-white Warbler and Monk Parakeet; repair their dynamic scenes.
+The hash-bound plan has 77 targets, pilot six, four missing additional species.
+See Docs/ARTWORK_API_REPAIR_GUIDE.md. Input review was of compact previews, not
+full originals; new output has no visual approval. Replacement must match exact
+rejected source hashes, retain backups, and require explicit local acceptance.

@@ -160,3 +160,6 @@ zie [Docs/MILESTONES_AND_REPORT_MAPS.md](Docs/MILESTONES_AND_REPORT_MAPS.md).
 
 Sessies zoeken, leefomgevingen en de eenmalige tijdcorrectie:
 [Docs/SESSION_SEARCH_HABITATS_AND_TIME_CORRECTION.md](Docs/SESSION_SEARCH_HABITATS_AND_TIME_CORRECTION.md).
+
+Gerichte API-herstelopdracht met een proef van zes beelden en behoud van originele
+assets: [Docs/ARTWORK_API_REPAIR_GUIDE.md](Docs/ARTWORK_API_REPAIR_GUIDE.md).

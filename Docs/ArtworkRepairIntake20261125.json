@@ -1,9 +1,9 @@
 {
   "date": "2026-11-25",
-  "status": "waiting-for-compact-inspection-pack",
-  "sourceArchive": "Archief.zip",
-  "sourceAccessBlock": "Uploaded archive exceeds the tool transfer maximum of 32 MiB; no member list or image has been read from this upload.",
-  "speciesCount": null,
+  "status": "repair-plan-ready-with-four-missing-species",
+  "sourceArchive": "Archief-controle.zip",
+  "sourceAccessBlock": null,
+  "speciesCount": 62,
   "imagesGenerated": 0,
   "imagesReplaced": 0,
   "userCategories": {
@@ -19,8 +19,9 @@
       "correction": "Prominent forward-curving crest, black forehead/throat, large white cheek patch, brown upperparts, pale underparts and yellow vent. Do not substitute the weakly crested White-eared Bulbul.",
       "sourceURL": "https://indianexpress.com/article/cities/chandigarh/birdwatch-yellow-vent-distinguishes-himalayan-bulbuls-from-others-in-its-family-8509538/lite/",
       "descriptionChecked": true,
-      "originalImageCompared": false,
-      "readyForGeneration": false
+      "originalImageCompared": true,
+      "readyForGeneration": true,
+      "reviewedRepresentation": "Compact preview, not the full original PNG"
     },
     {
       "speciesID": "birdnet-v3:BN04813",
@@ -29,8 +30,9 @@
       "correction": "Use an adult black-headed morph, with entirely dark head/crest and orange-red bill and legs. Body tone can vary by subspecies. Do not use a white-headed morph for this requested repair.",
       "sourceURL": "https://birdnet.cornell.edu/taxonomy/species/Hypsipetes%20leucocephalus",
       "descriptionChecked": true,
-      "originalImageCompared": false,
-      "readyForGeneration": false
+      "originalImageCompared": true,
+      "readyForGeneration": true,
+      "reviewedRepresentation": "Compact preview, not the full original PNG"
     },
     {
       "speciesID": "birdnet-v3:BN04447",
@@ -39,8 +41,9 @@
       "correction": "Adult plumage: pale sandy/creamy head, dark brown body and wings, broad black tail crossed by a conspicuous broad white band. Do not use the unbanded juvenile tail or an entirely white sea-eagle tail.",
       "sourceURL": "https://www.himalayanraptors.org/pallass-fish-eagle",
       "descriptionChecked": true,
-      "originalImageCompared": false,
-      "readyForGeneration": false
+      "originalImageCompared": true,
+      "readyForGeneration": true,
+      "reviewedRepresentation": "Compact preview, not the full original PNG"
     },
     {
       "speciesID": "birdnet-v3:BN02458",
@@ -49,8 +52,9 @@
       "correction": "Dark slate-grey pigeon with pink/purple breast and subdued neck gloss; darker flight feathers and grey tail with dark terminal band. No white neck patch or white tail as in other pigeons. Avoid a pale generic wood pigeon.",
       "sourceURL": "https://en.wikipedia.org/wiki/Bolle%27s_pigeon",
       "descriptionChecked": true,
-      "originalImageCompared": false,
-      "readyForGeneration": false
+      "originalImageCompared": true,
+      "readyForGeneration": true,
+      "reviewedRepresentation": "Compact preview, not the full original PNG"
     },
     {
       "speciesID": "birdnet-v3:BN06747",
@@ -59,35 +63,53 @@
       "correction": "Predominantly uniform warm/rufous brown, wings and rounded tail slightly darker, vent grading grey-brown. Fine slightly curved bill; no invented stripes or bright red vent.",
       "sourceURL": "https://en.wikipedia.org/wiki/Brown_rock_chat",
       "descriptionChecked": true,
-      "originalImageCompared": false,
-      "readyForGeneration": false
+      "originalImageCompared": true,
+      "readyForGeneration": true,
+      "reviewedRepresentation": "Compact preview, not the full original PNG"
     }
   ],
   "additionalRightEdgeSpecies": [
     {
-      "speciesID": "birdnet-v3:BN06072",
-      "rolesPendingInspection": true
+      "id": "birdnet-v3:BN06072",
+      "status": "dynamic source truncation confirmed; primary preserved"
     },
     {
-      "speciesID": "birdnet-v3:BN06289",
-      "rolesPendingInspection": true
+      "id": "birdnet-v3:BN06289",
+      "status": "dynamic branch/leaf truncation confirmed; primary preserved"
     },
     {
-      "speciesID": "birdnet-v3:BN01170",
-      "rolesPendingInspection": true
+      "id": "birdnet-v3:BN01170",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Bruinstaarthoornkolibrie",
+      "scientificName": "Boissonneaua flavescens",
+      "status": "missing from received pack"
     },
     {
-      "speciesID": "birdnet-v3:BN02171",
-      "rolesPendingInspection": true
+      "id": "birdnet-v3:BN02171",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Grote kraaghoningzuiger",
+      "scientificName": "Cinnyris afer",
+      "status": "missing from received pack"
     },
     {
-      "speciesID": "birdnet-v3:BN02172",
-      "rolesPendingInspection": true
+      "id": "birdnet-v3:BN02172",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Purperhoningzuiger",
+      "scientificName": "Cinnyris asiaticus",
+      "status": "missing from received pack"
     },
     {
-      "speciesID": "birdnet-v3:BN03921",
-      "rolesPendingInspection": true
+      "id": "birdnet-v3:BN03921",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Zwarte frankolijn",
+      "scientificName": "Francolinus francolinus",
+      "status": "missing from received pack"
     }
   ],
-  "buntingsStatus": "Exact species/roles and diagnostic head, breast, wing and rump patterns must be researched after reading the archive inventory; do not assume one generic bunting pattern."
+  "buntingsStatus": "Six included buntings researched individually: Cirl, Rustic, Yellow-breasted, Lapland Longspur, Yellow-browed and Little. Sex/age and diagnostic head/throat/breast patterns are explicit in the plan.",
+  "sourceArchiveSHA256": "44560d0fa0c146edca112bf708ace33ae46285ab25b2aeeaea593bf2042221a6",
+  "previewCount": 80,
+  "uniquePreviewRoles": 79,
+  "repairRoleCount": 77,
+  "preservedExtraPrimaryCount": 2
 }

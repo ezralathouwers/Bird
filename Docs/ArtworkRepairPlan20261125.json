@@ -1,0 +1,2262 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-image-2.5-sunburst-2026-09-08",
+  "quality": "medium",
+  "tokenRatesUSDPerMillion": {
+    "textInput": 5,
+    "imageInput": 8,
+    "imageOutput": 30
+  },
+  "referenceAssets": {
+    "primary": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-primary.imageset/primary.png",
+    "dynamic": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-dynamic.imageset/dynamic.png"
+  },
+  "style": "Match the attached approved kingfisher reference ONLY for naturalistic watercolor and fine coloured-pencil rendering, detailed feather texture and restrained field-guide lighting. Replace the kingfisher completely with the specified species. Do not copy its blue/orange colours, proportions, facing or props. Output one new original bird illustration, never a panel or montage. No text, labels, logos, shadow, checkerboard or paper rectangle. Real transparent alpha background. No anatomy inventions: exactly two wings/flippers in total (far folded wing can be hidden), one head and one bill, correct feet/toes. An open wing replaces its folded outline on that side; never add an extra folded wing.",
+  "roles": {
+    "primary": {
+      "size": "1024x1024",
+      "direction": "PRIMARY compact portrait: whole bird in a natural resting/standing upright posture facing RIGHT. Closed wings (relaxed flippers for penguin), natural visible feet, beak/tail/toes fully inside image, bird occupies about 85% of canvas. Bird ONLY: no branch, perch, rock, ground, plants, water, food or shadow. Not flying, not crouching. Use a species-appropriate natural body carriage; a duck and penguin need not sit like a songbird."
+    },
+    "dynamic": {
+      "size": "1024x1536",
+      "direction": "DYNAMIC species-page hero: distinct species-specific behavior/vignette as described below. Large bird, centered slightly left with ample room in front of its bill, about 80-90% of available frame. Natural minimal habitat accents only; genuine alpha transparency around scene. All heads, bills and bird parts inside master image; the app may bleed the sides. No hard crop along the TOP: branches/trunks must end naturally or fade transparently before the top edge. Avoid excessive empty top/right space and avoid a beige paper background copied from the reference."
+    }
+  },
+  "batchID": "api-repairs-20261125",
+  "scope": "repair",
+  "targets": [
+    {
+      "key": "birdnet-v3-BN09422-dynamic",
+      "id": "birdnet-v3:BN09422",
+      "role": "dynamic",
+      "originalSHA256": "e224d9384df26bcdaa2c9432476b0d4d3c41e377db00559d6a6cd58f19cee06e",
+      "dutchName": "Palmtortel",
+      "englishName": "Laughing Dove",
+      "scientificName": "Spilopelia senegalensis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Pink-brown head and breast, warm brown back, blue-grey wing panel, black spotting on rufous neck sides; slim dove body and long graduated tail.",
+      "dynamicScene": "Walking naturally on a sparse dry ground vignette, head alert and BOTH wings naturally folded. Species-correct normal folded-wing proportions.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Spilopelia%20senegalensis"
+      ],
+      "inputCategories": [
+        "Foute anatomie"
+      ],
+      "previewNumbers": [
+        1
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN08753-dynamic",
+      "id": "birdnet-v3:BN08753",
+      "role": "dynamic",
+      "originalSHA256": "3df8a9052a9f3aca0c28404661af800be414c859a25cad10c548983124cd9235",
+      "dutchName": "Geelkeeltoekan",
+      "englishName": "Yellow-throated Toucan",
+      "scientificName": "Ramphastos ambiguus",
+      "representativePlumage": "adult male, typical plumage nominate ambiguus",
+      "fieldMarks": "Adult nominate ambiguus: black body, yellow face/throat, fine pale/red breast border, red undertail coverts. Huge bicoloured bill: lemon-yellow upper portion and black lower/basal portions; sky-blue bare eye skin. NOT the green rainbow bill of Keel-billed Toucan.",
+      "dynamicScene": "Perched upright on a short fruiting tropical branch, holding one small fruit in the bill, BOTH wings fully folded. Show only a few leaves and fruits; end all branch segments inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Ramphastos%20ambiguus",
+        "https://www.animaldiversity.org/accounts/Ramphastos_ambiguus/"
+      ],
+      "inputCategories": [
+        "Foute anatomie"
+      ],
+      "previewNumbers": [
+        2
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": true
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN06747-primary",
+      "id": "birdnet-v3:BN06747",
+      "role": "primary",
+      "originalSHA256": "1fde57a77b6f43bc5b302de1398bffdc140d40889876ee10e1a7c40be8dab474",
+      "dutchName": "Bruine rotsspekvreter",
+      "englishName": "Brown Rock Chat",
+      "scientificName": "Oenanthe fusca",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Uniform warm brown adult, slightly darker wings and rounded tail, grey-brown vent, slim dark bill. No black breast, orange belly, white tail panel, red vent or bold stripes.",
+      "dynamicScene": "Upright on one small rounded rock at an old stone wall, head tilted toward a small insect on the stone, BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Oenanthe%20fusca",
+        "https://en.wikipedia.org/wiki/Brown_rock_chat"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        3
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN02458-dynamic",
+      "id": "birdnet-v3:BN02458",
+      "role": "dynamic",
+      "originalSHA256": "4b37dac3386d106e231b8bac901fbc70d2493833f7e719455038fc9e7ba80eb2",
+      "dutchName": "Bolles laurierduif",
+      "englishName": "Bolle's Pigeon",
+      "scientificName": "Columba bollii",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Dark slate-grey adult pigeon with muted pink-purple breast and subtle green/purple neck gloss; dark flight feathers and grey tail with dark terminal band. NO white neck, shoulder or wing bars. Not Wood Pigeon or Laurel Pigeon.",
+      "dynamicScene": "Alert on a short laurel twig with a few berries, BOTH wings folded, dark tail fully visible.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Columba%20bollii",
+        "https://en.wikipedia.org/wiki/Bolle%27s_pigeon"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        4
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN03492-dynamic",
+      "id": "birdnet-v3:BN03492",
+      "role": "dynamic",
+      "originalSHA256": "536c67a81aae92676514a9e508ac6bec5822d88b1c654b13f292fa8c62742877",
+      "dutchName": "Cirlgors",
+      "englishName": "Cirl Bunting",
+      "scientificName": "Emberiza cirlus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: yellow supercilium and cheek below black eye-stripe, black throat, narrow yellow strip beneath bib, broad olive-grey upper-breast band, chestnut side patches and streaked yellow flanks; olive rump. No generic all-yellow heavily streaked chest.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Emberiza%20cirlus",
+        "https://www.nzbirdsonline.org.nz/species/cirl-bunting"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        5
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN06747-dynamic",
+      "id": "birdnet-v3:BN06747",
+      "role": "dynamic",
+      "originalSHA256": "1ec50b68ff58fdc1400716dbf0bd7b74ea5622b6e65eee5a5fd988b2d9835774",
+      "dutchName": "Bruine rotsspekvreter",
+      "englishName": "Brown Rock Chat",
+      "scientificName": "Oenanthe fusca",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Uniform warm brown adult, slightly darker wings and rounded tail, grey-brown vent, slim dark bill. No black breast, orange belly, white tail panel, red vent or bold stripes.",
+      "dynamicScene": "Upright on one small rounded rock at an old stone wall, head tilted toward a small insect on the stone, BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Oenanthe%20fusca",
+        "https://en.wikipedia.org/wiki/Brown_rock_chat"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        6
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN02458-primary",
+      "id": "birdnet-v3:BN02458",
+      "role": "primary",
+      "originalSHA256": "24ede646615a7143091e8f93764a874d3896a1410770c5397fca33c5291fdf0b",
+      "dutchName": "Bolles laurierduif",
+      "englishName": "Bolle's Pigeon",
+      "scientificName": "Columba bollii",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Dark slate-grey adult pigeon with muted pink-purple breast and subtle green/purple neck gloss; dark flight feathers and grey tail with dark terminal band. NO white neck, shoulder or wing bars. Not Wood Pigeon or Laurel Pigeon.",
+      "dynamicScene": "Alert on a short laurel twig with a few berries, BOTH wings folded, dark tail fully visible.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Columba%20bollii",
+        "https://en.wikipedia.org/wiki/Bolle%27s_pigeon"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        7
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN03492-primary",
+      "id": "birdnet-v3:BN03492",
+      "role": "primary",
+      "originalSHA256": "7d4defc8d42792f2c6947ae22ca7aefc2f8af2ddc041184c0997b302aaee944b",
+      "dutchName": "Cirlgors",
+      "englishName": "Cirl Bunting",
+      "scientificName": "Emberiza cirlus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: yellow supercilium and cheek below black eye-stripe, black throat, narrow yellow strip beneath bib, broad olive-grey upper-breast band, chestnut side patches and streaked yellow flanks; olive rump. No generic all-yellow heavily streaked chest.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Emberiza%20cirlus",
+        "https://www.nzbirdsonline.org.nz/species/cirl-bunting"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        8
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09094-primary",
+      "id": "birdnet-v3:BN09094",
+      "role": "primary",
+      "originalSHA256": "584ce1522e5f7a745245439fd1710110be0b4bb818e039be4f2277fc595a04f3",
+      "dutchName": "Bosgors",
+      "englishName": "Rustic Bunting",
+      "scientificName": "Schoeniclus rusticus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: black crown/cheeks, WHITE throat and eyebrow, chestnut nape and breast band, white belly with chestnut flank streaks, pink lower bill and legs. Never a solid black Reed Bunting throat/bib.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20rusticus",
+        "https://www.audubon.org/field-guide/bird/rustic-bunting"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        9
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": true
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09088-primary",
+      "id": "birdnet-v3:BN09088",
+      "role": "primary",
+      "originalSHA256": "16aff79e310fe421a5dc92c3edb52c8707ad10f566652c476e3614260383d96c",
+      "dutchName": "Wilgengors",
+      "englishName": "Yellow-breasted Bunting",
+      "scientificName": "Schoeniclus aureolus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: chestnut crown/nape and upperparts, BLACK face and throat, clean bright yellow underparts crossed by a chestnut breast band, broad white covert patch. No yellow eyebrow or uniformly black crown.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20aureolus",
+        "https://avifauna.hkbws.org.hk/species/0460/056700"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        10
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN01391-primary",
+      "id": "birdnet-v3:BN01391",
+      "role": "primary",
+      "originalSHA256": "395c6629ed6df0e837b29799e164ff3abc4a1cb2d034d27266ff3aafd1b327cf",
+      "dutchName": "IJsgors",
+      "englishName": "Lapland Longspur",
+      "scientificName": "Calcarius lapponicus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: black crown/face/throat and upper chest, pale white-buff eyebrow curving behind cheek, rich chestnut nape, pale belly with dark flank streaks; pale yellow conical bill and long hind claw. Do not substitute Rustic Bunting head pattern.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Calcarius%20lapponicus",
+        "https://www.allaboutbirds.org/guide/Lapland_Longspur/id"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        11
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09094-dynamic",
+      "id": "birdnet-v3:BN09094",
+      "role": "dynamic",
+      "originalSHA256": "81e16489e0a7d3efba9282ef76d7dfcef258606581ece98a0ee1a33b3e36ca68",
+      "dutchName": "Bosgors",
+      "englishName": "Rustic Bunting",
+      "scientificName": "Schoeniclus rusticus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: black crown/cheeks, WHITE throat and eyebrow, chestnut nape and breast band, white belly with chestnut flank streaks, pink lower bill and legs. Never a solid black Reed Bunting throat/bib.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20rusticus",
+        "https://www.audubon.org/field-guide/bird/rustic-bunting"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        12
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09088-dynamic",
+      "id": "birdnet-v3:BN09088",
+      "role": "dynamic",
+      "originalSHA256": "54d1e342fb7218b6b87627f682bd3f3dea4a336722571235f3edd92c11095748",
+      "dutchName": "Wilgengors",
+      "englishName": "Yellow-breasted Bunting",
+      "scientificName": "Schoeniclus aureolus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: chestnut crown/nape and upperparts, BLACK face and throat, clean bright yellow underparts crossed by a chestnut breast band, broad white covert patch. No yellow eyebrow or uniformly black crown.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20aureolus",
+        "https://avifauna.hkbws.org.hk/species/0460/056700"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        13
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN01391-dynamic",
+      "id": "birdnet-v3:BN01391",
+      "role": "dynamic",
+      "originalSHA256": "9ecc0f2f79cb4f78d9437c77114726e4d1d69a1d33171b5b7b51d5abf393951f",
+      "dutchName": "IJsgors",
+      "englishName": "Lapland Longspur",
+      "scientificName": "Calcarius lapponicus",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: black crown/face/throat and upper chest, pale white-buff eyebrow curving behind cheek, rich chestnut nape, pale belly with dark flank streaks; pale yellow conical bill and long hind claw. Do not substitute Rustic Bunting head pattern.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Calcarius%20lapponicus",
+        "https://www.allaboutbirds.org/guide/Lapland_Longspur/id"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        14
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN04447-primary",
+      "id": "birdnet-v3:BN04447",
+      "role": "primary",
+      "originalSHA256": "8fbd3657cf08827a1da117db0643e6640e8e48f02c31d31feea52e5d1beb8423",
+      "dutchName": "Witbandzeearend",
+      "englishName": "Pallas's Fish Eagle",
+      "scientificName": "Haliaeetus leucoryphus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Pallas fish eagle: pale sandy/cream head and neck, dark brown body and wings; dark tail with a BROAD WHITE transverse band and dark terminal end. Not a bald eagle or an entirely white-tailed eagle.",
+      "dynamicScene": "Standing alert beside shallow water with BOTH wings folded. Turn just enough for the dark tail and broad white band to be clearly visible; no landing pose.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Haliaeetus%20leucoryphus",
+        "https://www.himalayanraptors.org/pallass-fish-eagle"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        15
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN04447-dynamic",
+      "id": "birdnet-v3:BN04447",
+      "role": "dynamic",
+      "originalSHA256": "297eb577089d4ce58d6f4f8bdfd53ee9b604d8e7b8f0b9cb8c0f7608f254031a",
+      "dutchName": "Witbandzeearend",
+      "englishName": "Pallas's Fish Eagle",
+      "scientificName": "Haliaeetus leucoryphus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Pallas fish eagle: pale sandy/cream head and neck, dark brown body and wings; dark tail with a BROAD WHITE transverse band and dark terminal end. Not a bald eagle or an entirely white-tailed eagle.",
+      "dynamicScene": "Standing alert beside shallow water with BOTH wings folded. Turn just enough for the dark tail and broad white band to be clearly visible; no landing pose.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Haliaeetus%20leucoryphus",
+        "https://www.himalayanraptors.org/pallass-fish-eagle"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        16
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN08840-dynamic",
+      "id": "birdnet-v3:BN08840",
+      "role": "dynamic",
+      "originalSHA256": "076d7558a5f83343f24641fb1b2b4dbb87b5028b0eaddad8ece63edb46def67d",
+      "dutchName": "Witkeelwaaierstaart",
+      "englishName": "White-throated Fantail",
+      "scientificName": "Rhipidura albicollis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Himalayan canescens-type: dark slate grey above AND below, blackish face, narrow white eyebrow and white throat, long dark fan-tail with white outer tips. Do not give it the broad white belly or spotted breast of White-spotted Fantail.",
+      "dynamicScene": "Perched on a short curved twig, long tail naturally fanned to show white tips, BOTH wings folded. The fan is the tail, not extra wings.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Rhipidura%20albicollis",
+        "https://www.shanghaibirding.com/birds-of-china/white-throated-fantail/"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen",
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        17,
+        50
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09089-dynamic",
+      "id": "birdnet-v3:BN09089",
+      "role": "dynamic",
+      "originalSHA256": "eee9cb1693f96a3c3f9034f8aa75dafd4e67a994ad188cbb6afecb4ad996be95",
+      "dutchName": "Geelbrauwgors",
+      "englishName": "Yellow-browed Bunting",
+      "scientificName": "Schoeniclus chrysophrys",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: dark crown with narrow WHITE median crown stripe, yellow supercilium strongest around eye, white moustachial area and WHITE throat; whitish underparts with fine dark breast/flank streaks. No black throat or overall yellow belly.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20chrysophrys",
+        "https://avifauna.hkbws.org.hk/species/0460/056400"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        18
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN03115-dynamic",
+      "id": "birdnet-v3:BN03115",
+      "role": "dynamic",
+      "originalSHA256": "c8fd743fd6c7f403363c825ef4fcb2670609a2dcd289d3421ee59168a693f428",
+      "dutchName": "Bruinkeelspecht",
+      "englishName": "Rufous-bellied Woodpecker",
+      "scientificName": "Dendrocopos hyperythrus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: red crown; pale whitish sides of face without a Great Spotted Woodpecker black moustache, black-and-white BARRED upperparts, rich buff/rufous throat and belly, redder undertail coverts; stiff patterned tail.",
+      "dynamicScene": "Clinging to a short naturally ending tree trunk, both feet correctly gripping with zygodactyl toes, tail braced, BOTH wings folded. No top/right trunk crop.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Dendrocopos%20hyperythrus",
+        "https://avifauna.hkbws.org.hk/species/0210/029300"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        19
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09089-primary",
+      "id": "birdnet-v3:BN09089",
+      "role": "primary",
+      "originalSHA256": "b92566e8b9408d8df0525c965d06c2d46af17615fd9c9e326f2d982e48a93622",
+      "dutchName": "Geelbrauwgors",
+      "englishName": "Yellow-browed Bunting",
+      "scientificName": "Schoeniclus chrysophrys",
+      "representativePlumage": "adult male breeding plumage",
+      "fieldMarks": "Adult male breeding: dark crown with narrow WHITE median crown stripe, yellow supercilium strongest around eye, white moustachial area and WHITE throat; whitish underparts with fine dark breast/flank streaks. No black throat or overall yellow belly.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20chrysophrys",
+        "https://avifauna.hkbws.org.hk/species/0460/056400"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        20
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": true
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN03115-primary",
+      "id": "birdnet-v3:BN03115",
+      "role": "primary",
+      "originalSHA256": "4c835b295e2ac1ab0e7f300ef0164b277f7813d112f04ed55d1f630e18b6e10f",
+      "dutchName": "Bruinkeelspecht",
+      "englishName": "Rufous-bellied Woodpecker",
+      "scientificName": "Dendrocopos hyperythrus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: red crown; pale whitish sides of face without a Great Spotted Woodpecker black moustache, black-and-white BARRED upperparts, rich buff/rufous throat and belly, redder undertail coverts; stiff patterned tail.",
+      "dynamicScene": "Clinging to a short naturally ending tree trunk, both feet correctly gripping with zygodactyl toes, tail braced, BOTH wings folded. No top/right trunk crop.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Dendrocopos%20hyperythrus",
+        "https://avifauna.hkbws.org.hk/species/0210/029300"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        21
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN04813-dynamic",
+      "id": "birdnet-v3:BN04813",
+      "role": "dynamic",
+      "originalSHA256": "bbf937dd9e065e71ba817a4d28ba2f040e7addb2240be020b25fd201665baf2f",
+      "dutchName": "Aziatische zwarte buulbuul",
+      "englishName": "Black Bulbul",
+      "scientificName": "Hypsipetes leucocephalus",
+      "representativePlumage": "adult male, typical plumage of the black-headed morph",
+      "fieldMarks": "Adult black-headed morph: entire head and crest black, slate-dark body, orange-red bill and legs. No white nape/crown or pale-headed morph; body shades must be coherent for one black-headed population.",
+      "dynamicScene": "Perched on a small fruiting twig with a berry in its orange-red bill, black head clearly visible and BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Hypsipetes%20leucocephalus",
+        "https://birdnet.cornell.edu/taxonomy/species/Hypsipetes%20leucocephalus"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        22
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN01624-primary",
+      "id": "birdnet-v3:BN01624",
+      "role": "primary",
+      "originalSHA256": "8c8d71ae3526985944f5c9416c08acc5f2d648795213958ad3343e8dbd1fed74",
+      "dutchName": "Citroensijs",
+      "englishName": "Citril Finch",
+      "scientificName": "Carduelis citrinella",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: yellow-green face/forehead and underparts, extensive GREY nape and neck sides, olive-green back, dark wings with two yellow-green bars. Underparts largely plain, not heavily streaked like European Serin; no black Siskin cap.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Carduelis%20citrinella",
+        "https://www.oiseaux.net/en/oiseaux/citril.finch.html"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        23
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN08621-primary",
+      "id": "birdnet-v3:BN08621",
+      "role": "primary",
+      "originalSHA256": "6ff313964c797cdce93b59039d2be4031090a5313d7e879a8dfb2cb61882b398",
+      "dutchName": "Witwangbuulbuul",
+      "englishName": "Himalayan Bulbul",
+      "scientificName": "Pycnonotus leucogenys",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Himalayan Bulbul: conspicuous tall forward-curving pointed crest, black forehead and throat, bold white cheek patch, warm brown back, pale underparts and yellow vent. No red whisker or red vent; not weak-crested White-eared Bulbul.",
+      "dynamicScene": "Singing from a short shrub twig, forward-curving crest prominently raised, BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Pycnonotus%20leucogenys",
+        "https://indianexpress.com/article/cities/chandigarh/birdwatch-yellow-vent-distinguishes-himalayan-bulbuls-from-others-in-its-family-8509538/lite/"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        24
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN08621-dynamic",
+      "id": "birdnet-v3:BN08621",
+      "role": "dynamic",
+      "originalSHA256": "b78cb988a9d571c302b36e611bb60367063faa0aafe85438171dcbb3f65d8fea",
+      "dutchName": "Witwangbuulbuul",
+      "englishName": "Himalayan Bulbul",
+      "scientificName": "Pycnonotus leucogenys",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Himalayan Bulbul: conspicuous tall forward-curving pointed crest, black forehead and throat, bold white cheek patch, warm brown back, pale underparts and yellow vent. No red whisker or red vent; not weak-crested White-eared Bulbul.",
+      "dynamicScene": "Singing from a short shrub twig, forward-curving crest prominently raised, BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Pycnonotus%20leucogenys",
+        "https://indianexpress.com/article/cities/chandigarh/birdwatch-yellow-vent-distinguishes-himalayan-bulbuls-from-others-in-its-family-8509538/lite/"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        25
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN01624-dynamic",
+      "id": "birdnet-v3:BN01624",
+      "role": "dynamic",
+      "originalSHA256": "d57619a1092f116e6abd06de96bd2b4616863fded6e1d818b28a2303b519d53d",
+      "dutchName": "Citroensijs",
+      "englishName": "Citril Finch",
+      "scientificName": "Carduelis citrinella",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: yellow-green face/forehead and underparts, extensive GREY nape and neck sides, olive-green back, dark wings with two yellow-green bars. Underparts largely plain, not heavily streaked like European Serin; no black Siskin cap.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Carduelis%20citrinella",
+        "https://www.oiseaux.net/en/oiseaux/citril.finch.html"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        26
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09632-primary",
+      "id": "birdnet-v3:BN09632",
+      "role": "primary",
+      "originalSHA256": "2746a4a7e72dda59c28afea402315d9df9afbbb769c12d13c62312c02c0f1385",
+      "dutchName": "Rode tortel",
+      "englishName": "Red Collared Dove",
+      "scientificName": "Streptopelia tranquebarica",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: blue-grey head, narrow BLACK half-collar on hindneck, rich vinous-red/brown mantle and breast, grey rump, dark flight feathers. Not beige Eurasian Collared Dove and not a reddish neck collar.",
+      "dynamicScene": "Walking on a very small ground vignette, adult male grey head and black hindneck collar visible, BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Streptopelia%20tranquebarica",
+        "https://singaporebirds.com/species/red-collared-dove"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        27
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09093-dynamic",
+      "id": "birdnet-v3:BN09093",
+      "role": "dynamic",
+      "originalSHA256": "e2c665d458bb9de86e1923d4e47fea8ce6f0a4a161f218affe0482c333044faf",
+      "dutchName": "Dwerggors",
+      "englishName": "Little Bunting",
+      "scientificName": "Schoeniclus pusillus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult breeding: small delicate bunting, rusty crown sides and cheek patch outlined dark, narrow pale crown centre/eyebrow, conspicuous pale eye ring, whitish throat and underparts with fine dark breast/flank streaking. No yellow, black bib or broad chestnut breast band.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20pusillus",
+        "https://www.audubon.org/field-guide/bird/little-bunting"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        28
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09632-dynamic",
+      "id": "birdnet-v3:BN09632",
+      "role": "dynamic",
+      "originalSHA256": "4e30b23540f49f06c1df6d3f9fdeb199262004091b050ef0f9a471bdfabafca1",
+      "dutchName": "Rode tortel",
+      "englishName": "Red Collared Dove",
+      "scientificName": "Streptopelia tranquebarica",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: blue-grey head, narrow BLACK half-collar on hindneck, rich vinous-red/brown mantle and breast, grey rump, dark flight feathers. Not beige Eurasian Collared Dove and not a reddish neck collar.",
+      "dynamicScene": "Walking on a very small ground vignette, adult male grey head and black hindneck collar visible, BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Streptopelia%20tranquebarica",
+        "https://singaporebirds.com/species/red-collared-dove"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        29
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN09093-primary",
+      "id": "birdnet-v3:BN09093",
+      "role": "primary",
+      "originalSHA256": "6d1d931f075adaad88f5da86b1df995e534a972764d6a511688765eabd6a49ca",
+      "dutchName": "Dwerggors",
+      "englishName": "Little Bunting",
+      "scientificName": "Schoeniclus pusillus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult breeding: small delicate bunting, rusty crown sides and cheek patch outlined dark, narrow pale crown centre/eyebrow, conspicuous pale eye ring, whitish throat and underparts with fine dark breast/flank streaking. No yellow, black bib or broad chestnut breast band.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Schoeniclus%20pusillus",
+        "https://www.audubon.org/field-guide/bird/little-bunting"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        30
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN00040-primary",
+      "id": "birdnet-v3:BN00040",
+      "role": "primary",
+      "originalSHA256": "43fbad22d945551ca5f766a48129cb1dfc8670ccfdf734b719b9cde6cc58097e",
+      "dutchName": "Oevermaina",
+      "englishName": "Bank Myna",
+      "scientificName": "Acridotheres ginginianus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Bank Myna: black cap/head, cool grey body and wings, brick-red/orange-red bare skin around and behind eye, yellow-orange bill/legs, white wing patch. Not Common Myna with a brown body and yellow eye skin.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Acridotheres%20ginginianus",
+        "https://avibase.bsc-eoc.org/species.jsp?avibaseid=F8CFF92CB9DC09C6&lang=EN"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        31
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN00039-dynamic",
+      "id": "birdnet-v3:BN00039",
+      "role": "dynamic",
+      "originalSHA256": "09e70e5eb703be2265b0c3e4fe4901cf78d57e217dd9ded02504f70a8e3f58d3",
+      "dutchName": "Junglemaina",
+      "englishName": "Jungle Myna",
+      "scientificName": "Acridotheres fuscus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Jungle Myna: grey-brown body, darker head with short erect forehead tuft, pale iris, orange-yellow bill with dark base, yellow legs; no large bare yellow eye-skin patch. White wing patch and pale tail tips.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Acridotheres%20fuscus",
+        "https://www.iucngisd.org/gisd/speciesname/Acridotheres%2Bfuscus"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        32
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN00039-primary",
+      "id": "birdnet-v3:BN00039",
+      "role": "primary",
+      "originalSHA256": "a7146df24e2cfebaebe38e8af824dd1686afdd33f256bb5a129323a5d48deb44",
+      "dutchName": "Junglemaina",
+      "englishName": "Jungle Myna",
+      "scientificName": "Acridotheres fuscus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Jungle Myna: grey-brown body, darker head with short erect forehead tuft, pale iris, orange-yellow bill with dark base, yellow legs; no large bare yellow eye-skin patch. White wing patch and pale tail tips.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Acridotheres%20fuscus",
+        "https://www.iucngisd.org/gisd/speciesname/Acridotheres%2Bfuscus"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        33
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN00040-dynamic",
+      "id": "birdnet-v3:BN00040",
+      "role": "dynamic",
+      "originalSHA256": "3edec90ec4620950e1095b35e4f4dee56ce73362fc1782fced020f9e7c815ee9",
+      "dutchName": "Oevermaina",
+      "englishName": "Bank Myna",
+      "scientificName": "Acridotheres ginginianus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Bank Myna: black cap/head, cool grey body and wings, brick-red/orange-red bare skin around and behind eye, yellow-orange bill/legs, white wing patch. Not Common Myna with a brown body and yellow eye skin.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Acridotheres%20ginginianus",
+        "https://avibase.bsc-eoc.org/species.jsp?avibaseid=F8CFF92CB9DC09C6&lang=EN"
+      ],
+      "inputCategories": [
+        "Foute kleuren:patronen"
+      ],
+      "previewNumbers": [
+        34
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Correct the listed diagnostic plumage rather than copying the rejected pattern. "
+    },
+    {
+      "key": "birdnet-v3-BN02556-dynamic",
+      "id": "birdnet-v3:BN02556",
+      "role": "dynamic",
+      "originalSHA256": "233081731c77f6c73ab36e856763090f8186bd954897086e41eac9b54591a03f",
+      "dutchName": "Dayallijster",
+      "englishName": "Oriental Magpie-Robin",
+      "scientificName": "Copsychus saularis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: glossy blue-black head/back/throat, white belly and conspicuous white wing panel, long black-and-white tail; natural slim robin-like body.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Copsychus%20saularis"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        35
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN10618-dynamic",
+      "id": "birdnet-v3:BN10618",
+      "role": "dynamic",
+      "originalSHA256": "5451a5d0737a39ad716abf52428b7aff62c5176cdead365fb27a0fec3425be98",
+      "dutchName": "Roodsnavelkitta",
+      "englishName": "Red-billed Blue Magpie",
+      "scientificName": "Urocissa erythroryncha",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: black head/neck and breast with pale nape patch, blue wings and very long graduated blue-and-white tail, red bill and legs; no short generic magpie tail.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Urocissa%20erythroryncha"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        36
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN07296-dynamic",
+      "id": "birdnet-v3:BN07296",
+      "role": "dynamic",
+      "originalSHA256": "d4ae1507e7319aec26ee189b2a96d8ee1651849b090d23ed671295171f7d886e",
+      "dutchName": "Roodbuikmees",
+      "englishName": "Rufous-vented Tit",
+      "scientificName": "Periparus rubidiventris",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult rufous-vented tit: black crested head and bib, white cheeks/nape patch, grey upperparts and rich rufous vent; short fine bill and small tit proportions.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Periparus%20rubidiventris"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        37
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN10859-dynamic",
+      "id": "birdnet-v3:BN10859",
+      "role": "dynamic",
+      "originalSHA256": "bd951d7bdc6438030429566ce1c4b27cf208ab170f0f5abc30c5df37f0d155d9",
+      "dutchName": "Treurduif",
+      "englishName": "Mourning Dove",
+      "scientificName": "Zenaida macroura",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: soft grey-brown dove, small head, black wing-covert spots, long pointed tail with white outer tips, pink feet.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Zenaida%20macroura"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        38
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN01752-dynamic",
+      "id": "birdnet-v3:BN01752",
+      "role": "dynamic",
+      "originalSHA256": "613477996f65376cc194f47abf5d8d61b3274c90f690227d68d8edb549da5d7f",
+      "dutchName": "Oosterse spoorkoekoek",
+      "englishName": "Greater Coucal",
+      "scientificName": "Centropus sinensis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: glossy black head/body and long tail, chestnut wings, red iris; large heavy coucal proportions and strong feet.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Centropus%20sinensis"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        39
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN03671-dynamic",
+      "id": "birdnet-v3:BN03671",
+      "role": "dynamic",
+      "originalSHA256": "9963bea2ef5af4fc241b3aad3227512f873bb95635ff7dac19ab38c8b94240e9",
+      "dutchName": "Indische koël",
+      "englishName": "Asian Koel",
+      "scientificName": "Eudynamys scolopaceus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: glossy black plumage, red iris and pale greenish-grey bill, long tail. No brown barred female plumage on this male.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Eudynamys%20scolopaceus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        40
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN05553-dynamic",
+      "id": "birdnet-v3:BN05553",
+      "role": "dynamic",
+      "originalSHA256": "bad9c651a878e2a418e3de4d61d24417b7e3f9717ab7661afd24dcaf2067038f",
+      "dutchName": "Himalayakroonmees",
+      "englishName": "Himalayan Black-lored Tit",
+      "scientificName": "Machlolophus xanthogenys",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: yellow cheeks and underparts, black face/throat/central breast stripe and pronounced black/yellow crest, olive back and pale wing bars.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Machlolophus%20xanthogenys"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        41
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN07286-dynamic",
+      "id": "birdnet-v3:BN07286",
+      "role": "dynamic",
+      "originalSHA256": "835f35e07906fdf647cfa44819081d442975913e2c1670dd80ffd49770ee35ac",
+      "dutchName": "Oranje menievogel",
+      "englishName": "Scarlet Minivet",
+      "scientificName": "Pericrocotus flammeus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: glossy black head/back, vivid ORANGE underparts, rump and wing patches, long narrow tail; not a red Scarlet Minivet.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Pericrocotus%20flammeus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        42
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN08352-dynamic",
+      "id": "birdnet-v3:BN08352",
+      "role": "dynamic",
+      "originalSHA256": "e25e6686a168030f8dcf12b74a66e91aed593d88419edefaf3af3656af32d65c",
+      "dutchName": "Pruimkopparkiet",
+      "englishName": "Plum-headed Parakeet",
+      "scientificName": "Psittacula cyanocephala",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: plum-purple head with dark chin/collar, green body, maroon shoulder patch and long blue-green tail; curved pale upper bill.",
+      "dynamicScene": "Holding a small fruit with one foot while the other grips a short branch, BOTH wings folded. Keep entire long tail and every leaf inside frame.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Psittacula%20cyanocephala"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        43
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN04063-dynamic",
+      "id": "birdnet-v3:BN04063",
+      "role": "dynamic",
+      "originalSHA256": "22b8c62c39e87ec34f7882615d278eeb287319bac6ffd8dd616b2ec166f9b8ed",
+      "dutchName": "Bankivahoen",
+      "englishName": "Red Junglefowl",
+      "scientificName": "Gallus gallus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Wild adult male: red comb/wattles, golden-orange hackles, chestnut mantle, glossy dark breast and green-black arched sickle tail; no domestic breed exaggeration.",
+      "dynamicScene": "Natural alert or foraging posture on a sparse species-appropriate ground/water-edge vignette, BOTH wings completely folded. No one-wing display; all props end/fade before borders.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Gallus%20gallus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        44
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN06229-dynamic",
+      "id": "birdnet-v3:BN06229",
+      "role": "dynamic",
+      "originalSHA256": "4d45cfc115652ba6e0bc9ab69612e6c2e98f5d02087b5a1dc28a84d9b72fbbf3",
+      "dutchName": "Grote kuiftiran",
+      "englishName": "Great Crested Flycatcher",
+      "scientificName": "Myiarchus crinitus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: brown crested head/back, grey throat and breast, yellow belly, rufous primaries and tail; broad-based flycatcher bill.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Myiarchus%20crinitus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        45
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN07672-dynamic",
+      "id": "birdnet-v3:BN07672",
+      "role": "dynamic",
+      "originalSHA256": "9c43b4e6234de42388d2040397d9e1e91b23e71416330e6abdfb958d20fb820c",
+      "dutchName": "Amerikaanse ekster",
+      "englishName": "Black-billed Magpie",
+      "scientificName": "Pica hudsonia",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: black-and-white magpie with long iridescent tail, white belly/scapulars and black bill; two wings only.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Pica%20hudsonia"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        46
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN04984-dynamic",
+      "id": "birdnet-v3:BN04984",
+      "role": "dynamic",
+      "originalSHA256": "491380fcd251bcd1ab96f0ed9b0e649634f35b97e8d218638d974e7ab2249062",
+      "dutchName": "Coromandeloehoe",
+      "englishName": "Dusky Eagle-Owl",
+      "scientificName": "Ketupa coromanda",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult dusky eagle-owl: broad ear tufts, orange-yellow eyes, grey-brown/buff plumage with dark streaking and banded flight feathers, large powerful talons.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Ketupa%20coromanda"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        47
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN00728-dynamic",
+      "id": "birdnet-v3:BN00728",
+      "role": "dynamic",
+      "originalSHA256": "82efeb59d9e13f5bd0b23955737c063d31333bf1176a8d5d92faf12c1b002375",
+      "dutchName": "Gierzwaluw",
+      "englishName": "Common Swift",
+      "scientificName": "Apus apus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: sooty brown overall, small pale throat patch, short forked tail and long narrow sickle-shaped wings; no pale belly or broad passerine wings.",
+      "dynamicScene": "Natural flying bird in a shallow front-oblique view with BOTH wings open laterally from the sides of the upper torso and both shoulders visibly continuous with the body. Two matching species-correct sickle/pointed wings, no extra folded silhouettes. Not a side-on body with one wing stuck above and another below it. Whole bird inside canvas; sparse transparent aerial scene.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Apus%20apus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        48
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN05747-dynamic",
+      "id": "birdnet-v3:BN05747",
+      "role": "dynamic",
+      "originalSHA256": "47c014b981c8fa6b700fd526274131cbbee3f0e230b47446b0ee6ed9ac431ff5",
+      "dutchName": "Roodbuikspecht",
+      "englishName": "Red-bellied Woodpecker",
+      "scientificName": "Melanerpes carolinus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: pale buff-grey face/belly with subtle reddish belly patch, red crown/nape and black-and-white zebra-barred back; not a fully red-headed woodpecker.",
+      "dynamicScene": "Clinging to a short trunk while probing bark, tail used as support and BOTH wings folded; naturally end/fade the trunk before borders.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Melanerpes%20carolinus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        49
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN09840-dynamic",
+      "id": "birdnet-v3:BN09840",
+      "role": "dynamic",
+      "originalSHA256": "752900de3f1c76dc1e86b86a27a939bdf3ffee33366dd7b995d6ce80d13e9a3d",
+      "dutchName": "Alpengierzwaluw",
+      "englishName": "Alpine Swift",
+      "scientificName": "Tachymarptis melba",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: large brown swift, WHITE throat and belly separated by a brown breast band, long sickle wings and short forked tail.",
+      "dynamicScene": "Natural flying bird in a shallow front-oblique view with BOTH wings open laterally from the sides of the upper torso and both shoulders visibly continuous with the body. Two matching species-correct sickle/pointed wings, no extra folded silhouettes. Not a side-on body with one wing stuck above and another below it. Whole bird inside canvas; sparse transparent aerial scene.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Tachymarptis%20melba"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        51
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN08143-dynamic",
+      "id": "birdnet-v3:BN08143",
+      "role": "dynamic",
+      "originalSHA256": "6c35e0072285f8637f2eb5dfe35bed6136fd0b0d7bb4dc93c1f3cdd8eff0f0b4",
+      "dutchName": "Witteugelprinia",
+      "englishName": "Plain Prinia",
+      "scientificName": "Prinia inornata",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: plain warm brown upperparts, pale buff underparts, pale eyebrow, long graduated tail and fine bill; no exaggerated crest.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Prinia%20inornata"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        52
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN10650-dynamic",
+      "id": "birdnet-v3:BN10650",
+      "role": "dynamic",
+      "originalSHA256": "5803e8bdb3bfe3eae4455d66a237341b2b48c7e82ba1a75c4806bde4eaacc9e7",
+      "dutchName": "Indische kievit",
+      "englishName": "Red-wattled Lapwing",
+      "scientificName": "Vanellus indicus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: black crown/breast, red facial wattle and bill base with black tip, white face-side/neck line and belly, bronze-brown back, long yellow legs.",
+      "dynamicScene": "Natural alert or foraging posture on a sparse species-appropriate ground/water-edge vignette, BOTH wings completely folded. No one-wing display; all props end/fade before borders.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Vanellus%20indicus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        53
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN10732-dynamic",
+      "id": "birdnet-v3:BN10732",
+      "role": "dynamic",
+      "originalSHA256": "ab10a26045624b666967ce329a9570843129397c92cdc377e37d378329b8d57d",
+      "dutchName": "Oostelijke orpheusvireo",
+      "englishName": "Eastern Warbling Vireo",
+      "scientificName": "Vireo gilvus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: subdued grey-olive upperparts, pale underparts and pale eyebrow, fine dark eye line; no vivid yellow mask or black wing bars.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Vireo%20gilvus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        54
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN01344-dynamic",
+      "id": "birdnet-v3:BN01344",
+      "role": "dynamic",
+      "originalSHA256": "60be3ea6bc53a86313cdfacd91b010b755a03d846e3614fb73e75eb8345e177d",
+      "dutchName": "Grote geelkuifkaketoe",
+      "englishName": "Sulphur-crested Cockatoo",
+      "scientificName": "Cacatua galerita",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: white cockatoo with long sulphur-yellow crest, dark hooked bill, pale yellow beneath flight feathers; zygodactyl feet.",
+      "dynamicScene": "Eating a small seed held in one foot while perched on a naturally ending branch, yellow crest raised and BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Cacatua%20galerita"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        55
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN06778-dynamic",
+      "id": "birdnet-v3:BN06778",
+      "role": "dynamic",
+      "originalSHA256": "bc2d89f274ad9928a6fe3be266c94e812a838aab966d704cc24201432249acf4",
+      "dutchName": "Roodvleugelspreeuw",
+      "englishName": "Red-winged Starling",
+      "scientificName": "Onychognathus morio",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: glossy blue-black body and long tail, chestnut/rufous flight-feather panel; avoid confusing it with an American Red-winged Blackbird shoulder badge.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Onychognathus%20morio"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        56
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN07408-dynamic",
+      "id": "birdnet-v3:BN07408",
+      "role": "dynamic",
+      "originalSHA256": "39af7d1db579d0d1d8ba3dd2dc96204b70026ece223103485ebf7cd3fa2602b7",
+      "dutchName": "Indische aalscholver",
+      "englishName": "Indian Cormorant",
+      "scientificName": "Phalacrocorax fuscicollis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: slim dark cormorant, small head, blue eyes, fine hooked bill and long tail; natural webbed feet.",
+      "dynamicScene": "Front three-quarter view drying after swimming, BOTH wings naturally extended laterally at matching low angles, clear matched shoulder attachments. Do not retain extra folded wings; tail and webbed feet complete.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Phalacrocorax%20fuscicollis"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        57
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN06141-dynamic",
+      "id": "birdnet-v3:BN06141",
+      "role": "dynamic",
+      "originalSHA256": "f5282544c3af64055f695ae520085c9c93e36bed18b49561c2617783f67b0b93",
+      "dutchName": "Indische bonte kwikstaart",
+      "englishName": "White-browed Wagtail",
+      "scientificName": "Motacilla maderaspatensis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: black upperparts/throat, white belly, broad white eyebrow and wing panel, long black tail with white outer feathers.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Motacilla%20maderaspatensis"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        58
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN06124-dynamic",
+      "id": "birdnet-v3:BN06124",
+      "role": "dynamic",
+      "originalSHA256": "3877e298430339d6d0ba656d20efeaafdf900979530b231a8ce4539f765d48fb",
+      "dutchName": "Sneeuwvink",
+      "englishName": "White-winged Snowfinch",
+      "scientificName": "Montifringilla nivalis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult breeding male: grey head, brown back, pale underparts, black bill and small dark bib, broad white wing panel and white tail sides.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Montifringilla%20nivalis"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        59
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN08134-dynamic",
+      "id": "birdnet-v3:BN08134",
+      "role": "dynamic",
+      "originalSHA256": "ebebe038d6f6e1b51eddc14b33964f99b41b8a12d3ee64eb59e311926daf9bab",
+      "dutchName": "Bergprinia",
+      "englishName": "Himalayan Prinia",
+      "scientificName": "Prinia crinigera",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Himalayan Prinia: brown upperparts with dark streaking, buff-white underparts and long graduated tail; slender bill. No invented long black crest.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Prinia%20crinigera"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        60
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN09056-dynamic",
+      "id": "birdnet-v3:BN09056",
+      "role": "dynamic",
+      "originalSHA256": "da5979233b3bda53b186f023fad73da2aa05a480b9305c4ecf2d30eb409294e4",
+      "dutchName": "Grijs paapje",
+      "englishName": "Grey Bush Chat",
+      "scientificName": "Saxicola ferreus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: grey back/crown, dark face/throat, white eyebrow and wing patch, whitish underparts; compact upright bushchat shape.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Saxicola%20ferreus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        61
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN09197-dynamic",
+      "id": "birdnet-v3:BN09197",
+      "role": "dynamic",
+      "originalSHA256": "f12d1add9d2fc9e20aef3476b253bd09795f8c5c6edeb1c028330b4192383aca",
+      "dutchName": "Ovenvogel",
+      "englishName": "Ovenbird",
+      "scientificName": "Seiurus aurocapilla",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: olive-brown back, orange crown stripe bordered black, bold white eye ring and dense dark streaks on white underparts; pinkish legs.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Seiurus%20aurocapilla"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        62
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN08326-dynamic",
+      "id": "birdnet-v3:BN08326",
+      "role": "dynamic",
+      "originalSHA256": "9df350a45a0ebf279f6f31bdfe26176850f427bd1adaee3600587387572a370a",
+      "dutchName": "Grote baardvogel",
+      "englishName": "Great Barbet",
+      "scientificName": "Psilopogon virens",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult Great Barbet: large pale yellow bill, BLUE head, brownish upper breast/neck, green back and wings, yellow-green streaked underparts and red vent. Not the small red-crowned Coppersmith Barbet.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Psilopogon%20virens",
+        "https://avifauna.hkbws.org.hk/species/0210/028900"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        63
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN01711-dynamic",
+      "id": "birdnet-v3:BN01711",
+      "role": "dynamic",
+      "originalSHA256": "20652456d1733f610fdefbdfeff715e3503bb5277afbca3aeb6c33b69377671c",
+      "dutchName": "Roodrugzwaluw",
+      "englishName": "European Red-rumped Swallow",
+      "scientificName": "Cecropis rufula",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult European red-rumped swallow: blue-black upperparts, rufous rump/nape, pale finely streaked underparts and long forked tail; slim pointed wings rooted laterally at shoulders.",
+      "dynamicScene": "Natural flying bird in a shallow front-oblique view with BOTH wings open laterally from the sides of the upper torso and both shoulders visibly continuous with the body. Two matching species-correct sickle/pointed wings, no extra folded silhouettes. Not a side-on body with one wing stuck above and another below it. Whole bird inside canvas; sparse transparent aerial scene.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Cecropis%20rufula"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        64
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN07221-dynamic",
+      "id": "birdnet-v3:BN07221",
+      "role": "dynamic",
+      "originalSHA256": "3315241d7fad3c3ac860b48b16194c7366836a533acbcfc0e625e7206b7afb54",
+      "dutchName": "Australische pelikaan",
+      "englishName": "Australian Pelican",
+      "scientificName": "Pelecanus conspicillatus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: large white pelican with black flight feathers, very long pale pink bill and throat pouch, webbed feet; coherent heavy waterbird proportions.",
+      "dynamicScene": "Standing at the edge of a tiny shallow-water vignette, bill angled slightly down with a few droplets, BOTH wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Pelecanus%20conspicillatus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        65
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN00726-dynamic",
+      "id": "birdnet-v3:BN00726",
+      "role": "dynamic",
+      "originalSHA256": "37b72f5f1743fbb843eae0a15382c24d9e4d1ff111a593524094bdd83412b090",
+      "dutchName": "Huisgierzwaluw",
+      "englishName": "Little Swift",
+      "scientificName": "Apus affinis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: compact dark swift with pale throat and conspicuous white rump, short square/slightly notched tail, pointed sickle wings; no long swallow tail streamers.",
+      "dynamicScene": "Natural flying bird in a shallow front-oblique view with BOTH wings open laterally from the sides of the upper torso and both shoulders visibly continuous with the body. Two matching species-correct sickle/pointed wings, no extra folded silhouettes. Not a side-on body with one wing stuck above and another below it. Whole bird inside canvas; sparse transparent aerial scene.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Apus%20affinis"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        66
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN04227-dynamic",
+      "id": "birdnet-v3:BN04227",
+      "role": "dynamic",
+      "originalSHA256": "cf7a576d0437a4e5cee052eea2f3cca7816693d0ba9ad66021eae5ff9d1428dd",
+      "dutchName": "Koekoeksdwerguil",
+      "englishName": "Asian Barred Owlet",
+      "scientificName": "Glaucidium cuculoides",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: small ear-tuftless owlet with yellow eyes, fine brown-and-buff barring on head/body and banded tail; two naturally folded wings.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Glaucidium%20cuculoides"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        67
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN01414-dynamic",
+      "id": "birdnet-v3:BN01414",
+      "role": "dynamic",
+      "originalSHA256": "9fd2b2cf17a1d7390ebd4604bb0c6ef9c97d598012fa3dbc34eb2ce19f136662",
+      "dutchName": "Paarse strandloper",
+      "englishName": "Purple Sandpiper",
+      "scientificName": "Calidris maritima",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult nonbreeding: compact stocky dark grey shorebird with slightly decurved dark bill having yellowish base, short yellow-orange legs and subdued dark scalloped plumage.",
+      "dynamicScene": "Natural alert or foraging posture on a sparse species-appropriate ground/water-edge vignette, BOTH wings completely folded. No one-wing display; all props end/fade before borders.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Calidris%20maritima"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        68
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN08260-dynamic",
+      "id": "birdnet-v3:BN08260",
+      "role": "dynamic",
+      "originalSHA256": "776a6a06179b0693497d14534d35abe3e1f0572157c2726dfb66a6c29e305784",
+      "dutchName": "Wrattenibis",
+      "englishName": "Red-naped Ibis",
+      "scientificName": "Pseudibis papillosa",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: dark glossy ibis with long downcurved bill, red warty patch on rear crown/nape and pale shoulder patch; long dark legs.",
+      "dynamicScene": "Natural alert or foraging posture on a sparse species-appropriate ground/water-edge vignette, BOTH wings completely folded. No one-wing display; all props end/fade before borders.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Pseudibis%20papillosa"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        69
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN08821-dynamic",
+      "id": "birdnet-v3:BN08821",
+      "role": "dynamic",
+      "originalSHA256": "75b7ad1bd4198abdab8771b67ca8867e523907fb3c79c191d0bbfbf6328e5bfb",
+      "dutchName": "Nandoe",
+      "englishName": "Greater Rhea",
+      "scientificName": "Rhea americana",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: large grey-brown flightless rhea with long neck/legs, loose plumage and three-toed feet; never depict it flying.",
+      "dynamicScene": "Walking alertly in a sparse grassland vignette, BOTH wings resting folded against the body; no flight or one-wing display.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Rhea%20americana"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        70
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN03544-dynamic",
+      "id": "birdnet-v3:BN03544",
+      "role": "dynamic",
+      "originalSHA256": "a80b28965acfd0329bb056514ca3254787fd3439237ba503ee96ecde24119647",
+      "dutchName": "Roze kaketoe",
+      "englishName": "Galah",
+      "scientificName": "Eolophus roseicapilla",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: pink head/breast/underparts, pale pink crown crest and grey back/wings/tail, pale hooked bill.",
+      "dynamicScene": "Alert on a short branch with softly raised pink crest and BOTH grey wings folded.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Eolophus%20roseicapilla"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        71
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN09691-dynamic",
+      "id": "birdnet-v3:BN09691",
+      "role": "dynamic",
+      "originalSHA256": "e227f99f398a9c71e5cbf873f0efd49dd6773fe149ec8bc242f46173d27bb4d8",
+      "dutchName": "Rechtstaartdrongokoekoek",
+      "englishName": "Square-tailed Drongo-Cuckoo",
+      "scientificName": "Surniculus lugubris",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: glossy dark blue-black cuckoo with red iris, fine curved bill and square-ended dark tail; not a deeply forked drongo tail.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Surniculus%20lugubris"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        72
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN01425-dynamic",
+      "id": "birdnet-v3:BN01425",
+      "role": "dynamic",
+      "originalSHA256": "866f2302c90e78533b469af6272bfa3f1eead5c512cb7104931d4ea9e52c5980",
+      "dutchName": "Blonde ruiter",
+      "englishName": "Buff-breasted Sandpiper",
+      "scientificName": "Calidris subruficollis",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: warm buff face/neck/breast, fine scalloped brown upperparts, pale lower belly, short dark bill and yellow legs; no large bold breast spots.",
+      "dynamicScene": "Natural alert or foraging posture on a sparse species-appropriate ground/water-edge vignette, BOTH wings completely folded. No one-wing display; all props end/fade before borders.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Calidris%20subruficollis"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        73
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN10648-dynamic",
+      "id": "birdnet-v3:BN10648",
+      "role": "dynamic",
+      "originalSHA256": "36c61be9d921c6685bd7f22202765d74a8f7a2b029a8c7dd290cf079121dc94b",
+      "dutchName": "Indische sporenkievit",
+      "englishName": "River Lapwing",
+      "scientificName": "Vanellus duvaucelii",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult River Lapwing: black cap/crest and face/throat area, pale neck sides, grey-brown upperparts, dark breast band, white belly and long dark legs. No red facial wattle or red bill.",
+      "dynamicScene": "Natural alert or foraging posture on a sparse species-appropriate ground/water-edge vignette, BOTH wings completely folded. No one-wing display; all props end/fade before borders.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Vanellus%20duvaucelii"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        74
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN02090-dynamic",
+      "id": "birdnet-v3:BN02090",
+      "role": "dynamic",
+      "originalSHA256": "cfa4494f783f2d3f26ec05117795c9b16bf992e745382f5c814b1c6f249984bc",
+      "dutchName": "Goudoogtimalia",
+      "englishName": "Yellow-eyed Babbler",
+      "scientificName": "Chrysomma sinense",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: warm brown upperparts, whitish throat and pale underparts, yellow iris and orange eye ring; long graduated tail, no exaggerated crest.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Chrysomma%20sinense"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        75
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN07147-dynamic",
+      "id": "birdnet-v3:BN07147",
+      "role": "dynamic",
+      "originalSHA256": "d975d930ec9f430e6b5ce19cb0997868fd81d99c7f55bd565885270c808c8290",
+      "dutchName": "Grijze koolmees",
+      "englishName": "Cinereous Tit",
+      "scientificName": "Parus cinereus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: grey back/wings, black head/throat/breast stripe, white cheeks and pale underparts; no green back or bright yellow belly of Great Tit.",
+      "dynamicScene": "Natural species-appropriate perched or foraging posture on one short naturally ending twig, BOTH wings folded. Use alert head/tail posture for interest rather than raising one wing; keep all props inside the canvas.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Parus%20cinereus"
+      ],
+      "inputCategories": [
+        "Foute vleugels:pose"
+      ],
+      "previewNumbers": [
+        76
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": false
+      },
+      "correction": "Rebuild the pose and wing proportions. "
+    },
+    {
+      "key": "birdnet-v3-BN06072-dynamic",
+      "id": "birdnet-v3:BN06072",
+      "role": "dynamic",
+      "originalSHA256": "959beb8b66059353eef2918defa38b8b4eeffbcd798d09522f9779cb90ce8bb1",
+      "dutchName": "Bonte zanger",
+      "englishName": "Black-and-white Warbler",
+      "scientificName": "Mniotilta varia",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult male: crisp black-and-white longitudinal head/body stripes and wing bars, slightly decurved slender bill; no yellow or brown wash.",
+      "dynamicScene": "Clinging to one short diagonal branch with a few small leaves, foraging with BOTH wings folded. Branch must end/fade fully before every border, especially RIGHT; no full-height tree strip.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Mniotilta%20varia"
+      ],
+      "inputCategories": [
+        "BirdingCompanion"
+      ],
+      "previewNumbers": [
+        78
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": true
+      },
+      "correction": "End all props naturally inside the canvas, with 6 percent right-side transparent clearance. "
+    },
+    {
+      "key": "birdnet-v3-BN06289-dynamic",
+      "id": "birdnet-v3:BN06289",
+      "role": "dynamic",
+      "originalSHA256": "4f8fc6e100d83ae0b5997bc340cda65272b0f57ae929849db45ac738d7eb1cff",
+      "dutchName": "Monniksparkiet",
+      "englishName": "Monk Parakeet",
+      "scientificName": "Myiopsitta monachus",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Adult: green back, grey forehead/face and scalloped grey breast, pale horn bill, blue flight-feather edges and long pointed green tail.",
+      "dynamicScene": "Holding a small seed while perched on a short branch, BOTH wings folded. Whole branch and leaves must end/fade before LEFT and RIGHT edges; long tail complete.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/api/species/Myiopsitta%20monachus"
+      ],
+      "inputCategories": [
+        "BirdingCompanion"
+      ],
+      "previewNumbers": [
+        80
+      ],
+      "inputReview": {
+        "representation": "960px compact preview; contact-sheet comparison, with individual enlargement for selected difficult cases",
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "individualPreviewEnlarged": true
+      },
+      "correction": "End all props naturally inside the canvas, with 6 percent right-side transparent clearance. "
+    }
+  ],
+  "sourceInventorySHA256": "4cdebb18ac34f59b279eb65dc27e065b39db52a0cda529cdbab43ee2c72db974",
+  "sourceArchiveSHA256": "44560d0fa0c146edca112bf708ace33ae46285ab25b2aeeaea593bf2042221a6",
+  "pilotKeys": [
+    "birdnet-v3-BN06747-primary",
+    "birdnet-v3-BN09094-primary",
+    "birdnet-v3-BN04447-primary",
+    "birdnet-v3-BN08753-dynamic",
+    "birdnet-v3-BN01711-dynamic",
+    "birdnet-v3-BN06072-dynamic"
+  ],
+  "preservedKeys": [
+    "birdnet-v3-BN06072-primary",
+    "birdnet-v3-BN06289-primary"
+  ],
+  "pendingSpecies": [
+    {
+      "id": "birdnet-v3:BN01170",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Bruinstaarthoornkolibrie",
+      "scientificName": "Boissonneaua flavescens"
+    },
+    {
+      "id": "birdnet-v3:BN02171",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Grote kraaghoningzuiger",
+      "scientificName": "Cinnyris afer"
+    },
+    {
+      "id": "birdnet-v3:BN02172",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Purperhoningzuiger",
+      "scientificName": "Cinnyris asiaticus"
+    },
+    {
+      "id": "birdnet-v3:BN03921",
+      "reason": "Not present in supplied preview archive or selected app assets; need source role/hash before replacement",
+      "dutchName": "Zwarte frankolijn",
+      "scientificName": "Francolinus francolinus"
+    }
+  ],
+  "targetsSHA256": "7b10372cc18b9d877e4b1111d265846fbee599751f5e20a75610bf4cbc9fd43d"
+}
