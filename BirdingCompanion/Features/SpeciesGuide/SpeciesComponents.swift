@@ -305,7 +305,7 @@ enum SpeciesArtworkLayout {
     }
     static func dynamicOffsetX(speciesID: String) -> CGFloat {
         if ["birdnet-v3:BN01170", "birdnet-v3:BN02171", "birdnet-v3:BN02172"].contains(speciesID) {
-            return -5 // Existing -50pt placement + owner's requested 45pt right.
+            return 40 // Original -50pt placement + two requested 45pt shifts to the right.
         }
         return containsFullDynamic(speciesID: speciesID) ? 0 : -50
     }

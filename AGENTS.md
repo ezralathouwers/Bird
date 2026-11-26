@@ -240,3 +240,7 @@ framing is preserved on screen. The new 15-role local production round freezes
 11 rejected source hashes from the owner's current project and adds four
 missing roles (Eastern Cattle Egret and Black-bellied Tern). Do not change the
 old 77-role recipe/checkpoints. See Docs/ILLUSTRATIECORRECTIES_20261126.md.
+
+Latest owner adjustment: shift BN01170/BN02171/BN02172 dynamic artwork another
+45pt right: x offset is now +40pt (original -50pt + 90pt total). No generation
+or source-image changes; preserve the frozen local 15-image plan/checkpoints.

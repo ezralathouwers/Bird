@@ -28,7 +28,8 @@ productiemappen en hun resultaten/checkpoints blijven waar ze staan.
   intact. De rijhoogte en positie van de teksten veranderen niet.
 - Dynamisch: taigaboomkruiper en halsbandparkiet +15%, vanuit de onderrand.
 - Bruinstaarthoornkolibrie, grote kraaghoningzuiger en purperhoningzuiger:
-  precies 45pt naar rechts ten opzichte van hun bestaande plaatsing.
+  nog eens 45pt naar rechts na de vorige correctie; samen 90pt ten opzichte
+  van de oorspronkelijke plaatsing.
 - De gerepareerde/nieuwe dynamische soorten passen in de schermbreedte, zonder
   de algemene 18% horizontale overflow en -50pt verschuiving. Dit voorkomt
   opnieuw afsnijden van hun volledige bronbeelden op het scherm.

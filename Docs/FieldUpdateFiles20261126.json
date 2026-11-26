@@ -40,6 +40,7 @@
     "BirdingCompanion/Features/Discover/DiscoverView.swift": {
       "sha256": "08503f2695e9f8d739eb3c61263389f5ec37dbf8fbeac1e24f524c7fb89b99f2",
       "knownOld": [
+        "08503f2695e9f8d739eb3c61263389f5ec37dbf8fbeac1e24f524c7fb89b99f2",
         "c13a07d0a7347f0bf8445a934607b68a55d7bfda6380c28373b0702de1e51684",
         "ef8a820d08130419d6a20a6619dd35aa655c176f763101b9bd0dd8c4a5c21fa9"
       ],
@@ -163,8 +164,9 @@
       "requiredExisting": true
     },
     "BirdingCompanion/Features/SpeciesGuide/SpeciesComponents.swift": {
-      "sha256": "8e8b91eae11d076817cb876f48744fb6b9f6c2845268f5b7f16f778c6b91b83a",
+      "sha256": "4a1cc4ddbf08c2ea26eee4aea6a1f5f846751bffc951ad1ae1413e989b97d5f4",
       "knownOld": [
+        "8e8b91eae11d076817cb876f48744fb6b9f6c2845268f5b7f16f778c6b91b83a",
         "b8db1ddf4621893dc6f8d66f39cbaad9258308270e554dbce0e79c9ef459aa78"
       ],
       "requiredExisting": true
