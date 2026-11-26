@@ -73,7 +73,14 @@ class FieldInstallerTests(unittest.TestCase):
             'BirdingCompanion/Features/Sessions/SessionsView.swift',
             'BirdingCompanion/Features/Observations/ObservationMapView.swift',
             'BirdingCompanion/Features/Countries/FirstObservationsMap.swift',
-            'BirdingCompanion/Features/SpeciesGuide/SpeciesDistributionMap.swift'})
+            'BirdingCompanion/Features/SpeciesGuide/SpeciesDistributionMap.swift',
+            'BirdingCompanion/App/CompanionRootView.swift',
+            'BirdingCompanion/DesignSystem/FieldGuideTheme.swift',
+            'BirdingCompanion/Features/Observations/ObservationHistoryView.swift',
+            'BirdingCompanion/Features/Sessions/SessionEnhancements.swift',
+            'BirdingCompanion/Features/Sessions/SessionLiveLogger.swift',
+            'BirdingCompanion/Services/ObservationLocationModel.swift',
+            'BirdingCompanion/Persistence/ObservationStore.swift'})
         self.assertEqual(update.apply(self.project),0)
 
     def test_unknown_source_refused_before_any_changes(self):

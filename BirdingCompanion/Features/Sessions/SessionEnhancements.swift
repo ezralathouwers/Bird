@@ -72,7 +72,7 @@ struct SessionCountryTitle: View {
             if let code = ObservationCountry.normalized(session.countryCode), code != "BE" {
                 CountryFlagBadge(code: code, diameter: 22).accessibilityLabel(ObservationCountry.name(for: code))
             }
-            Text(session.locationName).font(FieldGuideTheme.sans(size, relativeTo: .title3))
+            Text(LocationNameDisplay.title(session.locationName, countryCode: session.countryCode)).font(FieldGuideTheme.sans(size, relativeTo: .title3))
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
     }

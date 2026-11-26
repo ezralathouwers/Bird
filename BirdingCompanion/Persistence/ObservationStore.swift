@@ -88,6 +88,7 @@ final class ObservationStore: ObservableObject {
     private(set) var historyReplacementID = UUID()
     private(set) var appliedDataFixes: [String] = []
     private let persistence: any ObservationPersistence
+    private var placeNameRecoveryHistoryID: UUID?
 
     init(persistence: any ObservationPersistence) {
         self.persistence = persistence
@@ -291,6 +292,78 @@ final class ObservationStore: ObservableObject {
         }
         guard changed > 0 else { return 0 }
         try commit(observations: logs, sessions: groups)
+        return changed
+    }
+
+    func locationTitle(for observation: Observation) -> String {
+        let session = observation.sessionID.flatMap { id in sessions.first { $0.id == id } }
+        if let session, !LocationNameDisplay.needsName(session.locationName) { return LocationNameDisplay.title(session.locationName) }
+        return LocationNameDisplay.title(observation.locationName, countryCode: observation.countryCode ?? session?.countryCode)
+    }
+
+    func needsPlaceName(_ request: PlaceNameRepairRequest) -> Bool {
+        if request.isSession {
+            guard let session = sessions.first(where: { $0.id == request.id }) else { return false }
+            return session.latitude == request.latitude && session.longitude == request.longitude && session.locationName == request.originalName && LocationNameDisplay.needsName(session.locationName)
+        }
+        guard let log = observations.first(where: { $0.id == request.id }) else { return false }
+        if let id = log.sessionID, let session = sessions.first(where: { $0.id == id }), !LocationNameDisplay.needsName(session.locationName) { return false }
+        return log.latitude == request.latitude && log.longitude == request.longitude && log.locationName == request.originalName && LocationNameDisplay.needsName(log.locationName)
+    }
+
+    private func inheritSessionNames(in logs: inout [Observation], sessions: [BirdSession]) -> Int {
+        var changed = 0
+        let groups = Dictionary(uniqueKeysWithValues: sessions.map { ($0.id, $0) })
+        for i in logs.indices {
+            guard LocationNameDisplay.needsName(logs[i].locationName), let id = logs[i].sessionID,
+                  let session = groups[id], !LocationNameDisplay.needsName(session.locationName) else { continue }
+            var metadata = logs[i].importMetadata ?? [:]
+            if metadata["locationRepair.originalName"] == nil { metadata["locationRepair.originalName"] = logs[i].locationName }
+            logs[i].importMetadata = metadata; logs[i].locationName = session.locationName
+            changed += 1
+        }
+        return changed
+    }
+    @discardableResult
+    func inheritSessionLocationNames() throws -> Int {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        var logs = observations
+        let changed = inheritSessionNames(in: &logs, sessions: sessions)
+        guard changed > 0 else { return 0 }
+        if placeNameRecoveryHistoryID != historyReplacementID { try persistence.preserveBeforeRestore() }
+        try commit(observations: logs, sessions: sessions)
+        placeNameRecoveryHistoryID = historyReplacementID
+        return changed
+    }
+
+    @discardableResult
+    func applyPlaceNames(_ results: [PlaceNameResolution]) throws -> Int {
+        guard loadError == nil else { throw CocoaError(.fileReadCorruptFile) }
+        var logs = observations, groups = sessions
+        var changed = 0
+        for result in results {
+            let request = result.request
+            guard needsPlaceName(request), !LocationNameDisplay.needsName(result.name) else { continue }
+            let name = result.name.trimmingCharacters(in: .whitespacesAndNewlines)
+            if request.isSession {
+                guard let i = groups.firstIndex(where: { $0.id == request.id }), groups[i].locationName == request.originalName else { continue }
+                var metadata = groups[i].importMetadata ?? [:]
+                if metadata["locationRepair.originalName"] == nil { metadata["locationRepair.originalName"] = groups[i].locationName }
+                groups[i].importMetadata = metadata; groups[i].locationName = name
+            } else {
+                guard let i = logs.firstIndex(where: { $0.id == request.id }), logs[i].locationName == request.originalName else { continue }
+                if let id = logs[i].sessionID, let session = groups.first(where: { $0.id == id }), !LocationNameDisplay.needsName(session.locationName) { continue }
+                var metadata = logs[i].importMetadata ?? [:]
+                if metadata["locationRepair.originalName"] == nil { metadata["locationRepair.originalName"] = logs[i].locationName }
+                logs[i].importMetadata = metadata; logs[i].locationName = name
+            }
+            changed += 1
+        }
+        changed += inheritSessionNames(in: &logs, sessions: groups)
+        guard changed > 0 else { return 0 }
+        if placeNameRecoveryHistoryID != historyReplacementID { try persistence.preserveBeforeRestore() }
+        try commit(observations: logs, sessions: groups)
+        placeNameRecoveryHistoryID = historyReplacementID
         return changed
     }
 

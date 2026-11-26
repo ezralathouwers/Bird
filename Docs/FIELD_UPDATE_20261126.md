@@ -162,3 +162,43 @@ Een native XCTest controleert de ondoorzichtige/enabled knop en reset met behoud
 van camera. Deze test vereist Xcode en is hier niet uitgevoerd. De in-place
 updater herkent de vorige veldversie inclusief de Swift 6-reparatie en bewaart
 alle illustraties/privékaarten/signing. Alleen relevante bronbestanden veranderen.
+
+## Plaatsnamen en verdere kaartverfijning — 26 november
+
+Sessielandschappen gaan nog 15pt omlaag (nu 35pt ten opzichte van de eerste
+veldversie); de fade nog 30pt naar rechts (nu 70pt). Sorteerknop op sessiedetails
+15pt lager. Externe-linkmarkering krijgt afgeronde hoeken; alle fullscreen
+kaartsluitknoppen gebruiken de gedeelde 0,7pt-lijn in plaats van een SF-glyph.
+
+De native compass gebruikte de interne UIImageView van UIButton voor rotatie.
+UIKit kon de getransformeerde afbeelding opnieuw indelen en vervormen. De naald
+zit nu in een eigen vast 22×22pt beeldvlak met aspect-fit; alleen de tekenlaag
+draait. De achtergrond en 44pt-hitbox draaien niet. De native regressie draait
+meerdere hoeken en controleert gelijke bounds en ongewijzigde schaal; uitvoering
+hiervan vereist nog de Apple-SDK.
+
+Waarnemingen tonen direct de betekenisvolle naam van hun sessie. Gekoppelde
+records met een lege/coördinatennaam worden ook opgeslagen met die sessienaam;
+eigen betekenisvolle detailnamen worden in de data behouden. Nog onbekende losse
+waarnemingen/sessies krijgen geleidelijk via de bestaande Apple-plaatsnaamdienst
+een naam, met 1,5s tussen verzoeken, gedeelde cache en groepering op circa 11m.
+Bij netwerkproblemen pauzeert dit tot de volgende appactivatie; geen verzonnen
+plaatsnamen of massale herhaalverzoeken. (0,0) blijft een ontbrekende plek.
+Tot er een echte plaatsnaam is, tonen overzichten het bekende land of
+‘Locatie onbekend’, zonder numerieke coördinaten als titel. Externe kaartmeldingen
+zonder plaatsnaam krijgen ook een lokale plaatsnaamlookup voor hun weergave.
+
+Vóór de eerste naamsaanpassing per geladen geschiedenis maakt de persistencelaag
+een RecoveryCopies-kopie. De oorspronkelijke titels blijven bovendien in
+importMetadata[locationRepair.originalName]. Updates controleren nogmaals ID,
+coördinaten en oorspronkelijke naam; recente gebruikersbewerkingen/verwijderingen
+of een herstelde geschiedenis worden niet door oude antwoorden overschreven.
+IDs, coördinaten, tijden, aantallen, notities, doelen en eerdere correctiemarkeringen
+blijven behouden. Opslaan blijft atomisch; bij schrijffouten verandert de
+gepubliceerde geschiedenis niet. Titelherstel pauzeert bij achtergrond, terwijl
+Audio ID mag blijven opnemen. Geen nieuwe betaalde diensten of API-sleutels.
+
+Native regressies toegevoegd voor coördinatenherkenning (met behoud van namen en
+adressen), sessievoorrang, oorspronkelijke metadata, recoverykopie, bestaande
+correctiemarkeringen, verouderde antwoorden en schrijffouten. Zij zijn hier niet
+uitgevoerd; Python-installatietests en syntaxcontrole blijven aparte controles.

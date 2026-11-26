@@ -124,7 +124,7 @@ struct MapCloseButton: View {
     let action: () -> Void
     var body: some View {
         Button(action: action) {
-            Image(systemName: "xmark").font(.system(size: 20, weight: .light))
+            FineControlIcon(symbol: "xmark", size: 20)
                 .foregroundStyle(FieldGuideTheme.charcoal)
                 .frame(width: 44, height: 44)
                 .background(FieldGuideTheme.ivory, in: Circle())
@@ -409,7 +409,7 @@ struct FineControlIcon: View {
 }
 
 struct FineControlMark: Shape {
-    static let symbols: Set<String> = ["map", "play", "clock", "plus", "minus", "plus.circle", "minus.circle", "checkmark.circle", "house", "mic", "waveform", "arrow.up.right.square", "arrow.up.arrow.down", "clock.arrow.circlepath"]
+    static let symbols: Set<String> = ["map", "play", "clock", "plus", "minus", "plus.circle", "minus.circle", "checkmark.circle", "house", "mic", "waveform", "xmark", "arrow.up.right.square", "arrow.up.arrow.down", "clock.arrow.circlepath"]
     let symbol: String
     func path(in rect: CGRect) -> Path {
         var p = Path()
@@ -452,9 +452,17 @@ struct FineControlMark: Shape {
             for (x, height) in [(2.0, 6.0), (6, 15), (10, 22), (14, 13), (18, 19), (22, 8)] {
                 p.move(to: CGPoint(x: x, y: 12 - height / 2)); p.addLine(to: CGPoint(x: x, y: 12 + height / 2))
             }
+        case "xmark":
+            p.move(to: CGPoint(x: 4, y: 4)); p.addLine(to: CGPoint(x: 20, y: 20))
+            p.move(to: CGPoint(x: 20, y: 4)); p.addLine(to: CGPoint(x: 4, y: 20))
         case "arrow.up.right.square":
-            p.move(to: CGPoint(x: 11, y: 3)); p.addLine(to: CGPoint(x: 3, y: 3))
-            p.addLine(to: CGPoint(x: 3, y: 21)); p.addLine(to: CGPoint(x: 21, y: 21)); p.addLine(to: CGPoint(x: 21, y: 13))
+            p.move(to: CGPoint(x: 11, y: 3)); p.addLine(to: CGPoint(x: 6, y: 3))
+            p.addQuadCurve(to: CGPoint(x: 3, y: 6), control: CGPoint(x: 3, y: 3))
+            p.addLine(to: CGPoint(x: 3, y: 18))
+            p.addQuadCurve(to: CGPoint(x: 6, y: 21), control: CGPoint(x: 3, y: 21))
+            p.addLine(to: CGPoint(x: 18, y: 21))
+            p.addQuadCurve(to: CGPoint(x: 21, y: 18), control: CGPoint(x: 21, y: 21))
+            p.addLine(to: CGPoint(x: 21, y: 13))
             p.move(to: CGPoint(x: 10, y: 14)); p.addLine(to: CGPoint(x: 22, y: 2))
             p.move(to: CGPoint(x: 14, y: 2)); p.addLine(to: CGPoint(x: 22, y: 2)); p.addLine(to: CGPoint(x: 22, y: 10))
         case "arrow.up.arrow.down":

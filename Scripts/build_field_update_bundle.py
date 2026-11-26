@@ -8,7 +8,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='e3b45d08a483d7a6e4d6120479273357c73fea49'
-REVISIONS=['09021ef3e66239892e0ca79fd57d5394a26359f2','1e38b351b05acc944e261c9bad361b51880b1baa','793eff42070aa8c6582f0d02586288b64c267f98',BASE,'0e2dcc08f0028219173ad6a640e5dd3a7507dd57','c3ab1fbce7fa9dd69803ffdeb18b7867c23dd1ea']
+REVISIONS=['41e8bf3f6ad9dbdd544ac586dbe12c8a1b7f6067','09021ef3e66239892e0ca79fd57d5394a26359f2','1e38b351b05acc944e261c9bad361b51880b1baa','793eff42070aa8c6582f0d02586288b64c267f98',BASE,'0e2dcc08f0028219173ad6a640e5dd3a7507dd57','c3ab1fbce7fa9dd69803ffdeb18b7867c23dd1ea']
 SOURCES=[
  'BirdingCompanion/App/CompanionRootView.swift',
  'BirdingCompanion/DesignSystem/FieldGuideTheme.swift',
@@ -26,6 +26,9 @@ SOURCES=[
  'BirdingCompanion/Features/Countries/FirstObservationsMap.swift',
  'BirdingCompanion/Features/SpeciesGuide/SpeciesDistributionMap.swift',
  'BirdingCompanion/Features/Sessions/SessionEnhancements.swift',
+ 'BirdingCompanion/Features/Sessions/SessionLiveLogger.swift',
+ 'BirdingCompanion/Services/ObservationLocationModel.swift',
+ 'BirdingCompanion/Persistence/ObservationStore.swift',
  'BirdingCompanion/Features/Sessions/SessionsView.swift',
  'BirdingAudioActivity/AudioRecordingWidget.swift','BirdingAudioActivity/Info.plist']
 

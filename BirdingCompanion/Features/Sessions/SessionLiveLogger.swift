@@ -26,7 +26,7 @@ import Combine
                 guard let self, !Task.isCancelled else { return }
                 let name = suggestion?.name.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
                 let point = SessionLogLocation(latitude: fix.latitude, longitude: fix.longitude,
-                    name: name.isEmpty ? String(format: "%.5f, %.5f", fix.latitude, fix.longitude) : name,
+                    name: name.isEmpty ? "Locatie onbekend" : name,
                     countryCode: suggestion?.countryCode)
                 if let session {
                     guard store.activeSession?.id == session.id else { throw SessionError.noActiveSession }

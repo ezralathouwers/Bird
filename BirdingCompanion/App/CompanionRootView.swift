@@ -11,6 +11,7 @@ struct CompanionRootView: View {
     @StateObject private var milestones = MilestoneController()
     @StateObject private var backups = BackupController()
     @StateObject private var countryRepair = CountryRepairController()
+    @StateObject private var placeNames = PlaceNameRepairController()
     @StateObject private var soundModel = SoundIdentificationModel()
     @StateObject private var soundPins = SoundResultPins()
     @State private var identificationPath = NavigationPath()
@@ -71,23 +72,24 @@ struct CompanionRootView: View {
                 do { try store.adjustExistingSessionTimesOnce() }
                 catch { sessionTimeCorrectionError = error.localizedDescription }
                 milestones.update(observations: store.observations, goals: store.goals, catalog: SpeciesGuideCatalog.species, historyReplacementID: store.historyReplacementID)
-                countryRepair.resume(store: store)
+                countryRepair.resume(store: store); placeNames.resume(store: store)
             }
             .onChange(of: store.historyReplacementID) { _, _ in
+                placeNames.pause(); placeNames.resume(store: store)
                 do { try store.adjustExistingSessionTimesOnce() }
                 catch { sessionTimeCorrectionError = error.localizedDescription }
             }
             .onChange(of: store.revision) { _, _ in
                 backups.schedule(store: store)
-                countryRepair.schedule(store: store)
+                countryRepair.schedule(store: store); placeNames.schedule(store: store)
                 milestones.update(observations: store.observations, goals: store.goals, catalog: SpeciesGuideCatalog.species, historyReplacementID: store.historyReplacementID)
             }
             .environmentObject(soundModel)
             .environmentObject(soundPins)
             .onChange(of: soundModel.startedAt) { _, _ in soundPins.reset() }
             .onChange(of: scenePhase) { _, phase in
-                if phase == .background { countryRepair.pause() }
-                if phase == .active { backups.schedule(store: store); countryRepair.resume(store: store) }
+                if phase == .background { countryRepair.pause(); placeNames.pause() }
+                if phase == .active { backups.schedule(store: store); countryRepair.resume(store: store); placeNames.resume(store: store) }
             }
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { soundModel.handleInterruption($0) }
             .onOpenURL { url in

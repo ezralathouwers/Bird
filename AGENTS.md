@@ -212,3 +212,12 @@ Keep live result promotion and stable plus presses. The live session search
 rest group uses an ONWAARSCHIJNLIJK family-style heading. Move session habitat
 art down 20pt and its fade right 40pt. All fullscreen maps have an opaque,
 enabled north-reset compass; preserve center, zoom and pitch when resetting.
+
+Latest layout/location follow-up, 26 November: session art is now 35pt down and
+its fade 70pt right relative to the first field version. Use a separate fixed-size
+needle for the native compass; do not transform UIButton's internal imageView.
+Use fine close strokes, rounded external-link corners, and move session detail
+sorting down 15pt. Linked observation titles inherit the session's meaningful
+name. Repair coordinate/empty names gradually through the existing place service,
+recheck stale results, preserve original names and recovery copies, and never
+change IDs, coordinates, times, counts or user-written meaningful names.

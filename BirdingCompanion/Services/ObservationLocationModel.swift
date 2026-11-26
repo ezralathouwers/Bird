@@ -271,3 +271,112 @@ struct AppLocationPolicy: Sendable {
         } onCancel: { Task { @MainActor in geocoder.cancelGeocode() } }
     }
 }
+
+// Coordinate text remains recoverable in metadata; it is not a useful place title.
+enum LocationNameDisplay {
+    static func needsName(_ value: String) -> Bool {
+        let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        if value.isEmpty || ["onbekend", "locatie onbekend", "onbekende locatie", "geen locatie opgegeven"].contains(value.lowercased()) { return true }
+        guard value.rangeOfCharacter(from: .decimalDigits) != nil,
+              let numbers = try? NSRegularExpression(pattern: #"[+\-−]?\d+(?:[.,]\d+)?"#),
+              numbers.numberOfMatches(in: value, range: NSRange(value.startIndex..., in: value)) >= 2 else { return false }
+        return value.range(of: #"^[\s\d+\-−.,;°'"′″NSEWnsew()\[\]/]+$"#, options: .regularExpression) != nil
+    }
+    static func title(_ value: String, countryCode: String? = nil) -> String {
+        if !needsName(value) { return value.trimmingCharacters(in: .whitespacesAndNewlines) }
+        if let code = ObservationCountry.normalized(countryCode) { return ObservationCountry.name(for: code) }
+        return "Locatie onbekend"
+    }
+}
+
+struct PlaceNameRepairRequest: Sendable {
+    let id: UUID
+    let isSession: Bool
+    let latitude: Double
+    let longitude: Double
+    let originalName: String
+}
+struct PlaceNameResolution: Sendable {
+    let request: PlaceNameRepairRequest
+    let name: String
+    let countryCode: String?
+}
+
+@MainActor
+final class PlaceNameRepairController: ObservableObject {
+    @Published private(set) var message: String?
+    private let naming: any PlaceNamingService
+    private let delay: Duration
+    private var task: Task<Void, Never>?
+    private var active = true
+    private var pending = false
+    private var pausedAfterError = false
+    private var historyID: UUID?
+    private var attempted: [String: Date] = [:]
+    init(naming: any PlaceNamingService = ApplePlaceNamingService(), delay: Duration = .milliseconds(1500)) {
+        self.naming = naming; self.delay = delay
+    }
+    func schedule(store: ObservationStore) {
+        guard active, !pausedAfterError, store.loadError == nil else { return }
+        guard task == nil else { pending = true; return }
+        task = Task {
+            await repair(store: store)
+            task = nil
+            if pending { pending = false; schedule(store: store) }
+        }
+    }
+    func pause() { active = false; pending = false; task?.cancel() }
+    func resume(store: ObservationStore) { active = true; pausedAfterError = false; schedule(store: store) }
+    func repair(store: ObservationStore) async {
+        guard store.loadError == nil, !Task.isCancelled else { return }
+        do { try store.inheritSessionLocationNames() }
+        catch {
+            pausedAfterError = true; message = "Locatienamen konden niet veilig worden opgeslagen. Probeer opnieuw na heropenen."
+            return
+        }
+        let history = store.historyReplacementID
+        if historyID != history { attempted.removeAll(); historyID = history }
+        attempted = attempted.filter { Date().timeIntervalSince($0.value) < 900 }
+        let sessions = store.sessions.filter { LocationNameDisplay.needsName($0.locationName) }.map {
+            PlaceNameRepairRequest(id: $0.id, isSession: true, latitude: $0.latitude, longitude: $0.longitude, originalName: $0.locationName)
+        }
+        let logs = store.observations.compactMap { log -> PlaceNameRepairRequest? in
+            guard LocationNameDisplay.needsName(log.locationName), let lat = log.latitude, let lon = log.longitude else { return nil }
+            return PlaceNameRepairRequest(id: log.id, isSession: false, latitude: lat, longitude: lon, originalName: log.locationName)
+        }
+        // Sessions first: one resolved session name can cover all its linked logs.
+        let ordered = sessions + logs
+        var seen = Set<String>()
+        for request in ordered {
+            guard !Task.isCancelled, store.historyReplacementID == history else { return }
+            guard request.latitude.isFinite, request.longitude.isFinite,
+                  (-90...90).contains(request.latitude), (-180...180).contains(request.longitude),
+                  request.latitude != 0 || request.longitude != 0 else { continue }
+            let key = "\(Int((request.latitude * 10000).rounded())),\(Int((request.longitude * 10000).rounded()))"
+            guard !seen.contains(key), attempted[key] == nil, store.needsPlaceName(request) else { continue }
+            seen.insert(key)
+            do {
+                try await Task.sleep(for: delay)
+                let suggestion = try await naming.suggestion(latitude: request.latitude, longitude: request.longitude)
+                try Task.checkCancellation()
+                guard store.historyReplacementID == history else { return }
+                attempted[key] = Date()
+                guard !LocationNameDisplay.needsName(suggestion.name) else { continue }
+                let matching = ordered.filter {
+                    Int(($0.latitude * 10000).rounded()) == Int((request.latitude * 10000).rounded()) &&
+                    Int(($0.longitude * 10000).rounded()) == Int((request.longitude * 10000).rounded())
+                }.map { PlaceNameResolution(request: $0, name: suggestion.name, countryCode: suggestion.countryCode) }
+                try store.applyPlaceNames(matching)
+                message = nil
+            } catch is CancellationError { return }
+            catch let error as CLError where error.code == .geocodeFoundNoResult || error.code == .geocodeFoundPartialResult {
+                attempted[key] = Date()
+            } catch {
+                guard !Task.isCancelled else { return }
+                pausedAfterError = true
+                message = "Locatienamen aanvullen is onderbroken. Bij de volgende appactivatie wordt dit opnieuw geprobeerd."
+                return
+            }
+        }
+    }
+}

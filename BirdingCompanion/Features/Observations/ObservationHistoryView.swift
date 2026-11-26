@@ -34,8 +34,7 @@ struct ObservationHistoryView: View {
                 Button { navigation.open(record, species: species) } label: {
                     HStack(alignment: .center, spacing: 16) {
                         VStack(alignment: .leading, spacing: 6) {
-                            Text(record.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                                 ? "Geen locatie opgegeven" : record.locationName)
+                            Text(store.locationTitle(for: record))
                                 .font(FieldGuideTheme.sans(20, relativeTo: .title3))
                                 .foregroundStyle(FieldGuideTheme.charcoal)
                                 .fixedSize(horizontal: false, vertical: true)

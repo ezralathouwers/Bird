@@ -83,8 +83,7 @@ struct ObservationMapView: View {
                 HStack(alignment: .top, spacing: 6) {
                     LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke)
                         .frame(width: 24, height: 24).fixedSize().offset(x: -2, y: -2).accessibilityHidden(true)
-                    Text(current.locationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                         ? "Geen locatie opgegeven" : current.locationName)
+                    Text(store.locationTitle(for: current))
                 }.font(FieldGuideTheme.sans(15, relativeTo: .subheadline)).padding(.top, 5)
             }
             .fixedSize(horizontal: false, vertical: true)
@@ -135,6 +134,7 @@ struct NearbyReportMapView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var camera: MapCameraPosition = .automatic
     @State private var currentCamera: MapCamera?
+    @State private var resolvedPlaceName: String?
     @StateObject private var connectivity = MapConnectivity()
     private var coordinate: CLLocationCoordinate2D { .init(latitude: report.latitude, longitude: report.longitude) }
     var body: some View {
@@ -169,7 +169,7 @@ struct NearbyReportMapView: View {
                     Text(report.localObservedAt?.isEmpty == false ? report.localObservedAt! : report.observedAt.formatted(date: .abbreviated, time: .shortened))
                     HStack(alignment: .top, spacing: 6) {
                         LocationOutlineMark().stroke(style: FieldGuideTheme.navigationStroke).frame(width: 24, height: 24).fixedSize().offset(y: -3)
-                        Text(report.locationName?.isEmpty == false ? report.locationName! : String(format: "%.5f, %.5f", report.latitude, report.longitude))
+                        Text(LocationNameDisplay.title(resolvedPlaceName ?? report.locationName ?? ""))
                     }.padding(.top, 5)
                     Text(report.checklistID.hasPrefix("observation:") ? "Observation.org" : report.checklistID.hasPrefix("demo-") ? "Voorbeeldmelding" : "eBird")
                         .font(FieldGuideTheme.sans(12, relativeTo: .caption)).opacity(0.65)
@@ -178,6 +178,12 @@ struct NearbyReportMapView: View {
                     .frame(maxWidth: .infinity, alignment: .leading).padding(16)
                     .background(FieldGuideTheme.beige, in: RoundedRectangle(cornerRadius: 16))
                     .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
+            }
+            .task(id: report.id) {
+                guard LocationNameDisplay.needsName(report.locationName ?? ""),
+                      let suggestion = try? await ApplePlaceNamingService().suggestion(latitude: report.latitude, longitude: report.longitude),
+                      !Task.isCancelled, !LocationNameDisplay.needsName(suggestion.name) else { return }
+                resolvedPlaceName = suggestion.name
             }
             .onAppear { camera = .region(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))) }
     }
@@ -224,13 +230,24 @@ struct MapNorthControl: View {
 @MainActor
 final class NativeMapNorthControl: UIButton {
     private weak var map: MKMapView?
+    private let needle = UIImageView()
     static func install(on map: MKMapView) {
         let button = NativeMapNorthControl(frame: .zero)
         button.map = map; button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(FieldGuideTheme.ivory)
         button.tintColor = UIColor(FieldGuideTheme.charcoal)
         button.layer.cornerRadius = 22
-        button.setImage(UIImage(systemName: "location.north.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .ultraLight)), for: .normal)
+        // A fixed-size child avoids UIButton re-laying out its own rotated
+        // imageView from the transformed frame, which squashes the SF Symbol.
+        button.needle.image = UIImage(systemName: "location.north.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .ultraLight))
+        button.needle.translatesAutoresizingMaskIntoConstraints = false
+        button.needle.contentMode = .scaleAspectFit
+        button.needle.accessibilityIdentifier = "map-compass-needle"
+        button.addSubview(button.needle)
+        NSLayoutConstraint.activate([
+            button.needle.widthAnchor.constraint(equalToConstant: 22), button.needle.heightAnchor.constraint(equalToConstant: 22),
+            button.needle.centerXAnchor.constraint(equalTo: button.centerXAnchor), button.needle.centerYAnchor.constraint(equalTo: button.centerYAnchor)
+        ])
         button.accessibilityLabel = "Richt kaart naar het noorden"
         button.addTarget(button, action: #selector(NativeMapNorthControl.resetNorth), for: .touchUpInside)
         map.addSubview(button)
@@ -245,7 +262,7 @@ final class NativeMapNorthControl: UIButton {
     static func refresh(in map: MKMapView) {
         for button in map.subviews.compactMap({ $0 as? NativeMapNorthControl }) {
             map.bringSubviewToFront(button)
-            button.imageView?.transform = CGAffineTransform(rotationAngle: -map.camera.heading * .pi / 180)
+            button.needle.layer.setAffineTransform(CGAffineTransform(rotationAngle: -map.camera.heading * .pi / 180))
         }
     }
     @objc private func resetNorth() {

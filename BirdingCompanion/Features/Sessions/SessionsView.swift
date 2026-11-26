@@ -109,10 +109,10 @@ struct SessionsView: View {
                                             .scaleEffect(1.2, anchor: .bottomTrailing)
                                             .mask {
                                                 LinearGradient(colors: [.clear, .white, .white], startPoint: .leading, endPoint: .trailing)
-                                                    .offset(x: 40)
+                                                    .offset(x: 70)
                                             }
                                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                                            .offset(x: 20, y: 20)
+                                            .offset(x: 20, y: 35)
                                     }.allowsHitTesting(false).accessibilityHidden(true)
                                 }
                                 VStack(alignment: .leading, spacing: 6) {
@@ -573,7 +573,7 @@ private struct SessionDetailView: View {
                                 FineControlIcon(symbol: "arrow.up.arrow.down", size: 20)
                                     .frame(width: 44, height: 44)
                                     .background(FieldGuideTheme.searchControlBackground, in: Circle())
-                            }.accessibilityLabel("Sortering").accessibilityValue(sort.rawValue)
+                            }.accessibilityLabel("Sortering").accessibilityValue(sort.rawValue).offset(y: 15)
                         }.padding(.top, 16).padding(.bottom, 12)
                         SessionLogsList(logs: SessionStats.sorted(logs, by: sort), linksToSpecies: true)
                     }.padding(20).padding(.bottom, 79)

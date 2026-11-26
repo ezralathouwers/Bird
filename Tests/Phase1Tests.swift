@@ -3058,5 +3058,73 @@ final class FullScreenCompassTests: XCTestCase {
         XCTAssertEqual(map.camera.centerCoordinate.longitude, before.centerCoordinate.longitude, accuracy: 0.0001)
         XCTAssertEqual(map.camera.pitch, before.pitch, accuracy: 1)
         XCTAssertEqual(map.camera.centerCoordinateDistance, before.centerCoordinateDistance, accuracy: max(1, before.centerCoordinateDistance * 0.01))
+        map.layoutIfNeeded(); button.layoutIfNeeded()
+        let needle = try XCTUnwrap(button.subviews.first { $0.accessibilityIdentifier == "map-compass-needle" })
+        let size = needle.bounds.size
+        for heading in stride(from: 0.0, through: 360.0, by: 15.0) {
+            let camera = try XCTUnwrap(map.camera.copy() as? MKMapCamera)
+            camera.heading = heading; map.setCamera(camera, animated: false)
+            NativeMapNorthControl.refresh(in: map); button.layoutIfNeeded()
+            XCTAssertEqual(needle.bounds.size, size)
+            let transform = needle.layer.affineTransform()
+            XCTAssertEqual(hypot(transform.a, transform.b), 1, accuracy: 0.001)
+            XCTAssertEqual(hypot(transform.c, transform.d), 1, accuracy: 0.001)
+        }
+    }
+}
+
+@MainActor
+final class LocationNameRepairTests: XCTestCase {
+    private func fixture(sessionName: String = "Testbos") -> BirdingArchive {
+        let session = BirdSession(locationName: sessionName, latitude: 51.2, longitude: 4.4, countryCode: "BE", startedAt: Date(timeIntervalSince1970: 1000), endedAt: Date(timeIntervalSince1970: 2000), isLive: false)
+        var linked = Observation(speciesID: "sample-turdus-merula", taxonomyVersion: "test", observedAt: Date(timeIntervalSince1970: 1500), locationName: "51.20000, 4.40000", count: 1, notes: "behouden", status: .confirmed)
+        linked.latitude = 51.2; linked.longitude = 4.4; linked.countryCode = "BE"; linked.sessionID = session.id
+        var standalone = linked; standalone.id = UUID(); standalone.sessionID = nil; standalone.latitude = 51.3; standalone.locationName = "51.30000, 4.40000"
+        return BirdingArchive(observations: [linked, standalone], sessions: [session], appliedDataFixes: ["existing-receipt"])
+    }
+    func testCoordinateDetectionDoesNotRejectNamesOrAddresses() {
+        XCTAssertTrue(LocationNameDisplay.needsName("51.20000, 4.40000"))
+        XCTAssertTrue(LocationNameDisplay.needsName("(N51.2 E4.4)"))
+        XCTAssertTrue(LocationNameDisplay.needsName("Locatie onbekend"))
+        XCTAssertFalse(LocationNameDisplay.needsName("Wenen"))
+        XCTAssertFalse(LocationNameDisplay.needsName("Route 66"))
+        XCTAssertFalse(LocationNameDisplay.needsName("E40"))
+        XCTAssertFalse(LocationNameDisplay.needsName("Parklaan 15"))
+    }
+    func testSessionInheritanceAndReverseNamePreserveCoordinatesMetadataAndBackup() throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let url = folder.appendingPathComponent("history.json"), original = fixture()
+        try JSONEncoder().encode(original).write(to: url)
+        let store = ObservationStore(persistence: JSONObservationPersistence(url: url))
+        XCTAssertEqual(store.locationTitle(for: store.observations[0]), "Testbos")
+        XCTAssertEqual(try store.inheritSessionLocationNames(), 1)
+        XCTAssertEqual(store.observations[0].locationName, "Testbos")
+        XCTAssertEqual(store.observations[0].importMetadata?["locationRepair.originalName"], original.observations[0].locationName)
+        let log = store.observations[1]
+        let request = PlaceNameRepairRequest(id: log.id, isSession: false, latitude: log.latitude!, longitude: log.longitude!, originalName: log.locationName)
+        XCTAssertEqual(try store.applyPlaceNames([.init(request: request, name: "Testpark", countryCode: "BE")]), 1)
+        XCTAssertEqual(store.observations.map(\.id), original.observations.map(\.id))
+        XCTAssertEqual(store.observations.map(\.latitude), original.observations.map(\.latitude))
+        XCTAssertEqual(store.observations.map(\.observedAt), original.observations.map(\.observedAt))
+        XCTAssertEqual(store.observations.map(\.notes), original.observations.map(\.notes))
+        XCTAssertEqual(store.observations.map(\.countryCode), original.observations.map(\.countryCode))
+        XCTAssertEqual(store.appliedDataFixes, ["existing-receipt"])
+        let copies = try FileManager.default.contentsOfDirectory(at: folder.appendingPathComponent("RecoveryCopies"), includingPropertiesForKeys: nil)
+        XCTAssertEqual(copies.count, 1)
+        let backup = try JSONDecoder().decode(BirdingArchive.self, from: Data(contentsOf: copies[0]))
+        XCTAssertEqual(backup.observations, original.observations)
+    }
+    func testStaleResolutionAndPersistenceFailureDoNotOverwriteRecords() throws {
+        let original = fixture(sessionName: "51.20000, 4.40000")
+        let persistence = SessionCorrectionFailureFixture(original: original)
+        let store = ObservationStore(persistence: persistence), log = original.observations[1]
+        let stale = PlaceNameRepairRequest(id: log.id, isSession: false, latitude: 0, longitude: 0, originalName: log.locationName)
+        XCTAssertEqual(try store.applyPlaceNames([.init(request: stale, name: "Verkeerde plek", countryCode: "BE")]), 0)
+        let request = PlaceNameRepairRequest(id: log.id, isSession: false, latitude: log.latitude!, longitude: log.longitude!, originalName: log.locationName)
+        XCTAssertThrowsError(try store.applyPlaceNames([.init(request: request, name: "Testpark", countryCode: "BE")]))
+        XCTAssertEqual(store.observations, original.observations)
+        XCTAssertTrue(persistence.preserved)
     }
 }
