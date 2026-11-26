@@ -29,7 +29,7 @@ struct ObservationForm: View {
     private var standardForm: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: original == nil ? "Waarneming toevoegen" : "Waarneming bewerken") { dismiss() }
-            ScrollView {
+            CatalogResultsScroll(resetKey: "observationform-page") {
                 VStack(alignment: .leading, spacing: 18) {
                     selectedBird
                     ViewThatFits(in: .horizontal) {
@@ -77,7 +77,7 @@ struct ObservationForm: View {
                         Button("Waarneming verwijderen", role: .destructive) { confirmDelete = true }
                             .frame(maxWidth: .infinity, minHeight: 44).disabled(store.loadError != nil)
                     }
-                }.padding(20).background(FieldGuideTheme.ivory)
+                }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, original == nil ? 20 : 5).background(FieldGuideTheme.ivory)
             }
             .task { if original == nil { location.useCurrentLocation() } }
             .onDisappear { location.stop() }

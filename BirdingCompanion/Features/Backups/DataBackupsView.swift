@@ -14,7 +14,7 @@ struct DataBackupsView: View {
     var body: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: "Gegevens en back-ups") { dismiss() }
-            ScrollView {
+            CatalogResultsScroll(resetKey: "databackupsview-page") {
                 VStack(alignment: .leading, spacing: 24) {
                     Text("Bewaar je geschiedenis")
                         .font(FieldGuideTheme.sans(24, relativeTo: .title2))
@@ -124,7 +124,7 @@ private struct BackupRestorePreview: View {
     var body: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: "Back-up bekijken") { dismiss() }.disabled(backups.isBusy)
-            ScrollView {
+            CatalogResultsScroll(resetKey: "databackupsview-page") {
                 VStack(alignment: .leading, spacing: 20) {
                     if let date = preview.createdAt { Text(date.formatted(date: .abbreviated, time: .shortened)) }
                     Text("\(preview.archive.observations.count) \(preview.archive.observations.count == 1 ? "waarneming" : "waarnemingen")")

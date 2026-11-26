@@ -13,6 +13,7 @@ struct EBirdConnectionView: View {
     @State private var hasStoredKey = false
     @State private var isChecking = false
     @State private var message: String?
+    @State private var formTop: CGFloat = 0
     private let keys = EBirdKeychainStore()
 
     var body: some View {
@@ -21,6 +22,11 @@ struct EBirdConnectionView: View {
             Form {
                 Section {
                     Text("Observation.org levert openbare vogelmeldingen. Verbind eBird om ook die bron toe te voegen.")
+                        .background {
+                            GeometryReader { geometry in
+                                Color.clear.preference(key: HeaderScrollTop.self, value: geometry.frame(in: .named("connection-form-scroll")).minY)
+                            }
+                        }
                     Link("Gratis eBird-sleutel aanvragen", destination: URL(string: "https://ebird.org/api/keygen")!)
                 }
                 Section("Locatie") {
@@ -77,6 +83,11 @@ struct EBirdConnectionView: View {
                     }
                 }
             }
+            .coordinateSpace(name: "connection-form-scroll")
+            .onPreferenceChange(HeaderScrollTop.self) { value in
+                if let value { Task { @MainActor in formTop = value } }
+            }
+            .overlay(alignment: .top) { HeaderScrollFade(top: formTop) }
             .scrollContentBackground(.hidden)
             .background(FieldGuideTheme.ivory)
             .foregroundStyle(FieldGuideTheme.charcoal)

@@ -73,7 +73,9 @@ struct SoundIdentificationView: View {
         store.activeSession.map { Set(store.observations(in: $0).map(\.speciesID)) } ?? []
     }
     var body: some View {
-        ScrollView {
+        FixedHeaderScroll(header: {
+            CenteredPageHeader(title: "Audio ID") { dismiss() }.background(FieldGuideTheme.ivory)
+        }) {
             LazyVStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Image(systemName: model.isRecording ? "mic.fill" : "mic").font(.system(size: 20, weight: .ultraLight))
@@ -116,8 +118,6 @@ struct SoundIdentificationView: View {
                         }, open: { selectedSpecies = $0 })
                 }
             }.padding(20).padding(.bottom, 79)
-        }.safeAreaInset(edge: .top, spacing: 0) {
-            CenteredPageHeader(title: "Audio ID") { dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .onAppear { if model.startedAt == nil && !model.isStarting { model.begin() } }
             .fullScreenCover(item: $addSpecies) { bird in ObservationForm(species: bird) }
@@ -166,7 +166,9 @@ struct PhotoIdentificationView: View {
         "\(location?.latitude ?? 999),\(location?.longitude ?? 999),\(location?.countryCode ?? ""):" + model.candidates.map(\.id).joined(separator: ",")
     }
     var body: some View {
-        ScrollView {
+        FixedHeaderScroll(header: {
+            CenteredPageHeader(title: "Foto ID") { dismiss() }.background(FieldGuideTheme.ivory)
+        }) {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HStack(spacing: 16) {
                     Button { Task { await openCamera() } } label: {
@@ -207,8 +209,6 @@ struct PhotoIdentificationView: View {
                     } else { IdentificationResults(candidates: model.candidates) { selectedSpecies = $0 } }
                 }
             }.padding(20).padding(.bottom, 104)
-        }.safeAreaInset(edge: .top, spacing: 0) {
-            CenteredPageHeader(title: "Foto ID") { dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .task(id: selectedPhoto) {
                 guard let selectedPhoto else { return }

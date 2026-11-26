@@ -221,3 +221,11 @@ sorting down 15pt. Linked observation titles inherit the session's meaningful
 name. Repair coordinate/empty names gradually through the existing place service,
 recheck stale results, preserve original names and recovery copies, and never
 change IDs, coordinates, times, counts or user-written meaningful names.
+
+Latest fixed-header feedback, 26 November: Sessions/Goals bottom padding 104pt;
+session artwork now 40pt down. Use scroll-only top fades below fixed back/title
+headers, including forms/backups and photo/audio pages; no always-visible fade.
+Habitat menu is a full-width rounded beige field with arrows on the right and
+no helper sentence. Editing footers reduce bottom padding from 20pt to 5pt
+under delete; creation footers retain 20pt. Preserve keyboard/focus, safe areas
+and all existing form actions.

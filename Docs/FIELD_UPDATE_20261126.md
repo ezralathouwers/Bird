@@ -202,3 +202,32 @@ Native regressies toegevoegd voor coördinatenherkenning (met behoud van namen e
 adressen), sessievoorrang, oorspronkelijke metadata, recoverykopie, bestaande
 correctiemarkeringen, verouderde antwoorden en schrijffouten. Zij zijn hier niet
 uitgevoerd; Python-installatietests en syntaxcontrole blijven aparte controles.
+
+## Vaste headers, velden en marges — 26 november
+
+Sessies en doelstellingen hebben elk 10pt meer bodemruimte (94 → 104pt).
+Sessielandschappen zakken nog 5pt (nu 40pt). Alleen de runtimeplaatsing verandert;
+geen bronafbeeldingen worden aangepast.
+
+De gedeelde scrollfade staat nu ook onder vaste terugknopheaders van formulieren,
+back-ups/preview, Birda-import, live-/sessiedetail en doelstellingdetail. Audio ID,
+Foto ID en de uitsnede-editor hebben een gedeelde FixedHeaderScroll: de header
+staat buiten het scrollvlak en het bestaande bewegende contentanker bepaalt de
+fade, zodat hij in de beginstand onzichtbaar is. Schermen met een kaart of andere
+niet-scrollende inhoud krijgen geen statische fade. Bestaande catalogus-/bron-
+zoekers gebruikten die fade al. De native instellingen-Form behoudt zijn velden
+met een positieprobe bij de eerste rij; als die wordt gerecycled blijft de
+laatste scrolltoestand behouden tot de eerste rij terugkomt. Fade-lagen vangen
+geen tikken en veranderen de werkelijke header/touchdoelen niet.
+
+Het leefomgevingmenu is full width, beige met afgeronde hoeken en een rechts
+uitgelijnd sorteer/pijl-icoon. De gekozen naam/automatische optie staat links;
+Picker-selectie en Automatisch blijven werken. De toelichting is verwijderd.
+De footer van bewerkformulieren heeft 5pt in plaats van 20pt bodemruimte onder
+de verwijderactie. Toevoegformulieren behouden hun bestaande 20pt; opslaan,
+verwijderen en de bevestigingsdialoog blijven functioneel ongewijzigd.
+
+Verificatie: installatie/projectregressies, Swift-syntaxcontrole en een uitgepakt
+updatepakket op de vorige veldversie. Native scrolling, toetsenbord, safe areas
+en schermopmaak moeten nog op de iPhone worden beoordeeld. Er zijn geen tests
+voor louter padding of kleuren toegevoegd.

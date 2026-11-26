@@ -112,7 +112,7 @@ struct SessionsView: View {
                                                     .offset(x: 70)
                                             }
                                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                                            .offset(x: 20, y: 35)
+                                            .offset(x: 20, y: 40)
                                     }.allowsHitTesting(false).accessibilityHidden(true)
                                 }
                                 VStack(alignment: .leading, spacing: 6) {
@@ -128,7 +128,7 @@ struct SessionsView: View {
                         }.buttonStyle(.plain)
                         Divider()
                     }
-                }.padding(.bottom, 94)
+                }.padding(.bottom, 104)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
         .onChange(of: showSearch) { _, shown in searchFocused = shown; if !shown { search = "" } }
@@ -197,7 +197,7 @@ struct SessionForm: View {
     var body: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: title) { dismiss() }
-            ScrollView {
+            CatalogResultsScroll(resetKey: "sessionsview-page") {
                 VStack(alignment: .leading, spacing: 24) {
                     if !live {
                         ViewThatFits(in: .horizontal) {
@@ -215,15 +215,23 @@ struct SessionForm: View {
                         Button { location.useCurrentLocation() } label: { Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44) }
                             .disabled(location.isLocating)
                     }
-                    VStack(alignment: .leading, spacing: 8) {
+                    Menu {
                         Picker("Leefomgeving", selection: $habitatSceneID) {
                             Text("Automatisch op basis van vogelsoorten").tag("")
                             ForEach(HabitatSceneCatalog.scenes.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }) { scene in
                                 Text(scene.name).tag(scene.id)
                             }
-                        }.pickerStyle(.menu)
-                        Text("De automatische keuze is een voorstel. Je kunt dit later aanpassen.").font(FieldGuideTheme.sans(13))
-                    }
+                        }
+                    } label: {
+                        HStack(spacing: 12) {
+                            Text(HabitatSceneCatalog.scenes.first { $0.id == habitatSceneID }?.name ?? "Automatisch op basis van vogelsoorten")
+                                .font(FieldGuideTheme.sans(16)).frame(maxWidth: .infinity, alignment: .leading)
+                            FineControlIcon(symbol: "arrow.up.arrow.down", size: 18)
+                        }.padding(14).frame(maxWidth: .infinity, minHeight: 48)
+                            .background(FieldGuideTheme.beige.opacity(0.7), in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
+                            .contentShape(RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
+                    }.buttonStyle(.plain).accessibilityLabel("Leefomgeving")
+                        .accessibilityValue(HabitatSceneCatalog.scenes.first { $0.id == habitatSceneID }?.name ?? "Automatisch")
                     if !live {
                         Text("\(reviewing == nil ? selected.count : reviewLogs.count) \((reviewing == nil ? selected.count : reviewLogs.count) == 1 ? "waarneming" : "waarnemingen")")
                             .font(FieldGuideTheme.sans(24, relativeTo: .title2))
@@ -257,7 +265,7 @@ struct SessionForm: View {
                         Button("Sessie verwijderen", role: .destructive) { confirmDelete = true }
                             .frame(maxWidth: .infinity, minHeight: 44).disabled(store.loadError != nil)
                     }
-                }.padding(20).background(FieldGuideTheme.ivory)
+                }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, reviewing == nil ? 20 : 5).background(FieldGuideTheme.ivory)
             }
         }.background(FieldGuideTheme.ivory.ignoresSafeArea())
             .environment(\.timeZone, reviewing?.historyTimeZone ?? .current)
@@ -445,7 +453,7 @@ struct LiveSessionView: View {
     var body: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: "Livesessie") { isPresented = false }
-            ScrollView {
+            CatalogResultsScroll(resetKey: "sessionsview-page") {
                 VStack(alignment: .leading, spacing: 20) {
                     if let session = store.activeSession {
                         TimelineView(.periodic(from: .now, by: 1)) { context in
@@ -556,7 +564,7 @@ private struct SessionDetailView: View {
                     RoundEditAction(label: "Sessie bewerken") { editing = true }
                 }
             }.frame(minHeight: 44).padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 4)
-            ScrollView {
+            CatalogResultsScroll(resetKey: "sessionsview-page") {
                 if let session = current {
                     VStack(alignment: .leading, spacing: 8) {
                         SessionCountryTitle(session: session, size: 28)

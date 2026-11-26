@@ -383,6 +383,35 @@ struct CatalogResultsScroll<Content: View>: View {
     }
 }
 
+// Header is outside the scroll viewport, including on photo/audio pages that
+// previously installed it as a safe-area inset. Fade starts at the content edge.
+struct FixedHeaderScroll<Header: View, Content: View>: View {
+    private let header: Header
+    private let content: Content
+    init(@ViewBuilder header: () -> Header, @ViewBuilder content: () -> Content) {
+        self.header = header(); self.content = content()
+    }
+    var body: some View {
+        VStack(spacing: 0) {
+            header
+            CatalogResultsScroll(resetKey: "fixed-header-content") { content }
+        }
+    }
+}
+
+struct HeaderScrollTop: PreferenceKey {
+    static var defaultValue: CGFloat? { nil }
+    static func reduce(value: inout CGFloat?, nextValue: () -> CGFloat?) { value = nextValue() ?? value }
+}
+struct HeaderScrollFade: View {
+    let top: CGFloat
+    var body: some View {
+        LinearGradient(colors: [FieldGuideTheme.ivory, FieldGuideTheme.ivory.opacity(0)], startPoint: .top, endPoint: .bottom)
+            .frame(height: 24).opacity(min(1, max(0, -top / 12)))
+            .allowsHitTesting(false).accessibilityHidden(true)
+    }
+}
+
 private struct CatalogContentBounds: PreferenceKey {
     static var defaultValue: Anchor<CGRect>? { nil }
     static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {

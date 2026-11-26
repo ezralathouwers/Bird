@@ -8,7 +8,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='e3b45d08a483d7a6e4d6120479273357c73fea49'
-REVISIONS=['41e8bf3f6ad9dbdd544ac586dbe12c8a1b7f6067','09021ef3e66239892e0ca79fd57d5394a26359f2','1e38b351b05acc944e261c9bad361b51880b1baa','793eff42070aa8c6582f0d02586288b64c267f98',BASE,'0e2dcc08f0028219173ad6a640e5dd3a7507dd57','c3ab1fbce7fa9dd69803ffdeb18b7867c23dd1ea']
+REVISIONS=['43a0f359c1e66f454c5d37f7da9f95056da75a34','41e8bf3f6ad9dbdd544ac586dbe12c8a1b7f6067','09021ef3e66239892e0ca79fd57d5394a26359f2','1e38b351b05acc944e261c9bad361b51880b1baa','793eff42070aa8c6582f0d02586288b64c267f98',BASE,'0e2dcc08f0028219173ad6a640e5dd3a7507dd57','c3ab1fbce7fa9dd69803ffdeb18b7867c23dd1ea']
 SOURCES=[
  'BirdingCompanion/App/CompanionRootView.swift',
  'BirdingCompanion/DesignSystem/FieldGuideTheme.swift',
@@ -18,6 +18,10 @@ SOURCES=[
  'BirdingCompanion/Features/Discover/EBirdConnectionView.swift',
  'BirdingCompanion/Features/Identification/IdentificationModels.swift',
  'BirdingCompanion/Features/Identification/IdentificationViews.swift',
+ 'BirdingCompanion/Features/Identification/PhotoCropView.swift',
+ 'BirdingCompanion/Features/Goals/GoalsView.swift',
+ 'BirdingCompanion/Features/Backups/DataBackupsView.swift',
+ 'BirdingCompanion/Features/Backups/BirdaImportView.swift',
  'BirdingCompanion/Features/Identification/SoundIdentificationModel.swift',
  'BirdingCompanion/Features/Identification/AudioRecordingActivity.swift',
  'BirdingCompanion/Models/AudioRecordingAttributes.swift',

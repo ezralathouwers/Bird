@@ -34,7 +34,9 @@ struct PhotoCropView: View {
     }
     var body: some View {
         NavigationStack {
-            ScrollView {
+            FixedHeaderScroll(header: {
+                CenteredPageHeader(title: "Foto ID") { completion(nil, location) }.background(FieldGuideTheme.ivory)
+            }) {
                 VStack(spacing: 16) {
                     if let image {
                         GeometryReader { geometry in
@@ -76,10 +78,7 @@ struct PhotoCropView: View {
                     if let error { Text(error) }
                 }.padding(20)
             }
-            .safeAreaInset(edge: .top, spacing: 0) {
-                CenteredPageHeader(title: "Foto ID") { completion(nil, location) }
-                    .background(FieldGuideTheme.ivory)
-            }
+
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(FieldGuideTheme.ivory.ignoresSafeArea())
             .toolbar(.hidden, for: .navigationBar)

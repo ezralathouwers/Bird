@@ -16,7 +16,7 @@ struct BirdaImportView: View {
     var body: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: "Importeren uit Birda") { dismiss() }
-            ScrollView {
+            CatalogResultsScroll(resetKey: "birdaimportview-page") {
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Kies je CSV-export uit Birda. De import wordt lokaal op je iPhone verwerkt.")
                     Button("Kies Birda-export (.csv)") { choosing = true }

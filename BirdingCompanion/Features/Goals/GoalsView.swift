@@ -22,7 +22,7 @@ struct GoalsView: View {
                     ForEach(store.goals.sorted { $0.createdAt > $1.createdAt }) { goal in
                         NavigationLink(value: goal) { GoalCard(goal: goal) }.buttonStyle(.plain)
                     }
-                }.padding(.horizontal, 20).padding(.bottom, 94)
+                }.padding(.horizontal, 20).padding(.bottom, 104)
             }
         }
         .background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
@@ -98,7 +98,7 @@ private struct GoalDetailView: View {
         VStack(spacing: 0) {
             DetailPageHeader(title: "Doelstelling", editLabel: "Doelstelling bewerken", editDisabled: store.loadError != nil,
                              back: { dismiss() }, edit: { editing = true })
-            ScrollView {
+            CatalogResultsScroll(resetKey: "goalsview-page") {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(current.name).font(FieldGuideTheme.sans(28, relativeTo: .title))
                         .accessibilityAddTraits(.isHeader).padding(.bottom, 20)
@@ -156,7 +156,7 @@ struct GoalForm: View {
     var body: some View {
         VStack(spacing: 0) {
             CenteredPageHeader(title: original == nil ? "Doelstelling toevoegen" : "Doelstelling bewerken") { dismiss() }
-            ScrollView {
+            CatalogResultsScroll(resetKey: "goalsview-page") {
                 LazyVStack(alignment: .leading, spacing: 20) {
                     BirdTextField("Naam van je doelstelling", text: $name)
                         .font(FieldGuideTheme.sans(22, relativeTo: .title2)).modifier(RoundedSearchField())
@@ -184,7 +184,7 @@ struct GoalForm: View {
                         Button("Doelstelling verwijderen", role: .destructive) { confirmDelete = true }
                             .frame(maxWidth: .infinity, minHeight: 44).disabled(store.loadError != nil)
                     }
-                }.padding(20).background(FieldGuideTheme.ivory)
+                }.padding(.horizontal, 20).padding(.top, 20).padding(.bottom, original == nil ? 20 : 5).background(FieldGuideTheme.ivory)
             }
         }.foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory.ignoresSafeArea())
             .fullScreenCover(isPresented: $showSearch) { GoalSpeciesPicker(selection: $selection) }
