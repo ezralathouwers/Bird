@@ -251,3 +251,7 @@ Bruinkopbaard-vogel), then Dutch Core Foundation hyphenation, using the actual
 font/available width. Preserve catalog/search spelling and VoiceOver names.
 The owner's Lineated Barbet dynamic original is absent from this workspace;
 do not claim a source-art correction without receiving and inspecting that PNG.
+
+Species-title build fix: recent Apple SDKs require CFLocaleIdentifier in
+CFLocaleCreate. Obtain it through CFLocaleCreateCanonicalLanguageIdentifierFromString;
+do not pass CFString directly. Preserve Dutch compound/dictionary wrapping.

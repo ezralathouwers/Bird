@@ -81,7 +81,9 @@ struct SpeciesDetailTitleMetrics {
                 }
             }
             var dictionary: [Int] = []
-            if let locale = CFLocaleCreate(nil, "nl_NL" as CFString),
+            // Recent SDKs wrap the locale identifier rather than accepting CFString.
+            if let identifier = CFLocaleCreateCanonicalLanguageIdentifierFromString(nil, "nl-NL" as CFString),
+               let locale = CFLocaleCreate(nil, identifier),
                CFStringIsHyphenationAvailableForLocale(locale) {
                 var before = length
                 while before > 3 {

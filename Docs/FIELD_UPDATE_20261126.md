@@ -1,5 +1,10 @@
 # Veldfeedback — 26 november 2026
 
+Buildfix titelafbreking: de Nederlandse taalcode wordt eerst met
+CFLocaleCreateCanonicalLanguageIdentifierFromString omgezet naar het door
+CFLocaleCreate vereiste CFLocaleIdentifier-type. Dit verhelpt de gemelde
+CFString/CFLocaleIdentifier-compileerfout op recente Apple-SDK's.
+
 Laatste detailaanpassing: 35pt extra onderruimte op doelstellingdetails.
 Lange Nederlandse soortnamen worden alleen wanneer nodig afgebroken bij een
 logisch samengesteld woorddeel, met Nederlandse woordenboekafbreking als
