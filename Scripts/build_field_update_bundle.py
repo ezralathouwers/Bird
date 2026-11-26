@@ -8,7 +8,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='e3b45d08a483d7a6e4d6120479273357c73fea49'
-REVISIONS=[BASE,'0e2dcc08f0028219173ad6a640e5dd3a7507dd57','c3ab1fbce7fa9dd69803ffdeb18b7867c23dd1ea']
+REVISIONS=['1e38b351b05acc944e261c9bad361b51880b1baa','793eff42070aa8c6582f0d02586288b64c267f98',BASE,'0e2dcc08f0028219173ad6a640e5dd3a7507dd57','c3ab1fbce7fa9dd69803ffdeb18b7867c23dd1ea']
 SOURCES=[
  'BirdingCompanion/App/CompanionRootView.swift',
  'BirdingCompanion/DesignSystem/FieldGuideTheme.swift',
@@ -30,11 +30,13 @@ SOURCES=[
 def build():
     files={}
     for relative in SOURCES:
-        known=set()
+        known=set(); existed_before_field=False
         for revision in REVISIONS:
             result=subprocess.run(['git','show',revision+':'+relative],cwd=ROOT,capture_output=True)
-            if result.returncode==0:known.add(hashlib.sha256(result.stdout).hexdigest())
-        files[relative]=dict(sha256=hashlib.sha256((ROOT/relative).read_bytes()).hexdigest(),knownOld=sorted(known))
+            if result.returncode==0:
+                known.add(hashlib.sha256(result.stdout).hexdigest())
+                if revision==BASE:existed_before_field=True
+        files[relative]=dict(sha256=hashlib.sha256((ROOT/relative).read_bytes()).hexdigest(),knownOld=sorted(known),requiredExisting=existed_before_field)
     config='Docs/FieldUpdateFiles20261126.json'
     (ROOT/config).write_text(json.dumps(dict(version=1,files=files),indent=2)+'\n')
     include=SOURCES+[config,'Scripts/install_field_update.py','Scripts/field_update_project.py','Scripts/Installeer-Veldupdate.command','Docs/FIELD_UPDATE_20261126.md']

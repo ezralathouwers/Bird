@@ -4,97 +4,135 @@
     "BirdingCompanion/App/CompanionRootView.swift": {
       "sha256": "5fc69712d3c26237ae50af59bcfc080eb630f81c6eb0e9462433336c25457769",
       "knownOld": [
+        "5fc69712d3c26237ae50af59bcfc080eb630f81c6eb0e9462433336c25457769",
         "74e43f243b5df71b94e50702ec8106622b7a5e8d14b62f3a888696d6f145ede8"
-      ]
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/DesignSystem/FieldGuideTheme.swift": {
       "sha256": "b4f261e5ca8c3b34730cc373f50875f106bd0bde3e7ab98beb7ceb7f37c58bba",
       "knownOld": [
-        "7595dddf575e1c82cf9deeea168ac2a9fac5365a7f83788284995711b8f0a29c"
-      ]
+        "7595dddf575e1c82cf9deeea168ac2a9fac5365a7f83788284995711b8f0a29c",
+        "b4f261e5ca8c3b34730cc373f50875f106bd0bde3e7ab98beb7ceb7f37c58bba"
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Countries/CountriesView.swift": {
       "sha256": "7598f8c45e569bf0dde6a254e4490af338480c03485d6fefbd16470662008d1a",
       "knownOld": [
+        "7598f8c45e569bf0dde6a254e4490af338480c03485d6fefbd16470662008d1a",
         "b7d627393f069559e18acaa12cc7081ef3e332e61442f5ca8ea79dc96f683fa2"
-      ]
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Discover/DiscoverModels.swift": {
       "sha256": "b1635f6547b1dc3131595ff90e6610bad04ab84626a372da8932e025813b3cea",
       "knownOld": [
-        "1d4aa476f266554c6155a40bc0f461831ebedd826eb3d6e913592a8a8fdcf606"
-      ]
+        "1d4aa476f266554c6155a40bc0f461831ebedd826eb3d6e913592a8a8fdcf606",
+        "b1635f6547b1dc3131595ff90e6610bad04ab84626a372da8932e025813b3cea"
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Discover/DiscoverView.swift": {
       "sha256": "c13a07d0a7347f0bf8445a934607b68a55d7bfda6380c28373b0702de1e51684",
       "knownOld": [
+        "c13a07d0a7347f0bf8445a934607b68a55d7bfda6380c28373b0702de1e51684",
         "ef8a820d08130419d6a20a6619dd35aa655c176f763101b9bd0dd8c4a5c21fa9"
-      ]
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Discover/EBirdConnectionView.swift": {
       "sha256": "e6b7fc0a5e42bc41f0f9b679ea38bbf3300ac5ffdb0eb006e8b292c5edbb6eeb",
       "knownOld": [
-        "8d21edfc19bccd52e8633761a4b93499c8831c92aac7e150480e572e8b4147e3"
-      ]
+        "8d21edfc19bccd52e8633761a4b93499c8831c92aac7e150480e572e8b4147e3",
+        "e6b7fc0a5e42bc41f0f9b679ea38bbf3300ac5ffdb0eb006e8b292c5edbb6eeb"
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Identification/IdentificationModels.swift": {
       "sha256": "cd9ffa90e106f41015fecc179411bc518182dd2f49b05263ec1e5b012d097d6b",
       "knownOld": [
-        "8a225128c69519d48f7be7fe88deff288ea0075b13ba667c2b0c39bb6036804e"
-      ]
+        "8a225128c69519d48f7be7fe88deff288ea0075b13ba667c2b0c39bb6036804e",
+        "cd9ffa90e106f41015fecc179411bc518182dd2f49b05263ec1e5b012d097d6b"
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Identification/IdentificationViews.swift": {
       "sha256": "3146ba12a9edb903b43901a3e911e6763a42631251539a96bb7419ac8aad4d06",
       "knownOld": [
-        "0e8440bdff22f677cc765efedd3ff9387cb3deaa78e8b8db4f896dbee802a26a"
-      ]
+        "0e8440bdff22f677cc765efedd3ff9387cb3deaa78e8b8db4f896dbee802a26a",
+        "3146ba12a9edb903b43901a3e911e6763a42631251539a96bb7419ac8aad4d06"
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Identification/SoundIdentificationModel.swift": {
       "sha256": "06ab322ce9ff649c872972e064286e124f4cd8649ed6ae2572cf3d606ba89eaa",
       "knownOld": [
+        "06ab322ce9ff649c872972e064286e124f4cd8649ed6ae2572cf3d606ba89eaa",
         "17eb579e0858f59cab6b5cef72c6e5ef95fdfee9ac8f8682c1e50f60b753d164"
-      ]
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Identification/AudioRecordingActivity.swift": {
-      "sha256": "844704585efac62315067d6403bba8d3babce1e16b82f2d5ebc4b15901944273",
-      "knownOld": []
+      "sha256": "8b054edd35b6bfbf6fda0cb2db7bcc0973c0f76042e384b675af1154c0f3547e",
+      "knownOld": [
+        "844704585efac62315067d6403bba8d3babce1e16b82f2d5ebc4b15901944273"
+      ],
+      "requiredExisting": false
     },
     "BirdingCompanion/Models/AudioRecordingAttributes.swift": {
       "sha256": "eda0714516cca4340443504faf119ba11126c91f0dd390991f2f6b69867cded9",
-      "knownOld": []
+      "knownOld": [
+        "eda0714516cca4340443504faf119ba11126c91f0dd390991f2f6b69867cded9"
+      ],
+      "requiredExisting": false
     },
     "BirdingCompanion/Features/Observations/ObservationHistoryView.swift": {
       "sha256": "ec803764eef8ae8d0dbe35dd42ddfc1b65ea8ccc9c6024707200c4b980e0c3a5",
       "knownOld": [
-        "632ca67b42659a0e1c4540a8efbdc5a22a86909424153f09343b290be5d8f556"
-      ]
+        "632ca67b42659a0e1c4540a8efbdc5a22a86909424153f09343b290be5d8f556",
+        "ec803764eef8ae8d0dbe35dd42ddfc1b65ea8ccc9c6024707200c4b980e0c3a5"
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Observations/ObservationMapView.swift": {
       "sha256": "0f46a82eecc0d501694be6cf024d5dd97366d31e7373daad462e537f30fb09ac",
       "knownOld": [
+        "0f46a82eecc0d501694be6cf024d5dd97366d31e7373daad462e537f30fb09ac",
         "7c372f6fb4a4812ba932218d51b443dba04b4bce665ca9b2588edcf66cba583a"
-      ]
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Sessions/SessionEnhancements.swift": {
       "sha256": "1bb12f628d86a139ce51e16f76217198aeb914f9bc5bd7e3742be3727244af12",
       "knownOld": [
+        "1bb12f628d86a139ce51e16f76217198aeb914f9bc5bd7e3742be3727244af12",
         "438c238f0d44923ffee7e0bcce53d3e74ec9e327aa965806c0ce00f8ffcdb2a0",
         "c5845aa21b96360fd14b1fb61c0c3fee2f8912cbb2f7466f2226ddad175dd340"
-      ]
+      ],
+      "requiredExisting": true
     },
     "BirdingCompanion/Features/Sessions/SessionsView.swift": {
       "sha256": "cfb4e50c882f0e778ef4c1337be1eeb6bd1fa71db63fa172d900d8001ba4cf4b",
       "knownOld": [
-        "319cc650eb3cdaf55cff379b27e1d5b000ce7cad50a282a372426c48bf38007a"
-      ]
+        "319cc650eb3cdaf55cff379b27e1d5b000ce7cad50a282a372426c48bf38007a",
+        "cfb4e50c882f0e778ef4c1337be1eeb6bd1fa71db63fa172d900d8001ba4cf4b"
+      ],
+      "requiredExisting": true
     },
     "BirdingAudioActivity/AudioRecordingWidget.swift": {
       "sha256": "74aeddf109327fc05f3f707d04b925ebaa428088843d67cf3ef9fd272133e08c",
-      "knownOld": []
+      "knownOld": [
+        "74aeddf109327fc05f3f707d04b925ebaa428088843d67cf3ef9fd272133e08c"
+      ],
+      "requiredExisting": false
     },
     "BirdingAudioActivity/Info.plist": {
       "sha256": "567714e28ae489b0ac30b44b10e76d6a347bc7547f80811535e4fec28f2ad9cf",
-      "knownOld": []
+      "knownOld": [
+        "567714e28ae489b0ac30b44b10e76d6a347bc7547f80811535e4fec28f2ad9cf"
+      ],
+      "requiredExisting": false
     }
   }
 }

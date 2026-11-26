@@ -115,3 +115,24 @@ controleren de juiste Sources-definitie en voeren de volledige update tweemaal
 uit met behoud van instellingen en privébestanden. Er zijn nu negen Python-
 tests voor projectintegratie en installatie. De fout trad vóór de schrijffase
 op; download de bijgewerkte zip en voer optie 1 opnieuw uit in hetzelfde project.
+
+## Swift 6 / ActivityKit-buildherstel
+
+Op sommige SDK-versies is Activity niet Sendable. De eerste controller bewaarde
+het Activity-object op MainActor en gebruikte het als receiver van asynchrone
+SDK-methoden, wat drie Swift 6-fouten over mogelijke data races opleverde.
+De controller bewaart nu alleen het String-ID. Niet-geïsoleerde clientoperaties
+zoeken een lokaal SDK-handle op voor een update of beëindiging. Er worden dus
+alleen Sendable IDs en tijdstippen tussen actor/taken doorgegeven, geen bewaarde
+Activity-referenties. Geen @unchecked Sendable of uitgezette concurrencycontrole.
+
+Download de bijgewerkte veldupdate, voer optie 1 opnieuw uit op hetzelfde reeds
+bijgewerkte project en bouw opnieuw. Bestaande veldversies worden herkend;
+illustraties, kaarten en signing blijven behouden. Native Apple-SDK-compilatie
+blijft hier niet beschikbaar; een syntaxcontrole is geen iPhone-buildtest.
+
+De reparatie is ook getest op een project met de reeds geïnstalleerde veldversie:
+alleen AudioRecordingActivity.swift verandert, en opnieuw uitvoeren wijzigt niets.
+De updater herkent zowel oudere appversies als de twee uitgebrachte veldversies.
+Het bestandsplan onderscheidt vereiste oude bronbestanden van nieuw toegevoegde
+Live Activity-bestanden. Alle tien Python-project/update-tests slagen.

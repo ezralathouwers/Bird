@@ -71,7 +71,7 @@ def _apply(project, after_write=None):
         if old==new:continue
         if old is not None and sha(old) not in record['knownOld']:
             raise ValueError('Onbekende of lokaal aangepaste broncode: '+rel+'. Niets geïnstalleerd.')
-        if old is None and record['knownOld'] and not rel.startswith('BirdingAudioActivity/'):
+        if old is None and record.get('requiredExisting',bool(record['knownOld'])):
             raise ValueError('Ontbrekend appbronbestand: '+rel)
         changes[rel]=(old,new)
     project_rel='BirdingCompanion.xcodeproj/project.pbxproj';path=project/project_rel
