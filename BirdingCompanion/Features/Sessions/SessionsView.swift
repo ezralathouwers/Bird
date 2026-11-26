@@ -226,12 +226,13 @@ struct SessionForm: View {
                         HStack(spacing: 12) {
                             Text(HabitatSceneCatalog.scenes.first { $0.id == habitatSceneID }?.name ?? "Automatisch op basis van vogelsoorten")
                                 .font(FieldGuideTheme.sans(16)).frame(maxWidth: .infinity, alignment: .leading)
-                            FineControlIcon(symbol: "arrow.up.arrow.down", size: 18)
+                            FineControlIcon(symbol: "chevron.down", size: 18)
                         }.padding(14).frame(maxWidth: .infinity, minHeight: 48)
                             .background(FieldGuideTheme.beige.opacity(0.7), in: RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius, style: .continuous))
                             .contentShape(RoundedRectangle(cornerRadius: FieldGuideTheme.controlCornerRadius))
                     }.buttonStyle(.plain).accessibilityLabel("Leefomgeving")
                         .accessibilityValue(HabitatSceneCatalog.scenes.first { $0.id == habitatSceneID }?.name ?? "Automatisch")
+                        .offset(y: reviewing == nil ? 0 : -5)
                     if !live {
                         Text("\(reviewing == nil ? selected.count : reviewLogs.count) \((reviewing == nil ? selected.count : reviewLogs.count) == 1 ? "waarneming" : "waarnemingen")")
                             .font(FieldGuideTheme.sans(24, relativeTo: .title2))

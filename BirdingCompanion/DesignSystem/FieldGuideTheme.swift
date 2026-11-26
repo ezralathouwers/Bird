@@ -438,7 +438,7 @@ struct FineControlIcon: View {
 }
 
 struct FineControlMark: Shape {
-    static let symbols: Set<String> = ["map", "play", "clock", "plus", "minus", "plus.circle", "minus.circle", "checkmark.circle", "house", "mic", "waveform", "xmark", "arrow.up.right.square", "arrow.up.arrow.down", "clock.arrow.circlepath"]
+    static let symbols: Set<String> = ["map", "play", "clock", "plus", "minus", "plus.circle", "minus.circle", "checkmark.circle", "house", "mic", "waveform", "chevron.down", "xmark", "arrow.up.right.square", "arrow.up.arrow.down", "clock.arrow.circlepath"]
     let symbol: String
     func path(in rect: CGRect) -> Path {
         var p = Path()
@@ -494,6 +494,8 @@ struct FineControlMark: Shape {
             p.addLine(to: CGPoint(x: 21, y: 13))
             p.move(to: CGPoint(x: 10, y: 14)); p.addLine(to: CGPoint(x: 22, y: 2))
             p.move(to: CGPoint(x: 14, y: 2)); p.addLine(to: CGPoint(x: 22, y: 2)); p.addLine(to: CGPoint(x: 22, y: 10))
+        case "chevron.down":
+            p.move(to: CGPoint(x: 6, y: 9)); p.addLine(to: CGPoint(x: 12, y: 15)); p.addLine(to: CGPoint(x: 18, y: 9))
         case "arrow.up.arrow.down":
             p.move(to: CGPoint(x: 6, y: 22)); p.addLine(to: CGPoint(x: 6, y: 2))
             p.move(to: CGPoint(x: 1, y: 7)); p.addLine(to: CGPoint(x: 6, y: 2)); p.addLine(to: CGPoint(x: 11, y: 7))

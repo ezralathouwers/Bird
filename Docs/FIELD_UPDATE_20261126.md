@@ -231,3 +231,7 @@ Verificatie: installatie/projectregressies, Swift-syntaxcontrole en een uitgepak
 updatepakket op de vorige veldversie. Native scrolling, toetsenbord, safe areas
 en schermopmaak moeten nog op de iPhone worden beoordeeld. Er zijn geen tests
 voor louter padding of kleuren toegevoegd.
+
+Laatste veldverfijning: bij een bestaande sessie staat het leefomgevingmenu 5pt
+hoger. Het label gebruikt één naar beneden gericht chevron met dezelfde 0,7pt
+lijn als de overige iconen; keuze, breedte en achtergrond blijven behouden.

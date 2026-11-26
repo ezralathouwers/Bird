@@ -229,3 +229,6 @@ Habitat menu is a full-width rounded beige field with arrows on the right and
 no helper sentence. Editing footers reduce bottom padding from 20pt to 5pt
 under delete; creation footers retain 20pt. Preserve keyboard/focus, safe areas
 and all existing form actions.
+
+Latest habitat-field tweak: existing-session habitat menu 5pt higher, with a
+single fine downward chevron in place of the up/down pair.

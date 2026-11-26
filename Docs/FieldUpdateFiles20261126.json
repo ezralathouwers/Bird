@@ -11,8 +11,9 @@
       "requiredExisting": true
     },
     "BirdingCompanion/DesignSystem/FieldGuideTheme.swift": {
-      "sha256": "26da75a6fa7adb14f353c569f95377c4df19f2c99b444f7bf599abf7c6d51926",
+      "sha256": "b55dd5d20c009a61c3b2aeba35b93b6dff263e82d18cc58b607c1776b15f0cad",
       "knownOld": [
+        "26da75a6fa7adb14f353c569f95377c4df19f2c99b444f7bf599abf7c6d51926",
         "7595dddf575e1c82cf9deeea168ac2a9fac5365a7f83788284995711b8f0a29c",
         "9c79dcbba15d1015426c7d407246249a0a47bafc3ec95c0e9fc03f504194dd4d",
         "b4f261e5ca8c3b34730cc373f50875f106bd0bde3e7ab98beb7ceb7f37c58bba"
@@ -46,6 +47,7 @@
     "BirdingCompanion/Features/Discover/EBirdConnectionView.swift": {
       "sha256": "14448c6512e0e7f3dcbf353b525ff6aea07642fd023301f00c38607845e5ba81",
       "knownOld": [
+        "14448c6512e0e7f3dcbf353b525ff6aea07642fd023301f00c38607845e5ba81",
         "8d21edfc19bccd52e8633761a4b93499c8831c92aac7e150480e572e8b4147e3",
         "e6b7fc0a5e42bc41f0f9b679ea38bbf3300ac5ffdb0eb006e8b292c5edbb6eeb"
       ],
@@ -64,6 +66,7 @@
       "knownOld": [
         "0e8440bdff22f677cc765efedd3ff9387cb3deaa78e8b8db4f896dbee802a26a",
         "3146ba12a9edb903b43901a3e911e6763a42631251539a96bb7419ac8aad4d06",
+        "7382c124b11d3e4a54e0642743b6bc38bfbf651f17af0499efd8d33b9888b7f5",
         "c57bc2eb57786ae3d2ca8ea34db3fec78f1f0b25d183e658b74ae89d4f06f48f"
       ],
       "requiredExisting": true
@@ -71,20 +74,23 @@
     "BirdingCompanion/Features/Identification/PhotoCropView.swift": {
       "sha256": "dce505b438a7540b9735b83ab7db1123822954c59274a5d788f9fef56ae5bf62",
       "knownOld": [
-        "4d67758f5d17a8056ce9514fe476851051ee716b9ee90f4e3c66c8e8101f2d2d"
+        "4d67758f5d17a8056ce9514fe476851051ee716b9ee90f4e3c66c8e8101f2d2d",
+        "dce505b438a7540b9735b83ab7db1123822954c59274a5d788f9fef56ae5bf62"
       ],
       "requiredExisting": true
     },
     "BirdingCompanion/Features/Goals/GoalsView.swift": {
       "sha256": "c04437ddc7b2c9e1cddf084073fe7ecf5edad085e4998689bbe647d9251674e6",
       "knownOld": [
-        "5f2ec7c488226f4fdeba38d9bbb0b5fbadaa4cbd4ff2b665cbb9229d4763cf52"
+        "5f2ec7c488226f4fdeba38d9bbb0b5fbadaa4cbd4ff2b665cbb9229d4763cf52",
+        "c04437ddc7b2c9e1cddf084073fe7ecf5edad085e4998689bbe647d9251674e6"
       ],
       "requiredExisting": true
     },
     "BirdingCompanion/Features/Backups/DataBackupsView.swift": {
       "sha256": "1ff138988f20282944f3719e2b84a23ea24436a847e00da8b9a63b64ca8a8c56",
       "knownOld": [
+        "1ff138988f20282944f3719e2b84a23ea24436a847e00da8b9a63b64ca8a8c56",
         "576d53ca7a0b71009fc8dcba5fe30ba2f5949881abc797b82c7babb2d79327a9"
       ],
       "requiredExisting": true
@@ -92,6 +98,7 @@
     "BirdingCompanion/Features/Backups/BirdaImportView.swift": {
       "sha256": "4388e1002d39e54cbaf3d90ef5e91b77f28a608658cdda5901748f4769789d43",
       "knownOld": [
+        "4388e1002d39e54cbaf3d90ef5e91b77f28a608658cdda5901748f4769789d43",
         "f9d376d19904220c066de7bfc46968d948b8d67342e1461eb26279cde74e59a5"
       ],
       "requiredExisting": true
@@ -189,11 +196,12 @@
       "requiredExisting": true
     },
     "BirdingCompanion/Features/Sessions/SessionsView.swift": {
-      "sha256": "b28f44667c9e769ce9e566332724e3c421ac543ee2f419c553af5a1c3015b2e3",
+      "sha256": "6f4a2081fe6e44e8820fa6a8a94b7c9360864724e27a23e3512330d1971c927d",
       "knownOld": [
         "319cc650eb3cdaf55cff379b27e1d5b000ce7cad50a282a372426c48bf38007a",
         "66af8c68f535348b86fb9fa0b9ff4b807c67aec681ea52f6000091da5d8e986c",
         "6721e99a9172f2292be931e970582f5169dc3cb34777936abccbdb2860a1bdd5",
+        "b28f44667c9e769ce9e566332724e3c421ac543ee2f419c553af5a1c3015b2e3",
         "cfb4e50c882f0e778ef4c1337be1eeb6bd1fa71db63fa172d900d8001ba4cf4b"
       ],
       "requiredExisting": true
