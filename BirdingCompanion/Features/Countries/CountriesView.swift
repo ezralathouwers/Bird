@@ -25,7 +25,7 @@ struct CountriesView: View {
                     ForEach(countries) { country in
                         NavigationLink(value: country) {
                             HStack(spacing: 16) {
-                                CountryFlagBadge(code: country.code, diameter: 33.6).accessibilityHidden(true)
+                                CountryFlagBadge(code: country.code, diameter: 22).accessibilityHidden(true)
                                 Text(country.name).font(FieldGuideTheme.sans(20, relativeTo: .title3)).frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(country.speciesCount) \(country.speciesCount == 1 ? "soort" : "soorten")").font(FieldGuideTheme.sans(14, relativeTo: .subheadline))
                                 Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))

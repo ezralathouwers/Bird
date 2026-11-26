@@ -165,7 +165,7 @@ struct EditOutlineMark: Shape {
 
 struct CountryFlagBadge: View {
     let code: String
-    var diameter: CGFloat = 36
+    var diameter: CGFloat = 22
     var body: some View {
         Group {
             if let normalized = ObservationCountry.normalized(code), UIImage(named: "flag-" + normalized.lowercased()) != nil {

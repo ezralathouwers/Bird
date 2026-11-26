@@ -121,8 +121,11 @@ struct SoundResultRow: Identifiable {
 }
 
 enum SoundResultOrdering {
-    static func rows(candidates: [IdentificationCandidate], pins: [PinnedSoundSpecies]) -> [SoundResultRow] {
-        let ranked = IdentificationCandidate.ranked(candidates)
+    static func rows(candidates: [IdentificationCandidate], pins: [PinnedSoundSpecies], activeIDs: Set<String> = []) -> [SoundResultRow] {
+        let ranked = IdentificationCandidate.ranked(candidates).enumerated().sorted { left, right in
+            let lhs = activeIDs.contains(left.element.id), rhs = activeIDs.contains(right.element.id)
+            return lhs == rhs ? left.offset < right.offset : lhs
+        }.map(\.element)
         let byID = Dictionary(uniqueKeysWithValues: ranked.map { ($0.id, $0.species) })
         var seen = Set<String>()
         var result: [SoundResultRow] = []
@@ -217,7 +220,7 @@ actor PhotoRangeContext {
         }) { return .likely }
         return .unlikely
     }
-    private static func nearBoundary(_ ring: [SpeciesRangeSnapshot.Point], latitude: Double,
+    static func nearBoundary(_ ring: [SpeciesRangeSnapshot.Point], latitude: Double,
                                      longitude: Double, meters: Double) -> Bool {
         guard ring.count >= 4 else { return false }
         func wrapped(_ value: Double) -> Double {
@@ -270,7 +273,7 @@ actor PhotoRangeContext {
     }
 }
 
-struct PhotoLocationSelection: Sendable {
+struct PhotoLocationSelection: Codable, Equatable, Sendable {
     let latitude: Double
     let longitude: Double
     let name: String
@@ -289,5 +292,31 @@ enum PhotoRegionalContext {
     static func isRegular(_ speciesID: String, countryCode: String?) -> Bool {
         guard let code = ObservationCountry.normalized(countryCode) else { return false }
         return countries[code]?.contains(speciesID) == true
+    }
+}
+
+// Large buffers deliberately retain plausible wanderers. Missing/invalid maps
+// are unknown and can never suppress a recognition result.
+enum FieldRangeLikelihood: String, Sendable { case likely, unlikely, impossible, unknown }
+actor FieldRangeContext {
+    static func classify(_ birds: [Species], at location: PhotoLocationSelection) async -> [String: FieldRangeLikelihood] {
+        var result: [String: FieldRangeLikelihood] = [:]
+        for bird in birds {
+            guard !Task.isCancelled else { return [:] }
+            let regular = PhotoRegionalContext.isRegular(bird.id, countryCode: location.countryCode)
+            if regular { result[bird.id] = .likely; continue }
+            let snapshot = try? await SpeciesRangeDataLoader.shared.load(speciesID: bird.id)
+            result[bird.id] = likelihood(snapshot, at: location, regularInCountry: false)
+        }
+        return result
+    }
+    static func likelihood(_ snapshot: SpeciesRangeSnapshot?, at location: PhotoLocationSelection, regularInCountry: Bool) -> FieldRangeLikelihood {
+        let base = PhotoRangeContext.likelihood(snapshot, at: location, regularInCountry: regularInCountry)
+        if base == .likely { return .likely }
+        guard base == .unlikely, let snapshot, !snapshot.polygons.isEmpty else { return .unknown }
+        let nearby = snapshot.polygons.contains { polygon in
+            polygon.rings.contains { PhotoRangeContext.nearBoundary($0, latitude: location.latitude, longitude: location.longitude, meters: 2_500_000) }
+        }
+        return nearby ? .unlikely : .impossible
     }
 }

@@ -32,7 +32,7 @@ private actor AudioCaptureController {
         try Task.checkCancellation()
         stopCurrent()
         let session = AVAudioSession.sharedInstance()
-        try session.setCategory(.record, mode: .measurement)
+        try session.setCategory(.playAndRecord, mode: .measurement, options: [.mixWithOthers, .defaultToSpeaker])
         try session.setActive(true)
         let inputEngine = AVAudioEngine()
         let format = inputEngine.inputNode.outputFormat(forBus: 0)
@@ -88,11 +88,16 @@ final class SoundIdentificationModel: ObservableObject {
     @Published private(set) var isIdentifying = false
     @Published private(set) var columns: [[Float]] = []
     private var recordingID: UUID?
+    private var resumeAfterInterruption = false
     @Published private(set) var startedAt: Date?
     @Published private(set) var duration: TimeInterval = 0
     @Published private(set) var message: String?
     @Published private(set) var activity = SoundActivity()
     @Published private(set) var candidates: [IdentificationCandidate] = []
+    @Published private(set) var rangeStatus: [String: FieldRangeLikelihood] = [:]
+    private var rangeLocation: PhotoLocationSelection?
+    private var rangeTask: Task<Void, Never>?
+    private var locationTask: Task<Void, Never>?
     private let capture = AudioCaptureController.shared
     private var captureTask: Task<Void, Never>?
     private var watchdog: Task<Void, Never>?
@@ -108,17 +113,17 @@ final class SoundIdentificationModel: ObservableObject {
     init(service: any SoundIdentificationService = BirdNETCoreMLService()) { self.service = service }
 
     // App-owned task: leaving the Audio view must not cancel preparation.
-    func begin() {
+    func begin(preservingSession: Bool = false) {
         guard startTask == nil, !isRecording, !isStarting else { return }
         let request = UUID(); startRequest = request
         startTask = Task { [weak self] in
-            await self?.start()
+            await self?.start(preservingSession: preservingSession)
             guard let self, self.startRequest == request else { return }
             self.startTask = nil
         }
     }
 
-    func start() async {
+    func start(preservingSession: Bool = false) async {
         guard !isRecording, !isStarting else { return }
         let id = UUID(); generation = id; isStarting = true
         let granted = await AVAudioApplication.requestRecordPermission()
@@ -143,9 +148,22 @@ final class SoundIdentificationModel: ObservableObject {
             guard generation == id, !Task.isCancelled else { await capture.stop(id: id); return }
             watchdog?.cancel(); watchdog = nil
             let processor = AudioCaptureProcessor()
-            recordingID = id; columns = []; candidates = []; activity = SoundActivity(); confirmation = SoundCandidateConfirmation()
-            duration = 0; startedAt = Date(); lastAudioAt = nil
+            recordingID = id; lastAudioAt = nil
+            if !preservingSession {
+                columns = []; candidates = []; activity = SoundActivity(); confirmation = SoundCandidateConfirmation()
+                duration = 0; startedAt = Date(); rangeStatus = [:]
+            }
+            rangeLocation = nil
+            locationTask?.cancel()
+            locationTask = Task { [weak self] in
+                guard let fix = try? await SharedCurrentLocation.shared.current(policy: .browsing), let self, self.generation == id, !Task.isCancelled else { return }
+                let country = await Task.detached { try? CountryBoundaryIndex.bundled.get().country(latitude: fix.latitude, longitude: fix.longitude) }.value
+                guard self.generation == id, !Task.isCancelled else { return }
+                self.rangeLocation = PhotoLocationSelection(latitude: fix.latitude, longitude: fix.longitude, name: "", countryCode: country)
+                self.classifyRanges()
+            }
             isRecording = true; isStarting = false
+            AudioRecordingActivity.start(startedAt: startedAt ?? Date())
             captureTask = Task { [weak self] in
                 do {
                     for try await chunk in stream {
@@ -182,6 +200,9 @@ final class SoundIdentificationModel: ObservableObject {
     }
 
     func stop() {
+        resumeAfterInterruption = false
+        AudioRecordingActivity.stop()
+        rangeTask?.cancel(); rangeTask = nil; locationTask?.cancel(); locationTask = nil
         startRequest = UUID(); startTask?.cancel(); startTask = nil
         let stoppingID = generation
         generation = UUID()
@@ -192,6 +213,20 @@ final class SoundIdentificationModel: ObservableObject {
         liveTask?.cancel(); liveTask = nil
         if isRecording, let startedAt { duration = max(0, Date().timeIntervalSince(startedAt)) }
         isRecording = false; isStarting = false; isIdentifying = false; activity = SoundActivity()
+    }
+
+    func handleInterruption(_ notification: Notification) {
+        guard let raw = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: raw) else { return }
+        if type == .began {
+            let wasRecording = isRecording
+            stop(); resumeAfterInterruption = wasRecording
+            if wasRecording { message = "Opname onderbroken door iOS. Birder hervat zodra de microfoon weer beschikbaar is." }
+        } else if resumeAfterInterruption {
+            resumeAfterInterruption = false
+            let options = (notification.userInfo?[AVAudioSessionInterruptionOptionKey] as? UInt).map(AVAudioSession.InterruptionOptions.init(rawValue:)) ?? []
+            if options.contains(.shouldResume) { begin(preservingSession: true) }
+        }
     }
 
     private func submit(_ window: LiveAudioWindow, generation id: UUID, recording: UUID) {
@@ -219,6 +254,21 @@ final class SoundIdentificationModel: ObservableObject {
         let valid = confirmation.accept(results)
         for candidate in valid { activity.heard(candidate.id, at: detectedAt) }
         candidates = IdentificationCandidate.ranked(candidates + valid)
+        classifyRanges()
+    }
+
+    private func classifyRanges() {
+        guard rangeTask == nil, let rangeLocation else { return }
+        let birds = candidates.map(\.species).filter { rangeStatus[$0.id] == nil }
+        guard !birds.isEmpty else { return }
+        let id = generation
+        rangeTask = Task { [weak self] in
+            let statuses = await FieldRangeContext.classify(birds, at: rangeLocation)
+            guard let self, self.generation == id, !Task.isCancelled else { return }
+            self.rangeStatus.merge(statuses) { _, new in new }
+            self.rangeTask = nil
+            self.classifyRanges()
+        }
     }
 
     func finishAndIdentify() async {

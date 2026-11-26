@@ -14,6 +14,10 @@ struct DiscoverView: View {
     @State private var selectedReport: NearbyReport?
     @State private var connectionRevision = UUID()
     @State private var catalogQuery = ""
+    @AppStorage("discoverSelectedLocation") private var selectedLocationData = Data()
+    private var selectedLocation: PhotoLocationSelection? { DiscoverLocationPreference.decode(selectedLocationData) }
+    private var effectiveLatitude: Double? { selectedLocation?.latitude ?? location.latitude }
+    private var effectiveLongitude: Double? { selectedLocation?.longitude ?? location.longitude }
     @AppStorage("discoverRadiusKilometers") private var storedRadius = DiscoverQuery.nearbyRadiusKilometers
     @AppStorage("discoverLookbackDays") private var storedDays = DiscoverQuery.defaultLookbackDays
     private var days: Int { DiscoverQuery.validLookbackDays(storedDays) }
@@ -23,14 +27,15 @@ struct DiscoverView: View {
     var catalogIsComplete = false
 
     private var queryKey: String {
-        guard let latitude = location.latitude, let longitude = location.longitude else { return "no-location,\(demo),\(connectionRevision),\(radius),\(days)" }
+        guard let latitude = effectiveLatitude, let longitude = effectiveLongitude else { return "no-location,\(demo),\(connectionRevision),\(radius),\(days)" }
         return "\(latitude),\(longitude),\(demo),\(connectionRevision),\(radius),\(days)"
     }
     private var query: DiscoverQuery? {
-        guard let latitude = location.latitude, let longitude = location.longitude else { return nil }
+        guard let latitude = effectiveLatitude, let longitude = effectiveLongitude else { return nil }
         return DiscoverQuery(latitude: latitude, longitude: longitude, now: Date(), radiusKilometers: radius, daysBack: days)
     }
     private var locationTitle: String {
+        if let selectedLocation { return selectedLocation.name }
         if demo && location.latitude == nil { return "Voorbeeldlocatie" }
         if !location.locationName.isEmpty { return location.locationName }
         return location.latitude == nil ? "jouw omgeving" : "deze omgeving"
@@ -123,7 +128,13 @@ struct DiscoverView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
-        .task { if location.latitude == nil && !demo { location.useCurrentLocation() } }
+        .task(id: selectedLocationData) {
+            guard selectedLocation == nil && !demo else { return }
+            while !Task.isCancelled {
+                await location.useCurrentLocation().value
+                try? await Task.sleep(for: .seconds(60))
+            }
+        }
         .task(id: queryKey) {
             if let query { await model.load(query: query, demo: demo) }
             else if demo {
@@ -185,7 +196,7 @@ struct DiscoverView: View {
                     }
                 }
                 VStack(alignment: .leading, spacing: 0) {
-                    Button { demo = false; location.useCurrentLocation() } label: {
+                    Button { demo = false; selectedLocationData = Data(); location.useCurrentLocation() } label: {
                         Label("Gebruik huidige locatie", systemImage: "location").frame(minHeight: 44)
                     }
                 }

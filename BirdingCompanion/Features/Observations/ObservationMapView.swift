@@ -129,15 +129,21 @@ struct NearbyReportMapView: View {
     let report: NearbyReport
     @Environment(\.dismiss) private var dismiss
     @State private var camera: MapCameraPosition = .automatic
+    @Namespace private var mapScope
     @StateObject private var connectivity = MapConnectivity()
     private var coordinate: CLLocationCoordinate2D { .init(latitude: report.latitude, longitude: report.longitude) }
     var body: some View {
-        Map(position: $camera) {
+        Map(position: $camera, scope: mapScope) {
             Annotation(report.species.dutchName, coordinate: coordinate) {
                 SpeciesObservationMarker(species: report.species)
             }.annotationTitles(.hidden)
+            UserAnnotation { LiveLocationPulse() }
         }.mapStyle(FieldGuideTheme.mapStyle).mapControlVisibility(.hidden).ignoresSafeArea()
             .environment(\.colorScheme, .light)
+            .overlay(alignment: .topLeading) {
+                MapCompass(scope: mapScope).mapControlVisibility(.visible)
+                    .padding(.leading, 20).padding(.top, 12)
+            }
             .overlay(alignment: .topTrailing) {
                 HStack(spacing: 8) {
                     if let url = report.observationURL ?? DiscoverRanking.checklistURL(report.checklistID) {
@@ -167,5 +173,22 @@ struct NearbyReportMapView: View {
                     .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
             }
             .onAppear { camera = .region(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))) }
+    }
+}
+
+private struct LiveLocationPulse: View {
+    @State private var expanded = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    var body: some View {
+        ZStack {
+            Circle().fill(FieldGuideTheme.khaki.opacity(expanded ? 0 : 0.2))
+                .frame(width: 28, height: 28).scaleEffect(expanded ? 1.35 : 0.7)
+            Circle().fill(FieldGuideTheme.khaki).frame(width: 11, height: 11)
+                .overlay(Circle().stroke(.white, lineWidth: 1.5))
+        }.frame(width: 36, height: 36).allowsHitTesting(false)
+            .onAppear {
+                guard !reduceMotion else { return }
+                withAnimation(.easeOut(duration: 2.2).repeatForever(autoreverses: false)) { expanded = true }
+            }.accessibilityLabel("Je huidige locatie")
     }
 }

@@ -68,6 +68,7 @@ struct SoundIdentificationView: View {
     @EnvironmentObject private var store: ObservationStore
     @EnvironmentObject private var sessionLogger: SessionLiveLogger
     @State private var selectedSpecies: Species?
+    @State private var addSpecies: Species?
     private var loggedInSession: Set<String> {
         store.activeSession.map { Set(store.observations(in: $0).map(\.speciesID)) } ?? []
     }
@@ -82,7 +83,7 @@ struct SoundIdentificationView: View {
                         Text(startedAt, style: .timer).monospacedDigit()
                     } else { Text(Self.elapsed(model.duration)).monospacedDigit() }
                 }
-                CompactSonogram(columns: model.columns).frame(height: 120)
+                CompactSonogram(columns: model.columns).frame(height: 84)
                 HStack(spacing: 16) {
                     Button {
                         if model.isRecording { Task { await model.finishAndIdentify() } }
@@ -106,16 +107,20 @@ struct SoundIdentificationView: View {
                 if sessionLogger.isLogging { ProgressView("Waarneming toevoegen…") }
                 if let message = sessionLogger.message { Text(message).font(FieldGuideTheme.sans(13, relativeTo: .footnote)) }
                 TimelineView(.periodic(from: .now, by: 0.5)) { context in
-                    SoundIdentificationResults(candidates: model.candidates, pins: pins,
+                    SoundIdentificationResults(candidates: model.candidates, pins: pins, rangeStatus: model.rangeStatus,
                         activeIDs: model.activity.activeIDs(at: context.date, recording: model.isRecording),
-                        addedIDs: loggedInSession, isLogging: sessionLogger.isLogging || store.loadError != nil,
-                        add: { sessionLogger.log($0, store: store, startIfNeeded: true) }, open: { selectedSpecies = $0 })
+                        addedIDs: loggedInSession, hasLiveSession: store.activeSession != nil, isLogging: sessionLogger.isLogging || store.loadError != nil,
+                        add: { bird in
+                            if store.activeSession != nil { sessionLogger.log(bird, store: store) }
+                            else { addSpecies = bird }
+                        }, open: { selectedSpecies = $0 })
                 }
             }.padding(20).padding(.bottom, 79)
         }.safeAreaInset(edge: .top, spacing: 0) {
             CenteredPageHeader(title: "Audio ID") { dismiss() }.background(FieldGuideTheme.ivory)
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .onAppear { if model.startedAt == nil && !model.isStarting { model.begin() } }
+            .fullScreenCover(item: $addSpecies) { bird in ObservationForm(species: bird) }
             .navigationDestination(item: $selectedSpecies) { bird in SpeciesDetailView(species: bird) }
     }
     private static func elapsed(_ value: TimeInterval) -> String {
@@ -285,13 +290,20 @@ private struct CameraCapture: UIViewControllerRepresentable {
 private struct SoundIdentificationResults: View {
     let candidates: [IdentificationCandidate]
     @ObservedObject var pins: SoundResultPins
+    var rangeStatus: [String: FieldRangeLikelihood] = [:]
     var activeIDs: Set<String> = []
     var addedIDs: Set<String> = []
+    var hasLiveSession = false
     var isLogging = false
+    @State private var pressedPlusID: String?
+    @State private var interactionRows: [SoundResultRow] = []
     let add: (Species) -> Void
     let open: (Species) -> Void
     var body: some View {
-        let rows = SoundResultOrdering.rows(candidates: candidates, pins: pins.species)
+        let proposedRows = SoundResultOrdering.rows(candidates: candidates, pins: pins.species, activeIDs: activeIDs).filter { rangeStatus[$0.id] != .impossible }
+        // Preserve the target under a finger while a newly heard bird reorders
+        // the list. Release immediately restores the current live order.
+        let rows = pressedPlusID == nil ? proposedRows : interactionRows
         VStack(spacing: 0) {
             ForEach(rows) { row in
                 HStack(spacing: 8) {
@@ -304,8 +316,7 @@ private struct SoundIdentificationResults: View {
                             }
                             Text(row.species.englishDisplayName).font(FieldGuideTheme.sans(12, relativeTo: .caption))
                         }.frame(maxWidth: .infinity, alignment: .leading)
-                        Image(systemName: "chevron.right").font(.system(size: 14, weight: .light))
-                    }.contentShape(Rectangle())
+                    }.frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
                         .gesture(TapGesture(count: 2).exclusively(before: TapGesture(count: 1)).onEnded { action in
                             switch action { case .first: pins.toggle(row.species); case .second: open(row.species) }
                         })
@@ -315,17 +326,32 @@ private struct SoundIdentificationResults: View {
                         .accessibilityAddTraits(.isButton)
                         .accessibilityAction { open(row.species) }
                         .accessibilityAction(named: Text(row.isPinned ? "Losmaken" : "Vastzetten")) { pins.toggle(row.species) }
+                    if rangeStatus[row.id] == .unlikely {
+                        Circle().fill(Color.orange.opacity(0.55)).frame(width: 6, height: 6)
+                            .accessibilityLabel("Onwaarschijnlijk op deze locatie")
+                    }
                     Button { add(row.species) } label: {
                         FineControlIcon(symbol: addedIDs.contains(row.id) ? "checkmark.circle" : "plus.circle", size: 24)
                             .frame(width: 44, height: 44)
-                    }.buttonStyle(.plain).disabled(isLogging || addedIDs.contains(row.id))
-                        .accessibilityLabel(addedIDs.contains(row.id) ? "Al in de livesessie" : "Voeg \(row.species.dutchName) toe aan je livesessie")
-                }.frame(minHeight: 64).padding(.horizontal, 12).padding(.vertical, 1)
-                    .background(activeIDs.contains(row.id) ? FieldGuideTheme.beige.opacity(0.4) : Color.clear, in: RoundedRectangle(cornerRadius: 12))
-                    .animation(.easeOut(duration: 0.35), value: activeIDs.contains(row.id))
+                    }.buttonStyle(StableAudioAddButtonStyle { pressed in
+                        if pressed { interactionRows = rows; pressedPlusID = row.id }
+                        else if pressedPlusID == row.id { pressedPlusID = nil; interactionRows = [] }
+                    }).disabled(isLogging || addedIDs.contains(row.id))
+                        .accessibilityLabel(addedIDs.contains(row.id) ? "Al in de livesessie" : hasLiveSession ? "Voeg \(row.species.dutchName) toe aan je livesessie" : "Waarneming toevoegen voor \(row.species.dutchName)")
+                }.frame(minHeight: 64).padding(.leading, 12).padding(.vertical, 1)
+                    .background(activeIDs.contains(row.id) ? FieldGuideTheme.beige.opacity(0.85) : Color.clear, in: RoundedRectangle(cornerRadius: 12))
+
                 if row.id != rows.last?.id { Divider() }
             }
-        }
+        }.onDisappear { pressedPlusID = nil; interactionRows = [] }
+    }
+}
+
+private struct StableAudioAddButtonStyle: ButtonStyle {
+    let pressed: (Bool) -> Void
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.opacity(configuration.isPressed ? 0.65 : 1)
+            .onChange(of: configuration.isPressed) { _, value in pressed(value) }
     }
 }
 
@@ -361,12 +387,13 @@ private struct PhotoChoiceStyle: ButtonStyle {
 
 struct PhotoLocationPicker: View {
     let selection: PhotoLocationSelection?
+    var title = "Fotolocatie"
     let save: (PhotoLocationSelection?) -> Void
     @StateObject private var location = ObservationLocationModel(locationPolicy: .browsing)
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack(spacing: 16) {
-            CenteredPageHeader(title: "Fotolocatie") { dismiss() }
+            CenteredPageHeader(title: title) { dismiss() }
             ObservationLocationPicker(location: location).clipShape(RoundedRectangle(cornerRadius: 20)).padding(.horizontal, 20)
             Button("Gebruik huidige locatie") { location.useCurrentLocation() }
             if location.isLocating || location.isNaming { ProgressView() }

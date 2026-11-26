@@ -46,7 +46,7 @@ struct ObservationHistoryView: View {
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         if ObservationCountry.foreignFlag(for: record.countryCode) != nil,
                            let code = ObservationCountry.normalized(record.countryCode) {
-                            CountryFlagBadge(code: code, diameter: 36)
+                            CountryFlagBadge(code: code, diameter: 22)
                         }
                     }
                     .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)

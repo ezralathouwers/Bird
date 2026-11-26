@@ -190,3 +190,18 @@ records, preserving all newer destination artwork/repairs. Do not replace the
 whole resources directory or manifest. See Docs/ARTWORK_CARRYOVER_AND_SESSION_RENDERING.md.
 SessionHabitatArtwork must keep a concrete placeholder mounted while its image
 is nil so the initial loading task has a view to attach to.
+
+## Field feedback override — 26 November 2026
+
+Audio capture continues across app navigation, background and lock; manual stop
+and process termination end it (respect OS microphone interruptions). Use the
+local audio Live Activity/deep link, no push server. Audio plus opens a normal
+observation form when no session exists; it must not create a session implicitly.
+Freshly heard audio species still move above other results, with pinned species
+first. Only freeze row ordering briefly while a plus is actually pressed so the
+button remains a stable touch target. Never suppress unknown-map candidates;
+use broad geographic margins to retain plausible wanderers. A manual discovery
+location must never replace GPS for audio or observation logging. Session rows
+use large right-bleeding habitat art and full-width separators; flag circles
+match the 22pt country detail header. Ship the in-place field updater to retain
+private maps, local artwork, app identity and signing; see Docs/FIELD_UPDATE_20261126.md.

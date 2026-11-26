@@ -2989,3 +2989,54 @@ private final class SessionCorrectionFailureFixture: ObservationPersistence {
     func save(_ observations: [Observation]) throws { throw CocoaError(.fileWriteOutOfSpace) }
     func save(_ observations: [Observation], sessions: [BirdSession], goals: [BirdGoal], dataFixes: [String]) throws { throw CocoaError(.fileWriteOutOfSpace) }
 }
+
+final class FieldFeedbackLocationTests: XCTestCase {
+    private func range(longitude: Double, latitude: Double) -> SpeciesRangeSnapshot {
+        let points = [(-1.0, -1.0), (1.0, -1.0), (1.0, 1.0), (-1.0, 1.0), (-1.0, -1.0)].map {
+            SpeciesRangeSnapshot.Point(longitude: longitude + $0.0, latitude: latitude + $0.1)
+        }
+        return SpeciesRangeSnapshot(polygons: [.init(rings: [points], season: nil, origin: nil)], attribution: "Synthetic test fixture", version: "test")
+    }
+    func testMissingMapsOrInvalidLocationNeverSuppressSpecies() {
+        let antwerp = PhotoLocationSelection(latitude: 51.2, longitude: 4.4, name: "Test")
+        XCTAssertEqual(FieldRangeContext.likelihood(nil, at: antwerp, regularInCountry: false), .unknown)
+        let invalid = PhotoLocationSelection(latitude: 200, longitude: 4.4, name: "Test")
+        XCTAssertEqual(FieldRangeContext.likelihood(range(longitude: -100, latitude: 40), at: invalid, regularInCountry: false), .unknown)
+    }
+    func testRemoteContinentExcludedButPlausibleWanderersRetained() {
+        let antwerp = PhotoLocationSelection(latitude: 51.2, longitude: 4.4, name: "Test")
+        XCTAssertEqual(FieldRangeContext.likelihood(range(longitude: -100, latitude: 40), at: antwerp, regularInCountry: false), .impossible)
+        XCTAssertEqual(FieldRangeContext.likelihood(range(longitude: 15, latitude: 48), at: antwerp, regularInCountry: false), .unlikely)
+        XCTAssertEqual(FieldRangeContext.likelihood(range(longitude: 4.4, latitude: 51.2), at: antwerp, regularInCountry: false), .likely)
+        XCTAssertEqual(FieldRangeContext.likelihood(range(longitude: -100, latitude: 40), at: antwerp, regularInCountry: true), .likely)
+    }
+    func testNearbyAcrossDatelineIsRetained() {
+        let location = PhotoLocationSelection(latitude: 0, longitude: -179, name: "Test")
+        XCTAssertNotEqual(FieldRangeContext.likelihood(range(longitude: 177, latitude: 0), at: location, regularInCountry: false), .impossible)
+    }
+    func testPartitionPreservesEverySearchMatchAndWithinGroupOrder() {
+        let birds = Array(DiscoverFixtures.catalog.prefix(4))
+        let groups = SessionSpeciesPartition.groups(birds, likelyIDs: [birds[1].id, birds[3].id])
+        XCTAssertEqual(groups.likely.map(\.id), [birds[1].id, birds[3].id])
+        XCTAssertEqual(groups.other.map(\.id), [birds[0].id, birds[2].id])
+        XCTAssertEqual(Set((groups.likely + groups.other).map(\.id)), Set(birds.map(\.id)))
+    }
+    func testDiscoveryPreferenceRoundTripsWithoutChangingLiveGPS() throws {
+        let choice = PhotoLocationSelection(latitude: 52, longitude: 5, name: "Gekozen plek", countryCode: "NL")
+        XCTAssertEqual(DiscoverLocationPreference.decode(try JSONEncoder().encode(choice)), choice)
+        XCTAssertNil(DiscoverLocationPreference.decode(Data()))
+        XCTAssertNil(DiscoverLocationPreference.decode(try JSONEncoder().encode(PhotoLocationSelection(latitude: 100, longitude: 5, name: "Ongeldig"))))
+    }
+}
+
+final class LiveAudioResultOrderingTests: XCTestCase {
+    func testFreshlyHeardBirdMovesAboveOldHighScoreWhilePinsStayFirst() {
+        let birds = Array(DiscoverFixtures.catalog.prefix(4))
+        let candidates = [IdentificationCandidate(species: birds[0], score: 0.99), IdentificationCandidate(species: birds[1], score: 0.7), IdentificationCandidate(species: birds[2], score: 0.6)]
+        let active = SoundResultOrdering.rows(candidates: candidates, pins: [PinnedSoundSpecies(birds[3])], activeIDs: [birds[2].id])
+        XCTAssertEqual(active.map(\.id), [birds[3].id, birds[2].id, birds[0].id, birds[1].id])
+        let quiet = SoundResultOrdering.rows(candidates: candidates, pins: [PinnedSoundSpecies(birds[3])])
+        XCTAssertEqual(quiet.map(\.id), [birds[3].id, birds[0].id, birds[1].id, birds[2].id])
+        XCTAssertEqual(Set(active.map(\.id)).count, active.count)
+    }
+}

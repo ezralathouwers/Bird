@@ -80,7 +80,7 @@ struct SessionsView: View {
                     .autocorrectionDisabled().focused($searchFocused).padding(.horizontal, 20).padding(.bottom, 16)
             }
             CatalogResultsScroll(resetKey: "sessions-\(search)") {
-                LazyVStack(alignment: .leading, spacing: 24) {
+                LazyVStack(alignment: .leading, spacing: 0) {
 
                     if let message = store.loadError { Text(message).foregroundStyle(.red) }
                     if let active = visibleActive {
@@ -93,7 +93,7 @@ struct SessionsView: View {
                                 FineControlIcon(symbol: "play", size: 18)
                             }.frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
                         }.buttonStyle(.plain).padding(.horizontal, 20).padding(.vertical, 12)
-                        .background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
+                        .background(FieldGuideTheme.khaki.opacity(0.15), in: RoundedRectangle(cornerRadius: 12)).padding(.horizontal, 20).padding(.bottom, 16)
                     }
                     if store.completedSessions.isEmpty, store.loadError == nil { Text("Nog geen afgeronde sessies.") }
                     if !search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && filteredSessions.isEmpty && visibleActive == nil { Text("Geen sessies gevonden.") }
@@ -101,23 +101,31 @@ struct SessionsView: View {
                     ForEach(filteredSessions) { session in
                         NavigationLink(value: SessionRoute(id: session.id)) {
                             let logs = store.observations(in: session)
-                            HStack(spacing: 12) {
+                            ZStack(alignment: .leading) {
+                                if let scene = SessionHabitatProjection.scene(session: session, logs: logs) {
+                                    GeometryReader { geometry in
+                                        SessionHabitatArtwork(scene: scene)
+                                            .frame(width: geometry.size.width * 0.72, height: geometry.size.height)
+                                            .scaleEffect(1.2, anchor: .bottomTrailing)
+                                            .mask(LinearGradient(colors: [.clear, .white, .white], startPoint: .leading, endPoint: .trailing))
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                                            .offset(x: 20)
+                                    }.allowsHitTesting(false).accessibilityHidden(true)
+                                }
                                 VStack(alignment: .leading, spacing: 6) {
                                     SessionCountryTitle(session: session)
                                     Text("\(session.historyDate(session.startedAt, time: .omitted)) · \(SessionStats.duration(session))")
-                                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
                                     let count = logs.filter { lifers.contains($0.id) }.count
                                     Text("\(logs.count) \(logs.count == 1 ? "waarneming" : "waarnemingen")" + (count > 0 ? " · \(count) \(count == 1 ? "lifer" : "lifers")" : ""))
-                                    .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
-                                }.frame(maxWidth: .infinity, alignment: .leading)
-                                if let scene = SessionHabitatProjection.scene(session: session, logs: logs) {
-                                    SessionHabitatArtwork(scene: scene).frame(width: 112, height: 90)
-                                }
-                            }.frame(maxWidth: .infinity, minHeight: 90, alignment: .leading).padding(.vertical, 6).contentShape(Rectangle())
+                                        .font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                                }.padding(.leading, 20).padding(.trailing, 100).padding(.vertical, 26)
+                            }.frame(maxWidth: .infinity, minHeight: 144, alignment: .leading)
+                                .clipped().contentShape(Rectangle())
                         }.buttonStyle(.plain)
                         Divider()
                     }
-                }.padding(.horizontal, 20).padding(.bottom, 94)
+                }.padding(.bottom, 94)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
         .onChange(of: showSearch) { _, shown in searchFocused = shown; if !shown { search = "" } }
@@ -332,15 +340,23 @@ struct SessionSpeciesPicker: View {
     var latitude: Double? = nil
     var longitude: Double? = nil
     var date: Date = Date()
+    var preferCurrentLocation = false
     let choose: (Species) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var search = ""
     @StateObject private var nearby = DiscoverViewModel()
     @FocusState private var focused: Bool
-    private var birds: [Species] {
-        if search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !nearby.rows.isEmpty { return nearby.rows.map(\.species) }
-        return SpeciesCatalogSearch.results(for: search, in: SpeciesGuideCatalog.species)
+    @State private var contextLocation: PhotoLocationSelection?
+    @State private var rangeStatus: [String: FieldRangeLikelihood] = [:]
+    @State private var birds: [Species] = []
+    @State private var isFiltering = true
+    @State private var resultsRevision = UUID()
+    private var likelyIDs: Set<String> {
+        let reported = Set(nearby.rows.map { $0.species.id })
+        let regular = Set(birds.filter { PhotoRegionalContext.isRegular($0.id, countryCode: contextLocation?.countryCode) }.map(\.id))
+        return reported.union(regular).union(rangeStatus.filter { $0.value == .likely }.keys)
     }
+    private var contextKey: String { "\(search):\(resultsRevision):\(contextLocation?.latitude ?? 999),\(contextLocation?.longitude ?? 999)" }
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             SpeciesBackButton { dismiss() }.padding(.top, 4)
@@ -348,27 +364,63 @@ struct SessionSpeciesPicker: View {
             BirdTextField("Zoek een vogel", text: $search).modifier(RoundedSearchField()).autocorrectionDisabled().focused($focused)
             CatalogResultsScroll(resetKey: search) {
                 LazyVStack(spacing: 0) {
-                    if nearby.isLoading && search.isEmpty { ProgressView("Vogels ophalen…") }
-                    ForEach(birds) { bird in
-                        Button { choose(bird); dismiss() } label: {
-                            SessionBirdRow(bird: bird) {
-                                FineControlIcon(symbol: selected.contains(bird.id) ? "checkmark.circle" : "plus")
-                                    .font(.system(size: 20, weight: .light))
-                            }
-                        }.buttonStyle(.plain).disabled(disabled || selected.contains(bird.id))
-                            .opacity(selected.contains(bird.id) ? 0.45 : 1)
-                        Divider()
+                    if isFiltering { ProgressView("Soorten zoeken…") }
+                    else if nearby.isLoading && search.isEmpty { ProgressView("Vogels ophalen…") }
+                    let groups = SessionSpeciesPartition.groups(birds, likelyIDs: likelyIDs)
+                    speciesRows(groups.likely)
+                    if !groups.likely.isEmpty && !groups.other.isEmpty {
+                        Divider().padding(.vertical, 12)
                     }
-                    if birds.isEmpty && !nearby.isLoading { Text("Geen soorten gevonden.") }
+                    speciesRows(groups.other)
+                    if birds.isEmpty && !nearby.isLoading && !isFiltering { Text("Geen soorten gevonden.") }
                 }.padding(.bottom, 24)
             }
         }.padding(.horizontal, 20).background(FieldGuideTheme.ivory.ignoresSafeArea())
             .task {
                 focused = true
-                if let latitude, let longitude {
-                    await nearby.load(query: DiscoverQuery(latitude: latitude, longitude: longitude, now: date, radiusKilometers: DiscoverQuery.nearbyRadiusKilometers))
+                var point: PhotoLocationSelection?
+                if preferCurrentLocation, let fix = try? await SharedCurrentLocation.shared.current(policy: .browsing) {
+                    point = PhotoLocationSelection(latitude: fix.latitude, longitude: fix.longitude, name: "")
+                } else if let latitude, let longitude { point = PhotoLocationSelection(latitude: latitude, longitude: longitude, name: "") }
+                else if let fix = try? await SharedCurrentLocation.shared.current(policy: .browsing) {
+                    point = PhotoLocationSelection(latitude: fix.latitude, longitude: fix.longitude, name: "")
+                }
+                if let point {
+                    let country = await Task.detached { try? CountryBoundaryIndex.bundled.get().country(latitude: point.latitude, longitude: point.longitude) }.value
+                    guard !Task.isCancelled else { return }
+                    contextLocation = PhotoLocationSelection(latitude: point.latitude, longitude: point.longitude, name: "", countryCode: country)
+                    await nearby.load(query: DiscoverQuery(latitude: point.latitude, longitude: point.longitude, now: date, radiusKilometers: DiscoverQuery.nearbyRadiusKilometers))
                 }
             }
+            .task(id: search) {
+                isFiltering = true; birds = []
+                let query = search, catalog = SpeciesGuideCatalog.species
+                if !query.isEmpty { try? await Task.sleep(for: .milliseconds(120)) }
+                guard !Task.isCancelled else { return }
+                let matches = await Task.detached { SpeciesCatalogSearch.results(for: query, in: catalog) }.value
+                guard !Task.isCancelled else { return }
+                birds = matches; isFiltering = false; resultsRevision = UUID()
+            }
+            .task(id: contextKey) {
+                guard !isFiltering, let contextLocation, !search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+                try? await Task.sleep(for: .milliseconds(250))
+                guard !Task.isCancelled else { return }
+                let result = await FieldRangeContext.classify(birds, at: contextLocation)
+                guard !Task.isCancelled else { return }
+                rangeStatus.merge(result) { _, new in new }
+            }
+    }
+    @ViewBuilder private func speciesRows(_ values: [Species]) -> some View {
+        ForEach(values) { bird in
+            Button { choose(bird); dismiss() } label: {
+                SessionBirdRow(bird: bird) {
+                    FineControlIcon(symbol: selected.contains(bird.id) ? "checkmark.circle" : "plus")
+                        .font(.system(size: 20, weight: .light))
+                }
+            }.buttonStyle(.plain).disabled(disabled || selected.contains(bird.id))
+                .opacity(selected.contains(bird.id) ? 0.45 : 1)
+            if bird.id != values.last?.id { Divider() }
+        }
     }
 }
 
@@ -414,7 +466,7 @@ struct LiveSessionView: View {
             .fullScreenCover(isPresented: $showSearch) {
                 if let session = store.activeSession {
                     SessionSpeciesPicker(selected: Set(store.observations(in: session).map(\.speciesID)), disabled: logger.isLogging,
-                        latitude: session.latitude, longitude: session.longitude) { logger.log($0, store: store) }
+                        latitude: session.latitude, longitude: session.longitude, preferCurrentLocation: true) { logger.log($0, store: store) }
                 }
             }
             .fullScreenCover(item: $reviewSession, onDismiss: {

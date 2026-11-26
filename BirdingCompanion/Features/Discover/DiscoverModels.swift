@@ -174,3 +174,13 @@ struct DemoDiscoverRepository: DiscoverRepository {
         return DiscoverDataset(reports: reports, attribution: "Fictieve voorbeeldmeldingen · geen eBird-data", isDemo: true, coversRequestedWindow: true)
     }
 }
+
+// A discovery-only preference. Recording and observation locations always use GPS.
+enum DiscoverLocationPreference {
+    static func decode(_ data: Data) -> PhotoLocationSelection? {
+        guard let location = try? JSONDecoder().decode(PhotoLocationSelection.self, from: data),
+              location.latitude.isFinite, location.longitude.isFinite,
+              (-90...90).contains(location.latitude), (-180...180).contains(location.longitude) else { return nil }
+        return location
+    }
+}

@@ -2,15 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>UILaunchScreen</key>
-    <dict>
-        <key>UIColorName</key>
-        <string>LaunchOlive</string>
-        <key>UIImageName</key>
-        <string>LaunchBird</string>
-        <key>UIImageRespectsSafeAreaInsets</key>
-        <false/>
-    </dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchOlive</string>
+		<key>UIImageName</key>
+		<string>LaunchBird</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<false/>
+	</dict>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -24,5 +24,22 @@
 	<string>Geluid opnemen om vogels te identificeren. Opnames blijven lokaal tenzij je ze zelf deelt.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Een vogelfoto maken voor identificatie. Je kunt ook een bestaande foto kiezen.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>Birder</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>birder</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

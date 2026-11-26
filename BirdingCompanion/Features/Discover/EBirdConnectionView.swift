@@ -5,6 +5,9 @@ struct EBirdConnectionView: View {
     let query: DiscoverQuery?
     var didChange: () -> Void
     @State private var apiKey = ""
+    @State private var showLocation = false
+    @AppStorage("discoverSelectedLocation") private var selectedLocationData = Data()
+    private var selectedLocation: PhotoLocationSelection? { DiscoverLocationPreference.decode(selectedLocationData) }
     @AppStorage("discoverRadiusKilometers") private var radius = DiscoverQuery.nearbyRadiusKilometers
     @AppStorage("discoverLookbackDays") private var days = DiscoverQuery.defaultLookbackDays
     @State private var hasStoredKey = false
@@ -19,6 +22,13 @@ struct EBirdConnectionView: View {
                 Section {
                     Text("Observation.org levert openbare vogelmeldingen. Verbind eBird om ook die bron toe te voegen.")
                     Link("Gratis eBird-sleutel aanvragen", destination: URL(string: "https://ebird.org/api/keygen")!)
+                }
+                Section("Locatie") {
+                    Text(selectedLocation?.name ?? "Huidige live locatie")
+                    Button("Andere locatie kiezen") { showLocation = true }
+                    if selectedLocation != nil {
+                        Button("Gebruik live locatie") { selectedLocationData = Data(); didChange() }
+                    }
                 }
                 Section("Zoekstraal") {
                     Text("Binnen \(Int(DiscoverQuery.validRadius(radius))) km")
@@ -95,5 +105,11 @@ struct EBirdConnectionView: View {
                 }
             }
         }.foregroundStyle(FieldGuideTheme.charcoal).background(FieldGuideTheme.ivory)
+            .fullScreenCover(isPresented: $showLocation) {
+                PhotoLocationPicker(selection: selectedLocation, title: "Ontdeklocatie") { location in
+                    selectedLocationData = (try? JSONEncoder().encode(location)) ?? Data()
+                    didChange()
+                }
+            }
     }
 }

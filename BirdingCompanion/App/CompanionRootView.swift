@@ -67,6 +67,7 @@ struct CompanionRootView: View {
             .environmentObject(backups)
             .environmentObject(countryRepair)
             .task {
+                if !soundModel.isRecording && !soundModel.isStarting { AudioRecordingActivity.stop() }
                 do { try store.adjustExistingSessionTimesOnce() }
                 catch { sessionTimeCorrectionError = error.localizedDescription }
                 milestones.update(observations: store.observations, goals: store.goals, catalog: SpeciesGuideCatalog.species, historyReplacementID: store.historyReplacementID)
@@ -85,10 +86,15 @@ struct CompanionRootView: View {
             .environmentObject(soundPins)
             .onChange(of: soundModel.startedAt) { _, _ in soundPins.reset() }
             .onChange(of: scenePhase) { _, phase in
-                if phase == .background { soundModel.stop(); countryRepair.pause() }
+                if phase == .background { countryRepair.pause() }
                 if phase == .active { backups.schedule(store: store); countryRepair.resume(store: store) }
             }
-            .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in soundModel.stop() }
+            .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { soundModel.handleInterruption($0) }
+            .onOpenURL { url in
+                guard url.scheme == "birder", url.host == "audio" else { return }
+                showLiveSession = false; showAddMenu = false; section = .identify
+                identificationPath = NavigationPath([IdentificationRoute.audio])
+            }
             .coordinateSpace(name: "appRoot")
             .onPreferenceChange(PlusCenterPreference.self) { value in Task { @MainActor in plusCenter = value } }
             .animation(reduceMotion ? nil : .easeInOut(duration: 0.32), value: showAddMenu)

@@ -70,7 +70,7 @@ struct SessionCountryTitle: View {
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
             if let code = ObservationCountry.normalized(session.countryCode), code != "BE" {
-                CountryFlagBadge(code: code, diameter: 24).accessibilityLabel(ObservationCountry.name(for: code))
+                CountryFlagBadge(code: code, diameter: 22).accessibilityLabel(ObservationCountry.name(for: code))
             }
             Text(session.locationName).font(FieldGuideTheme.sans(size, relativeTo: .title3))
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -94,5 +94,12 @@ struct SessionHabitatArtwork: View {
             guard !Task.isCancelled else { return }
             image = thumbnail ?? source
         }.accessibilityHidden(true)
+    }
+}
+
+// Preserve the catalog's ordering within each group and keep every search hit.
+enum SessionSpeciesPartition {
+    static func groups(_ birds: [Species], likelyIDs: Set<String>) -> (likely: [Species], other: [Species]) {
+        (birds.filter { likelyIDs.contains($0.id) }, birds.filter { !likelyIDs.contains($0.id) })
     }
 }
