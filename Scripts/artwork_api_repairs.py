@@ -45,11 +45,15 @@ def repair_jobs(plan, project):
     jobs = []
     for target in targets:
         key = target['id'].replace(':', '-') + '-' + target['role']
-        if (target['role'] not in ('primary','dynamic') or target['key'] != key or not re.fullmatch(r'[0-9a-f]{64}', target['originalSHA256'])
+        create_only = target.get('operation') == 'create'
+        valid_original = target.get('originalSHA256') is None if create_only else bool(re.fullmatch(r'[0-9a-f]{64}', target.get('originalSHA256') or ''))
+        if (target['role'] not in ('primary','dynamic') or target['key'] != key or not valid_original
             or catalog[target['id']]['scientificName'] != target['scientificName']):
             raise ValueError('Onbekende of onveilige soort/rol: ' + key)
         if not target['sourceURLs'] or not target['fieldMarks']: raise ValueError('Diagnostiek/bron ontbreekt: ' + key)
         reference = project / plan['referenceAssets'][target['role']]
+        if plan.get('referenceSHA256', {}).get(target['role'], digest(reference)) != digest(reference):
+            raise ValueError('De stijlreferentie is gewijzigd; geen nieuwe aanvraag.')
         prompt = '\n\n'.join([plan['style'],
             f"Rebuild an accurate original illustration of {target['englishName']} ({target['scientificName']}), {target['representativePlumage']}.",
             'Diagnostic features: ' + target['fieldMarks'], plan['roles'][target['role']]['direction'],
@@ -189,7 +193,8 @@ def install_completed(plan, project, output, accept=False, after_swap=None):
             new_records=read(stage_res/'ArtworkManifest.json')
             by_asset={r['asset']:r for r in new_records}
             for row,_,asset,old in selected:
-                by_asset[asset]['replacesSHA256']=row['repairOfSHA256']
+                if row['repairOfSHA256'] is not None:
+                    by_asset[asset]['replacesSHA256']=row['repairOfSHA256']
                 by_asset[asset]['version']=(old.get('version',1) if old else 0)+1
             assets=set(by_asset)
             combined=[r for r in old_manifest if r['asset'] not in assets]+new_records

@@ -232,3 +232,11 @@ and all existing form actions.
 
 Latest habitat-field tweak: existing-session habitat menu 5pt higher, with a
 single fine downward chevron in place of the up/down pair.
+
+Latest artwork follow-up, 26 November: modest display enlargement for eight
+primary portraits and two dynamics; shift BN01170/BN02171/BN02172 dynamics
+45pt right. Full-fit the named repaired/new dynamics so corrected source
+framing is preserved on screen. The new 15-role local production round freezes
+11 rejected source hashes from the owner's current project and adds four
+missing roles (Eastern Cattle Egret and Black-bellied Tern). Do not change the
+old 77-role recipe/checkpoints. See Docs/ILLUSTRATIECORRECTIES_20261126.md.

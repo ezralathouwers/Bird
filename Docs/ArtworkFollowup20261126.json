@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-image-2.5-sunburst-2026-09-08",
+  "quality": "medium",
+  "tokenRatesUSDPerMillion": {
+    "textInput": 5,
+    "imageInput": 8,
+    "imageOutput": 30
+  },
+  "referenceAssets": {
+    "primary": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-primary.imageset/primary.png",
+    "dynamic": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-dynamic.imageset/dynamic.png"
+  },
+  "style": "Match the attached approved kingfisher reference ONLY for naturalistic watercolor and fine coloured-pencil rendering, detailed feather texture and restrained field-guide lighting. Replace the kingfisher completely with the specified species. Do not copy its blue/orange colours, proportions, facing or props. Output one new original bird illustration, never a panel or montage. No text, labels, logos, shadow, checkerboard or paper rectangle. Real transparent alpha background. No anatomy inventions: exactly two wings/flippers in total (far folded wing can be hidden), one head and one bill, correct feet/toes. An open wing replaces its folded outline on that side; never add an extra folded wing.",
+  "roles": {
+    "primary": {
+      "size": "1024x1024",
+      "direction": "PRIMARY compact portrait: whole bird in a natural resting/standing upright posture facing RIGHT. Closed wings (relaxed flippers for penguin), natural visible feet, beak/tail/toes fully inside image, bird occupies about 85% of canvas. Bird ONLY: no branch, perch, rock, ground, plants, water, food or shadow. Not flying, not crouching. Use a species-appropriate natural body carriage; a duck and penguin need not sit like a songbird."
+    },
+    "dynamic": {
+      "size": "1024x1536",
+      "direction": "DYNAMIC species-page hero: distinct species-specific behavior/vignette as described below. Large bird, centered slightly left with ample room in front of its bill, about 80-90% of available frame. Natural minimal habitat accents only; genuine alpha transparency around scene. All heads, bills and bird parts inside master image; the app may bleed the sides. No hard crop along the TOP: branches/trunks must end naturally or fade transparently before the top edge. Avoid excessive empty top/right space and avoid a beige paper background copied from the reference."
+    }
+  },
+  "batchID": "api-followup-20261126",
+  "scope": "repair",
+  "pilotKeys": [],
+  "targets": [
+    {
+      "id": "birdnet-v3:BN04396",
+      "scientificName": "Gymnoris xanthocollis",
+      "role": "primary",
+      "operation": "replace",
+      "representativePlumage": "adult male, fresh typical plumage",
+      "fieldMarks": "Plain pale grey-brown crown and face with only subtle tonal differences and a weak pale eyebrow. No bold black or white head stripes. Small pale yellow patch/short narrow streak on the lower throat ONLY; upper throat and belly pale buff-grey/off-white, never a yellow bib or yellow belly. Chestnut shoulder patch, two pale wing bars, short conical dark bill.",
+      "dynamicScene": "Resting on a small naturally ending dry twig, wings both folded.",
+      "correction": "Correct the exaggerated head contrast and excessive yellow. Restrict yellow strictly to a small lower-throat mark.",
+      "sourceURLs": [
+        "https://www.enature.qa/specie/sparrow-yellow-throated/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN04396",
+      "scientificName": "Gymnoris xanthocollis",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, fresh typical plumage",
+      "fieldMarks": "Plain pale grey-brown crown and face with only subtle tonal differences and a weak pale eyebrow. No bold black or white head stripes. Small pale yellow patch/short narrow streak on the lower throat ONLY; upper throat and belly pale buff-grey/off-white, never a yellow bib or yellow belly. Chestnut shoulder patch, two pale wing bars, short conical dark bill.",
+      "dynamicScene": "Resting on a small naturally ending dry twig, wings both folded.",
+      "correction": "Correct the exaggerated head contrast and excessive yellow. Restrict yellow strictly to a small lower-throat mark.",
+      "sourceURLs": [
+        "https://www.enature.qa/specie/sparrow-yellow-throated/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN07877",
+      "scientificName": "Ploceus capensis",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, breeding plumage",
+      "fieldMarks": "Large weaver, yellow underparts, orange-brown face and throat, pale cream iris, relatively long pointed black bill, olive streaked upperparts.",
+      "dynamicScene": "Perched on a reed beside a small woven nest, both wings fully folded against their own sides.",
+      "correction": "Remove the third wing. Exactly one near wing and one far wing; far folded wing may be hidden. No open far wing above a folded near wing.",
+      "sourceURLs": [
+        "https://thebdi.org/2022/03/04/cape-weaver-ploceus-capensis/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN01488",
+      "scientificName": "Campephilus magellanicus",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male",
+      "fieldMarks": "Large black woodpecker with red head, crest and neck; white wing patches, long straight pale chisel bill, stiff supporting tail, zygodactyl feet.",
+      "dynamicScene": "Climbing a short weathered trunk section, both wings folded, feet grip bark and tail braces against it. Trunk ends naturally below the top edge.",
+      "correction": "Remove extra wing and duplicated folded silhouette. Each wing originates at its own shoulder on a side of the upper body.",
+      "sourceURLs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6822024/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN05973",
+      "scientificName": "Microcarbo niger",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult, non-breeding plumage",
+      "fieldMarks": "Small dark brown-black cormorant with compact body, relatively short hooked bill, small whitish throat patch, dark webbed feet and long tail.",
+      "dynamicScene": "Drying its wings on a low rock: both wings spread naturally, one from each shoulder, symmetrical anatomical attachment, exactly two total.",
+      "correction": "Remove third wing and all remaining folded-wing duplicates. Two spread wings replace the folded silhouettes. If uncertain simplify to two folded wings.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/species/Microcarbo%20niger"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN07519",
+      "scientificName": "Phoenicurus fuliginosus",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male",
+      "fieldMarks": "Slate-blue head and body, darker wings, chestnut-rufous rump, vent and tail; short fine dark bill and dark legs.",
+      "dynamicScene": "Perched on a small stream rock, tail slightly fanned, both wings folded; sparse water accents that end/fade well inside the frame.",
+      "correction": "Restore the complete right-hand side of the bird and stream vignette; do not let water or rocks run into the right image edge.",
+      "sourceURLs": [
+        "https://avifauna.hkbws.org.hk/species/0410/051200"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN05684",
+      "scientificName": "Megaceryle lugubris",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Large black-and-white kingfisher with shaggy crest, heavy straight dark bill, white collar and underparts, finely spotted/barred black upperparts; breast band includes black and rufous feathers. Not blue and orange.",
+      "dynamicScene": "Alert on a short naturally ending branch over a minimal stream hint, both wings folded, full crest and bill visible.",
+      "correction": "Restore the complete right-hand edge and generous clear space in front of the bill. Branch and water fade to alpha before the boundary.",
+      "sourceURLs": [
+        "https://avifauna.hkbws.org.hk/species/0200/028500"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN04855",
+      "scientificName": "Icterus galbula",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male",
+      "fieldMarks": "Solid black head and upper back, vivid orange underparts and shoulder patches, black wings with a broad white wing bar, pointed grey bill, orange in tail. Not the orange-faced Bullock's Oriole.",
+      "dynamicScene": "Calling on a short branch with sparse leaves, both wings folded; one head and one open bill.",
+      "correction": "Recompose full branch/leaves/bird inside canvas; no cut-off right scene.",
+      "sourceURLs": [
+        "https://www.allaboutbirds.org/guide/Baltimore_Oriole/id"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN10276",
+      "scientificName": "Treron phoenicopterus",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Plump green pigeon, grey head, olive-yellow neck and underparts, olive back, maroon/lilac shoulder patch, yellow-edged wing feathers, unmistakably yellow feet, short pale bill.",
+      "dynamicScene": "On a small leafy fruiting branch, both wings folded, toes and yellow feet visible.",
+      "correction": "Complete all foliage and branch tips with transparent right clearance; never use the edge of the image as a scene boundary.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/species/Treron%20phoenicopterus"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN03921",
+      "scientificName": "Francolinus francolinus",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male",
+      "fieldMarks": "Black face and breast, clear white cheek patch, chestnut collar/nape, black flanks with white spots, gold-brown patterned upperparts, barred tail; stout galliform feet and compact bill.",
+      "dynamicScene": "Calling upright on a low rock amid a few grasses, both wings folded, entire short tail and both feet visible.",
+      "correction": "Recompose the entire bird, rock and grass inside the canvas, with a natural finished/faded right boundary and no full-width opaque background.",
+      "sourceURLs": [
+        "https://www.allaboutbirds.org/guide/Black_Francolin/id/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN01801",
+      "scientificName": "Certhia himalayana",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult, typical plumage",
+      "fieldMarks": "Mottled and streaked brown upperparts, pale eyebrow, pale underparts, long slender downcurved bill, stiff long tail with diagnostic dark horizontal bars.",
+      "dynamicScene": "Climbing a short rough-barked trunk section, wings folded, tail braces on bark. Upper trunk ends naturally or fades fully to transparency below the top border.",
+      "correction": "Restore the complete upper composition: no cut-off crown, bill or trunk at the top. Reserve at least 8 percent clear transparent space above all drawing.",
+      "sourceURLs": [
+        "https://birdnet.cornell.edu/taxonomy/species/Certhia%20himalayana"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN00814",
+      "scientificName": "Ardea coromanda",
+      "role": "primary",
+      "operation": "create",
+      "representativePlumage": "adult, non-breeding plumage, both sexes similar",
+      "fieldMarks": "Compact white cattle egret, relatively short thick yellow bill, thick shorter neck and dark grey-black legs/feet. Entirely white non-breeding plumage; do not mix with extensive orange breeding plumage. Not the very slender long-necked Great Egret.",
+      "dynamicScene": "Walking alert through a very small sparse grass vignette, both wings folded; no cow or other animals.",
+      "correction": "Create a new species-accurate primary/dynamic pair, keeping the same non-breeding plumage in both.",
+      "sourceURLs": [
+        "https://biodiversitysg.nparks.gov.sg/our-biodiversity/birds/herons/eastern-cattle-egret/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN00814",
+      "scientificName": "Ardea coromanda",
+      "role": "dynamic",
+      "operation": "create",
+      "representativePlumage": "adult, non-breeding plumage, both sexes similar",
+      "fieldMarks": "Compact white cattle egret, relatively short thick yellow bill, thick shorter neck and dark grey-black legs/feet. Entirely white non-breeding plumage; do not mix with extensive orange breeding plumage. Not the very slender long-necked Great Egret.",
+      "dynamicScene": "Walking alert through a very small sparse grass vignette, both wings folded; no cow or other animals.",
+      "correction": "Create a new species-accurate primary/dynamic pair, keeping the same non-breeding plumage in both.",
+      "sourceURLs": [
+        "https://biodiversitysg.nparks.gov.sg/our-biodiversity/birds/herons/eastern-cattle-egret/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN09561",
+      "scientificName": "Sterna acuticauda",
+      "role": "primary",
+      "operation": "create",
+      "representativePlumage": "adult, breeding plumage, both sexes similar",
+      "fieldMarks": "Slender tern with black cap, white cheek/throat, grey breast and upperparts, BLACK belly and vent, slim orange bill, orange-red legs, very long deeply forked tail. Not a River Tern with pale belly.",
+      "dynamicScene": "Resting alert on a small sandy river-islet vignette, both wings folded, long forked tail completely visible.",
+      "correction": "Create a new pair with the correct black belly, orange bill and long forked tail; primary must have no sand/props.",
+      "sourceURLs": [
+        "https://freshwaterbiodiversity.org.bd/species/sterna-acuticauda_birds/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN09561",
+      "scientificName": "Sterna acuticauda",
+      "role": "dynamic",
+      "operation": "create",
+      "representativePlumage": "adult, breeding plumage, both sexes similar",
+      "fieldMarks": "Slender tern with black cap, white cheek/throat, grey breast and upperparts, BLACK belly and vent, slim orange bill, orange-red legs, very long deeply forked tail. Not a River Tern with pale belly.",
+      "dynamicScene": "Resting alert on a small sandy river-islet vignette, both wings folded, long forked tail completely visible.",
+      "correction": "Create a new pair with the correct black belly, orange bill and long forked tail; primary must have no sand/props.",
+      "sourceURLs": [
+        "https://freshwaterbiodiversity.org.bd/species/sterna-acuticauda_birds/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; source frozen locally before generation"
+      }
+    }
+  ]
+}

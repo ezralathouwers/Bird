@@ -68,6 +68,8 @@ class FieldInstallerTests(unittest.TestCase):
         after=self.snapshot()
         changed={name for name in after if after[name]!=before.get(name)}
         self.assertEqual(changed,{
+            'BirdingCompanion/Features/Discover/DiscoverView.swift',
+            'BirdingCompanion/Features/SpeciesGuide/SpeciesComponents.swift',
             'BirdingCompanion/Features/Identification/AudioRecordingActivity.swift',
             'BirdingCompanion/Features/Identification/IdentificationViews.swift',
             'BirdingCompanion/Features/Sessions/SessionsView.swift',

@@ -314,12 +314,24 @@ struct PageHeading: UIViewRepresentable {
 // Keep this shared by the guide, lists, forms, picker and map markers.
 struct PrimaryBirdImage: View {
     let species: Species
+    // Display correction only: retain the original PNGs and provenance hashes.
+    static func displayScale(speciesID: String) -> CGFloat {
+        switch speciesID {
+        case "birdnet-v3:BN00810": 1.22 // Grote zilverreiger.
+        case "birdnet-v3:BN09339": 1.18 // Boomklever.
+        case "birdnet-v3:BN08358": 1.12 // Halsbandparkiet: retain the long tail.
+        case "birdnet-v3:BN01798", "birdnet-v3:BN07656", "birdnet-v3:BN00525",
+             "birdnet-v3:BN10035", "birdnet-v3:BN07294": 1.15
+        default: 1
+        }
+    }
     static func sourceFacesLeft(speciesID: String) -> Bool {
         ["sample-parus-major", "sample-cyanistes-caeruleus", "sample-alcedo-atthis"].contains(speciesID)
     }
     var body: some View {
         Image(SpeciesMediaRole.classic.assetName(for: species)).resizable().scaledToFit()
             .scaleEffect(x: Self.sourceFacesLeft(speciesID: species.id) ? -1 : 1, y: 1)
+            .scaleEffect(Self.displayScale(speciesID: species.id))
     }
 }
 

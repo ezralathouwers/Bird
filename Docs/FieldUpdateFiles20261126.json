@@ -16,7 +16,8 @@
         "26da75a6fa7adb14f353c569f95377c4df19f2c99b444f7bf599abf7c6d51926",
         "7595dddf575e1c82cf9deeea168ac2a9fac5365a7f83788284995711b8f0a29c",
         "9c79dcbba15d1015426c7d407246249a0a47bafc3ec95c0e9fc03f504194dd4d",
-        "b4f261e5ca8c3b34730cc373f50875f106bd0bde3e7ab98beb7ceb7f37c58bba"
+        "b4f261e5ca8c3b34730cc373f50875f106bd0bde3e7ab98beb7ceb7f37c58bba",
+        "b55dd5d20c009a61c3b2aeba35b93b6dff263e82d18cc58b607c1776b15f0cad"
       ],
       "requiredExisting": true
     },
@@ -37,7 +38,7 @@
       "requiredExisting": true
     },
     "BirdingCompanion/Features/Discover/DiscoverView.swift": {
-      "sha256": "c13a07d0a7347f0bf8445a934607b68a55d7bfda6380c28373b0702de1e51684",
+      "sha256": "08503f2695e9f8d739eb3c61263389f5ec37dbf8fbeac1e24f524c7fb89b99f2",
       "knownOld": [
         "c13a07d0a7347f0bf8445a934607b68a55d7bfda6380c28373b0702de1e51684",
         "ef8a820d08130419d6a20a6619dd35aa655c176f763101b9bd0dd8c4a5c21fa9"
@@ -161,6 +162,13 @@
       ],
       "requiredExisting": true
     },
+    "BirdingCompanion/Features/SpeciesGuide/SpeciesComponents.swift": {
+      "sha256": "8e8b91eae11d076817cb876f48744fb6b9f6c2845268f5b7f16f778c6b91b83a",
+      "knownOld": [
+        "b8db1ddf4621893dc6f8d66f39cbaad9258308270e554dbce0e79c9ef459aa78"
+      ],
+      "requiredExisting": true
+    },
     "BirdingCompanion/Features/Sessions/SessionEnhancements.swift": {
       "sha256": "11e6d09dea31ff84747c420b4cff105c4d68c982b80f2dad644ade22b7ec925b",
       "knownOld": [
@@ -201,6 +209,7 @@
         "319cc650eb3cdaf55cff379b27e1d5b000ce7cad50a282a372426c48bf38007a",
         "66af8c68f535348b86fb9fa0b9ff4b807c67aec681ea52f6000091da5d8e986c",
         "6721e99a9172f2292be931e970582f5169dc3cb34777936abccbdb2860a1bdd5",
+        "6f4a2081fe6e44e8820fa6a8a94b7c9360864724e27a23e3512330d1971c927d",
         "b28f44667c9e769ce9e566332724e3c421ac543ee2f419c553af5a1c3015b2e3",
         "cfb4e50c882f0e778ef4c1337be1eeb6bd1fa71db63fa172d900d8001ba4cf4b"
       ],

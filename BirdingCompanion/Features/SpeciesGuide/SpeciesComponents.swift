@@ -300,6 +300,22 @@ private enum SpeciesArtworkDisplayCache {
 // Reserve the central navigation button's 32-point protrusion below the image.
 enum SpeciesArtworkLayout {
     static let navigationClearance: CGFloat = 32
+    static func requestedDynamicScale(speciesID: String) -> CGFloat {
+        ["birdnet-v3:BN01800", "birdnet-v3:BN08358"].contains(speciesID) ? 1.15 : 1
+    }
+    static func dynamicOffsetX(speciesID: String) -> CGFloat {
+        if ["birdnet-v3:BN01170", "birdnet-v3:BN02171", "birdnet-v3:BN02172"].contains(speciesID) {
+            return -5 // Existing -50pt placement + owner's requested 45pt right.
+        }
+        return containsFullDynamic(speciesID: speciesID) ? 0 : -50
+    }
+    static func containsFullDynamic(speciesID: String) -> Bool {
+        // These corrected/new masters must also fit completely on the phone.
+        ["birdnet-v3:BN04396", "birdnet-v3:BN07877", "birdnet-v3:BN01488",
+         "birdnet-v3:BN05973", "birdnet-v3:BN07519", "birdnet-v3:BN05684",
+         "birdnet-v3:BN04855", "birdnet-v3:BN10276", "birdnet-v3:BN03921",
+         "birdnet-v3:BN01801", "birdnet-v3:BN00814", "birdnet-v3:BN09561"].contains(speciesID)
+    }
     static func size(image: CGSize, viewport: CGSize, horizontalBleed: Bool, magnification: CGFloat = 1) -> CGSize {
         guard image.width > 0, image.height > 0 else { return .zero }
         let height = max(0, viewport.height - navigationClearance)
@@ -338,11 +354,12 @@ private struct SpeciesArtworkSlide: View {
                     // full width rather than bleeding these beyond the screen.
                     let zoom = role == .dynamic ? SpeciesArtworkLayout.dynamicMagnification(speciesID: species.id) : 1
                     let size = SpeciesArtworkLayout.size(image: image.size, viewport: viewport,
-                                                         horizontalBleed: role == .dynamic, magnification: zoom)
+                                                         horizontalBleed: role == .dynamic && !SpeciesArtworkLayout.containsFullDynamic(speciesID: species.id), magnification: zoom)
                     Image(uiImage: image).resizable()
                         .frame(width: size.width, height: size.height)
                         .scaleEffect(x: role == .classic && PrimaryBirdImage.sourceFacesLeft(speciesID: species.id) ? -1 : 1, y: 1)
-                        .offset(x: role == .dynamic ? -50 : 0, y: role == .dynamic ? (zoom > 1 ? -10 : -30) : 0)
+                        .scaleEffect(role == .dynamic ? SpeciesArtworkLayout.requestedDynamicScale(speciesID: species.id) : 1, anchor: .bottom)
+                        .offset(x: role == .dynamic ? SpeciesArtworkLayout.dynamicOffsetX(speciesID: species.id) : 0, y: role == .dynamic ? (zoom > 1 ? -10 : -30) : 0)
                         .frame(width: viewport.width,
                                height: max(0, viewport.height - SpeciesArtworkLayout.navigationClearance),
                                alignment: role == .dynamic && zoom == 1 ? .bottom : .center)

@@ -1,5 +1,11 @@
 # Veldfeedback — 26 november 2026
 
+Laatste illustratieronde: acht compacte portretten iets groter, twee dynamische
+beelden +15%, drie dynamische beelden 45pt naar rechts. Gecorrigeerde/nieuwe
+dynamische soorten krijgen volledige breedtepassing. De aparte lokale
+15-beeldenopdracht zit in Birder-Illustratiecorrecties-20261126.zip; zie
+ILLUSTRATIECORRECTIES_20261126.md. Deze broncode-update behoudt alle PNG's.
+
 ## In je bestaande project installeren
 
 Pak `Birder-Veldupdate-20261126.zip` uit, open
