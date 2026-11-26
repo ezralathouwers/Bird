@@ -2,7 +2,7 @@ from pathlib import Path
 import re
 import subprocess
 import unittest
-from field_update_project import update_project, block, uid
+from field_update_project import update_project, block, uid, object_span
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -28,6 +28,26 @@ class FieldProjectTests(unittest.TestCase):
         app=block(new,'949D493B91791558E87BC5D7')
         self.assertIn(uid('BirdingCompanion/Models/AudioRecordingAttributes.swift-app'),app)
         self.assertNotIn(uid('widget-build'),app)
+    def xcode_formatted(self):
+        original=self.original()
+        keys=re.findall(r'^([A-F0-9]{24})\s*=',original,re.M)
+        bodies=[block(original,key)+';' for key in keys]
+        bodies.sort(key=lambda body:re.search(r'isa\s*=\s*(\w+)',body).group(1))
+        text='// !$*UTF8*$!\n{ archiveVersion = 1; classes = {}; objectVersion = 60; objects = {\n'+'\n'.join(bodies)+'\n}; rootObject = 98F54143AB4E86B28C3AFEE0; }'
+        # Xcode adds descriptive comments to both references and definitions,
+        # and groups NativeTarget before SourcesBuildPhase.
+        return re.sub(r'\b([A-F0-9]{24})\b',r'\1 /* Xcode object */',text)
+
+    def test_xcode_comments_and_reordered_sections_find_actual_sources_definition(self):
+        original=self.xcode_formatted()
+        sources=block(original,'949D493B91791558E87BC5D7')
+        self.assertIn('isa = PBXSourcesBuildPhase;',sources)
+        self.assertNotIn('isa = PBXNativeTarget;',sources)
+        new=update_project(original)
+        self.assertEqual(block(original,'E9B2E96ABC5F6856F2BE79CF'),block(new,'E9B2E96ABC5F6856F2BE79CF'))
+        self.assertIn(uid('BirdingCompanion/Models/AudioRecordingAttributes.swift-app'),block(new,'949D493B91791558E87BC5D7'))
+        self.assertEqual(update_project(new),new)
+
     def test_malformed_or_wrong_project_fails_before_output(self):
         with self.assertRaises(ValueError):update_project('objects = {};')
 

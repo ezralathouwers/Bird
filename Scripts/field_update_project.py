@@ -7,7 +7,9 @@ def uid(name):return hashlib.sha1(('birder-field-20261126:'+name).encode()).hexd
 
 
 def object_span(text,key):
-    match=re.search(r'\b'+re.escape(key)+r'\b(?:\s*/\*.*?\*/)?\s*=\s*\{',text,re.S)
+    # A reference with a comment must never consume subsequent objects while
+    # looking for an equals sign. Xcode reorders sections and annotates IDs.
+    match=re.search(r'\b'+re.escape(key)+r'\b(?:\s*/\*(?:(?!\*/).)*\*/)?\s*=\s*\{',text,re.S)
     if not match:raise ValueError('Projectobject ontbreekt: '+key)
     i=match.end();depth=1;quoted=False
     while i<len(text):

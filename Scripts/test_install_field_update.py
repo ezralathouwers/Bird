@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 import install_field_update as update
+import test_field_update_project as project_fixture
 from field_update_project import block,uid
 
 BASE='e3b45d08a483d7a6e4d6120479273357c73fea49'
@@ -45,6 +46,15 @@ class FieldInstallerTests(unittest.TestCase):
         info=plistlib.loads((self.project/'BirdingCompanion/Resources/Info.plist').read_bytes())
         self.assertIn('audio',info['UIBackgroundModes']);self.assertTrue(info['NSSupportsLiveActivities'])
         self.assertEqual(update.apply(self.project),0)
+
+    def test_xcode_reformatted_project_installs_and_remains_repeatable(self):
+        formatted=project_fixture.FieldProjectTests().xcode_formatted().replace('org.example.BirdingCompanion"','com.test.PrivateBirder"')
+        self.pbx.write_text(formatted)
+        original=block(formatted,'E9B2E96ABC5F6856F2BE79CF')
+        self.assertGreater(update.apply(self.project),0)
+        self.assertEqual(block(self.pbx.read_text(),'E9B2E96ABC5F6856F2BE79CF'),original)
+        self.assertEqual(update.apply(self.project),0)
+        self.assertEqual(self.sentinel.read_bytes(),b'private range sentinel')
 
     def test_unknown_source_refused_before_any_changes(self):
         path=self.project/'BirdingCompanion/Features/Identification/SoundIdentificationModel.swift';path.write_text('local user code')

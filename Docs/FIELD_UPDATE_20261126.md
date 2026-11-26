@@ -101,3 +101,17 @@ Dynamic Island, test plus tijdens een highlight met/zonder livesessie, open
 Audio ID vanuit de sessie, roteer de externe kaart en reset met kompas, kies een
 andere ontdeklocatie en verifieer dat echte logs GPS blijven gebruiken. Controleer
 ook ruime bereikmarges en de sessielandschappen met de eigen privékaarten/data.
+
+## Herstel voor door Xcode geformatteerde projectbestanden
+
+De eerste updater kon stoppen met `Projectveld ontbreekt: files`. De combinatie
+van Xcode-commentaar bij ID-verwijzingen en herschikte projectsecties liet de
+objectzoeker voorbij een commentaareinde lezen. Daardoor werd een verwijzing
+als definitie behandeld en een verkeerd onderdeel uitgelezen.
+
+De zoeker mag nu nooit voorbij het eerste afsluitende commentaar doorzoeken.
+Regressies bootsen Xcode-commentaren bij alle ID's en de sectievolgorde na,
+controleren de juiste Sources-definitie en voeren de volledige update tweemaal
+uit met behoud van instellingen en privébestanden. Er zijn nu negen Python-
+tests voor projectintegratie en installatie. De fout trad vóór de schrijffase
+op; download de bijgewerkte zip en voer optie 1 opnieuw uit in hetzelfde project.
