@@ -1404,6 +1404,33 @@ final class SpeciesArtworkPagingTests: XCTestCase {
 
 @MainActor
 final class SpeciesDetailLayoutTests: XCTestCase {
+    func testOversizedCompoundTitleBreaksBeforeVogelRatherThanLeavingOneLetter() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: SpeciesDetailTitleMetrics.font(size: 34), .kern: 34 * -0.02
+        ]
+        let width = ("Bruinkopbaard-" as NSString).size(withAttributes: attributes).width + 1
+        let title = SpeciesDetailTitleMetrics.wrapped("Bruinkopbaardvogel", size: 34, width: width)
+        XCTAssertEqual(title, "Bruinkopbaard-\nvogel")
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.attributedText = SpeciesDetailTitleMetrics.attributed("Bruinkopbaardvogel", size: 34, width: width)
+        XCTAssertLessThanOrEqual(label.sizeThatFits(CGSize(width: width, height: 1000)).height, 34 * 2.1)
+    }
+
+    func testFittingTitlesKeepNaturalWordWrappingAndOriginalSpelling() {
+        XCTAssertEqual(SpeciesDetailTitleMetrics.wrapped("Bruinkopbaardvogel", size: 34, width: 1200), "Bruinkopbaardvogel")
+        XCTAssertEqual(SpeciesDetailTitleMetrics.wrapped("Grote zilverreiger", size: 34, width: 1200), "Grote zilverreiger")
+        XCTAssertEqual(SpeciesDetailTitleMetrics.wrapped("Witwangstern", size: 34, width: 0), "Witwangstern")
+    }
+
+    func testCompoundWrappingPreservesAllLettersAndExistingSpacesAtLargerTextSizes() {
+        let original = "Grote kraaghoningzuiger"
+        let display = SpeciesDetailTitleMetrics.wrapped(original, size: 54, width: 280)
+        XCTAssertEqual(display.replacingOccurrences(of: "-\n", with: ""), original)
+        XCTAssertTrue(display.contains("-\n"))
+        XCTAssertFalse(display.hasSuffix("\nr"))
+    }
+
     func testTitleUsesRegularVariableWeightInsteadOfBlackDefault() throws {
         let font = SpeciesDetailTitleMetrics.font(size: 34)
         let variation = try XCTUnwrap(CTFontCopyVariation(font as CTFont) as? [NSNumber: NSNumber])

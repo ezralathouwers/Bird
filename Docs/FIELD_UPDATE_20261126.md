@@ -1,5 +1,12 @@
 # Veldfeedback — 26 november 2026
 
+Laatste detailaanpassing: 35pt extra onderruimte op doelstellingdetails.
+Lange Nederlandse soortnamen worden alleen wanneer nodig afgebroken bij een
+logisch samengesteld woorddeel, met Nederlandse woordenboekafbreking als
+terugval. Bijvoorbeeld Bruinkopbaard-vogel; originele namen en VoiceOver blijven
+intact. De lettergrootte en stijl blijven behouden. De bronillustratie van de
+gestreepte baardvogel is hier niet aanwezig en is hiermee niet vervangen.
+
 Laatste illustratieronde: acht compacte portretten iets groter, twee dynamische
 beelden +15%, drie dynamische beelden nu in totaal 90pt naar rechts
 (45pt extra ten opzichte van het vorige correctiepakket). Gecorrigeerde/nieuwe

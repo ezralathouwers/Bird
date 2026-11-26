@@ -244,3 +244,10 @@ old 77-role recipe/checkpoints. See Docs/ILLUSTRATIECORRECTIES_20261126.md.
 Latest owner adjustment: shift BN01170/BN02171/BN02172 dynamic artwork another
 45pt right: x offset is now +40pt (original -50pt + 90pt total). No generation
 or source-image changes; preserve the frozen local 15-image plan/checkpoints.
+
+Latest detail feedback: GoalDetailView gets 35pt additional bottom padding.
+Oversized Dutch species-title words prefer compound boundaries (for example
+Bruinkopbaard-vogel), then Dutch Core Foundation hyphenation, using the actual
+font/available width. Preserve catalog/search spelling and VoiceOver names.
+The owner's Lineated Barbet dynamic original is absent from this workspace;
+do not claim a source-art correction without receiving and inspecting that PNG.

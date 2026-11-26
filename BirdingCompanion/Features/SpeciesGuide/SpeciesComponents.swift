@@ -1,6 +1,7 @@
 import SwiftUI
 import UIKit
 import CoreText
+import CoreFoundation
 
 enum SpeciesTab: String, CaseIterable {
     case overview = "Overzicht"
@@ -51,6 +52,56 @@ struct SpeciesTabStrip: View {
 // Explicit baseline spacing matches the tight two-line Dutch title in the
 // approved species-page design; tracking remains -0.02 em throughout the app.
 struct SpeciesDetailTitleMetrics {
+    private static let compoundEndings = [
+        "vogel", "aalscholver", "honingzuiger", "ijsvogel", "parkiet", "papegaai",
+        "boomkruiper", "boomklever", "specht", "zanger", "lijster", "meeuw",
+        "reiger", "zwaluw", "kolibrie", "frankolijn", "wever", "pijlstormvogel",
+        "stormvogel", "roodstaart", "kwikstaart", "klauwier", "leeuwerik",
+        "strandloper", "vliegenvanger", "gors", "mees", "stern", "gans", "eend"
+    ]
+
+    // Only split words that cannot fit even on an otherwise empty line.
+    // Prefer compound boundaries, then Dutch dictionary hyphenation. This is
+    // display text only; catalog/search names and VoiceOver stay unchanged.
+    static func wrapped(_ text: String, size: CGFloat, width: CGFloat) -> String {
+        guard width > 0 else { return text }
+        let attributes: [NSAttributedString.Key: Any] = [.font: font(size: size), .kern: size * -0.02]
+        func fits(_ word: String) -> Bool {
+            (word as NSString).size(withAttributes: attributes).width <= width
+        }
+        func split(_ word: String) -> String {
+            guard !fits(word) else { return word }
+            let source = word as NSString
+            let length = source.length
+            var preferred: [Int] = []
+            for ending in compoundEndings {
+                if let range = word.range(of: ending, options: [.anchored, .backwards, .caseInsensitive]) {
+                    let location = NSRange(range, in: word).location
+                    if location >= 3 && length - location >= 3 { preferred.append(location) }
+                }
+            }
+            var dictionary: [Int] = []
+            if let locale = CFLocaleCreate(nil, "nl_NL" as CFString),
+               CFStringIsHyphenationAvailableForLocale(locale) {
+                var before = length
+                while before > 3 {
+                    let location = CFStringGetHyphenationLocationBeforeIndex(
+                        word as CFString, before, CFRangeMake(0, length), 0, locale, nil)
+                    guard location != kCFNotFound, location > 0, location < before else { break }
+                    if location >= 3 && length - location >= 3 { dictionary.append(location) }
+                    before = location
+                }
+            }
+            guard let boundary = (preferred + dictionary).first(where: {
+                fits(source.substring(to: $0) + "-")
+            }) else { return word }
+            return source.substring(to: boundary) + "-\n" + split(source.substring(from: boundary))
+        }
+        // Preserve spaces, explicit hyphens and authored line breaks exactly.
+        return text.components(separatedBy: "\n").map { line in
+            line.components(separatedBy: " ").map(split).joined(separator: " ")
+        }.joined(separator: "\n")
+    }
     static func font(size: CGFloat) -> UIFont {
         // Fraunces.ttf defaults to wght=900; SwiftUI SerifText explicitly uses
         // regular. Set its variable axis too when rendering through UIKit.
@@ -59,12 +110,13 @@ struct SpeciesDetailTitleMetrics {
             .addingAttributes([variation: [NSNumber(value: 0x77676874): NSNumber(value: 400)]])
         return UIFont(descriptor: descriptor, size: size)
     }
-    static func attributed(_ text: String, size: CGFloat) -> NSAttributedString {
+    static func attributed(_ text: String, size: CGFloat, width: CGFloat? = nil) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.minimumLineHeight = size * 1.02
         paragraph.maximumLineHeight = size * 1.02
         paragraph.lineBreakMode = .byWordWrapping
-        return NSAttributedString(string: text, attributes: [
+        let displayText = width.map { wrapped(text, size: size, width: $0) } ?? text
+        return NSAttributedString(string: displayText, attributes: [
             .font: font(size: size),
             .foregroundColor: UIColor(FieldGuideTheme.charcoal),
             .kern: size * -0.02,
@@ -86,11 +138,12 @@ struct SpeciesDetailTitle: UIViewRepresentable {
         return label
     }
     func updateUIView(_ label: UILabel, context: Context) {
-        label.attributedText = SpeciesDetailTitleMetrics.attributed(text, size: size)
+        label.attributedText = SpeciesDetailTitleMetrics.attributed(text, size: size, width: label.bounds.width)
         label.accessibilityLabel = text
     }
     func sizeThatFits(_ proposal: ProposedViewSize, uiView: UILabel, context: Context) -> CGSize? {
         guard let width = proposal.width, width > 0 else { return nil }
+        uiView.attributedText = SpeciesDetailTitleMetrics.attributed(text, size: size, width: width)
         return uiView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
     }
 }
