@@ -300,7 +300,7 @@ private struct SoundIdentificationResults: View {
     let add: (Species) -> Void
     let open: (Species) -> Void
     var body: some View {
-        let proposedRows = SoundResultOrdering.rows(candidates: candidates, pins: pins.species, activeIDs: activeIDs).filter { rangeStatus[$0.id] != .impossible }
+        let proposedRows = SoundResultOrdering.rows(candidates: candidates, pins: pins.species, activeIDs: activeIDs)
         // Preserve the target under a finger while a newly heard bird reorders
         // the list. Release immediately restores the current live order.
         let rows = pressedPlusID == nil ? proposedRows : interactionRows
@@ -326,9 +326,10 @@ private struct SoundIdentificationResults: View {
                         .accessibilityAddTraits(.isButton)
                         .accessibilityAction { open(row.species) }
                         .accessibilityAction(named: Text(row.isPinned ? "Losmaken" : "Vastzetten")) { pins.toggle(row.species) }
-                    if rangeStatus[row.id] == .unlikely {
-                        Circle().fill(Color.orange.opacity(0.55)).frame(width: 6, height: 6)
-                            .accessibilityLabel("Onwaarschijnlijk op deze locatie")
+                    if rangeStatus[row.id] == .unlikely || rangeStatus[row.id] == .impossible {
+                        Circle().fill(rangeStatus[row.id] == .impossible ? Color.red.opacity(0.5) : Color.orange.opacity(0.55))
+                            .frame(width: 6, height: 6)
+                            .accessibilityLabel(rangeStatus[row.id] == .impossible ? "Zeer onwaarschijnlijk op deze locatie" : "Onwaarschijnlijk op deze locatie")
                     }
                     Button { add(row.species) } label: {
                         FineControlIcon(symbol: addedIDs.contains(row.id) ? "checkmark.circle" : "plus.circle", size: 24)

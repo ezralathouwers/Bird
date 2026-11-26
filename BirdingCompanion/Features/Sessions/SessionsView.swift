@@ -107,9 +107,12 @@ struct SessionsView: View {
                                         SessionHabitatArtwork(scene: scene)
                                             .frame(width: geometry.size.width * 0.72, height: geometry.size.height)
                                             .scaleEffect(1.2, anchor: .bottomTrailing)
-                                            .mask(LinearGradient(colors: [.clear, .white, .white], startPoint: .leading, endPoint: .trailing))
+                                            .mask {
+                                                LinearGradient(colors: [.clear, .white, .white], startPoint: .leading, endPoint: .trailing)
+                                                    .offset(x: 40)
+                                            }
                                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                                            .offset(x: 20)
+                                            .offset(x: 20, y: 20)
                                     }.allowsHitTesting(false).accessibilityHidden(true)
                                 }
                                 VStack(alignment: .leading, spacing: 6) {
@@ -369,7 +372,12 @@ struct SessionSpeciesPicker: View {
                     let groups = SessionSpeciesPartition.groups(birds, likelyIDs: likelyIDs)
                     speciesRows(groups.likely)
                     if !groups.likely.isEmpty && !groups.other.isEmpty {
-                        Divider().padding(.vertical, 12)
+                        Text("ONWAARSCHIJNLIJK").font(FieldGuideTheme.sans(13, relativeTo: .footnote))
+                            .tracking(1).foregroundStyle(FieldGuideTheme.taupe)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 12).padding(.vertical, 4)
+                            .background(FieldGuideTheme.beige.opacity(0.14), in: RoundedRectangle(cornerRadius: 8))
+                            .padding(.top, 16).padding(.bottom, 6)
                     }
                     speciesRows(groups.other)
                     if birds.isEmpty && !nearby.isLoading && !isFiltering { Text("Geen soorten gevonden.") }

@@ -520,7 +520,7 @@ struct SpeciesDistributionMap: View {
     @State private var showSources = false
 
     var body: some View {
-        NativeSpeciesRangeMap(dataset: dataset, onExpand: onExpand)
+        NativeSpeciesRangeMap(dataset: dataset, onExpand: onExpand, showsNorthControl: isFullScreen)
             .ignoresSafeArea(edges: isFullScreen ? [.top, .bottom] : [])
         .overlay(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 4) {
@@ -546,7 +546,7 @@ struct SpeciesDistributionMap: View {
                     .background(FieldGuideTheme.ivory.opacity(0.96), in: RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .padding(12)
+            .padding(12).padding(.leading, isFullScreen ? 64 : 0)
         }
         .overlay(alignment: .bottomLeading) {
             if isFullScreen, let dataset {
@@ -638,6 +638,7 @@ struct SpeciesRangeFullscreenView: View {
 struct NativeSpeciesRangeMap: UIViewRepresentable {
     let dataset: SpeciesRangeDataset?
     var onExpand: (() -> Void)?
+    var showsNorthControl = false
     private struct StyleKey: Hashable { let season: Int?; let introduced: Bool }
     func makeCoordinator() -> Coordinator { Coordinator() }
     func makeUIView(context: Context) -> MKMapView {
@@ -649,6 +650,7 @@ struct NativeSpeciesRangeMap: UIViewRepresentable {
         map.preferredConfiguration = config
         map.addOverlay(context.coordinator.basemapTone, level: .aboveRoads)
         map.showsCompass = false
+        if showsNorthControl { NativeMapNorthControl.install(on: map) }
         map.isPitchEnabled = false
         map.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30, longitude: 20),
             span: MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 160)), animated: false)
@@ -698,6 +700,7 @@ struct NativeSpeciesRangeMap: UIViewRepresentable {
         var datasetID: UUID?
         var styles: [ObjectIdentifier: (UIColor, Bool)] = [:]
         var onExpand: (() -> Void)?
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) { NativeMapNorthControl.refresh(in: mapView) }
         @objc func expand() { onExpand?() }
         func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith other: UIGestureRecognizer) -> Bool { true }
         func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

@@ -56,7 +56,7 @@ class FieldInstallerTests(unittest.TestCase):
         self.assertEqual(update.apply(self.project),0)
         self.assertEqual(self.sentinel.read_bytes(),b'private range sentinel')
 
-    def test_installed_field_version_receives_only_activity_build_fix(self):
+    def test_installed_field_version_receives_only_targeted_source_updates(self):
         plan=json.loads((update.ROOT/'Docs/FieldUpdateFiles20261126.json').read_text())
         revision='1e38b351b05acc944e261c9bad361b51880b1baa'
         for relative in list(plan['files'])+['BirdingCompanion.xcodeproj/project.pbxproj','BirdingCompanion/Resources/Info.plist']:
@@ -64,10 +64,16 @@ class FieldInstallerTests(unittest.TestCase):
             self.assertEqual(result.returncode,0)
             path=self.project/relative;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(result.stdout)
         before=self.snapshot()
-        self.assertEqual(update.apply(self.project),1)
+        self.assertGreater(update.apply(self.project),0)
         after=self.snapshot()
         changed={name for name in after if after[name]!=before.get(name)}
-        self.assertEqual(changed,{'BirdingCompanion/Features/Identification/AudioRecordingActivity.swift'})
+        self.assertEqual(changed,{
+            'BirdingCompanion/Features/Identification/AudioRecordingActivity.swift',
+            'BirdingCompanion/Features/Identification/IdentificationViews.swift',
+            'BirdingCompanion/Features/Sessions/SessionsView.swift',
+            'BirdingCompanion/Features/Observations/ObservationMapView.swift',
+            'BirdingCompanion/Features/Countries/FirstObservationsMap.swift',
+            'BirdingCompanion/Features/SpeciesGuide/SpeciesDistributionMap.swift'})
         self.assertEqual(update.apply(self.project),0)
 
     def test_unknown_source_refused_before_any_changes(self):

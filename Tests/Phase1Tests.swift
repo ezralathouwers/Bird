@@ -3040,3 +3040,23 @@ final class LiveAudioResultOrderingTests: XCTestCase {
         XCTAssertEqual(Set(active.map(\.id)).count, active.count)
     }
 }
+
+@MainActor
+final class FullScreenCompassTests: XCTestCase {
+    func testNativeCompassIsOpaqueEnabledAndResetsOnlyHeading() async throws {
+        let map = MKMapView(frame: CGRect(x: 0, y: 0, width: 390, height: 600))
+        map.setCamera(MKMapCamera(lookingAtCenter: .init(latitude: 51.2, longitude: 4.4), fromDistance: 3_000, pitch: 20, heading: 100), animated: false)
+        NativeMapNorthControl.install(on: map)
+        let button = try XCTUnwrap(map.subviews.compactMap { $0 as? NativeMapNorthControl }.first)
+        XCTAssertTrue(button.isEnabled)
+        XCTAssertEqual(try XCTUnwrap(button.backgroundColor).cgColor.alpha, 1, accuracy: 0.001)
+        let before = try XCTUnwrap(map.camera.copy() as? MKMapCamera)
+        button.sendActions(for: .touchUpInside)
+        try await Task.sleep(for: .seconds(1))
+        XCTAssertEqual(map.camera.heading, 0, accuracy: 1)
+        XCTAssertEqual(map.camera.centerCoordinate.latitude, before.centerCoordinate.latitude, accuracy: 0.0001)
+        XCTAssertEqual(map.camera.centerCoordinate.longitude, before.centerCoordinate.longitude, accuracy: 0.0001)
+        XCTAssertEqual(map.camera.pitch, before.pitch, accuracy: 1)
+        XCTAssertEqual(map.camera.centerCoordinateDistance, before.centerCoordinateDistance, accuracy: max(1, before.centerCoordinateDistance * 0.01))
+    }
+}

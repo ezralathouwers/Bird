@@ -20,6 +20,7 @@ struct ObservationMapView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var editing = false
     @State private var camera: MapCameraPosition = .automatic
+    @State private var currentCamera: MapCamera?
 
     private var current: Observation {
         store.observations.first { $0.id == observation.id } ?? observation
@@ -39,6 +40,7 @@ struct ObservationMapView: View {
                 }
         }
         .mapStyle(FieldGuideTheme.mapStyle)
+        .onMapCameraChange(frequency: .continuous) { currentCamera = $0.camera }
         .ignoresSafeArea()
         .mapControlVisibility(.hidden)
         .accessibilityLabel("Locatie van je waarneming van \(species.dutchName)")
@@ -57,6 +59,9 @@ struct ObservationMapView: View {
                 }
             }
             .padding(.horizontal, 20).padding(.bottom, 16).padding(.top, 8)
+        }
+        .overlay(alignment: .topLeading) {
+            MapNorthControl(position: $camera, camera: currentCamera).padding(.leading, 20).padding(.top, 12)
         }
         .overlay(alignment: .topTrailing) {
             MapCloseButton(label: "Sluit waarneming") { dismiss() }
@@ -129,19 +134,21 @@ struct NearbyReportMapView: View {
     let report: NearbyReport
     @Environment(\.dismiss) private var dismiss
     @State private var camera: MapCameraPosition = .automatic
-    @Namespace private var mapScope
+    @State private var currentCamera: MapCamera?
     @StateObject private var connectivity = MapConnectivity()
     private var coordinate: CLLocationCoordinate2D { .init(latitude: report.latitude, longitude: report.longitude) }
     var body: some View {
-        Map(position: $camera, scope: mapScope) {
+        Map(position: $camera) {
             Annotation(report.species.dutchName, coordinate: coordinate) {
                 SpeciesObservationMarker(species: report.species)
             }.annotationTitles(.hidden)
             UserAnnotation { LiveLocationPulse() }
-        }.mapStyle(FieldGuideTheme.mapStyle).mapControlVisibility(.hidden).ignoresSafeArea()
+        }.mapStyle(FieldGuideTheme.mapStyle)
+            .onMapCameraChange(frequency: .continuous) { currentCamera = $0.camera }
+            .mapControlVisibility(.hidden).ignoresSafeArea()
             .environment(\.colorScheme, .light)
             .overlay(alignment: .topLeading) {
-                MapCompass(scope: mapScope).mapControlVisibility(.visible)
+                MapNorthControl(position: $camera, camera: currentCamera)
                     .padding(.leading, 20).padding(.top, 12)
             }
             .overlay(alignment: .topTrailing) {
@@ -190,5 +197,60 @@ private struct LiveLocationPulse: View {
                 guard !reduceMotion else { return }
                 withAnimation(.easeOut(duration: 2.2).repeatForever(autoreverses: false)) { expanded = true }
             }.accessibilityLabel("Je huidige locatie")
+    }
+}
+
+// Same opaque surface and 44pt target as MapCloseButton. Keep zoom, pitch and
+// center: the compass changes only heading, never the visible observation area.
+struct MapNorthControl: View {
+    @Binding var position: MapCameraPosition
+    let camera: MapCamera?
+    var body: some View {
+        Button {
+            guard let camera else { return }
+            withAnimation(.easeInOut(duration: 0.25)) {
+                position = .camera(MapCamera(centerCoordinate: camera.centerCoordinate,
+                    distance: camera.distance, heading: 0, pitch: camera.pitch))
+            }
+        } label: {
+            Image(systemName: "location.north.circle").font(.system(size: 22, weight: .ultraLight))
+                .rotationEffect(.degrees(-(camera?.heading ?? 0)))
+                .foregroundStyle(FieldGuideTheme.charcoal).frame(width: 44, height: 44)
+                .background(FieldGuideTheme.ivory, in: Circle()).contentShape(Circle())
+        }.buttonStyle(.plain).accessibilityLabel("Richt kaart naar het noorden")
+    }
+}
+
+@MainActor
+final class NativeMapNorthControl: UIButton {
+    private weak var map: MKMapView?
+    static func install(on map: MKMapView) {
+        let button = NativeMapNorthControl(frame: .zero)
+        button.map = map; button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(FieldGuideTheme.ivory)
+        button.tintColor = UIColor(FieldGuideTheme.charcoal)
+        button.layer.cornerRadius = 22
+        button.setImage(UIImage(systemName: "location.north.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .ultraLight)), for: .normal)
+        button.accessibilityLabel = "Richt kaart naar het noorden"
+        button.addTarget(button, action: #selector(NativeMapNorthControl.resetNorth), for: .touchUpInside)
+        map.addSubview(button)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 44), button.heightAnchor.constraint(equalToConstant: 44),
+            button.leadingAnchor.constraint(equalTo: map.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            button.topAnchor.constraint(equalTo: map.safeAreaLayoutGuide.topAnchor, constant: 12)
+        ])
+        map.showsCompass = false
+        refresh(in: map)
+    }
+    static func refresh(in map: MKMapView) {
+        for button in map.subviews.compactMap({ $0 as? NativeMapNorthControl }) {
+            map.bringSubviewToFront(button)
+            button.imageView?.transform = CGAffineTransform(rotationAngle: -map.camera.heading * .pi / 180)
+        }
+    }
+    @objc private func resetNorth() {
+        guard let map, let camera = map.camera.copy() as? MKMapCamera else { return }
+        camera.heading = 0
+        map.setCamera(camera, animated: true)
     }
 }

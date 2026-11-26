@@ -109,6 +109,7 @@ private struct FirstObservationNativeMap: UIViewRepresentable {
         configuration.pointOfInterestFilter = .excludingAll
         view.preferredConfiguration = configuration
         view.delegate = context.coordinator
+        NativeMapNorthControl.install(on: view)
         view.showsUserLocation = false
         view.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "first-bird")
         view.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "first-cluster")
@@ -148,6 +149,7 @@ private struct FirstObservationNativeMap: UIViewRepresentable {
                 framed = true
             }
         }
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) { NativeMapNorthControl.refresh(in: mapView) }
         func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
             if let cluster = annotation as? MKClusterAnnotation {
                 let view = mapView.dequeueReusableAnnotationView(withIdentifier: "first-cluster", for: cluster)

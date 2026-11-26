@@ -136,3 +136,29 @@ alleen AudioRecordingActivity.swift verandert, en opnieuw uitvoeren wijzigt niet
 De updater herkent zowel oudere appversies als de twee uitgebrachte veldversies.
 Het bestandsplan onderscheidt vereiste oude bronbestanden van nieuw toegevoegde
 Live Activity-bestanden. Alle tien Python-project/update-tests slagen.
+
+## Aanvullende feedback — 26 november
+
+Alle Audio ID-resultaten blijven nu zichtbaar: afstandsclassificatie impossible
+krijgt een zacht rood bolletje; unlikely houdt oranje. Ontbrekende kaartcontext
+blijft ongemarkeerd. Geen resultaat wordt hierdoor automatisch verwijderd of
+gelogd. Live volgorde/pins en de kort vastgehouden plusknop blijven behouden.
+
+De livesessiezoeker toont ONWAARSCHIJNLIJK als afgeronde familieachtige strip
+boven de overige resultaten, met 16pt bovenmarge. De strip duidt de restgroep
+aan, waaronder ook soorten zonder lokale context; het is geen zeker oordeel
+over aanwezigheid. Sessielandschappen gaan 20pt omlaag en het transparantiemasker
+verschuift 40pt naar rechts, zonder bronafbeeldingen te wijzigen.
+
+Het standaard SwiftUI-kompas is vervangen door een steeds zichtbare, enabled
+44pt-knop met dezelfde volledig dekkende achtergrond als MapCloseButton. Voor
+eigen/externe waarnemingen volgt de naald de MapCamera en wordt alleen heading
+naar nul gezet. Native kaarten voor sessies/landen/logboek en fullscreen
+verspreiding gebruiken dezelfde knop en reset op een kopie van hun actuele
+camera; centrum, afstand en pitch blijven behouden. Compacte verspreidingskaarten
+krijgen geen extra bediening. De bronvermelding schuift naast de nieuwe knop.
+
+Een native XCTest controleert de ondoorzichtige/enabled knop en reset met behoud
+van camera. Deze test vereist Xcode en is hier niet uitgevoerd. De in-place
+updater herkent de vorige veldversie inclusief de Swift 6-reparatie en bewaart
+alle illustraties/privékaarten/signing. Alleen relevante bronbestanden veranderen.

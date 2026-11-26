@@ -58,7 +58,7 @@
       "requiredExisting": true
     },
     "BirdingCompanion/Features/Identification/IdentificationViews.swift": {
-      "sha256": "3146ba12a9edb903b43901a3e911e6763a42631251539a96bb7419ac8aad4d06",
+      "sha256": "c57bc2eb57786ae3d2ca8ea34db3fec78f1f0b25d183e658b74ae89d4f06f48f",
       "knownOld": [
         "0e8440bdff22f677cc765efedd3ff9387cb3deaa78e8b8db4f896dbee802a26a",
         "3146ba12a9edb903b43901a3e911e6763a42631251539a96bb7419ac8aad4d06"
@@ -76,7 +76,8 @@
     "BirdingCompanion/Features/Identification/AudioRecordingActivity.swift": {
       "sha256": "8b054edd35b6bfbf6fda0cb2db7bcc0973c0f76042e384b675af1154c0f3547e",
       "knownOld": [
-        "844704585efac62315067d6403bba8d3babce1e16b82f2d5ebc4b15901944273"
+        "844704585efac62315067d6403bba8d3babce1e16b82f2d5ebc4b15901944273",
+        "8b054edd35b6bfbf6fda0cb2db7bcc0973c0f76042e384b675af1154c0f3547e"
       ],
       "requiredExisting": false
     },
@@ -96,10 +97,24 @@
       "requiredExisting": true
     },
     "BirdingCompanion/Features/Observations/ObservationMapView.swift": {
-      "sha256": "0f46a82eecc0d501694be6cf024d5dd97366d31e7373daad462e537f30fb09ac",
+      "sha256": "7f59d74da042f51624aac5f94730660f06dfedb7958cb3dabb3ba24be7f3f328",
       "knownOld": [
         "0f46a82eecc0d501694be6cf024d5dd97366d31e7373daad462e537f30fb09ac",
         "7c372f6fb4a4812ba932218d51b443dba04b4bce665ca9b2588edcf66cba583a"
+      ],
+      "requiredExisting": true
+    },
+    "BirdingCompanion/Features/Countries/FirstObservationsMap.swift": {
+      "sha256": "f112a4accc10be28595a0b55e6337c68b3ae93f405a6732806ed6fed349d740b",
+      "knownOld": [
+        "5ceabb6712871e440e1c982621603db05654bacf3988b7ec9c40c96a4db35c0c"
+      ],
+      "requiredExisting": true
+    },
+    "BirdingCompanion/Features/SpeciesGuide/SpeciesDistributionMap.swift": {
+      "sha256": "77d758143b4e09779a4bc7b4252fa781a45a5ffa97e9d9ab156d4abe383e075f",
+      "knownOld": [
+        "16c2b8377dc6014efbc41a64f7ffef765c53c2b6dde68954f435abcfe55516ef"
       ],
       "requiredExisting": true
     },
@@ -113,7 +128,7 @@
       "requiredExisting": true
     },
     "BirdingCompanion/Features/Sessions/SessionsView.swift": {
-      "sha256": "cfb4e50c882f0e778ef4c1337be1eeb6bd1fa71db63fa172d900d8001ba4cf4b",
+      "sha256": "6721e99a9172f2292be931e970582f5169dc3cb34777936abccbdb2860a1bdd5",
       "knownOld": [
         "319cc650eb3cdaf55cff379b27e1d5b000ce7cad50a282a372426c48bf38007a",
         "cfb4e50c882f0e778ef4c1337be1eeb6bd1fa71db63fa172d900d8001ba4cf4b"

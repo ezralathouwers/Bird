@@ -205,3 +205,10 @@ location must never replace GPS for audio or observation logging. Session rows
 use large right-bleeding habitat art and full-width separators; flag circles
 match the 22pt country detail header. Ship the in-place field updater to retain
 private maps, local artwork, app identity and signing; see Docs/FIELD_UPDATE_20261126.md.
+
+Latest follow-up, 26 November: never hide Audio ID species for geographic
+implausibility; show a soft red dot for extreme distance and orange for unlikely.
+Keep live result promotion and stable plus presses. The live session search
+rest group uses an ONWAARSCHIJNLIJK family-style heading. Move session habitat
+art down 20pt and its fade right 40pt. All fullscreen maps have an opaque,
+enabled north-reset compass; preserve center, zoom and pitch when resetting.
