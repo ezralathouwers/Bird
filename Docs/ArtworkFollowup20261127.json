@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-image-2.5-sunburst-2026-09-08",
+  "quality": "medium",
+  "tokenRatesUSDPerMillion": {
+    "textInput": 5,
+    "imageInput": 8,
+    "imageOutput": 30
+  },
+  "referenceAssets": {
+    "primary": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-primary.imageset/primary.png",
+    "dynamic": "BirdingCompanion/Resources/Assets.xcassets/sample-alcedo-atthis-dynamic.imageset/dynamic.png"
+  },
+  "style": "Match the attached approved kingfisher reference ONLY for naturalistic watercolor and fine coloured-pencil rendering, detailed feather texture and restrained field-guide lighting. Replace the kingfisher completely with the specified species. Do not copy its blue/orange colours, proportions, facing or props. Output one new original bird illustration, never a panel or montage. No text, labels, logos, shadow, checkerboard or paper rectangle. Real transparent alpha background. No anatomy inventions: exactly two wings/flippers in total (far folded wing can be hidden), one head and one bill, correct feet/toes. An open wing replaces its folded outline on that side; never add an extra folded wing.",
+  "roles": {
+    "primary": {
+      "size": "1024x1024",
+      "direction": "PRIMARY compact portrait: whole bird in a natural resting/standing upright posture facing RIGHT. Closed wings (relaxed flippers for penguin), natural visible feet, beak/tail/toes fully inside image, bird occupies about 85% of canvas. Bird ONLY: no branch, perch, rock, ground, plants, water, food or shadow. Not flying, not crouching. Use a species-appropriate natural body carriage; a duck and penguin need not sit like a songbird."
+    },
+    "dynamic": {
+      "size": "1024x1536",
+      "direction": "DYNAMIC species-page hero: distinct species-specific behavior/vignette as described below. Large bird, centered slightly left with ample room in front of its bill, about 80-90% of available frame. Natural minimal habitat accents only; genuine alpha transparency around scene. All heads, bills and bird parts inside master image; the app may bleed the sides. No hard crop along the TOP: branches/trunks must end naturally or fade transparently before the top edge. Avoid excessive empty top/right space and avoid a beige paper background copied from the reference."
+    }
+  },
+  "batchID": "api-followup-20261127",
+  "scope": "repair",
+  "pilotKeys": [],
+  "targets": [
+    {
+      "id": "birdnet-v3:BN04617",
+      "scientificName": "Heterophasia capistrata",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult, typical plumage",
+      "fieldMarks": "Black cap, warm rufous head sides, back and underparts; black/grey wings with a pale panel, long graduated rufous-and-dark tail, slender dark bill. Not Rufous-backed Sibia.",
+      "dynamicScene": "Alert on a short leafy twig, both wings folded, full tail visible. All twig and leaf tips finish before the right edge.",
+      "correction": "Restore the complete right side of bird and vignette. At least 6 percent fully transparent right clearance: no cropped bill, wing, tail, branch or foliage.",
+      "sourceURLs": [
+        "https://www.birdforum.net/opus/Rufous_Sibia"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN09278",
+      "scientificName": "Setophaga striata",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, breeding plumage",
+      "fieldMarks": "Black cap, white cheeks bordered by dark moustachial stripe, streaked grey-black back, white underparts with black flank streaks, two white wing bars, fine dark bill and pale orange legs. Not Eurasian Blackcap.",
+      "dynamicScene": "Resting on a fine naturally ending twig, both wings fully folded.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://www.allaboutbirds.org/guide/Blackpoll_Warbler/id"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN09270",
+      "scientificName": "Setophaga pensylvanica",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, breeding plumage",
+      "fieldMarks": "Yellow crown, white cheeks and belly, black facial markings, chestnut flank stripes, dark wings with pale bars, greenish/dark streaked back. Not Bay-breasted Warbler.",
+      "dynamicScene": "Alert on a short leafy twig, both wings folded, tail slightly cocked.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://www.audubon.org/field-guide/bird/chestnut-sided-warbler"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN07662",
+      "scientificName": "Phylloscopus xanthoschistos",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult, typical plumage",
+      "fieldMarks": "Soft grey hood/head with subtle pale eyebrow and dark eye line, olive-green back/wings, bright yellow throat and underparts, fine insectivore bill and delicate feet.",
+      "dynamicScene": "Picking an insect from a small leaf while perching, both wings folded.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://greathimalayannationalpark.org/phylloscopus-xanthoschistos-grey-hooded-warbler/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN06901",
+      "scientificName": "Orthotomus sutorius",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, breeding plumage",
+      "fieldMarks": "Rufous forecrown, olive-green upperparts, whitish underparts, fine slightly downcurved bill, long narrow tail naturally cocked upward.",
+      "dynamicScene": "Beside a small stitched-leaf nest, both wings folded, natural toes grip a twig.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://mangrove.nus.edu.sg/pub/wetlands/text/99-6-3-7.htm"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN07149",
+      "scientificName": "Parus monticolus",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, typical plumage",
+      "fieldMarks": "Black head and throat, white cheek patches, green mantle/back, yellow belly with black central stripe, dark/blue-grey wings with two pale bars, small pointed bill.",
+      "dynamicScene": "Clinging naturally to a short mossy twig, both wings folded.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://greathimalayannationalpark.org/parus-monticolus-green-backed-tit/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN01179",
+      "scientificName": "Bombycilla cedrorum",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult, typical plumage",
+      "fieldMarks": "Silky warm brown head/breast, modest swept-back crest, pale-edged black mask, pale yellow belly, greyish wings with small red wax tips, dark tail with yellow tip. Pale undertail, not the chestnut undertail of Bohemian Waxwing.",
+      "dynamicScene": "Reaching for one berry on a sparse berry twig, both wings folded.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://www.allaboutbirds.org/guide/Cedar_Waxwing/id"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN07931",
+      "scientificName": "Pluvialis squatarola",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult, non-breeding plumage",
+      "fieldMarks": "Chunky large-headed grey plover, short strong black bill, dark legs, mottled grey-brown upperparts, whitish underparts and smudged breast. Black axillaries hidden by folded wings. Not a golden-plover.",
+      "dynamicScene": "Walking on a small restrained mudflat vignette, both wings entirely folded.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://www.allaboutbirds.org/guide/Black-bellied_Plover/id"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    },
+    {
+      "id": "birdnet-v3:BN00323",
+      "scientificName": "Amandava amandava",
+      "role": "dynamic",
+      "operation": "replace",
+      "representativePlumage": "adult male, breeding plumage, nominate amandava",
+      "fieldMarks": "Small finch, red face/breast/rump, red conical bill, dark brown-black wings and tail, neat white spots on flanks and wing coverts.",
+      "dynamicScene": "Resting on a short grass stem with seed head, both wings folded and feet naturally gripping.",
+      "correction": "Correct the reported impossible wing pose / third wing. Exactly two wings, BOTH naturally folded, one wing per side of the upper body with correct shoulder attachment. The far folded wing may be hidden. No open far wing, spare folded outline, duplicate feather fan or wing attached on top/below the body. Use realistic species-specific proportions.",
+      "sourceURLs": [
+        "https://animaldiversity.org/accounts/Amandava_amandava/"
+      ],
+      "inputReview": {
+        "originalFullResolutionReviewed": false,
+        "replacementApproved": false,
+        "basis": "Owner report; original full PNG frozen locally before generation"
+      }
+    }
+  ]
+}

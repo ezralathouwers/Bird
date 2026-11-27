@@ -356,7 +356,11 @@ private enum SpeciesArtworkDisplayCache {
 enum SpeciesArtworkLayout {
     static let navigationClearance: CGFloat = 32
     static func requestedDynamicScale(speciesID: String) -> CGFloat {
-        ["birdnet-v3:BN01800", "birdnet-v3:BN08358"].contains(speciesID) ? 1.15 : 1
+        switch speciesID {
+        case "birdnet-v3:BN00461", "birdnet-v3:BN00525": 1.35 // Pijlstaart, grauwe gans.
+        case "birdnet-v3:BN01800", "birdnet-v3:BN08358": 1.15
+        default: 1
+        }
     }
     static func dynamicOffsetX(speciesID: String) -> CGFloat {
         if ["birdnet-v3:BN01170", "birdnet-v3:BN02171", "birdnet-v3:BN02172"].contains(speciesID) {
@@ -369,7 +373,10 @@ enum SpeciesArtworkLayout {
         ["birdnet-v3:BN04396", "birdnet-v3:BN07877", "birdnet-v3:BN01488",
          "birdnet-v3:BN05973", "birdnet-v3:BN07519", "birdnet-v3:BN05684",
          "birdnet-v3:BN04855", "birdnet-v3:BN10276", "birdnet-v3:BN03921",
-         "birdnet-v3:BN01801", "birdnet-v3:BN00814", "birdnet-v3:BN09561"].contains(speciesID)
+         "birdnet-v3:BN01801", "birdnet-v3:BN00814", "birdnet-v3:BN09561",
+         "birdnet-v3:BN04617", "birdnet-v3:BN09278", "birdnet-v3:BN09270",
+         "birdnet-v3:BN07662", "birdnet-v3:BN06901", "birdnet-v3:BN07149",
+         "birdnet-v3:BN01179", "birdnet-v3:BN07931", "birdnet-v3:BN00323"].contains(speciesID)
     }
     static func size(image: CGSize, viewport: CGSize, horizontalBleed: Bool, magnification: CGFloat = 1) -> CGSize {
         guard image.width > 0, image.height > 0 else { return .zero }

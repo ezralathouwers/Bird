@@ -1,5 +1,11 @@
 # Veldfeedback — 26 november 2026
 
+Aanvulling 27 november: doelstellingdetails nog 30pt extra onderruimte bovenop
+de vorige 35pt. Dynamische Pijlstaart en Grauwe gans 35% groter. Rosse sibia en
+de acht nieuwe vleugelherstelsoorten passen binnen de schermbreedte, zodat de
+herstelbeelden niet opnieuw worden afgesneden. De aparte negen-beeldenronde
+staat in Birder-Illustratiecorrecties-20261127.zip; zie de bijbehorende handleiding.
+
 Buildfix titelafbreking: de Nederlandse taalcode wordt eerst met
 CFLocaleCreateCanonicalLanguageIdentifierFromString omgezet naar het door
 CFLocaleCreate vereiste CFLocaleIdentifier-type. Dit verhelpt de gemelde

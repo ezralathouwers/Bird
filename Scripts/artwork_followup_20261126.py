@@ -16,14 +16,15 @@ SPEC = ROOT / 'Docs/ArtworkFollowup20261126.json'
 OUTPUT = ROOT / '.artwork-api/followup-20261126'
 
 
-def prepare(project, output):
+def prepare(project, output, spec_path=SPEC):
     """Never rebind an existing checkpoint to a newer/different rejected original."""
     project = Path(project).resolve(); output = Path(output).resolve()
-    spec = repairs.read(SPEC)
+    spec_path = Path(spec_path)
+    spec = repairs.read(spec_path)
     frozen = output / 'plan.json'
     if frozen.exists():
         plan = repairs.read(frozen)
-        if plan.get('intakeSHA256') != repairs.digest(SPEC):
+        if plan.get('intakeSHA256') != repairs.digest(spec_path):
             raise ValueError('De opdracht is gewijzigd. Bewaar deze resultaten; gebruik een aparte vervolgronde.')
         repairs.repair_jobs(plan, project)
         return plan
@@ -33,7 +34,7 @@ def prepare(project, output):
     catalog = {r['id']: r for r in repairs.read(res / 'WorldSpeciesCatalog.json')}
     manifest = repairs.read(res / 'ArtworkManifest.json')
     plan = copy.deepcopy(spec)
-    plan['intakeSHA256'] = repairs.digest(SPEC)
+    plan['intakeSHA256'] = repairs.digest(spec_path)
     snapshots = []
     for target in plan['targets']:
         species = catalog[target['id']]
@@ -83,14 +84,17 @@ def prepare(project, output):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', type=Path)
+    parser.add_argument('--spec', type=Path, default=SPEC)
     parser.add_argument('--output', type=Path, default=OUTPUT)
     parser.add_argument('--menu', action='store_true')
     parser.add_argument('--execute', action='store_true')
     parser.add_argument('--install', action='store_true')
     parser.add_argument('--recover', action='store_true')
     args = parser.parse_args()
+    spec = repairs.read(args.spec)
+    count = len(spec['targets'])
     if args.menu:
-        print('1. Maak de 15 correctie/nieuwe beelden (bestaande resultaten overslaan)\n2. Bekijk tussentijdse resultaten\n3. Installeer gemaakte beelden na controle\n4. Herstel onderbroken installatie')
+        print(f'1. Maak de {count} correctie/nieuwe beelden (bestaande resultaten overslaan)\n2. Bekijk tussentijdse resultaten\n3. Installeer gemaakte beelden na controle\n4. Herstel onderbroken installatie')
         choice = input('Keuze [1]: ').strip() or '1'
         if choice not in ['1', '2', '3', '4']:
             raise ValueError('Ongeldige keuze.')
@@ -105,22 +109,23 @@ def main():
         with repairs.project_lock(project) as journal:
             repairs.recover(project, journal)
         print('Vorige installatie hersteld.'); return
-    plan = prepare(project, args.output)
+    plan = prepare(project, args.output, args.spec)
     jobs = repairs.repair_jobs(plan, project)
     if args.install:
-        print('Bekijk alle originelen in review.html, vooral twee vleugels, het keelvlekje en vrije boven/rechterrand. Geen automatische anatomiegoedkeuring.')
+        print('Bekijk alle originelen in review.html: soortkenmerken, twee vleugels en vrije boven/rechterrand. Geen automatische anatomiegoedkeuring.')
         if input('Typ JA om alle gemaakte beelden te accepteren en installeren: ').strip() != 'JA':
             print('Niets geïnstalleerd.'); return
         print('Geïnstalleerd:', repairs.install_completed(plan, project, args.output, accept=True)); return
     if not args.execute:
-        print('Offline voorbereid: 11 vervangingen en 4 nieuwe rollen. Geen API-aanvragen.'); return
+        replacements = sum(t['operation'] == 'replace' for t in plan['targets'])
+        print(f'Offline voorbereid: {replacements} vervangingen en {count - replacements} nieuwe rollen. Geen API-aanvragen.'); return
     if (args.output / 'state.json').exists():
         state = repairs.read(args.output / 'state.json')
         if all(state.get('jobs', {}).get(j['key'], {}).get('status') == 'generated_unreviewed' for j in jobs):
             repairs.completed_rows(plan, project, args.output)
-            print('Alle 15 beelden bestaan al. Geen nieuwe API-aanvragen.')
+            print(f'Alle {count} beelden bestaan al. Geen nieuwe API-aanvragen.')
             webbrowser.open((args.output / 'review.html').resolve().as_uri()); return
-    print('15 mediumbeelden, raming circa $0,40–$0,60 excl. btw/hergeneraties. Lokale kostenstop $2, geen harde factureringslimiet.')
+    print(f'{count} mediumbeelden, raming circa ${count * 0.027:.2f}–${count * 0.04:.2f} excl. btw/hergeneraties. Lokale kostenstop $2, geen harde factureringslimiet.')
     with api.production_lock():
         key = os.environ.get('OPENAI_API_KEY') or getpass.getpass('OpenAI API-sleutel (verborgen, niet bewaard): ')
         if not key.strip():

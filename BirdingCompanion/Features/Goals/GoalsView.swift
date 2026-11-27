@@ -126,7 +126,7 @@ private struct GoalDetailView: View {
                             }
                         }
                     }
-                }.padding(20).padding(.bottom, 59)
+                }.padding(20).padding(.bottom, 89)
             }
         }.background(FieldGuideTheme.ivory).toolbar(.hidden, for: .navigationBar)
             .fullScreenCover(isPresented: $editing) { GoalForm(goal: current) }

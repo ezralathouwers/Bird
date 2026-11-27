@@ -255,3 +255,13 @@ do not claim a source-art correction without receiving and inspecting that PNG.
 Species-title build fix: recent Apple SDKs require CFLocaleIdentifier in
 CFLocaleCreate. Obtain it through CFLocaleCreateCanonicalLanguageIdentifierFromString;
 do not pass CFString directly. Preserve Dutch compound/dictionary wrapping.
+
+Owner follow-up 27 November: goal details another 30pt bottom padding (89pt
+specific bottom padding plus the existing 20pt general inset). Dynamic Pintail
+BN00461 and Greylag Goose BN00525 display at 1.35x previous size. Full-fit the
+nine named repair dynamics including Rufous Sibia BN04617. Prepare a separate
+local nine-role replacement round for the eight reported wing errors and sibia
+right crop; preserve the old 15/77-role recipes and checkpoints. Use both wings
+folded for these eight corrections, true transparent edges and exact local
+source hashes/backups. See Docs/ILLUSTRATIECORRECTIES_20261127.md. No new originals
+are present here, so do not claim full-image review or completed generation.
